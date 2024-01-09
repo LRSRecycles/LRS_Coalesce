@@ -86,7 +86,7 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: DATE("LF05H_COMBINED"."LF05H_DTEI")
+                transform: CASE WHEN LF05H_COMBINED."LF05H_INBOUND" = 1 THEN "LF05H_COMBINED"."LF05H_DTEI" ELSE "LF05H_COMBINED"."LF05H_DTEO" END
             systemColumnType: None
             transform: ""
           - columnReference:
