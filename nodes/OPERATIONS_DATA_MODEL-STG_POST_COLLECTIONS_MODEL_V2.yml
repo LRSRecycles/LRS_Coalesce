@@ -1,0 +1,684 @@
+steps:
+  STG_POST_COLLECTIONS_MODEL_V2-56ab6887-1fa1-4b96-905e-454bf2221168:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: OPERATIONS_DATA_MODEL
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 70116fd6-4f70-41ae-95df-1c4026765241
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: LF05D_ID
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 07aa1e81-e244-476c-8de7-d68df3460317
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 651df993-d66c-4690-a4f8-9293719b2ff3
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            name: LF05H_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 85d59bc9-fee1-4442-840d-171f685caf90
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 0f1b3ba1-24e1-465e-ae57-d6e7337af775
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Link to Ticket Header
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: dab40564-817a-4c45-9232-96aac92d69f5
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 28598ca8-04c0-4cc1-bddd-7ffa31b515c6
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR
+            description: ""
+            name: Ticket Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4680c402-4680-49ed-9164-cfdfd85e6661
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 72045088-0d78-4a74-a7ac-f85a03f9ab24
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: DATE
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: DATE("LF05H_COMBINED"."LF05H_DTEI")
+            systemColumnType: None
+            transform: ""
+          - columnReference:
+              columnCounter: a90cfc34-c78d-40a5-b92e-b0956ff0581b
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            name: Date In
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: bea45991-e658-440f-94c7-d3f02b16da60
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 7e5d5bc3-8238-448a-adbb-fade27eeb9fd
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            name: Date Out
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: c6d4c4ac-f95d-4bcb-8ad4-853685b8c950
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 459cd267-d90c-49eb-8306-cbe959a7cc51
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: VARCHAR(250)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Time at Scale
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: |
+                  LPAD(FLOOR(DATEDIFF(DAY,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO")), 2, '0') || ':' ||
+                  LPAD(FLOOR(DATEDIFF(HOUR,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %24), 2, '0') || ':' || 
+                  LPAD(FLOOR(DATEDIFF(MINUTE,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') || ':' || 
+                  LPAD(FLOOR(DATEDIFF(SECOND,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') 
+            systemColumnType: None
+            transform: ""
+          - columnReference:
+              columnCounter: e7fccea0-6314-4967-8e72-f7bc184ad110
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: BOOLEAN
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: LF05D Leed Material Indicator
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 565be7f8-5ce9-420e-aba3-8c94e7f335d3
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 50b91bc7-75bb-4a72-88f5-6cd8308e9d1d
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: BOOLEAN
+            description: ""
+            name: LF05H Leed Ticket Flag
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 659847f6-b415-458e-b1e2-93eaad454d75
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: a3e930ae-772f-4e76-85e9-6b8aece91efa
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Material Code
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 07d479fe-b7cc-4b34-8304-1e03173d2999
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: d24dd295-bd65-47a4-907e-6f4327377517
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Material Description
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 29e98454-68c4-4414-8685-8bae91617e75
+                    stepCounter: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - columnReference:
+              columnCounter: 7f2d9e5e-adc6-42cb-b218-fd9060463f43
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Contract
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4303f1ab-3e08-4835-9136-5947f03c8101
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 9ab51281-972d-4545-b606-14e0d0782fbc
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Billing Unit of Measure
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: d94dcfdc-6469-479b-937c-9c72b9e2c9a6
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 12a5b197-11ab-4350-b842-5725839bcb8f
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(18,3)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Billing Quantity
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1bcb7c27-c785-4a48-8879-f6bf7cd33944
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: bd455d41-4ecd-4fb0-9829-d1c44fa5fc6b
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Converted Billing Unit of Measure
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: |-
+                  CASE 
+                      when UPPER("LF05D_COMBINED"."LF05D_BUOM") IN ('EA','TN','YD') 
+                      then UPPER("LF05D_COMBINED"."LF05D_BUOM")
+                      ELSE "BLM06_COMBINED"."LM06_UOM2"
+                   END
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 3e2b959d-0f6a-4019-b1a0-30c6fc9d4a51
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: NUMBER(38,6)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Converted Billing Quantity
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: |-
+                  CASE 
+                      when UPPER("LF05D_COMBINED"."LF05D_BUOM") IN ('EA','TN','YD') 
+                      then "LF05D_COMBINED"."LF05D_BQTY"
+                      else round(("BLM06_COMBINED"."LM06_FACT" * "LF05D_COMBINED"."LF05D_BQTY"),6)
+                   END
+            systemColumnType: None
+            transform: ""
+          - columnReference:
+              columnCounter: 0089c58a-966c-456d-8a6f-67a328168401
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(18,2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Total Amount
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f74450ad-c93d-41ce-8f20-a1a4d172976c
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 03e7f5d1-c682-4f76-b790-bbae23ea8a46
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(18,2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Weight In
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 257458c9-41cd-4c4c-8e5d-aff5b697031f
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 9d772a91-00e7-4248-81fc-91c4a9f122ec
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(18,2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Weight Out
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 81849026-7b08-422d-8ac8-f299c8a5484b
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f5eb7b03-7959-48e6-a78f-d9af38ff622c
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: NUMBER(38,6)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Difference of WeightIn/Out
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "( \"LF05D_COMBINED\".\"LF05D_WEIO\" - \"LF05D_COMBINED\".\"LF05D_WEII\") "
+            systemColumnType: None
+            transform: ""
+          - columnReference:
+              columnCounter: 50c2eae7-fdbd-4329-a0c9-79ae6099a64f
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(10)
+            description: ""
+            name: User
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 51aba856-85df-4390-9f0f-ce4d52d44abf
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 17d2db86-5abf-41af-b104-237fa772207a
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: BOOLEAN
+            description: ""
+            name: Cash Ticket Flag
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 547816e5-96b2-4944-bafd-bfa48712966d
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: ef4ea375-46ef-4712-be23-274f6bbae5de
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: BOOLEAN
+            description: ""
+            name: Closed Flag
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 68190d9e-ab9e-4b05-8e55-ba5d5b25f297
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: c1fa7e1a-cd47-42f3-ac96-335c140bf1ac
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Confirmed Date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 17e4cb2a-54bc-4247-912f-6f8f350e6841
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 8dbba4f4-6248-4bb1-917c-1f5b340bc0b5
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(18,3)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Confirmed Quantity
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 771a21bd-33c1-4bd2-b059-fec13201b95c
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 4499cc0b-2c49-4232-a666-5a164900beb8
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Confirmed Unit of Measure
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: d2171c7a-b9d2-4a2f-8e1c-64d5a6ead2d0
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: edde4ec8-1085-4259-8fdb-e8d57336f5b1
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR
+            description: ""
+            name: Customer Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2995a465-fc96-4cc6-a5fc-6cb88b494cd6
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: f74ce420-73e8-426e-9569-53e2b1368257
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(4)
+            description: ""
+            name: Facility
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3c217e0a-d623-4de2-8d0c-c994d31ee777
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 04af627c-68d2-4d5c-9acf-2350d9ef4fd2
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: VARCHAR(40)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: In\Out Indicator
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: CASE WHEN "LF05H_COMBINED"."LF05H_INBOUND" = TRUE THEN 'Inbound' ELSE 'Outbound' END
+            systemColumnType: None
+            transform: ""
+          - columnReference:
+              columnCounter: d4e50533-395d-49d3-b4f2-aa01dc8f17a1
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            name: Container ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2ec5c505-693b-4756-990c-f7c015d85514
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: b5ca8c84-b16b-4c18-8691-8b0593aa6b72
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(1)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Price Type
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 68d5dbfa-43ad-44a0-94b0-910d863fa400
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 17eb1e65-0eaa-45a5-8ad9-d47a86843e7e
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(18,3)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Rate
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 59f17c13-11a7-47d8-9bf1-782b4f5e6fc9
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 9c675fec-9587-4398-a04c-4dcf5512a38b
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Rate ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 01ca582f-d5ec-43e5-a90a-4f1ad04addfc
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+          - columnReference:
+              columnCounter: 52502d84-da60-4d7f-8eba-0fec8fd967df
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(80)
+            description: ""
+            name: Reference
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e69e6652-6586-46fc-a6be-ae5a0aa27430
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 3ec502d9-dbf6-4bca-ad08-31e3618b5929
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            name: Rout Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: cc65a599-a803-4870-b89f-5137837e97f1
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 5f8f1e3a-96b2-4b6a-b900-94950760d047
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            name: Route Date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 29ce2d36-4244-4ce5-879c-065d6e338d34
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 333b1cdc-798f-4a9a-81e5-aa6dc56e3cf9
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(4)
+            description: ""
+            name: Ticket Type
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: def6b14a-91b5-46dc-bc5e-556d11e9fceb
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 6acdf6b3-a58b-4380-84c2-76c9be478db2
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: NUMBER(38,0)
+            description: ""
+            name: Vehicle
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f3687b8b-bddc-42d5-b82c-c11b27289341
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 7b8bf18d-752d-4ca1-9210-c3923f5c302e
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: BOOLEAN
+            description: ""
+            name: Void Flag
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 78c5ec0d-e9fb-4d45-99d4-7c0da7473200
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: ab1b8c84-9358-42d6-909d-ac4fb42fc5c4
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(4)
+            description: ""
+            name: Void Reason
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2194a667-bb57-42d9-acad-3a9f7aa58152
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+          - columnReference:
+              columnCounter: 479b707d-dfb3-4426-86b1-3b4c63c51ecf
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR(250)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: SOURCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1197c322-9921-4c9b-acaa-1402514b3d62
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              BLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+              DLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+              LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+              LF05H_COMBINED: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
+              TLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: LF05D_COMBINED
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: LF05H_COMBINED
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: LM04_COMBINED
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: LM06_COMBINED
+            join:
+              joinCondition: |-
+                FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
+                FULL OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05H_COMBINED') }} "LF05H_COMBINED"
+                ON "LF05D_COMBINED"."LF05D_LINK" = "LF05H_COMBINED"."LF05H_ID" 
+                    AND "LF05D_COMBINED"."SOURCE" = "LF05H_COMBINED"."SOURCE"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED" -- MATERIAL
+                ON "LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE" 
+                    AND "LF05D_COMBINED"."SOURCE"= "LM04_COMBINED"."SOURCE"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "DLM06_COMBINED" -- DISPOSAL UNIT OF MEASURE
+                ON "LF05D_COMBINED"."LF05D_CUOM" = "DLM06_COMBINED"."LM06_UOM1" 
+                    AND "LF05D_COMBINED"."SOURCE" = "DLM06_COMBINED"."SOURCE"
+                    AND "DLM06_COMBINED"."LM06_UOM2" = 'TN'
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "BLM06_COMBINED" -- BILLING UNIT OF MEASURE
+                ON "LF05D_COMBINED"."LF05D_BUOM" = "BLM06_COMBINED"."LM06_UOM1" 
+                    AND "LF05D_COMBINED"."SOURCE" = "BLM06_COMBINED"."SOURCE"
+                    AND "BLM06_COMBINED"."LM06_UOM2" = 'TN'
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "TLM06_COMBINED" -- Tracking UNIT OF MEASURE
+                ON "LF05D_COMBINED"."LF05D_TUOM" = "TLM06_COMBINED"."LM06_UOM1" 
+                    AND "LF05D_COMBINED"."SOURCE" = "TLM06_COMBINED"."SOURCE"
+                    AND "TLM06_COMBINED"."LM06_UOM2" = 'TN'
+                WHERE YEAR("LF05H_COMBINED"."LF05H_DTEI") >= YEAR(CURRENT_DATE())-2
+            name: STG_POST_COLLECTIONS_MODEL_V2
+            noLinkRefs: []
+      name: STG_POST_COLLECTIONS_MODEL_V2
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
