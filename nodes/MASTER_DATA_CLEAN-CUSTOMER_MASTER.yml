@@ -1269,7 +1269,7 @@ steps:
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD52_COMBINED') }} "CD52_COMBINED"
                 ON "CM03_Combined"."CM03_COLLAGNT" = "CD52_COMBINED"."CD52_CODE" and "CM03_Combined"."SOURCE" = "CD52_COMBINED"."SOURCE"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
-                ON "CM03_Combined"."CM03_CUST" = "CP01_COMBINED"."CP01_CUST" and "CM03_Combined"."SOURCE" = "CP01_COMBINED"."SOURCE" and "CP01_COMBINED"."CP01_SITE" in (null,0)
+                ON "CM03_Combined"."CM03_CUST" = "CP01_COMBINED"."CP01_CUST" and "CM03_Combined"."SOURCE" = "CP01_COMBINED"."SOURCE" and "CP01_COMBINED"."CP01_SITE" is null
             name: CM03_COMBINED_TRUX
             noLinkRefs: []
           - aliases:

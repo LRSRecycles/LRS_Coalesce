@@ -135,7 +135,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: TIcket Number
+            name: Freight Ticket Number
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -303,6 +303,27 @@ steps:
                 transform: ""
             systemColumnType: None
             transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 95e765b4-4b10-47a5-9018-2d894bd5b726
+              stepCounter: 8cd1fe65-d8f8-453b-96da-11a5b96997b6
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Scale Ticket Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4680c402-4680-49ed-9164-cfdfd85e6661
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+            systemColumnType: None
+            transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
@@ -334,7 +355,7 @@ steps:
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CR01_COMBINED') }} "CR01_COMBINED"
                 ON "STG_CARRIER_RATES"."Link" = "CR01_COMBINED"."CR01_ID"
                     and "STG_CARRIER_RATES"."SOURCE" = "CR01_COMBINED"."SOURCE"
-                WHERE "MP13_COMBINED"."_FIVETRAN_DELETED" = FALSE and "MP13_ACHG"<>0
+                WHERE "MP13_COMBINED"."_FIVETRAN_DELETED" = FALSE
             name: FREIGHT_COST
             noLinkRefs: []
       name: FREIGHT_COST
