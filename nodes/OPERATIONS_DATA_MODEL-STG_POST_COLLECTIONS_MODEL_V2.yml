@@ -56,6 +56,18 @@ steps:
                   - columnCounter: dab40564-817a-4c45-9232-96aac92d69f5
                     stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
                 transform: ""
+          - columnReference:
+              columnCounter: 28598ca8-04c0-4cc1-bddd-7ffa31b515c6
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            dataType: VARCHAR
+            description: ""
+            name: Ticket Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4680c402-4680-49ed-9164-cfdfd85e6661
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
           - acceptedValues:
               strictMatch: true
               values: []
@@ -101,6 +113,31 @@ steps:
                   - columnCounter: c6d4c4ac-f95d-4bcb-8ad4-853685b8c950
                     stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 459cd267-d90c-49eb-8306-cbe959a7cc51
+              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+            config: {}
+            dataType: VARCHAR(250)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Time at Scale
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: |
+                  LPAD(FLOOR(DATEDIFF(DAY,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO")), 2, '0') || ':' ||
+                  LPAD(FLOOR(DATEDIFF(HOUR,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %24), 2, '0') || ':' || 
+                  LPAD(FLOOR(DATEDIFF(MINUTE,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') || ':' || 
+                  LPAD(FLOOR(DATEDIFF(SECOND,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') 
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: e7fccea0-6314-4967-8e72-f7bc184ad110
               stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
@@ -209,27 +246,6 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: ebca8c4e-1e96-46e6-b40f-24ae0ab36e2c
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            config: {}
-            dataType: NUMBER(38,6)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Billing Multiplier Factor
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"BLM06_COMBINED\".\"LM06_FACT\""
-            systemColumnType: None
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
               columnCounter: bd455d41-4ecd-4fb0-9829-d1c44fa5fc6b
               stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
             config: {}
@@ -291,79 +307,6 @@ steps:
                   - columnCounter: f74450ad-c93d-41ce-8f20-a1a4d172976c
                     stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
                 transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: b1bcae7a-27e0-4a10-a364-6ff6c7b434d5
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            config: {}
-            dataType: NUMBER(38,6)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Converted Disposal Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE 
-                      when UPPER("LF05D_COMBINED"."LF05D_CUOM") IN ('EA','TN','YD') 
-                      then "LF05D_COMBINED"."LF05D_BQTY"
-                      else round(("DLM06_COMBINED"."LM06_FACT" * "LF05D_COMBINED"."LF05D_CQTY"),6)
-                   END
-            systemColumnType: None
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 296cca15-3481-4609-a2ee-8a9bef718b1c
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Converted Disposal Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE 
-                      when UPPER("LF05D_COMBINED"."LF05D_CUOM") IN ('EA','TN','YD') 
-                      then UPPER("LF05D_COMBINED"."LF05D_CUOM")
-                      ELSE "DLM06_COMBINED"."LM06_UOM2"
-                   END
-            systemColumnType: None
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: cee52b44-1b2f-4c3d-a82c-3c9e9702e949
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            config: {}
-            dataType: NUMBER(38,6)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Disposal Multiplier Factor
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"DLM06_COMBINED\".\"LM06_FACT\""
-            systemColumnType: None
-            transform: ""
           - columnReference:
               columnCounter: 03e7f5d1-c682-4f76-b790-bbae23ea8a46
               stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
@@ -424,62 +367,6 @@ steps:
               - columnReferences:
                   - columnCounter: 51aba856-85df-4390-9f0f-ce4d52d44abf
                     stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
-          - columnReference:
-              columnCounter: 65796d87-01d3-481d-8dda-3ec42b20794b
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: VARCHAR(20)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: User In
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2135c59c-8a5f-4edb-a6eb-555b78822354
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: ""
-          - columnReference:
-              columnCounter: 5f49af75-acf3-49e5-8afc-077d52703bf7
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: NUMBER(18,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Adjusted Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 541702fd-b669-40b3-8946-8537386a4514
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: ""
-          - columnReference:
-              columnCounter: ed43426c-fe67-4ff5-8b3e-51452adf92e6
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: VARCHAR(10)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Adjusted User
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4fec27cc-8dc8-4448-b74e-e1b820bc0fad
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: ""
-          - columnReference:
-              columnCounter: 961cbcc8-71e0-4aa9-a567-707adc28f900
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Adjustment Reason
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 54e636c2-dd6d-4474-b423-0323c4b9ea5a
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
                 transform: ""
           - columnReference:
               columnCounter: 17d2db86-5abf-41af-b104-237fa772207a
@@ -571,18 +458,6 @@ steps:
                   - columnCounter: 3c217e0a-d623-4de2-8d0c-c994d31ee777
                     stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
                 transform: ""
-          - columnReference:
-              columnCounter: c8e01fe3-d497-46a5-8714-af2bbf5f9700
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: BOOLEAN
-            description: ""
-            name: Inbound Ticket Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c2ca4c15-e3ba-4fdc-953e-b062f1f4a85d
-                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
           - acceptedValues:
               strictMatch: true
               values: []
@@ -614,42 +489,6 @@ steps:
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 2ec5c505-693b-4756-990c-f7c015d85514
-                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
-          - columnReference:
-              columnCounter: 65395987-5af9-4af3-9828-03dbbf5444d2
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: NUMBER(18,2)
-            description: ""
-            name: Paid Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 73bd2f43-4cd4-4586-b9a0-c650c7594b97
-                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
-          - columnReference:
-              columnCounter: 3ceb1b71-e50b-4bad-b662-e40ee9ba350b
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: VARCHAR(1)
-            description: ""
-            name: Pay Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0a5e2d7a-0cb0-4ca8-ae14-2690c23322d9
-                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
-          - columnReference:
-              columnCounter: dee173dc-c670-42a5-bae8-a84bb07412aa
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: VARCHAR(2)
-            description: ""
-            name: Payment Type Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5fadce4e-1545-42d4-ad5e-d121df79d203
                     stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
                 transform: ""
           - columnReference:
@@ -728,42 +567,6 @@ steps:
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 29ce2d36-4244-4ce5-879c-065d6e338d34
-                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
-          - columnReference:
-              columnCounter: 09bb4a10-dc96-48fd-8b2b-269f3cff7f23
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: VARCHAR(2)
-            description: ""
-            name: Scale Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 92b0da3a-1828-4ab5-be56-1bddb71dbf10
-                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
-          - columnReference:
-              columnCounter: 9a353cb2-95eb-4476-a7ca-312fcf8fc7ab
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: NUMBER(18,2)
-            description: ""
-            name: Sequence Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bf1f0f0b-137e-49ee-a468-05c4306b87da
-                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-                transform: ""
-          - columnReference:
-              columnCounter: 28598ca8-04c0-4cc1-bddd-7ffa31b515c6
-              stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
-            dataType: VARCHAR
-            description: ""
-            name: Ticket Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4680c402-4680-49ed-9164-cfdfd85e6661
                     stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
                 transform: ""
           - columnReference:
@@ -852,7 +655,7 @@ steps:
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05H_COMBINED') }} "LF05H_COMBINED"
+                FULL OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05H_COMBINED') }} "LF05H_COMBINED"
                 ON "LF05D_COMBINED"."LF05D_LINK" = "LF05H_COMBINED"."LF05H_ID" 
                     AND "LF05D_COMBINED"."SOURCE" = "LF05H_COMBINED"."SOURCE"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED" -- MATERIAL
@@ -870,7 +673,7 @@ steps:
                 ON "LF05D_COMBINED"."LF05D_TUOM" = "TLM06_COMBINED"."LM06_UOM1" 
                     AND "LF05D_COMBINED"."SOURCE" = "TLM06_COMBINED"."SOURCE"
                     AND "TLM06_COMBINED"."LM06_UOM2" = 'TN'
-                WHERE DATE("LF05H_COMBINED"."LF05H_DTEI") > DATEADD(year,-2,GETDATE())
+                WHERE YEAR("LF05H_COMBINED"."LF05H_DTEI") >= YEAR(CURRENT_DATE())-2
             name: STG_POST_COLLECTIONS_MODEL_V2
             noLinkRefs: []
       name: STG_POST_COLLECTIONS_MODEL_V2
