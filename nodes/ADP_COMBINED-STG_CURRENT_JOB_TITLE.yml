@@ -1,0 +1,100 @@
+steps:
+  STG_CURRENT_JOB_TITLE-d75f21e5-823a-44c3-b310-61a73f97259f:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: ADP_COMBINED
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 4c243879-5ed4-4945-8633-04f981664a41
+              stepCounter: d75f21e5-823a-44c3-b310-61a73f97259f
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: EMPLOYEE_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1a1e0e1c-75a3-4a16-8457-8e858868bf38
+                    stepCounter: fa0c8911-a926-44e4-aa99-ea063f65bb1e
+                transform: ""
+          - columnReference:
+              columnCounter: 491de011-d4d6-4f06-a617-5cf265bcf9e7
+              stepCounter: d75f21e5-823a-44c3-b310-61a73f97259f
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: EFFECTIVE_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 87fda927-7489-412d-a3f7-8414d00bd936
+                    stepCounter: fa0c8911-a926-44e4-aa99-ea063f65bb1e
+                transform: ""
+          - columnReference:
+              columnCounter: 6e40de89-83bf-42f8-a767-b19a76c40e2e
+              stepCounter: d75f21e5-823a-44c3-b310-61a73f97259f
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: HOME_JOBTITLE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 445ea4d1-3a91-4ccf-8305-73f4d54ad1a0
+                    stepCounter: fa0c8911-a926-44e4-aa99-ea063f65bb1e
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 715512cb-a1f9-49ba-b654-85fcd916b4b7
+              stepCounter: d75f21e5-823a-44c3-b310-61a73f97259f
+            config: {}
+            dataType: NUMBER
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Sort
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: ROW_NUMBER() over (partition by "ADP_HOURS"."EMPLOYEE_ID" ORDER BY "ADP_HOURS"."EFFECTIVE_DATE" DESC)
+            systemColumnType: None
+            transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: ADP_RAW
+                nodeName: ADP_HOURS
+            join:
+              joinCondition: FROM {{ ref('ADP_RAW', 'ADP_HOURS') }} "ADP_HOURS"
+            name: STG_CURRENT_JOB_TITLE
+            noLinkRefs: []
+      name: STG_CURRENT_JOB_TITLE
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: d75f21e5-823a-44c3-b310-61a73f97259f

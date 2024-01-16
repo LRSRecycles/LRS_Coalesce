@@ -799,7 +799,7 @@ steps:
             join:
               joinCondition: |-
                 FROM {{ ref('MASTER_DATA_CLEAN', 'TRUCK_MASTER') }} "TRUCK_MASTER"
-                where "SYSTEM_CURRENT_FLAG" = 'Y'
+                where "SYSTEM_CURRENT_FLAG" = 'Y' and "Active Flag" = 'true'
             name: VW_TRUCK_MASTER
             noLinkRefs: []
       name: VW_TRUCK_MASTER

@@ -459,6 +459,27 @@ steps:
                 transform: SUM("STG_ROUTE_AUDIT_REPORT"."Yards")
             systemColumnType: None
             transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c7c91da5-339c-4489-a153-43f96a92fff3
+              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+            config: {}
+            dataType: NUMBER(18,2)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Number of Stops
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."Customer", "STG_ROUTE_AUDIT_REPORT"."Site")
+            systemColumnType: None
+            transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
