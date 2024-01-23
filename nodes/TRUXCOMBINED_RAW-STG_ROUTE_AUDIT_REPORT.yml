@@ -243,10 +243,10 @@ steps:
                     stepCounter: 498f463a-7395-4cc0-ad5f-d4e7e3d38fcf
                 transform: |-
                   CASE
-                      WHEN "CM05_Combined"."CM05_COMP" = 'false'
+                      WHEN "CM05_COMBINED"."CM05_COMP" = 'false'
                       THEN 1
                       ELSE IFNULL("CD05_COMBINED"."CD05_CPCTRATIO",1.00)
-                  END * "CM05_Combined"."CM05_SIZE"*"CM05_Combined"."CM05_QTY"
+                  END * "CM05_COMBINED"."CM05_SIZE"*"CM05_COMBINED"."CM05_QTY"
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -269,7 +269,7 @@ steps:
                     stepCounter: "0"
                 transform: |-
                   CASE
-                      WHEN "CM05_Combined"."CM05_COMP" = 'false'
+                      WHEN "CM05_COMBINED"."CM05_COMP" = 'false'
                       THEN 1
                       ELSE IFNULL("CD05_COMBINED"."CD05_CPCTRATIO",1.00)
                   END
@@ -312,9 +312,9 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: abd2c9eb-8e8e-400c-9cc8-dced119991a1
-                    stepCounter: f36a5cd1-f2d3-4e7f-b35c-8626d19408ac
-                transform: "\"CM05_Combined\".\"CM05_SIZE\"*IFNULL(\"LM06_COMBINED\".\"LM06_FACT\",1)"
+                  - columnCounter: 7c9dd769-aecd-46d5-a0d1-8bd2c3e5cbac
+                    stepCounter: 032285e8-04c7-4507-ad3c-3192527dc47a
+                transform: "\"CM05_COMBINED\".\"CM05_SIZE\"*IFNULL(\"LM06_COMBINED\".\"LM06_FACT\",1)"
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -333,8 +333,8 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: c9fb8413-d914-4642-97d6-bcf3b4637d6d
-                    stepCounter: f36a5cd1-f2d3-4e7f-b35c-8626d19408ac
+                  - columnCounter: 6b3b1d57-168b-444f-b32e-d8417bc3fa6c
+                    stepCounter: 032285e8-04c7-4507-ad3c-3192527dc47a
                 transform: ""
             systemColumnType: None
             transform: ""
@@ -531,8 +531,8 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: 0e093458-031f-46dd-9558-b9c03d80fe86
-                    stepCounter: f36a5cd1-f2d3-4e7f-b35c-8626d19408ac
+                  - columnCounter: 6cd03795-44e2-40b3-8307-a3f2e42f3056
+                    stepCounter: 032285e8-04c7-4507-ad3c-3192527dc47a
                 transform: ""
             systemColumnType: None
             transform: ""
@@ -852,8 +852,8 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: d1f8e25b-775c-42e8-b59b-86c73eefb438
-                    stepCounter: f36a5cd1-f2d3-4e7f-b35c-8626d19408ac
+                  - columnCounter: 5e66e63b-74d0-4b1c-ae32-3321c2e12e43
+                    stepCounter: 032285e8-04c7-4507-ad3c-3192527dc47a
                 transform: ""
             systemColumnType: None
             transform: ""
@@ -958,7 +958,7 @@ steps:
                       WHEN "CM12_COMBINED"."CM12_UNIT" in ('S','P','V') 
                       THEN "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Quantity" * "CM12_COMBINED"."CM12_FACT"
                       ELSE "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Quantity"
-                  END * "CM05_Combined"."CM05_SIZE"*IFNULL("LM06_COMBINED"."LM06_FACT",1)
+                  END * "CM05_COMBINED"."CM05_SIZE"*IFNULL("LM06_COMBINED"."LM06_FACT",1)
             systemColumnType: None
             transform: ""
         cteString: ""
@@ -969,7 +969,7 @@ steps:
               CD05_COMBINED: 498f463a-7395-4cc0-ad5f-d4e7e3d38fcf
               CD14_COMBINED: f21fe296-8b27-43b1-978c-64999978c610
               CM04_Combined: f47180be-fdce-4312-84ff-04027f8092c0
-              CM05_Combined: f36a5cd1-f2d3-4e7f-b35c-8626d19408ac
+              CM05_COMBINED: 032285e8-04c7-4507-ad3c-3192527dc47a
               CM12_COMBINED: 4f923860-b405-4745-ab70-88d5ff0d6d40
               LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
               NBTICKETS_TABLE_RM03_SM03_FIRST_UNION: 5648f2b4-337b-485c-8919-b4e53a089b45
@@ -993,7 +993,7 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CM04_Combined
               - locationName: TRUXCOMBINED_RAW
-                nodeName: CM05_Combined
+                nodeName: CM05_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CM12_COMBINED
               - locationName: TRUXCOMBINED_RAW
@@ -1023,11 +1023,11 @@ steps:
                 ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Customer" = "CM04_Combined"."CM04_CUST"
                     AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Site" = "CM04_Combined"."CM04_SITE"
                     and "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."SOURCE" = "CM04_Combined"."SOURCE"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM05_Combined') }} "CM05_Combined"
-                ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Customer" = "CM05_Combined"."CM05_CUST"
-                    AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Site" = "CM05_Combined"."CM05_SITE"
-                    AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Service" = "CM05_Combined"."CM05_SERV"
-                    AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."SOURCE" = "CM05_Combined"."SOURCE"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM05_COMBINED') }} "CM05_COMBINED"
+                ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Customer" = "CM05_COMBINED"."CM05_CUST"
+                    AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Site" = "CM05_COMBINED"."CM05_SITE"
+                    AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Service" = "CM05_COMBINED"."CM05_SERV"
+                    AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."SOURCE" = "CM05_COMBINED"."SOURCE"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM02_AGGREGATION_ROUTE_AUDIT') }} "STG_RM02_AGGREGATION_ROUTE_AUDIT"
                 ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Customer" = "STG_RM02_AGGREGATION_ROUTE_AUDIT"."RM02_CUST"
                     AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Site" = "STG_RM02_AGGREGATION_ROUTE_AUDIT"."RM02_SITE"
@@ -1037,8 +1037,8 @@ steps:
                 ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Activity" = "CM12_COMBINED"."CM12_CODE"
                     and "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."SOURCE" = "CM12_COMBINED"."SOURCE"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD05_COMBINED') }} "CD05_COMBINED"
-                ON "CM05_Combined"."CM05_TYPE" = "CD05_COMBINED"."CD05_CODE"
-                    AND "CM05_Combined"."SOURCE" = "CD05_COMBINED"."SOURCE"
+                ON "CM05_COMBINED"."CM05_TYPE" = "CD05_COMBINED"."CD05_CODE"
+                    AND "CM05_COMBINED"."SOURCE" = "CD05_COMBINED"."SOURCE"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_Combined') }} "RM01_Combined"
                 ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Route" = "RM01_Combined"."RM01_NUMB"
                     AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."SOURCE" = "RM01_Combined"."SOURCE"
@@ -1076,8 +1076,8 @@ steps:
                 ON "CD14_COMBINED"."CD14_VOLUOM" = "CD04_COMBINED"."CD04_CODE"
                     AND "CD14_COMBINED"."SOURCE" = "CD04_COMBINED"."SOURCE"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
-                ON "LM06_COMBINED"."LM06_UOM1" = "CM05_Combined"."CM05_UOM"
-                    AND "LM06_COMBINED"."SOURCE" = "CM05_Combined"."SOURCE"
+                ON "LM06_COMBINED"."LM06_UOM1" = "CM05_COMBINED"."CM05_UOM"
+                    AND "LM06_COMBINED"."SOURCE" = "CM05_COMBINED"."SOURCE"
                     AND "LM06_COMBINED"."LM06_UOM2" = "CD14_COMBINED"."CD14_VOLUOM"
                     AND "LM06_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
             name: STG_ROUTE_AUDIT_REPORT

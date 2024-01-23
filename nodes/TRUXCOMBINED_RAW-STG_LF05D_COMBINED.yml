@@ -85,6 +85,7 @@ steps:
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
+                WHERE "SORT" = 1 AND "_FIVETRAN_DELETED" = FALSE AND "METADATA$ACTION" = 'INSERT'
                 GROUP BY "LF05D_COMBINED"."LF05D_LINK", "LF05D_COMBINED"."SOURCE"
             name: STG_LF05D_COMBINED
             noLinkRefs: []
