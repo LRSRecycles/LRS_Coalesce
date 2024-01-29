@@ -38,6 +38,11 @@ locations:
       "2":
         database: LRS_RAW
         schema: ADP_WORKFORCE_NOW
+  CUSTOMER_SERVICE_DATA_MODEL:
+    mappingDefinitions:
+      "2":
+        database: LRS_PRODUCTION
+        schema: CUSTOMER_SERVICE_DATA_MODEL
   FINANCIAL_DATA_MODEL:
     mappingDefinitions:
       "2":
@@ -681,7 +686,7 @@ stepTypes:
     id: "4"
     isDisabled: false
     metadata:
-      defaultStorageLocation: null
+      defaultStorageLocation: TRUXCOMBINED_RAW
       error: null
       nodeMetadataSpec: |
         capitalized: MS Loop
@@ -735,7 +740,7 @@ stepTypes:
           - displayName: Starts With
             attributeName: storageLocationSearchText
             type: textBox
-            default: 'SOURCE'
+            default: 'TRUX_'
             isRequired: true
             
         systemColumns:
@@ -1435,7 +1440,7 @@ stepTypes:
     id: "7"
     isDisabled: false
     metadata:
-      defaultStorageLocation: null
+      defaultStorageLocation: TRUXCOMBINED_RAW
       error: null
       nodeMetadataSpec: |
         capitalized: MS Loop Stream
