@@ -1,0 +1,132 @@
+steps:
+  STG_MUNI_REVENUE_MONTH_YEAR-f04de1cc-1c61-4a46-9b0f-bea51817382e:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: TRUXCOMBINED_RAW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 06e00a13-30a3-469b-b686-5e5c8b774092
+              stepCounter: f04de1cc-1c61-4a46-9b0f-bea51817382e
+            dataType: VARCHAR
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Routing Customer
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: dab7a985-d70b-4fc2-998b-6a30d8dcd66a
+                    stepCounter: 767ed12f-6933-4936-9ded-404fd1e341c4
+                transform: ""
+          - columnReference:
+              columnCounter: ffe3fd0a-61cd-4063-ad22-e5a993d4b58f
+              stepCounter: f04de1cc-1c61-4a46-9b0f-bea51817382e
+            dataType: Varchar
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Billing Customer
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 00df01f1-d026-4972-bbf1-5c35d6419538
+                    stepCounter: 767ed12f-6933-4936-9ded-404fd1e341c4
+                transform: ""
+          - columnReference:
+              columnCounter: adc84476-ee83-4073-bbeb-4ed26bdf80b2
+              stepCounter: f04de1cc-1c61-4a46-9b0f-bea51817382e
+            dataType: NUMBER
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Invoice Month
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: eef24769-22f4-4998-8de0-4495c239324b
+                    stepCounter: 767ed12f-6933-4936-9ded-404fd1e341c4
+                transform: MONTH("STG_MUNI_REVENUE"."Invoice Date")
+          - columnReference:
+              columnCounter: b39be6cd-156e-400b-a0b7-c8c8c4072103
+              stepCounter: f04de1cc-1c61-4a46-9b0f-bea51817382e
+            dataType: NUMBER
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Invoice Year
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: eef24769-22f4-4998-8de0-4495c239324b
+                    stepCounter: 767ed12f-6933-4936-9ded-404fd1e341c4
+                transform: YEAR("STG_MUNI_REVENUE"."Invoice Date")
+          - columnReference:
+              columnCounter: edc7059a-854f-47bb-a8f9-fc31c81b620c
+              stepCounter: f04de1cc-1c61-4a46-9b0f-bea51817382e
+            dataType: NUMBER(36,2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Invoice Amount
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7f7de683-7b1f-4046-bd50-ea7fdb583f49
+                    stepCounter: 767ed12f-6933-4936-9ded-404fd1e341c4
+                transform: SUM("STG_MUNI_REVENUE"."Invoice Amount")
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2e22232a-9809-48a3-8b9c-6a9b80fa7f13
+              stepCounter: f04de1cc-1c61-4a46-9b0f-bea51817382e
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Source
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f7865cb4-29e8-4a96-bbb6-e3a64e0de5d7
+                    stepCounter: 767ed12f-6933-4936-9ded-404fd1e341c4
+                transform: ""
+            systemColumnType: None
+            transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              STG_MUNI_REVENUE: 767ed12f-6933-4936-9ded-404fd1e341c4
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: STG_MUNI_REVENUE
+            join:
+              joinCondition: |-
+                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_MUNI_REVENUE') }} "STG_MUNI_REVENUE"
+                
+                GROUP BY "Billing Customer","Routing Customer",MONTH("Invoice Date"), YEAR("Invoice Date"),"Source"
+            name: STG_MUNI_REVENUE_MONTH_YEAR
+            noLinkRefs: []
+      name: STG_MUNI_REVENUE_MONTH_YEAR
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: f04de1cc-1c61-4a46-9b0f-bea51817382e
