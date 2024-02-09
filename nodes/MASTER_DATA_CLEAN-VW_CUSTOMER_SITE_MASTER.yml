@@ -849,6 +849,27 @@ steps:
                 transform: ""
             systemColumnType: None
             transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 91a7173a-2a99-4465-9d12-ecede0195bfe
+              stepCounter: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Customer/Broker Group
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5a75f7c4-405c-42e9-bc14-ec6d49a7b13e
+                    stepCounter: 56ae5e3c-c6cd-4eb5-a3ae-25d02a9ab031
+                transform: ""
+            systemColumnType: None
+            transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
@@ -860,7 +881,9 @@ steps:
               - locationName: MASTER_DATA_CLEAN
                 nodeName: CUSTOMER_SITE_MASTER
             join:
-              joinCondition: FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_SITE_MASTER') }} "CUSTOMER_SITE_MASTER"
+              joinCondition: |-
+                FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_SITE_MASTER') }} "CUSTOMER_SITE_MASTER"
+                where "SYSTEM_CURRENT_FLAG" = 'Y'
             name: VW_CUSTOMER_SITE_MASTER
             noLinkRefs: []
       name: VW_CUSTOMER_SITE_MASTER
