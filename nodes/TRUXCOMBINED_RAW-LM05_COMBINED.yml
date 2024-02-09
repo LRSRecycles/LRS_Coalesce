@@ -241,9 +241,8 @@ steps:
               - locationName: TRUX_DF_COMP_RAW
                 nodeName: LM05
             join:
-              joinCondition: |-
+              joinCondition: |
                 FROM {{ ref('TRUX_DF_COMP_RAW', 'LM05') }} "LM05"
-                WHERE "LM05"."_FIVETRAN_DELETED"=FALSE
             name: LM05_COMBINED
             noLinkRefs: []
       name: LM05_COMBINED

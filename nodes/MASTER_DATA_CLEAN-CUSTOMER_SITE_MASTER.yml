@@ -1065,7 +1065,9 @@ steps:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'CM04_Combined') }} "CM04_Combined"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD01_COMBINED') }} "CD01_COMBINED"
-                ON "CM04_Combined"."CM04_BUCD" = "CD01_COMBINED"."CD01_CODE" and "CM04_Combined"."SOURCE" = "CD01_COMBINED"."SOURCE"
+                ON "CM04_Combined"."CM04_BUCD" = "CD01_COMBINED"."CD01_CODE" 
+                and "CM04_Combined"."SOURCE" = "CD01_COMBINED"."SOURCE"
+                and "CM04_Combined"._FIVETRAN_DELETED
             name: CM04_COMBINED
             noLinkRefs: []
           - aliases:

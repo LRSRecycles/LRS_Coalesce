@@ -362,7 +362,9 @@ steps:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'LM05_COMBINED') }} "LM05_COMBINED"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
-                ON "LM05_COMBINED"."LM05_DSTE" = "LM01_COMBINED"."LM01_DSTE" and "LM05_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                ON "LM05_COMBINED"."LM05_DSTE" = "LM01_COMBINED"."LM01_DSTE" 
+                and "LM05_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                WHERE "LM05_COMBINED"."_FIVETRAN_DELETED" = FALSE
             name: DISPOSAL_SITE_MATERIAL_RATES_MASTER
             noLinkRefs: []
       name: DISPOSAL_SITE_MATERIAL_RATES_MASTER
