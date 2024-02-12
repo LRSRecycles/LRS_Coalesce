@@ -52,6 +52,95 @@ steps:
                   - columnCounter: 87186d13-e3e3-4b87-8c01-f62c68fe0b47
                     stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 446fdc32-3ec7-4b12-98cb-b2eb262f78b4
+              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            config: {}
+            dataType: VARCHAR(3)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: SY03_HWR
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
+                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+                transform: ""
+              - columnReferences:
+                  - columnCounter: 65830c93-70b1-4021-960c-b4bf32dd419e
+                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: a8f0eb03-e9e1-4717-add0-9769b3eb448d
+              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            config: {}
+            dataType: VARCHAR(40)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Company Type
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
+                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+                transform: |-
+                  CASE WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
+                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
+                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
+                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
+                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
+                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
+                    END
+              - columnReferences:
+                  - columnCounter: 65830c93-70b1-4021-960c-b4bf32dd419e
+                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+                transform: |-
+                  CASE WHEN "STG_LEGACY_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_LEGACY_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
+                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
+                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
+                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
+                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
+                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
+                    END
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 0312f07a-249d-40d7-9d53-b9a82e5bd5e2
+              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: SY03_STAT
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 0c9bdd37-d140-44d3-a387-9dbf693dcedf
+                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+                transform: ""
+              - columnReferences:
+                  - columnCounter: 7512865e-6340-4ef8-aaca-e8cbe1e55d85
+                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+                transform: ""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: a2179cc3-ae61-4c30-9876-ab3d9de7921f
               stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
