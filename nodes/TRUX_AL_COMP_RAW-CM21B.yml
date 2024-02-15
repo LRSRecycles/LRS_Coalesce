@@ -1,0 +1,78 @@
+steps:
+  CM21B-98602156-c0bc-4832-8923-8ad7a4051c8e:
+    operation:
+      database: ""
+      dataset: ""
+      deployEnabled: true
+      description: ""
+      locationName: TRUX_AL_COMP_RAW
+      metadata:
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 15e5303b-b769-4c0e-af13-76408857a87e
+              stepCounter: 98602156-c0bc-4832-8923-8ad7a4051c8e
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            name: CM21B_MATL
+            nullable: false
+            primaryKey: true
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c58893d8-134b-42de-a597-22fb32ccce63
+              stepCounter: 98602156-c0bc-4832-8923-8ad7a4051c8e
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            name: CM21B_TXID
+            nullable: false
+            primaryKey: true
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5294eb08-a6a1-4acc-aa89-e0b8b51893c2
+              stepCounter: 98602156-c0bc-4832-8923-8ad7a4051c8e
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_DELETED
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 653fe9a1-39f5-416b-aefa-bfdb3c1a3978
+              stepCounter: 98602156-c0bc-4832-8923-8ad7a4051c8e
+            config: {}
+            dataType: TIMESTAMP_TZ(9)
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CM21B') }}
+      name: CM21B
+      schema: ""
+      sqlType: Source
+      table: CM21B
+      type: sourceInput
+    stepCounter: 98602156-c0bc-4832-8923-8ad7a4051c8e

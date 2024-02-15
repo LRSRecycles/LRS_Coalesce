@@ -1,0 +1,125 @@
+steps:
+  CD09_COMBINED-32609796-eba8-48e6-bc51-139668a14e56:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        storageLocationSearchText: TRUX_
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: TRUXCOMBINED_RAW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 30f18b7f-ae59-409f-b3f4-ed941dfe4798
+              stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+            dataType: VARCHAR(2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: CD09_CODE
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: d7520cf7-957a-4e94-a26c-04f3373dd21c
+                    stepCounter: ed1b7245-e8f2-47af-ada1-449eddc71379
+                transform: ""
+          - columnReference:
+              columnCounter: 4d33b4d8-3cfd-43e4-81c6-d1d0ecff1cfb
+              stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+            dataType: VARCHAR(80)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: CD09_DESC
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 37085c91-11d9-446c-88c0-a9a3ff01c720
+                    stepCounter: ed1b7245-e8f2-47af-ada1-449eddc71379
+                transform: ""
+          - columnReference:
+              columnCounter: 9eff15dd-38dd-49e0-939c-b1d391072620
+              stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+            dataType: BOOLEAN
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: CD09_ACTIVE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2e5af466-841f-4e2b-844a-59c293052711
+                    stepCounter: ed1b7245-e8f2-47af-ada1-449eddc71379
+                transform: ""
+          - columnReference:
+              columnCounter: a20a7279-9094-497a-bf0c-c5dd4d0fe0f7
+              stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+            dataType: BOOLEAN
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: _FIVETRAN_DELETED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5f600e0b-2d29-44c6-80a2-1e4e4fc17756
+                    stepCounter: ed1b7245-e8f2-47af-ada1-449eddc71379
+                transform: ""
+          - columnReference:
+              columnCounter: bc929571-06d1-4283-acf0-c46cc66ff377
+              stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+            dataType: TIMESTAMP_TZ(9)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: cf8498f8-5955-454c-8eb4-35bf907af8ac
+                    stepCounter: ed1b7245-e8f2-47af-ada1-449eddc71379
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2409a78a-147e-45cc-993c-bf0ea241d0ac
+              stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            hashColumns: []
+            isSystemSource: true
+            name: SOURCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TRUX_AL_COMP_RAW
+                nodeName: CD09
+            join:
+              joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD09') }} "CD09"
+            name: CD09_COMBINED
+            noLinkRefs: []
+      name: CD09_COMBINED
+      overrideSQL: false
+      schema: ""
+      sqlType: "4"
+      type: sql
+    stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
