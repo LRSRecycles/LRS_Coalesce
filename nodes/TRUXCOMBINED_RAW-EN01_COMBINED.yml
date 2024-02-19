@@ -1,0 +1,111 @@
+steps:
+  EN01_COMBINED-4229827b-5a38-424b-b0d7-5b090b3782d4:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        storageLocationSearchText: TRUX_
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: TRUXCOMBINED_RAW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 2a84463e-48a2-41aa-a2e6-273644521092
+              stepCounter: 4229827b-5a38-424b-b0d7-5b090b3782d4
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: EN01_LINK
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 8096d278-ecad-4272-b17e-b8108a739012
+                    stepCounter: 55a98b22-98b3-4ba7-937d-bcce261b0318
+                transform: ""
+          - columnReference:
+              columnCounter: a200c1fe-21fd-4cd5-a3c5-64cf70cfed1c
+              stepCounter: 4229827b-5a38-424b-b0d7-5b090b3782d4
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: EN01_TYPE
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 96451004-fb6d-47a5-9146-fd71ef070dbd
+                    stepCounter: 55a98b22-98b3-4ba7-937d-bcce261b0318
+                transform: ""
+          - columnReference:
+              columnCounter: d92469de-4c6c-4a8a-a78e-28119a70369c
+              stepCounter: 4229827b-5a38-424b-b0d7-5b090b3782d4
+            dataType: BOOLEAN
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: _FIVETRAN_DELETED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: c94d62ed-1ae9-4f5e-9e87-e2c8d7067e8f
+                    stepCounter: 55a98b22-98b3-4ba7-937d-bcce261b0318
+                transform: ""
+          - columnReference:
+              columnCounter: e2f1ec86-1ed0-4788-ad54-fa87e31a8c05
+              stepCounter: 4229827b-5a38-424b-b0d7-5b090b3782d4
+            dataType: TIMESTAMP_TZ(9)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 65458956-e56c-433a-b232-b6646551de1d
+                    stepCounter: 55a98b22-98b3-4ba7-937d-bcce261b0318
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c43511e0-a407-458e-9c8b-3de703ac0c5d
+              stepCounter: 4229827b-5a38-424b-b0d7-5b090b3782d4
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            hashColumns: []
+            isSystemSource: true
+            name: SOURCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TRUX_AL_COMP_RAW
+                nodeName: EN01
+            join:
+              joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'EN01') }} "EN01"
+            name: EN01_COMBINED
+            noLinkRefs: []
+      name: EN01_COMBINED
+      overrideSQL: false
+      schema: ""
+      sqlType: "4"
+      type: sql
+    stepCounter: 4229827b-5a38-424b-b0d7-5b090b3782d4
