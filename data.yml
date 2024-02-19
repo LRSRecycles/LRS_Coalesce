@@ -1701,11 +1701,11 @@ stepTypes:
             {% set source = sources[0] %}
             {% set src_node = source.dependencies[0].node %}
             {% set forecast_name = 'FORECAST_' ~ src_node.name %}
-            
-            
+
+
             {{ stage('Create Forecast Table') }}
-            
-            
+
+
             CREATE OR REPLACE TABLE {{ this }}
             (
                 {% for col in source.columns  %}
@@ -1724,15 +1724,15 @@ stepTypes:
             {% set source = sources[0] %}
             {% set src_node = source.dependencies[0].node %}
             {% set forecast_name = 'FORECAST_' ~ src_node.name %}
-            
-            
+
+
             {{ stage('Truncate Forecast table') }}
             TRUNCATE IF EXISTS {{ this }}
-            
-            
+
+
             {{ stage('Populate Forecast Table with Historical Data') }}
-            
-            
+
+
             INSERT INTO {{ this }}
             (
                 {%- for col in source.columns  %} 
@@ -1745,11 +1745,11 @@ stepTypes:
                     {%- if not loop.last -%}, {% endif %}
                 {% endfor %}
             {{ source.join }}
-            
-            
+
+
             {{ stage('Create Forecast Model Instance') }}
-            
-            
+
+
             CREATE OR REPLACE SNOWFLAKE.ML.FORECAST
              {{ ref_no_link(node.location.name, forecast_name) }}(
                 INPUT_DATA => SYSTEM$QUERY_REFERENCE('
@@ -1764,12 +1764,12 @@ stepTypes:
                 TIMESTAMP_COLNAME => '{{ config.tscol.name }}',
                 TARGET_COLNAME => '{{ config.tgtcol.name }}'
             )
-            
-            
+
+
             {{ stage('Insert Forecast data') }}
             BEGIN
-            
-            
+
+
             {% if config.exvar %}
                 CALL {{ ref_no_link(node.location.name, forecast_name) }}!FORECAST(
                     INPUT_DATA => SYSTEM$QUERY_REFERENCE('
@@ -1782,8 +1782,8 @@ stepTypes:
                 '),
                 {%if config.multiseries %}SERIES_COLNAME => '{{ config.seriescol.name }}', {% endif %}
                 TIMESTAMP_COLNAME => '{{ config.tscol.name }}' );
-            
-            
+
+
                 UPDATE {{ this }} SRC
                 SET 
                     {%- for col in columns if  col.forecast or col.lower_bound or col.upper_bound %}
@@ -1795,14 +1795,14 @@ stepTypes:
                     {%- if config.multiseries  %}
                     AND RES."SERIES" = SRC."{{ config.seriescol.name }}"            
                     {%- endif %};
-            
-            
+
+
             {% else %}
-            
-            
+
+
                 CALL {{ ref_no_link(node.location.name, forecast_name) }}!FORECAST({{ config.fcdays }});
-            
-            
+
+
                 INSERT INTO {{ this }}
                 (
                     {%- for col in source.columns  %} 
@@ -1820,8 +1820,8 @@ stepTypes:
                     {% endfor %}
                 FROM TABLE(RESULT_SCAN(-1)) RES;
             {% endif %}
-            
-            
+
+
             END
     name: ML Forecast
     version: 1
