@@ -27,8 +27,8 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: cc747158-9807-448e-abde-a84a99b56d9f
-                    stepCounter: 62b09acf-a2e8-4349-89fe-51ac9d2bb961
+                  - columnCounter: dbae1ce1-678d-4f97-8aef-15716526bc6b
+                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
                 transform: ""
           - columnReference:
               columnCounter: 59dd5033-1a07-4a2b-bc22-83460b27c120
@@ -41,8 +41,8 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: adf19d3b-3942-4e0c-b948-2f7572d39f3d
-                    stepCounter: 62b09acf-a2e8-4349-89fe-51ac9d2bb961
+                  - columnCounter: e30e8371-8c77-4114-addf-68fb0d2202e2
+                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
                 transform: ""
           - columnReference:
               columnCounter: 08648384-0a83-4aab-becd-51bd8b6c1d23
@@ -55,8 +55,8 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: 4109c284-abeb-4ec3-9abf-2d318dec5a10
-                    stepCounter: 62b09acf-a2e8-4349-89fe-51ac9d2bb961
+                  - columnCounter: 1c72cb5c-dd4a-4925-adcf-3150df1cbc70
+                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
                 transform: ""
           - columnReference:
               columnCounter: 72e41430-d478-4096-a5e9-e143d86a8fc8
@@ -69,9 +69,9 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: 7ba6cb85-fbd9-4cec-b888-38c93cb60d02
-                    stepCounter: 62b09acf-a2e8-4349-89fe-51ac9d2bb961
-                transform: SUM("RM02_COMBINEd"."RM02_QTY")
+                  - columnCounter: e2839813-446c-4c7e-bc1c-ed32c5fec680
+                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+                transform: SUM("RM02_COMBINED"."RM02_QTY")
           - columnReference:
               columnCounter: 4de35640-ba23-478a-a80c-9f7a2a968fbb
               stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
@@ -83,22 +83,22 @@ steps:
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: 34428802-c065-49c6-8f18-1f5a62f2a077
-                    stepCounter: 62b09acf-a2e8-4349-89fe-51ac9d2bb961
+                  - columnCounter: f6e2b94c-b0b9-4c2c-b61c-1f32a0390979
+                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
                 transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              RM02_COMBINEd: 62b09acf-a2e8-4349-89fe-51ac9d2bb961
+              RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: TRUXCOMBINED_RAW
-                nodeName: RM02_COMBINEd
+                nodeName: RM02_COMBINED
             join:
               joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINEd') }} "RM02_COMBINEd"
+                FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINED') }} "RM02_COMBINED"
                 GROUP BY "RM02_CUST","RM02_SITE","RM02_SERV", "SOURCE"
             name: STG_RM02_AGGREGATION_ROUTE_AUDIT
             noLinkRefs: []

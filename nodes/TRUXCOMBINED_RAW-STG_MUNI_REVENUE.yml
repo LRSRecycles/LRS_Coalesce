@@ -251,7 +251,7 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              CM03_Combined: 080d8ab0-3edf-4ee0-b848-dcc7364164df
+              CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
               CM04_Combined: f47180be-fdce-4312-84ff-04027f8092c0
               CM19_COMBINED: eff228bf-ae85-4729-b262-adc8e690ab35
               DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
@@ -261,7 +261,7 @@ steps:
               customSQL: ""
             dependencies:
               - locationName: TRUXCOMBINED_RAW
-                nodeName: CM03_Combined
+                nodeName: CM03_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CM04_Combined
               - locationName: TRUXCOMBINED_RAW
@@ -274,10 +274,10 @@ steps:
                 nodeName: STG_CM05_COMBINED_MUNI_ROUTING
             join:
               joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_Combined') }} "CM03_Combined"
+                FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_Combined') }} "CM04_Combined"
-                ON "CM03_Combined"."CM03_CUST" = "CM04_Combined"."CM04_CUST"
-                AND "CM03_Combined"."SOURCE" = "CM04_Combined"."SOURCE"
+                ON "CM03_COMBINED"."CM03_CUST" = "CM04_Combined"."CM04_CUST"
+                AND "CM03_COMBINED"."SOURCE" = "CM04_Combined"."SOURCE"
                 
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM05_COMBINED_MUNI_ROUTING') }} "STG_CM05_COMBINED_MUNI_ROUTING"
                 ON "CM04_Combined"."CM04_CUST" = "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_CUST"
