@@ -1007,9 +1007,13 @@ steps:
               - locationName: MASTER_DATA_CLEAN
                 nodeName: CUSTOMER_MASTER
             join:
-              joinCondition: |-
-                FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
-                where "CUSTOMER_MASTER"."SYSTEM_CURRENT_FLAG" = 'Y'
+              joinCondition: |2
+                 FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
+                WHERE "CUSTOMER_MASTER"."SYSTEM_CURRENT_FLAG" = 'Y' --AND "CUSTOMER_MASTER"."SYSTEM_START_DATE" IN (SELECT MAX(SYSTEM_START_DATE) AS SYSTEM_START_DATE
+                                                                  --FROM LRS_PRODUCTION.MASTER_DATA_CLEAN.CUSTOMER_MASTER
+                                                                 --GROUP BY SOURCE_NEW, "Customer Number", "Source_Name")
+                
+                
             name: VW_CUSTOMER_MASTER
             noLinkRefs: []
       name: VW_CUSTOMER_MASTER
