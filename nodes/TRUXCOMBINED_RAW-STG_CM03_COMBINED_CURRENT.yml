@@ -1038,11 +1038,8 @@ steps:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
                 WHERE "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
-                  AND "CM03_COMBINED"."_FIVETRAN_SYNCED" > (SELECT MAX(_FIVETRAN_SYNCED) FROM {{ ref_no_link('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }})
             name: STG_CM03_COMBINED_CURRENT
-            noLinkRefs:
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: CUSTOMER_MASTER
+            noLinkRefs: []
       name: STG_CM03_COMBINED_CURRENT
       overrideSQL: false
       schema: ""
