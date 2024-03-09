@@ -2,8 +2,17 @@ steps:
   CUSTOMER_MASTER-becf5d54-6c39-4fc7-9462-7c72760dddd6:
     operation:
       config:
-        postSQL: ""
-        preSQL: ""
+        postSQL: |-
+          
+           DELETE
+             FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
+            WHERE "DIM_CM03_COMBINED_KEY" IN (SELECT MAX("DIM_CM03_COMBINED_KEY") AS "DIM_CM03_COMBINED_KEY"
+                                                FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
+                                               WHERE "Customer Number" IN (3962,3946)
+                                                 AND "SOURCE_NEW" = 'TRUX_RD_COMP_RAW'
+                                               GROUP BY "SOURCE_NEW", "Customer Number"
+                                             );
+        preSQL: TRUNCATE TABLE {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }}
         testsEnabled: true
       database: ""
       deployEnabled: true
@@ -60,7 +69,6 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            isChangeTracking: true
             name: Customer Name
             nullable: true
             sourceColumnReferences:
@@ -1416,7 +1424,6 @@ steps:
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
                    ON "CM03_COMBINED"."CM03_SREP" = "CD07_COMBINED"."CD07_CODE" 
                   AND "CM03_COMBINED"."SOURCE" = "CD07_COMBINED"."SOURCE"
-                
                 
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD09_COMBINED') }} "CD09_COMBINED"
                    ON "CM03_COMBINED"."CM03_TXJU" = "CD09_COMBINED"."CD09_CODE" 
