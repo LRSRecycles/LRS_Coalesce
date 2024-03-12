@@ -247,7 +247,7 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              CUSTOMER_MASTER: a83e2043-c50d-4bf2-8f19-a0858a24d969
+              CUSTOMER_MASTER: becf5d54-6c39-4fc7-9462-7c72760dddd6
               CUSTOMER_PREFERENCES: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
               CUST_SITE_PREFERENCES: 828f44ad-9ea8-4f17-8021-698a7dd934d1
               DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
@@ -274,7 +274,7 @@ steps:
                 and "DM01_COMBINED"."SOURCE" = "CUSTOMER_PREFERENCES"."SOURCE"
                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
                 ON "DM01_COMBINED"."DM01_CUST"= "CUSTOMER_MASTER"."Customer Number"
-                AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_MASTER"."SOURCE_NEW"
+                AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_MASTER"."Source"
                 where "DM01_COMBINED"."Sort" =1 
                 AND "DM01_COMBINED"."_FIVETRAN_DELETED"=FALSE 
                 and "DM01_COMBINED"."METADATA$ACTION" ='INSERT'

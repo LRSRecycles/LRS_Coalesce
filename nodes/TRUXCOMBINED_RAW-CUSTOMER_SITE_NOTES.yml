@@ -263,7 +263,7 @@ steps:
                 FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CUSTOMER_NOTES') }} "STG_CUSTOMER_NOTES"
                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_MASTER') }} "VW_CUSTOMER_MASTER"
                 ON "STG_CUSTOMER_NOTES"."CUSTOMER" = "VW_CUSTOMER_MASTER"."Customer Number"
-                AND "STG_CUSTOMER_NOTES"."SOURCE" = "VW_CUSTOMER_MASTER"."SOURCE_NEW"
+                AND "STG_CUSTOMER_NOTES"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
             name: CUSTOMER_NOTES
             noLinkRefs: []
           - aliases:
@@ -281,7 +281,7 @@ steps:
                 FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CUSTOMER_SITE_NOTES') }} "STG_CUSTOMER_SITE_NOTES"
                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_MASTER') }} "VW_CUSTOMER_MASTER"
                 ON "STG_CUSTOMER_SITE_NOTES"."CUSTOMER" = "VW_CUSTOMER_MASTER"."Customer Number"
-                AND "STG_CUSTOMER_SITE_NOTES"."SOURCE" = "VW_CUSTOMER_MASTER"."SOURCE_NEW"
+                AND "STG_CUSTOMER_SITE_NOTES"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
             name: CUSTOMER_SITE_NOTES
             noLinkRefs: []
       name: CUSTOMER_SITE_NOTES
