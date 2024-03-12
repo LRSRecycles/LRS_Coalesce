@@ -3,15 +3,15 @@ steps:
     operation:
       config:
         postSQL: |-
-          
-           DELETE
-             FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
-            WHERE "DIM_CM03_COMBINED_KEY" IN (SELECT MAX("DIM_CM03_COMBINED_KEY") AS "DIM_CM03_COMBINED_KEY"
-                                                FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
-                                               WHERE "Customer Number" IN (3962,3946)
-                                                 AND "SOURCE_NEW" = 'TRUX_RD_COMP_RAW'
-                                               GROUP BY "SOURCE_NEW", "Customer Number"
-                                             );
+
+          DELETE
+            FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
+           WHERE "DIM_CM03_COMBINED_KEY" IN (SELECT MAX("DIM_CM03_COMBINED_KEY") AS "DIM_CM03_COMBINED_KEY"
+                                               FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
+                                              WHERE "Customer Number" IN (3962,3946)
+                                                AND "Source" = 'TRUX_RD_COMP_RAW'
+                                              GROUP BY "Source", "Customer Number"
+                                            );
         preSQL: TRUNCATE TABLE {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }}
         testsEnabled: true
       database: ""
@@ -59,7 +59,7 @@ steps:
                     stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
                 transform: CAST("CM03_COMBINED"."CM03_CUST" AS VARCHAR)
               - columnReferences:
-                  - columnCounter: 24d93dcd-bf0e-4e6c-9a0e-b74b5a1f955d
+                  - columnCounter: 325d2647-1081-4807-9d73-4b59f4e0af9c
                     stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
                 transform: ""
           - columnReference:
@@ -1147,7 +1147,7 @@ steps:
                     stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
                 transform: CONCAT("CM03_COMBINED"."CM03_CUST",'-',"CM03_COMBINED"."SOURCE")
               - columnReferences: []
-                transform: ""
+                transform: CONCAT("CUSTOMER_COMBINED"."Customer ID",'-',"CUSTOMER_COMBINED"."COMPANYID",'-TOWER')
             systemColumnType: None
             transform: ""
           - columnReference:
@@ -1158,7 +1158,7 @@ steps:
             hashColumns: []
             hashDetails: null
             isBusinessKey: true
-            name: SOURCE_NEW
+            name: Source
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -1188,33 +1188,10 @@ steps:
                   - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
                     stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
                 transform: ""
-              - columnReferences: []
-                transform: ""
-            systemColumnType: None
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: f07a920f-07c9-45fe-951d-43cf46fe09e9
-              stepCounter: becf5d54-6c39-4fc7-9462-7c72760dddd6
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Customer ID (Tower only)
-            nullable: true
-            sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 325d2647-1081-4807-9d73-4b59f4e0af9c
+                  - columnCounter: 8f05726f-8939-430d-b86e-54aa1b9b1ae5
                     stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
-                transform: ""
+                transform: CONCAT("CUSTOMER_COMBINED"."COMPANYID"||' - TOWER')
             systemColumnType: None
             transform: ""
           - columnReference:
@@ -1409,30 +1386,30 @@ steps:
                    ON "CM03_COMBINED"."CM03_CUST" = "STG_CM03_COMBINED_FIVETRAN_LATEST"."CM03_CUST"
                   AND "CM03_COMBINED"."SOURCE" = "STG_CM03_COMBINED_FIVETRAN_LATEST"."SOURCE"
                   AND "CM03_COMBINED"."_FIVETRAN_SYNCED" = "STG_CM03_COMBINED_FIVETRAN_LATEST"."_FIVETRAN_SYNCED"
-                
+
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD11_COMBINED') }} "CD11_COMBINED"
                    ON "CM03_COMBINED"."CM03_CUSTTYPE" = "CD11_COMBINED"."CD11_CODE" 
                   AND "CM03_COMBINED"."SOURCE" = "CD11_COMBINED"."SOURCE"
-                
+
                  LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                    ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-                
+
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD03_COMBINED') }} "CD03_COMBINED"
                    ON "CM03_COMBINED"."CM03_SUSREA" = "CD03_COMBINED"."CD03_CODE" 
                   AND "CM03_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
-                
+
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
                    ON "CM03_COMBINED"."CM03_SREP" = "CD07_COMBINED"."CD07_CODE" 
                   AND "CM03_COMBINED"."SOURCE" = "CD07_COMBINED"."SOURCE"
-                
+
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD09_COMBINED') }} "CD09_COMBINED"
                    ON "CM03_COMBINED"."CM03_TXJU" = "CD09_COMBINED"."CD09_CODE" 
                   AND "CM03_COMBINED"."SOURCE" = "CD09_COMBINED"."SOURCE"
-                
+
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD52_COMBINED') }} "CD52_COMBINED"
                    ON "CM03_COMBINED"."CM03_COLLAGNT" = "CD52_COMBINED"."CD52_CODE" 
                   AND "CM03_COMBINED"."SOURCE" = "CD52_COMBINED"."SOURCE"
-                
+
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
                    ON "CM03_COMBINED"."CM03_CUST" = "CP01_COMBINED"."CP01_CUST" 
                   AND "CM03_COMBINED"."SOURCE" = "CP01_COMBINED"."SOURCE" 
