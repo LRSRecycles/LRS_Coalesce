@@ -282,6 +282,27 @@ steps:
                   - columnCounter: 26625c93-9e8d-4dd7-b3c0-f70bafa532cf
                     stepCounter: 5809bc50-5456-426a-85bb-c8308c93f535
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 971eabb8-bb07-415c-81fe-c2f3150a2a10
+              stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Customer Class Description
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: c6ead59b-b890-4f74-8191-d5415d155ebc
+                    stepCounter: 8b8f16d3-daaf-433f-9107-3f3558437a9a
+                transform: ""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: 48e9744a-2482-4226-88cd-31afe7f57d53
               stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
@@ -1295,19 +1316,19 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: 971eabb8-bb07-415c-81fe-c2f3150a2a10
+              columnCounter: c31f0658-1de6-4da0-87cc-827ec4bf865b
               stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
             config: {}
             dataType: VARCHAR
             defaultValue: ""
             description: ""
             keyColumnType: None
-            name: Customer Class Description
+            name: Customer Type
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: c6ead59b-b890-4f74-8191-d5415d155ebc
-                    stepCounter: 8b8f16d3-daaf-433f-9107-3f3558437a9a
+                  - columnCounter: de29ea4b-0cd4-488c-88fb-b88783647d0f
+                    stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
                 transform: ""
             systemColumnType: None
             transform: ""
@@ -1349,12 +1370,13 @@ steps:
               - locationName: TOWER_RAW
                 nodeName: CUSTOMER
             join:
-              joinCondition: |
-                FROM {{ ref('TOWER_RAW', 'CUSTOMER') }} "CUSTOMER"
-                LEFt JOIN {{ ref('TOWER_COMBINED', 'CUSTOMERCLASS_COMBINED') }} "CUSTOMERCLASS_COMBINED"
-                ON "CUSTOMER"."CUSTCLASS" = "CUSTOMERCLASS_COMBINED"."CUSTCLASS"
-                LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTTYPE_COMBINED') }} "CUSTTYPE_COMBINED"
-                ON "CUSTOMERCLASS_COMBINED"."CUSTTYPE" = "CUSTTYPE_COMBINED"."CUSTTYPE"
+              joinCondition: |2
+                 FROM {{ ref('TOWER_RAW', 'CUSTOMER') }} "CUSTOMER"
+                 LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMERCLASS_COMBINED') }} "CUSTOMERCLASS_COMBINED"
+                   ON "CUSTOMER"."CUSTCLASS" = "CUSTOMERCLASS_COMBINED"."CUSTCLASS"
+                
+                 LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTTYPE_COMBINED') }} "CUSTTYPE_COMBINED"
+                   ON "CUSTOMERCLASS_COMBINED"."CUSTTYPE" = "CUSTTYPE_COMBINED"."CUSTTYPE"
             name: CUSTOMER_COMBINED
             noLinkRefs: []
       name: CUSTOMER_COMBINED
