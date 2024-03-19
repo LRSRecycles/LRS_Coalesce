@@ -1,0 +1,111 @@
+steps:
+  LF05O_COMBINED-0b01d79e-7777-40ae-95ce-f5dc7a7934ae:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        storageLocationSearchText: TRUX_
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: TRUXCOMBINED_RAW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: fb417224-aaad-46e3-a9fd-f98b37089bc6
+              stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: LF05O_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 04e44f99-c9fd-45ce-a478-7139f0a891bc
+                    stepCounter: c464082b-7d88-4c5b-85fb-83cdbe9130d1
+                transform: ""
+          - columnReference:
+              columnCounter: 39041be5-d0a8-4026-b323-c4dbfd3025cb
+              stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: LF05O_LINK
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: bda52f47-1596-4d1f-b482-2bd5d9def7ee
+                    stepCounter: c464082b-7d88-4c5b-85fb-83cdbe9130d1
+                transform: ""
+          - columnReference:
+              columnCounter: 94033b92-7a43-4276-878f-0e120bd6c58b
+              stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            dataType: VARCHAR(2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: LF05O_ORIG
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 9de0a526-2227-4430-8035-4cec4924dea3
+                    stepCounter: c464082b-7d88-4c5b-85fb-83cdbe9130d1
+                transform: ""
+          - columnReference:
+              columnCounter: 72342500-854b-4129-a8e4-36c141139544
+              stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            dataType: NUMBER(5,2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: LF05O_PERC
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4d8cb84b-5969-4358-aa80-2dfd771a54d3
+                    stepCounter: c464082b-7d88-4c5b-85fb-83cdbe9130d1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: a635e42d-0f79-4131-b824-e3fe7629fa71
+              stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            hashColumns: []
+            isSystemSource: true
+            name: SOURCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TRUX_AL_COMP_RAW
+                nodeName: LF05O
+            join:
+              joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'LF05O') }} "LF05O"
+            name: LF05O_COMBINED
+            noLinkRefs: []
+      name: LF05O_COMBINED
+      overrideSQL: false
+      schema: ""
+      sqlType: "4"
+      type: sql
+    stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
