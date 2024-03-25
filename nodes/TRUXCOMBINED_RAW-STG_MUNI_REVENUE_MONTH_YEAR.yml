@@ -8,7 +8,7 @@ steps:
         testsEnabled: true
         truncateBefore: true
       database: ""
-      deployEnabled: true
+      deployEnabled: false
       description: ""
       isMultisource: false
       locationName: TRUXCOMBINED_RAW
@@ -120,7 +120,7 @@ steps:
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'STG_MUNI_REVENUE') }} "STG_MUNI_REVENUE"
-                
+
                 GROUP BY "Billing Customer","Routing Customer",MONTH("Invoice Date"), YEAR("Invoice Date"),"Source"
             name: STG_MUNI_REVENUE_MONTH_YEAR
             noLinkRefs: []
