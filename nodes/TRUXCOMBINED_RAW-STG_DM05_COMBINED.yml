@@ -1047,7 +1047,7 @@ steps:
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'DM05FT_COMBINED') }} "DM05FT_COMBINED"
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM20_COMBINED') }} "CM20_COMBINED"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM20_COMBINED') }} "CM20_COMBINED"
                 ON "DM05FT_COMBINED"."DM05FT_CODE" = "CM20_COMBINED"."CM20_CODE"
                 AND "DM05FT_COMBINED"."SOURCE" = "CM20_COMBINED"."SOURCE"
             name: DM05FT_COMBINED
@@ -1068,13 +1068,13 @@ steps:
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'DM05L_COMBINED') }} "DM05L_COMBINED"
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }} "LM02_COMBINED"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }} "LM02_COMBINED"
                 ON "DM05L_COMBINED"."DM05L_DSTE" = "LM02_COMBINED"."LM02_DSTE"
                 AND "DM05L_COMBINED"."DM05L_TICK" = "LM02_COMBINED"."LM02_NUMB"
                 AND "DM05L_COMBINED"."DM05L_DTID" = "LM02_COMBINED"."LM02_ID"
                 AND "DM05L_COMBINED"."SOURCE" = "LM02_COMBINED"."SOURCE"
                 
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
                 ON "LM02_COMBINED"."LM02_MATL" = "LM04_COMBINED"."LM04_CODE"
                 AND "LM02_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
             name: DM05L_COMBINED
@@ -1095,11 +1095,11 @@ steps:
             join:
               joinCondition: |
                 FROM {{ ref('TRUXCOMBINED_RAW', 'DM05Z_COMBINED') }} "DM05Z_COMBINED"
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'MT02_COMBINED') }} "MT02_COMBINED"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'MT02_COMBINED') }} "MT02_COMBINED"
                 ON "DM05Z_COMBINED"."DM05Z_REFN" = "MT02_COMBINED"."MT02_REFR"
                 AND "DM05Z_COMBINED"."SOURCE" = "MT02_COMBINED"."SOURCE"
                 
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'MT00_COMBINED') }} "MT00_COMBINED"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'MT00_COMBINED') }} "MT00_COMBINED"
                 ON "MT02_COMBINED"."MT02_CODE" = "MT00_COMBINED"."MT00_CODE"
                 AND "MT02_COMBINED"."SOURCE" = "MT00_COMBINED"."SOURCE"
                 
