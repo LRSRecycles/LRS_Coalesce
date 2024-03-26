@@ -1004,8 +1004,8 @@ steps:
                 AND "DM05A_COMBINED"."SOURCE" = "SM01_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
-                ON "SM01_COMBINED"."SM01_ACTV" = "CM12_COMBINED"."CM12_CODE"
-                AND "SM01_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
+                ON "DM05A_COMBINED"."DM05A_CODE" = "CM12_COMBINED"."CM12_CODE"
+                AND "DM05A_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
             name: DM05A_COMBINED
             noLinkRefs: []
           - aliases:
@@ -1030,8 +1030,8 @@ steps:
                 AND "DM05B_COMBINED"."SOURCE" = "CM19_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
-                ON "CM19_COMBINED"."CM19_ACTV" = "CM12_COMBINED"."CM12_CODE"
-                AND "CM19_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
+                ON "DM05B_COMBINED"."DM05B_CODE" = "CM12_COMBINED"."CM12_CODE"
+                AND "DM05B_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
             name: DM05B_COMBINED
             noLinkRefs: []
           - aliases:
@@ -1100,8 +1100,8 @@ steps:
                 AND "DM05Z_COMBINED"."SOURCE" = "MT02_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'MT00_COMBINED') }} "MT00_COMBINED"
-                ON "MT02_COMBINED"."MT02_CODE" = "MT00_COMBINED"."MT00_CODE"
-                AND "MT02_COMBINED"."SOURCE" = "MT00_COMBINED"."SOURCE"
+                ON "DM05Z_COMBINED"."DM05Z_CODE" = "MT00_COMBINED"."MT00_CODE"
+                AND "DM05Z_COMBINED"."SOURCE" = "MT00_COMBINED"."SOURCE"
                 
             name: DM05Z_COMBINED
             noLinkRefs: []
