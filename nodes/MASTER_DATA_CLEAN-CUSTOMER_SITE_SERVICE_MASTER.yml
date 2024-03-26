@@ -929,7 +929,7 @@ steps:
         sourceMapping:
           - aliases:
               CD03_COMBINED: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
-              CD05_COMBINED: 498f463a-7395-4cc0-ad5f-d4e7e3d38fcf
+              CD05_COMBINED: 8d5ae05b-da13-442c-8723-1ccdf0cb0eee
               CD50_COMBINED: bd0500a5-224d-4f6d-8a1f-5db89ecbb747
               CM05_COMBINED: 032285e8-04c7-4507-ad3c-3192527dc47a
               CM12_COMBINED: 4f923860-b405-4745-ab70-88d5ff0d6d40
@@ -956,17 +956,28 @@ steps:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'CM05_COMBINED') }} "CM05_COMBINED"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD03_COMBINED') }} "CD03_COMBINED"
-                ON "CM05_COMBINED"."CM05_ECOD" = "CD03_COMBINED"."CD03_CODE" and "CM05_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
+                  ON "CM05_COMBINED"."CM05_ECOD" = "CD03_COMBINED"."CD03_CODE" 
+                 AND "CM05_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
+                
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD50_COMBINED') }} "CD50_COMBINED"
-                ON "CM05_COMBINED"."CM05_CTG" = "CD50_COMBINED"."CD50_CODE" and "CM05_COMBINED"."SOURCE" = "CD50_COMBINED"."SOURCE"
+                  ON "CM05_COMBINED"."CM05_CTG" = "CD50_COMBINED"."CD50_CODE" 
+                 AND "CM05_COMBINED"."SOURCE" = "CD50_COMBINED"."SOURCE"
+                
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
-                ON "CM05_COMBINED"."CM05_FAC" = "LM01_COMBINED"."LM01_DSTE" and "CM05_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                  ON "CM05_COMBINED"."CM05_FAC" = "LM01_COMBINED"."LM01_DSTE" 
+                 AND "CM05_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
-                ON "CM05_COMBINED"."CM05_MATL" = "LM04_COMBINED"."LM04_CODE" and "CM05_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+                  ON "CM05_COMBINED"."CM05_MATL" = "LM04_COMBINED"."LM04_CODE" 
+                 AND "CM05_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+                
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
-                ON "CM05_COMBINED"."CM05_WDACTV" = "CM12_COMBINED"."CM12_CODE" and "CM05_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
+                  ON "CM05_COMBINED"."CM05_WDACTV" = "CM12_COMBINED"."CM12_CODE" 
+                 AND "CM05_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
+                
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD05_COMBINED') }} "CD05_COMBINED"
-                ON "CM05_COMBINED"."CM05_TYPE" = "CD05_COMBINED"."CD05_CODE" and "CM05_COMBINED"."SOURCE" = "CD05_COMBINED"."SOURCE"
+                  ON "CM05_COMBINED"."CM05_TYPE" = "CD05_COMBINED"."CD05_CODE" 
+                 AND "CM05_COMBINED"."SOURCE" = "CD05_COMBINED"."SOURCE"
             name: CUSTOMER_SITE_SERVICE_MASTER
             noLinkRefs: []
       name: CUSTOMER_SITE_SERVICE_MASTER

@@ -861,7 +861,7 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: "\"CM04_Combined\".\"CM04_CUST\"||'-'||\"CM04_Combined\".\"CM04_SITE\"||\"CM04_Combined\".\"SOURCE\""
+                transform: "\"CM04_COMBINED\".\"CM04_CUST\"||'-'||\"CM04_COMBINED\".\"CM04_SITE\"||\"CM04_COMBINED\".\"SOURCE\""
               - columnReferences: []
                 transform: "\"SITE_COMBINED\".\"Customer Number\"||'-'||\"SITE_COMBINED\".\"Site Number\""
             systemColumnType: None
@@ -946,7 +946,7 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: concat("CM04_Combined"."CM04_CUST","CM04_Combined"."CM04_SITE")
+                transform: concat("CM04_COMBINED"."CM04_CUST","CM04_COMBINED"."CM04_SITE")
               - columnReferences: []
                 transform: ""
             systemColumnType: None
@@ -993,7 +993,7 @@ steps:
               - columnReferences:
                   - columnCounter: 73066796-bdd0-4d2e-9731-5689e42e40fa
                     stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
-                transform: rtrim("CM04_Combined"."CM04_CUST")
+                transform: rtrim("CM04_COMBINED"."CM04_CUST")
               - columnReferences:
                   - columnCounter: 1a8f02ec-6c91-4406-b462-ba1d391996aa
                     stepCounter: d0ee8791-10a2-4747-967f-b22621b20d21
@@ -1019,11 +1019,11 @@ steps:
               - columnReferences:
                   - columnCounter: 112edb7e-c114-4829-bb58-6e8264e56247
                     stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
-                transform: rtrim("CM04_Combined"."CM04_SITE")
+                transform: rtrim("CM04_COMBINED"."CM04_SITE")
               - columnReferences:
                   - columnCounter: bfc35555-4937-4379-b681-cd530e1bd787
                     stepCounter: d0ee8791-10a2-4747-967f-b22621b20d21
-                transform: rtrim("SITE_COMBINED"."Site ID")
+                transform: rtrim("SITE_COMBINED"."Site Number")
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -1053,20 +1053,22 @@ steps:
         sourceMapping:
           - aliases:
               CD01_COMBINED: 71001026-e5b6-431c-99fc-8c83d39aed33
-              CM04_Combined: f47180be-fdce-4312-84ff-04027f8092c0
+              CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CD01_COMBINED
               - locationName: TRUXCOMBINED_RAW
-                nodeName: CM04_Combined
+                nodeName: CM04_COMBINED
             join:
               joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'CM04_Combined') }} "CM04_Combined"
+                FROM {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04_COMBINED"
+                
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD01_COMBINED') }} "CD01_COMBINED"
-                ON "CM04_Combined"."CM04_BUCD" = "CD01_COMBINED"."CD01_CODE" 
-                and "CM04_Combined"."SOURCE" = "CD01_COMBINED"."SOURCE"
+                  ON "CM04_COMBINED"."CM04_BUCD" = "CD01_COMBINED"."CD01_CODE" 
+                 AND "CM04_COMBINED"."SOURCE" = "CD01_COMBINED"."SOURCE"
+                 
             name: CM04_COMBINED
             noLinkRefs: []
           - aliases:

@@ -252,7 +252,7 @@ steps:
         sourceMapping:
           - aliases:
               CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-              CM04_Combined: f47180be-fdce-4312-84ff-04027f8092c0
+              CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
               CM19_COMBINED: eff228bf-ae85-4729-b262-adc8e690ab35
               DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
               STG_CM05_COMBINED_MUNI_BILLING: 5a5e9610-ebc0-47e5-9c3b-15332ff9a39f
@@ -263,7 +263,7 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CM03_COMBINED
               - locationName: TRUXCOMBINED_RAW
-                nodeName: CM04_Combined
+                nodeName: CM04_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CM19_COMBINED
               - locationName: TRUXCOMBINED_RAW
@@ -273,47 +273,47 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: STG_CM05_COMBINED_MUNI_ROUTING
             join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_Combined') }} "CM04_Combined"
-                ON "CM03_COMBINED"."CM03_CUST" = "CM04_Combined"."CM04_CUST"
-                AND "CM03_COMBINED"."SOURCE" = "CM04_Combined"."SOURCE"
-
+              joinCondition: |2-
+                 FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04_COMBINED"
+                   ON "CM03_COMBINED"."CM03_CUST" = "CM04_COMBINED"."CM04_CUST"
+                  AND "CM03_COMBINED"."SOURCE" = "CM04_COMBINED"."SOURCE"
+                
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM05_COMBINED_MUNI_ROUTING') }} "STG_CM05_COMBINED_MUNI_ROUTING"
-                ON "CM04_Combined"."CM04_CUST" = "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_CUST"
-                AND "CM04_Combined"."CM04_SITE" = "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_SITE"
-                AND "CM04_Combined"."SOURCE" = "STG_CM05_COMBINED_MUNI_ROUTING"."SOURCE"
-
+                   ON "CM04_COMBINED"."CM04_CUST" = "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_CUST"
+                  AND "CM04_COMBINED"."CM04_SITE" = "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_SITE"
+                  AND "CM04_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_ROUTING"."SOURCE"
+                
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM05_COMBINED_MUNI_BILLING') }} "STG_CM05_COMBINED_MUNI_BILLING"
-                ON "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_FLD7" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
-                AND "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_FLD8" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SITE"
-                AND "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_FLD9" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SERV"
-                AND "STG_CM05_COMBINED_MUNI_ROUTING"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
-
+                   ON "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_FLD7" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
+                  AND "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_FLD8" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SITE"
+                  AND "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_FLD9" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SERV"
+                  AND "STG_CM05_COMBINED_MUNI_ROUTING"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
+                
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM19_COMBINED') }} "CM19_COMBINED"
-                ON "CM19_COMBINED"."CM19_CUST" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
-                AND "CM19_COMBINED"."CM19_SITE" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SITE"
-                AND "CM19_COMBINED"."CM19_SERV" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SERV"
-                AND "CM19_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
-
+                   ON "CM19_COMBINED"."CM19_CUST" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
+                  AND "CM19_COMBINED"."CM19_SITE" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SITE"
+                  AND "CM19_COMBINED"."CM19_SERV" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SERV"
+                  AND "CM19_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
+                
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
-                ON "DM01_COMBINED"."DM01_CUST" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
-                AND "DM01_COMBINED"."DM01_DATE" BETWEEN "CM19_COMBINED"."CM19_EFFD" AND "CM19_COMBINED"."CM19_BILL"
-                AND "DM01_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
-
-                 WHERE "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_EDTE" IS NULL
-                   AND "DM01_COMBINED"."Sort" = 1
-                   AND "DM01_COMBINED"._fivetran_deleted = FALSE
-
-                 GROUP BY "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_CUST"
-                	 , "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
-                     , "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CYCL"
-                	 , "CM19_COMBINED"."CM19_EFFD"
-                	 , "CM19_COMBINED"."CM19_BILL"
-                	 , "DM01_COMBINED"."DM01_CUST"
-                	 , "DM01_COMBINED"."DM01_INVC"
-                	 , "DM01_COMBINED"."DM01_DATE"
-                     , "DM01_COMBINED"."SOURCE"
+                   ON "DM01_COMBINED"."DM01_CUST" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
+                  AND "DM01_COMBINED"."DM01_DATE" BETWEEN "CM19_COMBINED"."CM19_EFFD" AND "CM19_COMBINED"."CM19_BILL"
+                  AND "DM01_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
+                
+                WHERE "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_EDTE" IS NULL
+                  AND "DM01_COMBINED"."Sort" = 1
+                  AND "DM01_COMBINED"._fivetran_deleted = FALSE
+                
+                GROUP BY "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_CUST"
+                	, "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
+                    , "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CYCL"
+                	, "CM19_COMBINED"."CM19_EFFD"
+                	, "CM19_COMBINED"."CM19_BILL"
+                	, "DM01_COMBINED"."DM01_CUST"
+                	, "DM01_COMBINED"."DM01_INVC"
+                	, "DM01_COMBINED"."DM01_DATE"
+                    , "DM01_COMBINED"."SOURCE"
             name: STG_MUNI_REVENUE
             noLinkRefs: []
       name: STG_MUNI_REVENUE

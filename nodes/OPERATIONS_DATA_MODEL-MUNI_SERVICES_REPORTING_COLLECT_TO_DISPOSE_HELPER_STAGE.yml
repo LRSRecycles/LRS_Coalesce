@@ -403,17 +403,20 @@ steps:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'STG_ROUTE_AUDIT_REPORT') }} "STG_ROUTE_AUDIT_REPORT"
                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_MASTER') }} "VW_CUSTOMER_MASTER"
-                ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "VW_CUSTOMER_MASTER"."Customer Number"
-                    AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
+                  ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "VW_CUSTOMER_MASTER"."Customer Number"
+                 AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
+                
                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_SITE_MASTER') }} "VW_CUSTOMER_SITE_MASTER"
-                ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "VW_CUSTOMER_SITE_MASTER"."Customer Number"
-                    AND "STG_ROUTE_AUDIT_REPORT"."Site" = "VW_CUSTOMER_SITE_MASTER"."Site Number"
-                    AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "VW_CUSTOMER_SITE_MASTER"."SOURCE_DIM"
+                  ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "VW_CUSTOMER_SITE_MASTER"."Customer Number"
+                 AND "STG_ROUTE_AUDIT_REPORT"."Site" = "VW_CUSTOMER_SITE_MASTER"."Site Number"
+                 AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "VW_CUSTOMER_SITE_MASTER"."SOURCE_DIM"
+                
                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_SITE_SERVICE_MASTER') }} "CUSTOMER_SITE_SERVICE_MASTER"
-                ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "CUSTOMER_SITE_SERVICE_MASTER"."Customer Number"
-                    AND "STG_ROUTE_AUDIT_REPORT"."Site" = "CUSTOMER_SITE_SERVICE_MASTER"."Site Number"
-                    AND "STG_ROUTE_AUDIT_REPORT"."Service" = "CUSTOMER_SITE_SERVICE_MASTER"."Service Number"
-                    AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "CUSTOMER_SITE_SERVICE_MASTER"."SOURCE"
+                  ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "CUSTOMER_SITE_SERVICE_MASTER"."Customer Number"
+                 AND "STG_ROUTE_AUDIT_REPORT"."Site" = "CUSTOMER_SITE_SERVICE_MASTER"."Site Number"
+                 AND "STG_ROUTE_AUDIT_REPORT"."Service" = "CUSTOMER_SITE_SERVICE_MASTER"."Service Number"
+                 AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "CUSTOMER_SITE_SERVICE_MASTER"."SOURCE"
+                
                 WHERE "Route Date" >= CURRENT_DATE()-365
             name: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE
             noLinkRefs: []
