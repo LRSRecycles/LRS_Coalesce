@@ -23,7 +23,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Customer ID
+            name: Customer Number
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -37,7 +37,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Customer Number
+            name: Customer UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -1374,7 +1374,7 @@ steps:
                  FROM {{ ref('TOWER_RAW', 'CUSTOMER') }} "CUSTOMER"
                  LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMERCLASS_COMBINED') }} "CUSTOMERCLASS_COMBINED"
                    ON "CUSTOMER"."CUSTCLASS" = "CUSTOMERCLASS_COMBINED"."CUSTCLASS"
-                
+
                  LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTTYPE_COMBINED') }} "CUSTTYPE_COMBINED"
                    ON "CUSTOMERCLASS_COMBINED"."CUSTTYPE" = "CUSTTYPE_COMBINED"."CUSTTYPE"
             name: CUSTOMER_COMBINED

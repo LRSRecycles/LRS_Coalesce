@@ -625,8 +625,8 @@ steps:
               joinCondition: |-
                 FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Payment_Details') }} "AR_Payment_Details"
                 LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'AR_Invoice_Amounts') }} "AR_Invoice_Amounts"
-                ON "AR_Payment_Details"."Link_Source" = "AR_Invoice_Amounts"."ID_Source"
-                WHERE "AR_Payment_Details"."SOURCE" NOT LIKE '%TOWER%'
+                  ON "AR_Payment_Details"."Link_Source" = "AR_Invoice_Amounts"."ID_Source"
+                  WHERE "AR_Payment_Details"."SOURCE" NOT LIKE '%TOWER%'
             name: TRUX_PAYMENTS
             noLinkRefs: []
           - aliases:
