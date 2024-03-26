@@ -1075,8 +1075,8 @@ steps:
                 AND "DM05L_COMBINED"."SOURCE" = "LM02_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
-                ON "LM02_COMBINED"."LM02_MATL" = "LM04_COMBINED"."LM04_CODE"
-                AND "LM02_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+                ON "DM05L_COMBINED"."DM05L_CODE" = "LM04_COMBINED"."LM04_CODE"
+                AND "DM05L_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
             name: DM05L_COMBINED
             noLinkRefs: []
           - aliases:
