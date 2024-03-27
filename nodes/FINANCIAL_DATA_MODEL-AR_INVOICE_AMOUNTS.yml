@@ -1,8 +1,8 @@
 steps:
-  AR_Invoice_Amounts-6cbdcc75-9616-48ec-95e9-b79240d9b295:
+  AR_INVOICE_AMOUNTS-6cbdcc75-9616-48ec-95e9-b79240d9b295:
     operation:
       config:
-        insertStrategy: UNION
+        insertStrategy: INSERT
         postSQL: ""
         preSQL: ""
         testsEnabled: true
@@ -12,7 +12,7 @@ steps:
       description: ""
       isMultisource: true
       locationName: FINANCIAL_DATA_MODEL
-      materializationType: table
+      materializationType: view
       metadata:
         appliedNodeTests: []
         columns:
@@ -24,7 +24,7 @@ steps:
             hashColumns: []
             hashDetails: null
             isBusinessKey: true
-            name: Unique ID
+            name: Invoice UID
             nullable: false
             sourceColumnReferences:
               - columnReferences:
@@ -51,7 +51,7 @@ steps:
                     stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
                 transform: ""
               - columnReferences:
-                  - columnCounter: 4efd84cd-17d9-4f68-9b6c-6cf321a1259b
+                  - columnCounter: 62237e4b-5ec1-4b1a-ae88-9a7ec2cec2ec
                     stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
                 transform: ""
           - columnReference:
@@ -137,7 +137,7 @@ steps:
             hashColumns: []
             hashDetails: null
             isBusinessKey: true
-            name: SOURCE
+            name: Source
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -156,20 +156,20 @@ steps:
               columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             config: {}
-            dataType: varchar
+            dataType: VARCHAR
             defaultValue: ""
             description: ""
             isBusinessKey: true
             keyColumnType: None
-            name: Customer_Source
+            name: Source_Customer
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: "\"DM01_COMBINED\".\"DM01_CUST\"||\"DM01_COMBINED\".\"SOURCE\""
+                transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\""
               - columnReferences: []
-                transform: "\"STG_INVOICE_COMBINED\".\"Customer UID\"||\"STG_INVOICE_COMBINED\".\"Source\""
+                transform: "\"STG_INVOICE_COMBINED\".\"Source\"||'-'||\"STG_INVOICE_COMBINED\".\"Customer Number\""
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -180,19 +180,19 @@ steps:
               columnCounter: 9201fbce-c10b-4c18-9853-a9b4bba17628
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             config: {}
-            dataType: varchar
+            dataType: VARCHAR
             defaultValue: ""
             description: ""
             keyColumnType: None
-            name: Customer_Site_Source
+            name: Source_Customer_Site
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: "\"DM01_COMBINED\".\"DM01_CUST\"||\"DM01_COMBINED\".\"DM01_SITE\"||\"DM01_COMBINED\".\"SOURCE\""
+                transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\"||'-'||\"DM01_COMBINED\".\"DM01_SITE\""
               - columnReferences: []
-                transform: ""
+                transform: "\"STG_INVOICE_COMBINED\".\"Source\"||'-'||\"STG_INVOICE_COMBINED\".\"Customer Number\"||'-'||\"STG_INVOICE_COMBINED\".\"Site Number\""
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -203,20 +203,20 @@ steps:
               columnCounter: bbaeae2b-c40f-4a97-be3d-688aaaf24606
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             config: {}
-            dataType: varchar
+            dataType: VARCHAR
             defaultValue: ""
             description: ""
             isBusinessKey: true
             keyColumnType: None
-            name: ID_Source
+            name: Source_Invoice_UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: "\"DM01_COMBINED\".\"DM01_ID\"||\"DM01_COMBINED\".\"SOURCE\""
+                transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_ID\""
               - columnReferences: []
-                transform: "\"STG_INVOICE_COMBINED\".\"Unique Invoice ID\"||\"STG_INVOICE_COMBINED\".\"Source\""
+                transform: "\"STG_INVOICE_COMBINED\".\"Source\"||'-'||\"STG_INVOICE_COMBINED\".\"Invoice UID\""
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -291,7 +291,7 @@ steps:
               joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_INVOICE_COMBINED') }} "STG_INVOICE_COMBINED"
             name: STG_INVOICE_COMBINED
             noLinkRefs: []
-      name: AR_Invoice_Amounts
+      name: AR_INVOICE_AMOUNTS
       overrideSQL: false
       schema: ""
       sqlType: Stage

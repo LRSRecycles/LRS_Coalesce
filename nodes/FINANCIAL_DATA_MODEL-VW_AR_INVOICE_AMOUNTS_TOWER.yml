@@ -211,16 +211,17 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              vw_stg_Invoice_amounts: cd6babd1-6b13-444d-aeee-aec81afac6f6
+              VW_STG_INVOICE_AMOUNTS: cd6babd1-6b13-444d-aeee-aec81afac6f6
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: FINANCIAL_DATA_MODEL
-                nodeName: vw_stg_Invoice_amounts
+                nodeName: VW_STG_INVOICE_AMOUNTS
             join:
-              joinCondition: |-
-                FROM {{ ref('FINANCIAL_DATA_MODEL', 'vw_stg_Invoice_amounts') }} "vw_stg_Invoice_amounts"
-                where "vw_stg_Invoice_amounts"."Payment Flag" = 1 and "SOURCE" = 'TOWER'
+              joinCondition: |2-
+                 FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_STG_INVOICE_AMOUNTS') }} "VW_STG_INVOICE_AMOUNTS"
+                WHERE "VW_STG_INVOICE_AMOUNTS"."Payment Flag" = 1 
+                  AND "VW_STG_INVOICE_AMOUNTS"."Source" LIKE 'TOWER%'
             name: VW_AR_INVOICE_AMOUNTS_TOWER
             noLinkRefs: []
       name: VW_AR_INVOICE_AMOUNTS_TOWER

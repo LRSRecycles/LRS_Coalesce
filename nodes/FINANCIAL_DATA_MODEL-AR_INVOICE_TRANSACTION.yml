@@ -12,7 +12,7 @@ steps:
       description: ""
       isMultisource: true
       locationName: FINANCIAL_DATA_MODEL
-      materializationType: table
+      materializationType: view
       metadata:
         appliedNodeTests: []
         columns:
@@ -53,7 +53,7 @@ steps:
             defaultValue: ""
             description: ""
             keyColumnType: None
-            name: Invoice ID
+            name: Invoice UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -75,22 +75,22 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: 7baaf8b9-4904-4c94-97ae-67c1025d86ae
+              columnCounter: 48fabf3a-765b-404f-8969-35ea62636630
               stepCounter: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
             config: {}
             dataType: VARCHAR
             defaultValue: ""
             description: ""
             keyColumnType: None
-            name: Customer_Source
+            name: Customer Number
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
+                  - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
                 transform: ""
               - columnReferences:
-                  - columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
+                  - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
                 transform: ""
               - columnReferences:
@@ -111,7 +111,7 @@ steps:
             defaultValue: ""
             description: ""
             keyColumnType: None
-            name: Site_Source
+            name: Site Number
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -133,59 +133,52 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: 79ad6089-a71d-447e-837a-dd98b97a15c4
+              columnCounter: 7baaf8b9-4904-4c94-97ae-67c1025d86ae
               stepCounter: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
             config: {}
             dataType: VARCHAR
             defaultValue: ""
             description: ""
             keyColumnType: None
-            name: DB - Cust
+            name: Source_Customer
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
+                  - columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: "\"AR_Invoice_Amounts\".\"SOURCE\"||\"AR_Invoice_Amounts\".\"Customer Number\""
+                transform: ""
               - columnReferences:
-                  - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
+                  - columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: "\"AR_Invoice_Amounts\".\"SOURCE\"||\"AR_Invoice_Amounts\".\"Customer Number\""
+                transform: ""
               - columnReferences:
-                  - columnCounter: 24f2f555-dde9-4355-9055-7f49f44eaddd
-                    stepCounter: dad57b1e-b8d9-4227-9d92-4f169f6ce074
-                transform: "\"ARDETAIL_COMBINED\".\"COMPANYID\"||' - TOWER'||\"ARDETAIL_COMBINED\".\"CUSTID\""
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "'TOWER_'||\"ARDETAIL_COMBINED\".\"COMPANYID\"||'-'||\"ARDETAIL_COMBINED\".\"CUSTID\""
             systemColumnType: None
             transform: ""
           - acceptedValues:
-              strictMatch: true
+              strictMatch: false
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: 4a15936e-ec30-48bc-8c04-7e20567a634c
+              columnCounter: b5e8ec6f-00ae-4404-adf5-c724f4b15988
               stepCounter: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
-            config: {}
             dataType: VARCHAR
-            defaultValue: ""
             description: ""
-            keyColumnType: None
-            name: DB - Site - Cust
+            name: Source_Customer_Site
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
+                  - columnCounter: 9201fbce-c10b-4c18-9853-a9b4bba17628
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: "\"AR_Invoice_Amounts\".\"SOURCE\"||\"AR_Invoice_Amounts\".\"Site Number\"||'-'||\"AR_Invoice_Amounts\".\"Customer Number\""
+                transform: ""
               - columnReferences:
-                  - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
+                  - columnCounter: 9201fbce-c10b-4c18-9853-a9b4bba17628
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: "\"AR_Invoice_Amounts\".\"SOURCE\"||\"AR_Invoice_Amounts\".\"Site Number\"||'-'||\"AR_Invoice_Amounts\".\"Customer Number\""
-              - columnReferences:
-                  - columnCounter: 24f2f555-dde9-4355-9055-7f49f44eaddd
-                    stepCounter: dad57b1e-b8d9-4227-9d92-4f169f6ce074
-                transform: "\"ARDETAIL_COMBINED\".\"COMPANYID\"||' - TOWER'||\"ARDETAIL_COMBINED\".\"SITEID\"||'-'||\"ARDETAIL_COMBINED\".\"CUSTID\""
-            systemColumnType: None
-            transform: ""
+                transform: ""
+              - columnReferences: []
+                transform: "'TOWER_'||\"ARDETAIL_COMBINED\".\"COMPANYID\"||'-'||\"ARDETAIL_COMBINED\".\"CUSTID\"||'-'||\"ARDETAIL_COMBINED\".\"SITEID\""
           - acceptedValues:
               strictMatch: true
               values: []
@@ -241,8 +234,8 @@ steps:
                   - columnCounter: 581c44d4-daea-4fc9-a443-158eec519821
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
                 transform: |-
-                  CASE WHEN CONTAINS("AR_Invoice_Amounts"."Invoice Number",'A')=TRUE THEN 'Invoice Adjustment'
-                  WHEN CONTAINS("AR_Invoice_Amounts"."Invoice Number",'A')=FALSE THEN 'Invoice'
+                  CASE WHEN CONTAINS("AR_INVOICE_AMOUNTS"."Invoice Number",'A')=TRUE THEN 'Invoice Adjustment'
+                  WHEN CONTAINS("AR_INVOICE_AMOUNTS"."Invoice Number",'A')=FALSE THEN 'Invoice'
                   ELSE NULL END
               - columnReferences: []
                 transform: "'Open Balance'"
@@ -324,7 +317,7 @@ steps:
               - columnReferences:
                   - columnCounter: 6c02cb13-aac2-4697-8a30-eee9804bcb6b
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: COALESCE("AR_Invoice_Amounts"."Due Date","AR_Invoice_Amounts"."Invoice Date")
+                transform: COALESCE("AR_INVOICE_AMOUNTS"."Due Date","AR_INVOICE_AMOUNTS"."Invoice Date")
               - columnReferences:
                   - columnCounter: 6c02cb13-aac2-4697-8a30-eee9804bcb6b
                     stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
@@ -522,7 +515,7 @@ steps:
                     stepCounter: "0"
                 transform: |-
                   CASE WHEN "AR_Payment_Details"."Payment or Adjustment"='P'
-                  THEN datediff(DAY,"AR_Invoice_Amounts"."Due Date","AR_Payment_Details"."Payment Date")
+                  THEN datediff(DAY,"AR_INVOICE_AMOUNTS"."Due Date","AR_Payment_Details"."Payment Date")
                   else NULL END
               - columnReferences: []
                 transform: ""
@@ -548,7 +541,7 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: CASE WHEN "AR_Payment_Details"."Payment or Adjustment" = 'P' THEN datediff(DAY,"AR_Invoice_Amounts"."Invoice Date","AR_Payment_Details"."Payment Date") else null END
+                transform: CASE WHEN "AR_Payment_Details"."Payment or Adjustment" = 'P' THEN datediff(DAY,"AR_INVOICE_AMOUNTS"."Invoice Date","AR_Payment_Details"."Payment Date") else null END
               - columnReferences: []
                 transform: ""
               - columnReferences: []
@@ -581,7 +574,7 @@ steps:
               - columnReferences:
                   - columnCounter: 9dbd060f-29a4-4442-a6ad-c66763f6c05c
                     stepCounter: dad57b1e-b8d9-4227-9d92-4f169f6ce074
-                transform: "\"ARDETAIL_COMBINED\".\"COMPANYID\"||' - TOWER'"
+                transform: "'TOWER_'||\"ARDETAIL_COMBINED\".\"COMPANYID\""
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -612,34 +605,36 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              AR_Invoice_Amounts: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+              AR_INVOICE_AMOUNTS: 6cbdcc75-9616-48ec-95e9-b79240d9b295
               AR_Payment_Details: b440fc4f-079f-4e49-96bf-221deac14011
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: FINANCIAL_DATA_MODEL
-                nodeName: AR_Invoice_Amounts
+                nodeName: AR_INVOICE_AMOUNTS
               - locationName: FINANCIAL_DATA_MODEL
                 nodeName: AR_Payment_Details
             join:
-              joinCondition: |-
-                FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Payment_Details') }} "AR_Payment_Details"
-                LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'AR_Invoice_Amounts') }} "AR_Invoice_Amounts"
-                  ON "AR_Payment_Details"."Link_Source" = "AR_Invoice_Amounts"."ID_Source"
-                  WHERE "AR_Payment_Details"."SOURCE" NOT LIKE '%TOWER%'
+              joinCondition: |2
+                 FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Payment_Details') }} "AR_Payment_Details"
+                
+                 LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'AR_INVOICE_AMOUNTS') }} "AR_INVOICE_AMOUNTS"
+                   ON "AR_Payment_Details"."Link_Source" = "AR_INVOICE_AMOUNTS"."Source_Invoice_UID"
+                   
+                WHERE "AR_Payment_Details"."SOURCE" NOT LIKE '%TOWER%'
             name: TRUX_PAYMENTS
             noLinkRefs: []
           - aliases:
-              AR_Invoice_Amounts: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+              AR_INVOICE_AMOUNTS: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: FINANCIAL_DATA_MODEL
-                nodeName: AR_Invoice_Amounts
+                nodeName: AR_INVOICE_AMOUNTS
             join:
-              joinCondition: |-
-                FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Invoice_Amounts') }} "AR_Invoice_Amounts"
-                WHERE "SOURCE" NOT LIKE '%TOWER%'
+              joinCondition: |2-
+                 FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_INVOICE_AMOUNTS') }} "AR_INVOICE_AMOUNTS"
+                WHERE "AR_INVOICE_AMOUNTS"."Source" NOT LIKE '%TOWER%'
             name: TRUX_INVOICES
             noLinkRefs: []
           - aliases:
@@ -653,11 +648,12 @@ steps:
               - locationName: TOWER_COMBINED
                 nodeName: INVOICE_COMBINED
             join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'ARDETAIL_COMBINED') }} "ARDETAIL_COMBINED"
-                LEFT JOIN {{ ref('TOWER_COMBINED', 'INVOICE_COMBINED') }} "INVOICE_COMBINED"
-                ON "ARDETAIL_COMBINED"."INVOICEUID" = "INVOICE_COMBINED"."INVOICEUID"
-                WHERE "ARDETAIL_COMBINED"."BALANCE" <>0 and "ARDETAIL_COMBINED"."STATUS" <> 2
+              joinCondition: |2-
+                 FROM {{ ref('TOWER_COMBINED', 'ARDETAIL_COMBINED') }} "ARDETAIL_COMBINED"
+                 LEFT JOIN {{ ref('TOWER_COMBINED', 'INVOICE_COMBINED') }} "INVOICE_COMBINED"
+                   ON "ARDETAIL_COMBINED"."INVOICEUID" = "INVOICE_COMBINED"."INVOICEUID"
+                WHERE "ARDETAIL_COMBINED"."BALANCE" <> 0 
+                  and "ARDETAIL_COMBINED"."STATUS" <> 2
             name: TOWER_OPEN_BALANCE
             noLinkRefs: []
       name: AR_INVOICE_TRANSACTION

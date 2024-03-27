@@ -22,7 +22,7 @@ steps:
             hashColumns: []
             hashDetails: null
             isBusinessKey: true
-            name: Unique ID
+            name: Invoice UID
             nullable: false
             sourceColumnReferences:
               - columnReferences:
@@ -107,7 +107,7 @@ steps:
             hashColumns: []
             hashDetails: null
             isBusinessKey: true
-            name: SOURCE
+            name: Source
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -121,7 +121,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Customer_Source
+            name: Source_Customer
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -135,7 +135,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Customer_Site_Source
+            name: Source_Customer_Site
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -150,7 +150,7 @@ steps:
             hashColumns: []
             hashDetails: null
             isBusinessKey: true
-            name: ID_Source
+            name: Source_Invoice_UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -211,16 +211,16 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              vw_stg_Invoice_amounts: cd6babd1-6b13-444d-aeee-aec81afac6f6
+              VW_STG_INVOICE_AMOUNTS: cd6babd1-6b13-444d-aeee-aec81afac6f6
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: FINANCIAL_DATA_MODEL
-                nodeName: vw_stg_Invoice_amounts
+                nodeName: VW_STG_INVOICE_AMOUNTS
             join:
               joinCondition: |-
-                FROM {{ ref('FINANCIAL_DATA_MODEL', 'vw_stg_Invoice_amounts') }} "vw_stg_Invoice_amounts"
-                where "vw_stg_Invoice_amounts"."Payment Flag" = 1
+                FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_STG_INVOICE_AMOUNTS') }} "VW_STG_INVOICE_AMOUNTS"
+                where "VW_STG_INVOICE_AMOUNTS"."Payment Flag" = 1
             name: VW_AR_INVOICE_AMOUNTS
             noLinkRefs: []
       name: VW_AR_INVOICE_AMOUNTS

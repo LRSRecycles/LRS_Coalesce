@@ -1,5 +1,5 @@
 steps:
-  vw_stg_Invoice_amounts-cd6babd1-6b13-444d-aeee-aec81afac6f6:
+  VW_STG_INVOICE_AMOUNTS-cd6babd1-6b13-444d-aeee-aec81afac6f6:
     operation:
       config:
         insertStrategy: INSERT
@@ -23,7 +23,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Unique ID
+            name: Invoice UID
             nullable: false
             sourceColumnReferences:
               - columnReferences:
@@ -107,7 +107,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: SOURCE
+            name: Source
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -121,7 +121,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Customer_Source
+            name: Source_Customer
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -135,7 +135,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Customer_Site_Source
+            name: Source_Customer_Site
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -149,7 +149,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: ID_Source
+            name: Source_Invoice_UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -188,30 +188,31 @@ steps:
               - columnReferences:
                   - columnCounter: a7bcfa93-b715-482b-9b26-c9eb5162e756
                     stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
-                transform: case when "AR_Invoice_Amounts"."SOURCE" = 'TOWER' then 1 when "VW_AR_Payment_Check"."Record Count">=1 then 1 when "AR_Invoice_Amounts"."Amount"<> 0 then 1 else 0 end
+                transform: CASE WHEN "AR_INVOICE_AMOUNTS"."Source" LIKE 'TOWER%' THEN 1 WHEN "VW_AR_Payment_Check"."Record Count">=1 THEN 1 WHEN "AR_INVOICE_AMOUNTS"."Amount"<> 0 THEN 1 ELSE 0 END
             systemColumnType: None
             transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              AR_Invoice_Amounts: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+              AR_INVOICE_AMOUNTS: 6cbdcc75-9616-48ec-95e9-b79240d9b295
               VW_AR_Payment_Check: a4418938-9502-4ab1-a682-8ae8b004992d
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: FINANCIAL_DATA_MODEL
-                nodeName: AR_Invoice_Amounts
+                nodeName: AR_INVOICE_AMOUNTS
               - locationName: FINANCIAL_DATA_MODEL
                 nodeName: VW_AR_Payment_Check
             join:
               joinCondition: |-
-                FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Invoice_Amounts') }} "AR_Invoice_Amounts"
+                FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_INVOICE_AMOUNTS') }} "AR_INVOICE_AMOUNTS"
                 LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_Payment_Check') }} "VW_AR_Payment_Check"
-                ON "AR_Invoice_Amounts"."ID_Source" = "VW_AR_Payment_Check"."Link_Source"
-            name: vw_stg_Invoice_amounts
+                  ON "AR_INVOICE_AMOUNTS"."Source_Invoice_UID" = "VW_AR_Payment_Check"."Link_Source"
+                  
+            name: VW_STG_INVOICE_AMOUNTS
             noLinkRefs: []
-      name: vw_stg_Invoice_amounts
+      name: VW_STG_INVOICE_AMOUNTS
       overrideSQL: false
       schema: ""
       sqlType: Stage

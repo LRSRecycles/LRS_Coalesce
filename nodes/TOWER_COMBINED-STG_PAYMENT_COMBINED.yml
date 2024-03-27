@@ -23,7 +23,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Unique ID
+            name: Payment UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -37,7 +37,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Source Unique ID
+            name: Source UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -56,6 +56,20 @@ steps:
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: d679765e-f5a7-45c8-862a-c14b83092af3
+                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
+                transform: ""
+          - columnReference:
+              columnCounter: 30b86f8b-f3aa-4465-94b3-091dba0ea770
+              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            dataType: NUMBER(38,2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Status
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: c486b200-d693-479b-b3f8-fd4c57d1b159
                     stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
                 transform: ""
           - columnReference:
@@ -79,109 +93,11 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Customer ID
+            name: Customer Number
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: ebe27c2b-fd75-490b-b5cc-0eaadb457299
-                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
-                transform: ""
-          - columnReference:
-              columnCounter: a0cc5322-991f-405c-9274-d0af6974d28d
-              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Bank Account
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ff14e60e-1de0-4461-9387-745a3949507b
-                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
-                transform: ""
-          - columnReference:
-              columnCounter: 3f4ccd3f-30b4-4ec6-ae10-032e402ba2be
-              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Payment Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 67ab0e6d-377c-439b-bf81-3a8e0e2a7966
-                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
-                transform: ""
-          - columnReference:
-              columnCounter: 5f414005-f17c-498a-ae2f-d3fb4909ba65
-              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Credit Reason
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 13f859fb-0d42-4491-9ec5-e625a9938681
-                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
-                transform: ""
-          - columnReference:
-              columnCounter: 70fe5097-9628-4887-bcd4-8bc11a321015
-              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Note
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3e72302c-806a-4c98-a09f-a3a67fb6d4d1
-                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
-                transform: ""
-          - columnReference:
-              columnCounter: e9e4c9c8-5b36-4633-bcae-6acb74796f24
-              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Bank Account Ref ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 61fbb238-3814-4119-b2ff-fe29da2736c3
-                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
-                transform: ""
-          - columnReference:
-              columnCounter: 0282323f-6b7d-40bf-8125-bce220f4c98d
-              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer Payment Account Unique ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 83e2382d-71ce-43b2-b2e4-c45669f2262e
-                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
-                transform: ""
-          - columnReference:
-              columnCounter: 30b86f8b-f3aa-4465-94b3-091dba0ea770
-              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: STATUS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c486b200-d693-479b-b3f8-fd4c57d1b159
                     stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
                 transform: ""
           - columnReference:
@@ -210,6 +126,34 @@ steps:
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: a1453eb0-d2dc-4c96-9e44-05fc38900421
+                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
+                transform: ""
+          - columnReference:
+              columnCounter: a0cc5322-991f-405c-9274-d0af6974d28d
+              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Bank Account
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: ff14e60e-1de0-4461-9387-745a3949507b
+                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
+                transform: ""
+          - columnReference:
+              columnCounter: 3f4ccd3f-30b4-4ec6-ae10-032e402ba2be
+              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Payment Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 67ab0e6d-377c-439b-bf81-3a8e0e2a7966
                     stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
                 transform: ""
           - columnReference:
@@ -255,6 +199,48 @@ steps:
                     stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
                 transform: ""
           - columnReference:
+              columnCounter: 5f414005-f17c-498a-ae2f-d3fb4909ba65
+              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Credit Reason
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 13f859fb-0d42-4491-9ec5-e625a9938681
+                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
+                transform: ""
+          - columnReference:
+              columnCounter: 70fe5097-9628-4887-bcd4-8bc11a321015
+              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Note
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3e72302c-806a-4c98-a09f-a3a67fb6d4d1
+                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
+                transform: ""
+          - columnReference:
+              columnCounter: e9e4c9c8-5b36-4633-bcae-6acb74796f24
+              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Bank Account Ref ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 61fbb238-3814-4119-b2ff-fe29da2736c3
+                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
+                transform: ""
+          - columnReference:
               columnCounter: e11f070d-f1ee-41cc-87c6-8622653990b0
               stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
             dataType: NUMBER(38,2)
@@ -266,6 +252,20 @@ steps:
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 03af1802-a0e3-423b-9a19-953bbeeb8c2d
+                    stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
+                transform: ""
+          - columnReference:
+              columnCounter: 0282323f-6b7d-40bf-8125-bce220f4c98d
+              stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            dataType: VARCHAR(16777216)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Customer Payment Account Unique ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 83e2382d-71ce-43b2-b2e4-c45669f2262e
                     stepCounter: cb34bb59-0419-4c1b-b3db-0d491487d533
                 transform: ""
           - columnReference:
@@ -281,7 +281,7 @@ steps:
               - columnReferences:
                   - columnCounter: 9dbd060f-29a4-4442-a6ad-c66763f6c05c
                     stepCounter: dad57b1e-b8d9-4227-9d92-4f169f6ce074
-                transform: "\"ARDETAIL_COMBINED\".\"COMPANYID\"||' - TOWER'"
+                transform: "'TOWER_'||\"ARDETAIL_COMBINED\".\"COMPANYID\""
           - acceptedValues:
               strictMatch: true
               values: []
@@ -321,7 +321,7 @@ steps:
               - columnReferences:
                   - columnCounter: aabe0418-4d7f-4979-9f0b-20192ca175be
                     stepCounter: dad57b1e-b8d9-4227-9d92-4f169f6ce074
-                transform: CASE WHEN "ARDETAIL_COMBINED"."INVOICEUID" IS NULL THEN "STG_LAST_INVOICE_CUSTOMER_TOWER"."Unique Invoice ID" ELSE "ARDETAIL_COMBINED"."INVOICEUID" END
+                transform: CASE WHEN "ARDETAIL_COMBINED"."INVOICEUID" IS NULL THEN "STG_LAST_INVOICE_CUSTOMER_TOWER"."Invoice UID" ELSE "ARDETAIL_COMBINED"."INVOICEUID" END
             systemColumnType: None
             transform: ""
         cteString: ""
