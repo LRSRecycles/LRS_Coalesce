@@ -1,5 +1,5 @@
 steps:
-  STG_ACTIVITY_BY_ORIGIN_STP_1-9b1bfc4b-d1df-4db7-8f29-cb7683f5b66e:
+  STG_ACTIVITY_REPORTING_CALCULATIONS-9b1bfc4b-d1df-4db7-8f29-cb7683f5b66e:
     operation:
       config:
         insertStrategy: INSERT
@@ -9,7 +9,7 @@ steps:
         truncateBefore: true
       database: ""
       deployEnabled: true
-      description: ""
+      description: This is a subquery labeled C in the TRUX Activity Reporting query.
       isMultisource: false
       locationName: OPERATIONS_DATA_MODEL
       materializationType: table
@@ -1212,23 +1212,6 @@ steps:
                    ON "LF05H_COMBINED"."LF05H_ID" = "LF05D_COMBINED"."LF05D_LINK"
                   AND "LF05H_COMBINED"."SOURCE" = "LF05D_COMBINED"."SOURCE"
                 
-                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05O_COMBINED') }} "LF05O_COMBINED" 
-                   ON "LF05D_COMBINED"."LF05D_ID" = "LF05O_COMBINED"."LF05O_LINK"
-                  AND "LF05D_COMBINED"."SOURCE" = "LF05O_COMBINED"."SOURCE"
-                
-                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD24_COMBINED') }} "CD24_COMBINED"
-                   ON "LF05O_COMBINED"."LF05O_ORIG" = "CD24_COMBINED"."CD24_CODE"
-                  AND "LF05O_COMBINED"."SOURCE" = "CD24_COMBINED"."SOURCE"
-                
-                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
-                   ON "LF05H_COMBINED"."LF05H_CUST" = "CP01_COMBINED"."CP01_CUST"
-                  AND "LF05H_COMBINED"."SOURCE" = "CP01_COMBINED"."SOURCE"
-                  AND "CP01_COMBINED"."CP01_SITE" IS NULL
-                
-                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
-                   ON "LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE"
-                  AND "LF05D_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
-                
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LF10D_COMBINED') }} "LF10D_COMBINED"
                    ON "LF05D_COMBINED"."LF05D_RATEID" = "LF10D_COMBINED"."LF10D_ID"
                   AND "LF05D_COMBINED"."SOURCE" = "LF10D_COMBINED"."SOURCE"
@@ -1237,9 +1220,26 @@ steps:
                    ON "LF10D_COMBINED"."LF10D_LINK" = "LF10H_COMBINED"."LF10H_ID"
                   AND "LF10D_COMBINED"."SOURCE" = "LF10H_COMBINED"."SOURCE"
                 
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05O_COMBINED') }} "LF05O_COMBINED" 
+                   ON "LF05D_COMBINED"."LF05D_ID" = "LF05O_COMBINED"."LF05O_LINK"
+                  AND "LF05D_COMBINED"."SOURCE" = "LF05O_COMBINED"."SOURCE"
+                
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
+                   ON "LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE"
+                  AND "LF05D_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+                
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD24_COMBINED') }} "CD24_COMBINED"
+                   ON "LF05O_COMBINED"."LF05O_ORIG" = "CD24_COMBINED"."CD24_CODE"
+                  AND "LF05O_COMBINED"."SOURCE" = "CD24_COMBINED"."SOURCE"
+                
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
                    ON "LF05H_COMBINED"."LF05H_FCTY" = "LM01_COMBINED"."LM01_DSTE"
                   AND "LF05H_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
+                   ON "LF05H_COMBINED"."LF05H_CUST" = "CP01_COMBINED"."CP01_CUST"
+                  AND "LF05H_COMBINED"."SOURCE" = "CP01_COMBINED"."SOURCE"
+                  AND "CP01_COMBINED"."CP01_SITE" IS NULL
                 
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "V_CD04_COMBINED" -- Tracking Unit of Measure -> VOLUME
                    ON "LF05D_COMBINED"."LF05D_TUOM" = "V_CD04_COMBINED"."CD04_CODE"
@@ -1278,10 +1278,14 @@ steps:
                                                          THEN "LF05D_COMBINED"."LF05D_CUOM"
                                                          ELSE "LF05D_COMBINED"."LF05D_TUOM"
                                                        END
+                
+                WHERE "LF05D_COMBINED"."SORT" = 1 
+                  AND "LF05D_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+                  AND "LF05D_COMBINED"."METADATA$ACTION" = 'INSERT'
                                                        
-            name: STG_ACTIVITY_BY_ORIGIN_STP_1
+            name: STG_ACTIVITY_REPORTING_CALCULATIONS
             noLinkRefs: []
-      name: STG_ACTIVITY_BY_ORIGIN_STP_1
+      name: STG_ACTIVITY_REPORTING_CALCULATIONS
       overrideSQL: false
       schema: ""
       sqlType: Stage
