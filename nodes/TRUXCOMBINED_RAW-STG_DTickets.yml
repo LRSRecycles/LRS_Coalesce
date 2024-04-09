@@ -31,6 +31,20 @@ steps:
                     stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
                 transform: LISTAGG(DISTINCT "STG_DTickets_Join_Collections_Disposal"."LM02_DSTE"||' - '||"STG_DTickets_Join_Collections_Disposal"."LM02_NUMB"||' '||"LM04_COMBINED"."LM04_DESC",', ')
           - columnReference:
+              columnCounter: 2f30ef99-f722-4e4b-a464-ef6c10e543fe
+              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+            dataType: VARCHAR
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: DTicket Count
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: b5cd2fc9-11b9-4763-82d0-01dfa4d51ce8
+                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+                transform: COUNT(DISTINCT "STG_DTickets_Join_Collections_Disposal"."LM02_DSTE"||' - '||"STG_DTickets_Join_Collections_Disposal"."LM02_NUMB"||' '||"LM04_COMBINED"."LM04_DESC")
+          - columnReference:
               columnCounter: d718ce35-b8b4-4186-85b1-8adabe817f39
               stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
             dataType: TIMESTAMP_NTZ(9)

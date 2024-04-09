@@ -170,6 +170,27 @@ steps:
                 transform: LISTAGG("STG_NBTickets_Join_Collections_Disposal"."LM02_NUMB",', ')
             systemColumnType: None
             transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 7eac0e6a-0755-4c25-ab79-d8c9cc44f1e4
+              stepCounter: cd889ee9-4b28-42e5-a29b-d93fd52416a3
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: NB Ticket Count
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 8c7a7ea2-fc31-4acd-9d9b-b8e9e8eab256
+                    stepCounter: 5e465d11-50ae-43e7-9c9b-69f255759192
+                transform: COUNT("STG_NBTickets_Join_Collections_Disposal"."LM02_NUMB")
+            systemColumnType: None
+            transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
