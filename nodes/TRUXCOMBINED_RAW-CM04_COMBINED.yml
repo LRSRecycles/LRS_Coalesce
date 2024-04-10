@@ -1,5 +1,5 @@
 steps:
-  CM04_Combined-f47180be-fdce-4312-84ff-04027f8092c0:
+  CM04_COMBINED-f47180be-fdce-4312-84ff-04027f8092c0:
     operation:
       config:
         insertStrategy: INSERT
@@ -1224,6 +1224,48 @@ steps:
             sourceColumnReferences:
               - columnReferences: []
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5b17ea7f-7a6e-400d-bb7a-d97ce7ac1824
+              stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: _FIVETRAN_DELETED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3bcd16da-cbb0-4bd9-9d02-9078cf4b2958
+                    stepCounter: ea95290c-3716-4bb0-8e84-c32c38b79c9c
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 51b6d5ac-fdee-407a-9e2f-f41509e5e716
+              stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            config: {}
+            dataType: TIMESTAMP_TZ(9)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: aaeff91e-e345-49e4-8a98-0558a350cf43
+                    stepCounter: ea95290c-3716-4bb0-8e84-c32c38b79c9c
+                transform: ""
+            systemColumnType: None
+            transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
@@ -1234,9 +1276,9 @@ steps:
                 nodeName: CM04
             join:
               joinCondition: FROM {{ ref('TRUX_IP_COMP_RAW', 'CM04') }} "CM04"
-            name: CM04_Combined
+            name: CM04_COMBINED
             noLinkRefs: []
-      name: CM04_Combined
+      name: CM04_COMBINED
       overrideSQL: false
       schema: ""
       sqlType: "4"
