@@ -52,23 +52,6 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: 146704fd-cb27-46ad-88c9-111652d27f9b
-              stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
-            config: {}
-            dataType: VARCHAR(16777216)
-            defaultValue: ""
-            description: ""
-            name: Customer_Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
               columnCounter: a72f2b13-69e8-434e-8eb1-b89c81b4e2bc
               stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
             config: {}
@@ -92,7 +75,7 @@ steps:
             dataType: VARCHAR(16777216)
             defaultValue: ""
             description: ""
-            name: DB - Cust
+            name: Source_Customer
             nullable: true
             sourceColumnReferences:
               - columnReferences: []
@@ -109,7 +92,7 @@ steps:
             dataType: VARCHAR(16777216)
             defaultValue: ""
             description: ""
-            name: DB - Site - Cust
+            name: Source_Customer_Site
             nullable: true
             sourceColumnReferences:
               - columnReferences: []
@@ -361,129 +344,121 @@ steps:
               customSQL: |-
                 {{ stage('Override Create SQL') }}
                 	CREATE OR REPLACE VIEW {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_INVOICE_TRANSACTION_2')}} AS (
-                with 
-                trux_payments
-                as
-                (
-                    select
-                     pym."Unique ID" as "Payment ID",
-                     inv."Unique ID"as "Invoice ID",
-                     inv."Customer_Source",
-                     inv."Site Number" as "Site_Source",
-                     concat(inv.source, "Customer Number") as "DB - Cust",
-                     concat(inv.source,inv."Site Number",'-',inv."Customer Number") as "DB - Site - Cust",
-                     inv."Invoice Number" as "Invoice Number",
-                     case when pym."Payment or Adjustment" = 'P' then 'Payment'
-                          when pym."Payment or Adjustment" = 'A' then 'Adjustment Payment'
-                     else null end as "Transaction Type",
-                     pym."Payment Date" as "Transaction Date",
-                     inv."Invoice Date" as "Invoice Date",
-                     coalesce("Due Date","Invoice Date") as "Due Date",
-                     case when pym."Payment or Adjustment" = 'P' then pym."Amount" * -1
-                          when pym."Payment or Adjustment" = 'A' then pym."Amount"
-                     else null end as "Transaction Amount",
-                     inv."Amount" as "Invoice Amount",
-                     0 as "Balance",
-                     pym."Record Date" as "Record Date",
-                     pym."GL Number" as "GL Number",
-                     pym."Group ID" as "Group ID",
-                     case when pym."Payment or Adjustment" = 'P' then datediff(DAY,inv."Due Date",pym."Payment Date")
-                     else null end as "dso_from_due",
-                     case when pym."Payment or Adjustment" = 'P' then datediff(DAY, inv."Invoice Date",pym."Payment Date")
-                     else null end as "dso_from_invoice",
-                     pym.SOURCE as "Source"
-                    from
-                      LRS_PRODUCTION.financial_data_model."AR_Payment_Details" pym
-                    left join
-                      LRS_PRODUCTION.financial_data_model."AR_Invoice_Amounts" inv
-                    on
-                       pym."Link_Source" = inv."ID_Source"
-                    where
-                      pym.source not LIKE '%TOWER%'
-                 
-                )
-                ,
-                trux_invoices as (
-                   select
-                     null as "Payment ID",
-                     "Unique ID" as "Invoice ID",
-                     "Customer_Source" as "Customer_Source",
-                     "Site Number" as "Site_Source",
-                     concat(source,"Customer Number") as "DB - Cust",
-                      concat(source,"Site Number",'-',"Customer Number") as "DB - Site - Cust",
-                      "Invoice Number" as "Invoice Number",
-                     case when contains("Invoice Number", 'A') = TRUE then 'Invoice Adjustment'
-                          when contains("Invoice Number", 'A') = FALSE then 'Invoice'
-                     else null end as "Transaction Type",
-                    -- "Due Date" as "Transaction Date",
-                     "Invoice Date" as "Transaction Date",
-                     "Invoice Date" as "Invoice Date",
-                     coalesce("Due Date","Invoice Date") as "Due Date",
-                     "Amount" as "Transaction Amount",
-                     "Amount" as "Invoice Amount",
-                     0 as "Balance",
-                     null as "Record Date",
-                     null as "GL Number",
-                     null as "Group ID",
-                     null as "dso_from_due",
-                     null as "dso_from_invoice",
-                     source as "Source"
-                   from
-                    LRS_PRODUCTION.financial_data_model."AR_Invoice_Amounts" 
-                   where
-                     source not LIKE '%TOWER%'
+                WITH 
+                trux_payments AS (
+                SELECT pym."Unique ID" AS "Payment ID"
+                     , inv."Unique ID" AS "Invoice ID"
+                     --, inv."Customer_Source"
+                     , inv."Site Number" AS "Site_Source"
+                     , CONCAT(inv.source, '-', "Customer Number") AS "Source_Customer"
+                     , CONCAT(inv.source, '-', inv."Customer Number", '-', inv."Site Number") AS "Source_Customer_Site"
+                     , inv."Invoice Number" AS "Invoice Number"
+                     , CASE 
+                         WHEN pym."Payment or Adjustment" = 'P' THEN 'Payment'
+                         WHEN pym."Payment or Adjustment" = 'A' THEN 'Adjustment Payment'
+                         ELSE NULL 
+                       END AS "Transaction Type"
+                     , pym."Payment Date" AS "Transaction Date"
+                     , inv."Invoice Date" AS "Invoice Date"
+                     , COALESCE("Due Date","Invoice Date") AS "Due Date"
+                     , CASE 
+                         WHEN pym."Payment or Adjustment" = 'P' THEN pym."Amount" * -1
+                         WHEN pym."Payment or Adjustment" = 'A' THEN pym."Amount"
+                         ELSE NULL 
+                       END AS "Transaction Amount"
+                     , inv."Amount" AS "Invoice Amount"
+                     , 0 AS "Balance"
+                     , pym."Record Date" AS "Record Date"
+                     , pym."GL Number" AS "GL Number"
+                     , pym."Group ID" AS "Group ID"
+                     , CASE 
+                         WHEN pym."Payment or Adjustment" = 'P' THEN DATEDIFF(DAY,inv."Due Date",pym."Payment Date")
+                         ELSE NULL 
+                       END AS "dso_from_due"
+                     , CASE 
+                         WHEN pym."Payment or Adjustment" = 'P' THEN DATEDIFF(DAY, inv."Invoice Date",pym."Payment Date")
+                         ELSE NULL 
+                       END AS "dso_from_invoice"
+                     , pym."Source" AS "Source"
+                  FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Payment_Details" pym
+                  LEFT JOIN LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Invoice_Amounts" inv
+                    ON pym."Link_Source" = inv."ID_Source"
+                 WHERE pym."Source" NOT LIKE '%TOWER%'
                 ),
-                tower_open_balance as (
-                select 
-                 null as "Payment ID",
-                 a.invoiceuid as "Invoice ID",
-                 a.custid as "Customer_Source",
-                 a.siteid as "Site_Source",
-                 a.companyid||' - TOWER'||a.custid as "DB - Cust",
-                 a.companyid||' - TOWER'||a.siteid||'-'||a.custid as "DB - Site - Cust",
-                 b.invoiceid as "Invoice Number",
-                 'Open Balance' as "Transaction Type",
-                 b.invoicedate as "Transaction Date",
-                 b.invoicedate as "Invoice Date",
-                 coalesce(a.duedate, b.invoicedate) as "Due Date",
-                 a.balance as "Transaction Amount",
-                 a.originalamount as "Invoice Amount",
-                 0 as "Balance",
-                 null as "Record Date",
-                 a.creditacct as "GL Number",
-                 a.companyid as "Group ID",
-                 null as "dso_from_due",
-                 null as "dso_from_invoice",
-                 a.companyid||' - TOWER' as "Source"
-                from
-                  lrs_raw.tower_raw.ardetail a
-                left join
-                  lrs_raw.tower_raw.invoice b
-                on
-                  a.invoiceuid = b.invoiceuid
-                where
-                 a.balance <> 0
-                 and
-                 a.status <> 2
+                trux_invoices AS (
+                SELECT NULL AS "Payment ID"
+                     , "Unique ID" AS "Invoice ID"
+                     --,"Customer_Source" AS "Customer_Source"
+                     , "Site Number" AS "Site_Source"
+                     , CONCAT(source, '-', "Customer Number") AS "Source_Customer"
+                     , CONCAT(source, '-', "Customer Number", '-', "Site Number") AS "Source_Customer_Site"
+                     , "Invoice Number" AS "Invoice Number"
+                     , CASE 
+                         WHEN CONTAINS("Invoice Number", 'A') = TRUE THEN 'Invoice Adjustment'
+                         WHEN CONTAINS("Invoice Number", 'A') = FALSE THEN 'Invoice'
+                         ELSE NULL 
+                       END AS "Transaction Type"
+                     --, "Due Date" AS "Transaction Date"
+                     , "Invoice Date" AS "Transaction Date"
+                     , "Invoice Date" AS "Invoice Date"
+                     , COALESCE("Due Date","Invoice Date") AS "Due Date"
+                     , "Amount" AS "Transaction Amount"
+                     , "Amount" AS "Invoice Amount"
+                     , 0 AS "Balance"
+                     , NULL AS "Record Date"
+                     , NULL AS "GL Number"
+                     , NULL AS "Group ID"
+                     , NULL AS "dso_from_due"
+                     , NULL AS "dso_from_invoice"
+                     , source AS "Source"
+                  FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Invoice_Amounts" 
+                 WHERE source NOT LIKE '%TOWER%'
+                ),
+                tower_open_balance AS (
+                SELECT NULL AS "Payment ID"
+                     , a.invoiceuid AS "Invoice ID"
+                     --, a.custid AS "Customer_Source"
+                     , a.siteid AS "Site_Source"
+                     , concat('TOWER_', a.companyid, '-', a.custid) AS "Source_Customer"
+                     , concat('TOWER_', a.companyid, '-', a.custid, '-', a.siteid)as "Source_Customer_Site"
+                     , b.invoiceid AS "Invoice Number"
+                     , 'Open Balance' AS "Transaction Type"
+                     , b.invoicedate AS "Transaction Date"
+                     , b.invoicedate AS "Invoice Date"
+                     , coalesce(a.duedate, b.invoicedate) AS "Due Date"
+                     , a.balance AS "Transaction Amount"
+                     , a.originalamount AS "Invoice Amount"
+                     , 0 AS "Balance"
+                     , NULL AS "Record Date"
+                     , a.creditacct AS "GL Number"
+                     , a.companyid AS "Group ID"
+                     , NULL AS "dso_from_due"
+                     , NULL AS "dso_from_invoice"
+                     , CONCAT('TOWER_', a.companyid) AS "Source"
+                  FROM LRS_RAW.TOWER_RAW.ARDETAIL a
+                  LEFT JOIN LRS_RAW.TOWER_RAW.INVOICE b
+                    ON a.invoiceuid = b.invoiceuid
+                 WHERE a.balance <> 0
+                   AND a.status <> 2
                 )
-                
-                /*tower_open_balance as(
+                /*
+                tower_open_balance as (
                   select
-                    null as "Payment ID",
-                    inv."Unique ID" as "Invoice ID",
-                    inv."Customer_Source" as "Customer Source",
-                    concat(inv.source,inv."Site Number",'-',inv."Customer Number") as "DB - Site - Cust",
-                    inv."Invoice Number" as "Invoice Number",
-                    'Open Balance' as "Transaction Type",
-                    inv."Due Date" as "Transaction Date",
-                    inv."Invoice Date" as "Invoice Date",
-                    opn.balance as "Transaction Amount",
-                    opn.originalamount as "Invoice Amount",
-                    0 as "Balance",
-                    null as "Record Date",
-                    null as "GL Number",
-                    null as "Group ID",
-                    inv.source as "Source"
+                    NULL AS "Payment ID",
+                    inv."Unique ID" AS "Invoice ID",
+                    inv."Customer_Source" AS "Customer Source",
+                    concat(inv.source,inv."Site Number",'-',inv."Customer Number") AS "DB - Site - Cust",
+                    inv."Invoice Number" AS "Invoice Number",
+                    'Open Balance' AS "Transaction Type",
+                    inv."Due Date" AS "Transaction Date",
+                    inv."Invoice Date" AS "Invoice Date",
+                    opn.balance AS "Transaction Amount",
+                    opn.originalamount AS "Invoice Amount",
+                    0 AS "Balance",
+                    NULL AS "Record Date",
+                    NULL AS "GL Number",
+                    NULL AS "Group ID",
+                    inv.source AS "Source"
                   from
                     LRS_DEVELOPMENT.financial_data_model."AR_Invoice_Amounts" inv
                   left join
@@ -493,29 +468,20 @@ steps:
                   where 
                     inv.source = 'TOWER'
                   and
-                    opn.billcustid is not null
-                
-                )*/
-                select
-                  *
-                from
-                  trux_invoices
+                    opn.billcustid is not NULL
+                )
+                */
+
+                SELECT * FROM trux_invoices
                   
-                union all
-                
-                select
-                
-                *
-                from
-                  trux_payments
-                
-                union all
-                
-                select
-                  *
-                from
-                tower_open_balance
-                	)
+                UNION ALL
+
+                SELECT * FROM trux_payments
+
+                UNION ALL
+
+                SELECT * FROM tower_open_balance
+                )
             dependencies: []
             join:
               joinCondition: ""
