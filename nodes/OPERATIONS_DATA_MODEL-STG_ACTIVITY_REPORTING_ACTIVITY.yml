@@ -87,7 +87,7 @@ steps:
               columnCounter: d206477e-37a0-4d6a-b3a9-03f52a558679
               stepCounter: 90496a96-3968-47ef-8f1a-de57a55d01d0
             config: {}
-            dataType: TIMESTAMP_TZ(9)
+            dataType: TIMESTAMP_NTZ(9)
             defaultValue: ""
             description: ""
             keyColumnType: None
@@ -108,7 +108,7 @@ steps:
               columnCounter: 5b8e7cb9-53e8-4454-8f5d-4d7b1af56dc5
               stepCounter: 90496a96-3968-47ef-8f1a-de57a55d01d0
             config: {}
-            dataType: TIMESTAMP_TZ(9)
+            dataType: TIMESTAMP_NTZ(9)
             defaultValue: ""
             description: ""
             keyColumnType: None
@@ -297,7 +297,7 @@ steps:
               columnCounter: b0401a87-d687-4343-9bf5-cd7aedf14e38
               stepCounter: 90496a96-3968-47ef-8f1a-de57a55d01d0
             config: {}
-            dataType: TIMESTAMP_TZ(9)
+            dataType: TIMESTAMP_NTZ(9)
             defaultValue: ""
             description: ""
             keyColumnType: None
@@ -1584,50 +1584,50 @@ steps:
             join:
               joinCondition: |2-
                  FROM {{ ref('TRUXCOMBINED_RAW', 'LF05H_COMBINED') }} "LF05H_COMBINED"
-                
+
                 INNER JOIN {{ ref('OPERATIONS_DATA_MODEL', 'STG_ACTIVITY_REPORTING_CALCULATIONS') }} "STG_ACTIVITY_REPORTING_CALCULATIONS"
                    ON "LF05H_COMBINED"."LF05H_ID" = "STG_ACTIVITY_REPORTING_CALCULATIONS"."LF05H_ID"
                   AND "LF05H_COMBINED"."SOURCE" = "STG_ACTIVITY_REPORTING_CALCULATIONS"."SOURCE"
-                
+
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
                    ON "LF05H_COMBINED"."LF05H_FCTY" = "LM01_COMBINED"."LM01_DSTE"
                   AND "LF05H_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
-                
+
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD27_COMBINED') }} "CD27_COMBINED"
                    ON "LF05H_COMBINED"."LF05H_TYPE" = "CD27_COMBINED"."CD27_CODE"
                   AND "LF05H_COMBINED"."SOURCE" = "CD27_COMBINED"."SOURCE"
-                
+
                  LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_MASTER') }} "VW_CUSTOMER_MASTER"
                    ON "LF05H_COMBINED"."LF05H_CUST" = "VW_CUSTOMER_MASTER"."Customer Number"
                   AND "LF05H_COMBINED"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
-                
+
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
                    ON "VW_CUSTOMER_MASTER"."Source" = "CP01_COMBINED"."SOURCE"
                   AND "VW_CUSTOMER_MASTER"."Customer Number" = "CP01_COMBINED"."CP01_CUST"
                   AND "CP01_COMBINED"."CP01_SITE" IS NULL
-                
+
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'TR01LF_COMBINED') }} "TR01LF_COMBINED"
                    ON "LF05H_COMBINED"."LF05H_TRUK" = "TR01LF_COMBINED"."TR01LF_ID"
                   AND "LF05H_COMBINED"."SOURCE" = "TR01LF_COMBINED"."SOURCE"
-                
+
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'TR02LF_COMBINED') }} "TR02LF_COMBINED"
                    ON "LF05H_COMBINED"."LF05H_CONT" = "TR02LF_COMBINED"."TR02LF_ID"
                   AND "LF05H_COMBINED"."SOURCE" = "TR02LF_COMBINED"."SOURCE"
-                
+
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD13_COMBINED') }} "CD13_COMBINED"
                    ON "TR01LF_COMBINED"."TR01LF_TYPE" = "CD13_COMBINED"."CD13_CODE"
                   AND "TR01LF_COMBINED"."SOURCE" = "CD13_COMBINED"."SOURCE"
-                
+
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
                    ON "STG_ACTIVITY_REPORTING_CALCULATIONS"."LF05D_BUOM" = "LM06_COMBINED"."LM06_UOM2"
                   AND "STG_ACTIVITY_REPORTING_CALCULATIONS"."SOURCE" = "LM06_COMBINED"."SOURCE"
-                
+
                   AND "LM01_COMBINED"."LM01_RUOM" = "LM06_COMBINED"."LM06_UOM1"
                   AND "LM01_COMBINED"."SOURCE" = "LM06_COMBINED"."SOURCE"
-                
+
                  LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                    ON "LF05H_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-                
+
                 WHERE "LF05H_COMBINED"."LF05H_VOID" = 0 -- tickets are not voided
                   AND "LF05H_COMBINED"."LF05H_NUMB" > 0  
             name: STG_ACTIVITY_REPORTING_ACTIVITY
