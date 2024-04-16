@@ -83,10 +83,10 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS
             join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_COLLECTIONS_DISPOSAL_TICKETS"
-                WHERE YEAR("LM02_RDATE")>=YEAR(CURRENT_DATE())-2
-                GROUP BY "LM02_RDATE", "SOURCE","LM02_ROUT"
+              joinCondition: |2-
+                 FROM {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_COLLECTIONS_DISPOSAL_TICKETS"
+                WHERE YEAR("LM02_RDATE") >= YEAR(CURRENT_DATE())-2
+                GROUP BY "LM02_RDATE", "SOURCE", "LM02_ROUT"
             name: STG_TICKETCOUNT_ALL_LM02
             noLinkRefs: []
       name: STG_TICKETCOUNT_ALL_LM02

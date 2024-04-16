@@ -685,9 +685,12 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: LM02_COMBINED
             join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }} "LM02_COMBINED"
-                WHERE lm02_combined."SORT" = 1 and "LM02_COMBINED"."_FIVETRAN_DELETED" =FALSE and "LM02_COMBINED"."LM02_OWN" = 1 and "METADATA$ACTION" = 'INSERT'
+              joinCondition: |2-
+                 FROM {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }} "LM02_COMBINED"
+                WHERE lm02_combined."SORT" = 1 
+                  and "LM02_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+                  and "LM02_COMBINED"."LM02_OWN" = 1 
+                  and "METADATA$ACTION" = 'INSERT'
             name: STG_COLLECTIONS_DISPOSAL_TICKETS
             noLinkRefs: []
       name: STG_COLLECTIONS_DISPOSAL_TICKETS
