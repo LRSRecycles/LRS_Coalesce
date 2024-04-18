@@ -1,5 +1,5 @@
 steps:
-  Service_COMBINED-fcf37f89-5794-47c7-83e2-7dc1b52e6b30:
+  SERVICE_COMBINED-fcf37f89-5794-47c7-83e2-7dc1b52e6b30:
     operation:
       config:
         insertStrategy: INSERT
@@ -23,7 +23,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Service Number
+            name: Service UID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -37,7 +37,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Service ID
+            name: Service Number
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -236,9 +236,9 @@ steps:
                 nodeName: SERVICE
             join:
               joinCondition: FROM {{ ref('TOWER_RAW', 'SERVICE') }} "SERVICE"
-            name: Service_COMBINED
+            name: SERVICE_COMBINED
             noLinkRefs: []
-      name: Service_COMBINED
+      name: SERVICE_COMBINED
       overrideSQL: false
       schema: ""
       sqlType: Stage

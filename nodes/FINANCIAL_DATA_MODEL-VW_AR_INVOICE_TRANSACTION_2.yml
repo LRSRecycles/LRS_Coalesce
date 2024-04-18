@@ -439,7 +439,7 @@ steps:
                   LEFT JOIN LRS_RAW.TOWER_RAW.INVOICE b
                     ON a.invoiceuid = b.invoiceuid
                  WHERE a.balance <> 0
-                   AND a.status <> 2
+                   AND a.status NOT IN (0, 2)
                 )
                 /*
                 tower_open_balance as (
