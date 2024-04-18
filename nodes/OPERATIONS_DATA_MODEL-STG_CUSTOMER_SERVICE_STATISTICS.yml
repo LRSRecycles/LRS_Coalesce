@@ -387,14 +387,16 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: SM01_COMBINED
             join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'SM01_COMBINED') }} "SM01_COMBINED"
-                LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_SITE_SERVICE_MASTER') }} "CUSTOMER_SITE_SERVICE_MASTER"
-                ON "SM01_COMBINED"."SM01_CUST" = "CUSTOMER_SITE_SERVICE_MASTER"."Customer Number"
-                AND "SM01_COMBINED"."SM01_SITE" = "CUSTOMER_SITE_SERVICE_MASTER"."Site Number"
-                AND "SM01_COMBINED"."SM01_SERV" = "CUSTOMER_SITE_SERVICE_MASTER"."Service Number"
-                AND "SM01_COMBINED"."SOURCE" = "CUSTOMER_SITE_SERVICE_MASTER"."SOURCE"
-                where "Sort" = 1 and "METADATA$ACTION" = 'INSERT' and "_FIVETRAN_DELETED" = FALSE
+              joinCondition: |2-
+                 FROM {{ ref('TRUXCOMBINED_RAW', 'SM01_COMBINED') }} "SM01_COMBINED"
+                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_SITE_SERVICE_MASTER') }} "CUSTOMER_SITE_SERVICE_MASTER"
+                   ON "SM01_COMBINED"."SM01_CUST" = "CUSTOMER_SITE_SERVICE_MASTER"."Customer Number"
+                  AND "SM01_COMBINED"."SM01_SITE" = "CUSTOMER_SITE_SERVICE_MASTER"."Site Number"
+                  AND "SM01_COMBINED"."SM01_SERV" = "CUSTOMER_SITE_SERVICE_MASTER"."Service Number"
+                  AND "SM01_COMBINED"."SOURCE" = "CUSTOMER_SITE_SERVICE_MASTER"."Source"
+                WHERE "Sort" = 1 
+                  AND "METADATA$ACTION" = 'INSERT'
+                  AND "_FIVETRAN_DELETED" = FALSE
             name: STG_CUSTOMER_SERVICE_STATISTICS
             noLinkRefs: []
       name: STG_CUSTOMER_SERVICE_STATISTICS
