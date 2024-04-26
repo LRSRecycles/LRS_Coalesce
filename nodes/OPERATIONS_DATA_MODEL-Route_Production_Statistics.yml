@@ -457,12 +457,14 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: RM05_COMBINED
             join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
-                LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'ROUTE_MASTER') }} "ROUTE_MASTER"
-                ON "RM05_COMBINED"."RM05_ROUT" = "ROUTE_MASTER"."Route Number"
-                AND "RM05_COMBINED"."SOURCE" = "ROUTE_MASTER"."SOURCE"
-                WHERE "SORT" =1 and "_FIVETRAN_DELETED" = FALSE and "METADATA$ACTION" = 'INSERT'
+              joinCondition: |2-
+                 FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
+                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'ROUTE_MASTER') }} "ROUTE_MASTER"
+                   ON "RM05_COMBINED"."RM05_ROUT" = "ROUTE_MASTER"."Route Number"
+                  AND "RM05_COMBINED"."SOURCE" = "ROUTE_MASTER"."SOURCE"
+                WHERE "SORT" = 1 
+                  and "_FIVETRAN_DELETED" = FALSE 
+                  and "METADATA$ACTION" = 'INSERT'
             name: Route_Production_Statistics
             noLinkRefs: []
       name: Route_Production_Statistics

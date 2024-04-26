@@ -127,7 +127,7 @@ steps:
               columnCounter: 0b873c53-d9c8-4b0d-bb2e-2e4544150c71
               stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
             dataType: VARCHAR
-            description: ""
+            description: Joins CD13
             hashColumns: []
             hashDetails: null
             name: Type
@@ -145,7 +145,7 @@ steps:
               columnCounter: 53d56df5-b1ad-4dea-badb-08917582768b
               stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
             dataType: VARCHAR(2)
-            description: ""
+            description: Joins CD04
             hashColumns: []
             hashDetails: null
             name: Odometer UOM
@@ -268,7 +268,6 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            isBusinessKey: true
             name: Active Flag
             nullable: false
             sourceColumnReferences:
@@ -345,40 +344,6 @@ steps:
               - columnReferences: []
                 transform: ""
           - columnReference:
-              columnCounter: a733f915-cf9f-47b5-9654-eeaddd12040c
-              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
-            dataType: VARCHAR(50)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: VIN
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3a5cba17-b69f-45ae-9f47-1f719f87f782
-                    stepCounter: 0957e166-ae04-4009-8d30-9868721628af
-                transform: ""
-              - columnReferences:
-                  - columnCounter: a95c9e93-9a08-4fc5-aef1-39808e17fd6f
-                    stepCounter: 9882f8ba-92cd-4ec8-9ecd-ced9bd0088cc
-                transform: ""
-          - columnReference:
-              columnCounter: 90681a5f-7b11-4eaa-b321-4113619788df
-              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Retired Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8b582525-63dd-4e32-946f-28cadd41a4a4
-                    stepCounter: 0957e166-ae04-4009-8d30-9868721628af
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
               columnCounter: ad196538-0f5b-4830-b930-3ae338a81335
               stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
             dataType: NUMBER(38,0)
@@ -408,6 +373,40 @@ steps:
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: d7b1d31b-5612-4e8b-931d-a76db489611a
+                    stepCounter: 0957e166-ae04-4009-8d30-9868721628af
+                transform: ""
+              - columnReferences: []
+                transform: ""
+          - columnReference:
+              columnCounter: a733f915-cf9f-47b5-9654-eeaddd12040c
+              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
+            dataType: VARCHAR(50)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: VIN
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3a5cba17-b69f-45ae-9f47-1f719f87f782
+                    stepCounter: 0957e166-ae04-4009-8d30-9868721628af
+                transform: ""
+              - columnReferences:
+                  - columnCounter: a95c9e93-9a08-4fc5-aef1-39808e17fd6f
+                    stepCounter: 9882f8ba-92cd-4ec8-9ecd-ced9bd0088cc
+                transform: ""
+          - columnReference:
+              columnCounter: 90681a5f-7b11-4eaa-b321-4113619788df
+              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: Retired Date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 8b582525-63dd-4e32-946f-28cadd41a4a4
                     stepCounter: 0957e166-ae04-4009-8d30-9868721628af
                 transform: ""
               - columnReferences: []
@@ -894,6 +893,52 @@ steps:
                 transform: ""
               - columnReferences: []
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f6e3530c-0d27-41e7-9ae6-fc6c0232df14
+              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
+            config: {}
+            dataType: NUMBER(18,2)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: TC01 Truck Cost Total
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 065f1e34-07db-4d70-b7d3-ea758bc934b2
+                    stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+                transform: "\"TRUCK_COST_CURRENT\".\"TC01_CST2\"+\"TRUCK_COST_CURRENT\".\"TC01_CST1\""
+              - columnReferences: []
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 193abc3f-6bff-40a5-81b0-5f0c2e4dc4bb
+              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Reason Description
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 578e6d11-f8a6-4cef-b207-eff3f6e5484f
+                    stepCounter: aa713eb3-1f04-45a5-b868-1c08077e17f6
+                transform: ""
+              - columnReferences: []
+                transform: ""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: c93e60ea-3097-4af7-90f3-28aea9c93e58
               stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
@@ -1031,52 +1076,6 @@ steps:
                 transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
               - columnReferences: []
                 transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: f6e3530c-0d27-41e7-9ae6-fc6c0232df14
-              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: TC01 Truck Cost Total
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 065f1e34-07db-4d70-b7d3-ea758bc934b2
-                    stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-                transform: "\"TRUCK_COST_CURRENT\".\"TC01_CST2\"+\"TRUCK_COST_CURRENT\".\"TC01_CST1\""
-              - columnReferences: []
-                transform: ""
-            systemColumnType: None
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 193abc3f-6bff-40a5-81b0-5f0c2e4dc4bb
-              stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Reason Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 578e6d11-f8a6-4cef-b207-eff3f6e5484f
-                    stepCounter: aa713eb3-1f04-45a5-b868-1c08077e17f6
-                transform: ""
-              - columnReferences: []
-                transform: ""
-            systemColumnType: None
-            transform: ""
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
@@ -1093,14 +1092,15 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: TRUCK_COST_CURRENT
             join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'TR01_COMBINED') }} "TR01_COMBINED"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'TRUCK_COST_CURRENT') }} "TRUCK_COST_CURRENT"
-                ON "TR01_COMBINED"."TR01_NUMB" = "TRUCK_COST_CURRENT"."TC01_NUMB"
-                    and "TR01_COMBINED"."SOURCE" = "TRUCK_COST_CURRENT"."SOURCE"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD15_COMBINED') }} "CD15_COMBINED"
-                ON "TR01_COMBINED"."TR01_REACODE" = "CD15_COMBINED"."CD15_CODE"
-                    and "TR01_COMBINED"."SOURCE" = "CD15_COMBINED"."SOURCE"
+              joinCondition: |2-
+                 FROM {{ ref('TRUXCOMBINED_RAW', 'TR01_COMBINED') }} "TR01_COMBINED"
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'TRUCK_COST_CURRENT') }} "TRUCK_COST_CURRENT"
+                   ON "TR01_COMBINED"."TR01_NUMB" = "TRUCK_COST_CURRENT"."TC01_NUMB"
+                  and "TR01_COMBINED"."SOURCE" = "TRUCK_COST_CURRENT"."SOURCE"
+                
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD15_COMBINED') }} "CD15_COMBINED"
+                   ON "TR01_COMBINED"."TR01_REACODE" = "CD15_COMBINED"."CD15_CODE"
+                  and "TR01_COMBINED"."SOURCE" = "CD15_COMBINED"."SOURCE"
                 WHERE "TR01_COMBINED"."_FIVETRAN_DELETED" = FALSE
             name: TRUX TRUCK MASTER
             noLinkRefs: []

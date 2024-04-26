@@ -205,25 +205,43 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Driver Registration Date
+            name: License Renewal Date
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 125bf066-968a-47d1-88de-3e4b3b072383
                     stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
                 transform: ""
-          - columnReference:
-              columnCounter: cbc24067-c503-4869-9d4c-24e2fd1dbe87
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f8ca2a65-6bc7-474d-8415-1f890d535db0
               stepCounter: 87c76869-c6c4-4dc4-8802-e39581e13349
-            dataType: VARCHAR
+            dataType: TIMESTAMP_NTZ(9)
             description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
+            name: Medical Renewal Date
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: 76e94c93-9907-4a8b-8d38-47cd2be41958
+                  - columnCounter: 8ddcffe1-5419-4293-a8a7-c290a2fd4ad3
+                    stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+                transform: ""
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2738449e-1143-48ec-91df-cf6bebd4d6ab
+              stepCounter: 87c76869-c6c4-4dc4-8802-e39581e13349
+            dataType: VARCHAR
+            description: ""
+            name: Note
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1570c019-587a-4767-9572-33ccf6839e35
                     stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
                 transform: ""
           - columnReference:
@@ -268,6 +286,20 @@ steps:
                   - columnCounter: d5da55c6-d9f4-4acd-a068-2cf924396739
                     stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
                 transform: ""
+          - columnReference:
+              columnCounter: cbc24067-c503-4869-9d4c-24e2fd1dbe87
+              stepCounter: 87c76869-c6c4-4dc4-8802-e39581e13349
+            dataType: VARCHAR
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: SOURCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 76e94c93-9907-4a8b-8d38-47cd2be41958
+                    stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+                transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
@@ -279,9 +311,11 @@ steps:
               - locationName: MASTER_DATA_CLEAN
                 nodeName: DRIVER_MASTER
             join:
-              joinCondition: |-
-                FROM {{ ref('MASTER_DATA_CLEAN', 'DRIVER_MASTER') }} "DRIVER_MASTER"
-                WHERE "SYSTEM_CURRENT_FLAG" = 'Y'
+              joinCondition: |2-
+                 FROM {{ ref('MASTER_DATA_CLEAN', 'DRIVER_MASTER') }} "DRIVER_MASTER"
+                WHERE "SYSTEM_VERSION" = 1
+                  AND "SYSTEM_CURRENT_FLAG" = 'Y'
+                  
             name: VW_DRIVER_MASTER
             noLinkRefs: []
       name: VW_DRIVER_MASTER

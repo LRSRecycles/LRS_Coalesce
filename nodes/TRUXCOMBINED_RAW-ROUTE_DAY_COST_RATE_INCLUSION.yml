@@ -383,14 +383,17 @@ steps:
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
-          - aliases: {}
+          - aliases:
+              ROUTE_DAY_COST_JOIN: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: ROUTE_DAY_COST_JOIN
             join:
-              joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_COST_JOIN') }} "ROUTE_DAY_COST_JOIN"
+              joinCondition: |
+                FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_COST_JOIN') }} "ROUTE_DAY_COST_JOIN"
+                
             name: ROUTE_DAY_COST_RATE_INCLUSION
             noLinkRefs: []
       name: ROUTE_DAY_COST_RATE_INCLUSION

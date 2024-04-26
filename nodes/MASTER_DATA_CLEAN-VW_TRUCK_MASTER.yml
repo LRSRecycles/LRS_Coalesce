@@ -745,20 +745,6 @@ steps:
                     stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
                 transform: ""
           - columnReference:
-              columnCounter: 4584129b-583d-4d83-be7a-e857be15eac5
-              stepCounter: 2c926111-740b-4354-b7f6-d535ed524417
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c93e60ea-3097-4af7-90f3-28aea9c93e58
-                    stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
-                transform: ""
-          - columnReference:
               columnCounter: 3288839f-d2d3-4cb6-8ffd-e7b71ad88ead
               stepCounter: 2c926111-740b-4354-b7f6-d535ed524417
             dataType: NUMBER(18,2)
@@ -786,6 +772,20 @@ steps:
                   - columnCounter: 193abc3f-6bff-40a5-81b0-5f0c2e4dc4bb
                     stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
                 transform: ""
+          - columnReference:
+              columnCounter: 4584129b-583d-4d83-be7a-e857be15eac5
+              stepCounter: 2c926111-740b-4354-b7f6-d535ed524417
+            dataType: VARCHAR
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: SOURCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: c93e60ea-3097-4af7-90f3-28aea9c93e58
+                    stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
+                transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
@@ -797,9 +797,10 @@ steps:
               - locationName: MASTER_DATA_CLEAN
                 nodeName: TRUCK_MASTER
             join:
-              joinCondition: |-
-                FROM {{ ref('MASTER_DATA_CLEAN', 'TRUCK_MASTER') }} "TRUCK_MASTER"
-                where "SYSTEM_CURRENT_FLAG" = 'Y' and "Active Flag" = 'true'
+              joinCondition: |2-
+                 FROM {{ ref('MASTER_DATA_CLEAN', 'TRUCK_MASTER') }} "TRUCK_MASTER"
+                WHERE "SYSTEM_CURRENT_FLAG" = 'Y' 
+                  AND "Active Flag" = 'true'
             name: VW_TRUCK_MASTER
             noLinkRefs: []
       name: VW_TRUCK_MASTER

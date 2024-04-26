@@ -180,11 +180,11 @@ steps:
           - columnReference:
               columnCounter: 4ec768e2-9d17-4c5c-b640-6a590eb2e819
               stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR
+            dataType: BOOLEAN
             description: ""
             hashColumns: []
             hashDetails: null
-            isBusinessKey: true
+            isChangeTracking: true
             name: Active Flag
             nullable: false
             sourceColumnReferences:
@@ -199,7 +199,7 @@ steps:
           - columnReference:
               columnCounter: eda039a5-ac3c-460d-beae-58f064e2a255
               stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(5)
+            dataType: BOOLEAN
             description: ""
             hashColumns: []
             hashDetails: null
@@ -215,7 +215,7 @@ steps:
           - columnReference:
               columnCounter: 878a83e6-9e25-4097-88ae-6f79db07ac5d
               stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(10)
+            dataType: VARCHAR(20)
             description: ""
             hashColumns: []
             hashDetails: null
@@ -233,7 +233,7 @@ steps:
           - columnReference:
               columnCounter: 339314d6-85a6-4b15-97a5-9bc876714c5b
               stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(20)
+            dataType: VARCHAR(40)
             description: ""
             hashColumns: []
             hashDetails: null
@@ -271,7 +271,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Driver Registration Date
+            name: License Renewal Date
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -282,6 +282,107 @@ steps:
                   - columnCounter: 4b15b87b-f025-4bfc-aa09-f7ce1082537a
                     stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
                 transform: ""
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 8ddcffe1-5419-4293-a8a7-c290a2fd4ad3
+              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            name: Medical Renewal Date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3d560a03-51e1-4bd3-9302-c3367f033ed8
+                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+                transform: ""
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1570c019-587a-4767-9572-33ccf6839e35
+              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+            dataType: VARCHAR
+            description: ""
+            name: Note
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 9f9414d8-30e9-4c4e-85e6-46abab9edd2f
+                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 03a210a7-3172-4400-86cc-dbbbc0f27051
+              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+            config: {}
+            dataType: NUMBER(18,2)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Employee Cost (EC01) Combined
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
+                    stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
+                transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\"+\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\""
+              - columnReferences: []
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c01c489f-ca04-494a-9e05-1bbd7ad71c24
+              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Full Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "\"RM04_COMBINED\".\"RM04_FNAM\"||' '||\"RM04_COMBINED\".\"RM04_LNAM\""
+              - columnReferences: []
+                transform: INITCAP("WORKER_COMBINED"."FIRSTNAME"||' '||"WORKER_COMBINED"."LASTNAME")
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: d5da55c6-d9f4-4acd-a068-2cf924396739
+              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Formatted Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "\"RM04_COMBINED\".\"RM04_LNAM\"||', '||\"RM04_COMBINED\".\"RM04_FNAM\""
+              - columnReferences: []
+                transform: INITCAP("WORKER_COMBINED"."LASTNAME"||', '||"WORKER_COMBINED"."FIRSTNAME")
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: 76e94c93-9907-4a8b-8d38-47cd2be41958
               stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
@@ -421,75 +522,6 @@ steps:
                 transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
               - columnReferences: []
                 transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 03a210a7-3172-4400-86cc-dbbbc0f27051
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Employee Cost (EC01) Combined
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
-                    stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
-                transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\"+\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\""
-              - columnReferences: []
-                transform: ""
-            systemColumnType: None
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c01c489f-ca04-494a-9e05-1bbd7ad71c24
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Full Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"RM04_COMBINED\".\"RM04_FNAM\"||' '||\"RM04_COMBINED\".\"RM04_LNAM\""
-              - columnReferences: []
-                transform: INITCAP("WORKER_COMBINED"."FIRSTNAME"||' '||"WORKER_COMBINED"."LASTNAME")
-            systemColumnType: None
-            transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: d5da55c6-d9f4-4acd-a068-2cf924396739
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Formatted Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"RM04_COMBINED\".\"RM04_LNAM\"||', '||\"RM04_COMBINED\".\"RM04_FNAM\""
-              - columnReferences: []
-                transform: INITCAP("WORKER_COMBINED"."LASTNAME"||', '||"WORKER_COMBINED"."FIRSTNAME")
-            systemColumnType: None
-            transform: ""
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
@@ -503,11 +535,11 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: RM04_COMBINED
             join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'EMPLOYEE_COST_CURRENT') }} "EMPLOYEE_COST_CURRENT"
-                ON "RM04_COMBINED"."RM04_NUMB" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
-                    AND "RM04_COMBINED"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
+              joinCondition: |2-
+                  FROM {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
+                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'EMPLOYEE_COST_CURRENT') }} "EMPLOYEE_COST_CURRENT"
+                    ON "RM04_COMBINED"."RM04_NUMB" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
+                   AND "RM04_COMBINED"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
             name: TRUX DRIVER MASTER
             noLinkRefs: []
           - aliases:

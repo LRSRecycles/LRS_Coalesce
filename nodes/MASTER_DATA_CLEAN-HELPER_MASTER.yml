@@ -54,6 +54,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
+            isChangeTracking: true
             name: First Name
             nullable: true
             sourceColumnReferences:
@@ -68,6 +69,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
+            isChangeTracking: true
             name: Last Name
             nullable: true
             sourceColumnReferences:
@@ -110,6 +112,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
+            isChangeTracking: true
             name: Email
             nullable: true
             sourceColumnReferences:
@@ -124,6 +127,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
+            isChangeTracking: true
             name: Phone
             nullable: true
             sourceColumnReferences:
@@ -152,7 +156,7 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            isBusinessKey: true
+            isChangeTracking: true
             name: Active Flag
             nullable: false
             sourceColumnReferences:
@@ -223,13 +227,66 @@ steps:
             description: ""
             hashColumns: []
             hashDetails: null
-            name: Driver Registration Date
+            name: License Renewal Date
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: f29d74ed-fc19-44e9-ae6b-40f99ff03edb
                     stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
                 transform: ""
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: ff12df6a-96d9-483d-b0b5-60d84845f43a
+              stepCounter: 9d0545fc-c66b-4536-8420-0e9bca0727fe
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            name: Medical Renewal Date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3d560a03-51e1-4bd3-9302-c3367f033ed8
+                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+                transform: ""
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f3200a9d-16ab-4d21-8903-d5b3550be60b
+              stepCounter: 9d0545fc-c66b-4536-8420-0e9bca0727fe
+            dataType: VARCHAR
+            description: ""
+            name: Note
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 9f9414d8-30e9-4c4e-85e6-46abab9edd2f
+                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 49b3a2d2-fd20-4bfc-8a33-5f49536b89b4
+              stepCounter: 9d0545fc-c66b-4536-8420-0e9bca0727fe
+            config: {}
+            dataType: NUMBER(18,2)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Employee Cost (EC01) Combined
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
+                    stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
+                transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\"+\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: 434bf386-05f5-4c33-8e1f-8c17c8c693ec
               stepCounter: 9d0545fc-c66b-4536-8420-0e9bca0727fe
@@ -353,27 +410,6 @@ steps:
             sourceColumnReferences:
               - columnReferences: []
                 transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 49b3a2d2-fd20-4bfc-8a33-5f49536b89b4
-              stepCounter: 9d0545fc-c66b-4536-8420-0e9bca0727fe
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Employee Cost (EC01) Combined
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
-                    stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
-                transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\"+\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\""
-            systemColumnType: None
-            transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
@@ -391,8 +427,8 @@ steps:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'EMPLOYEE_COST_CURRENT') }} "EMPLOYEE_COST_CURRENT"
-                ON "RM04_COMBINED"."RM04_NUMB" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
-                    AND "RM04_COMBINED"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
+                  ON "RM04_COMBINED"."RM04_NUMB" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
+                 AND "RM04_COMBINED"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
             name: HELPER_MASTER
             noLinkRefs: []
       name: HELPER_MASTER
