@@ -1015,7 +1015,7 @@ steps:
               CM12_COMBINED: 4f923860-b405-4745-ab70-88d5ff0d6d40
               LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
               NBTICKETS_TABLE_RM03_SM03_FIRST_UNION: 5648f2b4-337b-485c-8919-b4e53a089b45
-              RM01_Combined: bd25ccfd-afa5-4e34-be04-467c3e0970fd
+              RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
               STG_DTickets: e911133f-feb6-4f66-9537-59195f8648a3
               STG_LM02_WEIGHT_COST_ROUTE_AUDIT: 367df4bd-6291-4ee3-adf6-3b80c1f0f729
               STG_MT02A_ROUTE_AUDIT_SEQUENCE: 2b98c4d9-8de1-44b6-bd96-592c01efdd4c
@@ -1043,7 +1043,7 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: NBTICKETS_TABLE_RM03_SM03_FIRST_UNION
               - locationName: TRUXCOMBINED_RAW
-                nodeName: RM01_Combined
+                nodeName: RM01_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: STG_DTickets
               - locationName: TRUXCOMBINED_RAW
@@ -1086,13 +1086,13 @@ steps:
                   ON "CM05_COMBINED"."CM05_TYPE" = "CD05_COMBINED"."CD05_CODE"
                  AND "CM05_COMBINED"."SOURCE" = "CD05_COMBINED"."SOURCE"
                 
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_Combined') }} "RM01_Combined"
-                  ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Route" = "RM01_Combined"."RM01_NUMB"
-                 AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."SOURCE" = "RM01_Combined"."SOURCE"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
+                  ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Route" = "RM01_COMBINED"."RM01_NUMB"
+                 AND "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."SOURCE" = "RM01_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
-                  ON "RM01_Combined"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE"
-                 AND "RM01_Combined"."SOURCE" = "CD14_COMBINED"."SOURCE"
+                  ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE"
+                 AND "RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TICKETCOUNT_ALL_LM02') }} "STG_TICKETCOUNT_ALL_LM02"
                   ON "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Route" = "STG_TICKETCOUNT_ALL_LM02"."LM02_ROUT"

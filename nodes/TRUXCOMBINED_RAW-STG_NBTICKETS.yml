@@ -197,7 +197,7 @@ steps:
           - aliases:
               CD14_COMBINED: f21fe296-8b27-43b1-978c-64999978c610
               LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-              RM01_Combined: bd25ccfd-afa5-4e34-be04-467c3e0970fd
+              RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
               STG_NBTickets_Join_Collections_Disposal: 5e465d11-50ae-43e7-9c9b-69f255759192
             customSQL:
               customSQL: ""
@@ -207,22 +207,25 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: LM06_COMBINED
               - locationName: TRUXCOMBINED_RAW
-                nodeName: RM01_Combined
+                nodeName: RM01_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: STG_NBTickets_Join_Collections_Disposal
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'STG_NBTickets_Join_Collections_Disposal') }} "STG_NBTickets_Join_Collections_Disposal"
-                LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_Combined') }} "RM01_Combined"
-                ON "STG_NBTickets_Join_Collections_Disposal"."LM02_ROUT" = "RM01_Combined"."RM01_NUMB" 
-                    and "STG_NBTickets_Join_Collections_Disposal"."SOURCE" = "RM01_Combined"."SOURCE"
+                LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
+                  ON "STG_NBTickets_Join_Collections_Disposal"."LM02_ROUT" = "RM01_COMBINED"."RM01_NUMB" 
+                 AND "STG_NBTickets_Join_Collections_Disposal"."SOURCE" = "RM01_COMBINED"."SOURCE"
+                
                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
-                ON "RM01_Combined"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
-                    and "RM01_Combined"."SOURCE" ="CD14_COMBINED"."SOURCE"
+                  ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
+                 AND "RM01_COMBINED"."SOURCE" ="CD14_COMBINED"."SOURCE"
+                
                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
-                ON "STG_NBTickets_Join_Collections_Disposal"."LM02_DUOM" = "LM06_COMBINED"."LM06_UOM1" 
-                    and "STG_NBTickets_Join_Collections_Disposal"."SOURCE" = "LM06_COMBINED"."SOURCE"
-                    and "LM06_COMBINED"."LM06_UOM2" = "CD14_COMBINED"."CD14_WEIGHTUOM"
+                  ON "STG_NBTickets_Join_Collections_Disposal"."LM02_DUOM" = "LM06_COMBINED"."LM06_UOM1" 
+                 AND "STG_NBTickets_Join_Collections_Disposal"."SOURCE" = "LM06_COMBINED"."SOURCE"
+                 AND "LM06_COMBINED"."LM06_UOM2" = "CD14_COMBINED"."CD14_WEIGHTUOM"
+                    
                 GROUP BY "LM02_RDATE","LM02_ROUT","Route Sequence","CD14_DESC","STG_NBTickets_Join_Collections_Disposal"."SOURCE"
             name: STG_NBTICKETS
             noLinkRefs: []
