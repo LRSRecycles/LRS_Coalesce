@@ -361,14 +361,18 @@ steps:
                 transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
         enabledColumnTestIDs: []
         sourceMapping:
-          - aliases: {}
+          - aliases:
+              RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: RM02_COMBINED
             join:
-              joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINED') }} "RM02_COMBINED"
+              joinCondition: |-
+                FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINED') }} "RM02_COMBINED"
+                
+                WHERE "RM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
             name: TRUX_RM02_COMBINED
             noLinkRefs: []
           - aliases:
