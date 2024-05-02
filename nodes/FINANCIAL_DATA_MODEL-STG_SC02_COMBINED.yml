@@ -1,0 +1,149 @@
+steps:
+  STG_SC02_COMBINED-46ff3496-a91c-4aea-aeeb-12b323ae505a:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: FINANCIAL_DATA_MODEL
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: ca8cb727-ccaf-4d90-8447-c6a0628e09b9
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: NUMBER(38,0)
+            description: ""
+            name: Unique Identifier
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 0889645b-ff2a-410f-bdb8-6159fccfa3c7
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+          - columnReference:
+              columnCounter: 520b82bf-b814-4ed0-92cf-15eee60122dc
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: NUMBER(38,0)
+            description: ""
+            name: Call Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 27cfdeef-f419-448d-bf2b-fea2ee71043e
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+          - columnReference:
+              columnCounter: 17948b58-e97f-4dc4-a93b-ef8a888d033e
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            name: Date
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 11777489-0aa4-4b08-a3f4-bb58ea1e276f
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+          - columnReference:
+              columnCounter: 0e5ef2ab-00f0-4e8d-95b7-a66c61d202a9
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: VARCHAR(10)
+            description: ""
+            name: User ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5ee19567-ac22-4986-b611-9f344df445e6
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+          - columnReference:
+              columnCounter: 88f7a7bb-f53b-4d3b-afbc-304bcfe86a7f
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: VARCHAR(16777216)
+            description: ""
+            name: Note Text
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 259cd872-74e8-4c2c-8318-94943cd9161e
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+          - columnReference:
+              columnCounter: 8023644c-a23d-47c5-904c-88e84d494d90
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: VARCHAR(20)
+            description: ""
+            name: Note Created By
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6bbb0559-62bf-4086-b06e-dcfea320ee94
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: |-
+                  CASE 
+                    WHEN "SC02_COMBINED"."SC02_SYSNOTE" = 0 THEN 'User Input'
+                    ELSE 'TRUX Generated'
+                  END
+          - columnReference:
+              columnCounter: 4d161d3c-981e-4ca5-bc7f-16b6a4429e96
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: VARCHAR
+            description: ""
+            name: Source
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1c9f4f83-8151-4e51-bf80-75cfbfec9b4e
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+          - columnReference:
+              columnCounter: 79bfb414-0a1e-4940-98e0-1cbac24ac448
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: BOOLEAN
+            description: ""
+            name: _FIVETRAN_DELETED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6c6d1cff-9ab9-4df4-a61f-40a341c80356
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+          - columnReference:
+              columnCounter: b719dfce-dde4-4148-a16e-017f48969aa2
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            dataType: TIMESTAMP_TZ(9)
+            description: ""
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f4fc1035-246c-4219-9867-907a64fa0bb5
+                    stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: SC02_COMBINED
+            join:
+              joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'SC02_COMBINED') }} "SC02_COMBINED"
+            name: STG_SC02_COMBINED
+            noLinkRefs: []
+      name: STG_SC02_COMBINED
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a

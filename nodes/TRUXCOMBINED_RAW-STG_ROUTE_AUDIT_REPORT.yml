@@ -958,7 +958,11 @@ steps:
                       WHEN "CM12_COMBINED"."CM12_UNIT" in ('S','P','V') 
                       THEN "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Quantity" * "CM12_COMBINED"."CM12_FACT"
                       ELSE "NBTICKETS_TABLE_RM03_SM03_FIRST_UNION"."Quantity"
-                  END * "CM05_COMBINED"."CM05_SIZE"*IFNULL("LM06_COMBINED"."LM06_FACT",1)
+                  END * "CM05_COMBINED"."CM05_SIZE"*IFNULL("LM06_COMBINED"."LM06_FACT",1) * CASE
+                      WHEN "CM05_COMBINED"."CM05_COMP" = 'false'
+                      THEN 1
+                      ELSE IFNULL("CD05_COMBINED"."CD05_CPCTRATIO",1.00)
+                  END
             systemColumnType: None
             transform: ""
           - acceptedValues:
