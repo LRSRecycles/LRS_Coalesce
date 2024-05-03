@@ -104,6 +104,48 @@ steps:
                   - columnCounter: 1c9f4f83-8151-4e51-bf80-75cfbfec9b4e
                     stepCounter: eb43cbba-8c6b-4d32-9693-db66adf81242
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c599bda3-ac60-4e9f-854f-be91b5a70ef1
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Source Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                    stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: aa9d7aa9-eadc-4fdc-b4fa-f60029e15dc0
+              stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Source_Call_Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "\"SC02_COMBINED\".\"SOURCE\"||'-'||\"SC02_COMBINED\".\"SC02_CALL\""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: 79bfb414-0a1e-4940-98e0-1cbac24ac448
               stepCounter: 46ff3496-a91c-4aea-aeeb-12b323ae505a
@@ -131,14 +173,22 @@ steps:
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
-          - aliases: {}
+          - aliases:
+              SC02_COMBINED: eb43cbba-8c6b-4d32-9693-db66adf81242
+              TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
             dependencies:
+              - locationName: MASTER_DATA_CLEAN
+                nodeName: TRUX_DATABASE_METADATA
               - locationName: TRUXCOMBINED_RAW
                 nodeName: SC02_COMBINED
             join:
-              joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'SC02_COMBINED') }} "SC02_COMBINED"
+              joinCondition: |2-
+                 FROM {{ ref('TRUXCOMBINED_RAW', 'SC02_COMBINED') }} "SC02_COMBINED"
+                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+                   ON "SC02_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+                WHERE "SC02_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
             name: STG_SC02_COMBINED
             noLinkRefs: []
       name: STG_SC02_COMBINED

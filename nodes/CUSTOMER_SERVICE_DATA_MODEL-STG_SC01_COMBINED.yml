@@ -382,6 +382,48 @@ steps:
                   - columnCounter: 8945d5d4-e142-4bf5-9e1a-f83458560238
                     stepCounter: 04e4e698-447f-4a99-a218-977ceb126b96
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 9acce6e9-2a82-4d96-a39d-bf7168371ffa
+              stepCounter: 1c0d5da2-0b52-4f7b-88f3-40336a0a5d1d
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Source Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                    stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 97c2cdf2-343f-460a-94dd-c84ca3b95c83
+              stepCounter: 1c0d5da2-0b52-4f7b-88f3-40336a0a5d1d
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Source_Call_Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "\"SC01_COMBINED\".\"SOURCE\"||'-'||\"SC01_COMBINED\".\"SC01_CALL\""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: c16c568a-66cb-4200-8288-476bc9b26939
               stepCounter: 1c0d5da2-0b52-4f7b-88f3-40336a0a5d1d
@@ -413,9 +455,12 @@ steps:
               CD18_COMBINED: ea35ea60-5d7d-4f94-a871-dba99d306044
               CD19_COMBINED: da5d88fc-a54e-4c54-8d28-78ffb3a8ee0c
               SC01_COMBINED: 04e4e698-447f-4a99-a218-977ceb126b96
+              TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
             dependencies:
+              - locationName: MASTER_DATA_CLEAN
+                nodeName: TRUX_DATABASE_METADATA
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CD18_COMBINED
               - locationName: TRUXCOMBINED_RAW
@@ -431,6 +476,9 @@ steps:
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD19_COMBINED') }} "CD19_COMBINED"
                    ON "SC01_COMBINED"."SC01_URGN" = "CD19_COMBINED"."CD19_CODE"
                   AND "SC01_COMBINED"."SOURCE" = "CD19_COMBINED"."SOURCE"
+                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+                   ON "SC01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+                WHERE "SC01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
             name: STG_SC01_COMBINED
             noLinkRefs: []
       name: STG_SC01_COMBINED
