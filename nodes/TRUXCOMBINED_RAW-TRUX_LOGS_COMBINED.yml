@@ -485,18 +485,17 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
-              LEGACY_LOG: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
               TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
             dependencies:
+              - locationName: LOGGING_DATA
+                nodeName: LEGACY_LOG
               - locationName: MASTER_DATA_CLEAN
                 nodeName: TRUX_DATABASE_METADATA
-              - locationName: TRUX_LOGGING_RAW
-                nodeName: LEGACY_LOG
             join:
               joinCondition: |2-
-                 FROM {{ ref('TRUX_LOGGING_RAW', 'LEGACY_LOG') }} "LEGACY_LOG"
+                 FROM {{ ref('LOGGING_DATA', 'LEGACY_LOG') }} "LEGACY_LOG"
                 
                  LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                    ON "LEGACY_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
@@ -510,13 +509,13 @@ steps:
             customSQL:
               customSQL: ""
             dependencies:
+              - locationName: LOGGING_DATA
+                nodeName: MIDWEST_LOG
               - locationName: MASTER_DATA_CLEAN
                 nodeName: TRUX_DATABASE_METADATA
-              - locationName: TRUX_LOGGING_RAW
-                nodeName: MIDWEST_LOG
             join:
               joinCondition: |2-
-                 FROM {{ ref('TRUX_LOGGING_RAW', 'MIDWEST_LOG') }} "MIDWEST_LOG"
+                 FROM {{ ref('LOGGING_DATA', 'MIDWEST_LOG') }} "MIDWEST_LOG"
                 
                  LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                    ON "MIDWEST_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
