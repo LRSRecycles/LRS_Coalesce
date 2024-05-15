@@ -135,7 +135,7 @@ steps:
               - columnReferences:
                   - columnCounter: dc299f3c-a197-4d40-8cfd-cbdc3a4d695d
                     stepCounter: 04e4e698-447f-4a99-a218-977ceb126b96
-                transform: ""
+                transform: TRIM("SC01_COMBINED"."SC01_UREC")
           - columnReference:
               columnCounter: 15cf5fb0-44bb-4c7a-ac5b-ccd1aaf927bd
               stepCounter: 1c0d5da2-0b52-4f7b-88f3-40336a0a5d1d
@@ -147,7 +147,7 @@ steps:
               - columnReferences:
                   - columnCounter: 4c958db4-4f3f-498c-aea5-d110fdaedfa9
                     stepCounter: 04e4e698-447f-4a99-a218-977ceb126b96
-                transform: ""
+                transform: TRIM("SC01_COMBINED"."SC01_UMOD")
           - columnReference:
               columnCounter: d98522ee-5db3-46ab-8b8e-7718ca4976eb
               stepCounter: 1c0d5da2-0b52-4f7b-88f3-40336a0a5d1d
@@ -159,7 +159,7 @@ steps:
               - columnReferences:
                   - columnCounter: 4e42ba53-60ca-4aae-83aa-4988e61d3379
                     stepCounter: 04e4e698-447f-4a99-a218-977ceb126b96
-                transform: ""
+                transform: TRIM("SC01_COMBINED"."SC01_UCLO")
           - columnReference:
               columnCounter: d15f7db5-e448-43de-b935-70fe08e78931
               stepCounter: 1c0d5da2-0b52-4f7b-88f3-40336a0a5d1d
@@ -491,12 +491,15 @@ steps:
             join:
               joinCondition: |2-
                  FROM {{ ref('TRUXCOMBINED_RAW', 'SC01_COMBINED') }} "SC01_COMBINED"
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD18_COMBINED') }} "CD18_COMBINED"
+                
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD18_COMBINED') }} "CD18_COMBINED"
                    ON "SC01_COMBINED"."SC01_TYPE" = "CD18_COMBINED"."CD18_CODE"
                   AND "SC01_COMBINED"."SOURCE" = "CD18_COMBINED"."SOURCE"
-                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD19_COMBINED') }} "CD19_COMBINED"
+                
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD19_COMBINED') }} "CD19_COMBINED"
                    ON "SC01_COMBINED"."SC01_URGN" = "CD19_COMBINED"."CD19_CODE"
                   AND "SC01_COMBINED"."SOURCE" = "CD19_COMBINED"."SOURCE"
+                
                  LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                    ON "SC01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
                 WHERE "SC01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'

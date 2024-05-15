@@ -125,11 +125,11 @@ steps:
               - columnReferences:
                   - columnCounter: a39c7327-7675-4d0c-9071-d4e18658aa37
                     stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
+                transform: TRIM("LEGACY_LOG"."LOG_USER")
               - columnReferences:
                   - columnCounter: d8b4b997-ee38-481f-a8a0-ad651f75ed0a
                     stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
+                transform: TRIM("MIDWEST_LOG"."LOG_USER")
           - columnReference:
               columnCounter: 7a776206-a40f-4d6e-80ee-721c88c37680
               stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
@@ -404,9 +404,9 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: "'LEGACY-'||\"LEGACY_LOG\".\"LOG_USER\""
+                transform: "'LEGACY-'||TRIM(\"LEGACY_LOG\".\"LOG_USER\")"
               - columnReferences: []
-                transform: "'MIDWEST-'||\"MIDWEST_LOG\".\"LOG_USER\""
+                transform: "'MIDWEST-'||TRIM(\"MIDWEST_LOG\".\"LOG_USER\")"
             systemColumnType: None
             transform: ""
           - acceptedValues:

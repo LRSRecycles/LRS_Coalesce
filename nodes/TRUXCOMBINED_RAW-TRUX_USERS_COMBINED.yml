@@ -27,11 +27,11 @@ steps:
               - columnReferences:
                   - columnCounter: df413767-0ae2-4c5b-b2ec-e22901df392f
                     stepCounter: b5650b3d-300d-4aac-81ce-b0490e4aad88
-                transform: ""
+                transform: TRIM("MIDWEST_USER"."USER_CODE")
               - columnReferences:
                   - columnCounter: 95fb990b-f07c-49de-ac0a-04a481b95ba6
                     stepCounter: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
-                transform: ""
+                transform: TRIM("LEGACY_USER"."USER_CODE")
           - columnReference:
               columnCounter: 9935785d-2c98-40d9-bc33-69695e6229fc
               stepCounter: f5c3eeaa-cd6b-437a-a31c-1ea82038ab6b
@@ -130,9 +130,9 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: "'MIDWEST-'||\"MIDWEST_USER\".\"USER_CODE\""
+                transform: "'MIDWEST-'||TRIM(\"MIDWEST_USER\".\"USER_CODE\")"
               - columnReferences: []
-                transform: "'LEGACY-'||\"LEGACY_USER\".\"USER_CODE\""
+                transform: "'LEGACY-'||TRIM(\"LEGACY_USER\".\"USER_CODE\")"
             systemColumnType: None
             transform: ""
           - acceptedValues:
