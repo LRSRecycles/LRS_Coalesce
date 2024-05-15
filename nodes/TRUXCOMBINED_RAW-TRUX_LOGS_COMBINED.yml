@@ -391,6 +391,29 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
+              columnCounter: 76c649a0-aae0-4cd0-b4eb-5bf111292399
+              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+            config: {}
+            dataType: VARCHAR(50)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: SERVER_USER
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "'LEGACY-'||\"LEGACY_LOG\".\"LOG_USER\""
+              - columnReferences: []
+                transform: "'MIDWEST-'||\"MIDWEST_LOG\".\"LOG_USER\""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
               columnCounter: 1e793344-aabb-4e78-beef-d4f3d089079c
               stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
             config: {}
@@ -485,6 +508,7 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
+              LEGACY_LOG: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
               TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
@@ -501,6 +525,7 @@ steps:
                    ON "LEGACY_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
                 
                 WHERE "LEGACY_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
+                  AND "LEGACY_LOG"."LOG_DATE" >= '01/01/2023'
             name: LEGACY_LOG
             noLinkRefs: []
           - aliases:
@@ -521,6 +546,7 @@ steps:
                    ON "MIDWEST_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
                 
                 WHERE "MIDWEST_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
+                  AND "MIDWEST_LOG"."LOG_DATE" >= '01/01/2023'
             name: MIDWEST_LOG
             noLinkRefs: []
       name: TRUX_LOGS_COMBINED
