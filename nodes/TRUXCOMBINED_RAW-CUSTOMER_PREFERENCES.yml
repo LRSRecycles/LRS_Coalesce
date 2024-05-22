@@ -21,7 +21,6 @@ steps:
               stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
             dataType: NUMBER(38,0)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Customer
             nullable: true
@@ -35,7 +34,6 @@ steps:
               stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
             dataType: VARCHAR
             description: ""
-            hashColumns: []
             hashDetails: null
             name: SOURCE
             nullable: true
@@ -62,7 +60,7 @@ steps:
               - columnReferences:
                   - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
                     stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-                transform: ""
+                transform: CASE WHEN "CP01_COMBINED"."CP01_PAYTERMS" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" WHEN "CP01_COMBINED"."CP01_PAYTERMS" = 0 THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CP01_COMBINED"."CP01_PAYTERMS" END
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -91,15 +89,21 @@ steps:
         sourceMapping:
           - aliases:
               CP01_COMBINED: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
             dependencies:
+              - locationName: MASTER_DATA_CLEAN
+                nodeName: TRUX_DATABASE_METADATA
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CP01_COMBINED
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
-                where "CP01_COMBINED"."CP01_SITE" IS NULL and "CP01_COMBINED"."CP01_PAYTERMS" IS NOT NULL
+                LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+                    ON "CP01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+                
+                where "CP01_COMBINED"."CP01_SITE" IS NULL 
             name: CUSTOMER_PREFERENCES
             noLinkRefs: []
       name: CUSTOMER_PREFERENCES

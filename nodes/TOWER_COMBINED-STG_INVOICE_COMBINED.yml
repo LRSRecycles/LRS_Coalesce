@@ -21,7 +21,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: VARCHAR(16777216)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Unique Invoice ID
             nullable: true
@@ -35,7 +34,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: VARCHAR(16777216)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Batch UID
             nullable: true
@@ -49,7 +47,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: TIMESTAMP_NTZ(9)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Invoice Date
             nullable: true
@@ -63,7 +60,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: TIMESTAMP_NTZ(9)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Due Date
             nullable: true
@@ -98,7 +94,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: VARCHAR(16777216)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Line of Business
             nullable: true
@@ -112,7 +107,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: VARCHAR
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Invoice Number
             nullable: true
@@ -126,7 +120,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: NUMBER(38,2)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Status
             nullable: true
@@ -140,7 +133,6 @@ steps:
               stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             dataType: NUMBER(38,2)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: PRINTINVOICE
             nullable: true
@@ -274,9 +266,9 @@ steps:
               joinCondition: |-
                 FROM {{ ref('TOWER_COMBINED', 'INVOICE_COMBINED') }} "INVOICE_COMBINED"
                 LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMER_COMBINED') }} "CUSTOMER_COMBINED"
-                ON "INVOICE_COMBINED"."BILLCUSTID" = "CUSTOMER_COMBINED"."Customer ID"
+                ON "INVOICE_COMBINED"."BILLCUSTID" = "CUSTOMER_COMBINED"."Customer Number"
                 LEFT JOIN {{ ref('TOWER_COMBINED', 'SITE_COMBINED') }} "SITE_COMBINED"
-                ON "INVOICE_COMBINED"."BILLSITEID" = "SITE_COMBINED"."Site ID" and "INVOICE_COMBINED"."BILLCUSTID" = "SITE_COMBINED"."Customer Number"
+                ON "INVOICE_COMBINED"."BILLSITEID" = "SITE_COMBINED"."Site Number" and "INVOICE_COMBINED"."BILLCUSTID" = "SITE_COMBINED"."Customer Number"
             name: STG_INVOICE_COMBINED
             noLinkRefs: []
       name: STG_INVOICE_COMBINED

@@ -360,10 +360,7 @@ steps:
                        END AS "Transaction Type"
                      , pym."Payment Date" AS "Transaction Date"
                      , inv."Invoice Date" AS "Invoice Date"
-                     , CASE
-                        WHEN "Due Date" IS NULL THEN DATEADD(DAY,meta.SY03_DEFAULTPAYTERMS,"Invoice Date")
-                        ELSE "Due Date"
-                        END AS "Due Date"
+                     , inv."Due Date" AS "Due Date"
                      , CASE 
                          WHEN pym."Payment or Adjustment" = 'P' THEN pym."Amount" * -1
                          WHEN pym."Payment or Adjustment" = 'A' THEN pym."Amount"
@@ -386,8 +383,6 @@ steps:
                   FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Payment_Details" pym
                   LEFT JOIN LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Invoice_Amounts" inv
                     ON pym."Link_Source" = inv."ID_Source"
-                  LEFT JOIN LRS_PRODUCTION.MASTER_DATA_CLEAN."TRUX_DATABASE_METADATA" meta
-                    ON inv.Source = meta.Snowflake_Name
                  WHERE pym."Source" NOT LIKE '%TOWER%'
                 ),
                 trux_invoices AS (
@@ -406,10 +401,7 @@ steps:
                      --, "Due Date" AS "Transaction Date"
                      , "Invoice Date" AS "Transaction Date"
                      , "Invoice Date" AS "Invoice Date"
-                     , CASE
-                        WHEN "Due Date" IS NULL THEN DATEADD(DAY,meta.SY03_DEFAULTPAYTERMS,"Invoice Date")
-                        ELSE "Due Date"
-                        END AS "Due Date"
+                     , "Due Date" AS "Due Date"
                      , "Amount" AS "Transaction Amount"
                      , "Amount" AS "Invoice Amount"
                      , 0 AS "Balance"
@@ -419,9 +411,7 @@ steps:
                      , NULL AS "dso_from_due"
                      , NULL AS "dso_from_invoice"
                      , source AS "Source"
-                  FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Invoice_Amounts" inv
-                  LEFT JOIN LRS_PRODUCTION.MASTER_DATA_CLEAN."TRUX_DATABASE_METADATA" meta
-                    ON inv.Source = meta.Snowflake_Name
+                  FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Invoice_Amounts" 
                  WHERE source NOT LIKE '%TOWER%'
                 ),
                 tower_open_balance AS (
