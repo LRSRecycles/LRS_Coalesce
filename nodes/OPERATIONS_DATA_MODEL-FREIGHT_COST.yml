@@ -369,6 +369,94 @@ steps:
                 transform: ""
             systemColumnType: None
             transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: b0df205a-9bc6-4390-8f5c-7075d05a0be1
+              stepCounter: 8cd1fe65-d8f8-453b-96da-11a5b96997b6
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Material
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 07d479fe-b7cc-4b34-8304-1e03173d2999
+                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: ddcc1820-57b0-4b1b-8cfc-614184639cf5
+              stepCounter: 8cd1fe65-d8f8-453b-96da-11a5b96997b6
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Material Desc
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 29e98454-68c4-4414-8685-8bae91617e75
+                    stepCounter: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5717642e-874f-4491-9105-40469a66dd07
+              stepCounter: 8cd1fe65-d8f8-453b-96da-11a5b96997b6
+            config: {}
+            dataType: NUMBER(38,2)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Net Weight
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: |-
+                  CASE 
+                    WHEN "LF05H_COMBINED"."LF05H_INBOUND" = 1 THEN "LF05D_COMBINED"."LF05D_WEII" - "LF05D_COMBINED"."LF05D_WEIO"
+                    ELSE "LF05D_COMBINED"."LF05D_WEIO" - "LF05D_COMBINED"."LF05D_WEII" 
+                  END
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5cb3fa4d-e752-4cab-9bc2-bf155ae823b6
+              stepCounter: 8cd1fe65-d8f8-453b-96da-11a5b96997b6
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Scale UOM
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 92b0da3a-1828-4ab5-be56-1bddb71dbf10
+                    stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+                transform: ""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: 6553ca16-6e99-4248-bff8-bd675da10ff9
               stepCounter: 8cd1fe65-d8f8-453b-96da-11a5b96997b6
@@ -387,10 +475,13 @@ steps:
         sourceMapping:
           - aliases:
               CR01_COMBINED: cda7522c-0429-40ef-8a6c-67b5bcd0d948
+              LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
               LF05H_COMBINED: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
               LM01_COMBINED: 75646501-ee23-441a-91c1-fced667296c2
+              LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
               MP13_COMBINED: 4c0e1656-a58e-463a-98d8-f02559bc28a0
               STG_CARRIER_RATES: 2802e6e9-4687-469b-a0cb-92e40f7ae790
+              STG_DISPOSAL_TICKET_FIRST_DETAIL: 9c379054-98cb-4227-836f-451c03176c12
               VW_CUSTOMER_MASTER: 343a2abd-4687-4718-be4c-21a2e7cfdfec
             customSQL:
               customSQL: ""
@@ -400,13 +491,19 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CR01_COMBINED
               - locationName: TRUXCOMBINED_RAW
+                nodeName: LF05D_COMBINED
+              - locationName: TRUXCOMBINED_RAW
                 nodeName: LF05H_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: LM01_COMBINED
               - locationName: TRUXCOMBINED_RAW
+                nodeName: LM04_COMBINED
+              - locationName: TRUXCOMBINED_RAW
                 nodeName: MP13_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: STG_CARRIER_RATES
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: STG_DISPOSAL_TICKET_FIRST_DETAIL
             join:
               joinCondition: |2-
                  FROM {{ ref('TRUXCOMBINED_RAW', 'MP13_COMBINED') }} "MP13_COMBINED"
@@ -417,6 +514,18 @@ steps:
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
                    ON "LF05H_COMBINED"."LF05H_FCTY" = "LM01_COMBINED"."LM01_DSTE"
                   AND "LF05H_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DISPOSAL_TICKET_FIRST_DETAIL') }} "STG_DISPOSAL_TICKET_FIRST_DETAIL"
+                   ON "LF05H_COMBINED"."LF05H_ID" = "STG_DISPOSAL_TICKET_FIRST_DETAIL"."LF05D_LINK"
+                  AND "LF05H_COMBINED"."SOURCE" = "STG_DISPOSAL_TICKET_FIRST_DETAIL"."SOURCE"
+                
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
+                   ON "STG_DISPOSAL_TICKET_FIRST_DETAIL"."LF05D_ID" = "LF05D_COMBINED"."LF05D_ID"
+                  AND "STG_DISPOSAL_TICKET_FIRST_DETAIL"."SOURCE" = "LF05D_COMBINED"."SOURCE"
+                
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
+                   ON "LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE"
+                  AND "LF05D_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
                 
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CARRIER_RATES') }} "STG_CARRIER_RATES"
                    ON "MP13_COMBINED"."MP13_CARR" = "STG_CARRIER_RATES"."Carrier Rate UID"
@@ -434,6 +543,10 @@ steps:
                   AND "LF05H_COMBINED"."_FIVETRAN_DELETED" = FALSE
                   AND "LM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
                   AND "CR01_COMBINED"."_FIVETRAN_DELETED" = FALSE
+                
+                  AND "LF05D_COMBINED"."SORT" = 1 
+                  AND "LF05D_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+                  AND "LF05D_COMBINED"."METADATA$ACTION" = 'INSERT'
             name: FREIGHT_COST
             noLinkRefs: []
       name: FREIGHT_COST
