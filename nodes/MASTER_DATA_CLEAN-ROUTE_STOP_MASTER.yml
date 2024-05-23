@@ -87,7 +87,7 @@ steps:
               columnCounter: b9447b2a-a89f-40f4-bb98-19aa17053268
               stepCounter: 86a02c21-13cb-4ad0-b45b-4a6612cd0305
             dataType: NUMBER(38,0)
-            description: ""
+            description: TRUX node joins cm03 on RM02_CUST = CM03_CUST
             hashDetails: null
             name: Customer Number
             nullable: true
@@ -102,7 +102,7 @@ steps:
               columnCounter: c35d61e3-73ee-4aaf-ad05-a30e3571e54c
               stepCounter: 86a02c21-13cb-4ad0-b45b-4a6612cd0305
             dataType: NUMBER(38,0)
-            description: ""
+            description: TRUX node joins cm04 on RM02_SITE = CM04_SITE
             hashDetails: null
             name: Site Number
             nullable: true
@@ -117,7 +117,7 @@ steps:
               columnCounter: f054b4a4-cc4f-412e-84a5-95aba8966630
               stepCounter: 86a02c21-13cb-4ad0-b45b-4a6612cd0305
             dataType: NUMBER(38,0)
-            description: ""
+            description: TRUX node joins cm05 on RM02_SERV = CM05_SERV
             hashDetails: null
             name: Service Number
             nullable: true
@@ -132,7 +132,7 @@ steps:
               columnCounter: 7419755e-955e-4d9d-b629-46cf6197fff1
               stepCounter: 86a02c21-13cb-4ad0-b45b-4a6612cd0305
             dataType: VARCHAR(2)
-            description: ""
+            description: TRUX node joins cm12 on RM02_ACTV = CM12_CODE
             hashDetails: null
             name: Activity Code
             nullable: true
@@ -143,6 +143,29 @@ steps:
                 transform: ""
               - columnReferences: []
                 transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 92068926-4f10-4cc7-b898-e0da2da9e213
+              stepCounter: 86a02c21-13cb-4ad0-b45b-4a6612cd0305
+            config: {}
+            dataType: VARCHAR(40)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Activity Description
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 03fe2c40-615a-4d40-b372-7e2a1b3fbdda
+                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+                transform: ""
+              - columnReferences: []
+                transform: ""
+            systemColumnType: None
+            transform: ""
           - columnReference:
               columnCounter: 10f10613-e433-41bb-ad5f-3729f36dc903
               stepCounter: 86a02c21-13cb-4ad0-b45b-4a6612cd0305
@@ -436,15 +459,22 @@ steps:
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
+              CM12_COMBINED: 4f923860-b405-4745-ab70-88d5ff0d6d40
               RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: TRUXCOMBINED_RAW
+                nodeName: CM12_COMBINED
+              - locationName: TRUXCOMBINED_RAW
                 nodeName: RM02_COMBINED
             join:
               joinCondition: |-
                 FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINED') }} "RM02_COMBINED"
+                
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }}
+                   ON "RM02_COMBINED"."RM02_ACTV" = "CM12_COMBINED"."CM12_CODE"
+                  AND "RM02_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
                 
                 WHERE "RM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
             name: TRUX_RM02_COMBINED

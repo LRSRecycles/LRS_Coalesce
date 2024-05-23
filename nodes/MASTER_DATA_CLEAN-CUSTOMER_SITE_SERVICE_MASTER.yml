@@ -1034,31 +1034,31 @@ steps:
                 FROM {{ ref('TRUXCOMBINED_RAW', 'CM05_COMBINED') }} "CM05_COMBINED"
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD03_COMBINED') }} "CD03_COMBINED"
                   ON "CM05_COMBINED"."CM05_ECOD" = "CD03_COMBINED"."CD03_CODE" 
-                 and "CM05_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
+                 AND "CM05_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD50_COMBINED') }} "CD50_COMBINED"
                   ON "CM05_COMBINED"."CM05_CTG" = "CD50_COMBINED"."CD50_CODE" 
-                 and "CM05_COMBINED"."SOURCE" = "CD50_COMBINED"."SOURCE"
+                 AND "CM05_COMBINED"."SOURCE" = "CD50_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
                   ON "CM05_COMBINED"."CM05_FAC" = "LM01_COMBINED"."LM01_DSTE" 
-                 and "CM05_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                 AND "CM05_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
                   ON "CM05_COMBINED"."CM05_MATL" = "LM04_COMBINED"."LM04_CODE" 
-                 and "CM05_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+                 AND "CM05_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
                   ON "CM05_COMBINED"."CM05_WDACTV" = "CM12_COMBINED"."CM12_CODE" 
-                 and "CM05_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
+                 AND "CM05_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD05_COMBINED') }} "CD05_COMBINED"
                   ON "CM05_COMBINED"."CM05_TYPE" = "CD05_COMBINED"."CD05_CODE" 
-                 and "CM05_COMBINED"."SOURCE" = "CD05_COMBINED"."SOURCE"
+                 AND "CM05_COMBINED"."SOURCE" = "CD05_COMBINED"."SOURCE"
                 
                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD17_COMBINED') }} "CD17_COMBINED"
                   ON "CM05_COMBINED"."CM05_CYCL" = "CD17_COMBINED"."CD17_CODE" 
-                 and "CM05_COMBINED"."SOURCE" = "CD17_COMBINED"."SOURCE"
+                 AND "CM05_COMBINED"."SOURCE" = "CD17_COMBINED"."SOURCE"
                  
             name: CM05_COMBINED
             noLinkRefs: []
