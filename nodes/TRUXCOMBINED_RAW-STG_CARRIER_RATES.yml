@@ -17,55 +17,12 @@ steps:
         appliedNodeTests: []
         columns:
           - columnReference:
-              columnCounter: d594473e-2f46-4ed0-abc4-b21c038b5e57
-              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Active
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 206d0cc9-8208-41cb-874d-2c1db4dde772
-                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
-                transform: ""
-          - columnReference:
-              columnCounter: a4463497-2aba-4e77-96ba-e63eda0a5881
-              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Effective Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ad89f189-fd2d-4fb3-937c-01bb4d2b7bc5
-                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
-                transform: ""
-          - columnReference:
-              columnCounter: 8d90ba09-d5e0-4f14-b1c3-81c7942227f6
-              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 54352d82-9d16-438c-95c3-423eebe3b746
-                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
-                transform: ""
-          - columnReference:
               columnCounter: 0ba68c41-99ee-411d-b1eb-3199ab7f0ffa
               stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
             dataType: NUMBER(38,0)
             description: ""
-            hashColumns: []
             hashDetails: null
-            name: Link
+            name: Link To Carrier
             nullable: true
             sourceColumnReferences:
               - columnReferences:
@@ -73,11 +30,62 @@ steps:
                     stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
                 transform: ""
           - columnReference:
+              columnCounter: 4054c673-d84d-435c-a7e0-1ec235bc7a75
+              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
+            dataType: NUMBER(38,0)
+            description: ""
+            hashDetails: null
+            name: Carrier Rate UID
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 34e741d7-58a4-4f75-9a12-9083c440d0a3
+                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
+                transform: ""
+          - columnReference:
+              columnCounter: 42a54494-2542-4caf-af87-c547d3f0f90a
+              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
+            dataType: VARCHAR(80)
+            description: ""
+            hashDetails: null
+            name: Rate Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: ef446018-777d-4743-a6e7-a46096867fc1
+                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
+                transform: ""
+          - columnReference:
+              columnCounter: 8d90ba09-d5e0-4f14-b1c3-81c7942227f6
+              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
+            dataType: NUMBER(38,0)
+            description: ""
+            hashDetails: null
+            name: Customer Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 54352d82-9d16-438c-95c3-423eebe3b746
+                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
+                transform: ""
+          - columnReference:
+              columnCounter: 7c5465c6-832c-4485-9c4b-c3a43897b474
+              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
+            dataType: NUMBER(18,3)
+            description: ""
+            hashDetails: null
+            name: Carrier Rate
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6ab92aad-f241-47dc-a15e-9c39257fc504
+                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
+                transform: ""
+          - columnReference:
               columnCounter: 2d385138-4fa4-46eb-8c4f-fec657b49d0a
               stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
             dataType: VARCHAR(2)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: UOM
             nullable: true
@@ -87,45 +95,29 @@ steps:
                     stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
                 transform: ""
           - columnReference:
-              columnCounter: 4054c673-d84d-435c-a7e0-1ec235bc7a75
+              columnCounter: a4463497-2aba-4e77-96ba-e63eda0a5881
               stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
-            dataType: NUMBER(38,0)
+            dataType: TIMESTAMP_NTZ(9)
             description: ""
-            hashColumns: []
             hashDetails: null
-            name: Unique ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 34e741d7-58a4-4f75-9a12-9083c440d0a3
-                    stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
-                transform: ""
-          - columnReference:
-              columnCounter: 7c5465c6-832c-4485-9c4b-c3a43897b474
-              stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
-            dataType: NUMBER(18,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Rate
+            name: Effective Date
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: 6ab92aad-f241-47dc-a15e-9c39257fc504
+                  - columnCounter: ad89f189-fd2d-4fb3-937c-01bb4d2b7bc5
                     stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
                 transform: ""
           - columnReference:
-              columnCounter: 42a54494-2542-4caf-af87-c547d3f0f90a
+              columnCounter: d594473e-2f46-4ed0-abc4-b21c038b5e57
               stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
-            dataType: VARCHAR(80)
+            dataType: BOOLEAN
             description: ""
-            hashColumns: []
             hashDetails: null
-            name: Name
+            name: Active Flag
             nullable: true
             sourceColumnReferences:
               - columnReferences:
-                  - columnCounter: ef446018-777d-4743-a6e7-a46096867fc1
+                  - columnCounter: 206d0cc9-8208-41cb-874d-2c1db4dde772
                     stepCounter: e62e6473-95b4-4d70-ac26-3faece7b0cff
                 transform: ""
           - columnReference:
@@ -133,7 +125,6 @@ steps:
               stepCounter: 2802e6e9-4687-469b-a0cb-92e40f7ae790
             dataType: VARCHAR
             description: ""
-            hashColumns: []
             hashDetails: null
             name: SOURCE
             nullable: true
