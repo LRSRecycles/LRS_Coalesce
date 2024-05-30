@@ -21,7 +21,6 @@ steps:
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             dataType: VARCHAR
             description: ""
-            hashColumns: []
             hashDetails: null
             isBusinessKey: true
             name: Unique ID
@@ -40,7 +39,6 @@ steps:
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             dataType: VARCHAR
             description: ""
-            hashColumns: []
             hashDetails: null
             isBusinessKey: true
             name: Customer Number
@@ -59,7 +57,6 @@ steps:
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             dataType: VARCHAR
             description: ""
-            hashColumns: []
             hashDetails: null
             isBusinessKey: true
             name: Site Number
@@ -78,7 +75,6 @@ steps:
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             dataType: VARCHAR(13)
             description: ""
-            hashColumns: []
             hashDetails: null
             isBusinessKey: true
             name: Invoice Number
@@ -97,7 +93,6 @@ steps:
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             dataType: TIMESTAMP_NTZ(9)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Invoice Date
             nullable: false
@@ -115,7 +110,6 @@ steps:
               stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             dataType: NUMBER(18,2)
             description: ""
-            hashColumns: []
             hashDetails: null
             name: Amount
             nullable: false
@@ -134,7 +128,6 @@ steps:
             dataType: VARCHAR
             defaultValue: ""
             description: ""
-            hashColumns: []
             hashDetails: null
             isBusinessKey: true
             name: SOURCE
@@ -237,7 +230,16 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: CASE WHEN "CUSTOMER_MASTER"."Customer Bill To" = 'Separate (A/R Site)' then DATEADD(DAY,"CUST_SITE_PREFERENCES"."Payment Terms","DM01_COMBINED"."DM01_DATE") WHEN "CUSTOMER_MASTER"."Customer Bill To" IN ('Separate (A/R Customer)','Consolidated') THEN dateadd(DAY,"CUSTOMER_PREFERENCES"."Payment Terms 2","DM01_COMBINED"."DM01_DATE") else "DM01_COMBINED"."DM01_DATE" END
+                transform: |-
+                  CASE 
+                      WHEN "CUSTOMER_MASTER"."Customer Bill To" = 'Separate (A/R Site)' 
+                          THEN DATEADD(DAY, CASE WHEN "CUST_SITE_PREFERENCES"."Payment Terms" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CUST_SITE_PREFERENCES"."Payment Terms" END
+                          ,"DM01_COMBINED"."DM01_DATE") 
+                      WHEN "CUSTOMER_MASTER"."Customer Bill To" IN ('Separate (A/R Customer)','Consolidated') 
+                          THEN dateadd(DAY, CASE WHEN "CUSTOMER_PREFERENCES"."Payment Terms 2" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CUSTOMER_PREFERENCES"."Payment Terms 2" END     
+                          ,"DM01_COMBINED"."DM01_DATE") 
+                      ELSE "DM01_COMBINED"."DM01_DATE" 
+                      END
               - columnReferences:
                   - columnCounter: 40667035-d9fe-4b6d-8297-34eb08255553
                     stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
@@ -251,11 +253,14 @@ steps:
               CUSTOMER_PREFERENCES: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
               CUST_SITE_PREFERENCES: 828f44ad-9ea8-4f17-8021-698a7dd934d1
               DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
             dependencies:
               - locationName: MASTER_DATA_CLEAN
                 nodeName: CUSTOMER_MASTER
+              - locationName: MASTER_DATA_CLEAN
+                nodeName: TRUX_DATABASE_METADATA
               - locationName: TRUXCOMBINED_RAW
                 nodeName: CUST_SITE_PREFERENCES
               - locationName: TRUXCOMBINED_RAW
@@ -275,6 +280,8 @@ steps:
                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
                 ON "DM01_COMBINED"."DM01_CUST"= "CUSTOMER_MASTER"."Customer Number"
                 AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_MASTER"."Source"
+                INNER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+                ON "DM01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
                 where "DM01_COMBINED"."Sort" =1 
                 AND "DM01_COMBINED"."_FIVETRAN_DELETED"=FALSE 
                 and "DM01_COMBINED"."METADATA$ACTION" ='INSERT'
