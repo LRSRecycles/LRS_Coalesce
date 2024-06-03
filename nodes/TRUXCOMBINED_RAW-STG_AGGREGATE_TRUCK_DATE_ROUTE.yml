@@ -1,0 +1,112 @@
+steps:
+  STG_AGGREGATE_TRUCK_DATE_ROUTE-4a5f28ca-0fd3-4930-ae39-95fb5c219bc6:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: TRUXCOMBINED_RAW
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 3f989e44-562d-4853-8b17-ad1516499453
+              stepCounter: 4a5f28ca-0fd3-4930-ae39-95fb5c219bc6
+            dataType: TIMESTAMP_NTZ(9)
+            description: ""
+            name: RM05_DATE
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 89947932-45d2-4d2d-a713-659416ca1eba
+                    stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+                transform: ""
+          - columnReference:
+              columnCounter: 7403cead-4244-4b8b-bfb5-6495824b33fb
+              stepCounter: 4a5f28ca-0fd3-4930-ae39-95fb5c219bc6
+            dataType: VARCHAR
+            description: ""
+            name: RM05_ROUT
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 36988482-340d-48be-bed0-42a34f406b00
+                    stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: a578577c-f7e1-4726-b5d1-d748985f8cff
+              stepCounter: 4a5f28ca-0fd3-4930-ae39-95fb5c219bc6
+            config: {}
+            dataType: NUMBER(38,0)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: RM05_TRUK
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1f78371a-a836-4bd2-b9fa-c22073f2f1ac
+                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+                transform: ""
+            systemColumnType: None
+            transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c6695d10-7e03-4bd9-8578-f0808b351186
+              stepCounter: 4a5f28ca-0fd3-4930-ae39-95fb5c219bc6
+            config: {}
+            dataType: VARCHAR
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: SOURCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: a5b7411f-e283-4e61-999d-aba830b990eb
+                    stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+                transform: ""
+            systemColumnType: None
+            transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: RM05_COMBINED
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: STG_AGGREGATE_DATE_ROUTE
+            join:
+              joinCondition: |-
+                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_AGGREGATE_DATE_ROUTE') }} "STG_AGGREGATE_DATE_ROUTE"
+                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED')}} "RM05_COMBINED"
+                    ON "RM05_COMBINED"."RM05_DATE" = "STG_AGGREGATE_DATE_ROUTE"."RM05_DATE"
+                   AND "RM05_COMBINED"."RM05_ROUT" = "STG_AGGREGATE_DATE_ROUTE"."RM05_ROUT"
+                   AND "RM05_COMBINED"."RM05_SEQ1" = "STG_AGGREGATE_DATE_ROUTE"."RM05_SEQ1_MIN"
+                   AND "RM05_COMBINED"."SOURCE" = "STG_AGGREGATE_DATE_ROUTE"."SOURCE"
+            name: STG_AGGREGATE_TRUCK_DATE_ROUTE
+            noLinkRefs: []
+      name: STG_AGGREGATE_TRUCK_DATE_ROUTE
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: 4a5f28ca-0fd3-4930-ae39-95fb5c219bc6
