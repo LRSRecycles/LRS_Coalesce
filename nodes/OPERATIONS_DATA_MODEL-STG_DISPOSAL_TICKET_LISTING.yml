@@ -1135,7 +1135,10 @@ steps:
                     ON "TR03"."TR03_NUMB" = "LM02_COMBINED"."LM02_ROUT" 
                    AND "TR03"."TR03_DATE" = "LM02_COMBINED"."LM02_RDATE"
                    AND "TR03"."SOURCE" = 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW'
-                WHERE "LM02_COMBINED"."LM02_DSTE" = '01' OR "LM02_COMBINED"."LM02_DSTE" = '02'
+                WHERE 
+                ("LM02_COMBINED"."LM02_DSTE" = '01' OR "LM02_COMBINED"."LM02_DSTE" = '02')
+                AND "LM02_COMBINED"."SORT" = 1
+                AND "LM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
                 
             name: STG_DISPOSAL_TICKET_LISTING
             noLinkRefs: []
