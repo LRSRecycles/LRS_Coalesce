@@ -71,7 +71,17 @@ steps:
                     stepCounter: "0"
                 transform: SUBSTRING(CAST("RM01_COMBINED"."RM01_NUMB" AS NVARCHAR), 1, 1)
               - columnReferences: []
-                transform: ""
+                transform: |-
+                  CASE
+                    WHEN "ROUTE_COMBINED"."SCHEDONDOW0" = 1 THEN 7
+                    WHEN "ROUTE_COMBINED"."SCHEDONDOW1" = 1 THEN 1
+                    WHEN "ROUTE_COMBINED"."SCHEDONDOW2" = 1 THEN 2
+                    WHEN "ROUTE_COMBINED"."SCHEDONDOW3" = 1 THEN 3
+                    WHEN "ROUTE_COMBINED"."SCHEDONDOW4" = 1 THEN 4
+                    WHEN "ROUTE_COMBINED"."SCHEDONDOW5" = 1 THEN 5
+                    WHEN "ROUTE_COMBINED"."SCHEDONDOW6" = 1 THEN 6
+                    ELSE NULL
+                  END
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -94,7 +104,16 @@ steps:
                     stepCounter: "0"
                 transform: SUBSTRING(CAST("RM01_COMBINED"."RM01_NUMB" AS NVARCHAR), 2, 3)
               - columnReferences: []
-                transform: ""
+                transform: |
+                  CASE
+                      WHEN "ROUTE_COMBINED"."ROUTE" RLIKE '^[0-9]{3}-[0-9]{4}$' 
+                      THEN SUBSTRING(RIGHT("ROUTE_COMBINED"."ROUTE", CHARINDEX('-', REVERSE("ROUTE_COMBINED"."ROUTE")) - 1), 1, 3)
+                      WHEN "ROUTE_COMBINED"."ROUTE" RLIKE '^[0-9]{3}$' 
+                      THEN "ROUTE_COMBINED"."ROUTE"
+                      WHEN "ROUTE_COMBINED"."ROUTE" RLIKE '^[0-9]{4}$' 
+                      THEN SUBSTRING("ROUTE_COMBINED"."ROUTE", 2, 3)
+                      ELSE NULL
+                  END
             systemColumnType: None
             transform: ""
           - columnReference:
@@ -190,7 +209,9 @@ steps:
                   - columnCounter: 7f806034-0db2-4609-ba82-0bfd7538b0fa
                     stepCounter: 0957e166-ae04-4009-8d30-9868721628af
                 transform: ""
-              - columnReferences: []
+              - columnReferences:
+                  - columnCounter: 039ec9d5-353a-4204-8f0a-7c9f4c3085cb
+                    stepCounter: b352bf7c-adde-4cb4-98b3-dde09a9406e0
                 transform: ""
             systemColumnType: None
             transform: ""
@@ -228,7 +249,9 @@ steps:
                   - columnCounter: c5566d81-d15c-4fcf-8ae3-b1410de4d41e
                     stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
                 transform: "\"RM04_COMBINED\".\"RM04_LNAM\"||', '||\"RM04_COMBINED\".\"RM04_FNAM\""
-              - columnReferences: []
+              - columnReferences:
+                  - columnCounter: 843096f6-51d5-423d-b080-2a538a1823f9
+                    stepCounter: b352bf7c-adde-4cb4-98b3-dde09a9406e0
                 transform: ""
             systemColumnType: None
             transform: ""
@@ -260,7 +283,9 @@ steps:
                   - columnCounter: 29ab04fa-079e-4788-8bc6-71090085b9a7
                     stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
                 transform: ""
-              - columnReferences: []
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
                 transform: ""
           - columnReference:
               columnCounter: fa004674-1dce-4b97-b9b4-778b71e1095f
@@ -436,7 +461,9 @@ steps:
                   - columnCounter: 29e98454-68c4-4414-8685-8bae91617e75
                     stepCounter: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
                 transform: ""
-              - columnReferences: []
+              - columnReferences:
+                  - columnCounter: 09881d82-ff76-4860-b02a-bb0fe944f8eb
+                    stepCounter: b352bf7c-adde-4cb4-98b3-dde09a9406e0
                 transform: ""
             systemColumnType: None
             transform: ""
@@ -489,7 +516,7 @@ steps:
                     stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
                 transform: ""
               - columnReferences: []
-                transform: "\"ROUTE_COMBINED\".\"COMPANYID\"||' - TOWER'"
+                transform: "'TOWER_'||\"ROUTE_COMBINED\".\"COMPANYID\""
           - acceptedValues:
               strictMatch: true
               values: []
@@ -510,7 +537,7 @@ steps:
                     stepCounter: "0"
                 transform: "\"RM01_COMBINED\".\"SOURCE\" || '-' || \"RM01_COMBINED\".\"RM01_NUMB\""
               - columnReferences: []
-                transform: ""
+                transform: "'TOWER_'||\"ROUTE_COMBINED\".\"COMPANYID\"||'-'||\"ROUTE_COMBINED\".\"ROUTE\""
             systemColumnType: None
             transform: ""
           - acceptedValues:
@@ -659,27 +686,27 @@ steps:
                  FROM {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
                    ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
-                  and "RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
+                  AND "RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
                 
                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
                    ON "RM01_COMBINED"."RM01_DRIV" = "RM04_COMBINED"."RM04_NUMB" 
-                  and "RM01_COMBINED"."SOURCE" = "RM04_COMBINED"."SOURCE"
+                  AND "RM01_COMBINED"."SOURCE" = "RM04_COMBINED"."SOURCE"
                 
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'TR01_COMBINED') }} "TR01_COMBINED"
                    ON "RM01_COMBINED"."RM01_TRUK" = "TR01_COMBINED"."TR01_NUMB" 
-                  and "RM01_COMBINED"."SOURCE" = "TR01_COMBINED"."SOURCE"
+                  AND "RM01_COMBINED"."SOURCE" = "TR01_COMBINED"."SOURCE"
                 
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
-                  ON "RM01_COMBINED"."RM01_FAC" = "LM01_COMBINED"."LM01_DSTE" 
-                 and "RM01_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
+                   ON "RM01_COMBINED"."RM01_FAC" = "LM01_COMBINED"."LM01_DSTE" 
+                  AND "RM01_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
                 
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
-                  ON "RM01_COMBINED"."RM01_MATL" = "LM04_COMBINED"."LM04_CODE" 
-                 and "RM01_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
+                   ON "RM01_COMBINED"."RM01_MATL" = "LM04_COMBINED"."LM04_CODE" 
+                  AND "RM01_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
                 
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
-                  ON "RM01_COMBINED"."RM01_SLID" = "SL01_COMBINED"."SL01_ID"
-                 AND "RM01_COMBINED"."SOURCE" = "SL01_COMBINED"."SOURCE"
+                 LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
+                   ON "RM01_COMBINED"."RM01_SLID" = "SL01_COMBINED"."SL01_ID"
+                  AND "RM01_COMBINED"."SOURCE" = "SL01_COMBINED"."SOURCE"
             name: TRUX Routes
             noLinkRefs: []
           - aliases:
@@ -690,9 +717,9 @@ steps:
               - locationName: TOWER_COMBINED
                 nodeName: ROUTE_COMBINED
             join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'ROUTE_COMBINED') }} "ROUTE_COMBINED"
-                WHERE "COMPANYID" is not null
+              joinCondition: |2-
+                 FROM {{ ref('TOWER_COMBINED', 'ROUTE_COMBINED') }} "ROUTE_COMBINED"
+                WHERE "ROUTE_COMBINED"."COMPANYID" IS NOT NULL
             name: Tower Routes
             noLinkRefs: []
       name: ROUTE_MASTER

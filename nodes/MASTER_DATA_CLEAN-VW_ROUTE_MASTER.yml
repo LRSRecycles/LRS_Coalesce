@@ -374,9 +374,10 @@ steps:
               - locationName: MASTER_DATA_CLEAN
                 nodeName: ROUTE_MASTER
             join:
-              joinCondition: |2-
+              joinCondition: |2
                  FROM {{ ref('MASTER_DATA_CLEAN', 'ROUTE_MASTER') }} "ROUTE_MASTER"
-                WHERE "SYSTEM_CURRENT_FLAG" = 'Y'
+                WHERE "ROUTE_MASTER"."SYSTEM_CURRENT_FLAG" = 'Y'
+                  --AND "ROUTE_MASTER"."Source" NOT LIKE '%TOWER%'
             name: VW_ROUTE_MASTER
             noLinkRefs: []
       name: VW_ROUTE_MASTER
