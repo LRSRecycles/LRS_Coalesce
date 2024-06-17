@@ -821,6 +821,34 @@ steps:
                   AND "CD03_COMBINED"."_FIVETRAN_DELETED" = FALSE
                   AND "RM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
                   AND "RM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
+                
+                GROUP BY "CM04_COMBINED"."SOURCE"
+                    , "TRUX_DATABASE_METADATA"."SY03_NAME"
+                
+                    , "CM04_COMBINED"."CM04_CUST"
+                    , "CM04_COMBINED"."CM04_SITE"    
+                    , "CM04_COMBINED"."CM04_NAME"
+                    , "CM04_COMBINED"."CM04_ADD2"
+                    , "CM04_COMBINED"."CM04_ADD3"
+                    , "CM04_COMBINED"."CM04_SUSDATE"
+                    , "CM04_COMBINED"."CM04_SUSREA"
+                    , "CM04_COMBINED"."CM04_REINSDATE"
+                
+                    , "CM04_COMBINED"."CM04_SREP"
+                    , "CD07_COMBINED"."CD07_CODE"
+                    , "CD07_COMBINED"."CD07_DESC"
+                
+                    , "CD03_COMBINED"."CD03_CODE"
+                    , "CD03_COMBINED"."CD03_DESC"
+                
+                    , "RM01_COMBINED"."RM01_NUMB"
+                    , "RM01_COMBINED"."RM01_DESC"
+                    , "RM01_COMBINED"."RM01_SLID"
+                
+                    , "SL01_COMBINED"."SL01_ID"
+                    , "SL01_COMBINED"."SL01_NAME"
+                
+                    , "RM02_COMBINED"."RM02_NUMB"
             name: TRUX_SUSPENDED_SITES
             noLinkRefs: []
       name: ROUTED_SUSPENDED_ACCOUNTS
