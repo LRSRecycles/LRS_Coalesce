@@ -266,22 +266,22 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
-              columnCounter: 4d4ca8ce-fb7e-4d18-bdb1-4408ea8a6e2c
+              columnCounter: 6f28fc17-1094-4756-b9f6-15db09db2623
               stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
             config: {}
-            dataType: VARCHAR(100)
+            dataType: VARCHAR(3)
             defaultValue: ""
             description: ""
             keyColumnType: None
             name: Route
             nullable: true
             sourceColumnReferences:
+              - columnReferences: []
+                transform: SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 2, 3)
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
-              - columnReferences: []
-                transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
+                transform: SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 2, 3)
             systemColumnType: None
           - acceptedValues:
               strictMatch: true
@@ -294,6 +294,7 @@ steps:
             dataType: NUMBER(38,0)
             defaultValue: ""
             description: ""
+            isBusinessKey: true
             keyColumnType: None
             name: Route Number
             nullable: true
@@ -330,6 +331,28 @@ steps:
                   - columnCounter: d7c79737-6613-483a-b1b2-02babcee34d3
                     stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
                 transform: ""
+            systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4d4ca8ce-fb7e-4d18-bdb1-4408ea8a6e2c
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: VARCHAR(100)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Route Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
+              - columnReferences: []
+                transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
             systemColumnType: None
           - acceptedValues:
               strictMatch: true
