@@ -694,7 +694,7 @@ steps:
               - locationName: TRUXCOMBINED_RAW
                 nodeName: SL01_COMBINED
             join:
-              joinCondition: |2-
+              joinCondition: |2
                  FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
                  LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
                    ON "CM03_COMBINED"."CM03_SREP" = "CD07_COMBINED"."CD07_CODE"
@@ -725,6 +725,34 @@ steps:
                   AND "CD03_COMBINED"."_FIVETRAN_DELETED" = FALSE
                   AND "RM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
                   AND "RM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
+                
+                GROUP BY "CM03_COMBINED"."SOURCE"
+                    , "TRUX_DATABASE_METADATA"."SY03_NAME"
+                    , "CM03_COMBINED"."CM03_CUST"
+                    , "CM03_COMBINED"."CM03_NAME"
+                    , "CM03_COMBINED"."CM03_ADD1"
+                    , "CM03_COMBINED"."CM03_ADD2"
+                    , "CM03_COMBINED"."CM03_SUSDATE"
+                    , "CM03_COMBINED"."CM03_SUSREA"
+                    , "CM03_COMBINED"."CM03_REINSDATE"
+                
+                    , "CM03_COMBINED"."CM03_SREP"
+                    , "CD07_COMBINED"."CD07_CODE"
+                    , "CD07_COMBINED"."CD07_DESC"
+                
+                    , "CD03_COMBINED"."CD03_CODE"
+                    , "CD03_COMBINED"."CD03_DESC"
+                
+                    , "RM01_COMBINED"."RM01_NUMB"
+                    , "RM01_COMBINED"."RM01_DESC"
+                    , "RM01_COMBINED"."RM01_SLID"
+                
+                    , "SL01_COMBINED"."SL01_ID"
+                    , "SL01_COMBINED"."SL01_NAME"
+                
+                    , "RM02_COMBINED"."RM02_NUMB"
+                
+                
             name: TRUX_SUSPENDED_CUSTOMERS
             noLinkRefs: []
           - aliases:
