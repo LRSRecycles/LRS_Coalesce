@@ -145,6 +145,28 @@ steps:
               - columnReferences: []
                 transform: IFNULL("CD07_COMBINED"."CD07_DESC",'No Sales Rep')
             systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: cde9f86d-0c6d-45b7-99ac-b43e915e5b68
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: VARCHAR(80)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Date ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: TO_VARCHAR("CM03_COMBINED"."CM03_SUSDATE"::DATE, 'yyyymmdd')
+              - columnReferences: []
+                transform: TO_VARCHAR("CM04_COMBINED"."CM04_SUSDATE"::DATE, 'yyyymmdd')
+            systemColumnType: None
           - columnReference:
               columnCounter: ee7d6e4d-2ceb-4d69-b5bb-b5e46af58e63
               stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
@@ -244,6 +266,28 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
+              columnCounter: 4d4ca8ce-fb7e-4d18-bdb1-4408ea8a6e2c
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: VARCHAR(100)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Route
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
+              - columnReferences: []
+                transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
+            systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
               columnCounter: f020f50a-34ea-499a-b488-23a1dbdb8f68
               stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
             config: {}
@@ -292,6 +336,118 @@ steps:
               values: []
             appliedColumnTests: {}
             columnReference:
+              columnCounter: 200a4808-d3fa-4d6d-9969-11927f07c22e
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: NUMBER(38,0)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Route Day Number
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1)
+              - columnReferences: []
+                transform: SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1)
+            systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f3309bac-f6b9-4552-98c7-c18dc3fda39c
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: VARCHAR(80)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Route Day Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: |-
+                  CASE
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 1 THEN 'Monday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 2 THEN 'Tuesday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 3 THEN 'Wednesday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 4 THEN 'Thursday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 5 THEN 'Friday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 6 THEN 'Saturday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 7 THEN 'Sunday'
+                    ELSE NULL
+                  END
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: |-
+                  CASE
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 1 THEN 'Monday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 2 THEN 'Tuesday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 3 THEN 'Wednesday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 4 THEN 'Thursday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 5 THEN 'Friday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 6 THEN 'Saturday'
+                    WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 7 THEN 'Sunday'
+                    ELSE NULL
+                  END
+            systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5365963c-ca9d-4b44-91e0-c41158610960
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: NUMBER(38,0)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Start Location ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 68f411b9-2ab6-44b8-94eb-9b1578d8c48e
+                    stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
+                transform: IFNULL("SL01_COMBINED"."SL01_ID", -1)
+              - columnReferences:
+                  - columnCounter: 68f411b9-2ab6-44b8-94eb-9b1578d8c48e
+                    stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
+                transform: IFNULL("SL01_COMBINED"."SL01_ID", -1)
+            systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4d11edd1-5749-4a64-97c2-d9b15924409b
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: VARCHAR(80)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Start Location Name
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 909dd0ca-34ac-428f-80e9-005e7d4805c0
+                    stepCounter: 6a58c60a-fd40-458e-b415-7aa216626cb2
+                transform: IFNULL("SL01_COMBINED"."SL01_NAME", 'Add Start Location in TRUX')
+              - columnReferences:
+                  - columnCounter: 909dd0ca-34ac-428f-80e9-005e7d4805c0
+                    stepCounter: 6a58c60a-fd40-458e-b415-7aa216626cb2
+                transform: IFNULL("SL01_COMBINED"."SL01_NAME", 'Add Start Location in TRUX')
+            systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
               columnCounter: f2fd83f0-06d2-4a04-8790-139ec2f02fe7
               stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
             config: {}
@@ -314,6 +470,7 @@ steps:
               stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
             dataType: VARCHAR
             description: ""
+            isBusinessKey: true
             name: Source
             nullable: true
             sourceColumnReferences:
@@ -348,6 +505,28 @@ steps:
                   - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
                     stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
                 transform: ""
+            systemColumnType: None
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4a1a087c-f249-4120-a92c-6dad51b5e0f3
+              stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+            config: {}
+            dataType: VARCHAR(80)
+            defaultValue: ""
+            description: ""
+            keyColumnType: None
+            name: Source_Customer_Site
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: "0"
+                    stepCounter: "0"
+                transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUST\"||'-0'"
+              - columnReferences: []
+                transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\"||'-'||\"CM04_COMBINED\".\"CM04_SITE\""
             systemColumnType: None
           - acceptedValues:
               strictMatch: true
@@ -472,6 +651,7 @@ steps:
               CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
               RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
               RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+              SL01_COMBINED: 6a58c60a-fd40-458e-b415-7aa216626cb2
               TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
@@ -488,6 +668,8 @@ steps:
                 nodeName: RM01_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: RM02_COMBINED
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: SL01_COMBINED
             join:
               joinCondition: |2-
                  FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
@@ -507,6 +689,10 @@ steps:
                    ON "RM02_COMBINED"."RM02_NUMB" = "RM01_COMBINED"."RM01_NUMB"
                   AND "RM02_COMBINED"."SOURCE" = "RM01_COMBINED"."SOURCE"
                 
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
+                   ON "RM01_COMBINED"."RM01_SLID" = "SL01_COMBINED"."SL01_ID"
+                  AND "RM01_COMBINED"."SOURCE" = "SL01_COMBINED"."SOURCE"
+                
                  LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                    ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
                 
@@ -525,6 +711,7 @@ steps:
               CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
               RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
               RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+              SL01_COMBINED: 6a58c60a-fd40-458e-b415-7aa216626cb2
               TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
             customSQL:
               customSQL: ""
@@ -543,6 +730,8 @@ steps:
                 nodeName: RM01_COMBINED
               - locationName: TRUXCOMBINED_RAW
                 nodeName: RM02_COMBINED
+              - locationName: TRUXCOMBINED_RAW
+                nodeName: SL01_COMBINED
             join:
               joinCondition: |2-
                  FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
@@ -566,6 +755,10 @@ steps:
                 INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
                    ON "RM02_COMBINED"."RM02_NUMB" = "RM01_COMBINED"."RM01_NUMB"
                   AND "RM02_COMBINED"."SOURCE" = "RM01_COMBINED"."SOURCE"
+                
+                 LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
+                   ON "RM01_COMBINED"."RM01_SLID" = "SL01_COMBINED"."SL01_ID"
+                  AND "RM01_COMBINED"."SOURCE" = "SL01_COMBINED"."SOURCE"
                 
                  LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                    ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"

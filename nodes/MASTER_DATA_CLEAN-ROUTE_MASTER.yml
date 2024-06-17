@@ -69,7 +69,7 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: SUBSTRING(CAST("RM01_COMBINED"."RM01_NUMB" AS NVARCHAR), 1, 1)
+                transform: SUBSTR(TO_VARCHAR("RM01_COMBINED"."RM01_NUMB"), 1, 1)
               - columnReferences: []
                 transform: |-
                   CASE
@@ -102,7 +102,7 @@ steps:
               - columnReferences:
                   - columnCounter: "0"
                     stepCounter: "0"
-                transform: SUBSTRING(CAST("RM01_COMBINED"."RM01_NUMB" AS NVARCHAR), 2, 3)
+                transform: SUBSTR(TO_VARCHAR("RM01_COMBINED"."RM01_NUMB"), 2, 3)
               - columnReferences: []
                 transform: |
                   CASE
