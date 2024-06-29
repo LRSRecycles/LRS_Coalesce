@@ -1,0 +1,113 @@
+steps:
+  DM05N-e6039ece-7279-4884-977c-9290e74ec292:
+    operation:
+      database: ""
+      dataset: ""
+      deployEnabled: true
+      description: ""
+      locationName: TRUX_RW_COMP_RAW
+      metadata:
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 09019820-685a-401a-a521-6aae5e234f8d
+              stepCounter: e6039ece-7279-4884-977c-9290e74ec292
+            config: {}
+            dataType: VARCHAR(200)
+            defaultValue: ""
+            description: ""
+            name: DM05N_NOTE
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: fb2fc272-76a9-418d-9236-c9313891e3e9
+              stepCounter: e6039ece-7279-4884-977c-9290e74ec292
+            config: {}
+            dataType: VARCHAR(10)
+            defaultValue: ""
+            description: ""
+            name: DM05N_USER
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 3be27710-e6b4-4926-9755-7ec17a95b09b
+              stepCounter: e6039ece-7279-4884-977c-9290e74ec292
+            config: {}
+            dataType: NUMBER(38,0)
+            defaultValue: ""
+            description: ""
+            name: DM05N_ID
+            nullable: false
+            primaryKey: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: c1fc7a6d-1cba-4528-8146-1a5a34fd410a
+              stepCounter: e6039ece-7279-4884-977c-9290e74ec292
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_DELETED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: eddb39f4-b58c-4d50-8a54-e53f9f34c1fe
+              stepCounter: e6039ece-7279-4884-977c-9290e74ec292
+            config: {}
+            dataType: TIMESTAMP_TZ(9)
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+        join:
+          joinCondition: FROM {{ ref('TRUX_RW_COMP_RAW', 'DM05N') }}
+      name: DM05N
+      schema: ""
+      sqlType: Source
+      table: DM05N
+      type: sourceInput
+    stepCounter: e6039ece-7279-4884-977c-9290e74ec292

@@ -1,0 +1,132 @@
+steps:
+  CD16-1bbd1c95-57b1-4b69-b1f9-0e872019ea51:
+    operation:
+      database: ""
+      dataset: ""
+      deployEnabled: true
+      description: ""
+      locationName: TRUX_RW_COMP_RAW
+      metadata:
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: cbe3f5ee-adfa-4b24-848f-29b3e69e129a
+              stepCounter: 1bbd1c95-57b1-4b69-b1f9-0e872019ea51
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            name: CD16_UOM
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: e719a5fa-2814-46c2-a1a9-09abf787e3b0
+              stepCounter: 1bbd1c95-57b1-4b69-b1f9-0e872019ea51
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            name: CD16_ACTIVE
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 7cce26b4-cf4c-4abc-a8c3-6192b5315418
+              stepCounter: 1bbd1c95-57b1-4b69-b1f9-0e872019ea51
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            name: CD16_CODE
+            nullable: false
+            primaryKey: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 8785b211-804b-4ab4-bb31-c1fca3a31526
+              stepCounter: 1bbd1c95-57b1-4b69-b1f9-0e872019ea51
+            config: {}
+            dataType: VARCHAR(80)
+            defaultValue: ""
+            description: ""
+            name: CD16_DESC
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 9d5b2257-6933-4a3b-b7c4-151a1bee0a60
+              stepCounter: 1bbd1c95-57b1-4b69-b1f9-0e872019ea51
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_DELETED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 6ce220f7-a4f1-4771-a4bf-03dc55d8b41d
+              stepCounter: 1bbd1c95-57b1-4b69-b1f9-0e872019ea51
+            config: {}
+            dataType: TIMESTAMP_TZ(9)
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+        join:
+          joinCondition: FROM {{ ref('TRUX_RW_COMP_RAW', 'CD16') }}
+      name: CD16
+      schema: ""
+      sqlType: Source
+      table: CD16
+      type: sourceInput
+    stepCounter: 1bbd1c95-57b1-4b69-b1f9-0e872019ea51

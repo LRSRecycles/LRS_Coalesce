@@ -1,0 +1,94 @@
+steps:
+  CM21C-dc8c0448-d9ed-4797-84b7-fb9ce12428b4:
+    operation:
+      database: ""
+      dataset: ""
+      deployEnabled: true
+      description: ""
+      locationName: TRUX_RW_COMP_RAW
+      metadata:
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 0f151b44-5638-4833-a0c4-12aba8bb3330
+              stepCounter: dc8c0448-d9ed-4797-84b7-fb9ce12428b4
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            name: CM21C_MISC
+            nullable: false
+            primaryKey: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: af455596-58c1-40ba-8b1c-c3f7e7f5ac1c
+              stepCounter: dc8c0448-d9ed-4797-84b7-fb9ce12428b4
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            name: CM21C_TXID
+            nullable: false
+            primaryKey: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: b6184270-206b-48f1-b44f-03cccfec3340
+              stepCounter: dc8c0448-d9ed-4797-84b7-fb9ce12428b4
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_DELETED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: fe5657bf-2ae5-4e46-a98b-f6800071b283
+              stepCounter: dc8c0448-d9ed-4797-84b7-fb9ce12428b4
+            config: {}
+            dataType: TIMESTAMP_TZ(9)
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+        join:
+          joinCondition: FROM {{ ref('TRUX_RW_COMP_RAW', 'CM21C') }}
+      name: CM21C
+      schema: ""
+      sqlType: Source
+      table: CM21C
+      type: sourceInput
+    stepCounter: dc8c0448-d9ed-4797-84b7-fb9ce12428b4

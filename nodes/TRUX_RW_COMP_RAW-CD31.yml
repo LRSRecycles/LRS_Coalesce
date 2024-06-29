@@ -1,0 +1,113 @@
+steps:
+  CD31-b5df0c09-c940-4a38-bd4b-7f2acd3a9a74:
+    operation:
+      database: ""
+      dataset: ""
+      deployEnabled: true
+      description: ""
+      locationName: TRUX_RW_COMP_RAW
+      metadata:
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: ada733f5-6bc7-4e9e-b4ee-cd2b4bc86f43
+              stepCounter: b5df0c09-c940-4a38-bd4b-7f2acd3a9a74
+            config: {}
+            dataType: VARCHAR(2)
+            defaultValue: ""
+            description: ""
+            name: CD31_CODE
+            nullable: false
+            primaryKey: true
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: be63245b-27f7-4934-b6f3-7be4f57dd06b
+              stepCounter: b5df0c09-c940-4a38-bd4b-7f2acd3a9a74
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            name: CD31_ACTIVE
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5422d00b-88b9-4a80-b401-7af5bbb1dc24
+              stepCounter: b5df0c09-c940-4a38-bd4b-7f2acd3a9a74
+            config: {}
+            dataType: VARCHAR(80)
+            defaultValue: ""
+            description: ""
+            name: CD31_DESC
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 04fbae45-2953-4ab3-b8a1-c4b289805502
+              stepCounter: b5df0c09-c940-4a38-bd4b-7f2acd3a9a74
+            config: {}
+            dataType: BOOLEAN
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_DELETED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5e28327b-17a6-4629-85bc-1203c78321dc
+              stepCounter: b5df0c09-c940-4a38-bd4b-7f2acd3a9a74
+            config: {}
+            dataType: TIMESTAMP_TZ(9)
+            defaultValue: ""
+            description: ""
+            name: _FIVETRAN_SYNCED
+            nullable: true
+            primaryKey: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: ""
+            transform: ""
+            uniqueKey: false
+        join:
+          joinCondition: FROM {{ ref('TRUX_RW_COMP_RAW', 'CD31') }}
+      name: CD31
+      schema: ""
+      sqlType: Source
+      table: CD31
+      type: sourceInput
+    stepCounter: b5df0c09-c940-4a38-bd4b-7f2acd3a9a74
