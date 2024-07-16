@@ -520,14 +520,14 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINED') }} "RM02_COMBINED"
-
+            
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "RM02_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-
+            
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }}
                ON "RM02_COMBINED"."RM02_ACTV" = "CM12_COMBINED"."CM12_CODE"
               AND "RM02_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
-
+            
             WHERE "RM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: TRUX_RM02_COMBINED
         noLinkRefs: []

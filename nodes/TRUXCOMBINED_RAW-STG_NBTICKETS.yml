@@ -225,11 +225,11 @@ operation:
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
               ON "STG_NBTickets_Join_Collections_Disposal"."LM02_ROUT" = "RM01_COMBINED"."RM01_NUMB" 
              AND "STG_NBTickets_Join_Collections_Disposal"."SOURCE" = "RM01_COMBINED"."SOURCE"
-
+            
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
               ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
              AND "RM01_COMBINED"."SOURCE" ="CD14_COMBINED"."SOURCE"
-
+            
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
               ON "STG_NBTickets_Join_Collections_Disposal"."LM02_DUOM" = "LM06_COMBINED"."LM06_UOM1" 
              AND "STG_NBTickets_Join_Collections_Disposal"."SOURCE" = "LM06_COMBINED"."SOURCE"

@@ -210,20 +210,20 @@ operation:
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
               ON "STG_DTickets_Join_Collections_Disposal"."LM02_ROUT" = "RM01_COMBINED"."RM01_NUMB" 
              and "STG_DTickets_Join_Collections_Disposal"."SOURCE" = "RM01_COMBINED"."SOURCE"
-
+            
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
               ON "STG_DTickets_Join_Collections_Disposal"."LM02_MATL" = "LM04_COMBINED"."LM04_CODE"
              and "STG_DTickets_Join_Collections_Disposal"."SOURCE" = "LM04_COMBINED"."SOURCE"
-
+            
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
               ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
              and "RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
-
+            
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
               ON "STG_DTickets_Join_Collections_Disposal"."LM02_DUOM" = "LM06_COMBINED"."LM06_UOM1"
              and "LM06_COMBINED"."LM06_UOM2" = "CD14_COMBINED"."CD14_WEIGHTUOM"
              and "LM06_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
-
+            
             GROUP BY "Route Date", 
                 "Route Sequence", 
                 "STG_DTickets_Join_Collections_Disposal"."SOURCE",

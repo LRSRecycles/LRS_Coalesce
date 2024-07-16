@@ -420,12 +420,12 @@ operation:
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_MASTER') }} "VW_CUSTOMER_MASTER"
                ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "VW_CUSTOMER_MASTER"."Customer Number"
               AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
-
+            
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_SITE_MASTER') }} "VW_CUSTOMER_SITE_MASTER"
                ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "VW_CUSTOMER_SITE_MASTER"."Customer Number"
               AND "STG_ROUTE_AUDIT_REPORT"."Site" = "VW_CUSTOMER_SITE_MASTER"."Site Number"
               AND "STG_ROUTE_AUDIT_REPORT"."SOURCE" = "VW_CUSTOMER_SITE_MASTER"."Source"
-
+            
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_SITE_SERVICE_MASTER') }} "CUSTOMER_SITE_SERVICE_MASTER"
                ON "STG_ROUTE_AUDIT_REPORT"."Customer" = "CUSTOMER_SITE_SERVICE_MASTER"."Customer Number"
               AND "STG_ROUTE_AUDIT_REPORT"."Site" = "CUSTOMER_SITE_SERVICE_MASTER"."Site Number"

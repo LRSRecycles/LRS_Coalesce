@@ -608,16 +608,16 @@ operation:
               AND "VW_SCHEDULED_SERVICE"."Site Number" = "CUSTOMER_SITE_SERVICE_MASTER"."Site Number"
               AND "VW_SCHEDULED_SERVICE"."Service Number" = "CUSTOMER_SITE_SERVICE_MASTER"."Service Number"
               AND "VW_SCHEDULED_SERVICE"."Source" = "CUSTOMER_SITE_SERVICE_MASTER"."Source"
-
+            
             INNER JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_SITE_MASTER') }} "CUSTOMER_SITE_MASTER"
                ON "VW_SCHEDULED_SERVICE"."Customer Number" = "CUSTOMER_SITE_MASTER"."Customer Number"
               AND "VW_SCHEDULED_SERVICE"."Site Number" = "CUSTOMER_SITE_MASTER"."Site Number"
               AND "VW_SCHEDULED_SERVICE"."Source" = "CUSTOMER_SITE_MASTER"."Source"
-
+            
             INNER JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
                ON "VW_SCHEDULED_SERVICE"."Customer Number" = "CUSTOMER_MASTER"."Customer Number"
               AND "VW_SCHEDULED_SERVICE"."Source" = "CUSTOMER_MASTER"."Source"
-
+            
             WHERE "CUSTOMER_SITE_SERVICE_MASTER"."SYSTEM_CURRENT_FLAG" = 'Y'
               AND "CUSTOMER_SITE_MASTER"."SYSTEM_CURRENT_FLAG" = 'Y'
               AND "CUSTOMER_MASTER"."SYSTEM_CURRENT_FLAG" = 'Y'

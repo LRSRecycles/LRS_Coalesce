@@ -29,36 +29,6 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a14d9113-52fc-4725-9244-4d51de7688cb
-          stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
-        config: {}
-        dataType: VARCHAR(40)
-        defaultValue: ""
-        description: ""
-        name: CD11_DESC
-        nullable: false
-        primaryKey: false
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: bbb32f30-572c-4b94-8dca-53699f3a78c0
-          stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
-        config: {}
-        dataType: VARCHAR(5)
-        defaultValue: ""
-        description: ""
-        name: CD11_ACTIVE
-        nullable: false
-        primaryKey: false
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
           columnCounter: a4bd17b5-b98b-4dea-a98e-b4b4592a6cfc
           stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
         config: {}
@@ -68,6 +38,82 @@ operation:
         name: CD11_CASH
         nullable: false
         primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4e58867-2a0f-4349-9af0-ca2bf88b9e23
+          stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c275d90e-cf97-42db-b312-8c15be0808dd
+          stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bbb32f30-572c-4b94-8dca-53699f3a78c0
+          stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: CD11_ACTIVE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a14d9113-52fc-4725-9244-4d51de7688cb
+          stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        name: CD11_DESC
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
         uniqueKey: false
     join:
       joinCondition: FROM {{ ref('TRUX_AM_COMP_RAW', 'CD11') }}

@@ -550,15 +550,15 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'SC01_COMBINED') }} "SC01_COMBINED"
-
+            
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD18_COMBINED') }} "CD18_COMBINED"
                ON "SC01_COMBINED"."SC01_TYPE" = "CD18_COMBINED"."CD18_CODE"
               AND "SC01_COMBINED"."SOURCE" = "CD18_COMBINED"."SOURCE"
-
+            
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD19_COMBINED') }} "CD19_COMBINED"
                ON "SC01_COMBINED"."SC01_URGN" = "CD19_COMBINED"."CD19_CODE"
               AND "SC01_COMBINED"."SOURCE" = "CD19_COMBINED"."SOURCE"
-
+            
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "SC01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             WHERE "SC01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'

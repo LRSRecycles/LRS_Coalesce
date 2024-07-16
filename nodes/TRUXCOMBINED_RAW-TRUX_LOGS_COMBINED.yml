@@ -567,12 +567,12 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('LOGGING_DATA', 'LEGACY_LOG') }} "LEGACY_LOG"
-
+            
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "LEGACY_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-
-            WHERE "LEGACY_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
-              AND "LEGACY_LOG"."LOG_DATE" >= '01/01/2023'
+            
+            WHERE "LEGACY_LOG"."LOG_DATE" >= '01/01/2023'
+               -- AND "LEGACY_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
         name: LEGACY_LOG
         noLinkRefs: []
       - aliases:
@@ -588,12 +588,12 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('LOGGING_DATA', 'MIDWEST_LOG') }} "MIDWEST_LOG"
-
+            
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "MIDWEST_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-
-            WHERE "MIDWEST_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
-              AND "MIDWEST_LOG"."LOG_DATE" >= '01/01/2023'
+            
+            WHERE "MIDWEST_LOG"."LOG_DATE" >= '01/01/2023'
+              --AND "MIDWEST_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
         name: MIDWEST_LOG
         noLinkRefs: []
   name: TRUX_LOGS_COMBINED
