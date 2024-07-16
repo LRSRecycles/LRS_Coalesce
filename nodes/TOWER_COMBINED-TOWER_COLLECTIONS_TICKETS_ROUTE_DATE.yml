@@ -1,153 +1,163 @@
-steps:
-  TOWER_COLLECTIONS_TICKETS_ROUTE_DATE-2b04a398-cc77-40c7-991c-cf93b1a0b5c3:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 9e163c86-9299-4132-9365-94c112b736e6
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: TRIPDATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 76ff839f-05ba-44c0-8634-95cbd7b2bedf
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: ""
-          - columnReference:
-              columnCounter: 592527b9-0df0-4f59-b13b-e15bd9565b55
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ROUTE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9e53e09d-7b63-4b38-bed3-4fb9b88b7876
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: ""
-          - columnReference:
-              columnCounter: cd67b085-45f3-4823-94ba-14c8e5a9b946
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DESTINATION
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cad482fd-f60f-4e08-bcd3-02788958f77f
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: LISTAGG(DISTINCT "TOWER_COLLECTIONS_TICKETS"."DESTINATION",', ')
-          - columnReference:
-              columnCounter: d58436a7-5f9d-4dba-b97c-e79e4a57abb6
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SCALETICKETNBR
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0c18eb1e-c17b-4c48-ba23-5a11af94ac1c
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: LISTAGG(DISTINCT "TOWER_COLLECTIONS_TICKETS"."SCALETICKETNBR",', ')
-          - columnReference:
-              columnCounter: 7ea171d5-8be6-483d-9029-ca3f00f0441e
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MATERIAL
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 638abc24-e373-4323-887e-555309a2875b
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: LISTAGG(DISTINCT "TOWER_COLLECTIONS_TICKETS"."MATERIAL",', ')
-          - columnReference:
-              columnCounter: dd2037e7-7400-476f-b771-57c8aa775954
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: WEIGHT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: fe835411-be00-4da8-95bd-64d44f6d93cc
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: SUM("TOWER_COLLECTIONS_TICKETS"."WEIGHT")
-          - columnReference:
-              columnCounter: 6177974b-bdd3-4f60-898a-48cf2f3501b4
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: NUMBER(38,6)
-            description: Manual conversion of volume to yards
-            hashColumns: []
-            hashDetails: null
-            name: VOLUME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 00256159-af8f-413d-affc-32c604f6d608
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: SUM("TOWER_COLLECTIONS_TICKETS"."VOLUME")
-          - columnReference:
-              columnCounter: d3ecdf7f-484a-4b01-8cad-a4f6e6dfc600
-              stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FEE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 112abc38-4198-4f61-91d8-44dce067a74f
-                    stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
-                transform: SUM("TOWER_COLLECTIONS_TICKETS"."FEE")+SUM("TOWER_COLLECTIONS_TICKETS"."EXTRACHARGES")
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              TOWER_COLLECTIONS_TICKETS: 647cca31-8098-4bfa-ae39-e4fb762820be
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: TOWER_COLLECTIONS_TICKETS
-            join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'TOWER_COLLECTIONS_TICKETS') }} "TOWER_COLLECTIONS_TICKETS"
-                where triptype = 0
-                group by "ROUTE","TRIPDATE"
-            name: TOWER_COLLECTIONS_TICKETS_ROUTE_DATE
-            noLinkRefs: []
-      name: TOWER_COLLECTIONS_TICKETS_ROUTE_DATE
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+fileVersion: 1
+id: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+name: TOWER_COLLECTIONS_TICKETS_ROUTE_DATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e163c86-9299-4132-9365-94c112b736e6
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: TRIPDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 76ff839f-05ba-44c0-8634-95cbd7b2bedf
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 592527b9-0df0-4f59-b13b-e15bd9565b55
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: ROUTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9e53e09d-7b63-4b38-bed3-4fb9b88b7876
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cd67b085-45f3-4823-94ba-14c8e5a9b946
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: DESTINATION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cad482fd-f60f-4e08-bcd3-02788958f77f
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: LISTAGG(DISTINCT "TOWER_COLLECTIONS_TICKETS"."DESTINATION",', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d58436a7-5f9d-4dba-b97c-e79e4a57abb6
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: SCALETICKETNBR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0c18eb1e-c17b-4c48-ba23-5a11af94ac1c
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: LISTAGG(DISTINCT "TOWER_COLLECTIONS_TICKETS"."SCALETICKETNBR",', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7ea171d5-8be6-483d-9029-ca3f00f0441e
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: MATERIAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 638abc24-e373-4323-887e-555309a2875b
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: LISTAGG(DISTINCT "TOWER_COLLECTIONS_TICKETS"."MATERIAL",', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dd2037e7-7400-476f-b771-57c8aa775954
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: WEIGHT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fe835411-be00-4da8-95bd-64d44f6d93cc
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: SUM("TOWER_COLLECTIONS_TICKETS"."WEIGHT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6177974b-bdd3-4f60-898a-48cf2f3501b4
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: NUMBER(38,6)
+        description: Manual conversion of volume to yards
+        hashDetails: null
+        name: VOLUME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 00256159-af8f-413d-affc-32c604f6d608
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: SUM("TOWER_COLLECTIONS_TICKETS"."VOLUME")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d3ecdf7f-484a-4b01-8cad-a4f6e6dfc600
+          stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: FEE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 112abc38-4198-4f61-91d8-44dce067a74f
+                stepCounter: 647cca31-8098-4bfa-ae39-e4fb762820be
+            transform: SUM("TOWER_COLLECTIONS_TICKETS"."FEE")+SUM("TOWER_COLLECTIONS_TICKETS"."EXTRACHARGES")
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          TOWER_COLLECTIONS_TICKETS: 647cca31-8098-4bfa-ae39-e4fb762820be
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: TOWER_COLLECTIONS_TICKETS
+        join:
+          joinCondition: |-
+            FROM {{ ref('TOWER_COMBINED', 'TOWER_COLLECTIONS_TICKETS') }} "TOWER_COLLECTIONS_TICKETS"
+            where triptype = 0
+            group by "ROUTE","TRIPDATE"
+        name: TOWER_COLLECTIONS_TICKETS_ROUTE_DATE
+        noLinkRefs: []
+  name: TOWER_COLLECTIONS_TICKETS_ROUTE_DATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

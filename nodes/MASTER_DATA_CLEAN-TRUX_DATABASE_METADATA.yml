@@ -1,246 +1,258 @@
-steps:
-  TRUX_DATABASE_METADATA-c2e3b305-d522-488b-bbc6-6ade93cd3385:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: true
-      locationName: MASTER_DATA_CLEAN
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 9fffaca9-2874-4427-88c7-958880c87eca
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            dataType: VARCHAR(2)
-            description: ""
-            hashDetails: null
-            name: SY03_CODE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b3339426-2f8c-4fee-9df0-402a03db75cd
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 79d1d19f-b448-4b4b-a213-4b84a2d44fcf
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: ""
-          - columnReference:
-              columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            dataType: VARCHAR(50)
-            description: ""
-            hashDetails: null
-            name: SY03_NAME
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 10e943a8-816a-4d5d-996c-03d01d0de5be
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 87186d13-e3e3-4b87-8c01-f62c68fe0b47
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 446fdc32-3ec7-4b12-98cb-b2eb262f78b4
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            config: {}
-            dataType: VARCHAR(3)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: SY03_HWR
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 65830c93-70b1-4021-960c-b4bf32dd419e
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: c2e3b305-d522-488b-bbc6-6ade93cd3385
+name: TRUX_DATABASE_METADATA
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9fffaca9-2874-4427-88c7-958880c87eca
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: SY03_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b3339426-2f8c-4fee-9df0-402a03db75cd
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a8f0eb03-e9e1-4717-add0-9769b3eb448d
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            config: {}
-            dataType: VARCHAR(40)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Company Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: |-
-                  CASE WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
-                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
-                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
-                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
-                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
-                    WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
-                    END
-              - columnReferences:
-                  - columnCounter: 65830c93-70b1-4021-960c-b4bf32dd419e
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: |-
-                  CASE WHEN "STG_LEGACY_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_LEGACY_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
-                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
-                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
-                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
-                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
-                    WHEN "STG_LEGACY_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
-                    END
-            systemColumnType: None
+          - columnReferences:
+              - columnCounter: 79d1d19f-b448-4b4b-a213-4b84a2d44fcf
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0312f07a-249d-40d7-9d53-b9a82e5bd5e2
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            config: {}
-            dataType: VARCHAR(2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: SY03_STAT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0c9bdd37-d140-44d3-a387-9dbf693dcedf
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 7512865e-6340-4ef8-aaca-e8cbe1e55d85
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        hashDetails: null
+        name: SY03_NAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10e943a8-816a-4d5d-996c-03d01d0de5be
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
             transform: ""
-          - acceptedValues:
-              strictMatch: false
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 88fa869e-2e30-46f9-9890-7750082ee0dd
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            dataType: NUMBER(38,0)
-            description: ""
-            name: SY03_DEFAULTPAYTERMS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3a3ac261-c854-4ab3-aa49-1d24242e6c5e
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 8b1b94de-545d-48c2-b306-43124307b4c5
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4ebb3fc3-520f-45cc-8fbe-545811185291
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            config: {}
-            dataType: VARCHAR(50)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: SQL_SERVER_NAME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "'MIDWEST'"
-              - columnReferences: []
-                transform: "'LEGACY'"
-            systemColumnType: None
+          - columnReferences:
+              - columnCounter: 87186d13-e3e3-4b87-8c01-f62c68fe0b47
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
             transform: ""
-          - columnReference:
-              columnCounter: a2179cc3-ae61-4c30-9876-ab3d9de7921f
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            dataType: VARCHAR(20)
-            description: ""
-            hashDetails: null
-            name: SQL_DB_NAME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6013d6bb-b58c-4974-a5a8-a16275c5837a
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 8ebdd40b-4bf2-4f6f-a11f-147d56ed13bb
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: ""
-          - columnReference:
-              columnCounter: 0539cd47-31c6-4ddd-aa09-b5ebc12b2804
-              stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            dataType: VARCHAR(30)
-            description: ""
-            hashDetails: null
-            name: SNOWFLAKE_NAME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b4679835-de41-4a83-87bd-e625005192d8
-                    stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-                transform: ""
-              - columnReferences:
-                  - columnCounter: ddf98b3a-3d81-4a83-bed3-feee94a81100
-                    stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
-                transform: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: MASTER_DATA
-                nodeName: STG_MIDWEST_SY03
-            join:
-              joinCondition: FROM {{ ref('MASTER_DATA', 'STG_MIDWEST_SY03') }} "STG_MIDWEST_SY03"
-            name: STG_MIDWEST_SY03
-            noLinkRefs: []
-          - aliases:
-              STG_LEGACY_SY03: 3d4ed0a5-349d-409c-bec4-338d77557a02
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: MASTER_DATA
-                nodeName: STG_LEGACY_SY03
-            join:
-              joinCondition: FROM {{ ref('MASTER_DATA', 'STG_LEGACY_SY03') }} "STG_LEGACY_SY03"
-            name: STG_LEGACY_SY03
-            noLinkRefs: []
-      name: TRUX_DATABASE_METADATA
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 446fdc32-3ec7-4b12-98cb-b2eb262f78b4
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(3)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SY03_HWR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+            transform: ""
+          - columnReferences:
+              - columnCounter: 65830c93-70b1-4021-960c-b4bf32dd419e
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8f0eb03-e9e1-4717-add0-9769b3eb448d
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(40)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+            transform: |-
+              CASE WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
+                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
+                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
+                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
+                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
+                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
+                END
+          - columnReferences:
+              - columnCounter: 65830c93-70b1-4021-960c-b4bf32dd419e
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+            transform: |-
+              CASE WHEN "STG_LEGACY_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_LEGACY_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
+                WHEN "STG_LEGACY_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
+                WHEN "STG_LEGACY_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
+                WHEN "STG_LEGACY_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
+                WHEN "STG_LEGACY_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
+                WHEN "STG_LEGACY_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
+                END
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0312f07a-249d-40d7-9d53-b9a82e5bd5e2
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SY03_STAT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0c9bdd37-d140-44d3-a387-9dbf693dcedf
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+            transform: ""
+          - columnReferences:
+              - columnCounter: 7512865e-6340-4ef8-aaca-e8cbe1e55d85
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 88fa869e-2e30-46f9-9890-7750082ee0dd
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SY03_DEFAULTPAYTERMS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3a3ac261-c854-4ab3-aa49-1d24242e6c5e
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+            transform: ""
+          - columnReferences:
+              - columnCounter: 8b1b94de-545d-48c2-b306-43124307b4c5
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ebb3fc3-520f-45cc-8fbe-545811185291
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SQL_SERVER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'MIDWEST'"
+          - columnReferences: []
+            transform: "'LEGACY'"
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2179cc3-ae61-4c30-9876-ab3d9de7921f
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        hashDetails: null
+        name: SQL_DB_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6013d6bb-b58c-4974-a5a8-a16275c5837a
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+            transform: ""
+          - columnReferences:
+              - columnCounter: 8ebdd40b-4bf2-4f6f-a11f-147d56ed13bb
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0539cd47-31c6-4ddd-aa09-b5ebc12b2804
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: SNOWFLAKE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b4679835-de41-4a83-87bd-e625005192d8
+                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+            transform: ""
+          - columnReferences:
+              - columnCounter: ddf98b3a-3d81-4a83-bed3-feee94a81100
+                stepCounter: 3d4ed0a5-349d-409c-bec4-338d77557a02
+            transform: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA
+            nodeName: STG_MIDWEST_SY03
+        join:
+          joinCondition: FROM {{ ref('MASTER_DATA', 'STG_MIDWEST_SY03') }} "STG_MIDWEST_SY03"
+        name: STG_MIDWEST_SY03
+        noLinkRefs: []
+      - aliases:
+          STG_LEGACY_SY03: 3d4ed0a5-349d-409c-bec4-338d77557a02
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA
+            nodeName: STG_LEGACY_SY03
+        join:
+          joinCondition: FROM {{ ref('MASTER_DATA', 'STG_LEGACY_SY03') }} "STG_LEGACY_SY03"
+        name: STG_LEGACY_SY03
+        noLinkRefs: []
+  name: TRUX_DATABASE_METADATA
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

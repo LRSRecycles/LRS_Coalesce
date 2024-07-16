@@ -1,113 +1,115 @@
-steps:
-  CD09-eeec9ff5-88e8-477f-b40a-bb612731d333:
-    operation:
-      database: ""
-      dataset: ""
-      deployEnabled: true
-      description: ""
-      locationName: TRUX_RW_COMP_RAW
-      metadata:
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 3981c42e-6e85-4afb-9cbf-6719daa77423
-              stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
-            config: {}
-            dataType: VARCHAR(2)
-            defaultValue: ""
-            description: ""
-            name: CD09_CODE
-            nullable: false
-            primaryKey: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
+fileVersion: 1
+id: eeec9ff5-88e8-477f-b40a-bb612731d333
+name: CD09
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: TRUX_RW_COMP_RAW
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3981c42e-6e85-4afb-9cbf-6719daa77423
+          stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        name: CD09_CODE
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
             transform: ""
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a7fd6e11-6008-45cf-992e-cefbb706ff91
-              stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
-            config: {}
-            dataType: VARCHAR(80)
-            defaultValue: ""
-            description: ""
-            name: CD09_DESC
-            nullable: true
-            primaryKey: false
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a7fd6e11-6008-45cf-992e-cefbb706ff91
+          stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        name: CD09_DESC
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
             transform: ""
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a23288f9-a1ca-48a4-bdb2-6115d4bfd16b
-              stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
-            config: {}
-            dataType: BOOLEAN
-            defaultValue: ""
-            description: ""
-            name: CD09_ACTIVE
-            nullable: true
-            primaryKey: false
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a23288f9-a1ca-48a4-bdb2-6115d4bfd16b
+          stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: CD09_ACTIVE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
             transform: ""
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 25eda62e-575c-4e19-b5df-262b5da3f721
-              stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
-            config: {}
-            dataType: BOOLEAN
-            defaultValue: ""
-            description: ""
-            name: _FIVETRAN_DELETED
-            nullable: true
-            primaryKey: false
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25eda62e-575c-4e19-b5df-262b5da3f721
+          stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
             transform: ""
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: e359ea33-99e7-478a-8260-8ed27e7f1978
-              stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
-            config: {}
-            dataType: TIMESTAMP_TZ(9)
-            defaultValue: ""
-            description: ""
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            primaryKey: false
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e359ea33-99e7-478a-8260-8ed27e7f1978
+          stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
             transform: ""
-            uniqueKey: false
-        join:
-          joinCondition: FROM {{ ref('TRUX_RW_COMP_RAW', 'CD09') }}
-      name: CD09
-      schema: ""
-      sqlType: Source
-      table: CD09
-      type: sourceInput
-    stepCounter: eeec9ff5-88e8-477f-b40a-bb612731d333
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('TRUX_RW_COMP_RAW', 'CD09') }}
+  name: CD09
+  schema: ""
+  sqlType: Source
+  table: CD09
+  type: sourceInput
+  version: 1
+type: Node

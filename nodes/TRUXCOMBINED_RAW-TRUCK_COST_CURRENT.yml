@@ -1,118 +1,132 @@
-steps:
-  TRUCK_COST_CURRENT-7b446262-338d-40ee-ad85-a1a2b8fb6bce:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 7efb429a-8b6c-4dec-b0c2-1d4f57dc8613
-              stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-            dataType: NUMBER(38,0)
-            description: ""
-            hashDetails: null
-            name: TC01_NUMB
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2765c606-2dff-44b9-b4c2-d1f17f260403
-                    stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
-                transform: ""
-          - columnReference:
-              columnCounter: 185d91dd-a2a1-4006-8ddc-fcdf9424bb79
-              stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashDetails: null
-            name: TC01_EFFD
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 78ecaef7-ba17-4435-abb8-2bfc5687a148
-                    stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
-                transform: ""
-          - columnReference:
-              columnCounter: 065f1e34-07db-4d70-b7d3-ea758bc934b2
-              stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-            dataType: NUMBER(10,2)
-            description: ""
-            hashDetails: null
-            name: TC01_CST1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4aaf5286-0401-431e-a62e-22c011f11c8c
-                    stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
-                transform: ""
-          - columnReference:
-              columnCounter: 5ca11272-206d-4f39-8a27-46b0dc1defdc
-              stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-            dataType: NUMBER(10,2)
-            description: ""
-            hashDetails: null
-            name: TC01_CST2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e7ee8914-8411-464b-958f-a4255122617a
-                    stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
-                transform: ""
-          - columnReference:
-              columnCounter: 588305bb-2a1a-4a9e-a106-370c53accb35
-              stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-            dataType: NUMBER(38,0)
-            description: ""
-            hashDetails: null
-            name: TC01_ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8aaa38f6-bcbd-4746-9456-1c51a627e2eb
-                    stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
-                transform: ""
-          - columnReference:
-              columnCounter: 57c366dd-4171-45b8-bfa7-4d5c02df5775
-              stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 28ce9007-b08c-46bf-a363-39a74ab58a70
-                    stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              TRUCK_COST_CURRENT_HELPER_STAGE: fdfe1940-6e18-4208-9464-514a9f581e7c
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: TRUCK_COST_CURRENT_HELPER_STAGE
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'TRUCK_COST_CURRENT_HELPER_STAGE') }} "TRUCK_COST_CURRENT_HELPER_STAGE"
-                WHERE "Recent Sort" = 1
-            name: TRUCK_COST_CURRENT
-            noLinkRefs: []
-      name: TRUCK_COST_CURRENT
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+fileVersion: 1
+id: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+name: TRUCK_COST_CURRENT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7efb429a-8b6c-4dec-b0c2-1d4f57dc8613
+          stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: TC01_NUMB
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2765c606-2dff-44b9-b4c2-d1f17f260403
+                stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 185d91dd-a2a1-4006-8ddc-fcdf9424bb79
+          stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: TC01_EFFD
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 78ecaef7-ba17-4435-abb8-2bfc5687a148
+                stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 065f1e34-07db-4d70-b7d3-ea758bc934b2
+          stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+        config: {}
+        dataType: NUMBER(10,2)
+        description: ""
+        hashDetails: null
+        name: TC01_CST1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4aaf5286-0401-431e-a62e-22c011f11c8c
+                stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ca11272-206d-4f39-8a27-46b0dc1defdc
+          stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+        config: {}
+        dataType: NUMBER(10,2)
+        description: ""
+        hashDetails: null
+        name: TC01_CST2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e7ee8914-8411-464b-958f-a4255122617a
+                stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 588305bb-2a1a-4a9e-a106-370c53accb35
+          stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: TC01_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8aaa38f6-bcbd-4746-9456-1c51a627e2eb
+                stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 57c366dd-4171-45b8-bfa7-4d5c02df5775
+          stepCounter: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28ce9007-b08c-46bf-a363-39a74ab58a70
+                stepCounter: fdfe1940-6e18-4208-9464-514a9f581e7c
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          TRUCK_COST_CURRENT_HELPER_STAGE: fdfe1940-6e18-4208-9464-514a9f581e7c
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: TRUCK_COST_CURRENT_HELPER_STAGE
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'TRUCK_COST_CURRENT_HELPER_STAGE') }} "TRUCK_COST_CURRENT_HELPER_STAGE"
+            WHERE "Recent Sort" = 1
+        name: TRUCK_COST_CURRENT
+        noLinkRefs: []
+  name: TRUCK_COST_CURRENT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,96 +1,101 @@
-steps:
-  PC01_COMBINED-ce6d3ae9-0c4d-402b-9878-4eae992c1112:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 2902b950-ab18-4b07-bedc-51d6cc68133c
-              stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC01_ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b466f607-2371-4700-834f-edbcf8e3a987
-                    stepCounter: 0455ae96-e205-47f5-93d9-e40d932604c6
-                transform: ""
-          - columnReference:
-              columnCounter: 6cd658b5-6813-4391-9467-cf978530cf9f
-              stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
-            dataType: VARCHAR(40)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC01_NAME
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 405b7d3c-1b19-4e1c-b2c2-7c9597dc1a65
-                    stepCounter: 0455ae96-e205-47f5-93d9-e40d932604c6
-                transform: ""
-          - columnReference:
-              columnCounter: b73a377b-15a7-4e1d-9d75-53658c7cf704
-              stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
-            dataType: VARCHAR(5)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC01_ACTIVE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 499d2603-4d41-43d5-8173-3f70215e77ba
-                    stepCounter: 0455ae96-e205-47f5-93d9-e40d932604c6
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 701eb1bd-029c-4609-8b3d-064e7513ff0b
-              stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_VB_COMP_RAW
-                nodeName: PC01
-            join:
-              joinCondition: FROM {{ ref('TRUX_VB_COMP_RAW', 'PC01') }} "PC01"
-            name: PC01_COMBINED
-            noLinkRefs: []
-      name: PC01_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
+fileVersion: 1
+id: ce6d3ae9-0c4d-402b-9878-4eae992c1112
+name: PC01_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2902b950-ab18-4b07-bedc-51d6cc68133c
+          stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: PC01_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b466f607-2371-4700-834f-edbcf8e3a987
+                stepCounter: 0455ae96-e205-47f5-93d9-e40d932604c6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6cd658b5-6813-4391-9467-cf978530cf9f
+          stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: PC01_NAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 405b7d3c-1b19-4e1c-b2c2-7c9597dc1a65
+                stepCounter: 0455ae96-e205-47f5-93d9-e40d932604c6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b73a377b-15a7-4e1d-9d75-53658c7cf704
+          stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        hashDetails: null
+        name: PC01_ACTIVE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 499d2603-4d41-43d5-8173-3f70215e77ba
+                stepCounter: 0455ae96-e205-47f5-93d9-e40d932604c6
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 701eb1bd-029c-4609-8b3d-064e7513ff0b
+          stepCounter: ce6d3ae9-0c4d-402b-9878-4eae992c1112
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_VB_COMP_RAW
+            nodeName: PC01
+        join:
+          joinCondition: FROM {{ ref('TRUX_VB_COMP_RAW', 'PC01') }} "PC01"
+        name: PC01_COMBINED
+        noLinkRefs: []
+  name: PC01_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

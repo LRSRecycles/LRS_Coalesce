@@ -1,0 +1,69 @@
+fileVersion: 1
+id: "6"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |-
+    capitalized: CDC Table
+    short: "CDC"
+    tagColor: "#ff33cc"
+    plural: CDC Tables
+
+    config:
+    - groupName: Stream
+      items:
+      - displayName: Description
+        attributename: description
+        type: textBox
+        isRequired: false
+        default: "A CDC table consists of a few components:\n
+          1. A stream on the source node\n
+          2. The CDC table which contains a persistent replica of recent CDC records\n
+          3. A sequence to keep track of streams\n
+          4. Optional: a Task to replicate records from the Stream into the CDC table\n
+          "
+          
+    - groupName: Hidden config
+      enableIf: "false"
+      items:
+      - displayName: Type
+        type: materializationSelector
+        default: table
+        options:
+        - table
+        isRequired: false
+
+    systemColumns:
+    - displayName: "METADATA$ACTION"
+      transform: "METADATA$ACTION"
+      dataType: STRING
+      placement: end
+      attributeName: isStreamMetadataAction
+      description: Indicates the DML operation (INSERT, DELETE) recorded.
+    - displayName: "METADATA$ISUPDATE"
+      transform: "METADATA$ISUPDATE"
+      dataType: STRING
+      placement: end
+      attributeName: isStreamMetadataIsUpdate
+      description: Indicates whether the operation was part of an UPDATE statement.
+    - displayName: "METADATA$ROW_ID"
+      transform: "METADATA$ROW_ID"
+      dataType: STRING
+      placement: end
+      attributeName: isStreamMetadataRowId
+      description: Specifies the unique and immutable ID for the row, which can be used to track changes to specific rows over time.
+    - displayName: "CDC_ID"
+      transform: ""
+      dataType: INTEGER
+      placement: end
+      attributeName: isStreamMetadataCDCId
+      description: specific CDC identifier based on a sequence.
+    - displayName: "CDC_TIMESTAMP"
+      transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      dataType: TIMESTAMP
+      placement: end
+      attributeName: isSystemCreateDate
+      description: specific attribute containing the timestamp of storing the CDC record.
+name: CDC Table
+type: NodeType

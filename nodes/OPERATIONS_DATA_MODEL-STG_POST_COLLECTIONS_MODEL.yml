@@ -1,1139 +1,1192 @@
-steps:
-  STG_POST_COLLECTIONS_MODEL-9c1881c3-1512-44da-b9c8-3165f7b79f28:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: OPERATIONS_DATA_MODEL
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 552c5866-2a3f-4e07-8ab4-62e89a214ecf
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM02_ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b7824b52-35e4-4481-a8ee-5ea9a83ffa1b
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_ID")
-          - columnReference:
-              columnCounter: 02a65dec-bd4b-4cf2-9255-67e2ce6d00ad
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Leed Weight
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 653c8de0-62f8-47c6-856e-efe477fde4d7
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 025d2bbf-0c50-4136-b414-f861ab4a51c3
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Leed Material
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d59d40a8-2778-4899-ba67-041ef73c5b3c
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 79ffb298-5fa9-48e0-9f75-660de2f40534
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: BOOLEAN
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Maximum LF05D Leed
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0d64394b-65af-49d7-8dde-c71e9bb728bf
-                    stepCounter: 055d62c4-a626-4473-b119-959d16003a58
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+name: STG_POST_COLLECTIONS_MODEL
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: OPERATIONS_DATA_MODEL
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 552c5866-2a3f-4e07-8ab4-62e89a214ecf
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: LM02_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b7824b52-35e4-4481-a8ee-5ea9a83ffa1b
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_ID")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 02a65dec-bd4b-4cf2-9255-67e2ce6d00ad
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Leed Weight
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 653c8de0-62f8-47c6-856e-efe477fde4d7
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 34c3dac3-3be4-48da-8573-0d2efe2ba26c
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: BOOLEAN
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Minimum LF05D Leed
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 20f089cf-51f5-4ffb-a7be-1e2a60b0e9fb
-                    stepCounter: 055d62c4-a626-4473-b119-959d16003a58
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 025d2bbf-0c50-4136-b414-f861ab4a51c3
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Leed Material
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d59d40a8-2778-4899-ba67-041ef73c5b3c
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - columnReference:
-              columnCounter: 51cabde0-dced-47e2-9e37-a2d669de5894
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(12)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Ticket Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f0592a83-f750-4f1d-95be-a48b5e2c440c
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB")
-          - columnReference:
-              columnCounter: f48ffa37-b97b-4a39-95da-405d36928ecd
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1fad6cd7-f9a0-45f7-9ef4-b56fe3f3c8be
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 1a4762a1-5c35-4771-95af-eb8f1df2c1ac
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 77e57f35-aa7d-4728-b096-dfaf6bc3cc04
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: f9b16789-c7f0-4304-86df-af7d135d69c6
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM02_LM05ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: be5cad91-2c55-4f63-b8f9-61a656e3bde6
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: e5045596-ec1a-466b-9bb3-3a037c90c5bc
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Created Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 67098581-3010-46c0-8523-2e734a22b655
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 20ad8552-67aa-48f8-bb3d-e33a63d9121d
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Leed Weight Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1bcc3cff-531e-4ddf-b0f8-e369cdd88342
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: de18dd25-39b8-4970-9b68-5820734f504d
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM02_LF05ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2e1435bc-3350-414b-8b10-c891898a24c9
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 70f9bc62-452d-474a-b31c-25153ae3bed6
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,4)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Unit Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: efd13b41-214b-4366-a00f-d8fe513b70f6
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 708a724c-a707-478f-a5f9-c4250ec7d286
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Bill of Ladding
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 39c75d74-c32b-4be9-bfc2-b9607dfa8e95
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 5d55a4ab-3879-49d2-908c-7e109d30349b
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8abbf80f-402a-4c98-981e-652bdb91ca5b
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 244f71dc-7d13-4a63-8b4b-2ba422509f1d
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Carrier
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 98b97903-2247-40a2-becc-a8c2fc3984a6
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 8f97db73-2372-494c-8ae5-a821d85cf659
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time In
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 56f03731-0b9a-4094-be6a-4be0f1af0849
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 366b338f-7bf0-4180-9e6d-4f9fe4e4f30a
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time Out
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4b960227-6fe1-4f71-933e-c1203313c757
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 0b75379c-3967-4ba9-b494-97ba6aee3a2f
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Facility
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2ff91392-0410-4cff-8a75-30fcda18ce38
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 9afc4248-8657-406a-8ce2-d30b5ebea417
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR(16777216)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Facility Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cd4510fb-1723-4025-a813-baddfee3e4c6
-                    stepCounter: 75646501-ee23-441a-91c1-fced667296c2
-                transform: CONCAT("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DSTE", CONCAT(' - ',"LM01_COMBINED"."LM01_NAME"))
-            systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79ffb298-5fa9-48e0-9f75-660de2f40534
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Maximum LF05D Leed
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0d64394b-65af-49d7-8dde-c71e9bb728bf
+                stepCounter: 055d62c4-a626-4473-b119-959d16003a58
             transform: ""
-          - columnReference:
-              columnCounter: c5fae260-596f-4a94-b92f-bccd1e260ad8
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(20)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Facility Invoice
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 93c1a35f-8ad3-4007-841d-00843e7db707
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 0e3510f5-dff3-4d81-8b05-dc5951d304c5
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Facility Invoice Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5634295f-57a2-4fe2-9552-fb2567dec3e0
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 38364449-48ec-4c7e-884a-4d2f62ce674d
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Ticket Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d3814990-641c-4e41-92dd-c38545ba5c6d
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: dd4b7ea0-ca68-431c-9b69-81f75830d979
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(250)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: In\Out Indicator
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1516894d-8694-4419-91d3-ebcf66e86774
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: CASE WHEN "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_INOT" = TRUE THEN 'Inbound' ELSE  'Outbound' END
-          - columnReference:
-              columnCounter: a3c28b42-74f3-437c-8a0c-b622de9968df
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(1)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM02_OWN
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 25d9a650-dfeb-4dc9-9123-c73b2000db16
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: f73c6587-bc87-418c-933b-8b9b57999572
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(1)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Charge Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e5a96691-abcb-4ebc-99c5-f71108df43e7
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 9b529717-c9bc-4689-aed6-7a287fa9d000
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 86c3130b-e195-4513-be21-db72db9fccc8
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 9f798ccb-3c8b-4acd-a037-6f66cbbe2113
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR(16777216)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Customer
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 77e57f35-aa7d-4728-b096-dfaf6bc3cc04
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-            systemColumnType: None
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34c3dac3-3be4-48da-8573-0d2efe2ba26c
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Minimum LF05D Leed
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20f089cf-51f5-4ffb-a7be-1e2a60b0e9fb
+                stepCounter: 055d62c4-a626-4473-b119-959d16003a58
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 86d4fa60-3eac-4b63-92aa-13912661f3f5
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Original Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: UPPER("DLM06_COMBINED"."LM06_UOM1")
-            systemColumnType: None
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 51cabde0-dced-47e2-9e37-a2d669de5894
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(12)
+        description: ""
+        hashDetails: null
+        name: Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0592a83-f750-4f1d-95be-a48b5e2c440c
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f48ffa37-b97b-4a39-95da-405d36928ecd
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1fad6cd7-f9a0-45f7-9ef4-b56fe3f3c8be
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - columnReference:
-              columnCounter: eaad3674-1090-482f-8037-1472746122e9
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Rate Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6e66c5e3-2546-47ca-b1a1-ef398ef0d3e4
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: ba897ad3-7ff5-465e-af47-902ac773b299
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 16a41f8e-2d79-4d58-92d9-7c943ae3f39c
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM")
-          - columnReference:
-              columnCounter: 70a1a95f-b477-4f89-b8ca-fa79f0a8f53b
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,4)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Rate
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 14ea739b-c832-4665-b97b-f3ac8bd6b0d8
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 5f1fff46-1e32-4d15-af0c-2a486914e122
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f2a99f7b-72da-4f75-bc18-3b946dc6c330
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 4ab2aa61-82cd-46c6-abca-1a78dab6f460
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c5d6dfec-4135-4fd9-8b95-1260964e9f06
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 29707ff2-07e0-4d15-943c-263dc1659627
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,8)
-            description: ""
-            name: Disposal Multiplier Factor
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"DLM06_COMBINED\".\"LM06_FACT\""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0818380a-d45f-4b8f-9e84-2c57afa54deb
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: NUMBER(38,6)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Converted Disposal Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE 
-                      when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM") IN ('EA','TN','YD') 
-                      then "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DQTY"
-                      else round(("DLM06_COMBINED"."LM06_FACT" * "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DQTY"),6)
-                   END
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a4762a1-5c35-4771-95af-eb8f1df2c1ac
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 77e57f35-aa7d-4728-b096-dfaf6bc3cc04
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 012ae814-7a92-4bdf-bff3-fc0a4f191b04
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Converted Disposal Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE 
-                      when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM") IN ('EA','TN','YD') 
-                      then UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM")
-                      ELSE "DLM06_COMBINED"."LM06_UOM2"
-                   END
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f9b16789-c7f0-4304-86df-af7d135d69c6
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: LM02_LM05ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be5cad91-2c55-4f63-b8f9-61a656e3bde6
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 26d33875-939c-4087-a6ce-7ccb69932774
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Code Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 76f3d2bb-02b8-42c6-94ae-817bf71ec1af
-                    stepCounter: e4e972fe-2b99-486d-9cdd-cbdab2810c96
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5045596-ec1a-466b-9bb3-3a037c90c5bc
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Created Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 67098581-3010-46c0-8523-2e734a22b655
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - columnReference:
-              columnCounter: 8090092e-f492-4fe2-84ca-274c70987243
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Sequence1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: efcb8591-98e0-49f9-8f9c-dc2a98cd0a7d
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 2e915415-4fe6-4224-843e-03cf1680c115
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Unit Change Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7ee2a234-0033-4bcd-b0b8-5e1cfddd4928
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: c3b036b9-5a00-42ec-b31f-a4aca192db2c
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d941015e-c214-467b-a1c3-24b5a7999869
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: b861a857-4c79-414f-b6c8-c30162120fd2
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4076a5bd-40f1-4b66-b71f-b2bc08055d46
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 703cf8e9-156e-481a-9dbd-b5714bd4dd3e
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: NUMBER(18,8)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Billing Multiplier Factor
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"BLM06_COMBINED\".\"LM06_FACT\""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20ad8552-67aa-48f8-bb3d-e33a63d9121d
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Leed Weight Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1bcc3cff-531e-4ddf-b0f8-e369cdd88342
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 608fbfd7-b6e2-46c0-a95a-73e5af769a5c
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: NUMBER(38,6)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Converted Billing Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE 
-                      when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM") IN ('EA','TN','YD') 
-                      then "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BQTY"
-                      else round(("BLM06_COMBINED"."LM06_FACT" * "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BQTY"),6)
-                   END
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: de18dd25-39b8-4970-9b68-5820734f504d
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: LM02_LF05ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2e1435bc-3350-414b-8b10-c891898a24c9
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - columnReference:
-              columnCounter: 45abee6d-13b6-42e5-84d0-7fd499b3820f
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2bd33c93-2ac3-4fd5-9fae-616956dc42f2
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: e386376c-fd8f-4c87-a105-fd45a6495e8c
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Converted Billing Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE 
-                      when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM") IN ('EA','TN','YD') 
-                      then UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM")
-                      ELSE "BLM06_COMBINED"."LM06_UOM2"
-                   END
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70f9bc62-452d-474a-b31c-25153ae3bed6
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,4)
+        description: ""
+        hashDetails: null
+        name: Unit Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: efd13b41-214b-4366-a00f-d8fe513b70f6
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - columnReference:
-              columnCounter: d11d1633-195a-4442-8141-efea412b9a54
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Material
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e19af673-1c30-4102-a289-0452c81c1661
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 56042bda-ac6a-4ec0-aa72-2b4075922d16
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Material Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 29e98454-68c4-4414-8685-8bae91617e75
-                    stepCounter: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 708a724c-a707-478f-a5f9-c4250ec7d286
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Bill of Ladding
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39c75d74-c32b-4be9-bfc2-b9607dfa8e95
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - columnReference:
-              columnCounter: bd112018-d256-4294-be09-56564325663c
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Sequence2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7e40a329-f967-4768-b229-850bea3e2975
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: ba4b8836-d46a-44d5-a496-3379bed635d9
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Reconcile User
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7c48cff3-a7e4-411d-8203-af0aea56e6fe
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 20bbc248-aa52-413f-a22e-cba4bfd4fd6f
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(30)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Purchase Order Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3a35ff53-089b-41c2-8c40-206d825fdbda
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 2a1b3c72-ff79-4e19-a12a-7776e9cee0ee
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Reconcile Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8308fd0a-5b98-4364-892f-a49b1beb9fef
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: fb7b6810-9f7c-4605-b405-55695e2280fa
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Fuel Unit of Measure
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b0246cd-e613-4229-a065-7176384e586f
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 4c1a8c21-e251-4916-8d28-eb5724ff08f9
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(18,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Fuel Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bef11395-b4f8-43ec-ac60-e9a5549102bf
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 3b78a24a-452b-4647-b7c3-25da14b4a7fe
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM02_CM09ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bed9ba7e-f241-4756-9ef5-0f09f82506d8
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: e32e7a26-946b-4c3d-ae11-fda05ce16f90
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Note1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c5eb9326-d99a-45a9-b33a-e7df9b7c0fcf
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: c821d462-cc5a-44d8-bf78-2fbb08192920
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Note2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4a7375ca-0c67-424d-9f84-1e15a692a787
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 1c1e683c-e592-4f0e-be63-5e732f26fd44
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 04b76142-1339-44bb-96b4-aa89810920da
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: 90bb2c64-17e8-4076-8e43-789d535fd42d
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2b36a8fb-d74f-435c-8334-735f6f49d0b1
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: e7ba8041-0e22-40e6-bbfc-6e0f6dbd0d04
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            config: {}
-            dataType: VARCHAR(38)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: IsIntercompany
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |2-
-                    CASE
-                      WHEN (
-                          "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Post Collection Tickets" IS NOT NULL
-                      )THEN 'Yes'
-                      ELSE 'No'
-                    END
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5d55a4ab-3879-49d2-908c-7e109d30349b
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8abbf80f-402a-4c98-981e-652bdb91ca5b
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
             transform: ""
-          - columnReference:
-              columnCounter: 4b4cb1dd-3755-4f89-84fb-2db8ec8f0835
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f59e28a8-0e2f-4a77-8d8d-0f0645d6217a
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: bb95f079-1e8e-4f3b-b462-4f5936a4f239
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_DELETED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6cc1ea8d-b5f7-44c7-b366-32ba555ececb
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - columnReference:
-              columnCounter: ec504e05-b23a-46d7-aaec-1aa12a139d57
-              stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
-            dataType: TIMESTAMP_TZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e429abec-b130-4622-bca0-f967b04b75eb
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              BLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-              CD04_COMBINED: e4e972fe-2b99-486d-9cdd-cbdab2810c96
-              DLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-              LM01_COMBINED: 75646501-ee23-441a-91c1-fced667296c2
-              LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
-              STG_COLLECTIONS_DISPOSAL_TICKETS: f3e5c614-4177-4bd4-aca0-cb4086788c20
-              STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY: 058045ec-90ae-4213-a442-28db01552d42
-              STG_LF05D_COMBINED: 055d62c4-a626-4473-b119-959d16003a58
-              STG_POST_COLLECTIONS_DISPOSAL_TICKETS: 335a729b-b952-45d9-a3d3-8b968a81e190
-            customSQL:
-              customSQL: |-
-                {{ stage('Override Create SQL') }}
-                	CREATE OR REPLACE VIEW {{ ref('TRUXCOMBINED_RAW', 'STG_POST_COLLECTIONS_DISPOSAL_TICKETS')}} AS (
-                		SELECT 
-                 LM02_ID AS LM02_ID,
-                 LM02_LEEDWEIGHT AS LM02_LEEDWEIGHT,
-                 LM02_LEED AS LM02_LEED,
-                 LM02_NUMB AS LM02_NUMB,
-                 LM02_RDATE AS LM02_RDATE,
-                 LM02_DRATE AS LM02_DRATE,
-                 LM02_CUST AS LM02_CUST,
-                 LM02_DRATEUOM AS LM02_DRATEUOM,
-                 LM02_LM05ID AS LM02_LM05ID,
-                 LM02_CDATE AS LM02_CDATE,
-                 LM02_LEEDWEIGHTUOM AS LM02_LEEDWEIGHTUOM,
-                 LM02_LF05ID AS LM02_LF05ID,
-                 LM02_UCHG AS LM02_UCHG,
-                 LM02_DSTE AS LM02_DSTE,
-                 LM02_BLAD AS LM02_BLAD,
-                 LM02_SITE AS LM02_SITE,
-                 LM02_CARR AS LM02_CARR,
-                 LM02_TOUT AS LM02_TOUT,
-                 LM02_DUOM AS LM02_DUOM,
-                 LM02_FDAT AS LM02_FDAT,
-                 LM02_DATE AS LM02_DATE,
-                 LM02_BAMT AS LM02_BAMT,
-                 LM02_INOT AS LM02_INOT,
-                 LM02_OWN AS LM02_OWN,
-                 LM02_BUOM AS LM02_BUOM,
-                 LM02_MATL AS LM02_MATL,
-                 LM02_FINV AS LM02_FINV,
-                 LM02_TIN AS LM02_TIN,
-                 LM02_MIN AS LM02_MIN,
-                 LM02_ROUT AS LM02_ROUT,
-                 LM02_NOT1 AS LM02_NOT1,
-                 LM02_UCHGUOM AS LM02_UCHGUOM,
-                 LM02_DAMT AS LM02_DAMT,
-                 LM02_SEQ1 AS LM02_SEQ1,
-                 LM02_DQTY AS LM02_DQTY,
-                 LM02_BQTY AS LM02_BQTY,
-                 LM02_SEQ2 AS LM02_SEQ2,
-                 LM02_FUSE AS LM02_FUSE,
-                 LM02_PORD AS LM02_PORD,
-                 LM02_FRDT AS LM02_FRDT,
-                 LM02_FUOM AS LM02_FUOM,
-                 LM02_FQTY AS LM02_FQTY,
-                 LM02_CM09ID AS LM02_CM09ID,
-                 LM02_NOT2 AS LM02_NOT2,
-                 LM02_IDTE AS LM02_IDTE,
-                 LM02_SERV AS LM02_SERV,
-                 _FIVETRAN_DELETED AS _FIVETRAN_DELETED,
-                 _FIVETRAN_SYNCED AS _FIVETRAN_SYNCED,
-                 SOURCE AS SOURCE,
-                 METADATA$ACTION AS METADATA$ACTION,
-                 SORT AS SORT
-                 FROM {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }}
-                	)
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: CD04_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: LM01_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: LM04_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: LM06_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_LF05D_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_POST_COLLECTIONS_DISPOSAL_TICKETS
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_POST_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"-- DISPOSAL TICKETS
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED" -- MATERIAL
-                    ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_MATL" = "LM04_COMBINED"."LM04_CODE" 
-                    and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE"= "LM04_COMBINED"."SOURCE"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED" -- FACILITY
-                    ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DSTE" = "LM01_COMBINED"."LM01_DSTE" 
-                    and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "LM01_COMBINED"."SOURCE"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "DLM06_COMBINED" -- DISPOSAL UNIT OF MEASURE
-                    ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM" = "DLM06_COMBINED"."LM06_UOM1" 
-                    and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "DLM06_COMBINED"."SOURCE"
-                        AND "DLM06_COMBINED"."LM06_UOM2" = 'TN'
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "BLM06_COMBINED" -- BILLING UNIT OF MEASURE
-                    ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM" = "BLM06_COMBINED"."LM06_UOM1" 
-                    and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "BLM06_COMBINED"."SOURCE"
-                    AND "BLM06_COMBINED"."LM06_UOM2" = 'TN'
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "CD04_COMBINED" -- CODE DESCRIPTION
-                    ON "LM04_COMBINED"."LM04_UOM" = "CD04_COMBINED"."CD04_CODE" and "LM04_COMBINED"."SOURCE" = "CD04_COMBINED"."SOURCE"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_COLLECTIONS_DISPOSAL_TICKETS"
-                   ON RTRIM("STG_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB") = RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB")
-                   AND "STG_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" ="STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05D_COMBINED') }} "STG_LF05D_COMBINED" -- Tickete
-                    ON RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB") = RTRIM("STG_LF05D_COMBINED"."LF05D_LINK")
-                    AND "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "STG_LF05D_COMBINED"."SOURCE"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY') }} "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY" -- Intercompany tickets
-                    ON "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Collections Tickets" = "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB"
-                    AND ABS(DATEDIFF(DAY, "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Collections Date", "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DATE")) <=7
-            name: STG_POST_COLLECTIONS_MODEL
-            noLinkRefs: []
-      name: STG_POST_COLLECTIONS_MODEL
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 244f71dc-7d13-4a63-8b4b-2ba422509f1d
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Carrier
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 98b97903-2247-40a2-becc-a8c2fc3984a6
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f97db73-2372-494c-8ae5-a821d85cf659
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Time In
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 56f03731-0b9a-4094-be6a-4be0f1af0849
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 366b338f-7bf0-4180-9e6d-4f9fe4e4f30a
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Time Out
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4b960227-6fe1-4f71-933e-c1203313c757
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b75379c-3967-4ba9-b494-97ba6aee3a2f
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Facility
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2ff91392-0410-4cff-8a75-30fcda18ce38
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9afc4248-8657-406a-8ce2-d30b5ebea417
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Facility Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cd4510fb-1723-4025-a813-baddfee3e4c6
+                stepCounter: 75646501-ee23-441a-91c1-fced667296c2
+            transform: CONCAT("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DSTE", CONCAT(' - ',"LM01_COMBINED"."LM01_NAME"))
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c5fae260-596f-4a94-b92f-bccd1e260ad8
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        hashDetails: null
+        name: Facility Invoice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 93c1a35f-8ad3-4007-841d-00843e7db707
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0e3510f5-dff3-4d81-8b05-dc5951d304c5
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Facility Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5634295f-57a2-4fe2-9552-fb2567dec3e0
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38364449-48ec-4c7e-884a-4d2f62ce674d
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Ticket Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d3814990-641c-4e41-92dd-c38545ba5c6d
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dd4b7ea0-ca68-431c-9b69-81f75830d979
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(250)
+        description: ""
+        hashDetails: null
+        name: In\Out Indicator
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1516894d-8694-4419-91d3-ebcf66e86774
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: CASE WHEN "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_INOT" = TRUE THEN 'Inbound' ELSE  'Outbound' END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a3c28b42-74f3-437c-8a0c-b622de9968df
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        hashDetails: null
+        name: LM02_OWN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25d9a650-dfeb-4dc9-9123-c73b2000db16
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f73c6587-bc87-418c-933b-8b9b57999572
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        hashDetails: null
+        name: Charge Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e5a96691-abcb-4ebc-99c5-f71108df43e7
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b529717-c9bc-4689-aed6-7a287fa9d000
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Route Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 86c3130b-e195-4513-be21-db72db9fccc8
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f798ccb-3c8b-4acd-a037-6f66cbbe2113
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 77e57f35-aa7d-4728-b096-dfaf6bc3cc04
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 86d4fa60-3eac-4b63-92aa-13912661f3f5
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Original Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: UPPER("DLM06_COMBINED"."LM06_UOM1")
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eaad3674-1090-482f-8037-1472746122e9
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Disposal Rate Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6e66c5e3-2546-47ca-b1a1-ef398ef0d3e4
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ba897ad3-7ff5-465e-af47-902ac773b299
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Disposal Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16a41f8e-2d79-4d58-92d9-7c943ae3f39c
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70a1a95f-b477-4f89-b8ca-fa79f0a8f53b
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,4)
+        description: ""
+        hashDetails: null
+        name: Disposal Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14ea739b-c832-4665-b97b-f3ac8bd6b0d8
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5f1fff46-1e32-4d15-af0c-2a486914e122
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f2a99f7b-72da-4f75-bc18-3b946dc6c330
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ab2aa61-82cd-46c6-abca-1a78dab6f460
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5d6dfec-4135-4fd9-8b95-1260964e9f06
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29707ff2-07e0-4d15-943c-263dc1659627
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,8)
+        description: ""
+        name: Disposal Multiplier Factor
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"DLM06_COMBINED\".\"LM06_FACT\""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0818380a-d45f-4b8f-9e84-2c57afa54deb
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,6)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Converted Disposal Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                  when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM") IN ('EA','TN','YD') 
+                  then "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DQTY"
+                  else round(("DLM06_COMBINED"."LM06_FACT" * "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DQTY"),6)
+               END
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 012ae814-7a92-4bdf-bff3-fc0a4f191b04
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Converted Disposal Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                  when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM") IN ('EA','TN','YD') 
+                  then UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM")
+                  ELSE "DLM06_COMBINED"."LM06_UOM2"
+               END
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26d33875-939c-4087-a6ce-7ccb69932774
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Code Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 76f3d2bb-02b8-42c6-94ae-817bf71ec1af
+                stepCounter: e4e972fe-2b99-486d-9cdd-cbdab2810c96
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8090092e-f492-4fe2-84ca-274c70987243
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Sequence1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: efcb8591-98e0-49f9-8f9c-dc2a98cd0a7d
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2e915415-4fe6-4224-843e-03cf1680c115
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Unit Change Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7ee2a234-0033-4bcd-b0b8-5e1cfddd4928
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3b036b9-5a00-42ec-b31f-a4aca192db2c
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Billing Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d941015e-c214-467b-a1c3-24b5a7999869
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b861a857-4c79-414f-b6c8-c30162120fd2
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4076a5bd-40f1-4b66-b71f-b2bc08055d46
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 703cf8e9-156e-481a-9dbd-b5714bd4dd3e
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,8)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Multiplier Factor
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"BLM06_COMBINED\".\"LM06_FACT\""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 608fbfd7-b6e2-46c0-a95a-73e5af769a5c
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,6)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Converted Billing Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                  when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM") IN ('EA','TN','YD') 
+                  then "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BQTY"
+                  else round(("BLM06_COMBINED"."LM06_FACT" * "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BQTY"),6)
+               END
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 45abee6d-13b6-42e5-84d0-7fd499b3820f
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2bd33c93-2ac3-4fd5-9fae-616956dc42f2
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e386376c-fd8f-4c87-a105-fd45a6495e8c
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Converted Billing Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                  when UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM") IN ('EA','TN','YD') 
+                  then UPPER("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM")
+                  ELSE "BLM06_COMBINED"."LM06_UOM2"
+               END
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d11d1633-195a-4442-8141-efea412b9a54
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Material
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e19af673-1c30-4102-a289-0452c81c1661
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 56042bda-ac6a-4ec0-aa72-2b4075922d16
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Material Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29e98454-68c4-4414-8685-8bae91617e75
+                stepCounter: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd112018-d256-4294-be09-56564325663c
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Sequence2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7e40a329-f967-4768-b229-850bea3e2975
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ba4b8836-d46a-44d5-a496-3379bed635d9
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Reconcile User
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7c48cff3-a7e4-411d-8203-af0aea56e6fe
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20bbc248-aa52-413f-a22e-cba4bfd4fd6f
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: Purchase Order Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3a35ff53-089b-41c2-8c40-206d825fdbda
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2a1b3c72-ff79-4e19-a12a-7776e9cee0ee
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Reconcile Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8308fd0a-5b98-4364-892f-a49b1beb9fef
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb7b6810-9f7c-4605-b405-55695e2280fa
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Fuel Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b0246cd-e613-4229-a065-7176384e586f
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c1a8c21-e251-4916-8d28-eb5724ff08f9
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(18,3)
+        description: ""
+        hashDetails: null
+        name: Fuel Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bef11395-b4f8-43ec-ac60-e9a5549102bf
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b78a24a-452b-4647-b7c3-25da14b4a7fe
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: LM02_CM09ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bed9ba7e-f241-4756-9ef5-0f09f82506d8
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e32e7a26-946b-4c3d-ae11-fda05ce16f90
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Note1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5eb9326-d99a-45a9-b33a-e7df9b7c0fcf
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c821d462-cc5a-44d8-bf78-2fbb08192920
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Note2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4a7375ca-0c67-424d-9f84-1e15a692a787
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c1e683c-e592-4f0e-be63-5e732f26fd44
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 04b76142-1339-44bb-96b4-aa89810920da
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90bb2c64-17e8-4076-8e43-789d535fd42d
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Service Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b36a8fb-d74f-435c-8334-735f6f49d0b1
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e7ba8041-0e22-40e6-bbfc-6e0f6dbd0d04
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(38)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: IsIntercompany
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2-
+                CASE
+                  WHEN (
+                      "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Post Collection Tickets" IS NOT NULL
+                  )THEN 'Yes'
+                  ELSE 'No'
+                END
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b4cb1dd-3755-4f89-84fb-2db8ec8f0835
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f59e28a8-0e2f-4a77-8d8d-0f0645d6217a
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bb95f079-1e8e-4f3b-b462-4f5936a4f239
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6cc1ea8d-b5f7-44c7-b366-32ba555ececb
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec504e05-b23a-46d7-aaec-1aa12a139d57
+          stepCounter: 9c1881c3-1512-44da-b9c8-3165f7b79f28
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e429abec-b130-4622-bca0-f967b04b75eb
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+          CD04_COMBINED: e4e972fe-2b99-486d-9cdd-cbdab2810c96
+          DLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+          LM01_COMBINED: 75646501-ee23-441a-91c1-fced667296c2
+          LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
+          STG_COLLECTIONS_DISPOSAL_TICKETS: f3e5c614-4177-4bd4-aca0-cb4086788c20
+          STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY: 058045ec-90ae-4213-a442-28db01552d42
+          STG_LF05D_COMBINED: 055d62c4-a626-4473-b119-959d16003a58
+          STG_POST_COLLECTIONS_DISPOSAL_TICKETS: 335a729b-b952-45d9-a3d3-8b968a81e190
+        customSQL:
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('TRUXCOMBINED_RAW', 'STG_POST_COLLECTIONS_DISPOSAL_TICKETS')}} AS (
+            		SELECT 
+             LM02_ID AS LM02_ID,
+             LM02_LEEDWEIGHT AS LM02_LEEDWEIGHT,
+             LM02_LEED AS LM02_LEED,
+             LM02_NUMB AS LM02_NUMB,
+             LM02_RDATE AS LM02_RDATE,
+             LM02_DRATE AS LM02_DRATE,
+             LM02_CUST AS LM02_CUST,
+             LM02_DRATEUOM AS LM02_DRATEUOM,
+             LM02_LM05ID AS LM02_LM05ID,
+             LM02_CDATE AS LM02_CDATE,
+             LM02_LEEDWEIGHTUOM AS LM02_LEEDWEIGHTUOM,
+             LM02_LF05ID AS LM02_LF05ID,
+             LM02_UCHG AS LM02_UCHG,
+             LM02_DSTE AS LM02_DSTE,
+             LM02_BLAD AS LM02_BLAD,
+             LM02_SITE AS LM02_SITE,
+             LM02_CARR AS LM02_CARR,
+             LM02_TOUT AS LM02_TOUT,
+             LM02_DUOM AS LM02_DUOM,
+             LM02_FDAT AS LM02_FDAT,
+             LM02_DATE AS LM02_DATE,
+             LM02_BAMT AS LM02_BAMT,
+             LM02_INOT AS LM02_INOT,
+             LM02_OWN AS LM02_OWN,
+             LM02_BUOM AS LM02_BUOM,
+             LM02_MATL AS LM02_MATL,
+             LM02_FINV AS LM02_FINV,
+             LM02_TIN AS LM02_TIN,
+             LM02_MIN AS LM02_MIN,
+             LM02_ROUT AS LM02_ROUT,
+             LM02_NOT1 AS LM02_NOT1,
+             LM02_UCHGUOM AS LM02_UCHGUOM,
+             LM02_DAMT AS LM02_DAMT,
+             LM02_SEQ1 AS LM02_SEQ1,
+             LM02_DQTY AS LM02_DQTY,
+             LM02_BQTY AS LM02_BQTY,
+             LM02_SEQ2 AS LM02_SEQ2,
+             LM02_FUSE AS LM02_FUSE,
+             LM02_PORD AS LM02_PORD,
+             LM02_FRDT AS LM02_FRDT,
+             LM02_FUOM AS LM02_FUOM,
+             LM02_FQTY AS LM02_FQTY,
+             LM02_CM09ID AS LM02_CM09ID,
+             LM02_NOT2 AS LM02_NOT2,
+             LM02_IDTE AS LM02_IDTE,
+             LM02_SERV AS LM02_SERV,
+             _FIVETRAN_DELETED AS _FIVETRAN_DELETED,
+             _FIVETRAN_SYNCED AS _FIVETRAN_SYNCED,
+             SOURCE AS SOURCE,
+             METADATA$ACTION AS METADATA$ACTION,
+             SORT AS SORT
+             FROM {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }}
+            	)
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LM06_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LF05D_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_POST_COLLECTIONS_DISPOSAL_TICKETS
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_POST_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"-- DISPOSAL TICKETS
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED" -- MATERIAL
+                ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_MATL" = "LM04_COMBINED"."LM04_CODE" 
+                and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE"= "LM04_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED" -- FACILITY
+                ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DSTE" = "LM01_COMBINED"."LM01_DSTE" 
+                and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "LM01_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "DLM06_COMBINED" -- DISPOSAL UNIT OF MEASURE
+                ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DUOM" = "DLM06_COMBINED"."LM06_UOM1" 
+                and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "DLM06_COMBINED"."SOURCE"
+                    AND "DLM06_COMBINED"."LM06_UOM2" = 'TN'
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "BLM06_COMBINED" -- BILLING UNIT OF MEASURE
+                ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_BUOM" = "BLM06_COMBINED"."LM06_UOM1" 
+                and "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "BLM06_COMBINED"."SOURCE"
+                AND "BLM06_COMBINED"."LM06_UOM2" = 'TN'
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "CD04_COMBINED" -- CODE DESCRIPTION
+                ON "LM04_COMBINED"."LM04_UOM" = "CD04_COMBINED"."CD04_CODE" and "LM04_COMBINED"."SOURCE" = "CD04_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_COLLECTIONS_DISPOSAL_TICKETS"
+               ON RTRIM("STG_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB") = RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB")
+               AND "STG_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" ="STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05D_COMBINED') }} "STG_LF05D_COMBINED" -- Tickete
+                ON RTRIM("STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB") = RTRIM("STG_LF05D_COMBINED"."LF05D_LINK")
+                AND "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE" = "STG_LF05D_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY') }} "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY" -- Intercompany tickets
+                ON "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Collections Tickets" = "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB"
+                AND ABS(DATEDIFF(DAY, "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Collections Date", "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DATE")) <=7
+        name: STG_POST_COLLECTIONS_MODEL
+        noLinkRefs: []
+  name: STG_POST_COLLECTIONS_MODEL
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

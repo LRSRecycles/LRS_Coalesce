@@ -1,352 +1,406 @@
-steps:
-  VW_ROUTE_MASTER_TRUX_ONLY-d5ce3cb8-228f-4290-8b66-6837e6643cd9:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: OPERATIONS_DATA_MODEL
-      materializationType: view
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 591ecb37-e44a-49a5-ac7f-02bf2e66470c
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Route Number
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9efcdb57-7b48-4ae5-8767-f3bd3e84e6df
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 0b2a1c58-3af8-440c-9fa7-1380d6b14231
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Route Day Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 802d1a69-5d32-4737-a3c5-3170875e7007
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 0a245009-ab11-4416-a1fa-91817a5d095c
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(3)
-            description: ""
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: daf7abd2-5a83-4778-ac80-5bfd5985371c
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: b5e43f0d-42c7-4295-a89b-422cc686e815
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(40)
-            description: ""
-            name: Route Description
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 49510f89-e64d-43b9-9dad-84fac86c005b
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 50b7a6de-bbaf-410c-9fa3-03014b16133f
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(2)
-            description: ""
-            name: Route Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 19d7a39a-27e7-4937-b21b-434f02d318aa
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 40e288dc-5838-4190-b384-e69fdd9a9ef3
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: ""
-            name: Route Type Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 41a02fc8-05d3-4577-92dc-17886fe55e8b
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 20c4ecbf-67a7-453d-8060-2f5b680821a4
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Truck Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 00899726-73b8-4e92-b63c-3f6cfbf11c2a
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: c6c173cd-123d-454c-bdb9-11e2903ca7e9
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: ""
-            name: Truck Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1146661a-82b8-4af3-85ba-1cc8da01385b
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 826fc4f6-4f19-4eca-9c52-d50eb5672a71
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Driver Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4f4208b5-8233-4650-8953-7d998e39301e
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 6993d9cc-88b6-4860-b1ba-bc04a3d1d885
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: join on driver
-            name: Driver Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b0d03d58-1b46-4fe6-b513-79ef52f053ca
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: ec0d6319-5799-4755-b83e-543f4a7e0bb8
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Helper
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6c565330-185b-4ef6-a1b3-a7934ebb590d
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 6cf70308-c851-4231-a216-2509a98f3ddd
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(100)
-            description: ""
-            name: Route Note
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bc29761d-6bb7-4b63-90d1-6bbefaf1ef93
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 9c8edef3-d22b-4d35-ab4b-a56020ec510c
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(5)
-            description: ""
-            name: Active Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a78e35cd-2233-49e8-9afc-7f3957295302
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 0b4d0fb9-0aff-4453-920f-ed26ba8bd066
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Start Location ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1c511563-afc6-40cd-a285-567a625fadee
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 1050a549-0e1b-4a27-841c-9309a0f34f5b
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: ""
-            name: Start Location Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e09f2d15-ff16-4ccd-bd80-775444d25498
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: e88bc546-5a5b-4828-9668-3b782b10aba6
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Average Call Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 18ac7139-e138-4cce-9ed3-47bf222e7e0f
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: b5447d05-ec5b-4d38-a75a-c793ac72a3a9
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(5)
-            description: ""
-            name: Shadow Route Flag
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dba4e7ba-2f7f-4959-adb6-a0558d81ed39
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: e53b6a31-72bc-429a-b178-d42291fa2dee
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(5)
-            description: ""
-            name: Non Billable Route Flag
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3d8c3bc3-ca5e-4ad1-9330-0813b1b73c4c
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: fe6d410b-7ee9-494e-af71-3aed691b84a6
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(2)
-            description: ""
-            name: Default Facility
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c3f7cf72-7ea5-410c-9fd3-8bdb987bba8d
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 560fc6ff-9cda-43b2-a204-0d8feda8daf4
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: ""
-            name: Default Facility Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3864b748-c813-42e3-83c0-5f4bed875b2f
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 2d9a1b7d-a68b-4f11-82dd-4af0e3b71ba8
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(2)
-            description: ""
-            name: Default Material Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9b58cf37-ad30-4e2c-83a6-d5f2bfb54135
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 6b485707-f64a-489c-b9c1-41132bdcecd4
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: ""
-            name: Default Material Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b25c6e45-06dd-4e70-927d-3eda8fa4f1e3
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: eaadfdc3-81c9-44ed-b7a5-68246c3d560e
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR(8)
-            description: ""
-            name: Daily Start Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 99623f7d-c9da-4c3c-9fd1-76063b6ff8bc
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 969b9512-aa5c-4921-833e-de36c8a9bb22
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: NUMBER(18,2)
-            description: ""
-            name: Expected Duration
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 535a1084-a67a-4758-aee9-d8bc4d5113ce
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: 07cb574f-ef98-41c4-aa2d-d3c7f9ca26cf
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: ""
-            name: Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a9154732-1af2-4558-a06f-f55510306e4a
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-          - columnReference:
-              columnCounter: d06f7150-8fca-4c64-a340-f9fa1635b219
-              stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
-            dataType: VARCHAR
-            description: ""
-            name: Source_Route_Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 28a8c3b2-5c64-449d-b86d-4c4403471dd2
-                    stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              VW_ROUTE_MASTER: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: VW_ROUTE_MASTER
-            join:
-              joinCondition: |2-
-                 FROM {{ ref('MASTER_DATA_CLEAN', 'VW_ROUTE_MASTER') }} "VW_ROUTE_MASTER"
-                WHERE "VW_ROUTE_MASTER"."Source" NOT LIKE '%TOWER%'
-            name: VW_ROUTE_MASTER_TRUX_ONLY
-            noLinkRefs: []
-      name: VW_ROUTE_MASTER_TRUX_ONLY
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+fileVersion: 1
+id: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+name: VW_ROUTE_MASTER_TRUX_ONLY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: OPERATIONS_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 591ecb37-e44a-49a5-ac7f-02bf2e66470c
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Route Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9efcdb57-7b48-4ae5-8767-f3bd3e84e6df
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b2a1c58-3af8-440c-9fa7-1380d6b14231
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Route Day Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 802d1a69-5d32-4737-a3c5-3170875e7007
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0a245009-ab11-4416-a1fa-91817a5d095c
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(3)
+        description: ""
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: daf7abd2-5a83-4778-ac80-5bfd5985371c
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5e43f0d-42c7-4295-a89b-422cc686e815
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: Route Description
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49510f89-e64d-43b9-9dad-84fac86c005b
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 50b7a6de-bbaf-410c-9fa3-03014b16133f
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Route Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19d7a39a-27e7-4937-b21b-434f02d318aa
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40e288dc-5838-4190-b384-e69fdd9a9ef3
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Route Type Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 41a02fc8-05d3-4577-92dc-17886fe55e8b
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20c4ecbf-67a7-453d-8060-2f5b680821a4
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Truck Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 00899726-73b8-4e92-b63c-3f6cfbf11c2a
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c6c173cd-123d-454c-bdb9-11e2903ca7e9
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Truck Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1146661a-82b8-4af3-85ba-1cc8da01385b
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 826fc4f6-4f19-4eca-9c52-d50eb5672a71
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Driver Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4f4208b5-8233-4650-8953-7d998e39301e
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6993d9cc-88b6-4860-b1ba-bc04a3d1d885
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: join on driver
+        name: Driver Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b0d03d58-1b46-4fe6-b513-79ef52f053ca
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec0d6319-5799-4755-b83e-543f4a7e0bb8
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Helper
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6c565330-185b-4ef6-a1b3-a7934ebb590d
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6cf70308-c851-4231-a216-2509a98f3ddd
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: Route Note
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bc29761d-6bb7-4b63-90d1-6bbefaf1ef93
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9c8edef3-d22b-4d35-ab4b-a56020ec510c
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: Active Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a78e35cd-2233-49e8-9afc-7f3957295302
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b4d0fb9-0aff-4453-920f-ed26ba8bd066
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Start Location ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1c511563-afc6-40cd-a285-567a625fadee
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1050a549-0e1b-4a27-841c-9309a0f34f5b
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Start Location Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e09f2d15-ff16-4ccd-bd80-775444d25498
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e88bc546-5a5b-4828-9668-3b782b10aba6
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Average Call Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18ac7139-e138-4cce-9ed3-47bf222e7e0f
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5447d05-ec5b-4d38-a75a-c793ac72a3a9
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: Shadow Route Flag
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dba4e7ba-2f7f-4959-adb6-a0558d81ed39
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e53b6a31-72bc-429a-b178-d42291fa2dee
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: Non Billable Route Flag
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3d8c3bc3-ca5e-4ad1-9330-0813b1b73c4c
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fe6d410b-7ee9-494e-af71-3aed691b84a6
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Default Facility
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c3f7cf72-7ea5-410c-9fd3-8bdb987bba8d
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 560fc6ff-9cda-43b2-a204-0d8feda8daf4
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Default Facility Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3864b748-c813-42e3-83c0-5f4bed875b2f
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d9a1b7d-a68b-4f11-82dd-4af0e3b71ba8
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Default Material Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9b58cf37-ad30-4e2c-83a6-d5f2bfb54135
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6b485707-f64a-489c-b9c1-41132bdcecd4
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Default Material Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b25c6e45-06dd-4e70-927d-3eda8fa4f1e3
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eaadfdc3-81c9-44ed-b7a5-68246c3d560e
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR(8)
+        description: ""
+        name: Daily Start Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 99623f7d-c9da-4c3c-9fd1-76063b6ff8bc
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 969b9512-aa5c-4921-833e-de36c8a9bb22
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: Expected Duration
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 535a1084-a67a-4758-aee9-d8bc4d5113ce
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 07cb574f-ef98-41c4-aa2d-d3c7f9ca26cf
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a9154732-1af2-4558-a06f-f55510306e4a
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d06f7150-8fca-4c64-a340-f9fa1635b219
+          stepCounter: d5ce3cb8-228f-4290-8b66-6837e6643cd9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Source_Route_Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28a8c3b2-5c64-449d-b86d-4c4403471dd2
+                stepCounter: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          VW_ROUTE_MASTER: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_ROUTE_MASTER
+        join:
+          joinCondition: |2-
+             FROM {{ ref('MASTER_DATA_CLEAN', 'VW_ROUTE_MASTER') }} "VW_ROUTE_MASTER"
+            WHERE "VW_ROUTE_MASTER"."Source" NOT LIKE '%TOWER%'
+        name: VW_ROUTE_MASTER_TRUX_ONLY
+        noLinkRefs: []
+  name: VW_ROUTE_MASTER_TRUX_ONLY
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

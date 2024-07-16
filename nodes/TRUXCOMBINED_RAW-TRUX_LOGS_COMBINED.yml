@@ -1,557 +1,605 @@
-steps:
-  TRUX_LOGS_COMBINED-1d474cb8-0a1d-420e-90d9-f20cb7ae692e:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: |-
-        This Node combines TRUX Logs of types:
+fileVersion: 1
+id: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+name: TRUX_LOGS_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: |-
+    This Node combines TRUX Logs of types:
 
-        12 = Customer Field Changed
-        13 = Site Field Changed
-        14 = Service Field Changed
+    12 = Customer Field Changed
+    13 = Site Field Changed
+    14 = Service Field Changed
 
-        16 = Customer Created
-        17 = Site Created
-        18 = Service Created
-      isMultisource: true
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: f35aa57f-4702-4d9b-89b4-54ebf8c40b0d
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c13fa780-7c43-4c1c-845b-88744531019c
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 07ec2bb8-17f7-484e-bbea-69dd7226f2e3
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 4596b908-2b25-4fe1-bc76-57c47fcc9f1e
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_TYPE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 82ff9d1f-2aec-49ff-836d-9d3dbfc18b7f
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: c9c93434-5c62-4648-8971-9be6b3f9eadb
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: ca1e6256-f8d0-4af0-8037-a16a276c833b
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            config: {}
-            dataType: VARCHAR(50)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: TYPE_DESC
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE
-                    WHEN LOG_TYPE = 12 THEN 'Customer Field Changed'
-                    WHEN LOG_TYPE = 13 THEN 'Site Field Changed'
-                    WHEN LOG_TYPE = 14 THEN 'Service Field Changed'
-                    WHEN LOG_TYPE = 16 THEN 'Customer Created'
-                    WHEN LOG_TYPE = 17 THEN 'Site Created'
-                    WHEN LOG_TYPE = 18 THEN 'Service Created'
-                  ELSE NULL
-                  END
-              - columnReferences: []
-                transform: |-
-                  CASE
-                    WHEN LOG_TYPE = 12 THEN 'Customer Field Changed'
-                    WHEN LOG_TYPE = 13 THEN 'Site Field Changed'
-                    WHEN LOG_TYPE = 14 THEN 'Service Field Changed'
-                    WHEN LOG_TYPE = 16 THEN 'Customer Created'
-                    WHEN LOG_TYPE = 17 THEN 'Site Created'
-                    WHEN LOG_TYPE = 18 THEN 'Service Created'
-                  ELSE NULL
-                  END
-            systemColumnType: None
+    16 = Customer Created
+    17 = Site Created
+    18 = Service Created
+  isMultisource: true
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f35aa57f-4702-4d9b-89b4-54ebf8c40b0d
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c13fa780-7c43-4c1c-845b-88744531019c
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
             transform: ""
-          - columnReference:
-              columnCounter: 5754b9f0-bd67-4377-b9de-bedf42d32f9e
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            name: LOG_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d2aa9d3b-40ce-48c6-b142-304e5366ea69
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 5ac3c61d-a0ee-433d-bff7-37180a9360ea
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 1ed785a4-cb7a-43e6-9f91-fa476df04ff9
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(10)
-            description: ""
-            name: LOG_USER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a39c7327-7675-4d0c-9071-d4e18658aa37
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: TRIM("LEGACY_LOG"."LOG_USER")
-              - columnReferences:
-                  - columnCounter: d8b4b997-ee38-481f-a8a0-ad651f75ed0a
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: TRIM("MIDWEST_LOG"."LOG_USER")
-          - columnReference:
-              columnCounter: 7a776206-a40f-4d6e-80ee-721c88c37680
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(10)
-            description: ""
-            name: LOG_TERMID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3f924667-b04e-4c1f-b4ce-b35d72233bcd
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: c53fc8d4-5335-4138-87e7-df37b0e95c62
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: d4eb81e3-16cc-49ca-9170-49f78fe54d61
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(1000)
-            description: ""
-            name: LOG_NOTES
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f42ee65d-04d3-4ef4-a516-bd51280f83c1
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: cba358d1-4856-43a9-9952-2a8bb3e2c397
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: f0a27a3e-4694-404f-9ed3-4eb6ed063c2a
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_CUST
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a0199b86-4855-4c64-8bc4-5d1bd5bc733e
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 94880e23-d81f-4b58-b621-d62a7f602a63
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 18c058a1-f8fc-4303-8c69-1f65c86d2495
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_SITE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a7f7398a-0bfe-4dbe-947d-1e5e9cb49fc0
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: c70e8c94-de08-4a55-a6c6-e5dc36a3f79e
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 8702f6c3-60e8-408b-a968-059664edb6e8
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_SERV
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0d43de01-ee20-43bd-8acf-9fd481eee48c
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 33513bde-b91c-4e8d-acb5-7c2440b69669
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: d471e820-8ce1-44e6-a728-8ed52111c30a
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_ROUT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 38328ecc-da96-4d39-83f4-c49dcb5b3f6e
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 29d09731-c948-44ee-8534-ce0fded64dad
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 79ba4527-21ce-4d4d-9639-3ab40a9cf32c
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,2)
-            description: ""
-            name: LOG_SEQU
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4e29678d-8727-4368-8726-9563058a4d5f
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: e5c26c4e-6b8d-4a5b-8e58-78752333fe1a
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 1ee07574-9309-43e5-bf48-5ac783c44354
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_FNUM
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6ed172b8-309e-466d-84b9-4632528c3b24
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 87eb2257-5b1e-4bd1-9a5f-44a09a604c75
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 039723ee-1a0c-4436-9e91-74804ec5d6b8
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(2)
-            description: ""
-            name: LOG_REAS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 313d1db9-674a-4da2-a577-4020429d3fe2
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: fc1134cd-d0f5-4418-981e-7eafce41d147
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: bee1976a-796a-4d6b-990f-333029e7f20f
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(6)
-            description: ""
-            name: LOG_AUTH
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f34a4f43-942a-4f38-8fec-c245b7c718ab
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: b7e600e3-7720-43bc-9751-78b751572f1c
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: a671487f-770b-463e-8e21-50cc82f9533e
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,2)
-            description: ""
-            name: LOG_AMNT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c901c2e0-3160-4aa0-8b01-1421d26d45f8
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 6983e4aa-97be-4054-9f3a-920e7447f167
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: ff1ae5e5-fc29-4146-873b-c27a74b372f4
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            name: LOG_TDTE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 38eaef30-42e6-43eb-bd65-7326ab336c4a
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 8e7733eb-fdb3-49d5-904b-7ab2b9b0bbbf
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 4351210e-51dd-414a-abb1-b91e0c882bd6
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_CALLID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5edf1376-f40f-422a-a354-a0f08d45e8ad
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 51abf143-210b-41e6-9cd6-251c39219c04
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 72877c3f-22a8-4fb7-a3d4-6c052b673f6a
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(500)
-            description: ""
-            name: LOG_BVAL
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 313702c2-72fb-471a-a780-df319ca2ad6a
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 9f4f9225-27f1-47f6-a985-0d0bf87829cc
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 81c57490-4789-464c-9666-ba4a3bd24478
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(500)
-            description: ""
-            name: LOG_AVAL
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: fb526886-48a9-4c0e-a867-2e73a448d192
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 8d119a26-1335-46ff-a89e-eade1168e135
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: 9e91bda8-e9f8-44f4-9fa2-537fc1d4541d
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LOG_TASKID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4b531dc2-a5be-4af6-a908-700eea9e82de
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 770143bb-17b0-4987-8215-2e8998b8ad76
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 76c649a0-aae0-4cd0-b4eb-5bf111292399
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            config: {}
-            dataType: VARCHAR(50)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: SERVER_USER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "'LEGACY-'||TRIM(\"LEGACY_LOG\".\"LOG_USER\")"
-              - columnReferences: []
-                transform: "'MIDWEST-'||TRIM(\"MIDWEST_LOG\".\"LOG_USER\")"
-            systemColumnType: None
+          - columnReferences:
+              - columnCounter: 07ec2bb8-17f7-484e-bbea-69dd7226f2e3
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1e793344-aabb-4e78-beef-d4f3d089079c
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            config: {}
-            dataType: VARCHAR(50)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: SQL_SERVER_NAME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "'LEGACY'"
-              - columnReferences: []
-                transform: "'MIDWEST'"
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4596b908-2b25-4fe1-bc76-57c47fcc9f1e
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 82ff9d1f-2aec-49ff-836d-9d3dbfc18b7f
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
             transform: ""
-          - columnReference:
-              columnCounter: 7d280e01-9330-4c62-be40-7caecc16d4c2
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(50)
-            description: ""
-            name: SQL_TABLE_NAME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0d73e7e3-0ffd-46f8-bf3a-c1c44a5ff896
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 7dd9e9a2-055f-4ec6-93fa-6a4ece3d0569
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - columnReference:
-              columnCounter: c243a17d-5c58-41a6-bb31-eb19c71a5650
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: VARCHAR(50)
-            description: ""
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bc70e765-a349-40d9-bf34-cd155c886796
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: e269bec7-56eb-4e0b-a126-069c01e3fb6f
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: cc4eb8db-651b-40c2-bbed-46a048644529
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            config: {}
-            dataType: VARCHAR(50)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: SY03_NAME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
-                    stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-                transform: ""
-              - columnReferences:
-                  - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
-                    stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
-                transform: ""
-            systemColumnType: None
+          - columnReferences:
+              - columnCounter: c9c93434-5c62-4648-8971-9be6b3f9eadb
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
             transform: ""
-          - columnReference:
-              columnCounter: 10e4b857-824c-417c-80ed-675241e1dc6f
-              stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            name: ADF_TIMESTAMP
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 49317870-c58b-4862-b53b-1de2d93b5953
-                    stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 37c70497-d544-439b-a6d8-d4eb185f1c97
-                    stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
-                transform: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              LEGACY_LOG: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
-              TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: LOGGING_DATA
-                nodeName: LEGACY_LOG
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: TRUX_DATABASE_METADATA
-            join:
-              joinCondition: |2-
-                 FROM {{ ref('LOGGING_DATA', 'LEGACY_LOG') }} "LEGACY_LOG"
-                
-                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
-                   ON "LEGACY_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-                
-                WHERE "LEGACY_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
-                  AND "LEGACY_LOG"."LOG_DATE" >= '01/01/2023'
-            name: LEGACY_LOG
-            noLinkRefs: []
-          - aliases:
-              MIDWEST_LOG: 9e2a7abd-c423-41e6-9918-03691426c966
-              TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: LOGGING_DATA
-                nodeName: MIDWEST_LOG
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: TRUX_DATABASE_METADATA
-            join:
-              joinCondition: |2-
-                 FROM {{ ref('LOGGING_DATA', 'MIDWEST_LOG') }} "MIDWEST_LOG"
-                
-                 LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
-                   ON "MIDWEST_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-                
-                WHERE "MIDWEST_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
-                  AND "MIDWEST_LOG"."LOG_DATE" >= '01/01/2023'
-            name: MIDWEST_LOG
-            noLinkRefs: []
-      name: TRUX_LOGS_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca1e6256-f8d0-4af0-8037-a16a276c833b
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: TYPE_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE
+                WHEN LOG_TYPE = 12 THEN 'Customer Field Changed'
+                WHEN LOG_TYPE = 13 THEN 'Site Field Changed'
+                WHEN LOG_TYPE = 14 THEN 'Service Field Changed'
+                WHEN LOG_TYPE = 16 THEN 'Customer Created'
+                WHEN LOG_TYPE = 17 THEN 'Site Created'
+                WHEN LOG_TYPE = 18 THEN 'Service Created'
+              ELSE NULL
+              END
+          - columnReferences: []
+            transform: |-
+              CASE
+                WHEN LOG_TYPE = 12 THEN 'Customer Field Changed'
+                WHEN LOG_TYPE = 13 THEN 'Site Field Changed'
+                WHEN LOG_TYPE = 14 THEN 'Service Field Changed'
+                WHEN LOG_TYPE = 16 THEN 'Customer Created'
+                WHEN LOG_TYPE = 17 THEN 'Site Created'
+                WHEN LOG_TYPE = 18 THEN 'Service Created'
+              ELSE NULL
+              END
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5754b9f0-bd67-4377-b9de-bedf42d32f9e
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: LOG_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d2aa9d3b-40ce-48c6-b142-304e5366ea69
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5ac3c61d-a0ee-433d-bff7-37180a9360ea
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1ed785a4-cb7a-43e6-9f91-fa476df04ff9
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: LOG_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a39c7327-7675-4d0c-9071-d4e18658aa37
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: TRIM("LEGACY_LOG"."LOG_USER")
+          - columnReferences:
+              - columnCounter: d8b4b997-ee38-481f-a8a0-ad651f75ed0a
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: TRIM("MIDWEST_LOG"."LOG_USER")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7a776206-a40f-4d6e-80ee-721c88c37680
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: LOG_TERMID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3f924667-b04e-4c1f-b4ce-b35d72233bcd
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: c53fc8d4-5335-4138-87e7-df37b0e95c62
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4eb81e3-16cc-49ca-9170-49f78fe54d61
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(1000)
+        description: ""
+        name: LOG_NOTES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f42ee65d-04d3-4ef4-a516-bd51280f83c1
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: cba358d1-4856-43a9-9952-2a8bb3e2c397
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f0a27a3e-4694-404f-9ed3-4eb6ed063c2a
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a0199b86-4855-4c64-8bc4-5d1bd5bc733e
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 94880e23-d81f-4b58-b621-d62a7f602a63
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18c058a1-f8fc-4303-8c69-1f65c86d2495
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a7f7398a-0bfe-4dbe-947d-1e5e9cb49fc0
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: c70e8c94-de08-4a55-a6c6-e5dc36a3f79e
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8702f6c3-60e8-408b-a968-059664edb6e8
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0d43de01-ee20-43bd-8acf-9fd481eee48c
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 33513bde-b91c-4e8d-acb5-7c2440b69669
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d471e820-8ce1-44e6-a728-8ed52111c30a
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_ROUT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38328ecc-da96-4d39-83f4-c49dcb5b3f6e
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 29d09731-c948-44ee-8534-ce0fded64dad
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79ba4527-21ce-4d4d-9639-3ab40a9cf32c
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        name: LOG_SEQU
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4e29678d-8727-4368-8726-9563058a4d5f
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: e5c26c4e-6b8d-4a5b-8e58-78752333fe1a
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1ee07574-9309-43e5-bf48-5ac783c44354
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_FNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6ed172b8-309e-466d-84b9-4632528c3b24
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 87eb2257-5b1e-4bd1-9a5f-44a09a604c75
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 039723ee-1a0c-4436-9e91-74804ec5d6b8
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: LOG_REAS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 313d1db9-674a-4da2-a577-4020429d3fe2
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: fc1134cd-d0f5-4418-981e-7eafce41d147
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bee1976a-796a-4d6b-990f-333029e7f20f
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(6)
+        description: ""
+        name: LOG_AUTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f34a4f43-942a-4f38-8fec-c245b7c718ab
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: b7e600e3-7720-43bc-9751-78b751572f1c
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a671487f-770b-463e-8e21-50cc82f9533e
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        name: LOG_AMNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c901c2e0-3160-4aa0-8b01-1421d26d45f8
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 6983e4aa-97be-4054-9f3a-920e7447f167
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff1ae5e5-fc29-4146-873b-c27a74b372f4
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: LOG_TDTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38eaef30-42e6-43eb-bd65-7326ab336c4a
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 8e7733eb-fdb3-49d5-904b-7ab2b9b0bbbf
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4351210e-51dd-414a-abb1-b91e0c882bd6
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_CALLID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5edf1376-f40f-422a-a354-a0f08d45e8ad
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 51abf143-210b-41e6-9cd6-251c39219c04
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 72877c3f-22a8-4fb7-a3d4-6c052b673f6a
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(500)
+        description: ""
+        name: LOG_BVAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 313702c2-72fb-471a-a780-df319ca2ad6a
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 9f4f9225-27f1-47f6-a985-0d0bf87829cc
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 81c57490-4789-464c-9666-ba4a3bd24478
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(500)
+        description: ""
+        name: LOG_AVAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fb526886-48a9-4c0e-a867-2e73a448d192
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 8d119a26-1335-46ff-a89e-eade1168e135
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e91bda8-e9f8-44f4-9fa2-537fc1d4541d
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_TASKID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4b531dc2-a5be-4af6-a908-700eea9e82de
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 770143bb-17b0-4987-8215-2e8998b8ad76
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 76c649a0-aae0-4cd0-b4eb-5bf111292399
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SERVER_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'LEGACY-'||TRIM(\"LEGACY_LOG\".\"LOG_USER\")"
+          - columnReferences: []
+            transform: "'MIDWEST-'||TRIM(\"MIDWEST_LOG\".\"LOG_USER\")"
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e793344-aabb-4e78-beef-d4f3d089079c
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SQL_SERVER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'LEGACY'"
+          - columnReferences: []
+            transform: "'MIDWEST'"
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7d280e01-9330-4c62-be40-7caecc16d4c2
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: SQL_TABLE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0d73e7e3-0ffd-46f8-bf3a-c1c44a5ff896
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 7dd9e9a2-055f-4ec6-93fa-6a4ece3d0569
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c243a17d-5c58-41a6-bb31-eb19c71a5650
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bc70e765-a349-40d9-bf34-cd155c886796
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: e269bec7-56eb-4e0b-a126-069c01e3fb6f
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cc4eb8db-651b-40c2-bbed-46a048644529
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SY03_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            transform: ""
+          - columnReferences:
+              - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10e4b857-824c-417c-80ed-675241e1dc6f
+          stepCounter: 1d474cb8-0a1d-420e-90d9-f20cb7ae692e
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: ADF_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49317870-c58b-4862-b53b-1de2d93b5953
+                stepCounter: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+            transform: ""
+          - columnReferences:
+              - columnCounter: 37c70497-d544-439b-a6d8-d4eb185f1c97
+                stepCounter: 9e2a7abd-c423-41e6-9918-03691426c966
+            transform: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          LEGACY_LOG: 2d0c10fe-6539-45ce-8442-4bbb0bec7ac2
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: LOGGING_DATA
+            nodeName: LEGACY_LOG
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
+        join:
+          joinCondition: |2-
+             FROM {{ ref('LOGGING_DATA', 'LEGACY_LOG') }} "LEGACY_LOG"
+
+             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+               ON "LEGACY_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+
+            WHERE "LEGACY_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
+              AND "LEGACY_LOG"."LOG_DATE" >= '01/01/2023'
+        name: LEGACY_LOG
+        noLinkRefs: []
+      - aliases:
+          MIDWEST_LOG: 9e2a7abd-c423-41e6-9918-03691426c966
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: LOGGING_DATA
+            nodeName: MIDWEST_LOG
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
+        join:
+          joinCondition: |2-
+             FROM {{ ref('LOGGING_DATA', 'MIDWEST_LOG') }} "MIDWEST_LOG"
+
+             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+               ON "MIDWEST_LOG"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+
+            WHERE "MIDWEST_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
+              AND "MIDWEST_LOG"."LOG_DATE" >= '01/01/2023'
+        name: MIDWEST_LOG
+        noLinkRefs: []
+  name: TRUX_LOGS_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

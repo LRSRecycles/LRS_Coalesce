@@ -1,96 +1,99 @@
-steps:
-  DAILYROUTEENTRYDOWNTIME_TOTAL_DOWNTIME_ROUTE_DAY-45f45cee-1a45-4764-b6ea-889728419315:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 7f2f2da9-18e9-4399-8a1c-6019e41cf058
-              stepCounter: 45f45cee-1a45-4764-b6ea-889728419315
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DAILYROUTEENTRYUID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 19251546-4937-4820-b31a-57b101678444
-                    stepCounter: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: e7d544e2-42d2-4093-aef8-2b3290a093f1
-              stepCounter: 45f45cee-1a45-4764-b6ea-889728419315
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Total Downtime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4257a696-00b5-4e2e-9f40-19b32199fa65
-                    stepCounter: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
-                transform: SUM("DAILYROUTEENTRYDOWNTIME_COMBINED"."Total Downtime")
-            systemColumnType: None
+fileVersion: 1
+id: 45f45cee-1a45-4764-b6ea-889728419315
+name: DAILYROUTEENTRYDOWNTIME_TOTAL_DOWNTIME_ROUTE_DAY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7f2f2da9-18e9-4399-8a1c-6019e41cf058
+          stepCounter: 45f45cee-1a45-4764-b6ea-889728419315
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: DAILYROUTEENTRYUID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19251546-4937-4820-b31a-57b101678444
+                stepCounter: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 9b7ec2f3-a963-4646-b32b-559b6307b21e
-              stepCounter: 45f45cee-1a45-4764-b6ea-889728419315
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Total Downtime Instances
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0afa998d-08ba-4130-88fe-508a950d7014
-                    stepCounter: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
-                transform: COUNT("DAILYROUTEENTRYDOWNTIME_COMBINED"."DAILYROUTEENTRYDOWNTIMEUID")
-            systemColumnType: None
-            transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              DAILYROUTEENTRYDOWNTIME_COMBINED: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: DAILYROUTEENTRYDOWNTIME_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'DAILYROUTEENTRYDOWNTIME_COMBINED') }} "DAILYROUTEENTRYDOWNTIME_COMBINED"
-                group by "DAILYROUTEENTRYUID"
-            name: DAILYROUTEENTRYDOWNTIME_TOTAL_DOWNTIME_ROUTE_DAY
-            noLinkRefs: []
-      name: DAILYROUTEENTRYDOWNTIME_TOTAL_DOWNTIME_ROUTE_DAY
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 45f45cee-1a45-4764-b6ea-889728419315
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e7d544e2-42d2-4093-aef8-2b3290a093f1
+          stepCounter: 45f45cee-1a45-4764-b6ea-889728419315
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Downtime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4257a696-00b5-4e2e-9f40-19b32199fa65
+                stepCounter: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
+            transform: SUM("DAILYROUTEENTRYDOWNTIME_COMBINED"."Total Downtime")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b7ec2f3-a963-4646-b32b-559b6307b21e
+          stepCounter: 45f45cee-1a45-4764-b6ea-889728419315
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Downtime Instances
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0afa998d-08ba-4130-88fe-508a950d7014
+                stepCounter: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
+            transform: COUNT("DAILYROUTEENTRYDOWNTIME_COMBINED"."DAILYROUTEENTRYDOWNTIMEUID")
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DAILYROUTEENTRYDOWNTIME_COMBINED: 609eaaa5-6e2e-4e08-af40-2189cc2ca74c
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: DAILYROUTEENTRYDOWNTIME_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TOWER_COMBINED', 'DAILYROUTEENTRYDOWNTIME_COMBINED') }} "DAILYROUTEENTRYDOWNTIME_COMBINED"
+            group by "DAILYROUTEENTRYUID"
+        name: DAILYROUTEENTRYDOWNTIME_TOTAL_DOWNTIME_ROUTE_DAY
+        noLinkRefs: []
+  name: DAILYROUTEENTRYDOWNTIME_TOTAL_DOWNTIME_ROUTE_DAY
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

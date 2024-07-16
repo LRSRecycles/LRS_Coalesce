@@ -1,456 +1,480 @@
-steps:
-  STG_CHARGE_PAYMENT_COMBINED-5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: combining tower charge nad payment data into single table to then be unioned with the payments and adjustment trux data in the next layer
-      isMultisource: true
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 3fce7fe5-d96d-480c-9834-39ae41b937eb
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Unique ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b7ccf870-f0ca-460c-8684-1181c7596ede
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 416ce0d1-5fa3-4833-88e3-c00049ed7667
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: f93dc7df-3131-4608-a464-db9bbec82ad8
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: Charge Number
-            hashColumns: []
-            hashDetails: null
-            name: Payment Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ad30bcdd-08ff-4a64-b0af-f6e978844170
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 3f4ccd3f-30b4-4ec6-ae10-032e402ba2be
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: 41a73adf-86a7-4bd4-8076-10c8c98697c3
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Source Unique ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b12b9e6-e513-4655-9c0e-965654fe4261
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 3d5e9db8-e10c-4dc8-b342-9bfaa14428c7
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: 2b902444-f18b-42f5-9124-f428983a2447
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: Source Number
-            hashColumns: []
-            hashDetails: null
-            name: Source Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: aae5be2c-648e-45c7-b0da-e5d76d2f89a7
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: b0f9a0f4-e58d-4ec2-9f6a-71ab00d1d5cb
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: DATE
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Payment Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 59811b92-6237-415f-b693-92ea1870f4ed
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 26bf87b2-7ee5-4757-a61a-cfec80cfaab7
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: 70cc6485-a4d7-4786-82a4-4874fad0e0fb
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Work Order ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8d5b2327-f70b-4920-be0a-8c78618ea9dd
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 28604811-9827-4b69-9133-bbc4f3c39dfe
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Note
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1e094f29-fad6-409a-8e2a-b845755164a1
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 70fe5097-9628-4887-bcd4-8bc11a321015
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: 238cec42-fdb8-4d1a-928c-43f9f995de5a
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 08c518ff-bb24-44b1-9f3d-8175f54347cf
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 14a40590-1381-4c27-9cc0-f9daa1d43324
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cd047069-7be9-4ba4-946f-d595b1a22efb
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 3e298e97-0b5c-4a4b-8fb3-48ec955924d9
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Unit Price
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ef237116-0ef7-4da2-b6db-67eb0bd5ea2c
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: ad82fec8-dc98-4423-8347-78e564b16bcf
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9e7d5777-366d-4349-a1cd-49e7801f3cd6
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 90e61988-bb87-4fc8-ab71-074c5b1ab28b
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: daa22714-7717-46f4-922b-9594657f954f
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c6a1c8df-1321-4335-8742-8f43694e6384
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 93b0d60f-fc8e-43cb-b92c-801e316f6616
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Credit Reason
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 16dbd529-593e-4f36-a249-443fc3022c72
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 5f414005-f17c-498a-ae2f-d3fb4909ba65
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: 5fc5d48d-7057-42a0-8443-119a4431f4a5
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Display on Invoice
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 79dddd5b-0f57-45d1-ab96-5d08b97190d8
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 478861c1-7099-4394-9962-6c862be7da0a
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Status
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d3ea0ed4-510f-4a06-a9b1-1b83e57c65c1
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 30b86f8b-f3aa-4465-94b3-091dba0ea770
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: d9af5717-46c9-4a73-9d09-64d236d6dfba
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Charge Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b2c21c06-ee54-451f-94a8-0cf3952d96f2
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: fb0dd35c-3c03-46fd-88e5-aa7003af529d
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Collections Notified?
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a014fce3-00c0-4b08-bc4a-d2a7c08d12f7
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: e11f070d-f1ee-41cc-87c6-8622653990b0
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: c9a5b219-cf60-467b-9fdf-5835aa6b1097
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Bad Debt Recovery or Remove Credit Hold
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d0d9088f-c7cb-4381-978f-d7309bb8f217
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 1fcc93ff-1115-422d-a587-f6ab31e85063
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: ba3ba1a6-ea4b-49b4-af08-24948b1df8d3
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a0ee881d-887a-4ec5-835f-192c17fe9558
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: ea65af50-df27-4167-9f7c-5db88cbda451
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: 1da5ffc4-9f72-40e4-a78b-e1a7beb87f80
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5ac838d4-7522-4751-99b4-56903e469a24
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 91736be3-6c31-4d67-8b82-21c86f2eacde
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - columnReference:
-              columnCounter: 7c184554-fac8-4d6f-b60d-35e80b552d9e
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Link to Invoice
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9c66e628-d57d-4b98-a92e-9895058983e4
-                    stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 10a63456-37fc-455c-bddf-807aa928773d
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 9de1f059-4377-4dc1-a8bc-e3f9631ceebd
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Credit Card Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-              - columnReferences:
-                  - columnCounter: f4a2c780-290b-4cc4-9227-d3463050d6ab
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+name: STG_CHARGE_PAYMENT_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: combining tower charge nad payment data into single table to then be unioned with the payments and adjustment trux data in the next layer
+  isMultisource: true
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3fce7fe5-d96d-480c-9834-39ae41b937eb
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Unique ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b7ccf870-f0ca-460c-8684-1181c7596ede
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 769635a5-7661-40a0-85a4-fbf34cca755f
-              stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Payment Method
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: ""
-              - columnReferences:
-                  - columnCounter: e0aac030-30af-487c-b772-cbdcb7cbc53c
-                    stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
-                transform: ""
-            systemColumnType: None
+          - columnReferences:
+              - columnCounter: 416ce0d1-5fa3-4833-88e3-c00049ed7667
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
             transform: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: STG_CHARGE_COMBINED
-            join:
-              joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_CHARGE_COMBINED') }} "STG_CHARGE_COMBINED"
-            name: STG_CHARGE_COMBINED
-            noLinkRefs: []
-          - aliases:
-              STG_PAYMENT_COMBINED: cb6c4838-0344-4d76-8e79-cb9520b893be
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: STG_PAYMENT_COMBINED
-            join:
-              joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_PAYMENT_COMBINED') }} "STG_PAYMENT_COMBINED"
-            name: STG_PAYMENT_COMBINED
-            noLinkRefs: []
-      name: STG_CHARGE_PAYMENT_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f93dc7df-3131-4608-a464-db9bbec82ad8
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: Charge Number
+        hashDetails: null
+        name: Payment Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad30bcdd-08ff-4a64-b0af-f6e978844170
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 3f4ccd3f-30b4-4ec6-ae10-032e402ba2be
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 41a73adf-86a7-4bd4-8076-10c8c98697c3
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Source Unique ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b12b9e6-e513-4655-9c0e-965654fe4261
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 3d5e9db8-e10c-4dc8-b342-9bfaa14428c7
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b902444-f18b-42f5-9124-f428983a2447
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: Source Number
+        hashDetails: null
+        name: Source Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aae5be2c-648e-45c7-b0da-e5d76d2f89a7
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0f9a0f4-e58d-4ec2-9f6a-71ab00d1d5cb
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: DATE
+        description: ""
+        hashDetails: null
+        name: Payment Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59811b92-6237-415f-b693-92ea1870f4ed
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 26bf87b2-7ee5-4757-a61a-cfec80cfaab7
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70cc6485-a4d7-4786-82a4-4874fad0e0fb
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Work Order ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8d5b2327-f70b-4920-be0a-8c78618ea9dd
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28604811-9827-4b69-9133-bbc4f3c39dfe
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Note
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1e094f29-fad6-409a-8e2a-b845755164a1
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 70fe5097-9628-4887-bcd4-8bc11a321015
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 238cec42-fdb8-4d1a-928c-43f9f995de5a
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Service Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 08c518ff-bb24-44b1-9f3d-8175f54347cf
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14a40590-1381-4c27-9cc0-f9daa1d43324
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cd047069-7be9-4ba4-946f-d595b1a22efb
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e298e97-0b5c-4a4b-8fb3-48ec955924d9
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Unit Price
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ef237116-0ef7-4da2-b6db-67eb0bd5ea2c
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad82fec8-dc98-4423-8347-78e564b16bcf
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9e7d5777-366d-4349-a1cd-49e7801f3cd6
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 90e61988-bb87-4fc8-ab71-074c5b1ab28b
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: daa22714-7717-46f4-922b-9594657f954f
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6a1c8df-1321-4335-8742-8f43694e6384
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93b0d60f-fc8e-43cb-b92c-801e316f6616
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Credit Reason
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16dbd529-593e-4f36-a249-443fc3022c72
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5f414005-f17c-498a-ae2f-d3fb4909ba65
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5fc5d48d-7057-42a0-8443-119a4431f4a5
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Display on Invoice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 79dddd5b-0f57-45d1-ab96-5d08b97190d8
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 478861c1-7099-4394-9962-6c862be7da0a
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d3ea0ed4-510f-4a06-a9b1-1b83e57c65c1
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 30b86f8b-f3aa-4465-94b3-091dba0ea770
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d9af5717-46c9-4a73-9d09-64d236d6dfba
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Charge Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b2c21c06-ee54-451f-94a8-0cf3952d96f2
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb0dd35c-3c03-46fd-88e5-aa7003af529d
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Collections Notified?
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a014fce3-00c0-4b08-bc4a-d2a7c08d12f7
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: e11f070d-f1ee-41cc-87c6-8622653990b0
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9a5b219-cf60-467b-9fdf-5835aa6b1097
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Bad Debt Recovery or Remove Credit Hold
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d0d9088f-c7cb-4381-978f-d7309bb8f217
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 1fcc93ff-1115-422d-a587-f6ab31e85063
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ba3ba1a6-ea4b-49b4-af08-24948b1df8d3
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a0ee881d-887a-4ec5-835f-192c17fe9558
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: ea65af50-df27-4167-9f7c-5db88cbda451
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1da5ffc4-9f72-40e4-a78b-e1a7beb87f80
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5ac838d4-7522-4751-99b4-56903e469a24
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 91736be3-6c31-4d67-8b82-21c86f2eacde
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7c184554-fac8-4d6f-b60d-35e80b552d9e
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Link to Invoice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9c66e628-d57d-4b98-a92e-9895058983e4
+                stepCounter: 7b6cc234-71b9-4fd0-b32a-4d0456af3fa1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 10a63456-37fc-455c-bddf-807aa928773d
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9de1f059-4377-4dc1-a8bc-e3f9631ceebd
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Credit Card Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences:
+              - columnCounter: f4a2c780-290b-4cc4-9227-d3463050d6ab
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 769635a5-7661-40a0-85a4-fbf34cca755f
+          stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Method
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+          - columnReferences:
+              - columnCounter: e0aac030-30af-487c-b772-cbdcb7cbc53c
+                stepCounter: cb6c4838-0344-4d76-8e79-cb9520b893be
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: STG_CHARGE_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_CHARGE_COMBINED') }} "STG_CHARGE_COMBINED"
+        name: STG_CHARGE_COMBINED
+        noLinkRefs: []
+      - aliases:
+          STG_PAYMENT_COMBINED: cb6c4838-0344-4d76-8e79-cb9520b893be
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: STG_PAYMENT_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_PAYMENT_COMBINED') }} "STG_PAYMENT_COMBINED"
+        name: STG_PAYMENT_COMBINED
+        noLinkRefs: []
+  name: STG_CHARGE_PAYMENT_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,216 +1,240 @@
-steps:
-  STG_DTickets-e911133f-feb6-4f66-9537-59195f8648a3:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: DTickets step of the query for route audit report. Similar to nbtickets but different joins
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 15d2e8b2-127e-4307-8170-a6a4a08a285a
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Ticket Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b5cd2fc9-11b9-4763-82d0-01dfa4d51ce8
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: LISTAGG(DISTINCT "STG_DTickets_Join_Collections_Disposal"."LM02_DSTE"||' - '||"STG_DTickets_Join_Collections_Disposal"."LM02_NUMB"||' '||"LM04_COMBINED"."LM04_DESC",', ')
-          - columnReference:
-              columnCounter: 2f30ef99-f722-4e4b-a464-ef6c10e543fe
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: DTicket Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b5cd2fc9-11b9-4763-82d0-01dfa4d51ce8
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: COUNT(DISTINCT "STG_DTickets_Join_Collections_Disposal"."LM02_DSTE"||' - '||"STG_DTickets_Join_Collections_Disposal"."LM02_NUMB"||' '||"LM04_COMBINED"."LM04_DESC")
-          - columnReference:
-              columnCounter: d718ce35-b8b4-4186-85b1-8adabe817f39
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashDetails: null
-            name: Route Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d798ed8c-2fac-4c26-b872-070502cdecce
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: ""
-          - columnReference:
-              columnCounter: 3dd5da31-87e9-4d3c-a29b-003cb017584c
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: VARCHAR(2)
-            description: ""
-            hashDetails: null
-            name: Disposal UOM
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1c9388b7-af80-4803-aa77-1e66ae7be325
-                    stepCounter: f21fe296-8b27-43b1-978c-64999978c610
-                transform: ""
-          - columnReference:
-              columnCounter: a6647cac-02b3-4317-beb5-e27767195176
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Billing Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 74b02ad1-2467-422f-b9b3-e7204b113c50
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_BAMT")
-          - columnReference:
-              columnCounter: 1d0c3398-e2de-4b2f-924e-a944ff5636e4
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: NUMBER(38,0)
-            description: ""
-            hashDetails: null
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c78fc170-6d28-4ba0-a3cd-61debbf2647e
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: ""
-          - columnReference:
-              columnCounter: 4e8e1710-4dab-4c43-bcd4-aa5fa66278f1
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Disposal Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a0e5ef95-8bcb-43f2-bebf-35ac1817f0fb
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_DAMT")
-          - columnReference:
-              columnCounter: 905467fd-e44f-422f-a968-75129c5f9138
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Disposal Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2f0de478-f6e4-46d3-ba4c-6b25501e9c48
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_DQTY" * IFNULL("LM06_COMBINED"."LM06_FACT",1))
-          - columnReference:
-              columnCounter: af54c01d-c46d-4e05-8011-91fc67c52ad3
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Billing Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c235aef1-8388-43c6-8069-2236664f765f
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_BQTY")
-          - columnReference:
-              columnCounter: d61c7459-240a-46ce-b8d3-cf226d8b2b98
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e2aa68ce-65eb-4af7-95c0-d26060f064ab
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: ""
-          - columnReference:
-              columnCounter: ee1a5237-0521-4dd0-aa77-466312ac7070
-              stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Route Sequence
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 540ce4ed-b9c4-4772-aebd-f82e4256a352
-                    stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              CD14_COMBINED: f21fe296-8b27-43b1-978c-64999978c610
-              LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
-              LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-              RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
-              STG_DTickets_Join_Collections_Disposal: 6813012c-649c-442a-8a67-4a7693ab2dc2
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: CD14_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: LM04_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: LM06_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: RM01_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_DTickets_Join_Collections_Disposal
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DTickets_Join_Collections_Disposal') }} "STG_DTickets_Join_Collections_Disposal"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
-                  ON "STG_DTickets_Join_Collections_Disposal"."LM02_ROUT" = "RM01_COMBINED"."RM01_NUMB" 
-                 and "STG_DTickets_Join_Collections_Disposal"."SOURCE" = "RM01_COMBINED"."SOURCE"
-                
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
-                  ON "STG_DTickets_Join_Collections_Disposal"."LM02_MATL" = "LM04_COMBINED"."LM04_CODE"
-                 and "STG_DTickets_Join_Collections_Disposal"."SOURCE" = "LM04_COMBINED"."SOURCE"
-                
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
-                  ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
-                 and "RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
-                
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
-                  ON "STG_DTickets_Join_Collections_Disposal"."LM02_DUOM" = "LM06_COMBINED"."LM06_UOM1"
-                 and "LM06_COMBINED"."LM06_UOM2" = "CD14_COMBINED"."CD14_WEIGHTUOM"
-                 and "LM06_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
-                
-                GROUP BY "Route Date", 
-                    "Route Sequence", 
-                    "STG_DTickets_Join_Collections_Disposal"."SOURCE",
-                    "CD14_WEIGHTUOM",
-                    "Route"
-            name: STG_DTickets
-            noLinkRefs: []
-      name: STG_DTickets
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+fileVersion: 1
+id: e911133f-feb6-4f66-9537-59195f8648a3
+name: STG_DTickets
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: DTickets step of the query for route audit report. Similar to nbtickets but different joins
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15d2e8b2-127e-4307-8170-a6a4a08a285a
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5cd2fc9-11b9-4763-82d0-01dfa4d51ce8
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: LISTAGG(DISTINCT "STG_DTickets_Join_Collections_Disposal"."LM02_DSTE"||' - '||"STG_DTickets_Join_Collections_Disposal"."LM02_NUMB"||' '||"LM04_COMBINED"."LM04_DESC",', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2f30ef99-f722-4e4b-a464-ef6c10e543fe
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: DTicket Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5cd2fc9-11b9-4763-82d0-01dfa4d51ce8
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: COUNT(DISTINCT "STG_DTickets_Join_Collections_Disposal"."LM02_DSTE"||' - '||"STG_DTickets_Join_Collections_Disposal"."LM02_NUMB"||' '||"LM04_COMBINED"."LM04_DESC")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d718ce35-b8b4-4186-85b1-8adabe817f39
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d798ed8c-2fac-4c26-b872-070502cdecce
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3dd5da31-87e9-4d3c-a29b-003cb017584c
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Disposal UOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1c9388b7-af80-4803-aa77-1e66ae7be325
+                stepCounter: f21fe296-8b27-43b1-978c-64999978c610
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6647cac-02b3-4317-beb5-e27767195176
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 74b02ad1-2467-422f-b9b3-e7204b113c50
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_BAMT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1d0c3398-e2de-4b2f-924e-a944ff5636e4
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c78fc170-6d28-4ba0-a3cd-61debbf2647e
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e8e1710-4dab-4c43-bcd4-aa5fa66278f1
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a0e5ef95-8bcb-43f2-bebf-35ac1817f0fb
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_DAMT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 905467fd-e44f-422f-a968-75129c5f9138
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2f0de478-f6e4-46d3-ba4c-6b25501e9c48
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_DQTY" * IFNULL("LM06_COMBINED"."LM06_FACT",1))
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: af54c01d-c46d-4e05-8011-91fc67c52ad3
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c235aef1-8388-43c6-8069-2236664f765f
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: SUM("STG_DTickets_Join_Collections_Disposal"."LM02_BQTY")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d61c7459-240a-46ce-b8d3-cf226d8b2b98
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e2aa68ce-65eb-4af7-95c0-d26060f064ab
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ee1a5237-0521-4dd0-aa77-466312ac7070
+          stepCounter: e911133f-feb6-4f66-9537-59195f8648a3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route Sequence
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 540ce4ed-b9c4-4772-aebd-f82e4256a352
+                stepCounter: 6813012c-649c-442a-8a67-4a7693ab2dc2
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CD14_COMBINED: f21fe296-8b27-43b1-978c-64999978c610
+          LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
+          LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+          RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
+          STG_DTickets_Join_Collections_Disposal: 6813012c-649c-442a-8a67-4a7693ab2dc2
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD14_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LM06_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: RM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_DTickets_Join_Collections_Disposal
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DTickets_Join_Collections_Disposal') }} "STG_DTickets_Join_Collections_Disposal"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01_COMBINED"
+              ON "STG_DTickets_Join_Collections_Disposal"."LM02_ROUT" = "RM01_COMBINED"."RM01_NUMB" 
+             and "STG_DTickets_Join_Collections_Disposal"."SOURCE" = "RM01_COMBINED"."SOURCE"
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
+              ON "STG_DTickets_Join_Collections_Disposal"."LM02_MATL" = "LM04_COMBINED"."LM04_CODE"
+             and "STG_DTickets_Join_Collections_Disposal"."SOURCE" = "LM04_COMBINED"."SOURCE"
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
+              ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
+             and "RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
+              ON "STG_DTickets_Join_Collections_Disposal"."LM02_DUOM" = "LM06_COMBINED"."LM06_UOM1"
+             and "LM06_COMBINED"."LM06_UOM2" = "CD14_COMBINED"."CD14_WEIGHTUOM"
+             and "LM06_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
+
+            GROUP BY "Route Date", 
+                "Route Sequence", 
+                "STG_DTickets_Join_Collections_Disposal"."SOURCE",
+                "CD14_WEIGHTUOM",
+                "Route"
+        name: STG_DTickets
+        noLinkRefs: []
+  name: STG_DTickets
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

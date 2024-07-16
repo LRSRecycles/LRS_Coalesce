@@ -1,125 +1,131 @@
-steps:
-  CD27_COMBINED-95d39d25-676c-4a9e-8ca9-0b001f78398b:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 98664271-21fd-44a3-ac16-5a3a02810f63
-              stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
-            dataType: VARCHAR(4)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD27_CODE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0809e934-1f99-40dd-a32e-a88bfb0c5683
-                    stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
-                transform: ""
-          - columnReference:
-              columnCounter: 1bcc8511-be4b-4120-946f-fc4c7a143f36
-              stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
-            dataType: VARCHAR(80)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD27_DESC
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e36bc0b1-8da9-4108-8b3f-8f74d53d256a
-                    stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
-                transform: ""
-          - columnReference:
-              columnCounter: 7039fad1-de3f-4bab-829e-da9ba93c8458
-              stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD27_ACTIVE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 716ebba5-5bea-46a6-8702-f4706a525fed
-                    stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
-                transform: ""
-          - columnReference:
-              columnCounter: 34c13f9f-9c30-49c0-af43-a454bce04c52
-              stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_DELETED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: aefac3d5-65d0-4dde-8acd-ace44f4f3969
-                    stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
-                transform: ""
-          - columnReference:
-              columnCounter: 86571021-804d-4fbb-9142-eb3605a99e27
-              stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
-            dataType: TIMESTAMP_TZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6aaf0c80-1d4d-4349-a47e-551a74555505
-                    stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 6a38931e-8140-43d8-903e-ab034c5ef33d
-              stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_AL_COMP_RAW
-                nodeName: CD27
-            join:
-              joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD27') }} "CD27"
-            name: CD27_COMBINED
-            noLinkRefs: []
-      name: CD27_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+fileVersion: 1
+id: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+name: CD27_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98664271-21fd-44a3-ac16-5a3a02810f63
+          stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+        config: {}
+        dataType: VARCHAR(4)
+        description: ""
+        hashDetails: null
+        name: CD27_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0809e934-1f99-40dd-a32e-a88bfb0c5683
+                stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1bcc8511-be4b-4120-946f-fc4c7a143f36
+          stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        hashDetails: null
+        name: CD27_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e36bc0b1-8da9-4108-8b3f-8f74d53d256a
+                stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7039fad1-de3f-4bab-829e-da9ba93c8458
+          stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: CD27_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 716ebba5-5bea-46a6-8702-f4706a525fed
+                stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34c13f9f-9c30-49c0-af43-a454bce04c52
+          stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aefac3d5-65d0-4dde-8acd-ace44f4f3969
+                stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 86571021-804d-4fbb-9142-eb3605a99e27
+          stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6aaf0c80-1d4d-4349-a47e-551a74555505
+                stepCounter: df50f5c3-d4b0-45db-a46e-f424df4e30a4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6a38931e-8140-43d8-903e-ab034c5ef33d
+          stepCounter: 95d39d25-676c-4a9e-8ca9-0b001f78398b
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: CD27
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD27') }} "CD27"
+        name: CD27_COMBINED
+        noLinkRefs: []
+  name: CD27_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

@@ -1,96 +1,101 @@
-steps:
-  CM24_COMBINED-73124694-50d3-4d34-8d80-a62967bf4522:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: e27d60c3-f4c2-4b77-9769-0004118aabbc
-              stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
-            dataType: VARCHAR(40)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CM24_CODE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a641b793-9e03-4512-b907-4c0d7349b48e
-                    stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
-                transform: ""
-          - columnReference:
-              columnCounter: 23c0bba1-9409-4d9c-a2df-e224f664ee41
-              stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
-            dataType: VARCHAR(40)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CM24_DESC
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: fcad17cc-e115-438f-986d-93c4af1a0d3d
-                    stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
-                transform: ""
-          - columnReference:
-              columnCounter: bfcd022f-4b35-4054-8c50-13ce761be948
-              stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
-            dataType: VARCHAR(5)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CM24_ACTIVE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 76abefa0-62e6-4065-9a6d-ba35e0cf3613
-                    stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 23bd0237-d7bc-40ec-ba67-02ffaf1448df
-              stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_SH_COMP_RAW
-                nodeName: CM24
-            join:
-              joinCondition: FROM {{ ref('TRUX_SH_COMP_RAW', 'CM24') }} "CM24"
-            name: CM24_COMBINED
-            noLinkRefs: []
-      name: CM24_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+fileVersion: 1
+id: 73124694-50d3-4d34-8d80-a62967bf4522
+name: CM24_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e27d60c3-f4c2-4b77-9769-0004118aabbc
+          stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: CM24_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a641b793-9e03-4512-b907-4c0d7349b48e
+                stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23c0bba1-9409-4d9c-a2df-e224f664ee41
+          stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: CM24_DESC
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fcad17cc-e115-438f-986d-93c4af1a0d3d
+                stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bfcd022f-4b35-4054-8c50-13ce761be948
+          stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        hashDetails: null
+        name: CM24_ACTIVE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 76abefa0-62e6-4065-9a6d-ba35e0cf3613
+                stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23bd0237-d7bc-40ec-ba67-02ffaf1448df
+          stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_SH_COMP_RAW
+            nodeName: CM24
+        join:
+          joinCondition: FROM {{ ref('TRUX_SH_COMP_RAW', 'CM24') }} "CM24"
+        name: CM24_COMBINED
+        noLinkRefs: []
+  name: CM24_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

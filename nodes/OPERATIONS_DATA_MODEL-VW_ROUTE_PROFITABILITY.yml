@@ -1,866 +1,921 @@
-steps:
-  VW_ROUTE_PROFITABILITY-43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: OPERATIONS_DATA_MODEL
-      materializationType: view
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 9f274b83-6ed7-4920-8b65-327e3c705657
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 78cac897-3bee-4197-bbf2-8fcec3416b44
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 9ba77a36-d252-4f7e-bc85-45337fedaba1
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7bf5ed73-2c65-4ca4-9d64-6983825692bc
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 22014b4f-cdc0-4f03-86b6-c445c66cf5f9
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: Part of NBTickets Substring
-            hashColumns: []
-            hashDetails: null
-            name: NBTicket Ticket Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 854c39f9-ca5e-4d2c-9992-e614c157a314
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 5889f9c6-0b6f-4818-8ac6-df03580d790f
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DTicket Ticket Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ec2fe93b-f6f0-4aee-b7b3-ec60de83e92a
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 4fadfdc4-80bc-4968-9504-769eda070515
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0306beb4-2d14-44ec-9def-8bc2029645f3
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 3b0edc03-987e-4328-85e2-6e72a8835f1d
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER
-            description: RM02A Derived Field from qtysum
-            hashColumns: []
-            hashDetails: null
-            name: Total Weekly Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e2b25cfe-a883-43e5-9bed-a3ab18049930
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 3548d1e9-da8c-4a2f-ba78-34efbd5260fc
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: MT02 first join
-            hashColumns: []
-            hashDetails: null
-            name: Misc AMT 1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 192edc97-af70-4afa-9645-0ff2f491d823
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 41feb35d-31b8-4339-93a8-15d24de205c7
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: MT02 second join
-            hashColumns: []
-            hashDetails: null
-            name: Misc AMT 2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f86aabac-8e06-408c-8552-815cc36fdf4d
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: b020d04c-36c9-48ec-b242-d0d54d27dd43
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Cost (Converted)
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f721081b-fb7a-4539-9f4c-baac1e559abb
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 4047a6fe-7f5c-4379-9157-17cc695e3bad
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: RM02A Derived Field from qtysum
-            hashColumns: []
-            hashDetails: null
-            name: Average Total Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5c73b8c9-a4e3-4037-a650-8a28f2e726d0
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 1257ca0d-2c06-4ade-83a2-7aa9d3ea80a7
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 955d1e25-4902-4d8b-8904-3c3521729c13
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 1e1c1ea2-beaf-48f8-ba08-f9a62d64ba33
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: This is effectively SM01 Amount, can be used to replace Audit_SM01amnt in the sql source script
-            hashColumns: []
-            hashDetails: null
-            name: Billing Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e9b0ef83-abe8-464d-b7b3-12df339d6422
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 3e347f5a-7707-4fad-a98d-e04d122a3b48
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: Need to modify back to NUMBER
-            hashColumns: []
-            hashDetails: null
-            name: Average Compact Size
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d6863b7a-d704-4b84-87b2-5e190256ec8a
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: d4ee49c0-6622-4ed5-b86a-991e82660489
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Average Compact Ratio
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3231f7d0-9141-4cec-8b83-7624c503b7e9
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 14e9f463-e458-4fe4-a4a7-6bf9199614e9
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: This will be incorrect until the conversion factor is complete
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Weight (Converted)
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e92c5121-4fac-44ee-9272-b76b1f10886f
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 9fc23aaf-9642-415e-88c7-02e823fa13d8
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Average Service Size
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ea294d05-ccbc-47fc-ab03-292a77c5b25f
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 5a25da8a-1e9d-4b22-8677-f643b3de315b
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 464bfa3b-2f8a-4503-bba6-18eb289fbc6d
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 42f97a32-1e34-4795-b6bd-f2617b5924cf
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Revenue
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 70689c8e-8acf-42c0-84fa-d22e2374fdb4
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 2949a62b-2562-4fa5-9935-d7356efc0de8
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts 2?
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b420afd6-22f4-4ccf-97ce-5134226554a5
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 2c559724-6edf-4586-9e78-1a44e7910c06
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Weight
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ee140461-6d46-4267-8d9a-9f18bbd87187
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 9e587e55-3329-425b-ac8e-1b90f3ce6090
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Amount LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 98be5e1f-d116-4bd1-a7ba-d4e7da5ac138
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: ab3d33ce-6112-4aa4-b34f-6106b79e955b
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Amount LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3191255f-03a7-4825-89cd-0ac3a3ce4f15
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 1d70c7b5-a575-41b7-ab0d-d58f90aa6863
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Quantity LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 18950ae4-f817-4b76-9d9e-ab6b50066b3c
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: b037c45f-7475-4d1c-abd6-c4c3bf01d76f
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Quantity LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f71f409a-cba8-413b-90e5-538ac1479e31
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 87320662-1097-428c-bdfb-cdfa1d506485
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Dispatch Datetime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e5970fab-1c51-40e4-b8fc-fcf7c874ef30
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 465702b6-bc9c-4173-bd41-36baa2a087af
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time Finished
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8145de99-c77c-4596-87b2-93204285ad51
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 3691dd1e-bdc1-4cec-943a-3dd349b468bd
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c728bcd0-27dc-469f-8022-b18810140cdb
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 04a81785-ec52-4a21-b76d-0098331470ae
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Work Order Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 350c8ff0-ba7f-46e8-a12b-9133c558dd8c
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 093aa2a4-29f8-4220-8c2e-8835bc1cc0d4
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Driver
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c2ec633b-3c8f-4ef8-badc-43a6440b7d20
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: bc935182-d967-46b0-bbd7-778bb39e32dd
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Helper
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 002477db-35f3-4393-8030-6014cabb7439
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: e788defc-2065-46d2-acfb-7fa3761e692d
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(8,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Fuel Used
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 53822b19-2d74-430c-a32d-d79b1801e799
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: e126f30c-19ef-4336-a7c6-13f05e6d3026
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Truck
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: aa9fbade-f8d1-4ba3-897a-73b1086b25c0
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: a361fee0-53ea-415e-82e1-0c9ce630611e
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Odometer Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4d0fae91-4c99-472f-8dae-5a873e0226c2
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 74e0d945-ff91-42e5-bf0b-32234ddcd793
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: Difference between time 1 and time 2 (start time and end time)
-            hashColumns: []
-            hashDetails: null
-            name: Time Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6e05119a-1281-41a0-9de7-117956206654
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 766a1750-51ba-4bb6-873f-fd9516983a5e
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: Difference between Departure Time and Return Time
-            hashColumns: []
-            hashDetails: null
-            name: Trip Duration
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 68d7949c-264c-49ff-af88-4169eaffffc7
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 22342177-fe40-43dd-97d1-42e03510d38d
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ff67411a-55fe-4d70-844a-7bac20387c2b
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 3aff48b8-d905-44ab-89c3-1cb68cf3cb43
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Number of Stops
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ec7ae5b0-96fd-48cd-b61f-6191f61f9c0c
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 93555dc4-4ff9-490b-ad5e-f20db8ae5be6
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Sequence Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b335a42-615e-4387-ab7e-7559d8dbce8c
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: c06f9c16-ae90-458b-82aa-bb59b25f489a
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Clock Total Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f7de0ae6-e513-4fdd-bdb4-e08f8531e75b
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: d4567d25-d770-4ca1-8d51-1389967dc8a5
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f6abfe1c-26bd-47e6-a19f-572ce1a866f7
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 75c608d9-5f51-44e2-b190-8a735206b390
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vehicle Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 69e3dfd8-fa93-4b88-920b-c00543a2a370
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: a4decfd9-9b01-40ec-8dfe-ab5eb71584c0
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: Assumption of Gallons is fine
-            hashColumns: []
-            hashDetails: null
-            name: Fuel Rate
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b01c4bce-2a96-4b42-ac9e-bb301c26f283
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: f54e0833-a560-4e48-9008-4a8d8739d958
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Total Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 539de467-6750-4ccd-88c6-ee337eb0f9c6
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: c73b6630-c980-48c9-9b91-96ee3da0588b
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Total Vehicle Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b7b2149d-75fa-4fbe-98af-fc036402f34d
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 219b4e8a-1544-4710-9b59-7411bdc9863a
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Total Fuel Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8735373d-bdc9-4bef-8a5a-234bd79d2ce8
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: ce7a72df-c453-44c7-b535-96bcaf1420c4
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route from Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 46c2bd83-e30e-4e34-b5e0-a406ab076a72
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 20cb39d4-9944-4491-9a32-943db9d2e736
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date From Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b3c51920-9ba2-4d11-993d-fc267586e690
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 11fc2d10-46d7-40bd-a672-13369593bd93
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Source from Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 46a37ddb-7f5c-4097-9570-223e9c7c668c
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: e13ba099-d396-4a76-bb4d-356de2e853a9
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Yards
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0f4ec97b-1cd2-4a1d-b816-b2ba97beada8
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 7e4011bb-89d2-45d5-b0de-6de2d349a4f1
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Source Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 90088cac-da55-40ff-bf80-832325e78b59
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 637abc80-bfdd-4774-b9ed-8e591bbf5327
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Total Helper Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e7096ea5-87f6-4f2d-95e2-165af2b69e67
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 6aa0c700-3167-4420-986e-edf3e9fb9dd0
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Total Downtime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a4907d55-1596-45e5-b86e-513c23844996
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - columnReference:
-              columnCounter: 73e18c46-e754-48d2-9155-e671493cd494
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Tickets
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 70d304d9-f9ae-49d9-8db5-fdfdc9235f7e
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 51692a3a-f02e-4cde-a37e-2357136f9c7d
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            config: {}
-            dataType: BOOLEAN
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Revenue Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9d13840e-666e-4756-9919-dcd10ecd2e3b
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+name: VW_ROUTE_PROFITABILITY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: OPERATIONS_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f274b83-6ed7-4920-8b65-327e3c705657
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 78cac897-3bee-4197-bbf2-8fcec3416b44
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 6d480001-c57a-4c6a-9c8f-23964de2bd3a
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            config: {}
-            dataType: Number
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: NB Ticket Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ff9ba3ba-e61e-4b49-9969-277762bb4693
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ba77a36-d252-4f7e-bc85-45337fedaba1
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7bf5ed73-2c65-4ca4-9d64-6983825692bc
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 9df7f7ca-abb5-40e5-8d19-4a35b8ffdc66
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            config: {}
-            dataType: Number
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: DTicket Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f379acb5-5bc5-45af-b7c1-2c0c02cf9cec
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22014b4f-cdc0-4f03-86b6-c445c66cf5f9
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: Part of NBTickets Substring
+        hashDetails: null
+        name: NBTicket Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 854c39f9-ca5e-4d2c-9992-e614c157a314
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 6b6604ec-910d-4a46-b911-79f7ccdd1d73
-              stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-            config: {}
-            dataType: Number
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Tickets Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dfb1c294-a5a1-47e3-85e5-4f5210505939
-                    stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5889f9c6-0b6f-4818-8ac6-df03580d790f
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: DTicket Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ec2fe93b-f6f0-4aee-b7b3-ec60de83e92a
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              ROUTE_PROFITABILITY: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: OPERATIONS_DATA_MODEL
-                nodeName: ROUTE_PROFITABILITY
-            join:
-              joinCondition: |-
-                FROM {{ ref('OPERATIONS_DATA_MODEL', 'ROUTE_PROFITABILITY') }} "ROUTE_PROFITABILITY"
-                where "Route" is not null
-            name: VW_ROUTE_PROFITABILITY
-            noLinkRefs: []
-      name: VW_ROUTE_PROFITABILITY
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4fadfdc4-80bc-4968-9504-769eda070515
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0306beb4-2d14-44ec-9def-8bc2029645f3
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b0edc03-987e-4328-85e2-6e72a8835f1d
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER
+        description: RM02A Derived Field from qtysum
+        hashDetails: null
+        name: Total Weekly Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e2b25cfe-a883-43e5-9bed-a3ab18049930
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3548d1e9-da8c-4a2f-ba78-34efbd5260fc
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: MT02 first join
+        hashDetails: null
+        name: Misc AMT 1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 192edc97-af70-4afa-9645-0ff2f491d823
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 41feb35d-31b8-4339-93a8-15d24de205c7
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: MT02 second join
+        hashDetails: null
+        name: Misc AMT 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f86aabac-8e06-408c-8552-815cc36fdf4d
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b020d04c-36c9-48ec-b242-d0d54d27dd43
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Cost (Converted)
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f721081b-fb7a-4539-9f4c-baac1e559abb
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4047a6fe-7f5c-4379-9157-17cc695e3bad
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: RM02A Derived Field from qtysum
+        hashDetails: null
+        name: Average Total Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5c73b8c9-a4e3-4037-a650-8a28f2e726d0
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1257ca0d-2c06-4ade-83a2-7aa9d3ea80a7
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 955d1e25-4902-4d8b-8904-3c3521729c13
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e1c1ea2-beaf-48f8-ba08-f9a62d64ba33
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: This is effectively SM01 Amount, can be used to replace Audit_SM01amnt in the sql source script
+        hashDetails: null
+        name: Billing Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e9b0ef83-abe8-464d-b7b3-12df339d6422
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e347f5a-7707-4fad-a98d-e04d122a3b48
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Need to modify back to NUMBER
+        hashDetails: null
+        name: Average Compact Size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d6863b7a-d704-4b84-87b2-5e190256ec8a
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4ee49c0-6622-4ed5-b86a-991e82660489
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Average Compact Ratio
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3231f7d0-9141-4cec-8b83-7624c503b7e9
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14e9f463-e458-4fe4-a4a7-6bf9199614e9
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: This will be incorrect until the conversion factor is complete
+        hashDetails: null
+        name: Disposal Weight (Converted)
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e92c5121-4fac-44ee-9272-b76b1f10886f
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9fc23aaf-9642-415e-88c7-02e823fa13d8
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Average Service Size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ea294d05-ccbc-47fc-ab03-292a77c5b25f
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a25da8a-1e9d-4b22-8677-f643b3de315b
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 464bfa3b-2f8a-4503-bba6-18eb289fbc6d
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42f97a32-1e34-4795-b6bd-f2617b5924cf
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Service Revenue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 70689c8e-8acf-42c0-84fa-d22e2374fdb4
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2949a62b-2562-4fa5-9935-d7356efc0de8
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Lifts 2?
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b420afd6-22f4-4ccf-97ce-5134226554a5
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2c559724-6edf-4586-9e78-1a44e7910c06
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Weight
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ee140461-6d46-4267-8d9a-9f18bbd87187
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e587e55-3329-425b-ac8e-1b90f3ce6090
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Amount LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 98be5e1f-d116-4bd1-a7ba-d4e7da5ac138
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab3d33ce-6112-4aa4-b34f-6106b79e955b
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Amount LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3191255f-03a7-4825-89cd-0ac3a3ce4f15
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1d70c7b5-a575-41b7-ab0d-d58f90aa6863
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Quantity LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18950ae4-f817-4b76-9d9e-ab6b50066b3c
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b037c45f-7475-4d1c-abd6-c4c3bf01d76f
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Quantity LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f71f409a-cba8-413b-90e5-538ac1479e31
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 87320662-1097-428c-bdfb-cdfa1d506485
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Dispatch Datetime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e5970fab-1c51-40e4-b8fc-fcf7c874ef30
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 465702b6-bc9c-4173-bd41-36baa2a087af
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Time Finished
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8145de99-c77c-4596-87b2-93204285ad51
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3691dd1e-bdc1-4cec-943a-3dd349b468bd
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c728bcd0-27dc-469f-8022-b18810140cdb
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 04a81785-ec52-4a21-b76d-0098331470ae
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Work Order Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 350c8ff0-ba7f-46e8-a12b-9133c558dd8c
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 093aa2a4-29f8-4220-8c2e-8835bc1cc0d4
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Driver
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c2ec633b-3c8f-4ef8-badc-43a6440b7d20
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc935182-d967-46b0-bbd7-778bb39e32dd
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Helper
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 002477db-35f3-4393-8030-6014cabb7439
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e788defc-2065-46d2-acfb-7fa3761e692d
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(8,2)
+        description: ""
+        hashDetails: null
+        name: Fuel Used
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 53822b19-2d74-430c-a32d-d79b1801e799
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e126f30c-19ef-4336-a7c6-13f05e6d3026
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Truck
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aa9fbade-f8d1-4ba3-897a-73b1086b25c0
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a361fee0-53ea-415e-82e1-0c9ce630611e
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Odometer Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4d0fae91-4c99-472f-8dae-5a873e0226c2
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74e0d945-ff91-42e5-bf0b-32234ddcd793
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Difference between time 1 and time 2 (start time and end time)
+        hashDetails: null
+        name: Time Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6e05119a-1281-41a0-9de7-117956206654
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 766a1750-51ba-4bb6-873f-fd9516983a5e
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Difference between Departure Time and Return Time
+        hashDetails: null
+        name: Trip Duration
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 68d7949c-264c-49ff-af88-4169eaffffc7
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22342177-fe40-43dd-97d1-42e03510d38d
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ff67411a-55fe-4d70-844a-7bac20387c2b
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3aff48b8-d905-44ab-89c3-1cb68cf3cb43
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER
+        description: ""
+        hashDetails: null
+        name: Number of Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ec7ae5b0-96fd-48cd-b61f-6191f61f9c0c
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93555dc4-4ff9-490b-ad5e-f20db8ae5be6
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Sequence Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b335a42-615e-4387-ab7e-7559d8dbce8c
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c06f9c16-ae90-458b-82aa-bb59b25f489a
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Clock Total Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f7de0ae6-e513-4fdd-bdb4-e08f8531e75b
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4567d25-d770-4ca1-8d51-1389967dc8a5
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f6abfe1c-26bd-47e6-a19f-572ce1a866f7
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 75c608d9-5f51-44e2-b190-8a735206b390
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Vehicle Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 69e3dfd8-fa93-4b88-920b-c00543a2a370
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4decfd9-9b01-40ec-8dfe-ab5eb71584c0
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Assumption of Gallons is fine
+        hashDetails: null
+        name: Fuel Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b01c4bce-2a96-4b42-ac9e-bb301c26f283
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f54e0833-a560-4e48-9008-4a8d8739d958
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Total Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 539de467-6750-4ccd-88c6-ee337eb0f9c6
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c73b6630-c980-48c9-9b91-96ee3da0588b
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Total Vehicle Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b7b2149d-75fa-4fbe-98af-fc036402f34d
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 219b4e8a-1544-4710-9b59-7411bdc9863a
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Total Fuel Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8735373d-bdc9-4bef-8a5a-234bd79d2ce8
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ce7a72df-c453-44c7-b535-96bcaf1420c4
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route from Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 46c2bd83-e30e-4e34-b5e0-a406ab076a72
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20cb39d4-9944-4491-9a32-943db9d2e736
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date From Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b3c51920-9ba2-4d11-993d-fc267586e690
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11fc2d10-46d7-40bd-a672-13369593bd93
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Source from Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 46a37ddb-7f5c-4097-9570-223e9c7c668c
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e13ba099-d396-4a76-bb4d-356de2e853a9
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Yards
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0f4ec97b-1cd2-4a1d-b816-b2ba97beada8
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e4011bb-89d2-45d5-b0de-6de2d349a4f1
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Source Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90088cac-da55-40ff-bf80-832325e78b59
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 637abc80-bfdd-4774-b9ed-8e591bbf5327
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Total Helper Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e7096ea5-87f6-4f2d-95e2-165af2b69e67
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6aa0c700-3167-4420-986e-edf3e9fb9dd0
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Total Downtime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a4907d55-1596-45e5-b86e-513c23844996
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73e18c46-e754-48d2-9155-e671493cd494
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Tickets
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 70d304d9-f9ae-49d9-8db5-fdfdc9235f7e
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 51692a3a-f02e-4cde-a37e-2357136f9c7d
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Revenue Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9d13840e-666e-4756-9919-dcd10ecd2e3b
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6d480001-c57a-4c6a-9c8f-23964de2bd3a
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: Number
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: NB Ticket Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ff9ba3ba-e61e-4b49-9969-277762bb4693
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9df7f7ca-abb5-40e5-8d19-4a35b8ffdc66
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: Number
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DTicket Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f379acb5-5bc5-45af-b7c1-2c0c02cf9cec
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6b6604ec-910d-4a46-b911-79f7ccdd1d73
+          stepCounter: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+        config: {}
+        dataType: Number
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Tickets Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dfb1c294-a5a1-47e3-85e5-4f5210505939
+                stepCounter: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          ROUTE_PROFITABILITY: cdc66665-ecf8-4d1b-b710-4053ef4d3deb
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: OPERATIONS_DATA_MODEL
+            nodeName: ROUTE_PROFITABILITY
+        join:
+          joinCondition: |-
+            FROM {{ ref('OPERATIONS_DATA_MODEL', 'ROUTE_PROFITABILITY') }} "ROUTE_PROFITABILITY"
+            where "Route" is not null
+        name: VW_ROUTE_PROFITABILITY
+        noLinkRefs: []
+  name: VW_ROUTE_PROFITABILITY
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

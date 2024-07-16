@@ -1,138 +1,147 @@
-steps:
-  DAILYROUTEENTRYVEHICLE_ROUTE_AGGREGATION-cf2f3a39-dbc2-4008-b326-9d6d7f056788:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 4470d94f-ccd6-4342-9b35-b8cea57f2e2f
-              stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DAILYROUTEENTRYUID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 45aa045a-1152-4184-8d86-576f7a02aed6
-                    stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
-                transform: ""
-          - columnReference:
-              columnCounter: 312ca058-68a6-4efb-ab91-b30687f3bb1a
-              stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: VEHICLE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 84b5b035-cab5-4a9a-b483-d93b22976ef1
-                    stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
-                transform: LISTAGG(DISTINCT "DAILYROUTEENTRYVEHICLE_COMBINED"."VEHICLE",' ,')
-          - columnReference:
-              columnCounter: c1c37b54-1d05-46af-914f-9ac0f4d8a2ce
-              stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: OPERATINGHOURS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e3ffd878-d22f-4777-985c-403c3f824866
-                    stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
-                transform: SUM("DAILYROUTEENTRYVEHICLE_COMBINED"."OPERATINGHOURS")
-          - columnReference:
-              columnCounter: 8eb42a19-c04d-4d17-87af-2b18ff5b19b2
-              stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: STARTODOMETER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a41c4a0f-cf0a-4a40-8561-65ef30265810
-                    stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
-                transform: MIN("DAILYROUTEENTRYVEHICLE_COMBINED"."STARTODOMETER")
-          - columnReference:
-              columnCounter: 2406bb64-3960-4c28-880d-3279d3bcc5a9
-              stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ENDODOMETER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3c3e4798-5ae2-4fc0-9b0d-bdc3758e1c4a
-                    stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
-                transform: MAX("DAILYROUTEENTRYVEHICLE_COMBINED"."ENDODOMETER")
-          - columnReference:
-              columnCounter: c3033b29-aa1a-4c5a-b34f-c520a72980fa
-              stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ODOMETERUNITS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d7f357ee-9e7d-42c0-8a07-d0a78a6ebaa7
-                    stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
-                transform: SUM("DAILYROUTEENTRYVEHICLE_COMBINED"."ODOMETERUNITS")
-          - columnReference:
-              columnCounter: be3708f0-e034-4db1-9a78-7ace30ee04ad
-              stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FUELPUMPED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7a97915b-e40c-45dc-aa78-d39493adae35
-                    stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
-                transform: SUM("DAILYROUTEENTRYVEHICLE_COMBINED"."FUELPUMPED")
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              DAILYROUTEENTRYVEHICLE_COMBINED: 3c3ac27b-e922-4979-85fe-40153a9d1805
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: DAILYROUTEENTRYVEHICLE_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'DAILYROUTEENTRYVEHICLE_COMBINED') }} "DAILYROUTEENTRYVEHICLE_COMBINED"
-                GROUP BY "DAILYROUTEENTRYUID"
-            name: DAILYROUTEENTRYVEHICLE_ROUTE_AGGREGATION
-            noLinkRefs: []
-      name: DAILYROUTEENTRYVEHICLE_ROUTE_AGGREGATION
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+fileVersion: 1
+id: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+name: DAILYROUTEENTRYVEHICLE_ROUTE_AGGREGATION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4470d94f-ccd6-4342-9b35-b8cea57f2e2f
+          stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: DAILYROUTEENTRYUID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 45aa045a-1152-4184-8d86-576f7a02aed6
+                stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 312ca058-68a6-4efb-ab91-b30687f3bb1a
+          stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: VEHICLE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 84b5b035-cab5-4a9a-b483-d93b22976ef1
+                stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
+            transform: LISTAGG(DISTINCT "DAILYROUTEENTRYVEHICLE_COMBINED"."VEHICLE",' ,')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1c37b54-1d05-46af-914f-9ac0f4d8a2ce
+          stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: OPERATINGHOURS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e3ffd878-d22f-4777-985c-403c3f824866
+                stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
+            transform: SUM("DAILYROUTEENTRYVEHICLE_COMBINED"."OPERATINGHOURS")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8eb42a19-c04d-4d17-87af-2b18ff5b19b2
+          stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: STARTODOMETER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a41c4a0f-cf0a-4a40-8561-65ef30265810
+                stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
+            transform: MIN("DAILYROUTEENTRYVEHICLE_COMBINED"."STARTODOMETER")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2406bb64-3960-4c28-880d-3279d3bcc5a9
+          stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: ENDODOMETER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3c3e4798-5ae2-4fc0-9b0d-bdc3758e1c4a
+                stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
+            transform: MAX("DAILYROUTEENTRYVEHICLE_COMBINED"."ENDODOMETER")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3033b29-aa1a-4c5a-b34f-c520a72980fa
+          stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: ODOMETERUNITS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7f357ee-9e7d-42c0-8a07-d0a78a6ebaa7
+                stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
+            transform: SUM("DAILYROUTEENTRYVEHICLE_COMBINED"."ODOMETERUNITS")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: be3708f0-e034-4db1-9a78-7ace30ee04ad
+          stepCounter: cf2f3a39-dbc2-4008-b326-9d6d7f056788
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: FUELPUMPED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a97915b-e40c-45dc-aa78-d39493adae35
+                stepCounter: 3c3ac27b-e922-4979-85fe-40153a9d1805
+            transform: SUM("DAILYROUTEENTRYVEHICLE_COMBINED"."FUELPUMPED")
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DAILYROUTEENTRYVEHICLE_COMBINED: 3c3ac27b-e922-4979-85fe-40153a9d1805
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: DAILYROUTEENTRYVEHICLE_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TOWER_COMBINED', 'DAILYROUTEENTRYVEHICLE_COMBINED') }} "DAILYROUTEENTRYVEHICLE_COMBINED"
+            GROUP BY "DAILYROUTEENTRYUID"
+        name: DAILYROUTEENTRYVEHICLE_ROUTE_AGGREGATION
+        noLinkRefs: []
+  name: DAILYROUTEENTRYVEHICLE_ROUTE_AGGREGATION
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

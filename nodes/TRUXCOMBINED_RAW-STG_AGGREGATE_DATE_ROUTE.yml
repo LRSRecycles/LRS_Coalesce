@@ -1,100 +1,108 @@
-steps:
-  STG_AGGREGATE_DATE_ROUTE-97dcee52-7fce-4166-9ceb-04594ca676bd:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 89947932-45d2-4d2d-a713-659416ca1eba
-              stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            name: RM05_DATE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ba881bf8-2741-49b7-9012-8e2c5fa5d249
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-          - columnReference:
-              columnCounter: 36988482-340d-48be-bed0-42a34f406b00
-              stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
-            dataType: VARCHAR
-            description: ""
-            name: RM05_ROUT
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d45515c6-5e54-4bc1-8dde-6589a5168487
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-          - columnReference:
-              columnCounter: 57face7f-bf2b-4de9-9d1e-0a69223edc1e
-              stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
-            dataType: NUMBER(18,2)
-            description: ""
-            name: RM05_SEQ1_MIN
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3f0847f0-05b5-465f-8efd-3f1f255c5734
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: MIN("RM05_COMBINED"."RM05_SEQ1")
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a5b7411f-e283-4e61-999d-aba830b990eb
-              stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 536e3f9b-b868-4851-8de7-e5933e2d276a
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 97dcee52-7fce-4166-9ceb-04594ca676bd
+name: STG_AGGREGATE_DATE_ROUTE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89947932-45d2-4d2d-a713-659416ca1eba
+          stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: RM05_DATE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ba881bf8-2741-49b7-9012-8e2c5fa5d249
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: RM05_COMBINED
-            join:
-              joinCondition: |
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
-                WHERE "SORT" = 1 
-                  AND "_FIVETRAN_DELETED" = FALSE 
-                  AND "METADATA$ACTION" = 'INSERT'
-                GROUP BY "RM05_DATE", "RM05_ROUT", SOURCE
-            name: STG_AGGREGATE_DATE_ROUTE
-            noLinkRefs: []
-      name: STG_AGGREGATE_DATE_ROUTE
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36988482-340d-48be-bed0-42a34f406b00
+          stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RM05_ROUT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d45515c6-5e54-4bc1-8dde-6589a5168487
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 57face7f-bf2b-4de9-9d1e-0a69223edc1e
+          stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: RM05_SEQ1_MIN
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3f0847f0-05b5-465f-8efd-3f1f255c5734
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: MIN("RM05_COMBINED"."RM05_SEQ1")
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a5b7411f-e283-4e61-999d-aba830b990eb
+          stepCounter: 97dcee52-7fce-4166-9ceb-04594ca676bd
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 536e3f9b-b868-4851-8de7-e5933e2d276a
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: RM05_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
+            WHERE "SORT" = 1 
+              AND "_FIVETRAN_DELETED" = FALSE 
+              AND "METADATA$ACTION" = 'INSERT'
+            GROUP BY "RM05_DATE", "RM05_ROUT", SOURCE
+        name: STG_AGGREGATE_DATE_ROUTE
+        noLinkRefs: []
+  name: STG_AGGREGATE_DATE_ROUTE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,420 +1,434 @@
-steps:
-  PROF_AP_Payment_Detail-035e2b7c-dfb0-446e-bf7e-43999b8f2492:
-    operation:
-      config:
-        sampleMode: Full Table
-        sampleOption: Fixed Row
-        samplePercent: "10"
-        sampleRows: "1000"
-      database: ""
-      deployEnabled: false
-      description: ""
-      isMultisource: false
-      locationName: FINANCIAL_DATA_MODEL
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 73a253c5-3eaa-4fd5-a1d3-8e7397c5b3d5
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemUpdateDate: true
-            name: PROFILE_METRIC
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: "NULL"
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 8b2f343b-ffce-48a6-ae8b-a4a9db6b7088
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemCreateDate: true
-            name: SYSTEM_CREATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - columnReference:
-              columnCounter: 1db75693-3633-4e2b-9a5e-32a731a4fd58
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isNullCount: true
-            dataType: NUMBER(5,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Payment Number
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 284856aa-9077-4eb7-91a5-d1292cfefad1
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: a0eb8d42-3ac5-4dff-a9f4-c9eb5751d1f8
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: NUMBER(5,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Sequence Number
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 527d9981-b66d-45b3-89c3-ebf27164c1f2
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: e8594001-b90a-442c-8e89-d4175077958c
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: DATE
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Posting Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bfc6b350-672a-4e90-ac0f-856a556b17bb
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 141335eb-6e52-47f8-ae18-78e397eaa4b1
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: VARCHAR(22)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 02fe9fdb-d623-4ef1-8ea0-2ecc927ec458
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: ab45e73c-6cc3-419b-9b3f-2cb7666e6633
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: VARCHAR(18)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Check Number
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 989706cc-3442-4671-835e-025c604c233e
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: bd2680fb-bfbe-4a09-b5ae-5e8df1008f18
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isDistinctCount: true
-            dataType: VARCHAR(12)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vendor ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2dfcb0d6-e2e9-48a2-b397-b7a07f9a8e40
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 08322f6d-3bee-42c4-add7-7b7bb5749140
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isNullCount: true
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Document Type
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f26d10aa-0bee-4d7a-b280-e2a6996a185f
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: b0233441-fb6c-4727-a342-cfb9bffdb1ee
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: DATE
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a9cac7d4-b445-4d1d-bc33-a7e8c1dc3596
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 4cee7746-0e68-42cc-b4b0-607bb3c4f6d1
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: NUMBER(7,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Item Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9c16f8f4-ff08-4214-9906-3b94a99848fc
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 222007fa-ec58-4c2c-80b9-11fb9763e160
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: VARCHAR(6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Org
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 53699553-2130-4b44-9ad7-ed91a46ad422
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 538fadf1-4289-49fc-bb93-27dbac8ca9ea
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Transaction Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4f31f672-9d0e-439b-94bb-0c9d10798120
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 00d9e6bf-c1cb-4109-8297-246701e2cb27
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isNullCount: true
-            dataType: VARCHAR(22)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Reference Document Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f237677f-dad4-4948-bbac-7c4da3c548a8
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 80668861-3b79-4bd1-9f95-f2b37c85613c
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isAvgMetric: true
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(19,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: 1099 Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3ba14de7-8ecb-4588-b21f-4ba6307d72ba
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 7907a272-a48b-42d9-800e-5843171c98c6
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: NUMBER(9,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Batch Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ccd2aa4d-8690-4b7d-be4e-fb71811768af
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 654f7b00-23dd-4274-9fcf-a4a45a7899f6
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isAvgMetric: true
-              isNullCount: true
-            dataType: NUMBER(19,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Functional Payment Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f428b45d-9bd1-4437-8f20-f2a0c9c8f650
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: c11217d0-9d8a-414b-b4bd-33cf6e03b0a5
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: DATE
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Batch Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ea056b6f-0db0-4531-987e-31a3d04174fa
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: a8fd59dc-e220-41f2-a2f6-73fffa237197
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: VARCHAR(4)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Fiscal Year
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d096e3d9-c599-4554-8737-34af68c799e0
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 03cf3b8a-22ad-4522-aba5-b79553f7c0aa
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: NUMBER(9,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d91564df-213c-408c-a3f8-7cc38fa10a6a
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 3133194c-5c1d-4a83-82d9-721b99e5d836
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Fiscal Period
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 832c1b4b-d46d-4edb-adae-97add0d00636
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 6157a2ae-7cab-43d5-adcc-525c5e31f497
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isAvgMetric: true
-              isNullCount: true
-            dataType: NUMBER(19,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vendor Payment Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 093acc4d-f437-4f87-902e-fb650927c7fa
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 26e08771-239a-4633-80c3-eaecc8d041e0
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: VARCHAR(8)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Bank Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f27d67ad-c877-43a3-9816-ad927093460e
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: ace50caf-a7ed-4f45-b2c3-8e21edd6315b
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: VARCHAR(8)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: User
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7475d0e3-3e89-4e2c-993f-216cb113a772
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-          - columnReference:
-              columnCounter: 8986ef97-e282-4734-b196-bceb61d0e368
-              stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9cf1bd26-2f36-496e-9f0d-e2601ea8ba47
-                    stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: FINANCIAL_DATA_MODEL
-                nodeName: AP_Payment_Detail
-            join:
-              joinCondition: FROM {{ ref('FINANCIAL_DATA_MODEL', 'AP_Payment_Detail') }} "AP_Payment_Detail"
-            name: PROF_AP_Payment_Detail
-            noLinkRefs: []
-      name: PROF_AP_Payment_Detail
-      overrideSQL: false
-      schema: ""
-      sqlType: "5"
-      type: sql
-    stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+fileVersion: 1
+id: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+name: PROF_AP_Payment_Detail
+operation:
+  config:
+    sampleMode: Full Table
+    sampleOption: Fixed Row
+    samplePercent: "10"
+    sampleRows: "1000"
+  database: ""
+  deployEnabled: false
+  description: ""
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73a253c5-3eaa-4fd5-a1d3-8e7397c5b3d5
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: PROFILE_METRIC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b2f343b-ffce-48a6-ae8b-a4a9db6b7088
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1db75693-3633-4e2b-9a5e-32a731a4fd58
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isNullCount: true
+        dataType: NUMBER(5,0)
+        description: ""
+        hashDetails: null
+        name: Payment Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 284856aa-9077-4eb7-91a5-d1292cfefad1
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a0eb8d42-3ac5-4dff-a9f4-c9eb5751d1f8
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        hashDetails: null
+        name: Sequence Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 527d9981-b66d-45b3-89c3-ebf27164c1f2
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e8594001-b90a-442c-8e89-d4175077958c
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: DATE
+        description: ""
+        hashDetails: null
+        name: Posting Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bfc6b350-672a-4e90-ac0f-856a556b17bb
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 141335eb-6e52-47f8-ae18-78e397eaa4b1
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: VARCHAR(22)
+        description: ""
+        hashDetails: null
+        name: Invoice ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 02fe9fdb-d623-4ef1-8ea0-2ecc927ec458
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab45e73c-6cc3-419b-9b3f-2cb7666e6633
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: VARCHAR(18)
+        description: ""
+        hashDetails: null
+        name: Check Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 989706cc-3442-4671-835e-025c604c233e
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd2680fb-bfbe-4a09-b5ae-5e8df1008f18
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isDistinctCount: true
+        dataType: VARCHAR(12)
+        description: ""
+        hashDetails: null
+        name: Vendor ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2dfcb0d6-e2e9-48a2-b397-b7a07f9a8e40
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 08322f6d-3bee-42c4-add7-7b7bb5749140
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isNullCount: true
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Document Type
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f26d10aa-0bee-4d7a-b280-e2a6996a185f
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0233441-fb6c-4727-a342-cfb9bffdb1ee
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: DATE
+        description: ""
+        hashDetails: null
+        name: Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a9cac7d4-b445-4d1d-bc33-a7e8c1dc3596
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4cee7746-0e68-42cc-b4b0-607bb3c4f6d1
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: NUMBER(7,0)
+        description: ""
+        hashDetails: null
+        name: Item Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9c16f8f4-ff08-4214-9906-3b94a99848fc
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 222007fa-ec58-4c2c-80b9-11fb9763e160
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: VARCHAR(6)
+        description: ""
+        hashDetails: null
+        name: Org
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 53699553-2130-4b44-9ad7-ed91a46ad422
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 538fadf1-4289-49fc-bb93-27dbac8ca9ea
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Transaction Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4f31f672-9d0e-439b-94bb-0c9d10798120
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00d9e6bf-c1cb-4109-8297-246701e2cb27
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isNullCount: true
+        dataType: VARCHAR(22)
+        description: ""
+        hashDetails: null
+        name: Reference Document Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f237677f-dad4-4948-bbac-7c4da3c548a8
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 80668861-3b79-4bd1-9f95-f2b37c85613c
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isAvgMetric: true
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(19,3)
+        description: ""
+        hashDetails: null
+        name: 1099 Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3ba14de7-8ecb-4588-b21f-4ba6307d72ba
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7907a272-a48b-42d9-800e-5843171c98c6
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: NUMBER(9,0)
+        description: ""
+        hashDetails: null
+        name: Batch Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ccd2aa4d-8690-4b7d-be4e-fb71811768af
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 654f7b00-23dd-4274-9fcf-a4a45a7899f6
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isAvgMetric: true
+          isNullCount: true
+        dataType: NUMBER(19,3)
+        description: ""
+        hashDetails: null
+        name: Functional Payment Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f428b45d-9bd1-4437-8f20-f2a0c9c8f650
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c11217d0-9d8a-414b-b4bd-33cf6e03b0a5
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: DATE
+        description: ""
+        hashDetails: null
+        name: Batch Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ea056b6f-0db0-4531-987e-31a3d04174fa
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8fd59dc-e220-41f2-a2f6-73fffa237197
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: VARCHAR(4)
+        description: ""
+        hashDetails: null
+        name: Fiscal Year
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d096e3d9-c599-4554-8737-34af68c799e0
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03cf3b8a-22ad-4522-aba5-b79553f7c0aa
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: NUMBER(9,0)
+        description: ""
+        hashDetails: null
+        name: Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d91564df-213c-408c-a3f8-7cc38fa10a6a
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3133194c-5c1d-4a83-82d9-721b99e5d836
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Fiscal Period
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 832c1b4b-d46d-4edb-adae-97add0d00636
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6157a2ae-7cab-43d5-adcc-525c5e31f497
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isAvgMetric: true
+          isNullCount: true
+        dataType: NUMBER(19,3)
+        description: ""
+        hashDetails: null
+        name: Vendor Payment Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 093acc4d-f437-4f87-902e-fb650927c7fa
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26e08771-239a-4633-80c3-eaecc8d041e0
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: VARCHAR(8)
+        description: ""
+        hashDetails: null
+        name: Bank Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f27d67ad-c877-43a3-9816-ad927093460e
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ace50caf-a7ed-4f45-b2c3-8e21edd6315b
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: VARCHAR(8)
+        description: ""
+        hashDetails: null
+        name: User
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7475d0e3-3e89-4e2c-993f-216cb113a772
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8986ef97-e282-4734-b196-bceb61d0e368
+          stepCounter: 035e2b7c-dfb0-446e-bf7e-43999b8f2492
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9cf1bd26-2f36-496e-9f0d-e2601ea8ba47
+                stepCounter: 96af660a-eea8-41f8-81c6-0abcead2ac26
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: AP_Payment_Detail
+        join:
+          joinCondition: FROM {{ ref('FINANCIAL_DATA_MODEL', 'AP_Payment_Detail') }} "AP_Payment_Detail"
+        name: PROF_AP_Payment_Detail
+        noLinkRefs: []
+  name: PROF_AP_Payment_Detail
+  overrideSQL: false
+  schema: ""
+  sqlType: "5"
+  type: sql
+  version: 1
+type: Node

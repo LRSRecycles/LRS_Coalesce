@@ -1,139 +1,146 @@
-steps:
-  CD18_COMBINED-ea35ea60-5d7d-4f94-a871-dba99d306044:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: da269901-76dd-4dae-af7d-c39e20bfafe1
-              stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD18_CODE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 92064387-90cd-4e6e-91e7-590c4d48589c
-                    stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
-                transform: ""
-          - columnReference:
-              columnCounter: 2c96b26d-4a13-425b-96eb-20797420259a
-              stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD18_DRIV
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 92015853-d6e6-4126-a145-0ecb350e3add
-                    stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
-                transform: ""
-          - columnReference:
-              columnCounter: 5c643e70-0ee8-4804-9811-8f7e65d2a676
-              stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD18_ACTIVE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0170f42b-3d81-4e9b-b7b8-9bf836da63be
-                    stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
-                transform: ""
-          - columnReference:
-              columnCounter: b8bfaff7-f063-419c-9026-347a8b00f128
-              stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
-            dataType: VARCHAR(80)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD18_DESC
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b5a70f6-e732-4b95-8564-5be184e8462b
-                    stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
-                transform: ""
-          - columnReference:
-              columnCounter: 70bc6ab7-7594-4f9a-b9a0-d344546ed247
-              stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_DELETED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bf456df6-6499-4a40-91d2-1ecf72dcd343
-                    stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
-                transform: ""
-          - columnReference:
-              columnCounter: 4836d2b0-0862-4c47-85ae-29a6d64cd4e7
-              stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
-            dataType: TIMESTAMP_TZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dcb27b45-a208-4a6c-8055-7cc0b1135a4f
-                    stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 894e94df-07d3-41e6-9d24-cbf2acb481f2
-              stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_AS_COMP_RAW
-                nodeName: CD18
-            join:
-              joinCondition: FROM {{ ref('TRUX_AS_COMP_RAW', 'CD18') }} "CD18"
-            name: CD18_COMBINED
-            noLinkRefs: []
-      name: CD18_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+fileVersion: 1
+id: ea35ea60-5d7d-4f94-a871-dba99d306044
+name: CD18_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: da269901-76dd-4dae-af7d-c39e20bfafe1
+          stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: CD18_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 92064387-90cd-4e6e-91e7-590c4d48589c
+                stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2c96b26d-4a13-425b-96eb-20797420259a
+          stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: CD18_DRIV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 92015853-d6e6-4126-a145-0ecb350e3add
+                stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5c643e70-0ee8-4804-9811-8f7e65d2a676
+          stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: CD18_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0170f42b-3d81-4e9b-b7b8-9bf836da63be
+                stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b8bfaff7-f063-419c-9026-347a8b00f128
+          stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        hashDetails: null
+        name: CD18_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b5a70f6-e732-4b95-8564-5be184e8462b
+                stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70bc6ab7-7594-4f9a-b9a0-d344546ed247
+          stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bf456df6-6499-4a40-91d2-1ecf72dcd343
+                stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4836d2b0-0862-4c47-85ae-29a6d64cd4e7
+          stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dcb27b45-a208-4a6c-8055-7cc0b1135a4f
+                stepCounter: 07e946f1-9507-4215-af88-c45fbf236927
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 894e94df-07d3-41e6-9d24-cbf2acb481f2
+          stepCounter: ea35ea60-5d7d-4f94-a871-dba99d306044
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AS_COMP_RAW
+            nodeName: CD18
+        join:
+          joinCondition: FROM {{ ref('TRUX_AS_COMP_RAW', 'CD18') }} "CD18"
+        name: CD18_COMBINED
+        noLinkRefs: []
+  name: CD18_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

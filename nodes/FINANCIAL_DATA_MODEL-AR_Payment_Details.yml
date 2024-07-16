@@ -1,302 +1,314 @@
-steps:
-  AR_Payment_Details-b440fc4f-079f-4e49-96bf-221deac14011:
-    operation:
-      config:
-        insertStrategy: UNION
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: true
-      locationName: FINANCIAL_DATA_MODEL
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 12999707-1ce5-4bad-afff-4a8765d28654
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            isBusinessKey: true
-            name: Unique ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 35566dc6-dda3-48ca-a2f6-c1c74b12254a
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 3fce7fe5-d96d-480c-9834-39ae41b937eb
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: ""
-          - columnReference:
-              columnCounter: 6124fe49-29e5-42d3-b99c-32e4e0f6bb74
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: VARCHAR
-            description: Joins with unique ID in Invoice_Amounts
-            hashColumns: []
-            hashDetails: null
-            isBusinessKey: true
-            name: Link to Invoice
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e81b7535-b778-4ec9-a0ac-788fe58b44ce
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 7c184554-fac8-4d6f-b60d-35e80b552d9e
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: ""
-          - columnReference:
-              columnCounter: 89140966-dbd3-4e10-a71f-6e5110261a65
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: VARCHAR(1)
-            description: P = Payment, A = Adjustment
-            hashColumns: []
-            hashDetails: null
-            name: Payment or Adjustment
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c6d65ebe-f1c6-4565-a0b8-278424c111ae
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 1da5ffc4-9f72-40e4-a78b-e1a7beb87f80
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: case when "STG_CHARGE_PAYMENT_COMBINED"."Type" = 'Payment' then 'P' else 'A' end
-          - columnReference:
-              columnCounter: fbe18ab5-8dd8-49b6-a6aa-3d5af435c0be
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Payment Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f5fb53c7-24fe-484a-864d-64e1e1429de7
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences:
-                  - columnCounter: b0f9a0f4-e58d-4ec2-9f6a-71ab00d1d5cb
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: ""
-          - columnReference:
-              columnCounter: e1afa3ed-dc59-467b-9031-bb8e7b7e0c35
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 09d05557-c0eb-42f7-b260-6791224f5c91
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences:
-                  - columnCounter: ad82fec8-dc98-4423-8347-78e564b16bcf
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: ""
-          - columnReference:
-              columnCounter: ff96233a-18ac-4505-9874-bd8c4c18eab8
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Period ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 58d1e057-9295-4ba8-a7e8-fffa1d78d6fb
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 31ebb542-ad45-4b58-99c3-0fae0efb42fa
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Record Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cd5e96a3-fee1-44dc-b453-b6857c3700e5
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 0ccea02f-c6a7-436d-b305-89cfff25e8d1
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: VARCHAR(40)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: GL Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 082f8507-47df-4417-b332-dea913e34aa1
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 990e7222-72ba-46fe-9324-d7070b2c649d
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Group ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6faddb2d-98b4-4ed8-89e6-bc9bde41350a
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: e8d9996c-bd50-44ab-9dd9-7851e4a95582
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ad739087-52d8-4163-b6b9-c807e8ed4743
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences:
-                  - columnCounter: ba3ba1a6-ea4b-49b4-af08-24948b1df8d3
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4c88547b-bcca-467c-a246-be621d5bc613
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            config: {}
-            dataType: varchar
-            defaultValue: ""
-            description: ""
-            isBusinessKey: true
-            keyColumnType: None
-            name: Link_Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"DM01P_COMBINED\".\"DM01P_LINK\"||\"DM01P_COMBINED\".\"SOURCE\""
-              - columnReferences: []
-                transform: "\"STG_CHARGE_PAYMENT_COMBINED\".\"Link to Invoice\"||\"STG_CHARGE_PAYMENT_COMBINED\".\"Source\""
-            systemColumnType: None
+fileVersion: 1
+id: b440fc4f-079f-4e49-96bf-221deac14011
+name: AR_Payment_Details
+operation:
+  config:
+    insertStrategy: UNION
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12999707-1ce5-4bad-afff-4a8765d28654
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        isBusinessKey: true
+        name: Unique ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35566dc6-dda3-48ca-a2f6-c1c74b12254a
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: cdf31e26-5c6b-496e-b4f9-301ac06f5486
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Payment Method
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d7832ba5-8bda-4e07-ab73-f3e885541973
-                    stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 769635a5-7661-40a0-85a4-fbf34cca755f
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: ""
-            systemColumnType: None
+          - columnReferences:
+              - columnCounter: 3fce7fe5-d96d-480c-9834-39ae41b937eb
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: cbb9126e-7455-407b-ab68-a05379ac2d22
-              stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Adjustment Reason
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d47145b3-abd6-402c-a715-bb12a567f1d6
-                    stepCounter: 02655129-1956-4b02-af2d-78f83f5b43a3
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 28604811-9827-4b69-9133-bbc4f3c39dfe
-                    stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6124fe49-29e5-42d3-b99c-32e4e0f6bb74
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR
+        description: Joins with unique ID in Invoice_Amounts
+        hashDetails: null
+        isBusinessKey: true
+        name: Link to Invoice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e81b7535-b778-4ec9-a0ac-788fe58b44ce
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
             transform: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              CD02_COMBINED: 02655129-1956-4b02-af2d-78f83f5b43a3
-              DM01P_COMBINED: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: CD02_COMBINED
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: DM01P_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
-                ON "DM01P_COMBINED"."DM01P_ADJR" = "CD02_COMBINED"."CD02_CODE" and "DM01P_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE" and "DM01P_COMBINED"."DM01P_TYPE" = "CD02_COMBINED"."CD02_TYPE"
-            name: DM01p_COMBINED_TRUX
-            noLinkRefs: []
-          - aliases:
-              STG_CHARGE_PAYMENT_COMBINED: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: STG_CHARGE_PAYMENT_COMBINED
-            join:
-              joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_CHARGE_PAYMENT_COMBINED') }} "STG_CHARGE_PAYMENT_COMBINED"
-            name: STG_CHARGE_PAYMENT_COMBINED
-            noLinkRefs: []
-      name: AR_Payment_Details
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+          - columnReferences:
+              - columnCounter: 7c184554-fac8-4d6f-b60d-35e80b552d9e
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89140966-dbd3-4e10-a71f-6e5110261a65
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR(1)
+        description: P = Payment, A = Adjustment
+        hashDetails: null
+        name: Payment or Adjustment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6d65ebe-f1c6-4565-a0b8-278424c111ae
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences:
+              - columnCounter: 1da5ffc4-9f72-40e4-a78b-e1a7beb87f80
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+            transform: case when "STG_CHARGE_PAYMENT_COMBINED"."Type" = 'Payment' then 'P' else 'A' end
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fbe18ab5-8dd8-49b6-a6aa-3d5af435c0be
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Payment Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f5fb53c7-24fe-484a-864d-64e1e1429de7
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences:
+              - columnCounter: b0f9a0f4-e58d-4ec2-9f6a-71ab00d1d5cb
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e1afa3ed-dc59-467b-9031-bb8e7b7e0c35
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 09d05557-c0eb-42f7-b260-6791224f5c91
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences:
+              - columnCounter: ad82fec8-dc98-4423-8347-78e564b16bcf
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff96233a-18ac-4505-9874-bd8c4c18eab8
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Period ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 58d1e057-9295-4ba8-a7e8-fffa1d78d6fb
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31ebb542-ad45-4b58-99c3-0fae0efb42fa
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Record Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cd5e96a3-fee1-44dc-b453-b6857c3700e5
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ccea02f-c6a7-436d-b305-89cfff25e8d1
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: GL Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 082f8507-47df-4417-b332-dea913e34aa1
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 990e7222-72ba-46fe-9324-d7070b2c649d
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Group ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6faddb2d-98b4-4ed8-89e6-bc9bde41350a
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e8d9996c-bd50-44ab-9dd9-7851e4a95582
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad739087-52d8-4163-b6b9-c807e8ed4743
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences:
+              - columnCounter: ba3ba1a6-ea4b-49b4-af08-24948b1df8d3
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c88547b-bcca-467c-a246-be621d5bc613
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: varchar
+        defaultValue: ""
+        description: ""
+        isBusinessKey: true
+        keyColumnType: None
+        name: Link_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"DM01P_COMBINED\".\"DM01P_LINK\"||\"DM01P_COMBINED\".\"SOURCE\""
+          - columnReferences: []
+            transform: "\"STG_CHARGE_PAYMENT_COMBINED\".\"Link to Invoice\"||\"STG_CHARGE_PAYMENT_COMBINED\".\"Source\""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cdf31e26-5c6b-496e-b4f9-301ac06f5486
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Method
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7832ba5-8bda-4e07-ab73-f3e885541973
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+          - columnReferences:
+              - columnCounter: 769635a5-7661-40a0-85a4-fbf34cca755f
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cbb9126e-7455-407b-ab68-a05379ac2d22
+          stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Adjustment Reason
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d47145b3-abd6-402c-a715-bb12a567f1d6
+                stepCounter: 02655129-1956-4b02-af2d-78f83f5b43a3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 28604811-9827-4b69-9133-bbc4f3c39dfe
+                stepCounter: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CD02_COMBINED: 02655129-1956-4b02-af2d-78f83f5b43a3
+          DM01P_COMBINED: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD02_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DM01P_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
+            ON "DM01P_COMBINED"."DM01P_ADJR" = "CD02_COMBINED"."CD02_CODE" and "DM01P_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE" and "DM01P_COMBINED"."DM01P_TYPE" = "CD02_COMBINED"."CD02_TYPE"
+        name: DM01p_COMBINED_TRUX
+        noLinkRefs: []
+      - aliases:
+          STG_CHARGE_PAYMENT_COMBINED: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: STG_CHARGE_PAYMENT_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_CHARGE_PAYMENT_COMBINED') }} "STG_CHARGE_PAYMENT_COMBINED"
+        name: STG_CHARGE_PAYMENT_COMBINED
+        noLinkRefs: []
+  name: AR_Payment_Details
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

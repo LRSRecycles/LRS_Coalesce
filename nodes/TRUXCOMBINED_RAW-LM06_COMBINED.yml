@@ -1,125 +1,131 @@
-steps:
-  LM06_COMBINED-1dd6a90f-e18e-4982-b14b-842b8ea5e4f4:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: bce9e7ff-5d30-4f89-8de0-481037a15141
-              stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM06_UOM1
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4044839e-7988-46c8-a32a-c89e17b1cec2
-                    stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
-                transform: ""
-          - columnReference:
-              columnCounter: 1dd3176a-4950-4f23-b685-75541215e1a6
-              stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM06_UOM2
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c39fd0f6-7f2e-4a0a-ad3c-3aa446ee8a83
-                    stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
-                transform: ""
-          - columnReference:
-              columnCounter: 2d401f5d-e7c4-4650-8b9f-ffe8ae67ab2f
-              stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-            dataType: NUMBER(18,8)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: LM06_FACT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3e6f3400-ae3c-4341-be1d-6e6cf61ba63b
-                    stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
-                transform: ""
-          - columnReference:
-              columnCounter: 1a728839-1eb9-49b7-96df-c1d9f2f0d2fd
-              stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_DELETED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6802add3-610e-430b-904f-21ba9a18c06a
-                    stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
-                transform: ""
-          - columnReference:
-              columnCounter: 294c60fc-78e2-4f13-a98f-53adf360a4e6
-              stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-            dataType: TIMESTAMP_TZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0a82777c-9709-4ba5-bd9e-3848fd9d9888
-                    stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 36a68173-47fe-4030-b7fd-b16200700960
-              stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_LR_COMP_RAW
-                nodeName: LM06
-            join:
-              joinCondition: FROM {{ ref('TRUX_LR_COMP_RAW', 'LM06') }} "LM06"
-            name: LM06_COMBINED
-            noLinkRefs: []
-      name: LM06_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+fileVersion: 1
+id: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+name: LM06_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bce9e7ff-5d30-4f89-8de0-481037a15141
+          stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: LM06_UOM1
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4044839e-7988-46c8-a32a-c89e17b1cec2
+                stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1dd3176a-4950-4f23-b685-75541215e1a6
+          stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: LM06_UOM2
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c39fd0f6-7f2e-4a0a-ad3c-3aa446ee8a83
+                stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d401f5d-e7c4-4650-8b9f-ffe8ae67ab2f
+          stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+        config: {}
+        dataType: NUMBER(18,8)
+        description: ""
+        hashDetails: null
+        name: LM06_FACT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3e6f3400-ae3c-4341-be1d-6e6cf61ba63b
+                stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a728839-1eb9-49b7-96df-c1d9f2f0d2fd
+          stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6802add3-610e-430b-904f-21ba9a18c06a
+                stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 294c60fc-78e2-4f13-a98f-53adf360a4e6
+          stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0a82777c-9709-4ba5-bd9e-3848fd9d9888
+                stepCounter: da9a4a87-9377-46ec-a792-0e43903a79c3
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36a68173-47fe-4030-b7fd-b16200700960
+          stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_LR_COMP_RAW
+            nodeName: LM06
+        join:
+          joinCondition: FROM {{ ref('TRUX_LR_COMP_RAW', 'LM06') }} "LM06"
+        name: LM06_COMBINED
+        noLinkRefs: []
+  name: LM06_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

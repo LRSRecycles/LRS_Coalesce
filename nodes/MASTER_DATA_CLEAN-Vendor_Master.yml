@@ -1,899 +1,945 @@
-steps:
-  Vendor_Master-74ee4388-f9d9-414f-aca5-25b5dccfa9fa:
-    operation:
-      config:
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: MASTER_DATA_CLEAN
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 5222b4d3-99a4-48af-908a-4d491a0f3d7f
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSurrogateKey: true
-            name: DIM_APVEN_KEY
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 95ec2cb8-8f07-4172-937b-4b6ad7a8d50d
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: STRING
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            isBusinessKey: true
-            name: Vendor ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8188fc74-82f3-4112-ace6-0ef7b660268d
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: RTRIM("APVEN_COMBINED"."VENDORID")
-          - columnReference:
-              columnCounter: 14bfa861-6b14-4e34-9078-8a201417870a
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(12)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Participant ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5de5e492-845e-47fa-831c-defc0c1a77db
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: rtrim("APVEN_COMBINED"."IDPPNT")
-          - columnReference:
-              columnCounter: ef5903de-ac29-473b-a3fe-28982579c415
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(60)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Address Line 2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 66e21a78-db5b-4a50-8a3d-1c2b86be9bc7
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 78393a6c-c351-4f7c-8f2f-409a957e3a2f
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(9,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 796cde6c-f05a-486e-82eb-99417a246255
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 00d273a0-0537-4cac-8c3f-ffcf34f99e00
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(30)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Country
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c699b1db-a81a-41f9-bc90-bf9c1b5184af
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: ae31b38f-3977-4aec-8b97-e6561b76ec04
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(60)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Contact Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b4942ea-665c-4f92-8aae-34d308922ca9
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 44e05832-1a92-42ee-b1fc-6c2109c8bb0a
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(30)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: City
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: da3b3c35-56fb-494f-aa48-588bc0c33bab
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: rtrim("APVEN_COMBINED"."NAMECITY")
-          - columnReference:
-              columnCounter: d37df99f-478e-42f2-b6eb-cd1d0b46bc66
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(7,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Days to Pay
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 78cf8f4a-a8a0-41c8-b0b5-8ba43c2d6e7c
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 987fbb72-3082-43d2-97ad-a9c8676f24f9
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(12)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Payment Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 14b1a515-6404-4b76-b91a-b267cc6de33a
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 0e689995-4de3-46b8-b4a7-6261c00ec732
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(45)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: GL Account
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2779dd0b-3999-4bfb-acaf-faa4f8bc9d7d
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: a03e8af1-a7a8-4f71-b59b-099d704e9d04
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(60)
-            description: ""
-            name: Group Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8c193e1d-72ec-4ed5-92ec-6dbf7980b9d7
-                    stepCounter: 873fa56f-ee8e-469f-908d-af4880f36d65
-                transform: ""
-          - columnReference:
-              columnCounter: c993de14-39fa-40fd-b94d-8e897ebe3b8c
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(38,0)
-            description: ""
-            name: Vendor Group Status
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a7a245ba-479c-40d7-8498-2b515c5ed8b7
-                    stepCounter: 873fa56f-ee8e-469f-908d-af4880f36d65
-                transform: ""
-          - columnReference:
-              columnCounter: 941c02be-91b1-4d1d-90b5-a32541d3cc68
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(6)
-            description: ""
-            name: Vendor Group Terms
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6a198f28-543a-4a9c-9ec4-6a28a28f66e0
-                    stepCounter: 873fa56f-ee8e-469f-908d-af4880f36d65
-                transform: ""
-          - columnReference:
-              columnCounter: 9aa60928-5bd5-4f74-97c0-109d7bf5c40e
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Hold Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: aaa9c4c6-26c0-4b04-9b8c-fb80b0b092d9
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 5aa278c0-15bf-44a5-8c2d-b192610952b2
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Account Set
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 650d7f12-50a0-4510-bded-d1dd12df1a78
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: a80c0597-42d6-4b94-a52f-639c0bcd054a
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(7,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Number of Paid Invoices
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e5c76f58-8b00-4078-9b48-c7c8e6709422
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: b04745ed-1dd4-40f7-a384-6aa765f3353d
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(60)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Legal Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: af24ebb2-0c38-49aa-a6b0-cfc8bd232e4f
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: fc1d5864-2b64-460a-9c3c-71b6963d049e
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(7,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Number of Open Invoices
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4a97649e-4f2b-41f7-8e57-bf00839d0a4e
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: d598eb92-b2fd-4f73-964e-56099f7cc473
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(12)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7d4e5ec6-35d2-4582-9eae-df701d1604dd
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: rtrim("APVEN_COMBINED"."IDCUST")
-          - columnReference:
-              columnCounter: 7a09e85d-9230-4bb2-9c77-e988a58646ab
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Distribution Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5042c97d-d1f5-4f43-8dce-7799d5f10294
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 11044436-cb3c-41d6-987d-62abefb63fb8
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Org
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b5251412-919f-46b7-a8fc-2c462c18c3b3
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: bb8c6b93-fe49-4b55-9d4e-0ed4b6ec3b23
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(8)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Bank Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dfeacbdd-3c03-4927-9f7c-4954e14086ea
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 938d99f7-a523-476d-b32d-613003e69eba
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(30)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Business Registration Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d30d8d43-7409-491b-8453-96c4c6897e0d
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: fed48f59-7d28-4d04-b134-e5ee4ba11cef
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(7,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Number of Payments
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: edeb0b8e-31a7-46b3-9d22-c121d1b140de
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: c9044b95-062c-4958-9886-84879b42fd24
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(60)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Address Line 3
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 82a375c6-a9f6-4c10-a9b8-73d9b055c190
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: ab11c3c2-5a81-42a0-9cd7-47fcdfe6e93c
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(30)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Contact Phone
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6d4ebe33-84f7-416c-af1b-4f15d4cb628f
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 7016d71f-45b7-44af-b48e-c7fb30a7e6d6
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Terms
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d4bc46cb-0668-4fd6-90dd-80214752a707
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: a789d51f-8f7e-4843-aecc-c2f7b3026e9e
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(60)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Address Line 4
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3ee9a2b7-f7e4-4610-9c83-73f8b2e2e44f
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 67cfb135-d471-4e7b-b29f-1490a29f28dc
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(60)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vendor Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c8d8aa0b-2c45-401d-930b-b67dfe3276aa
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 54b5ad82-0c8e-4483-b35e-88125eed957a
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Status
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ca3a8383-6a5d-41a5-8f4d-395ff4d298ff
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 18e24ebc-c917-4423-b41d-4cc8d6220459
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(50)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Email 1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f0b77db2-aefc-4c43-9eda-f63af9fad50c
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 29c7408a-e19a-45c5-8fca-17a421b0da0f
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(30)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Phone
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d61d8896-b90b-4025-bdef-15c5286b147f
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 0c9340a3-bb6c-4adb-be53-b043e1dafe7f
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(100)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Website
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5ed932e6-7e28-4cdc-a31a-27504892cec9
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: de5ffd7a-5ac3-4b17-80a8-ab0dc77d9bfb
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(9,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Date Inactive
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8d051e6c-09d7-4560-b616-1f50f6e4ca31
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 4e0f83cb-5908-49cf-8e2b-951366457be9
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(20)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Zip Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4a58e00c-f561-457c-be40-78c028e2d7ac
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 35c2d13d-eec2-40b3-ab56-245a81f953ed
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(30)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: State
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f398ec31-bee9-4dc2-8dae-3d2e99a12ce0
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: e21c2e5b-9782-4c05-99ef-b5f2c3181c5b
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(9,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Date Start
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b4f4ef4a-4767-4751-a565-27aebd3ec4e5
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: f9c25f22-f678-45f8-9e90-7c60e12ba8ba
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(8)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: User
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 27f5a315-608f-4230-97f5-a2ab948112d4
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 3fb127ac-2a36-4d83-816d-3711394f6090
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(9,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Date Last Updated
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2360974b-8573-4483-9fd0-39ff2971a647
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 26cb1c70-f249-4269-99b5-f04f4b9ba92d
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(9,1)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Average Days to Pay
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 25b182c7-1b39-4a73-94b0-d12e04fbf322
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 89e1dd23-8ac6-4d5e-8c36-20e3049e5569
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(38,0)
-            description: 0=Do not Print Separate Checks; 1=Print Separate Checks
-            hashColumns: []
-            hashDetails: null
-            name: Print Separate Checks
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: fc8936cb-78b6-41bf-832b-1e0a20bffaa4
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 93a551f8-8854-44a7-93ef-e213aad6183b
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(10)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Short Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6d5d7558-9e48-4203-bb0b-548bdeb0dd43
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: ddf503e2-b04d-4b0a-b7e6-b214eaea74f3
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(256)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Address Line 1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 284cb995-3074-4da0-a154-08b79966a16d
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: bd8b47cc-0359-4f19-941f-bef0ab7eb56f
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vendor Group Code
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7a526189-bf08-4213-bb19-463870e603f8
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: ae380ed0-5e99-42f2-a054-28bd8451b76c
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: NUMBER(9,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1342f2b7-4b10-4eb5-b2a5-f530f740e1dc
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 20e5b146-5601-48e5-8435-418ca403e05a
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: VARCHAR(50)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Email 2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b2c3513-ef90-4932-af6e-72908bddca28
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: b73edb4e-1511-450f-86ca-57bae7340a16
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_DELETED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 003219fa-cf04-49fb-b786-71821e9e197e
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - columnReference:
-              columnCounter: 658ea979-c6bf-4876-b8e9-c7230559fa65
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            dataType: TIMESTAMP_TZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b513aea3-d764-4b41-9226-c9b2876f23d1
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 39d4d265-9627-4c57-9d0d-3f3250fb14fc
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemVersion: true
-            name: SYSTEM_VERSION
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a71f0fca-b421-4530-bae7-4cba4876dbd9
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemCurrentFlag: true
-            name: SYSTEM_CURRENT_FLAG
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 3ef2b791-9642-45d5-93a7-cba04a746405
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemStartDate: true
-            name: SYSTEM_START_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: af0f3077-98d1-4131-8d2b-74868ececc21
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemEndDate: true
-            name: SYSTEM_END_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: f5e5c6c4-24a8-48f7-afe9-98c17e91de54
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemCreateDate: true
-            name: SYSTEM_CREATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 7e9d3286-7bef-4b48-ac3e-116bafdb32a4
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemUpdateDate: true
-            name: SYSTEM_UPDATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c8fb8425-4882-49e1-98a4-4051a0839320
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            isBusinessKey: true
-            keyColumnType: None
-            name: Vendor_Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: rtrim("APVEN_COMBINED"."VENDORID")||"APVEN_COMBINED"."SOURCE"
-            systemColumnType: None
+fileVersion: 1
+id: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+name: Vendor_Master
+operation:
+  config:
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5222b4d3-99a4-48af-908a-4d491a0f3d7f
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSurrogateKey: true
+        name: DIM_APVEN_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 75b2c408-b631-466d-995a-f857c6fce6ae
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            isBusinessKey: true
-            keyColumnType: None
-            name: Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2bd00b90-70c2-49d9-a9eb-62b858dff939
-                    stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 95ec2cb8-8f07-4172-937b-4b6ad7a8d50d
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: STRING
+        description: ""
+        hashDetails: null
+        isBusinessKey: true
+        name: Vendor ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8188fc74-82f3-4112-ace6-0ef7b660268d
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: RTRIM("APVEN_COMBINED"."VENDORID")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14bfa861-6b14-4e34-9078-8a201417870a
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(12)
+        description: ""
+        hashDetails: null
+        name: Participant ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5de5e492-845e-47fa-831c-defc0c1a77db
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: rtrim("APVEN_COMBINED"."IDPPNT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ef5903de-ac29-473b-a3fe-28982579c415
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(60)
+        description: ""
+        hashDetails: null
+        name: Address Line 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 66e21a78-db5b-4a50-8a3d-1c2b86be9bc7
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 075a9169-b913-44a5-b184-d403c8bdf4e4
-              stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Vendor Filter
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: rtrim("APVEN_COMBINED"."VENDORID")||' - '||"APVEN_COMBINED"."VENDNAME"
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 78393a6c-c351-4f7c-8f2f-409a957e3a2f
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(9,0)
+        description: ""
+        hashDetails: null
+        name: Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 796cde6c-f05a-486e-82eb-99417a246255
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
             transform: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              APVEN_COMBINED: 7418c001-4ad4-45b4-ae82-debce39600ea
-              APVGR_COMBINED: 873fa56f-ee8e-469f-908d-af4880f36d65
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: SAGE_COMBINED
-                nodeName: APVEN_COMBINED
-              - locationName: SAGE_COMBINED
-                nodeName: APVGR_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('SAGE_COMBINED', 'APVEN_COMBINED') }} "APVEN_COMBINED"
-                INNER JOIN {{ ref('SAGE_COMBINED', 'APVGR_COMBINED') }} "APVGR_COMBINED"
-                ON "APVEN_COMBINED"."IDGRP" = "APVGR_COMBINED"."GROUPID" and "APVEN_COMBINED"."SOURCE" = "APVGR_COMBINED"."SOURCE"
-            name: Vendor_Master
-            noLinkRefs: []
-      name: Vendor_Master
-      overrideSQL: false
-      schema: ""
-      sqlType: Dimension
-      type: sql
-    stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00d273a0-0537-4cac-8c3f-ffcf34f99e00
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: Country
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c699b1db-a81a-41f9-bc90-bf9c1b5184af
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae31b38f-3977-4aec-8b97-e6561b76ec04
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(60)
+        description: ""
+        hashDetails: null
+        name: Contact Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b4942ea-665c-4f92-8aae-34d308922ca9
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 44e05832-1a92-42ee-b1fc-6c2109c8bb0a
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: da3b3c35-56fb-494f-aa48-588bc0c33bab
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: rtrim("APVEN_COMBINED"."NAMECITY")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d37df99f-478e-42f2-b6eb-cd1d0b46bc66
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(7,0)
+        description: ""
+        hashDetails: null
+        name: Days to Pay
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 78cf8f4a-a8a0-41c8-b0b5-8ba43c2d6e7c
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 987fbb72-3082-43d2-97ad-a9c8676f24f9
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(12)
+        description: ""
+        hashDetails: null
+        name: Payment Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14b1a515-6404-4b76-b91a-b267cc6de33a
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0e689995-4de3-46b8-b4a7-6261c00ec732
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(45)
+        description: ""
+        hashDetails: null
+        name: GL Account
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2779dd0b-3999-4bfb-acaf-faa4f8bc9d7d
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a03e8af1-a7a8-4f71-b59b-099d704e9d04
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(60)
+        description: ""
+        name: Group Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8c193e1d-72ec-4ed5-92ec-6dbf7980b9d7
+                stepCounter: 873fa56f-ee8e-469f-908d-af4880f36d65
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c993de14-39fa-40fd-b94d-8e897ebe3b8c
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Vendor Group Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a7a245ba-479c-40d7-8498-2b515c5ed8b7
+                stepCounter: 873fa56f-ee8e-469f-908d-af4880f36d65
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 941c02be-91b1-4d1d-90b5-a32541d3cc68
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(6)
+        description: ""
+        name: Vendor Group Terms
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6a198f28-543a-4a9c-9ec4-6a28a28f66e0
+                stepCounter: 873fa56f-ee8e-469f-908d-af4880f36d65
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9aa60928-5bd5-4f74-97c0-109d7bf5c40e
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Hold Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aaa9c4c6-26c0-4b04-9b8c-fb80b0b092d9
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5aa278c0-15bf-44a5-8c2d-b192610952b2
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(6)
+        description: ""
+        hashDetails: null
+        name: Account Set
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 650d7f12-50a0-4510-bded-d1dd12df1a78
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a80c0597-42d6-4b94-a52f-639c0bcd054a
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(7,0)
+        description: ""
+        hashDetails: null
+        name: Number of Paid Invoices
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e5c76f58-8b00-4078-9b48-c7c8e6709422
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b04745ed-1dd4-40f7-a384-6aa765f3353d
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(60)
+        description: ""
+        hashDetails: null
+        name: Legal Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: af24ebb2-0c38-49aa-a6b0-cfc8bd232e4f
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc1d5864-2b64-460a-9c3c-71b6963d049e
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(7,0)
+        description: ""
+        hashDetails: null
+        name: Number of Open Invoices
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4a97649e-4f2b-41f7-8e57-bf00839d0a4e
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d598eb92-b2fd-4f73-964e-56099f7cc473
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(12)
+        description: ""
+        hashDetails: null
+        name: Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7d4e5ec6-35d2-4582-9eae-df701d1604dd
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: rtrim("APVEN_COMBINED"."IDCUST")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7a09e85d-9230-4bb2-9c77-e988a58646ab
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Distribution Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5042c97d-d1f5-4f43-8dce-7799d5f10294
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11044436-cb3c-41d6-987d-62abefb63fb8
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(6)
+        description: ""
+        hashDetails: null
+        name: Org
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5251412-919f-46b7-a8fc-2c462c18c3b3
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bb8c6b93-fe49-4b55-9d4e-0ed4b6ec3b23
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(8)
+        description: ""
+        hashDetails: null
+        name: Bank Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dfeacbdd-3c03-4927-9f7c-4954e14086ea
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 938d99f7-a523-476d-b32d-613003e69eba
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: Business Registration Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d30d8d43-7409-491b-8453-96c4c6897e0d
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fed48f59-7d28-4d04-b134-e5ee4ba11cef
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(7,0)
+        description: ""
+        hashDetails: null
+        name: Number of Payments
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: edeb0b8e-31a7-46b3-9d22-c121d1b140de
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9044b95-062c-4958-9886-84879b42fd24
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(60)
+        description: ""
+        hashDetails: null
+        name: Address Line 3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 82a375c6-a9f6-4c10-a9b8-73d9b055c190
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab11c3c2-5a81-42a0-9cd7-47fcdfe6e93c
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: Contact Phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6d4ebe33-84f7-416c-af1b-4f15d4cb628f
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7016d71f-45b7-44af-b48e-c7fb30a7e6d6
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(6)
+        description: ""
+        hashDetails: null
+        name: Terms
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d4bc46cb-0668-4fd6-90dd-80214752a707
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a789d51f-8f7e-4843-aecc-c2f7b3026e9e
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(60)
+        description: ""
+        hashDetails: null
+        name: Address Line 4
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3ee9a2b7-f7e4-4610-9c83-73f8b2e2e44f
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 67cfb135-d471-4e7b-b29f-1490a29f28dc
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(60)
+        description: ""
+        hashDetails: null
+        name: Vendor Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8d8aa0b-2c45-401d-930b-b67dfe3276aa
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 54b5ad82-0c8e-4483-b35e-88125eed957a
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ca3a8383-6a5d-41a5-8f4d-395ff4d298ff
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18e24ebc-c917-4423-b41d-4cc8d6220459
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        hashDetails: null
+        name: Email 1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0b77db2-aefc-4c43-9eda-f63af9fad50c
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29c7408a-e19a-45c5-8fca-17a421b0da0f
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: Phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d61d8896-b90b-4025-bdef-15c5286b147f
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c9340a3-bb6c-4adb-be53-b043e1dafe7f
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        hashDetails: null
+        name: Website
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5ed932e6-7e28-4cdc-a31a-27504892cec9
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: de5ffd7a-5ac3-4b17-80a8-ab0dc77d9bfb
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(9,0)
+        description: ""
+        hashDetails: null
+        name: Date Inactive
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8d051e6c-09d7-4560-b616-1f50f6e4ca31
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e0f83cb-5908-49cf-8e2b-951366457be9
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        hashDetails: null
+        name: Zip Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4a58e00c-f561-457c-be40-78c028e2d7ac
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 35c2d13d-eec2-40b3-ab56-245a81f953ed
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        hashDetails: null
+        name: State
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f398ec31-bee9-4dc2-8dae-3d2e99a12ce0
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e21c2e5b-9782-4c05-99ef-b5f2c3181c5b
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(9,0)
+        description: ""
+        hashDetails: null
+        name: Date Start
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b4f4ef4a-4767-4751-a565-27aebd3ec4e5
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f9c25f22-f678-45f8-9e90-7c60e12ba8ba
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(8)
+        description: ""
+        hashDetails: null
+        name: User
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27f5a315-608f-4230-97f5-a2ab948112d4
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3fb127ac-2a36-4d83-816d-3711394f6090
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(9,0)
+        description: ""
+        hashDetails: null
+        name: Date Last Updated
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2360974b-8573-4483-9fd0-39ff2971a647
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26cb1c70-f249-4269-99b5-f04f4b9ba92d
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(9,1)
+        description: ""
+        hashDetails: null
+        name: Average Days to Pay
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25b182c7-1b39-4a73-94b0-d12e04fbf322
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89e1dd23-8ac6-4d5e-8c36-20e3049e5569
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(38,0)
+        description: 0=Do not Print Separate Checks; 1=Print Separate Checks
+        hashDetails: null
+        name: Print Separate Checks
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fc8936cb-78b6-41bf-832b-1e0a20bffaa4
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93a551f8-8854-44a7-93ef-e213aad6183b
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        hashDetails: null
+        name: Short Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6d5d7558-9e48-4203-bb0b-548bdeb0dd43
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ddf503e2-b04d-4b0a-b7e6-b214eaea74f3
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        hashDetails: null
+        name: Address Line 1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 284cb995-3074-4da0-a154-08b79966a16d
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd8b47cc-0359-4f19-941f-bef0ab7eb56f
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(6)
+        description: ""
+        hashDetails: null
+        name: Vendor Group Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a526189-bf08-4213-bb19-463870e603f8
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae380ed0-5e99-42f2-a054-28bd8451b76c
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER(9,0)
+        description: ""
+        hashDetails: null
+        name: Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1342f2b7-4b10-4eb5-b2a5-f530f740e1dc
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20e5b146-5601-48e5-8435-418ca403e05a
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        hashDetails: null
+        name: Email 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b2c3513-ef90-4932-af6e-72908bddca28
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b73edb4e-1511-450f-86ca-57bae7340a16
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 003219fa-cf04-49fb-b786-71821e9e197e
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 658ea979-c6bf-4876-b8e9-c7230559fa65
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b513aea3-d764-4b41-9226-c9b2876f23d1
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39d4d265-9627-4c57-9d0d-3f3250fb14fc
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSystemVersion: true
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a71f0fca-b421-4530-bae7-4cba4876dbd9
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemCurrentFlag: true
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3ef2b791-9642-45d5-93a7-cba04a746405
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemStartDate: true
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: af0f3077-98d1-4131-8d2b-74868ececc21
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemEndDate: true
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f5e5c6c4-24a8-48f7-afe9-98c17e91de54
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e9d3286-7bef-4b48-ac3e-116bafdb32a4
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8fb8425-4882-49e1-98a4-4051a0839320
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isBusinessKey: true
+        keyColumnType: None
+        name: Vendor_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: rtrim("APVEN_COMBINED"."VENDORID")||"APVEN_COMBINED"."SOURCE"
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 75b2c408-b631-466d-995a-f857c6fce6ae
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isBusinessKey: true
+        keyColumnType: None
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2bd00b90-70c2-49d9-a9eb-62b858dff939
+                stepCounter: 7418c001-4ad4-45b4-ae82-debce39600ea
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 075a9169-b913-44a5-b184-d403c8bdf4e4
+          stepCounter: 74ee4388-f9d9-414f-aca5-25b5dccfa9fa
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Vendor Filter
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: rtrim("APVEN_COMBINED"."VENDORID")||' - '||"APVEN_COMBINED"."VENDNAME"
+        systemColumnType: None
+        transform: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          APVEN_COMBINED: 7418c001-4ad4-45b4-ae82-debce39600ea
+          APVGR_COMBINED: 873fa56f-ee8e-469f-908d-af4880f36d65
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SAGE_COMBINED
+            nodeName: APVEN_COMBINED
+          - locationName: SAGE_COMBINED
+            nodeName: APVGR_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('SAGE_COMBINED', 'APVEN_COMBINED') }} "APVEN_COMBINED"
+            INNER JOIN {{ ref('SAGE_COMBINED', 'APVGR_COMBINED') }} "APVGR_COMBINED"
+            ON "APVEN_COMBINED"."IDGRP" = "APVGR_COMBINED"."GROUPID" and "APVEN_COMBINED"."SOURCE" = "APVGR_COMBINED"."SOURCE"
+        name: Vendor_Master
+        noLinkRefs: []
+  name: Vendor_Master
+  overrideSQL: false
+  schema: ""
+  sqlType: Dimension
+  type: sql
+  version: 1
+type: Node

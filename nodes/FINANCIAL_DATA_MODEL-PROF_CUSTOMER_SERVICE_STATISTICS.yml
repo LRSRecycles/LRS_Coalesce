@@ -1,459 +1,466 @@
-steps:
-  PROF_CUSTOMER_SERVICE_STATISTICS-53a58319-6cbd-460b-9b5f-f6b31f536e78:
-    operation:
-      config:
-        sampleMode: Full Table
-        sampleOption: Fixed Row
-        samplePercent: "10"
-        sampleRows: "1000"
-      database: ""
-      deployEnabled: false
-      description: ""
-      isMultisource: false
-      locationName: FINANCIAL_DATA_MODEL
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 359e120e-62fa-474f-b755-7c1ca3437040
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemUpdateDate: true
-            name: PROFILE_METRIC
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: "NULL"
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: b7298322-f5ee-43ef-a7fd-ad1cfccda53b
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemCreateDate: true
-            name: SYSTEM_CREATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - columnReference:
-              columnCounter: fdcfb749-f5dd-4c6d-8d41-7b57e57c40cb
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Number
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 875f01c9-e093-49ce-b75c-9f3d047f81e8
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: efae591b-50f2-4457-b1f4-c6f28a9ec74e
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d7864147-9f8d-4acb-926f-ef40ca7beda4
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 1b0c5c0f-c87e-48d2-9e57-994dc6a3ff1c
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Sequence
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e37622c8-a66c-4f57-a8e1-804fa0134f90
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: ed860dce-2d1b-457c-bce0-74df4d2dad7e
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2473b69b-4627-40c2-b17c-70a48f5b0462
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 7cd3768f-5224-4093-8aa0-c775286dc8a6
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0ac06334-67c3-4236-af20-3f4f1f847bb6
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 0e2ffb8a-92d9-4057-a66a-1d196ec133cc
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d27e0a91-bde7-4ac7-9dde-ad82567117d7
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 1a218fd8-d9dd-47a1-a879-b0aaa866a3e4
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Number of Lifts
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ea892dce-4e21-4a40-a0df-603de7ca360e
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 0a22d576-2e53-499d-aabd-e7a127b5020f
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Activity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1d79c3a1-6a25-4d89-8952-4711398949f7
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: b84acf13-3e3c-4c5d-a4ff-36111da9ec44
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 997f5c15-e4c1-4b86-8f0d-4dd288e2e3b8
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 546414dc-75de-4c75-85a6-67108f93db0e
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3c67c6f8-7367-4c40-861a-7cbded5eb8d2
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 5ed6deab-366f-4b8a-b6fe-cf4c84166206
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: VARCHAR(200)
-            description: might be an invoice number
-            hashColumns: []
-            hashDetails: null
-            name: Reference
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 62f9197c-3371-4f7c-b6bb-0be4a4a9766c
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: ec42b077-a7f9-49d1-82cd-36c2d92f6f14
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 95648b36-2655-4cf2-b890-1df9237573d1
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 800c17ff-913b-4701-aff4-7f4e1fc9d548
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Work Order Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4ea015ee-4463-4270-a731-ce55cde2bd0f
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 67db644d-e06f-4665-a301-0895a7f654d3
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Work Order Notes
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0036dd84-0c3e-4d9c-86c2-5440b85c692e
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 6b678cfb-8e67-4ea4-9912-259dfada1702
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Log ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 318c25d4-bf91-4bbd-ae5c-19ce16f84e73
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: fd857ab3-5af6-4800-b125-51f1d9bc9a84
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Rate ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8bc283d6-ded8-4544-ac80-087406645340
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: fe2e58c9-298d-4a60-a380-0b2cb18cb3e3
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Call ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 115aa55d-bf93-4b22-b73b-3f5f1ab83b46
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: ec4b7717-bb09-43af-9ecd-002b2a868766
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: VARCHAR(10)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: User
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 77a3e104-ccc2-4e2d-92f2-bab923c93b09
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: e5f530a5-2265-439d-8d9f-21c409546722
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Completed Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b96adbf4-d39d-495d-972c-b9092ee3650e
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: d25628ed-8ce3-4c99-ade4-f920a673c9d3
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time 2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 65ce6a51-cf65-4c9a-b41f-f6665c2e9352
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: df7600e9-1fa2-4571-8738-a60c3cd3e489
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Call Number
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 824bfdb8-25a5-448a-9a73-e0a48cb978e5
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 3e9bc59a-201d-4924-b3bc-b40ba8f71321
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Period Charges
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dc24a411-1dfd-41c1-b49c-17daf08f4ab9
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 9d2b7123-c8a2-42c2-a6b6-c91ea3336eaf
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            config:
-              isDistinctCount: true
-              isNullCount: true
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Original Sequence Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9155bc51-8dea-47ee-a195-300fe5d1fed9
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-          - columnReference:
-              columnCounter: 506d4668-5fd5-43dd-9754-e69570798e9b
-              stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 39f22689-e445-4f79-9658-094cde02b580
-                    stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: OPERATIONS_DATA_MODEL
-                nodeName: STG_CUSTOMER_SERVICE_STATISTICS
-            join:
-              joinCondition: FROM {{ ref('OPERATIONS_DATA_MODEL', 'STG_CUSTOMER_SERVICE_STATISTICS') }} "STG_CUSTOMER_SERVICE_STATISTICS"
-            name: PROF_CUSTOMER_SERVICE_STATISTICS
-            noLinkRefs: []
-      name: PROF_CUSTOMER_SERVICE_STATISTICS
-      overrideSQL: false
-      schema: ""
-      sqlType: "5"
-      type: sql
-    stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+fileVersion: 1
+id: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+name: PROF_CUSTOMER_SERVICE_STATISTICS
+operation:
+  config:
+    sampleMode: Full Table
+    sampleOption: Fixed Row
+    samplePercent: "10"
+    sampleRows: "1000"
+  database: ""
+  deployEnabled: false
+  description: ""
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 359e120e-62fa-474f-b755-7c1ca3437040
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: PROFILE_METRIC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b7298322-f5ee-43ef-a7fd-ad1cfccda53b
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fdcfb749-f5dd-4c6d-8d41-7b57e57c40cb
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Route Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 875f01c9-e093-49ce-b75c-9f3d047f81e8
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: efae591b-50f2-4457-b1f4-c6f28a9ec74e
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7864147-9f8d-4acb-926f-ef40ca7beda4
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1b0c5c0f-c87e-48d2-9e57-994dc6a3ff1c
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Sequence
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e37622c8-a66c-4f57-a8e1-804fa0134f90
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ed860dce-2d1b-457c-bce0-74df4d2dad7e
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2473b69b-4627-40c2-b17c-70a48f5b0462
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7cd3768f-5224-4093-8aa0-c775286dc8a6
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0ac06334-67c3-4236-af20-3f4f1f847bb6
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0e2ffb8a-92d9-4057-a66a-1d196ec133cc
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Service Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d27e0a91-bde7-4ac7-9dde-ad82567117d7
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a218fd8-d9dd-47a1-a879-b0aaa866a3e4
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Number of Lifts
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ea892dce-4e21-4a40-a0df-603de7ca360e
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0a22d576-2e53-499d-aabd-e7a127b5020f
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Activity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1d79c3a1-6a25-4d89-8952-4711398949f7
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b84acf13-3e3c-4c5d-a4ff-36111da9ec44
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 997f5c15-e4c1-4b86-8f0d-4dd288e2e3b8
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 546414dc-75de-4c75-85a6-67108f93db0e
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3c67c6f8-7367-4c40-861a-7cbded5eb8d2
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ed6deab-366f-4b8a-b6fe-cf4c84166206
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: VARCHAR(200)
+        description: might be an invoice number
+        hashDetails: null
+        name: Reference
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 62f9197c-3371-4f7c-b6bb-0be4a4a9766c
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec42b077-a7f9-49d1-82cd-36c2d92f6f14
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 95648b36-2655-4cf2-b890-1df9237573d1
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 800c17ff-913b-4701-aff4-7f4e1fc9d548
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Work Order Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4ea015ee-4463-4270-a731-ce55cde2bd0f
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 67db644d-e06f-4665-a301-0895a7f654d3
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Work Order Notes
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0036dd84-0c3e-4d9c-86c2-5440b85c692e
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6b678cfb-8e67-4ea4-9912-259dfada1702
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Log ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 318c25d4-bf91-4bbd-ae5c-19ce16f84e73
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fd857ab3-5af6-4800-b125-51f1d9bc9a84
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Rate ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8bc283d6-ded8-4544-ac80-087406645340
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fe2e58c9-298d-4a60-a380-0b2cb18cb3e3
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Call ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 115aa55d-bf93-4b22-b73b-3f5f1ab83b46
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec4b7717-bb09-43af-9ecd-002b2a868766
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: VARCHAR(10)
+        description: ""
+        hashDetails: null
+        name: User
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 77a3e104-ccc2-4e2d-92f2-bab923c93b09
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5f530a5-2265-439d-8d9f-21c409546722
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Completed Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b96adbf4-d39d-495d-972c-b9092ee3650e
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d25628ed-8ce3-4c99-ade4-f920a673c9d3
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Time 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 65ce6a51-cf65-4c9a-b41f-f6665c2e9352
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: df7600e9-1fa2-4571-8738-a60c3cd3e489
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Call Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 824bfdb8-25a5-448a-9a73-e0a48cb978e5
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e9bc59a-201d-4924-b3bc-b40ba8f71321
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Period Charges
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dc24a411-1dfd-41c1-b49c-17daf08f4ab9
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9d2b7123-c8a2-42c2-a6b6-c91ea3336eaf
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config:
+          isDistinctCount: true
+          isNullCount: true
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Original Sequence Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9155bc51-8dea-47ee-a195-300fe5d1fed9
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 506d4668-5fd5-43dd-9754-e69570798e9b
+          stepCounter: 53a58319-6cbd-460b-9b5f-f6b31f536e78
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39f22689-e445-4f79-9658-094cde02b580
+                stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: OPERATIONS_DATA_MODEL
+            nodeName: STG_CUSTOMER_SERVICE_STATISTICS
+        join:
+          joinCondition: FROM {{ ref('OPERATIONS_DATA_MODEL', 'STG_CUSTOMER_SERVICE_STATISTICS') }} "STG_CUSTOMER_SERVICE_STATISTICS"
+        name: PROF_CUSTOMER_SERVICE_STATISTICS
+        noLinkRefs: []
+  name: PROF_CUSTOMER_SERVICE_STATISTICS
+  overrideSQL: false
+  schema: ""
+  sqlType: "5"
+  type: sql
+  version: 1
+type: Node

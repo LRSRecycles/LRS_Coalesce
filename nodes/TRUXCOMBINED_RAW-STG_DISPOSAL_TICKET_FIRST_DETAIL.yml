@@ -1,83 +1,90 @@
-steps:
-  STG_DISPOSAL_TICKET_FIRST_DETAIL-9c379054-98cb-4227-836f-451c03176c12:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - acceptedValues:
-              strictMatch: false
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4c245882-98c4-480e-a8f9-9a2f945d8de8
-              stepCounter: 9c379054-98cb-4227-836f-451c03176c12
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LF05D_LINK
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dab40564-817a-4c45-9232-96aac92d69f5
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: ""
-          - columnReference:
-              columnCounter: 60678453-77bf-4084-9679-55cbf68b2791
-              stepCounter: 9c379054-98cb-4227-836f-451c03176c12
-            dataType: NUMBER(38,0)
-            description: ""
-            name: LF05D_ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 07aa1e81-e244-476c-8de7-d68df3460317
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: MIN("LF05D_COMBINED"."LF05D_ID")
-          - columnReference:
-              columnCounter: 3e6905c9-9e60-43b5-aac4-ae482f584997
-              stepCounter: 9c379054-98cb-4227-836f-451c03176c12
-            dataType: VARCHAR
-            description: ""
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1197c322-9921-4c9b-acaa-1402514b3d62
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: LF05D_COMBINED
-            join:
-              joinCondition: |2-
-                 FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-                WHERE "SORT" = 1 
-                  AND "_FIVETRAN_DELETED" = FALSE 
-                  AND "METADATA$ACTION" = 'INSERT'
-                GROUP BY "LF05D_COMBINED"."SOURCE", "LF05D_COMBINED"."LF05D_LINK"
-            name: STG_DISPOSAL_TICKET_FIRST_DETAIL
-            noLinkRefs: []
-      name: STG_DISPOSAL_TICKET_FIRST_DETAIL
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 9c379054-98cb-4227-836f-451c03176c12
+fileVersion: 1
+id: 9c379054-98cb-4227-836f-451c03176c12
+name: STG_DISPOSAL_TICKET_FIRST_DETAIL
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c245882-98c4-480e-a8f9-9a2f945d8de8
+          stepCounter: 9c379054-98cb-4227-836f-451c03176c12
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LF05D_LINK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dab40564-817a-4c45-9232-96aac92d69f5
+                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 60678453-77bf-4084-9679-55cbf68b2791
+          stepCounter: 9c379054-98cb-4227-836f-451c03176c12
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LF05D_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 07aa1e81-e244-476c-8de7-d68df3460317
+                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+            transform: MIN("LF05D_COMBINED"."LF05D_ID")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e6905c9-9e60-43b5-aac4-ae482f584997
+          stepCounter: 9c379054-98cb-4227-836f-451c03176c12
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1197c322-9921-4c9b-acaa-1402514b3d62
+                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LF05D_COMBINED
+        join:
+          joinCondition: |2-
+             FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
+            WHERE "SORT" = 1 
+              AND "_FIVETRAN_DELETED" = FALSE 
+              AND "METADATA$ACTION" = 'INSERT'
+            GROUP BY "LF05D_COMBINED"."SOURCE", "LF05D_COMBINED"."LF05D_LINK"
+        name: STG_DISPOSAL_TICKET_FIRST_DETAIL
+        noLinkRefs: []
+  name: STG_DISPOSAL_TICKET_FIRST_DETAIL
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,124 +1,132 @@
-steps:
-  FUEL_COST_CURRENT-a6ab8fb6-10dc-4f77-ad4a-7f99f5750973:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 64ef079c-baba-4d2f-9cef-d23202e83c04
-              stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FC01_ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d42ef78e-d323-4c9c-8279-8891b8967c12
-                    stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
-                transform: ""
-          - columnReference:
-              columnCounter: daacdd2f-cd95-4866-877c-48967195e356
-              stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FC01_UOM
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9fc86511-a450-4148-95fc-450fd9eb0902
-                    stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
-                transform: ""
-          - columnReference:
-              columnCounter: 18ed9b9e-de1f-4ed4-b00e-b53351e90053
-              stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FC01_DATE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 440ce7a5-89ce-458a-8f36-cc8b70468e78
-                    stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
-                transform: ""
-          - columnReference:
-              columnCounter: dc83f977-385d-4f7f-948f-14d74a179f63
-              stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-            dataType: NUMBER(18,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FC01_RATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bf5aa428-77be-4582-97fb-80368e5fbd25
-                    stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
-                transform: ""
-          - columnReference:
-              columnCounter: 4cb958eb-2752-445f-aaba-97cb871f1add
-              stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FC01_TYPE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 92a7714d-f386-4dbd-9621-166974acb7f6
-                    stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
-                transform: ""
-          - columnReference:
-              columnCounter: 100806b0-fb25-4c41-b534-c42a7cb7b151
-              stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f866cd1b-e119-4ca1-9a1b-5cc171373908
-                    stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              FUEL_COST_CURRENT_HELPER_STAGE: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: FUEL_COST_CURRENT_HELPER_STAGE
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'FUEL_COST_CURRENT_HELPER_STAGE') }} "FUEL_COST_CURRENT_HELPER_STAGE"
-                WHERE "Recent Sort" = 1
-            name: FUEL_COST_CURRENT
-            noLinkRefs: []
-      name: FUEL_COST_CURRENT
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+fileVersion: 1
+id: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+name: FUEL_COST_CURRENT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64ef079c-baba-4d2f-9cef-d23202e83c04
+          stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: FC01_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d42ef78e-d323-4c9c-8279-8891b8967c12
+                stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: daacdd2f-cd95-4866-877c-48967195e356
+          stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: FC01_UOM
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9fc86511-a450-4148-95fc-450fd9eb0902
+                stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18ed9b9e-de1f-4ed4-b00e-b53351e90053
+          stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: FC01_DATE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 440ce7a5-89ce-458a-8f36-cc8b70468e78
+                stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc83f977-385d-4f7f-948f-14d74a179f63
+          stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+        config: {}
+        dataType: NUMBER(18,3)
+        description: ""
+        hashDetails: null
+        name: FC01_RATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bf5aa428-77be-4582-97fb-80368e5fbd25
+                stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4cb958eb-2752-445f-aaba-97cb871f1add
+          stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: FC01_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 92a7714d-f386-4dbd-9621-166974acb7f6
+                stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 100806b0-fb25-4c41-b534-c42a7cb7b151
+          stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f866cd1b-e119-4ca1-9a1b-5cc171373908
+                stepCounter: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          FUEL_COST_CURRENT_HELPER_STAGE: 9b95b6e0-3edd-451d-bfe0-e52a1acd60e3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: FUEL_COST_CURRENT_HELPER_STAGE
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'FUEL_COST_CURRENT_HELPER_STAGE') }} "FUEL_COST_CURRENT_HELPER_STAGE"
+            WHERE "Recent Sort" = 1
+        name: FUEL_COST_CURRENT
+        noLinkRefs: []
+  name: FUEL_COST_CURRENT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

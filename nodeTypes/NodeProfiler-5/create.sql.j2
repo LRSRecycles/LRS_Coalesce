@@ -1,0 +1,14 @@
+{% if node.materializationType == 'table' %}
+    {{ stage('Create Profile Node Table') }}
+
+    CREATE OR REPLACE TABLE {{ ref_no_link(node.location.name, node.name) }}
+    (
+        {% for col in columns %}
+            "{{ col.name }}" VARCHAR 
+            {%- if col.description | length > 0 %} COMMENT '{{ col.description }}'{% endif %}
+            {%- if not loop.last -%}, {% endif %}
+        {% endfor %}
+    )
+    {%- if node.description | length > 0 %} COMMENT = '{{ node.description }}'{% endif %}
+
+{% endif %}

@@ -1,114 +1,120 @@
-steps:
-  CUSTOMER_PREFERENCES-52e3dc99-9f19-4d86-a9b4-89bca60d3eef:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 9df06740-28a3-4a76-9fd3-bc6af40a3990
-              stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
-            dataType: NUMBER(38,0)
-            description: ""
-            hashDetails: null
-            name: Customer
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c7cf425f-6667-495d-b51b-aed4121159af
-                    stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-                transform: ""
-          - columnReference:
-              columnCounter: 10fb386b-f8e9-4133-beb3-f3639e7ce345
-              stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 69355b57-209e-477f-999c-f142302970cd
-                    stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 6e21df20-8754-4f59-8300-46165c2271cc
-              stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Payment Terms 2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
-                    stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-                transform: CASE WHEN "CP01_COMBINED"."CP01_PAYTERMS" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" WHEN "CP01_COMBINED"."CP01_PAYTERMS" = 0 THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CP01_COMBINED"."CP01_PAYTERMS" END
-            systemColumnType: None
+fileVersion: 1
+id: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+name: CUSTOMER_PREFERENCES
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9df06740-28a3-4a76-9fd3-bc6af40a3990
+          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c7cf425f-6667-495d-b51b-aed4121159af
+                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: b79e9ddb-26a6-47f9-89a8-6f8f076ff644
-              stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Intercompany Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 340c7fb6-b7d8-43be-9fd5-703a8af375b1
-                    stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10fb386b-f8e9-4133-beb3-f3639e7ce345
+          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 69355b57-209e-477f-999c-f142302970cd
+                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              CP01_COMBINED: 83f237e0-2bb1-4230-bef1-d6b54576823f
-              TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: TRUX_DATABASE_METADATA
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: CP01_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
-                LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
-                    ON "CP01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-                
-                where "CP01_COMBINED"."CP01_SITE" IS NULL 
-            name: CUSTOMER_PREFERENCES
-            noLinkRefs: []
-      name: CUSTOMER_PREFERENCES
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6e21df20-8754-4f59-8300-46165c2271cc
+          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Terms 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
+                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+            transform: CASE WHEN "CP01_COMBINED"."CP01_PAYTERMS" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" WHEN "CP01_COMBINED"."CP01_PAYTERMS" = 0 THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CP01_COMBINED"."CP01_PAYTERMS" END
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b79e9ddb-26a6-47f9-89a8-6f8f076ff644
+          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Intercompany Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 340c7fb6-b7d8-43be-9fd5-703a8af375b1
+                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CP01_COMBINED: 83f237e0-2bb1-4230-bef1-d6b54576823f
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CP01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+                ON "CP01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+
+            where "CP01_COMBINED"."CP01_SITE" IS NULL 
+        name: CUSTOMER_PREFERENCES
+        noLinkRefs: []
+  name: CUSTOMER_PREFERENCES
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

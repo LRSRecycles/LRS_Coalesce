@@ -1,198 +1,200 @@
-steps:
-  FIVETRAN_AUDIT-7c4c3989-02f5-46e0-b15e-9963462b3067:
-    operation:
-      database: ""
-      dataset: ""
-      deployEnabled: true
-      description: ""
-      locationName: TRUX_AS_COMP_RAW
-      metadata:
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 282298bf-2678-4400-9773-f357534705e8
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: VARCHAR(256)
-            defaultValue: ""
-            description: ""
-            name: ID
-            nullable: false
-            primaryKey: true
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 733d55a8-e740-4b3b-a51c-304a14a1faec
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: VARCHAR(256)
-            defaultValue: ""
-            description: ""
-            name: MESSAGE
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: e907cf81-964d-41aa-ac82-c4d831de5a73
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: TIMESTAMP_TZ(9)
-            defaultValue: ""
-            description: ""
-            name: UPDATE_STARTED
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0d9c56ad-ba3c-4865-9374-89db6a1fc64d
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: VARCHAR(256)
-            defaultValue: ""
-            description: ""
-            name: UPDATE_ID
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 17c03ccf-f8b0-4830-ba77-ab6c1a7d3afc
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: VARCHAR(256)
-            defaultValue: ""
-            description: ""
-            name: SCHEMA
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: aea68168-8db9-46bd-9944-6d24e1cb2423
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: VARCHAR(256)
-            defaultValue: ""
-            description: ""
-            name: TABLE
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 2531012c-7ca4-4928-866c-915dd4b5a77e
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: TIMESTAMP_TZ(9)
-            defaultValue: ""
-            description: ""
-            name: START
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 8309937c-3dde-4c35-80a1-f91acc69d400
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: TIMESTAMP_TZ(9)
-            defaultValue: ""
-            description: ""
-            name: DONE
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: ce6efbba-a19f-4a4a-8e32-21784818cc22
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: NUMBER(38,0)
-            defaultValue: ""
-            description: ""
-            name: ROWS_UPDATED_OR_INSERTED
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 40078cb8-9e3a-49cc-9597-75a3b6645b4e
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: VARCHAR(256)
-            defaultValue: ""
-            description: ""
-            name: STATUS
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4d5fadda-5210-450a-b5f9-26035aa5ece7
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: TIMESTAMP_TZ(9)
-            defaultValue: ""
-            description: ""
-            name: PROGRESS
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 31eda5b6-8b2c-4c42-ac10-96e37a4af680
-              stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
-            config: {}
-            dataType: TIMESTAMP_TZ(9)
-            defaultValue: ""
-            description: ""
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-        join:
-          joinCondition: FROM {{ ref('TRUX_AS_COMP_RAW', 'FIVETRAN_AUDIT') }}
-      name: FIVETRAN_AUDIT
-      schema: ""
-      sqlType: Source
-      table: FIVETRAN_AUDIT
-      type: sourceInput
-    stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+fileVersion: 1
+id: 7c4c3989-02f5-46e0-b15e-9963462b3067
+name: FIVETRAN_AUDIT
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: TRUX_AS_COMP_RAW
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 282298bf-2678-4400-9773-f357534705e8
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: ID
+        nullable: false
+        primaryKey: true
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 733d55a8-e740-4b3b-a51c-304a14a1faec
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: MESSAGE
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e907cf81-964d-41aa-ac82-c4d831de5a73
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: UPDATE_STARTED
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d9c56ad-ba3c-4865-9374-89db6a1fc64d
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: UPDATE_ID
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17c03ccf-f8b0-4830-ba77-ab6c1a7d3afc
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: SCHEMA
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: aea68168-8db9-46bd-9944-6d24e1cb2423
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: TABLE
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2531012c-7ca4-4928-866c-915dd4b5a77e
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: START
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8309937c-3dde-4c35-80a1-f91acc69d400
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: DONE
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ce6efbba-a19f-4a4a-8e32-21784818cc22
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: ROWS_UPDATED_OR_INSERTED
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40078cb8-9e3a-49cc-9597-75a3b6645b4e
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: STATUS
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d5fadda-5210-450a-b5f9-26035aa5ece7
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: PROGRESS
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31eda5b6-8b2c-4c42-ac10-96e37a4af680
+          stepCounter: 7c4c3989-02f5-46e0-b15e-9963462b3067
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('TRUX_AS_COMP_RAW', 'FIVETRAN_AUDIT') }}
+  name: FIVETRAN_AUDIT
+  schema: ""
+  sqlType: Source
+  table: FIVETRAN_AUDIT
+  type: sourceInput
+  version: 1
+type: Node

@@ -1,97 +1,103 @@
-steps:
-  STG_MT02B_ROUTE_AUDIT-bf0fc769-5935-4faf-bb22-89d94252cede:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: MT02B replaces MT02A. THis is the same but does not have sequence.
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 6c636bb6-2f37-4213-9cfb-041840c10f1d
-              stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT02_AMNT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7d774330-3258-4ec8-ba60-354a03ae8d68
-                    stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
-                transform: SUM(IFNULL("MT02_COMBINED"."MT02_AMNT",0.00))
-          - columnReference:
-              columnCounter: 2b9d5620-bbbb-4944-9e90-5fa193465386
-              stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT02_ROUT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 45f68499-5d03-4669-aa3d-5e042b336aee
-                    stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
-                transform: ""
-          - columnReference:
-              columnCounter: e768620c-0f28-48f7-971d-1399daafe4f0
-              stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT02_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a351139a-ac9b-4a81-b6ca-e2842c7e2c6c
-                    stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
-                transform: ""
-          - columnReference:
-              columnCounter: 1e67af13-f64a-4cfb-9b9a-2e59450bfdba
-              stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 108a65b9-7fc8-490f-85d7-ae1186518837
-                    stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              MT02_COMBINED: b8252bd7-a978-44e3-8484-497ed07b2cd3
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: MT02_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'MT02_COMBINED') }} "MT02_COMBINED"
-                where "_FIVETRAN_DELETED" = FALSE AND "MT02_OWN" = '1'
-                GROUP BY "MT02_DATE","MT02_ROUT","SOURCE"
-            name: STG_MT02B_ROUTE_AUDIT
-            noLinkRefs: []
-      name: STG_MT02B_ROUTE_AUDIT
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
+fileVersion: 1
+id: bf0fc769-5935-4faf-bb22-89d94252cede
+name: STG_MT02B_ROUTE_AUDIT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: MT02B replaces MT02A. THis is the same but does not have sequence.
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c636bb6-2f37-4213-9cfb-041840c10f1d
+          stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: MT02_AMNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7d774330-3258-4ec8-ba60-354a03ae8d68
+                stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
+            transform: SUM(IFNULL("MT02_COMBINED"."MT02_AMNT",0.00))
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b9d5620-bbbb-4944-9e90-5fa193465386
+          stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: MT02_ROUT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 45f68499-5d03-4669-aa3d-5e042b336aee
+                stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e768620c-0f28-48f7-971d-1399daafe4f0
+          stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: MT02_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a351139a-ac9b-4a81-b6ca-e2842c7e2c6c
+                stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e67af13-f64a-4cfb-9b9a-2e59450bfdba
+          stepCounter: bf0fc769-5935-4faf-bb22-89d94252cede
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 108a65b9-7fc8-490f-85d7-ae1186518837
+                stepCounter: b8252bd7-a978-44e3-8484-497ed07b2cd3
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          MT02_COMBINED: b8252bd7-a978-44e3-8484-497ed07b2cd3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: MT02_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'MT02_COMBINED') }} "MT02_COMBINED"
+            where "_FIVETRAN_DELETED" = FALSE AND "MT02_OWN" = '1'
+            GROUP BY "MT02_DATE","MT02_ROUT","SOURCE"
+        name: STG_MT02B_ROUTE_AUDIT
+        noLinkRefs: []
+  name: STG_MT02B_ROUTE_AUDIT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

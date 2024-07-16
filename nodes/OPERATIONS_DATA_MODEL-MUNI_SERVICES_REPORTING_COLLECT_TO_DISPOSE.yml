@@ -1,418 +1,441 @@
-steps:
-  MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE-5698d598-cc5a-489f-b543-ce094e207d97:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: First attempt at Route Audit Report
-      isMultisource: false
-      locationName: OPERATIONS_DATA_MODEL
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 31a8b30f-fc4b-4aa3-b385-eb5acd9638f1
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d961d58d-df17-447a-822f-731bab5f3485
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 5dc4f0ba-9e77-4e4e-9686-de9db2e92749
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 532c1c2d-d1c7-4d24-ba13-25335a224fcc
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c38ba5f7-c9aa-455b-be47-4bbe96c0c69b
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Route Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: RIGHT("MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Route",3)
-            systemColumnType: None
+fileVersion: 1
+id: 5698d598-cc5a-489f-b543-ce094e207d97
+name: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: First attempt at Route Audit Report
+  isMultisource: false
+  locationName: OPERATIONS_DATA_MODEL
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31a8b30f-fc4b-4aa3-b385-eb5acd9638f1
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d961d58d-df17-447a-822f-731bab5f3485
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
             transform: ""
-          - columnReference:
-              columnCounter: adc4ac2a-74e1-4347-8c99-fef7f9f31dcb
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Sequence
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2bb29dca-66cc-4ad7-920a-ab15bb3fc2e8
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 32073caa-3552-467b-b608-c4677d25faf1
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a81dd355-608b-44e5-aebb-459e4562814b
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 6311bd37-31d4-4c9a-8131-4384616d880c
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 59b133cf-5489-4abe-bd8d-39feddd3d6d2
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 60676225-1074-4a70-9249-d2bb7c6b9c05
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0144b04e-357e-4084-8e97-b54400cb36a5
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: fa2b8dcf-003e-45d8-8eb4-c746a571db49
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d8ebe60d-886f-4e79-801a-e7065a29b404
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 4f924525-ecb4-48af-8f04-1ee3e059fff0
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer Address
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4de60052-b2ff-4d17-a500-0c3c6c29e078
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: f545cf05-8f20-4863-8097-a8dbeca5a4f2
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site Address
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 24a26919-b8f4-4dfe-8053-f176e5185692
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 495e6a95-985f-44b4-9a8c-e457aef31e7b
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer City
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b5b61e8-a787-42b4-b77c-f719fc27688e
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 45bb4faf-9a95-4551-a615-229eb3f3476a
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site City
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e0776635-305b-4db8-80d9-e4a3697445cc
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 872f95ed-12c9-4556-9d62-28e25f3eb7f0
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a2c022fd-81a3-48e7-b7f3-c3fe81a4bfbd
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 9d7fd69d-0d8c-4160-aedf-3ec6f940e9ed
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 298d19a4-25c7-4291-877a-766e07b7ffc2
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: abb58f6d-ae4f-4a90-94aa-a30148144ffd
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,4)
-            description: Need to modify back to NUMBER
-            hashColumns: []
-            hashDetails: null
-            name: CompactSize
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9d599794-1c31-4a08-84ab-dd180b414947
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: e77554c5-eb17-4b17-b496-5558e988f0fe
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Size
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f80ee20e-c379-4754-bfb6-3c8ef30e9275
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: efabb035-7120-4af5-977a-b4647abef60a
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts/Units
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ee3231f0-2fb0-42eb-8a9a-46d8d80c868b
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 83ec7117-32b9-4d2d-9fb4-98a60be38689
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b395618-4afe-4ba2-95ec-df8c316ce4e4
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 80c51226-db8d-435d-943f-f6982619de91
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d06b8e2b-b8a2-4e15-bbff-a9532d7c192f
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - columnReference:
-              columnCounter: 9855172f-e7e7-4fdb-8a16-19cce758333e
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Yards Old
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: be7f0267-8be8-4528-bbcd-3e79069c91b5
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 97d91ec5-6869-4df8-8608-5b365bb74dc5
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Yards New
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 73772c12-cc63-41e0-a5f4-b685d74abea9
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5dc4f0ba-9e77-4e4e-9686-de9db2e92749
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 532c1c2d-d1c7-4d24-ba13-25335a224fcc
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
             transform: ""
-          - columnReference:
-              columnCounter: cf8c127f-2449-4fdd-b9c4-1adfe0bab89f
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Daily Yards
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1479c961-bcfd-4721-98cb-4d111a7cc1aa
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4c090f43-e25d-4800-86e8-d45092a1ac81
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            config: {}
-            dataType: NUMBER(18,6)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Yards Percent
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "(div0null(\"MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE\".\"Yards New\",\"MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE\".\"Daily Yards\")) "
-            systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c38ba5f7-c9aa-455b-be47-4bbe96c0c69b
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Route Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: RIGHT("MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Route",3)
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: adc4ac2a-74e1-4347-8c99-fef7f9f31dcb
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Route Sequence
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2bb29dca-66cc-4ad7-920a-ab15bb3fc2e8
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
             transform: ""
-          - columnReference:
-              columnCounter: 29e3c05d-8e61-4823-9902-5898758c7407
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Daily Tons
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a91ec1db-6251-45d5-9f49-45e9b4ea6ce8
-                    stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1b468337-c85e-4ec3-a652-40f20aa36db2
-              stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
-            config: {}
-            dataType: NUMBER(18,6)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Tons Percent
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: (div0null("MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Yards New","MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Daily Yards")) * "MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Daily Tons"
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32073caa-3552-467b-b608-c4677d25faf1
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a81dd355-608b-44e5-aebb-459e4562814b
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: OPERATIONS_DATA_MODEL
-                nodeName: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE
-            join:
-              joinCondition: |-
-                FROM {{ ref('OPERATIONS_DATA_MODEL', 'MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE') }} "MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"
-                where "MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Daily Yards">0
-            name: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE
-            noLinkRefs: []
-      name: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6311bd37-31d4-4c9a-8131-4384616d880c
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59b133cf-5489-4abe-bd8d-39feddd3d6d2
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 60676225-1074-4a70-9249-d2bb7c6b9c05
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0144b04e-357e-4084-8e97-b54400cb36a5
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fa2b8dcf-003e-45d8-8eb4-c746a571db49
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Site Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d8ebe60d-886f-4e79-801a-e7065a29b404
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f924525-ecb4-48af-8f04-1ee3e059fff0
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4de60052-b2ff-4d17-a500-0c3c6c29e078
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f545cf05-8f20-4863-8097-a8dbeca5a4f2
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Site Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24a26919-b8f4-4dfe-8053-f176e5185692
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 495e6a95-985f-44b4-9a8c-e457aef31e7b
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b5b61e8-a787-42b4-b77c-f719fc27688e
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 45bb4faf-9a95-4551-a615-229eb3f3476a
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Site City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e0776635-305b-4db8-80d9-e4a3697445cc
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 872f95ed-12c9-4556-9d62-28e25f3eb7f0
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Service
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a2c022fd-81a3-48e7-b7f3-c3fe81a4bfbd
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9d7fd69d-0d8c-4160-aedf-3ec6f940e9ed
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Service Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 298d19a4-25c7-4291-877a-766e07b7ffc2
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: abb58f6d-ae4f-4a90-94aa-a30148144ffd
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,4)
+        description: Need to modify back to NUMBER
+        hashDetails: null
+        name: CompactSize
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9d599794-1c31-4a08-84ab-dd180b414947
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e77554c5-eb17-4b17-b496-5558e988f0fe
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Service Size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f80ee20e-c379-4754-bfb6-3c8ef30e9275
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: efabb035-7120-4af5-977a-b4647abef60a
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Lifts/Units
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ee3231f0-2fb0-42eb-8a9a-46d8d80c868b
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 83ec7117-32b9-4d2d-9fb4-98a60be38689
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b395618-4afe-4ba2-95ec-df8c316ce4e4
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 80c51226-db8d-435d-943f-f6982619de91
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d06b8e2b-b8a2-4e15-bbff-a9532d7c192f
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9855172f-e7e7-4fdb-8a16-19cce758333e
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Yards Old
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be7f0267-8be8-4528-bbcd-3e79069c91b5
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97d91ec5-6869-4df8-8608-5b365bb74dc5
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Yards New
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 73772c12-cc63-41e0-a5f4-b685d74abea9
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cf8c127f-2449-4fdd-b9c4-1adfe0bab89f
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Daily Yards
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1479c961-bcfd-4721-98cb-4d111a7cc1aa
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c090f43-e25d-4800-86e8-d45092a1ac81
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,6)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Yards Percent
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "(div0null(\"MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE\".\"Yards New\",\"MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE\".\"Daily Yards\")) "
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29e3c05d-8e61-4823-9902-5898758c7407
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Daily Tons
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a91ec1db-6251-45d5-9f49-45e9b4ea6ce8
+                stepCounter: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1b468337-c85e-4ec3-a652-40f20aa36db2
+          stepCounter: 5698d598-cc5a-489f-b543-ce094e207d97
+        config: {}
+        dataType: NUMBER(18,6)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Tons Percent
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: (div0null("MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Yards New","MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Daily Yards")) * "MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Daily Tons"
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE: ce4cfd9d-2028-4781-95b9-72a0ae5fac90
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: OPERATIONS_DATA_MODEL
+            nodeName: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE
+        join:
+          joinCondition: |-
+            FROM {{ ref('OPERATIONS_DATA_MODEL', 'MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE') }} "MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"
+            where "MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE_HELPER_STAGE"."Daily Yards">0
+        name: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE
+        noLinkRefs: []
+  name: MUNI_SERVICES_REPORTING_COLLECT_TO_DISPOSE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

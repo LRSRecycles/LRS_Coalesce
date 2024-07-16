@@ -1,278 +1,297 @@
-steps:
-  VW_Route_Sequence_Revenue-9fac3659-362b-4ca2-b2f6-34c5ac2f8b98:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: Route Audit Report at sequence level with aggregates removedc for simplicity only. Can join with customer, site, service, and activity
-      isMultisource: false
-      locationName: OPERATIONS_DATA_MODEL
-      materializationType: view
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: f3d347d3-9f62-4245-bf13-53e3e25bd9e1
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c9f295ce-3d42-4883-95f6-76e3b3452185
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: f9abbe7f-66bc-4e33-8def-e4373e8b9ea6
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: NUMBER(18,2)
-            description: Need to modify back to NUMBER
-            hashColumns: []
-            hashDetails: null
-            name: CompactSize
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 877b9ef2-9600-4f87-a7bc-e45020746d1c
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 9359445d-f71f-4212-9020-bc824d56c0f5
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Size
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: acb41f4a-bc50-468b-a7b7-759127468537
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 5b1df803-02a1-4b6e-9046-5e485492b074
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Revenue
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2207ec9d-c35c-4222-bce7-3f99a30f42c9
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 2ec10590-3526-4093-9e88-22197fa6a21f
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e690a5dd-c32e-4f7b-b738-91e502c98cc0
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 41ec1319-14a2-4f72-aef3-d66fa85ebf87
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b006d4d-da2e-4a0d-a594-fbf71d76bbf4
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 2962c295-e167-484e-881c-6db9fa58616b
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c38ea902-dc90-4d31-8acd-869fc56df73c
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: df0bd533-eab5-41b2-9cd2-8b6043cfbc43
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cc4c645b-0a1d-4ba3-981c-778fb4de1b9c
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 0285d083-78e2-4e53-a3d4-ccb76cf451a8
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 646b7075-5cfb-4db8-9546-a3d5e0b42c29
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 590e1f7f-cd7d-49aa-91ea-f3c5af793b86
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Sequence
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dbfd32e6-f4c6-4240-8348-8448a1c17670
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: ccb26419-6e36-499b-94e3-7805493e9cfa
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ecedb9f5-282a-41b0-90a5-4272e5eba39a
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: caac35ba-cac8-459d-ab44-ef0874cebf8f
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d100548c-2336-427b-9dfd-d55a13aff04d
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 9cacda75-da8c-4a6b-a6ae-727f963bf79b
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Routable Activity Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a21fcf7f-7750-4614-bb68-ad4335293d00
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 937f49ef-1cee-4927-aa32-edce39ee5c52
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Compaction Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f97a0f7c-8e6e-429c-9361-fbae5c6d3198
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: e8219770-4047-4596-80b4-aab064e630cb
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: VARCHAR(2)
-            description: This is Audit_Actv
-            hashColumns: []
-            hashDetails: null
-            name: Activity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9e591287-8d1c-45b7-860f-25791e87f3d6
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 9787edd8-b5cb-4317-8f6b-77641a835695
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Yards
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 21a95931-e4a3-4949-a1c4-2d6d7697c363
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-          - columnReference:
-              columnCounter: 55d5cae7-d9c8-4e09-9b91-090cb394aacb
-              stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Weight Total for Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7c2f0bad-bfe1-48b8-9a4b-c6236c1f202b
-                    stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              Route_Sequence_Revenue: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: OPERATIONS_DATA_MODEL
-                nodeName: Route_Sequence_Revenue
-            join:
-              joinCondition: |-
-                FROM {{ ref('OPERATIONS_DATA_MODEL', 'Route_Sequence_Revenue') }} "Route_Sequence_Revenue"
-                WHERE "Route Date">=dateadd(day,-365,current_date())
-            name: VW_Route_Sequence_Revenue
-            noLinkRefs: []
-      name: VW_Route_Sequence_Revenue
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+fileVersion: 1
+id: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+name: VW_Route_Sequence_Revenue
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Route Audit Report at sequence level with aggregates removedc for simplicity only. Can join with customer, site, service, and activity
+  isMultisource: false
+  locationName: OPERATIONS_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f3d347d3-9f62-4245-bf13-53e3e25bd9e1
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c9f295ce-3d42-4883-95f6-76e3b3452185
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f9abbe7f-66bc-4e33-8def-e4373e8b9ea6
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Need to modify back to NUMBER
+        hashDetails: null
+        name: CompactSize
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 877b9ef2-9600-4f87-a7bc-e45020746d1c
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9359445d-f71f-4212-9020-bc824d56c0f5
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Service Size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: acb41f4a-bc50-468b-a7b7-759127468537
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5b1df803-02a1-4b6e-9046-5e485492b074
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Service Revenue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2207ec9d-c35c-4222-bce7-3f99a30f42c9
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ec10590-3526-4093-9e88-22197fa6a21f
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e690a5dd-c32e-4f7b-b738-91e502c98cc0
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 41ec1319-14a2-4f72-aef3-d66fa85ebf87
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Service Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b006d4d-da2e-4a0d-a594-fbf71d76bbf4
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2962c295-e167-484e-881c-6db9fa58616b
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c38ea902-dc90-4d31-8acd-869fc56df73c
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: df0bd533-eab5-41b2-9cd2-8b6043cfbc43
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cc4c645b-0a1d-4ba3-981c-778fb4de1b9c
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0285d083-78e2-4e53-a3d4-ccb76cf451a8
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Service
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 646b7075-5cfb-4db8-9546-a3d5e0b42c29
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 590e1f7f-cd7d-49aa-91ea-f3c5af793b86
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Route Sequence
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dbfd32e6-f4c6-4240-8348-8448a1c17670
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ccb26419-6e36-499b-94e3-7805493e9cfa
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ecedb9f5-282a-41b0-90a5-4272e5eba39a
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: caac35ba-cac8-459d-ab44-ef0874cebf8f
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d100548c-2336-427b-9dfd-d55a13aff04d
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9cacda75-da8c-4a6b-a6ae-727f963bf79b
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Routable Activity Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a21fcf7f-7750-4614-bb68-ad4335293d00
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 937f49ef-1cee-4927-aa32-edce39ee5c52
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Service Compaction Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f97a0f7c-8e6e-429c-9361-fbae5c6d3198
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e8219770-4047-4596-80b4-aab064e630cb
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: VARCHAR(2)
+        description: This is Audit_Actv
+        hashDetails: null
+        name: Activity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9e591287-8d1c-45b7-860f-25791e87f3d6
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9787edd8-b5cb-4317-8f6b-77641a835695
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Yards
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21a95931-e4a3-4949-a1c4-2d6d7697c363
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 55d5cae7-d9c8-4e09-9b91-090cb394aacb
+          stepCounter: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Weight Total for Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7c2f0bad-bfe1-48b8-9a4b-c6236c1f202b
+                stepCounter: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          Route_Sequence_Revenue: 26ecf3ab-3a86-48c4-a62f-db8bf47d44e7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: OPERATIONS_DATA_MODEL
+            nodeName: Route_Sequence_Revenue
+        join:
+          joinCondition: |-
+            FROM {{ ref('OPERATIONS_DATA_MODEL', 'Route_Sequence_Revenue') }} "Route_Sequence_Revenue"
+            WHERE "Route Date">=dateadd(day,-365,current_date())
+        name: VW_Route_Sequence_Revenue
+        noLinkRefs: []
+  name: VW_Route_Sequence_Revenue
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,157 +1,164 @@
-steps:
-  ROUTE_DAY_EMPLOYEE_COST_CURRENT-ea902324-cb68-4674-afe1-44984320c198:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: Time on Route per day per driver with total time, eliminates sequences, will replace bad sequence times in cost model
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 293b5dc5-96dc-4424-9c85-0041691e26b9
-              stepCounter: ea902324-cb68-4674-afe1-44984320c198
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_DATE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 55d9ce40-b5aa-418e-b59c-8f15252ffede
-                    stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-                transform: ""
-          - columnReference:
-              columnCounter: 68fccbc1-f235-4679-8a3b-65b00a14205d
-              stepCounter: ea902324-cb68-4674-afe1-44984320c198
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_DRIVER
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6218ee86-927b-4e57-9985-6917ede4df80
-                    stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-                transform: ""
-          - columnReference:
-              columnCounter: 78532188-4f35-40f7-ac03-71fdbc0b24d3
-              stepCounter: ea902324-cb68-4674-afe1-44984320c198
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Time
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 066b11e3-723b-415d-ab7c-f38c7be28506
-                    stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-                transform: TIMEDIFF(MINUTE,"ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKIN","ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKOUT")
-          - columnReference:
-              columnCounter: 2543f56c-9c38-4958-af72-02936c0a3878
-              stepCounter: ea902324-cb68-4674-afe1-44984320c198
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_ROUT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ff98dbeb-42bf-4c8f-adfb-2bc2f319fe9d
-                    stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-                transform: ""
-          - columnReference:
-              columnCounter: 6fc52697-a9ad-4367-ad35-fc81e662e348
-              stepCounter: ea902324-cb68-4674-afe1-44984320c198
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b0ed4c60-3da3-42ea-8ad5-f040132fbd8f
-                    stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: aceba4dd-e978-4f69-b106-75f7af208d3f
-              stepCounter: ea902324-cb68-4674-afe1-44984320c198
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
-                    stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
-                transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\" + \"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\""
-            systemColumnType: None
+fileVersion: 1
+id: ea902324-cb68-4674-afe1-44984320c198
+name: ROUTE_DAY_EMPLOYEE_COST_CURRENT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Time on Route per day per driver with total time, eliminates sequences, will replace bad sequence times in cost model
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 293b5dc5-96dc-4424-9c85-0041691e26b9
+          stepCounter: ea902324-cb68-4674-afe1-44984320c198
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: RM17_DATE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 55d9ce40-b5aa-418e-b59c-8f15252ffede
+                stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 34dc6b2a-e598-4a49-a88e-083e75e9f641
-              stepCounter: ea902324-cb68-4674-afe1-44984320c198
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Route Day Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: TIMEDIFF(MINUTE,"ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKIN","ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKOUT")/60 * "EMPLOYEE_COST_CURRENT"."EC01_CST1" + "EMPLOYEE_COST_CURRENT"."EC01_CST2"
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 68fccbc1-f235-4679-8a3b-65b00a14205d
+          stepCounter: ea902324-cb68-4674-afe1-44984320c198
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: RM17_DRIVER
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6218ee86-927b-4e57-9985-6917ede4df80
+                stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              EMPLOYEE_COST_CURRENT: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
-              ROUTE_DAY_CLOCK_INOUT_TIME: 1487a66c-720d-47df-b75b-cd7ae7739da0
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: EMPLOYEE_COST_CURRENT
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: ROUTE_DAY_CLOCK_INOUT_TIME
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_CLOCK_INOUT_TIME') }} "ROUTE_DAY_CLOCK_INOUT_TIME"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'EMPLOYEE_COST_CURRENT') }} "EMPLOYEE_COST_CURRENT"
-                ON "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_DRIVER" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
-                    and "ROUTE_DAY_CLOCK_INOUT_TIME"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
-            name: ROUTE_DAY_EMPLOYEE_COST_CURRENT
-            noLinkRefs: []
-      name: ROUTE_DAY_EMPLOYEE_COST_CURRENT
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: ea902324-cb68-4674-afe1-44984320c198
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 78532188-4f35-40f7-ac03-71fdbc0b24d3
+          stepCounter: ea902324-cb68-4674-afe1-44984320c198
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Route Time
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 066b11e3-723b-415d-ab7c-f38c7be28506
+                stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+            transform: TIMEDIFF(MINUTE,"ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKIN","ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKOUT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2543f56c-9c38-4958-af72-02936c0a3878
+          stepCounter: ea902324-cb68-4674-afe1-44984320c198
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: RM17_ROUT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ff98dbeb-42bf-4c8f-adfb-2bc2f319fe9d
+                stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6fc52697-a9ad-4367-ad35-fc81e662e348
+          stepCounter: ea902324-cb68-4674-afe1-44984320c198
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b0ed4c60-3da3-42ea-8ad5-f040132fbd8f
+                stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: aceba4dd-e978-4f69-b106-75f7af208d3f
+          stepCounter: ea902324-cb68-4674-afe1-44984320c198
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
+                stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
+            transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\" + \"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34dc6b2a-e598-4a49-a88e-083e75e9f641
+          stepCounter: ea902324-cb68-4674-afe1-44984320c198
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Route Day Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TIMEDIFF(MINUTE,"ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKIN","ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKOUT")/60 * "EMPLOYEE_COST_CURRENT"."EC01_CST1" + "EMPLOYEE_COST_CURRENT"."EC01_CST2"
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          EMPLOYEE_COST_CURRENT: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
+          ROUTE_DAY_CLOCK_INOUT_TIME: 1487a66c-720d-47df-b75b-cd7ae7739da0
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: EMPLOYEE_COST_CURRENT
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: ROUTE_DAY_CLOCK_INOUT_TIME
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_CLOCK_INOUT_TIME') }} "ROUTE_DAY_CLOCK_INOUT_TIME"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'EMPLOYEE_COST_CURRENT') }} "EMPLOYEE_COST_CURRENT"
+            ON "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_DRIVER" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
+                and "ROUTE_DAY_CLOCK_INOUT_TIME"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
+        name: ROUTE_DAY_EMPLOYEE_COST_CURRENT
+        noLinkRefs: []
+  name: ROUTE_DAY_EMPLOYEE_COST_CURRENT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

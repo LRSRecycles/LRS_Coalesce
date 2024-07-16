@@ -1,115 +1,119 @@
-steps:
-  STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY-058045ec-90ae-4213-a442-28db01552d42:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: bdab7a1a-6ef0-4fc6-8528-330b9b76ab10
-              stepCounter: 058045ec-90ae-4213-a442-28db01552d42
-            dataType: VARCHAR(12)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Collections Tickets
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 28232c94-1dd8-4ea7-ae87-e505a8167a80
-                    stepCounter: f3e5c614-4177-4bd4-aca0-cb4086788c20
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c8feb699-e9fd-4ea1-9361-65e7713f742d
-              stepCounter: 058045ec-90ae-4213-a442-28db01552d42
-            config: {}
-            dataType: DATE
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Collections Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f74b7f4f-528e-49ce-ab7d-6d2e617dc584
-                    stepCounter: f3e5c614-4177-4bd4-aca0-cb4086788c20
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 058045ec-90ae-4213-a442-28db01552d42
+name: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bdab7a1a-6ef0-4fc6-8528-330b9b76ab10
+          stepCounter: 058045ec-90ae-4213-a442-28db01552d42
+        config: {}
+        dataType: VARCHAR(12)
+        description: ""
+        hashDetails: null
+        name: Collections Tickets
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28232c94-1dd8-4ea7-ae87-e505a8167a80
+                stepCounter: f3e5c614-4177-4bd4-aca0-cb4086788c20
             transform: ""
-          - columnReference:
-              columnCounter: 0f04e85d-b580-45ec-bac1-e33b15d58766
-              stepCounter: 058045ec-90ae-4213-a442-28db01552d42
-            dataType: VARCHAR(12)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Post Collection Tickets
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f0592a83-f750-4f1d-95be-a48b5e2c440c
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: b4aa76b5-9986-4c1f-9138-c12ecb579487
-              stepCounter: 058045ec-90ae-4213-a442-28db01552d42
-            config: {}
-            dataType: DATE
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Post Collections Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d3814990-641c-4e41-92dd-c38545ba5c6d
-                    stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
-                transform: ""
-            systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8feb699-e9fd-4ea1-9361-65e7713f742d
+          stepCounter: 058045ec-90ae-4213-a442-28db01552d42
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Collections Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f74b7f4f-528e-49ce-ab7d-6d2e617dc584
+                stepCounter: f3e5c614-4177-4bd4-aca0-cb4086788c20
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              STG_COLLECTIONS_DISPOSAL_TICKETS: f3e5c614-4177-4bd4-aca0-cb4086788c20
-              STG_POST_COLLECTIONS_DISPOSAL_TICKETS: 335a729b-b952-45d9-a3d3-8b968a81e190
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_POST_COLLECTIONS_DISPOSAL_TICKETS
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_COLLECTIONS_DISPOSAL_TICKETS"
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_POST_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"
-                    ON "STG_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB" = "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB"
-                WHERE ABS(DATEDIFF(DAY, "STG_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DATE", "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DATE")) <=7
-            name: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
-            noLinkRefs: []
-      name: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 058045ec-90ae-4213-a442-28db01552d42
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f04e85d-b580-45ec-bac1-e33b15d58766
+          stepCounter: 058045ec-90ae-4213-a442-28db01552d42
+        config: {}
+        dataType: VARCHAR(12)
+        description: ""
+        hashDetails: null
+        name: Post Collection Tickets
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0592a83-f750-4f1d-95be-a48b5e2c440c
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b4aa76b5-9986-4c1f-9138-c12ecb579487
+          stepCounter: 058045ec-90ae-4213-a442-28db01552d42
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Post Collections Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d3814990-641c-4e41-92dd-c38545ba5c6d
+                stepCounter: 335a729b-b952-45d9-a3d3-8b968a81e190
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_COLLECTIONS_DISPOSAL_TICKETS: f3e5c614-4177-4bd4-aca0-cb4086788c20
+          STG_POST_COLLECTIONS_DISPOSAL_TICKETS: 335a729b-b952-45d9-a3d3-8b968a81e190
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_POST_COLLECTIONS_DISPOSAL_TICKETS
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_COLLECTIONS_DISPOSAL_TICKETS"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_POST_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"
+                ON "STG_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB" = "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB"
+            WHERE ABS(DATEDIFF(DAY, "STG_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DATE", "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DATE")) <=7
+        name: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
+        noLinkRefs: []
+  name: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

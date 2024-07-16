@@ -1,539 +1,573 @@
-steps:
-  DRIVER_MASTER-940b0208-f219-48a1-b5d2-0731c88fefa9:
-    operation:
-      config:
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-      database: ""
-      deployEnabled: true
-      description: might need additional stage for RM04
-      isMultisource: true
-      locationName: MASTER_DATA_CLEAN
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1c355712-6848-4292-8202-d20f98f75496
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            isSurrogateKey: true
-            name: DIM_RM04_COMBINED_KEY
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: d51e955b-9eca-4a57-9e93-a970a6734b6a
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            isBusinessKey: true
-            name: Employee Number
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 456572ed-fbc2-471a-8af7-3879d0b01cc8
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: aa26d26e-a96b-41a1-b697-b6b1c431d202
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: ""
-          - columnReference:
-              columnCounter: 7f9e7ed8-36eb-4d04-904d-315ad2fdbfd7
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            isChangeTracking: true
-            name: First Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c5566d81-d15c-4fcf-8ae3-b1410de4d41e
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 9c863425-e058-4d94-b9eb-7a9d0bf7419f
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: initcap("WORKER_COMBINED"."FIRSTNAME")
-          - columnReference:
-              columnCounter: 4e8116be-2376-4daf-8a5e-fb859354b208
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            isChangeTracking: true
-            name: Last Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3cc18f19-7c15-42a0-ba0b-0bca1e0e375b
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: de978c05-f807-4dcc-a4f8-5805d2134d18
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: initcap("WORKER_COMBINED"."LASTNAME")
-          - columnReference:
-              columnCounter: 9d55ba6b-eb9e-4f25-b0d5-91faaa6d6bbd
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: NUMBER(10,2)
-            description: ""
-            hashDetails: null
-            name: Cost 1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 84229ece-86e0-46c1-ad9d-84a968c1831d
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 5a7a4978-dae9-49e3-a92c-9b3b04eea277
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: NUMBER(10,2)
-            description: ""
-            hashDetails: null
-            name: Cost 2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 92bfc4c2-962e-4035-a8be-0763d7592c48
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 1d0563fa-d02f-420f-855d-b1cef48827ea
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(80)
-            description: ""
-            hashDetails: null
-            isChangeTracking: true
-            name: Email
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c03b0572-75c7-40b5-a293-11962318917b
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 952459ab-6178-40f0-97c0-ce45c979305c
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: ""
-          - columnReference:
-              columnCounter: 6df5f5a7-9b98-4350-a15f-7f1fd79e56a2
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(10)
-            description: ""
-            hashDetails: null
-            isChangeTracking: true
-            name: Phone
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 65042733-d04d-4a2f-924c-85a64a9bfbf8
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 2d2e8364-b5c4-49ef-ae50-8c1a498b1ca7
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: ""
-          - columnReference:
-              columnCounter: 8c3b9df1-841c-4512-8ac0-d9325f8e819a
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(20)
-            description: ""
-            hashDetails: null
-            name: Additional Employee Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1e0b65ac-aea9-4789-9959-1fea8be51c36
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 4ec768e2-9d17-4c5c-b640-6a590eb2e819
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            isBusinessKey: true
-            name: Active Flag
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 39f9f372-6a41-4ff4-8fed-88fad8d69098
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: b00b9596-cc43-48ae-a891-77e2f52a828b
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: ""
-          - columnReference:
-              columnCounter: eda039a5-ac3c-460d-beae-58f064e2a255
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Mechanic Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5a553027-479b-4339-902b-95542226a192
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 878a83e6-9e25-4097-88ae-6f79db07ac5d
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(20)
-            description: ""
-            hashDetails: null
-            name: Driver Password
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: feb0aafd-b6f8-47fb-a409-ddc08b1abb51
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 45775ae3-7743-4cde-8b55-10bf27825e9b
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: ""
-          - columnReference:
-              columnCounter: 339314d6-85a6-4b15-97a5-9bc876714c5b
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(40)
-            description: ""
-            hashDetails: null
-            name: Tracking Phone Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: be4d837e-ebc2-4265-9cfb-cf518f765db1
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 06acbcf9-b1c2-408a-8e61-dfcddbd0dab3
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR(40)
-            description: ""
-            hashDetails: null
-            name: Driver License Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 68fc0ce4-eeb3-4830-8070-b67433a11c17
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 2c242ebb-c851-4b72-a643-f3f325c2e382
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: ""
-          - columnReference:
-              columnCounter: 125bf066-968a-47d1-88de-3e4b3b072383
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashDetails: null
-            name: License Renewal Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f29d74ed-fc19-44e9-ae6b-40f99ff03edb
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 4b15b87b-f025-4bfc-aa09-f7ce1082537a
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: ""
-          - acceptedValues:
-              strictMatch: false
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 8ddcffe1-5419-4293-a8a7-c290a2fd4ad3
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            name: Medical Renewal Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3d560a03-51e1-4bd3-9302-c3367f033ed8
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-          - acceptedValues:
-              strictMatch: false
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1570c019-587a-4767-9572-33ccf6839e35
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR
-            description: ""
-            name: Note
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9f9414d8-30e9-4c4e-85e6-46abab9edd2f
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 03a210a7-3172-4400-86cc-dbbbc0f27051
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Employee Cost (EC01) Combined
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
-                    stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
-                transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\"+\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\""
-              - columnReferences: []
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 940b0208-f219-48a1-b5d2-0731c88fefa9
+name: DRIVER_MASTER
+operation:
+  config:
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+  database: ""
+  deployEnabled: true
+  description: might need additional stage for RM04
+  isMultisource: true
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c355712-6848-4292-8202-d20f98f75496
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSurrogateKey: true
+        name: DIM_RM04_COMBINED_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c01c489f-ca04-494a-9e05-1bbd7ad71c24
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Full Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"RM04_COMBINED\".\"RM04_FNAM\"||' '||\"RM04_COMBINED\".\"RM04_LNAM\""
-              - columnReferences: []
-                transform: INITCAP("WORKER_COMBINED"."FIRSTNAME"||' '||"WORKER_COMBINED"."LASTNAME")
-            systemColumnType: None
+          - columnReferences: []
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: d5da55c6-d9f4-4acd-a068-2cf924396739
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Formatted Name
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"RM04_COMBINED\".\"RM04_LNAM\"||', '||\"RM04_COMBINED\".\"RM04_FNAM\""
-              - columnReferences: []
-                transform: INITCAP("WORKER_COMBINED"."LASTNAME"||', '||"WORKER_COMBINED"."FIRSTNAME")
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d51e955b-9eca-4a57-9e93-a970a6734b6a
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        isBusinessKey: true
+        name: Employee Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 456572ed-fbc2-471a-8af7-3879d0b01cc8
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
             transform: ""
-          - columnReference:
-              columnCounter: 76e94c93-9907-4a8b-8d38-47cd2be41958
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            isBusinessKey: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3a883d36-6ef3-4db0-b9c4-fa84b41af3d8
-                    stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
-                transform: ""
-              - columnReferences:
-                  - columnCounter: d645eb24-b9ec-4547-97aa-115782a1df7c
-                    stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-                transform: "\"WORKER_COMBINED\".\"COMPANYID\"|| ' - TOWER'"
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 68e24436-4f05-4b10-8444-61e0bfb7c623
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            isSystemVersion: true
-            name: SYSTEM_VERSION
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0c998815-5704-469b-858b-9ad0e75756cd
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            isSystemCurrentFlag: true
-            name: SYSTEM_CURRENT_FLAG
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 42005124-87d4-4fbc-806b-04f32d0b3274
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemStartDate: true
-            name: SYSTEM_START_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: cfcbe440-c4dc-4ca0-8977-5c22b7f75f52
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemEndDate: true
-            name: SYSTEM_END_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
-              - columnReferences: []
-                transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 8105f6bf-c039-4509-8839-b78482bbdb78
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemCreateDate: true
-            name: SYSTEM_CREATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c17197f9-2de6-4061-8e4d-7364214126c0
-              stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemUpdateDate: true
-            name: SYSTEM_UPDATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              EMPLOYEE_COST_CURRENT: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
-              RM04_COMBINED: ee847855-7787-4e90-bc2b-f25d4232ef87
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: EMPLOYEE_COST_CURRENT
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: RM04_COMBINED
-            join:
-              joinCondition: |2-
-                  FROM {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
-                  LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'EMPLOYEE_COST_CURRENT') }} "EMPLOYEE_COST_CURRENT"
-                    ON "RM04_COMBINED"."RM04_NUMB" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
-                   AND "RM04_COMBINED"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
-            name: TRUX DRIVER MASTER
-            noLinkRefs: []
-          - aliases:
-              WORKER_COMBINED: f6f9ee19-2b4e-4780-8aae-378f49e4b519
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: WORKER_COMBINED
-            join:
-              joinCondition: FROM {{ ref('TOWER_COMBINED', 'WORKER_COMBINED') }} "WORKER_COMBINED"
-            name: TOWER Driver Master
-            noLinkRefs: []
-      name: DRIVER_MASTER
-      overrideSQL: false
-      schema: ""
-      sqlType: Dimension
-      type: sql
-    stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+          - columnReferences:
+              - columnCounter: aa26d26e-a96b-41a1-b697-b6b1c431d202
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7f9e7ed8-36eb-4d04-904d-315ad2fdbfd7
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        isChangeTracking: true
+        name: First Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5566d81-d15c-4fcf-8ae3-b1410de4d41e
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: 9c863425-e058-4d94-b9eb-7a9d0bf7419f
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: initcap("WORKER_COMBINED"."FIRSTNAME")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e8116be-2376-4daf-8a5e-fb859354b208
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        isChangeTracking: true
+        name: Last Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3cc18f19-7c15-42a0-ba0b-0bca1e0e375b
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: de978c05-f807-4dcc-a4f8-5805d2134d18
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: initcap("WORKER_COMBINED"."LASTNAME")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9d55ba6b-eb9e-4f25-b0d5-91faaa6d6bbd
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: NUMBER(10,2)
+        description: ""
+        hashDetails: null
+        name: Cost 1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 84229ece-86e0-46c1-ad9d-84a968c1831d
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a7a4978-dae9-49e3-a92c-9b3b04eea277
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: NUMBER(10,2)
+        description: ""
+        hashDetails: null
+        name: Cost 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 92bfc4c2-962e-4035-a8be-0763d7592c48
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1d0563fa-d02f-420f-855d-b1cef48827ea
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        hashDetails: null
+        isChangeTracking: true
+        name: Email
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c03b0572-75c7-40b5-a293-11962318917b
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: 952459ab-6178-40f0-97c0-ce45c979305c
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6df5f5a7-9b98-4350-a15f-7f1fd79e56a2
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        hashDetails: null
+        isChangeTracking: true
+        name: Phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 65042733-d04d-4a2f-924c-85a64a9bfbf8
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: 2d2e8364-b5c4-49ef-ae50-8c1a498b1ca7
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c3b9df1-841c-4512-8ac0-d9325f8e819a
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        hashDetails: null
+        name: Additional Employee Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1e0b65ac-aea9-4789-9959-1fea8be51c36
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ec768e2-9d17-4c5c-b640-6a590eb2e819
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        isBusinessKey: true
+        name: Active Flag
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39f9f372-6a41-4ff4-8fed-88fad8d69098
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: b00b9596-cc43-48ae-a891-77e2f52a828b
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eda039a5-ac3c-460d-beae-58f064e2a255
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Mechanic Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5a553027-479b-4339-902b-95542226a192
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 878a83e6-9e25-4097-88ae-6f79db07ac5d
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        hashDetails: null
+        name: Driver Password
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: feb0aafd-b6f8-47fb-a409-ddc08b1abb51
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: 45775ae3-7743-4cde-8b55-10bf27825e9b
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 339314d6-85a6-4b15-97a5-9bc876714c5b
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: Tracking Phone Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be4d837e-ebc2-4265-9cfb-cf518f765db1
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 06acbcf9-b1c2-408a-8e61-dfcddbd0dab3
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: Driver License Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 68fc0ce4-eeb3-4830-8070-b67433a11c17
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: 2c242ebb-c851-4b72-a643-f3f325c2e382
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 125bf066-968a-47d1-88de-3e4b3b072383
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: License Renewal Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f29d74ed-fc19-44e9-ae6b-40f99ff03edb
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4b15b87b-f025-4bfc-aa09-f7ce1082537a
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8ddcffe1-5419-4293-a8a7-c290a2fd4ad3
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Medical Renewal Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3d560a03-51e1-4bd3-9302-c3367f033ed8
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1570c019-587a-4767-9572-33ccf6839e35
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Note
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9f9414d8-30e9-4c4e-85e6-46abab9edd2f
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03a210a7-3172-4400-86cc-dbbbc0f27051
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Employee Cost (EC01) Combined
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6ca1fad0-ebc2-4b6f-96da-3185de23cd11
+                stepCounter: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
+            transform: "\"EMPLOYEE_COST_CURRENT\".\"EC01_CST2\"+\"EMPLOYEE_COST_CURRENT\".\"EC01_CST1\""
+          - columnReferences: []
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c01c489f-ca04-494a-9e05-1bbd7ad71c24
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Full Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"RM04_COMBINED\".\"RM04_FNAM\"||' '||\"RM04_COMBINED\".\"RM04_LNAM\""
+          - columnReferences: []
+            transform: INITCAP("WORKER_COMBINED"."FIRSTNAME"||' '||"WORKER_COMBINED"."LASTNAME")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d5da55c6-d9f4-4acd-a068-2cf924396739
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Formatted Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"RM04_COMBINED\".\"RM04_LNAM\"||', '||\"RM04_COMBINED\".\"RM04_FNAM\""
+          - columnReferences: []
+            transform: INITCAP("WORKER_COMBINED"."LASTNAME"||', '||"WORKER_COMBINED"."FIRSTNAME")
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 76e94c93-9907-4a8b-8d38-47cd2be41958
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        isBusinessKey: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3a883d36-6ef3-4db0-b9c4-fa84b41af3d8
+                stepCounter: ee847855-7787-4e90-bc2b-f25d4232ef87
+            transform: ""
+          - columnReferences:
+              - columnCounter: d645eb24-b9ec-4547-97aa-115782a1df7c
+                stepCounter: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+            transform: "\"WORKER_COMBINED\".\"COMPANYID\"|| ' - TOWER'"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 68e24436-4f05-4b10-8444-61e0bfb7c623
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSystemVersion: true
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c998815-5704-469b-858b-9ad0e75756cd
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemCurrentFlag: true
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42005124-87d4-4fbc-806b-04f32d0b3274
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemStartDate: true
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cfcbe440-c4dc-4ca0-8977-5c22b7f75f52
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemEndDate: true
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8105f6bf-c039-4509-8839-b78482bbdb78
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c17197f9-2de6-4061-8e4d-7364214126c0
+          stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          EMPLOYEE_COST_CURRENT: 3120e3f0-d6a8-4151-8938-1b9cf4ad4b22
+          RM04_COMBINED: ee847855-7787-4e90-bc2b-f25d4232ef87
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: EMPLOYEE_COST_CURRENT
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: RM04_COMBINED
+        join:
+          joinCondition: |2-
+              FROM {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
+              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'EMPLOYEE_COST_CURRENT') }} "EMPLOYEE_COST_CURRENT"
+                ON "RM04_COMBINED"."RM04_NUMB" = "EMPLOYEE_COST_CURRENT"."EC01_NUMB"
+               AND "RM04_COMBINED"."SOURCE" = "EMPLOYEE_COST_CURRENT"."SOURCE"
+        name: TRUX DRIVER MASTER
+        noLinkRefs: []
+      - aliases:
+          WORKER_COMBINED: f6f9ee19-2b4e-4780-8aae-378f49e4b519
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: WORKER_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TOWER_COMBINED', 'WORKER_COMBINED') }} "WORKER_COMBINED"
+        name: TOWER Driver Master
+        noLinkRefs: []
+  name: DRIVER_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Dimension
+  type: sql
+  version: 1
+type: Node

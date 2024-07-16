@@ -1,125 +1,131 @@
-steps:
-  SP03_COMBINED-880b4537-5701-49d2-9087-95782f0eb23b:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 2e0934d8-9f0e-43b3-86e8-6b2728940945
-              stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SP03_ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7ba6bffe-c786-4cdd-8d71-36e4db97b7f4
-                    stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
-                transform: ""
-          - columnReference:
-              columnCounter: c0613adc-2688-40ff-8bc5-18c10699d750
-              stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SP03_LINK
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 99e0ab97-a310-411c-881b-602702a0b245
-                    stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
-                transform: ""
-          - columnReference:
-              columnCounter: e6357e79-ca1d-499a-aef7-0402e4fb47ab
-              stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SP03_CUST
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 25949a35-924c-4629-a4a9-906e393036ab
-                    stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
-                transform: ""
-          - columnReference:
-              columnCounter: 4402393a-f174-4946-b87a-675eb8929d4d
-              stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
-            dataType: VARCHAR(40)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SP03_REFE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8e35e223-966c-4ec2-83f6-a4b2470ea097
-                    stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
-                transform: ""
-          - columnReference:
-              columnCounter: 0423d563-1662-4af1-a788-39efd968a58d
-              stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SP03_SITE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d08c1d3a-493b-4cfc-8aa6-18d1d3d88de9
-                    stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 64aacecb-fd4f-4ae5-a0a2-cba041259439
-              stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_AL_COMP_RAW
-                nodeName: SP03
-            join:
-              joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'SP03') }} "SP03"
-            name: SP03_COMBINED
-            noLinkRefs: []
-      name: SP03_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+fileVersion: 1
+id: 880b4537-5701-49d2-9087-95782f0eb23b
+name: SP03_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2e0934d8-9f0e-43b3-86e8-6b2728940945
+          stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: SP03_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7ba6bffe-c786-4cdd-8d71-36e4db97b7f4
+                stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0613adc-2688-40ff-8bc5-18c10699d750
+          stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: SP03_LINK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 99e0ab97-a310-411c-881b-602702a0b245
+                stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6357e79-ca1d-499a-aef7-0402e4fb47ab
+          stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: SP03_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25949a35-924c-4629-a4a9-906e393036ab
+                stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4402393a-f174-4946-b87a-675eb8929d4d
+          stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: SP03_REFE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8e35e223-966c-4ec2-83f6-a4b2470ea097
+                stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0423d563-1662-4af1-a788-39efd968a58d
+          stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: SP03_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d08c1d3a-493b-4cfc-8aa6-18d1d3d88de9
+                stepCounter: d2852722-23d4-42e7-96c2-1efb021931d4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64aacecb-fd4f-4ae5-a0a2-cba041259439
+          stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: SP03
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'SP03') }} "SP03"
+        name: SP03_COMBINED
+        noLinkRefs: []
+  name: SP03_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

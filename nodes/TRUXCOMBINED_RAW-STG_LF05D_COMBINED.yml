@@ -1,95 +1,105 @@
-steps:
-  STG_LF05D_COMBINED-055d62c4-a626-4473-b119-959d16003a58:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 3ff73ef2-dd16-4911-acfe-b15ef253bee4
-              stepCounter: 055d62c4-a626-4473-b119-959d16003a58
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: LF05D_LINK
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dab40564-817a-4c45-9232-96aac92d69f5
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: ""
-          - columnReference:
-              columnCounter: 0d64394b-65af-49d7-8dde-c71e9bb728bf
-              stepCounter: 055d62c4-a626-4473-b119-959d16003a58
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: MAXIMUM LF05D_LEED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 565be7f8-5ce9-420e-aba3-8c94e7f335d3
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: MAX("LF05D_COMBINED"."LF05D_LEED")
-          - columnReference:
-              columnCounter: 20f089cf-51f5-4ffb-a7be-1e2a60b0e9fb
-              stepCounter: 055d62c4-a626-4473-b119-959d16003a58
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: MINIMUM LF05D_LEED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 565be7f8-5ce9-420e-aba3-8c94e7f335d3
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: MIN("LF05D_COMBINED"."LF05D_LEED")
-          - columnReference:
-              columnCounter: 87d218bb-b033-4c64-ad99-c7e3a9fd9902
-              stepCounter: 055d62c4-a626-4473-b119-959d16003a58
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1197c322-9921-4c9b-acaa-1402514b3d62
-                    stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: LF05D_COMBINED
-            join:
-              joinCondition: |2-
-                 FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-                WHERE "SORT" = 1 
-                  AND "_FIVETRAN_DELETED" = FALSE 
-                  AND "METADATA$ACTION" = 'INSERT'
-                GROUP BY "LF05D_COMBINED"."LF05D_LINK", "LF05D_COMBINED"."SOURCE"
-            name: STG_LF05D_COMBINED
-            noLinkRefs: []
-      name: STG_LF05D_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 055d62c4-a626-4473-b119-959d16003a58
+fileVersion: 1
+id: 055d62c4-a626-4473-b119-959d16003a58
+name: STG_LF05D_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3ff73ef2-dd16-4911-acfe-b15ef253bee4
+          stepCounter: 055d62c4-a626-4473-b119-959d16003a58
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: LF05D_LINK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dab40564-817a-4c45-9232-96aac92d69f5
+                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d64394b-65af-49d7-8dde-c71e9bb728bf
+          stepCounter: 055d62c4-a626-4473-b119-959d16003a58
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: MAXIMUM LF05D_LEED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 565be7f8-5ce9-420e-aba3-8c94e7f335d3
+                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+            transform: MAX("LF05D_COMBINED"."LF05D_LEED")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20f089cf-51f5-4ffb-a7be-1e2a60b0e9fb
+          stepCounter: 055d62c4-a626-4473-b119-959d16003a58
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: MINIMUM LF05D_LEED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 565be7f8-5ce9-420e-aba3-8c94e7f335d3
+                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+            transform: MIN("LF05D_COMBINED"."LF05D_LEED")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 87d218bb-b033-4c64-ad99-c7e3a9fd9902
+          stepCounter: 055d62c4-a626-4473-b119-959d16003a58
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1197c322-9921-4c9b-acaa-1402514b3d62
+                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LF05D_COMBINED
+        join:
+          joinCondition: |2-
+             FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
+            WHERE "SORT" = 1 
+              AND "_FIVETRAN_DELETED" = FALSE 
+              AND "METADATA$ACTION" = 'INSERT'
+            GROUP BY "LF05D_COMBINED"."LF05D_LINK", "LF05D_COMBINED"."SOURCE"
+        name: STG_LF05D_COMBINED
+        noLinkRefs: []
+  name: STG_LF05D_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

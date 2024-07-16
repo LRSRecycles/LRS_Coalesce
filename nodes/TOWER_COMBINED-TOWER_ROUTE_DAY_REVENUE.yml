@@ -1,250 +1,264 @@
-steps:
-  TOWER_ROUTE_DAY_REVENUE-7497f9b6-8e48-4e21-96fe-ab44b134f092:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 406de4bb-2695-4ea9-acf0-174b53c25900
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9b72b8d8-9ffc-4f42-90dc-f66bbf5c3b6e
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: ""
-          - columnReference:
-              columnCounter: 816ed9bf-c549-4abb-968c-72fef5ed9afb
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f9bae9ee-b85b-43bf-b55e-cf80fe71e616
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: ""
-          - columnReference:
-              columnCounter: 7f367e34-b9b1-4396-b8e4-7f96ea2b8f93
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time on Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Total Stop Time")
-          - columnReference:
-              columnCounter: b252b5f9-f73e-4626-8fbd-a7fb990707de
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e5cc0b0f-16e1-40ed-8e34-4d300afa9966
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Lifts")
-          - columnReference:
-              columnCounter: 36fd9469-c471-4354-bf14-aab5c89a2c7d
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Driver Total Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1a9d6d27-1d00-4da6-9aa1-9d65679af82e
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Driver Total Cost")
-          - columnReference:
-              columnCounter: 5288371f-3eb7-4aca-9211-f6a63d24388a
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vehicle Total Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0cff50b2-8cb4-4474-9d3c-9ac99a3f50eb
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Vehicle Total Cost")
-          - columnReference:
-              columnCounter: 6fa68714-bf57-4598-9a94-769fa7ce7705
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Revenue
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 02b2e0dd-8e45-4671-93d8-df449cd0d6c6
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Service Revenue")
-          - columnReference:
-              columnCounter: 276f2ae5-8687-40e7-8ca4-1bbe9d91b15a
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Recurring Revenue Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 763e966f-523e-440d-bb79-1c66488914a8
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Recurring Revenue Amount")
-          - columnReference:
-              columnCounter: 19f45121-2128-4b10-913d-17713a5e1f44
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Surcharges
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d705e840-25bd-48b0-b044-85fa50859559
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Surcharges")
-          - columnReference:
-              columnCounter: cfb5ed4a-8224-491e-b0fd-32431c8750ec
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Work Order Revenue
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 29169dd0-48d7-4103-a859-c57fc2ab14f4
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Work Order Revenue")
-          - columnReference:
-              columnCounter: 32e426d4-005f-471b-990e-b4fc357b355d
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: THIRDPARTYSERVICECOST
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ac64eb61-0b37-42db-85a4-3f2e688301e4
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."THIRDPARTYSERVICECOST")
-          - columnReference:
-              columnCounter: fba42ea1-23af-4a38-a342-f017779d22ff
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: THIRDPARTYWORKORDERCOST
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b10ecd58-fe21-4ef2-a393-e403da7b94d5
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."THIRDPARTYWORKORDERCOST")
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: d3b629d6-1a62-42c8-8c28-35194bc00ff8
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Number of Completed Stops
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cfa1af57-c59e-4e30-8270-80894c8a69f9
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: count("SERVICEHISTORY_COMBINED_SEQUENCE"."Route Sequence")
-            systemColumnType: None
+fileVersion: 1
+id: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+name: TOWER_ROUTE_DAY_REVENUE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 406de4bb-2695-4ea9-acf0-174b53c25900
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9b72b8d8-9ffc-4f42-90dc-f66bbf5c3b6e
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 457a14d1-812d-4dd4-ac0d-4ec2b1495848
-              stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Status
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8144047d-309a-4bd1-ba1f-73456924a9e9
-                    stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 816ed9bf-c549-4abb-968c-72fef5ed9afb
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f9bae9ee-b85b-43bf-b55e-cf80fe71e616
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              SERVICEHISTORY_COMBINED_SEQUENCE: 5055b40f-88d4-4395-afca-9a6f8536a937
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: SERVICEHISTORY_COMBINED_SEQUENCE
-            join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'SERVICEHISTORY_COMBINED_SEQUENCE') }} "SERVICEHISTORY_COMBINED_SEQUENCE"
-                group by "Route","Route Date","STATUS"
-            name: TOWER_ROUTE_DAY_REVENUE
-            noLinkRefs: []
-      name: TOWER_ROUTE_DAY_REVENUE
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7f367e34-b9b1-4396-b8e4-7f96ea2b8f93
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Time on Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Total Stop Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b252b5f9-f73e-4626-8fbd-a7fb990707de
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e5cc0b0f-16e1-40ed-8e34-4d300afa9966
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Lifts")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36fd9469-c471-4354-bf14-aab5c89a2c7d
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: Driver Total Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1a9d6d27-1d00-4da6-9aa1-9d65679af82e
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Driver Total Cost")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5288371f-3eb7-4aca-9211-f6a63d24388a
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Vehicle Total Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0cff50b2-8cb4-4474-9d3c-9ac99a3f50eb
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Vehicle Total Cost")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6fa68714-bf57-4598-9a94-769fa7ce7705
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Service Revenue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 02b2e0dd-8e45-4671-93d8-df449cd0d6c6
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Service Revenue")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 276f2ae5-8687-40e7-8ca4-1bbe9d91b15a
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Recurring Revenue Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 763e966f-523e-440d-bb79-1c66488914a8
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Recurring Revenue Amount")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19f45121-2128-4b10-913d-17713a5e1f44
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Surcharges
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d705e840-25bd-48b0-b044-85fa50859559
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Surcharges")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cfb5ed4a-8224-491e-b0fd-32431c8750ec
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Work Order Revenue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29169dd0-48d7-4103-a859-c57fc2ab14f4
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."Work Order Revenue")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32e426d4-005f-471b-990e-b4fc357b355d
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: THIRDPARTYSERVICECOST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ac64eb61-0b37-42db-85a4-3f2e688301e4
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."THIRDPARTYSERVICECOST")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fba42ea1-23af-4a38-a342-f017779d22ff
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: THIRDPARTYWORKORDERCOST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b10ecd58-fe21-4ef2-a393-e403da7b94d5
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: SUM("SERVICEHISTORY_COMBINED_SEQUENCE"."THIRDPARTYWORKORDERCOST")
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d3b629d6-1a62-42c8-8c28-35194bc00ff8
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Number of Completed Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cfa1af57-c59e-4e30-8270-80894c8a69f9
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: count("SERVICEHISTORY_COMBINED_SEQUENCE"."Route Sequence")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 457a14d1-812d-4dd4-ac0d-4ec2b1495848
+          stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8144047d-309a-4bd1-ba1f-73456924a9e9
+                stepCounter: 5055b40f-88d4-4395-afca-9a6f8536a937
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SERVICEHISTORY_COMBINED_SEQUENCE: 5055b40f-88d4-4395-afca-9a6f8536a937
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: SERVICEHISTORY_COMBINED_SEQUENCE
+        join:
+          joinCondition: |-
+            FROM {{ ref('TOWER_COMBINED', 'SERVICEHISTORY_COMBINED_SEQUENCE') }} "SERVICEHISTORY_COMBINED_SEQUENCE"
+            group by "Route","Route Date","STATUS"
+        name: TOWER_ROUTE_DAY_REVENUE
+        noLinkRefs: []
+  name: TOWER_ROUTE_DAY_REVENUE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

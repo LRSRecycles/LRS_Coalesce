@@ -1,0 +1,312 @@
+{% if columns | selectattr('isDistinctCount')| list | length > 0 %}
+    {{ stage('Profile Distinct') }}
+    
+        MERGE INTO {{ ref_no_link(node.location.name, node.name) }} "TGT"
+        USING (
+            SELECT
+            'DISTINCT' as "PROFILE_METRIC",
+            {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                {% if col.isDistinctCount %}
+                    COUNT(DISTINCT "{{ col.name }}" )
+                {% else %}
+                    {% if col.transform | trim != '' %}{{ col.transform }}{% else %}NULL{% endif %}
+                {% endif %}
+                AS "{{ col.name }}"
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+
+            {{ sources[0].join }} 
+            {% if config.sampleMode == 'Sample' %} 
+                sample (
+                {% if config.sampleOption == 'Percentage' %} 
+                    {{ config.samplePercent }}
+                {% else %}
+                    {{ config.sampleRows }} rows 
+                {% endif %}
+                )
+            {% endif %}
+            )
+            AS "SRC"
+        ON {% for col in sources[0].columns if col.isSystemUpdateDate or col.isSystemCreateDate -%}
+                {% if not loop.first %}
+                    AND
+                {% endif %}
+                "SRC"."{{ col.name }}" = "TGT"."{{ col.name }}"
+            {% endfor %}
+        WHEN MATCHED
+        THEN UPDATE SET
+        {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                "TGT"."{{ col.name }}" = "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+        WHEN NOT MATCHED THEN
+        INSERT (
+        {%- for col in columns %}
+            "{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+        VALUES (
+        {%- for col in columns %}
+            "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+
+{% endif %}
+
+
+{% if columns | selectattr('isNullCount')| list | length > 0 %}
+    {{ stage('Profile Null Values') }}
+    
+        MERGE INTO {{ ref_no_link(node.location.name, node.name) }} "TGT"
+        USING (
+            SELECT
+            'Null Count' as "PROFILE_METRIC",
+            {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                {% if col.isNullCount %}
+                    SUM(CASE WHEN "{{ col.name }}" is NULL THEN 1 ELSE 0 END     )
+                {% else %}
+                    {% if col.transform | trim != '' %}{{ col.transform }}{% else %}NULL{% endif %}
+                {% endif %}
+                AS "{{ col.name }}"
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+
+            {{ sources[0].join }} 
+            {% if config.sampleMode == 'Sample' %} 
+                sample (
+                {% if config.sampleOption == 'Percentage' %} 
+                    {{ config.samplePercent }}
+                {% else %}
+                    {{ config.sampleRows }} rows 
+                {% endif %}
+                )
+            {% endif %}
+        ) AS "SRC"
+         ON {% for col in sources[0].columns if col.isSystemUpdateDate or col.isSystemCreateDate -%}
+                {% if not loop.first %}
+                    AND
+                {% endif %}
+                "SRC"."{{ col.name }}" = "TGT"."{{ col.name }}"
+            {% endfor %}
+        WHEN MATCHED
+        THEN UPDATE SET
+        {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                "TGT"."{{ col.name }}" = "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+        WHEN NOT MATCHED THEN
+        INSERT (
+        {%- for col in columns %}
+            "{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+        VALUES (
+        {%- for col in columns %}
+            "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+
+{% endif %}
+
+
+{% if columns | selectattr('isMaxMetric')| list | length > 0 %}
+    {{ stage('Profile Max') }}
+    
+        MERGE INTO {{ ref_no_link(node.location.name, node.name) }} "TGT"
+        USING (
+            SELECT DISTINCT
+            'MAX' as "PROFILE_METRIC",
+            {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                {% if col.isMaxMetric %}
+                   (SELECT MAX("{{col.name}}") 
+                    {{ sources[0].join }} 
+                    {% if config.sampleMode == 'Sample' %} 
+                        sample (
+                        {% if config.sampleOption == 'Percentage' %} 
+                            {{ config.samplePercent }}
+                        {% else %}
+                            {{ config.sampleRows }} rows 
+                        {% endif %}
+                        )
+                    {% endif %} ) 
+                {% else %}
+                    {% if col.transform | trim != '' %}{{ col.transform }}{% else %}NULL{% endif %}
+                {% endif %}
+                AS "{{ col.name }}"
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+
+            {{ sources[0].join }} 
+            {% if config.sampleMode == 'Sample' %} 
+                sample (
+                {% if config.sampleOption == 'Percentage' %} 
+                    {{ config.samplePercent }}
+                {% else %}
+                    {{ config.sampleRows }} rows 
+                {% endif %}
+                )
+            {% endif %} )
+            AS "SRC"
+        ON {% for col in sources[0].columns if col.isSystemUpdateDate or col.isSystemCreateDate -%}
+                {% if not loop.first %}
+                    AND
+                {% endif %}
+                "SRC"."{{ col.name }}" = "TGT"."{{ col.name }}"
+            {% endfor %}
+        WHEN MATCHED
+        THEN UPDATE SET
+        {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                "TGT"."{{ col.name }}" = "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+        WHEN NOT MATCHED THEN
+        INSERT (
+        {%- for col in columns %}
+            "{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+        VALUES (
+        {%- for col in columns %}
+            "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+
+{% endif %}
+
+{% if columns | selectattr('isMinMetric')| list | length > 0 %}
+    {{ stage('Profile Min') }}
+    
+        MERGE INTO {{ ref_no_link(node.location.name, node.name) }} "TGT"
+        USING (
+            SELECT DISTINCT
+            'MIN' as "PROFILE_METRIC",
+            {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                {% if col.isMinMetric %}
+                   (SELECT MIN("{{col.name}}") 
+                   {{ sources[0].join }} 
+                    {% if config.sampleMode == 'Sample' %} 
+                        sample (
+                        {% if config.sampleOption == 'Percentage' %} 
+                            {{ config.samplePercent }}
+                        {% else %}
+                            {{ config.sampleRows }} rows 
+                        {% endif %}
+                        )
+                    {% endif %} ) 
+                {% else %}
+                    {% if col.transform | trim != '' %}{{ col.transform }}{% else %}NULL{% endif %}
+                {% endif %}
+                AS "{{ col.name }}"
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+
+            {{ sources[0].join }} 
+            {% if config.sampleMode == 'Sample' %} 
+                sample (
+                {% if config.sampleOption == 'Percentage' %} 
+                    {{ config.samplePercent }}
+                {% else %}
+                    {{ config.sampleRows }} rows 
+                {% endif %}
+                )
+            {% endif %} )
+            AS "SRC"
+        ON {% for col in sources[0].columns if col.isSystemUpdateDate or col.isSystemCreateDate -%}
+                {% if not loop.first %}
+                    AND
+                {% endif %}
+                "SRC"."{{ col.name }}" = "TGT"."{{ col.name }}"
+            {% endfor %}
+        WHEN MATCHED
+        THEN UPDATE SET
+        {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                "TGT"."{{ col.name }}" = "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+        WHEN NOT MATCHED THEN
+        INSERT (
+        {%- for col in columns %}
+            "{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+        VALUES (
+        {%- for col in columns %}
+            "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+
+{% endif %}
+
+{% if columns | selectattr('isAvgMetric')| list | length > 0 %}
+    {{ stage('Profile Average') }}
+    
+        MERGE INTO {{ ref_no_link(node.location.name, node.name) }} "TGT"
+        USING (
+            SELECT DISTINCT
+            'AVG' as "PROFILE_METRIC",
+            {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                {% if col.isAvgMetric %}
+                   (SELECT AVG("{{col.name}}") 
+                   {{ sources[0].join }} 
+                    {% if config.sampleMode == 'Sample' %} 
+                        sample (
+                        {% if config.sampleOption == 'Percentage' %} 
+                            {{ config.samplePercent }}
+                        {% else %}
+                            {{ config.sampleRows }} rows 
+                        {% endif %}
+                        )
+                    {% endif %} ) 
+                {% else %}
+                    {% if col.transform | trim != '' %}{{ col.transform }}{% else %}NULL{% endif %}
+                {% endif %}
+                AS "{{ col.name }}"
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+
+            {{ sources[0].join }} 
+            {% if config.sampleMode == 'Sample' %} 
+                sample (
+                {% if config.sampleOption == 'Percentage' %} 
+                    {{ config.samplePercent }}
+                {% else %}
+                    {{ config.sampleRows }} rows 
+                {% endif %}
+                )
+            {% endif %} )
+            AS "SRC"
+         ON {% for col in sources[0].columns if col.isSystemUpdateDate or col.isSystemCreateDate -%}
+                {% if not loop.first %}
+                    AND
+                {% endif %}
+                "SRC"."{{ col.name }}" = "TGT"."{{ col.name }}"
+            {% endfor %}
+        WHEN MATCHED
+        THEN UPDATE SET
+        {%- for col in sources[0].columns if not col.isSystemUpdateDate %}
+                "TGT"."{{ col.name }}" = "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+        WHEN NOT MATCHED THEN
+        INSERT (
+        {%- for col in columns %}
+            "{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+        VALUES (
+        {%- for col in columns %}
+            "SRC"."{{ col.name }}"
+            {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+        )
+
+{% endif %}

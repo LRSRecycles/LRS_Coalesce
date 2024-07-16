@@ -1,220 +1,225 @@
-steps:
-  CDC_GLAFS-848bbe28-5538-48aa-bea5-c4a7c527cec2:
-    operation:
-      config:
-        undefined: null
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: SAGE_CDC_BLDDAT
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 784280fd-5417-409e-aef7-d38dcc4928ef
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            dataType: VARCHAR(45)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ACCTID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d7ea6671-fdb4-474e-b8f8-98582c91b122
-                    stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
-                transform: ""
-          - columnReference:
-              columnCounter: 82b89827-0eae-40ea-8c7e-23625e145947
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            dataType: VARCHAR(1)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CURNTYPE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: eb99c6af-81ba-409c-95d0-f0624adfd8ba
-                    stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
-                transform: ""
-          - columnReference:
-              columnCounter: 2eaa1bdd-09f6-4099-a649-a4829d429dcd
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            dataType: VARCHAR(3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FSCSCURN
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bd2654dc-6d22-4719-b16b-fd909e13ce39
-                    stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
-                transform: ""
-          - columnReference:
-              columnCounter: 838f0774-96c2-46ff-968a-42743b7529fd
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            dataType: VARCHAR(1)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FSCSDSG
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 08e70c16-b2a1-4ca6-a758-5786d616b3a8
-                    stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
-                transform: ""
-          - columnReference:
-              columnCounter: b5362621-9c44-4a40-b72e-f57a1b457608
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            dataType: VARCHAR(4)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: FSCSYR
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4094436e-db78-4285-a88d-4d395a477830
-                    stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
-                transform: ""
-          - columnReference:
-              columnCounter: a672db88-92a4-44e5-997e-9cdf13c9c083
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_DELETED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 818f84c7-b7f3-4eb7-bb84-6c3d65b444fd
-                    stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
-                transform: ""
-          - columnReference:
-              columnCounter: 19a168c9-f73b-4dbd-b986-78fdabe0d05d
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            dataType: TIMESTAMP_TZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d425b548-9424-49e5-93f3-2c7a68822896
-                    stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 66d16adc-04f0-4940-95a1-21fc71de62a6
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            config: {}
-            dataType: STRING
-            defaultValue: ""
-            description: Indicates the DML operation (INSERT, DELETE) recorded.
-            hashColumns: []
-            isStreamMetadataAction: true
-            name: METADATA$ACTION
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: METADATA$ACTION
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4b58f2b8-8d9c-40a4-9f31-03685593f9c5
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            config: {}
-            dataType: STRING
-            defaultValue: ""
-            description: Indicates whether the operation was part of an UPDATE statement.
-            hashColumns: []
-            isStreamMetadataIsUpdate: true
-            name: METADATA$ISUPDATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: METADATA$ISUPDATE
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: f1d8d8c9-37a6-4ef3-bebf-46bfc8a1460b
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            config: {}
-            dataType: STRING
-            defaultValue: ""
-            description: Specifies the unique and immutable ID for the row, which can be used to track changes to specific rows over time.
-            hashColumns: []
-            isStreamMetadataRowId: true
-            name: METADATA$ROW_ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: METADATA$ROW_ID
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c8f683b9-cb2f-4789-a5c5-f9852febb103
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            config: {}
-            dataType: INTEGER
-            defaultValue: ""
-            description: specific CDC identifier based on a sequence.
-            hashColumns: []
-            isStreamMetadataCDCId: true
-            name: CDC_ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 3c999f25-db21-40b8-9ba6-89214ffa7209
-              stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: specific attribute containing the timestamp of storing the CDC record.
-            hashColumns: []
-            isSystemCreateDate: true
-            name: CDC_TIMESTAMP
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: SG_BLDDAT
-                nodeName: GLAFS
-            join:
-              joinCondition: FROM {{ ref('SG_BLDDAT', 'GLAFS') }} "GLAFS"
-            name: CDC_GLAFS
-            noLinkRefs: []
-      name: CDC_GLAFS
-      overrideSQL: false
-      schema: ""
-      sqlType: "6"
-      type: sql
-    stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+fileVersion: 1
+id: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+name: CDC_GLAFS
+operation:
+  config:
+    undefined: null
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SAGE_CDC_BLDDAT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 784280fd-5417-409e-aef7-d38dcc4928ef
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: VARCHAR(45)
+        description: ""
+        hashDetails: null
+        name: ACCTID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7ea6671-fdb4-474e-b8f8-98582c91b122
+                stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 82b89827-0eae-40ea-8c7e-23625e145947
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        hashDetails: null
+        name: CURNTYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eb99c6af-81ba-409c-95d0-f0624adfd8ba
+                stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2eaa1bdd-09f6-4099-a649-a4829d429dcd
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: VARCHAR(3)
+        description: ""
+        hashDetails: null
+        name: FSCSCURN
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bd2654dc-6d22-4719-b16b-fd909e13ce39
+                stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 838f0774-96c2-46ff-968a-42743b7529fd
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        hashDetails: null
+        name: FSCSDSG
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 08e70c16-b2a1-4ca6-a758-5786d616b3a8
+                stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5362621-9c44-4a40-b72e-f57a1b457608
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: VARCHAR(4)
+        description: ""
+        hashDetails: null
+        name: FSCSYR
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4094436e-db78-4285-a88d-4d395a477830
+                stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a672db88-92a4-44e5-997e-9cdf13c9c083
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 818f84c7-b7f3-4eb7-bb84-6c3d65b444fd
+                stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19a168c9-f73b-4dbd-b986-78fdabe0d05d
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d425b548-9424-49e5-93f3-2c7a68822896
+                stepCounter: 71cf8080-b29c-44b6-81ce-fe0d18283f48
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 66d16adc-04f0-4940-95a1-21fc71de62a6
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: Indicates the DML operation (INSERT, DELETE) recorded.
+        isStreamMetadataAction: true
+        name: METADATA$ACTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$ACTION
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b58f2b8-8d9c-40a4-9f31-03685593f9c5
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: Indicates whether the operation was part of an UPDATE statement.
+        isStreamMetadataIsUpdate: true
+        name: METADATA$ISUPDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$ISUPDATE
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1d8d8c9-37a6-4ef3-bebf-46bfc8a1460b
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: Specifies the unique and immutable ID for the row, which can be used to track changes to specific rows over time.
+        isStreamMetadataRowId: true
+        name: METADATA$ROW_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$ROW_ID
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8f683b9-cb2f-4789-a5c5-f9852febb103
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: specific CDC identifier based on a sequence.
+        isStreamMetadataCDCId: true
+        name: CDC_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3c999f25-db21-40b8-9ba6-89214ffa7209
+          stepCounter: 848bbe28-5538-48aa-bea5-c4a7c527cec2
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: specific attribute containing the timestamp of storing the CDC record.
+        isSystemCreateDate: true
+        name: CDC_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SG_BLDDAT
+            nodeName: GLAFS
+        join:
+          joinCondition: FROM {{ ref('SG_BLDDAT', 'GLAFS') }} "GLAFS"
+        name: CDC_GLAFS
+        noLinkRefs: []
+  name: CDC_GLAFS
+  overrideSQL: false
+  schema: ""
+  sqlType: "6"
+  type: sql
+  version: 1
+type: Node

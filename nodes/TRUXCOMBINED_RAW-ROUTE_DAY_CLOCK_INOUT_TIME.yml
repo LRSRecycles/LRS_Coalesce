@@ -1,124 +1,132 @@
-steps:
-  ROUTE_DAY_CLOCK_INOUT_TIME-1487a66c-720d-47df-b75b-cd7ae7739da0:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: Time on Route per day per driver with total time, eliminates sequences, will replace bad sequence times in cost model
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 55d9ce40-b5aa-418e-b59c-8f15252ffede
-              stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_DATE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ab15feaa-7fdb-4fb8-b20d-1096880d96aa
-                    stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
-                transform: ""
-          - columnReference:
-              columnCounter: 6218ee86-927b-4e57-9985-6917ede4df80
-              stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_DRIVER
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7d67de83-7c1c-49de-833d-ad7f4f358cce
-                    stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
-                transform: ""
-          - columnReference:
-              columnCounter: 066b11e3-723b-415d-ab7c-f38c7be28506
-              stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_CLOCKIN
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b78ae79-681b-4c8f-828f-2d2759e250c6
-                    stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
-                transform: MIN("RM17_COMBINED"."RM17_CLOCKIN")
-          - columnReference:
-              columnCounter: e13a130d-d16c-4753-91e7-93cfccf1517f
-              stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_CLOCKOUT
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bead60c6-44c0-427b-9d5b-ed905b701120
-                    stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
-                transform: MAX("RM17_COMBINED"."RM17_CLOCKOUT")
-          - columnReference:
-              columnCounter: ff98dbeb-42bf-4c8f-adfb-2bc2f319fe9d
-              stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM17_ROUT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a073b9be-b39c-43d2-8496-ca8302230d26
-                    stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
-                transform: ""
-          - columnReference:
-              columnCounter: b0ed4c60-3da3-42ea-8ad5-f040132fbd8f
-              stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5f959add-d5e4-4dd9-9991-a0d4b50c8233
-                    stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              RM17_COMBINED: 9668ada2-a882-42f2-babd-28efe14ce669
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: RM17_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM17_COMBINED') }} "RM17_COMBINED"
-                GROUP BY "SOURCE","RM17_DATE","RM17_DRIVER","RM17_ROUT"
-            name: ROUTE_DAY_CLOCK_INOUT_TIME
-            noLinkRefs: []
-      name: ROUTE_DAY_CLOCK_INOUT_TIME
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+fileVersion: 1
+id: 1487a66c-720d-47df-b75b-cd7ae7739da0
+name: ROUTE_DAY_CLOCK_INOUT_TIME
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Time on Route per day per driver with total time, eliminates sequences, will replace bad sequence times in cost model
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 55d9ce40-b5aa-418e-b59c-8f15252ffede
+          stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: RM17_DATE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ab15feaa-7fdb-4fb8-b20d-1096880d96aa
+                stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6218ee86-927b-4e57-9985-6917ede4df80
+          stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: RM17_DRIVER
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7d67de83-7c1c-49de-833d-ad7f4f358cce
+                stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 066b11e3-723b-415d-ab7c-f38c7be28506
+          stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: RM17_CLOCKIN
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b78ae79-681b-4c8f-828f-2d2759e250c6
+                stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
+            transform: MIN("RM17_COMBINED"."RM17_CLOCKIN")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e13a130d-d16c-4753-91e7-93cfccf1517f
+          stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: RM17_CLOCKOUT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bead60c6-44c0-427b-9d5b-ed905b701120
+                stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
+            transform: MAX("RM17_COMBINED"."RM17_CLOCKOUT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff98dbeb-42bf-4c8f-adfb-2bc2f319fe9d
+          stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: RM17_ROUT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a073b9be-b39c-43d2-8496-ca8302230d26
+                stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0ed4c60-3da3-42ea-8ad5-f040132fbd8f
+          stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5f959add-d5e4-4dd9-9991-a0d4b50c8233
+                stepCounter: 9668ada2-a882-42f2-babd-28efe14ce669
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          RM17_COMBINED: 9668ada2-a882-42f2-babd-28efe14ce669
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: RM17_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'RM17_COMBINED') }} "RM17_COMBINED"
+            GROUP BY "SOURCE","RM17_DATE","RM17_DRIVER","RM17_ROUT"
+        name: ROUTE_DAY_CLOCK_INOUT_TIME
+        noLinkRefs: []
+  name: ROUTE_DAY_CLOCK_INOUT_TIME
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,110 +1,116 @@
-steps:
-  CD11_COMBINED-3131b480-711a-434f-be4a-e6e3315d3c0a:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 9ee338cc-0c70-40be-aa56-078d553c3e5a
-              stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD11_CODE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6587c995-37dd-463f-ac95-e05cd3bad088
-                    stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
-                transform: ""
-          - columnReference:
-              columnCounter: 4de06533-a7c4-4c8d-8b21-67dc33ea6e83
-              stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
-            dataType: VARCHAR(40)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD11_DESC
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a14d9113-52fc-4725-9244-4d51de7688cb
-                    stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
-                transform: ""
-          - columnReference:
-              columnCounter: 2b1ddc3c-cf47-4bd5-8c79-dbaf8218f705
-              stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
-            dataType: VARCHAR(5)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD11_ACTIVE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bbb32f30-572c-4b94-8dca-53699f3a78c0
-                    stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
-                transform: ""
-          - columnReference:
-              columnCounter: 09cedfdb-9850-4c90-8837-9557b2697b2a
-              stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CD11_CASH
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a4bd17b5-b98b-4dea-a98e-b4b4592a6cfc
-                    stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1956f40e-107b-4618-b383-933d37e80ae2
-              stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_AM_COMP_RAW
-                nodeName: CD11
-            join:
-              joinCondition: FROM {{ ref('TRUX_AM_COMP_RAW', 'CD11') }} "CD11"
-            name: CD11_COMBINED
-            noLinkRefs: []
-      name: CD11_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+fileVersion: 1
+id: 3131b480-711a-434f-be4a-e6e3315d3c0a
+name: CD11_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ee338cc-0c70-40be-aa56-078d553c3e5a
+          stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: CD11_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6587c995-37dd-463f-ac95-e05cd3bad088
+                stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4de06533-a7c4-4c8d-8b21-67dc33ea6e83
+          stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: CD11_DESC
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a14d9113-52fc-4725-9244-4d51de7688cb
+                stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b1ddc3c-cf47-4bd5-8c79-dbaf8218f705
+          stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        hashDetails: null
+        name: CD11_ACTIVE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bbb32f30-572c-4b94-8dca-53699f3a78c0
+                stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 09cedfdb-9850-4c90-8837-9557b2697b2a
+          stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: CD11_CASH
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a4bd17b5-b98b-4dea-a98e-b4b4592a6cfc
+                stepCounter: 2371d0e8-597a-4404-b1cf-3e1802f08daa
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1956f40e-107b-4618-b383-933d37e80ae2
+          stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AM_COMP_RAW
+            nodeName: CD11
+        join:
+          joinCondition: FROM {{ ref('TRUX_AM_COMP_RAW', 'CD11') }} "CD11"
+        name: CD11_COMBINED
+        noLinkRefs: []
+  name: CD11_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

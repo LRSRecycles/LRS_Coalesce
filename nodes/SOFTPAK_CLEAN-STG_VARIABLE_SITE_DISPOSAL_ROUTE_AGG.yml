@@ -1,215 +1,228 @@
-steps:
-  STG_VARIABLE_SITE_DISPOSAL_ROUTE_AGG-e09f1723-77f3-4b75-9bf9-34168e3ba179:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: SOFTPAK_CLEAN
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: e2593bfd-80ad-4568-91fd-464c5ebc68ff
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DISPOSAL
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7052db47-0bdb-42a6-9a37-d78b3f67fdd9
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."DISPOSAL", ' ,')
-          - columnReference:
-              columnCounter: e9c08007-4c71-404e-86a0-51304e7b9a07
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MATERIAL
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 97a57b6a-7ffd-443f-ba55-9486a0ef14e4
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."MATERIAL", ' ,')
-          - columnReference:
-              columnCounter: 8fe459da-fbee-49ac-a912-a5ea4687eb86
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 72a55820-d2b9-45d9-a917-25688c5f5d84
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: ""
-          - columnReference:
-              columnCounter: cfc090f3-0cc0-4771-a90c-23899364eb4a
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8995d56a-f464-48b3-a44c-bf1810806098
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: ""
-          - columnReference:
-              columnCounter: b1ea8b8f-bc51-40c9-bdba-f586069f821d
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Driver
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 500c3bc9-8a25-41d0-a352-8e1ed437f1aa
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."DRIVER", ' ,')
-          - columnReference:
-              columnCounter: 2192b45b-67be-4b8c-b15d-28dba06d96b2
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vehicle
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9c4ceaa3-0bc0-41d5-b7b1-c4cb716af35c
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."VEHICLE", ' ,')
-          - columnReference:
-              columnCounter: 43d39f0c-e5c5-43ae-ad86-b1d7b11364f2
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: NBTickets
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7a33b37f-dd78-49fd-8918-5f4c054b3003
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."TICKET",' ,')
-          - columnReference:
-              columnCounter: 11604a3b-13c3-40ff-894f-e842f9e037d0
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Units
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a5ee12c4-740d-4c65-ac83-26d9b69f7151
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: SUM("STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."UNITS")
-          - columnReference:
-              columnCounter: 1bd51daa-02f0-4951-a77f-785dc96b58c0
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: NUMBER(18,2)
-            description: Represents entire softpak cost
-            hashColumns: []
-            hashDetails: null
-            name: Total Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 549f4d22-de60-4f92-a5b1-3b443a2b1ab7
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: SUM("STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."COST")
-          - columnReference:
-              columnCounter: 5e87a55e-dcae-4369-b793-0c017b9bf4a3
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Revenue
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 275f29dc-1fc5-4dfd-96c1-ceb8f8c1f0c8
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: SUM("STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."BIL$")
-          - columnReference:
-              columnCounter: 3c904aea-1e2d-4428-8470-79947c394624
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 680746c9-08d0-4fad-9d26-01bf4297516e
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0d27e6da-741a-4738-b2dc-5c926087846c
-              stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
-            config: {}
-            dataType: Number
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: NB Ticket Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7a33b37f-dd78-49fd-8918-5f4c054b3003
-                    stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-                transform: COUNT(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."TICKET")
-            systemColumnType: None
+fileVersion: 1
+id: e09f1723-77f3-4b75-9bf9-34168e3ba179
+name: STG_VARIABLE_SITE_DISPOSAL_ROUTE_AGG
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOFTPAK_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e2593bfd-80ad-4568-91fd-464c5ebc68ff
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: DISPOSAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7052db47-0bdb-42a6-9a37-d78b3f67fdd9
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."DISPOSAL", ' ,')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e9c08007-4c71-404e-86a0-51304e7b9a07
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: MATERIAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 97a57b6a-7ffd-443f-ba55-9486a0ef14e4
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."MATERIAL", ' ,')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8fe459da-fbee-49ac-a912-a5ea4687eb86
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72a55820-d2b9-45d9-a917-25688c5f5d84
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: SOFTPAK_CLEAN
-                nodeName: STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION
-            join:
-              joinCondition: |-
-                FROM {{ ref('SOFTPAK_CLEAN', 'STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION') }} "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"
-                group by "DATE","ROUTE","ROUTE TYPE"
-            name: STG_VARIABLE_SITE_DISPOSAL_ROUTE_AGG
-            noLinkRefs: []
-      name: STG_VARIABLE_SITE_DISPOSAL_ROUTE_AGG
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cfc090f3-0cc0-4771-a90c-23899364eb4a
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8995d56a-f464-48b3-a44c-bf1810806098
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1ea8b8f-bc51-40c9-bdba-f586069f821d
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Driver
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 500c3bc9-8a25-41d0-a352-8e1ed437f1aa
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."DRIVER", ' ,')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2192b45b-67be-4b8c-b15d-28dba06d96b2
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Vehicle
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9c4ceaa3-0bc0-41d5-b7b1-c4cb716af35c
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."VEHICLE", ' ,')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 43d39f0c-e5c5-43ae-ad86-b1d7b11364f2
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: NBTickets
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a33b37f-dd78-49fd-8918-5f4c054b3003
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: LISTAGG(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."TICKET",' ,')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11604a3b-13c3-40ff-894f-e842f9e037d0
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Units
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5ee12c4-740d-4c65-ac83-26d9b69f7151
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: SUM("STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."UNITS")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1bd51daa-02f0-4951-a77f-785dc96b58c0
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Represents entire softpak cost
+        hashDetails: null
+        name: Total Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 549f4d22-de60-4f92-a5b1-3b443a2b1ab7
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: SUM("STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."COST")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e87a55e-dcae-4369-b793-0c017b9bf4a3
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Service Revenue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 275f29dc-1fc5-4dfd-96c1-ceb8f8c1f0c8
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: SUM("STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."BIL$")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3c904aea-1e2d-4428-8470-79947c394624
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 680746c9-08d0-4fad-9d26-01bf4297516e
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d27e6da-741a-4738-b2dc-5c926087846c
+          stepCounter: e09f1723-77f3-4b75-9bf9-34168e3ba179
+        config: {}
+        dataType: Number
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: NB Ticket Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a33b37f-dd78-49fd-8918-5f4c054b3003
+                stepCounter: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+            transform: COUNT(DISTINCT "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"."TICKET")
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION: 0c81fdee-7b58-4b2d-8b0a-ab29f002b030
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOFTPAK_CLEAN
+            nodeName: STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION
+        join:
+          joinCondition: |-
+            FROM {{ ref('SOFTPAK_CLEAN', 'STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION') }} "STG_VARIABLE_SITE_DISPOSAL_NO_AGGREGATION"
+            group by "DATE","ROUTE","ROUTE TYPE"
+        name: STG_VARIABLE_SITE_DISPOSAL_ROUTE_AGG
+        noLinkRefs: []
+  name: STG_VARIABLE_SITE_DISPOSAL_ROUTE_AGG
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

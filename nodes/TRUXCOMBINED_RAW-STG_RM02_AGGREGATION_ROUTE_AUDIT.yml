@@ -1,110 +1,117 @@
-steps:
-  STG_RM02_AGGREGATION_ROUTE_AUDIT-237393b3-a22c-4507-80b3-3940673c6316:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 28c2c1a5-6779-497a-81fa-3b4d8bbc2253
-              stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM02_CUST
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dbae1ce1-678d-4f97-8aef-15716526bc6b
-                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
-                transform: ""
-          - columnReference:
-              columnCounter: 59dd5033-1a07-4a2b-bc22-83460b27c120
-              stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM02_SITE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e30e8371-8c77-4114-addf-68fb0d2202e2
-                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
-                transform: ""
-          - columnReference:
-              columnCounter: 08648384-0a83-4aab-becd-51bd8b6c1d23
-              stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: RM02_SERV
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1c72cb5c-dd4a-4925-adcf-3150df1cbc70
-                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
-                transform: ""
-          - columnReference:
-              columnCounter: 72e41430-d478-4096-a5e9-e143d86a8fc8
-              stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: qtysum
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e2839813-446c-4c7e-bc1c-ed32c5fec680
-                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
-                transform: SUM("RM02_COMBINED"."RM02_QTY")
-          - columnReference:
-              columnCounter: 4de35640-ba23-478a-a80c-9f7a2a968fbb
-              stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f6e2b94c-b0b9-4c2c-b61c-1f32a0390979
-                    stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: RM02_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINED') }} "RM02_COMBINED"
-                GROUP BY "RM02_CUST","RM02_SITE","RM02_SERV", "SOURCE"
-            name: STG_RM02_AGGREGATION_ROUTE_AUDIT
-            noLinkRefs: []
-      name: STG_RM02_AGGREGATION_ROUTE_AUDIT
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
+fileVersion: 1
+id: 237393b3-a22c-4507-80b3-3940673c6316
+name: STG_RM02_AGGREGATION_ROUTE_AUDIT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28c2c1a5-6779-497a-81fa-3b4d8bbc2253
+          stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: RM02_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dbae1ce1-678d-4f97-8aef-15716526bc6b
+                stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 59dd5033-1a07-4a2b-bc22-83460b27c120
+          stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: RM02_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e30e8371-8c77-4114-addf-68fb0d2202e2
+                stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 08648384-0a83-4aab-becd-51bd8b6c1d23
+          stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: RM02_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1c72cb5c-dd4a-4925-adcf-3150df1cbc70
+                stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 72e41430-d478-4096-a5e9-e143d86a8fc8
+          stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: qtysum
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e2839813-446c-4c7e-bc1c-ed32c5fec680
+                stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+            transform: SUM("RM02_COMBINED"."RM02_QTY")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4de35640-ba23-478a-a80c-9f7a2a968fbb
+          stepCounter: 237393b3-a22c-4507-80b3-3940673c6316
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f6e2b94c-b0b9-4c2c-b61c-1f32a0390979
+                stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: RM02_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'RM02_COMBINED') }} "RM02_COMBINED"
+            GROUP BY "RM02_CUST","RM02_SITE","RM02_SERV", "SOURCE"
+        name: STG_RM02_AGGREGATION_ROUTE_AUDIT
+        noLinkRefs: []
+  name: STG_RM02_AGGREGATION_ROUTE_AUDIT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

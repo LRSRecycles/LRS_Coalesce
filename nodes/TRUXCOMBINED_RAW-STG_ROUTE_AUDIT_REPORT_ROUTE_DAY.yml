@@ -1,546 +1,578 @@
-steps:
-  STG_ROUTE_AUDIT_REPORT_ROUTE_DAY-4c455188-401f-44f3-8b9f-fb03852c93f9:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: First attempt at Route Audit Report on an aggregate level for Route and Day
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 27784df7-57ba-4023-8ba1-9380d8b21855
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 565c1f3d-82f7-4471-881f-f1515c693a18
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: ""
-          - columnReference:
-              columnCounter: 6fbafe2a-15b5-4668-bbb9-e7c8b2fce729
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 479afe41-0933-43c7-ab47-f9f7b7ca8351
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: ""
-          - columnReference:
-              columnCounter: 0b6149d9-447a-42fc-b94b-5127ad8f60e2
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 867241b4-b80f-434c-abf5-648edfc20a3a
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: ""
-          - columnReference:
-              columnCounter: ccd84ced-ce59-4769-b09c-4e51b41537af
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: VARCHAR
-            defaultValue: ""
-            description: Part of NBTickets Substring
-            hashColumns: []
-            hashDetails: null
-            name: NBTicket Ticket Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 436cc7e0-3fb7-41eb-8935-62a728985ab0
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: LISTAGG(DISTINCT ifnull("STG_ROUTE_AUDIT_REPORT"."NBTicket Ticket Number",''),', ')
-          - columnReference:
-              columnCounter: 2ec331ab-e81f-463b-8915-a27992a4be17
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DTicket Ticket Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 659ae579-d3a2-414e-965f-9b5d6fc8080f
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: LISTAGG(DISTINCT ifnull("STG_ROUTE_AUDIT_REPORT"."DTicket Ticket Number",''),', ')
-          - columnReference:
-              columnCounter: 84b71032-f9ae-4361-93a5-d5e4e17e39df
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b758ab57-bc78-411e-a1fb-a60b7eb45f34
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: ""
-          - columnReference:
-              columnCounter: 71ea7e90-83d9-4943-929c-6e280e417b17
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Sequence
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 74e3557f-7e7d-4528-9948-3459941e9b6a
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: COUNT("STG_ROUTE_AUDIT_REPORT"."Route Sequence")
-          - columnReference:
-              columnCounter: 8228f6bb-8f62-47d5-80d6-f1e751669995
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER
-            description: RM02A Derived Field from qtysum
-            hashColumns: []
-            hashDetails: null
-            name: Total Weekly Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4e321ab5-a5f9-4ea3-a0a3-d3aa01db9e5d
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."audit_WeeklyLifts")
-          - columnReference:
-              columnCounter: a1367214-abc1-48c9-b123-5952f8c7b4f5
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: MT02 first join
-            hashColumns: []
-            hashDetails: null
-            name: Misc AMT 1
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 773045f1-dbfb-41eb-8000-ae6c6437f8c8
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."MT02_AMNT")
-          - columnReference:
-              columnCounter: 6f6b922b-542b-47ca-bf0c-0814bd7ce0b6
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: MT02 second join
-            hashColumns: []
-            hashDetails: null
-            name: Misc AMT 2
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5e62204e-40df-479d-8c2d-a70e93cd26e1
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."MT02_AMNTa")
-          - columnReference:
-              columnCounter: e169b0cd-e19d-44c7-852c-2ecdf47781d1
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Cost (Converted)
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 54359aa0-4d51-47ad-a14a-2bc5c6c5796c
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."cost")/COUNT("Route Sequence")
-          - columnReference:
-              columnCounter: e54322f9-ab9a-43a8-8845-1e9c4dc562af
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: RM02A Derived Field from qtysum
-            hashColumns: []
-            hashDetails: null
-            name: Average Total Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f6fdaa3b-3900-44b8-a8f2-5a87f4c1b363
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: AVG("STG_ROUTE_AUDIT_REPORT"."audit_TotalLifts")
-          - columnReference:
-              columnCounter: d85d17f5-0106-48dc-9ea9-5e4076e49ca2
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 24afcdd2-f250-4e27-b5a4-39d626220277
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Qty")
-          - columnReference:
-              columnCounter: 4663e402-fbef-4857-906e-a5298b8ce74c
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: This is effectively SM01 Amount, can be used to replace Audit_SM01amnt in the sql source script
-            hashColumns: []
-            hashDetails: null
-            name: Billing Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c2b824e8-ba76-4a33-b49c-6b5659e8af63
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Billing Amount")
-          - columnReference:
-              columnCounter: 3cdb6a7b-684b-45b5-b15d-efdacea2d174
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: Need to modify back to NUMBER
-            hashColumns: []
-            hashDetails: null
-            name: Average Compact Size
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4cf92db1-8983-4167-88fe-315b50be584d
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: AVG("STG_ROUTE_AUDIT_REPORT"."CompactSize")
-          - columnReference:
-              columnCounter: 8f5d5f97-eb0a-4ddf-9c2b-45d188b9bd87
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Average Compact Ratio
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0f2a8319-2bb5-48b2-9bc9-a3d8668e1adb
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: AVG("STG_ROUTE_AUDIT_REPORT"."CompactRatio")
-          - columnReference:
-              columnCounter: 3229916f-e9bb-48e0-8bc3-6f57960d37bd
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: This will be incorrect until the conversion factor is complete
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Weight (Converted)
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2decdc81-872c-4fb0-bea9-474396b8b3b7
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."weight")/COUNT("Route Sequence")
-          - columnReference:
-              columnCounter: 94b1d17d-7b75-4485-96f7-141b308be8e1
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Average Service Size
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3d7bb629-1437-43e7-b1dc-787757194b86
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: AVG("STG_ROUTE_AUDIT_REPORT"."Service Size")
-          - columnReference:
-              columnCounter: 69e1fcce-0aa9-4800-a4fb-f4cb9fb9f8a2
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ccbba667-2bfd-4b62-80be-7306a1d7ae41
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Actual_Disposal_Amount")/COUNT("Route Sequence")
-          - columnReference:
-              columnCounter: 2a1d9d9c-f672-459a-b478-648d9c39469e
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Revenue
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c3417af0-b1f5-45b8-badd-6632e55e6e1e
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit Period Charges")
-          - columnReference:
-              columnCounter: 5b45a843-c9ff-46f8-a4f6-8ca9fc35a598
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts 2?
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 184b0a59-da8c-4e4b-8ac0-d15af2ab4c08
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Qtywopf")
-          - columnReference:
-              columnCounter: 108cdf28-9f23-45ad-ab06-9c3a3d51525a
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Weight
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c25878ea-91d7-41fa-bf61-f59a63b080e2
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Actual_Disposal_Quantity")
-          - columnReference:
-              columnCounter: 4450f97c-dc00-4afa-a06d-60d34dd12d60
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Amount LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 32f61a2d-3c81-4940-8b0e-58c70977b1c6
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_LM02_BAMT")
-          - columnReference:
-              columnCounter: 17a34e15-d68e-4e31-ac63-8a4080452b35
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Amount LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4ee13867-9792-4e18-9628-04b758002c8a
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_LM02_DAMT")
-          - columnReference:
-              columnCounter: 2eacc1c8-3bc0-408b-90cd-bf1abbbe444a
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Disposal Quantity LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 95285c39-7b2f-495c-8f1f-ac2d9d611699
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_LM02_DQTY")
-          - columnReference:
-              columnCounter: 0c6eecfe-e920-4e67-a5e4-b95214ccd085
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Billing Quantity LM02
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 82a61095-5dd8-4131-af71-78c61ee212e2
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Billing Quantity")
-          - columnReference:
-              columnCounter: 607f551f-a553-4042-a98c-dc7aeafb671d
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Dispatch Datetime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 362f881c-585b-4fd6-9bbc-e1df1cb89b9a
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: MIN("STG_ROUTE_AUDIT_REPORT"."Dispatch Datetime")
-          - columnReference:
-              columnCounter: a70852fc-f2c9-40f1-bd98-0efe0a9a8ea8
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time Finished
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 44cdb0cc-c277-454b-aeee-1c63a2ec66fc
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: MAX("STG_ROUTE_AUDIT_REPORT"."Time Finished")
-          - columnReference:
-              columnCounter: 8a6f2847-d73e-4961-bc9c-7b9b8073ea14
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b14284b7-d33e-4794-bbc9-ea8ae9ec88fe
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: MAX("STG_ROUTE_AUDIT_REPORT"."Audit_Invoice_Date")
-          - columnReference:
-              columnCounter: d55911da-b470-425d-8525-c3270cb6bb4c
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Work Order Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c8c724bd-76b3-4c34-b56b-002edca684ed
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."Work Order Number")
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 91175b19-b50c-45fa-9c04-98b7a1616774
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Yards
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ec456fd7-2012-4988-8a5a-119f91f5f3b0
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: SUM("STG_ROUTE_AUDIT_REPORT"."Yards")
-            systemColumnType: None
+fileVersion: 1
+id: 4c455188-401f-44f3-8b9f-fb03852c93f9
+name: STG_ROUTE_AUDIT_REPORT_ROUTE_DAY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: First attempt at Route Audit Report on an aggregate level for Route and Day
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27784df7-57ba-4023-8ba1-9380d8b21855
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 565c1f3d-82f7-4471-881f-f1515c693a18
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c7c91da5-339c-4489-a153-43f96a92fff3
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Number of Stops
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."Customer", "STG_ROUTE_AUDIT_REPORT"."Site")
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6fbafe2a-15b5-4668-bbb9-e7c8b2fce729
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 479afe41-0933-43c7-ab47-f9f7b7ca8351
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: b8947a6b-dbf5-45ea-b13a-9e467d6612fe
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: NB Ticket Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ad16239d-6cd1-4e0e-8117-3ecfd1d79d12
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."NBTicket Ticket Number")
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b6149d9-447a-42fc-b94b-5127ad8f60e2
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 867241b4-b80f-434c-abf5-648edfc20a3a
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 2aee40ce-e4d2-4852-ad2b-c08dce167d01
-              stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: DTicket Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: eb3b49e7-9f1c-440b-a6ff-48d6dedd0ee3
-                    stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-                transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."DTicket Ticket Number")
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ccd84ced-ce59-4769-b09c-4e51b41537af
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: Part of NBTickets Substring
+        hashDetails: null
+        name: NBTicket Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 436cc7e0-3fb7-41eb-8935-62a728985ab0
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: LISTAGG(DISTINCT ifnull("STG_ROUTE_AUDIT_REPORT"."NBTicket Ticket Number",''),', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ec331ab-e81f-463b-8915-a27992a4be17
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        hashDetails: null
+        name: DTicket Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 659ae579-d3a2-414e-965f-9b5d6fc8080f
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: LISTAGG(DISTINCT ifnull("STG_ROUTE_AUDIT_REPORT"."DTicket Ticket Number",''),', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 84b71032-f9ae-4361-93a5-d5e4e17e39df
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b758ab57-bc78-411e-a1fb-a60b7eb45f34
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              STG_ROUTE_AUDIT_REPORT: cf6f6a52-c917-4760-9ab5-34d679cd67ca
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_ROUTE_AUDIT_REPORT
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_ROUTE_AUDIT_REPORT') }} "STG_ROUTE_AUDIT_REPORT"
-                GROUP BY "Route","Route Date","SOURCE","Route Description"
-            name: STG_ROUTE_AUDIT_REPORT_ROUTE_DAY
-            noLinkRefs: []
-      name: STG_ROUTE_AUDIT_REPORT_ROUTE_DAY
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 71ea7e90-83d9-4943-929c-6e280e417b17
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Route Sequence
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 74e3557f-7e7d-4528-9948-3459941e9b6a
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: COUNT("STG_ROUTE_AUDIT_REPORT"."Route Sequence")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8228f6bb-8f62-47d5-80d6-f1e751669995
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER
+        description: RM02A Derived Field from qtysum
+        hashDetails: null
+        name: Total Weekly Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4e321ab5-a5f9-4ea3-a0a3-d3aa01db9e5d
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."audit_WeeklyLifts")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1367214-abc1-48c9-b123-5952f8c7b4f5
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: MT02 first join
+        hashDetails: null
+        name: Misc AMT 1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 773045f1-dbfb-41eb-8000-ae6c6437f8c8
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."MT02_AMNT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6f6b922b-542b-47ca-bf0c-0814bd7ce0b6
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: MT02 second join
+        hashDetails: null
+        name: Misc AMT 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5e62204e-40df-479d-8c2d-a70e93cd26e1
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."MT02_AMNTa")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e169b0cd-e19d-44c7-852c-2ecdf47781d1
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Cost (Converted)
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 54359aa0-4d51-47ad-a14a-2bc5c6c5796c
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."cost")/COUNT("Route Sequence")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e54322f9-ab9a-43a8-8845-1e9c4dc562af
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: RM02A Derived Field from qtysum
+        hashDetails: null
+        name: Average Total Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f6fdaa3b-3900-44b8-a8f2-5a87f4c1b363
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: AVG("STG_ROUTE_AUDIT_REPORT"."audit_TotalLifts")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d85d17f5-0106-48dc-9ea9-5e4076e49ca2
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24afcdd2-f250-4e27-b5a4-39d626220277
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Qty")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4663e402-fbef-4857-906e-a5298b8ce74c
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: This is effectively SM01 Amount, can be used to replace Audit_SM01amnt in the sql source script
+        hashDetails: null
+        name: Billing Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c2b824e8-ba76-4a33-b49c-6b5659e8af63
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Billing Amount")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3cdb6a7b-684b-45b5-b15d-efdacea2d174
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Need to modify back to NUMBER
+        hashDetails: null
+        name: Average Compact Size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4cf92db1-8983-4167-88fe-315b50be584d
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: AVG("STG_ROUTE_AUDIT_REPORT"."CompactSize")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f5d5f97-eb0a-4ddf-9c2b-45d188b9bd87
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Average Compact Ratio
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0f2a8319-2bb5-48b2-9bc9-a3d8668e1adb
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: AVG("STG_ROUTE_AUDIT_REPORT"."CompactRatio")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3229916f-e9bb-48e0-8bc3-6f57960d37bd
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: This will be incorrect until the conversion factor is complete
+        hashDetails: null
+        name: Disposal Weight (Converted)
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2decdc81-872c-4fb0-bea9-474396b8b3b7
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."weight")/COUNT("Route Sequence")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 94b1d17d-7b75-4485-96f7-141b308be8e1
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Average Service Size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3d7bb629-1437-43e7-b1dc-787757194b86
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: AVG("STG_ROUTE_AUDIT_REPORT"."Service Size")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 69e1fcce-0aa9-4800-a4fb-f4cb9fb9f8a2
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ccbba667-2bfd-4b62-80be-7306a1d7ae41
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Actual_Disposal_Amount")/COUNT("Route Sequence")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2a1d9d9c-f672-459a-b478-648d9c39469e
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Service Revenue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c3417af0-b1f5-45b8-badd-6632e55e6e1e
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit Period Charges")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5b45a843-c9ff-46f8-a4f6-8ca9fc35a598
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Lifts 2?
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 184b0a59-da8c-4e4b-8ac0-d15af2ab4c08
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Qtywopf")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 108cdf28-9f23-45ad-ab06-9c3a3d51525a
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Weight
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c25878ea-91d7-41fa-bf61-f59a63b080e2
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_Actual_Disposal_Quantity")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4450f97c-dc00-4afa-a06d-60d34dd12d60
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Amount LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32f61a2d-3c81-4940-8b0e-58c70977b1c6
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_LM02_BAMT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17a34e15-d68e-4e31-ac63-8a4080452b35
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Amount LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4ee13867-9792-4e18-9628-04b758002c8a
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_LM02_DAMT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2eacc1c8-3bc0-408b-90cd-bf1abbbe444a
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Disposal Quantity LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 95285c39-7b2f-495c-8f1f-ac2d9d611699
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Audit_LM02_DQTY")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c6eecfe-e920-4e67-a5e4-b95214ccd085
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Billing Quantity LM02
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 82a61095-5dd8-4131-af71-78c61ee212e2
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Billing Quantity")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 607f551f-a553-4042-a98c-dc7aeafb671d
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Dispatch Datetime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 362f881c-585b-4fd6-9bbc-e1df1cb89b9a
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: MIN("STG_ROUTE_AUDIT_REPORT"."Dispatch Datetime")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a70852fc-f2c9-40f1-bd98-0efe0a9a8ea8
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Time Finished
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 44cdb0cc-c277-454b-aeee-1c63a2ec66fc
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: MAX("STG_ROUTE_AUDIT_REPORT"."Time Finished")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8a6f2847-d73e-4961-bc9c-7b9b8073ea14
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b14284b7-d33e-4794-bbc9-ea8ae9ec88fe
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: MAX("STG_ROUTE_AUDIT_REPORT"."Audit_Invoice_Date")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d55911da-b470-425d-8525-c3270cb6bb4c
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Work Order Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8c724bd-76b3-4c34-b56b-002edca684ed
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."Work Order Number")
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 91175b19-b50c-45fa-9c04-98b7a1616774
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Yards
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ec456fd7-2012-4988-8a5a-119f91f5f3b0
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: SUM("STG_ROUTE_AUDIT_REPORT"."Yards")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c7c91da5-339c-4489-a153-43f96a92fff3
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Number of Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."Customer", "STG_ROUTE_AUDIT_REPORT"."Site")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b8947a6b-dbf5-45ea-b13a-9e467d6612fe
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: NB Ticket Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad16239d-6cd1-4e0e-8117-3ecfd1d79d12
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."NBTicket Ticket Number")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2aee40ce-e4d2-4852-ad2b-c08dce167d01
+          stepCounter: 4c455188-401f-44f3-8b9f-fb03852c93f9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DTicket Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eb3b49e7-9f1c-440b-a6ff-48d6dedd0ee3
+                stepCounter: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+            transform: COUNT(DISTINCT "STG_ROUTE_AUDIT_REPORT"."DTicket Ticket Number")
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_ROUTE_AUDIT_REPORT: cf6f6a52-c917-4760-9ab5-34d679cd67ca
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_ROUTE_AUDIT_REPORT
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_ROUTE_AUDIT_REPORT') }} "STG_ROUTE_AUDIT_REPORT"
+            GROUP BY "Route","Route Date","SOURCE","Route Description"
+        name: STG_ROUTE_AUDIT_REPORT_ROUTE_DAY
+        noLinkRefs: []
+  name: STG_ROUTE_AUDIT_REPORT_ROUTE_DAY
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

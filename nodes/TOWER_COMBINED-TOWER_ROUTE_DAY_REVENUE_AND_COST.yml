@@ -1,550 +1,620 @@
-steps:
-  TOWER_ROUTE_DAY_REVENUE_AND_COST-84e84c06-b403-43af-a8b1-350fc4c7c9e4:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 0e586ecc-1507-478c-bd79-a949c6c2769d
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 406de4bb-2695-4ea9-acf0-174b53c25900
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: ""
-          - columnReference:
-              columnCounter: d9326de0-496d-4250-8041-1ad5b6bc88c4
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 816ed9bf-c549-4abb-968c-72fef5ed9afb
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: ""
-          - columnReference:
-              columnCounter: 938caa8d-d41c-4bdd-b9c2-a27898facba4
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time on Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7f367e34-b9b1-4396-b8e4-7f96ea2b8f93
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Time on Route",0)
-          - columnReference:
-              columnCounter: f4d76c0b-fcc5-4d70-90ec-c88725898447
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Lifts
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b252b5f9-f73e-4626-8fbd-a7fb990707de
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Lifts",0)
-          - columnReference:
-              columnCounter: efc6c250-8a1a-4881-bd8f-7d1ed267ad17
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Driver Total Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 36fd9469-c471-4354-bf14-aab5c89a2c7d
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Driver Total Cost",0)
-          - columnReference:
-              columnCounter: c2ce3e6f-7f8c-4c65-adf4-3c64cc04b10f
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vehicle Total Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5288371f-3eb7-4aca-9211-f6a63d24388a
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Vehicle Total Cost",0)
-          - columnReference:
-              columnCounter: 15fd503c-6bf0-4f26-a407-124377e3ee95
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service Revenue
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6fa68714-bf57-4598-9a94-769fa7ce7705
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: ""
-          - columnReference:
-              columnCounter: 5e7baeab-e379-453b-aaca-80d5f026bd4c
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Number of Completed Stops
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d3b629d6-1a62-42c8-8c28-35194bc00ff8
-                    stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-                transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Number of Completed Stops",0)
-          - columnReference:
-              columnCounter: 5231ef3d-2b07-4ebf-9cce-a1a3090ebdba
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: DESTINATION
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cd67b085-45f3-4823-94ba-14c8e5a9b946
-                    stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-                transform: ""
-          - columnReference:
-              columnCounter: a49a7ea9-fc53-496d-a331-163a8be6470f
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: SCALETICKETNBR
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d58436a7-5f9d-4dba-b97c-e79e4a57abb6
-                    stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-                transform: ""
-          - columnReference:
-              columnCounter: c5cad3a2-3765-4406-b76b-23ee3c3ae1ad
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: MATERIAL
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7ea171d5-8be6-483d-9029-ca3f00f0441e
-                    stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-                transform: ""
-          - columnReference:
-              columnCounter: cd51b5f6-4dd3-42dc-a2a5-b43c0d9b87a4
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: WEIGHT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dd2037e7-7400-476f-b771-57c8aa775954
-                    stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-                transform: ""
-          - columnReference:
-              columnCounter: 2352039d-4efe-409d-9f10-25cc07043a45
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: Manual conversion of volume to yards
-            name: VOLUME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6177974b-bdd3-4f60-898a-48cf2f3501b4
-                    stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-                transform: IFNULL("TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."VOLUME",0)
-          - columnReference:
-              columnCounter: 39989eea-f48a-4a1c-9529-406f591c013a
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,2)
-            description: ""
-            name: FEE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d3ecdf7f-484a-4b01-8cad-a4f6e6dfc600
-                    stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-                transform: IFNULL("TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."FEE",0)
-          - columnReference:
-              columnCounter: 3a3fef7a-71e6-42a4-af10-19a15b5c7dde
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,0)
-            description: ""
-            name: SCHEDULEDSTARTTIME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 424f9fa6-b6f3-4c22-b53b-1cbf27f6f573
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 740ce04f-a53b-423b-8bb0-7843b65528f1
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: DRIVER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d4f267fe-f66e-479f-8e63-faca46a519d6
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 0124503b-e610-457b-95ee-f56c0f1c680e
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: HELPER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 061f9d90-69cf-4644-9502-18f19d5042de
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: dc7ede1e-e28e-4434-a1ba-fc47ba7e701c
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: ROUTENOTE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2c7b2a22-f120-444c-8eb1-0b0ebac57079
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 0d6693b0-dffd-455a-9081-886f5821de7a
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,0)
-            description: ""
-            name: ACTUALSTARTTIME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4a7b6e50-1453-4851-b917-41cabb9c6a12
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: ecd14eed-ec60-4ffa-94c9-5c014337f9d2
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: BEGINNINGQUANTITY
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b3f4b18e-cb12-49bf-ba1f-058cd01d2b34
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."BEGINNINGQUANTITY",0)
-          - columnReference:
-              columnCounter: ef9118eb-56f5-4b0f-bd21-f48952927e6b
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: BEGINNINGSTOPS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 791c63e7-7abd-448a-b0c8-882912ccf370
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."BEGINNINGSTOPS",0)
-          - columnReference:
-              columnCounter: 8611d361-128d-44e0-a3e4-fe2167bc9863
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,0)
-            description: Flag for data being correctly entered for productivity metrics
-            name: PRODUCTIVITYPOSTED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c9a26c7b-1cfd-416a-8474-de9613596d99
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 27e709f8-175a-476f-9042-672ea30604d9
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            name: PRODUCTIVITYPOSTEDDATETIME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ad200fac-1f3a-4155-85a0-4530a72f4cfe
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 668af5bd-135b-4896-ba6c-f7a4af5107bb
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: PRODUCTIVITYPOSTEDUSER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 96a252e7-f4db-4ad6-b056-23df2d0090df
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 53893691-5316-46fe-b52a-436af81e7cfe
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,0)
-            description: ""
-            name: ACTUALENDTIME
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b9af9183-1e7a-4052-9151-6b6b53fa0a17
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: b5f5208b-63a8-4448-b0c2-69eb6bb74d11
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,0)
-            description: Flag for Profitability
-            name: PROFITABILITYCOMPUTED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3e497c49-f9c6-41fe-82bc-c9bdd5c9f8c5
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 41d312d6-c56c-4970-b078-fe9e395adc9e
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: ORIGIN
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4ef8f56d-e4d9-4a56-bd30-4d5e030acffe
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 4c9d9cb6-96fa-4d97-a279-14bfb567fa95
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: WORKER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dcdd36a9-fa07-4a22-a60a-4a6dba72aec5
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 454cc0e2-4f1e-44df-82c0-3d0c93a65756
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(18,2)
-            description: ""
-            name: Total Working Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 80ad361f-193f-4588-ae51-43c70a220aee
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Working Time",0)
-          - columnReference:
-              columnCounter: 91d47e8e-ad78-465b-a844-ff78299869a5
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(18,2)
-            description: ""
-            name: Total Lunch Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d6c7c19e-fd64-4142-9a34-5d0e321f12a2
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Lunch Time",0)
-          - columnReference:
-              columnCounter: 2b61eb1b-7c50-4255-b0da-c8d94b2dbd97
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: VARCHAR(16777216)
-            description: ""
-            name: VEHICLE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0fb9cc23-18fd-42da-93e5-74192ee89dcf
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 021614d3-332f-4f4f-a48a-d924dd364765
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: OPERATINGHOURS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 54aebe76-8843-4396-80bc-bdc82b9734dc
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."OPERATINGHOURS",0)
-          - columnReference:
-              columnCounter: f40b1675-0a31-459c-8a8e-6287673145f1
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: STARTODOMETER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 44077a12-f972-4b48-bc94-be9ed58aa13c
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: 73fd0bb9-cd22-4843-82da-ce1dfcb42396
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: ENDODOMETER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: de2f5faa-25ad-42ca-ac94-accc7e5b033d
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: be103668-49d6-485f-b655-3009349cbedc
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: ODOMETERUNITS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4c9b8a1e-e8ac-46e2-b49c-edc8bb2ee5ac
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: ""
-          - columnReference:
-              columnCounter: c3aa00a0-ff9a-4d76-9f44-322e43084006
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(38,6)
-            description: ""
-            name: FUELPUMPED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 812e9509-a9dc-45dc-a437-a68205d10e9a
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."FUELPUMPED",0)
-          - columnReference:
-              columnCounter: 9c1a138b-6395-4928-a299-0ffdb86f86c4
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER(18,2)
-            description: ""
-            name: Total Downtime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9433a558-36ba-4cd6-bc57-4676e7b09eab
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Downtime",0)
-          - columnReference:
-              columnCounter: fc6933fd-b4d5-4bc2-ba82-60a39f435954
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            dataType: NUMBER
-            description: ""
-            name: Total Downtime Instances
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 65677b5c-619e-4802-b287-bf8e5d833b84
-                    stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
-                transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Downtime Instances",0)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 755ce932-c489-46c4-9f66-0ff157c47eb5
-              stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
-            config: {}
-            dataType: VARCHAR(3)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Company ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 18b99b12-8df7-49a3-b85a-1f2e4abea004
-                    stepCounter: b352bf7c-adde-4cb4-98b3-dde09a9406e0
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+name: TOWER_ROUTE_DAY_REVENUE_AND_COST
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0e586ecc-1507-478c-bd79-a949c6c2769d
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 406de4bb-2695-4ea9-acf0-174b53c25900
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              ROUTE_COMBINED: b352bf7c-adde-4cb4-98b3-dde09a9406e0
-              TOWER_COLLECTIONS_TICKETS_ROUTE_DATE: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
-              TOWER_DAILY_ROUTE_METRICS: 63c3a772-c345-432a-9f9e-44986ae97f5e
-              TOWER_ROUTE_DAY_REVENUE: 7497f9b6-8e48-4e21-96fe-ab44b134f092
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: ROUTE_COMBINED
-              - locationName: TOWER_COMBINED
-                nodeName: TOWER_COLLECTIONS_TICKETS_ROUTE_DATE
-              - locationName: TOWER_COMBINED
-                nodeName: TOWER_DAILY_ROUTE_METRICS
-              - locationName: TOWER_COMBINED
-                nodeName: TOWER_ROUTE_DAY_REVENUE
-            join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'TOWER_ROUTE_DAY_REVENUE') }} "TOWER_ROUTE_DAY_REVENUE"
-                LEFT JOIN {{ ref('TOWER_COMBINED', 'TOWER_COLLECTIONS_TICKETS_ROUTE_DATE') }} "TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"
-                ON "TOWER_ROUTE_DAY_REVENUE"."Route" = "TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."ROUTE"
-                    aND "TOWER_ROUTE_DAY_REVENUE"."Route Date" = "TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."TRIPDATE"
-                LEFT JOIN {{ ref('TOWER_COMBINED', 'TOWER_DAILY_ROUTE_METRICS') }} "TOWER_DAILY_ROUTE_METRICS"
-                ON "TOWER_ROUTE_DAY_REVENUE"."Route" = "TOWER_DAILY_ROUTE_METRICS"."ROUTE"
-                    AND "TOWER_ROUTE_DAY_REVENUE"."Route Date" = "TOWER_DAILY_ROUTE_METRICS"."WORKDATE"
-                LEFT JOIN {{ ref('TOWER_COMBINED', 'ROUTE_COMBINED') }} "ROUTE_COMBINED"
-                ON "TOWER_ROUTE_DAY_REVENUE"."Route" = "ROUTE_COMBINED"."ROUTE"
-                where "TOWER_ROUTE_DAY_REVENUE"."Route" is not null and "TOWER_ROUTE_DAY_REVENUE"."Status" = 1
-            name: TOWER_ROUTE_DAY_REVENUE_AND_COST
-            noLinkRefs: []
-      name: TOWER_ROUTE_DAY_REVENUE_AND_COST
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d9326de0-496d-4250-8041-1ad5b6bc88c4
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 816ed9bf-c549-4abb-968c-72fef5ed9afb
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 938caa8d-d41c-4bdd-b9c2-a27898facba4
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Time on Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7f367e34-b9b1-4396-b8e4-7f96ea2b8f93
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+            transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Time on Route",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f4d76c0b-fcc5-4d70-90ec-c88725898447
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b252b5f9-f73e-4626-8fbd-a7fb990707de
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+            transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Lifts",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: efc6c250-8a1a-4881-bd8f-7d1ed267ad17
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        hashDetails: null
+        name: Driver Total Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36fd9469-c471-4354-bf14-aab5c89a2c7d
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+            transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Driver Total Cost",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c2ce3e6f-7f8c-4c65-adf4-3c64cc04b10f
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Vehicle Total Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5288371f-3eb7-4aca-9211-f6a63d24388a
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+            transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Vehicle Total Cost",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15fd503c-6bf0-4f26-a407-124377e3ee95
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Service Revenue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6fa68714-bf57-4598-9a94-769fa7ce7705
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e7baeab-e379-453b-aaca-80d5f026bd4c
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER
+        description: ""
+        hashDetails: null
+        name: Number of Completed Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d3b629d6-1a62-42c8-8c28-35194bc00ff8
+                stepCounter: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+            transform: IFNULL("TOWER_ROUTE_DAY_REVENUE"."Number of Completed Stops",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5231ef3d-2b07-4ebf-9cce-a1a3090ebdba
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: DESTINATION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cd67b085-45f3-4823-94ba-14c8e5a9b946
+                stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a49a7ea9-fc53-496d-a331-163a8be6470f
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: SCALETICKETNBR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d58436a7-5f9d-4dba-b97c-e79e4a57abb6
+                stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c5cad3a2-3765-4406-b76b-23ee3c3ae1ad
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: MATERIAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7ea171d5-8be6-483d-9029-ca3f00f0441e
+                stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cd51b5f6-4dd3-42dc-a2a5-b43c0d9b87a4
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: WEIGHT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dd2037e7-7400-476f-b771-57c8aa775954
+                stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2352039d-4efe-409d-9f10-25cc07043a45
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: Manual conversion of volume to yards
+        name: VOLUME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6177974b-bdd3-4f60-898a-48cf2f3501b4
+                stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+            transform: IFNULL("TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."VOLUME",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39989eea-f48a-4a1c-9529-406f591c013a
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        name: FEE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d3ecdf7f-484a-4b01-8cad-a4f6e6dfc600
+                stepCounter: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+            transform: IFNULL("TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."FEE",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a3fef7a-71e6-42a4-af10-19a15b5c7dde
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SCHEDULEDSTARTTIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 424f9fa6-b6f3-4c22-b53b-1cbf27f6f573
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 740ce04f-a53b-423b-8bb0-7843b65528f1
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: DRIVER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d4f267fe-f66e-479f-8e63-faca46a519d6
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0124503b-e610-457b-95ee-f56c0f1c680e
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: HELPER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 061f9d90-69cf-4644-9502-18f19d5042de
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc7ede1e-e28e-4434-a1ba-fc47ba7e701c
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ROUTENOTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2c7b2a22-f120-444c-8eb1-0b0ebac57079
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d6693b0-dffd-455a-9081-886f5821de7a
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACTUALSTARTTIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4a7b6e50-1453-4851-b917-41cabb9c6a12
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ecd14eed-ec60-4ffa-94c9-5c014337f9d2
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: BEGINNINGQUANTITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b3f4b18e-cb12-49bf-ba1f-058cd01d2b34
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."BEGINNINGQUANTITY",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ef9118eb-56f5-4b0f-bd21-f48952927e6b
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: BEGINNINGSTOPS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 791c63e7-7abd-448a-b0c8-882912ccf370
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."BEGINNINGSTOPS",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8611d361-128d-44e0-a3e4-fe2167bc9863
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Flag for data being correctly entered for productivity metrics
+        name: PRODUCTIVITYPOSTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c9a26c7b-1cfd-416a-8474-de9613596d99
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27e709f8-175a-476f-9042-672ea30604d9
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: PRODUCTIVITYPOSTEDDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad200fac-1f3a-4155-85a0-4530a72f4cfe
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 668af5bd-135b-4896-ba6c-f7a4af5107bb
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PRODUCTIVITYPOSTEDUSER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 96a252e7-f4db-4ad6-b056-23df2d0090df
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 53893691-5316-46fe-b52a-436af81e7cfe
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACTUALENDTIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b9af9183-1e7a-4052-9151-6b6b53fa0a17
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5f5208b-63a8-4448-b0c2-69eb6bb74d11
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Flag for Profitability
+        name: PROFITABILITYCOMPUTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3e497c49-f9c6-41fe-82bc-c9bdd5c9f8c5
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 41d312d6-c56c-4970-b078-fe9e395adc9e
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ORIGIN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4ef8f56d-e4d9-4a56-bd30-4d5e030acffe
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c9d9cb6-96fa-4d97-a279-14bfb567fa95
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: WORKER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dcdd36a9-fa07-4a22-a60a-4a6dba72aec5
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 454cc0e2-4f1e-44df-82c0-3d0c93a65756
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: Total Working Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 80ad361f-193f-4588-ae51-43c70a220aee
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Working Time",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 91d47e8e-ad78-465b-a844-ff78299869a5
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: Total Lunch Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d6c7c19e-fd64-4142-9a34-5d0e321f12a2
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Lunch Time",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b61eb1b-7c50-4255-b0da-c8d94b2dbd97
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: VEHICLE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0fb9cc23-18fd-42da-93e5-74192ee89dcf
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 021614d3-332f-4f4f-a48a-d924dd364765
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: OPERATINGHOURS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 54aebe76-8843-4396-80bc-bdc82b9734dc
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."OPERATINGHOURS",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f40b1675-0a31-459c-8a8e-6287673145f1
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: STARTODOMETER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 44077a12-f972-4b48-bc94-be9ed58aa13c
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73fd0bb9-cd22-4843-82da-ce1dfcb42396
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: ENDODOMETER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: de2f5faa-25ad-42ca-ac94-accc7e5b033d
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: be103668-49d6-485f-b655-3009349cbedc
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: ODOMETERUNITS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4c9b8a1e-e8ac-46e2-b49c-edc8bb2ee5ac
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3aa00a0-ff9a-4d76-9f44-322e43084006
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(38,6)
+        description: ""
+        name: FUELPUMPED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 812e9509-a9dc-45dc-a437-a68205d10e9a
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."FUELPUMPED",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9c1a138b-6395-4928-a299-0ffdb86f86c4
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: Total Downtime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9433a558-36ba-4cd6-bc57-4676e7b09eab
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Downtime",0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc6933fd-b4d5-4bc2-ba82-60a39f435954
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Total Downtime Instances
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 65677b5c-619e-4802-b287-bf8e5d833b84
+                stepCounter: 63c3a772-c345-432a-9f9e-44986ae97f5e
+            transform: IFNULL("TOWER_DAILY_ROUTE_METRICS"."Total Downtime Instances",0)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 755ce932-c489-46c4-9f66-0ff157c47eb5
+          stepCounter: 84e84c06-b403-43af-a8b1-350fc4c7c9e4
+        config: {}
+        dataType: VARCHAR(3)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18b99b12-8df7-49a3-b85a-1f2e4abea004
+                stepCounter: b352bf7c-adde-4cb4-98b3-dde09a9406e0
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          ROUTE_COMBINED: b352bf7c-adde-4cb4-98b3-dde09a9406e0
+          TOWER_COLLECTIONS_TICKETS_ROUTE_DATE: 2b04a398-cc77-40c7-991c-cf93b1a0b5c3
+          TOWER_DAILY_ROUTE_METRICS: 63c3a772-c345-432a-9f9e-44986ae97f5e
+          TOWER_ROUTE_DAY_REVENUE: 7497f9b6-8e48-4e21-96fe-ab44b134f092
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: ROUTE_COMBINED
+          - locationName: TOWER_COMBINED
+            nodeName: TOWER_COLLECTIONS_TICKETS_ROUTE_DATE
+          - locationName: TOWER_COMBINED
+            nodeName: TOWER_DAILY_ROUTE_METRICS
+          - locationName: TOWER_COMBINED
+            nodeName: TOWER_ROUTE_DAY_REVENUE
+        join:
+          joinCondition: |-
+            FROM {{ ref('TOWER_COMBINED', 'TOWER_ROUTE_DAY_REVENUE') }} "TOWER_ROUTE_DAY_REVENUE"
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'TOWER_COLLECTIONS_TICKETS_ROUTE_DATE') }} "TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"
+            ON "TOWER_ROUTE_DAY_REVENUE"."Route" = "TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."ROUTE"
+                aND "TOWER_ROUTE_DAY_REVENUE"."Route Date" = "TOWER_COLLECTIONS_TICKETS_ROUTE_DATE"."TRIPDATE"
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'TOWER_DAILY_ROUTE_METRICS') }} "TOWER_DAILY_ROUTE_METRICS"
+            ON "TOWER_ROUTE_DAY_REVENUE"."Route" = "TOWER_DAILY_ROUTE_METRICS"."ROUTE"
+                AND "TOWER_ROUTE_DAY_REVENUE"."Route Date" = "TOWER_DAILY_ROUTE_METRICS"."WORKDATE"
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'ROUTE_COMBINED') }} "ROUTE_COMBINED"
+            ON "TOWER_ROUTE_DAY_REVENUE"."Route" = "ROUTE_COMBINED"."ROUTE"
+            where "TOWER_ROUTE_DAY_REVENUE"."Route" is not null and "TOWER_ROUTE_DAY_REVENUE"."Status" = 1
+        name: TOWER_ROUTE_DAY_REVENUE_AND_COST
+        noLinkRefs: []
+  name: TOWER_ROUTE_DAY_REVENUE_AND_COST
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

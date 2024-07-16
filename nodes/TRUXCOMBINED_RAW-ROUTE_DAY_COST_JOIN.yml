@@ -1,545 +1,596 @@
-steps:
-  ROUTE_DAY_COST_JOIN-fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: Everything at the Route Day, driver level. Multiple time options in this to account for different databases.
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: beb9dbc4-f4e5-424d-b766-c1f55060b043
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a7d39280-828b-47f3-b62b-0ad8fb729b47
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 6eae69be-710e-4991-9475-21d606426ee2
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Route
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f0043213-bcc7-499f-980d-7a42e98ee31a
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 533a13b9-b588-47d6-9996-aae48783d353
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: End Hour
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 47ca7f6d-762e-46cc-a73a-9490cfafba1b
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 8c5aaa11-c207-4b4f-aa67-8c9ba7f5107e
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: TIMESTAMP_NTZ(9)
-            description: Compare to Return Time and Begin Time
-            hashDetails: null
-            name: Start Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2bc7f8a9-7338-4d5f-8d24-d717586e6445
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: b7561165-2a41-4447-aa95-80905ad2caa7
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(38,2)
-            description: ""
-            hashDetails: null
-            name: Odometer End
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 32b9e118-73ea-49fa-98da-1bfd47825942
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 2065af0d-00c9-4973-9aff-b5eeb56f4688
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: TIMESTAMP_NTZ(9)
-            description: match with return time
-            hashDetails: null
-            name: Departure time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6bd9fe5c-3185-4f76-910a-b8f44d99e086
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 4672cde6-b489-49b1-bc3d-4e6142a8fc49
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Driver
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ec6f2dd4-1d6f-4dec-bed7-2e8dae712a84
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: fde903b6-40af-423f-844c-4e742d88967c
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: TIMESTAMP_NTZ(9)
-            description: match with departure time
-            hashDetails: null
-            name: Return Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d13ec5bd-c9e9-4663-9f73-e2cf68b73e1c
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 9fa588be-547c-4f7a-8e39-97037333e0c0
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Start Hour
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4ea5ee4d-df2d-4b33-bf8f-e28dd6177e19
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 7df5016d-2267-4c23-b085-b3f5f0d0d297
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: TIMESTAMP_NTZ(9)
-            description: Time1 match with Time 2 or End Time
-            hashDetails: null
-            name: Begin Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 72c52b5d-22a3-46c7-bbd1-c25744d8f91a
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 2f571dea-7a23-49a3-880b-307ca70f805a
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Helper
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b76f32a0-42d8-49e6-bbd0-65edc4db5355
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: b68f73fd-8de1-4d6a-b91a-4f2be5f32a02
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: TIMESTAMP_NTZ(9)
-            description: Time2 Match with Begin Time
-            hashDetails: null
-            name: End Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e427befe-a57a-4ebe-877a-6950ee35429f
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 787ef066-214d-4a33-9b6a-07858450f789
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(8,2)
-            description: ""
-            hashDetails: null
-            name: Fuel Used
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dcb72ee3-ecfd-4cb3-b911-2f42d240cec5
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 2327016b-dd9a-4342-a85d-f1894b9b4a9c
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Truck
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5fa7734b-1550-4409-9cb4-81a2035f3d8a
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 765e1a39-6731-4478-96c2-bf4e869e3a67
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(38,0)
-            description: ""
-            hashDetails: null
-            name: Odometer Start
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c8334b38-0a81-466b-99bc-c92157f060d9
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 9d910dbc-27b8-45c3-87b6-dc2909792285
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 53a25cfd-a8b1-4516-824e-5e7f30346cf3
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: c9c4da7d-ab8f-4aa8-b0c6-fed6bf22809a
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Odometer Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ee5fdbb8-ff15-479f-b52a-c4b3dac7814f
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 3f2fc968-a7ad-4cb4-80af-570a39c2ec23
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: Difference between time 1 and time 2 (start time and end time)
-            hashDetails: null
-            name: Time Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6065bcff-de99-4881-85c9-3b820123af80
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 99b946e4-40c4-40cf-a7cd-b7240f7705a8
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: Difference between Departure Time and Return Time
-            hashDetails: null
-            name: Trip Duration
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 33aeb0a2-93cd-4020-9e61-a74bb7b75508
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 2e2c462c-d59e-4543-a064-71f25ac9fea5
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Route Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6f2de068-a459-4192-a6a2-ea0d6d23d1df
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 4de6704f-153c-4cb0-800b-106b72a45821
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER
-            description: ""
-            hashDetails: null
-            name: Number of Stops
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1e13307e-390e-44ee-814b-11feeb3980ee
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 647d126c-ac82-4a33-b4d6-4df4926ef70d
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: First Sequence
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0d5c4fc5-1995-4138-98ee-b1cefa55c32f
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 9ba36695-f98e-42c2-a558-caa396947583
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Last Sequence
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bb431b0f-605d-4f88-8d34-2a8d3dcb8595
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: 13e6d4cd-0264-4971-b0e3-d95efbecdcee
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: Will need to be modified to account for decimal sequences
-            hashDetails: null
-            name: Sequence Differential
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9ba012be-1297-4257-a5a8-dc9174943a46
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - columnReference:
-              columnCounter: f0fc0d2c-b67d-4466-9420-99242ec0409d
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Sequence Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 62247790-a5e6-4384-997b-7ce490a1fbcb
-                    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4c105553-991b-4e00-8e88-231116f23775
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Clock Total Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 066b11e3-723b-415d-ab7c-f38c7be28506
-                    stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
-                transform: IFNULL(TIMEDIFF(MINUTE,"ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKIN","ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKOUT"),0.00)
-            systemColumnType: None
+fileVersion: 1
+id: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+name: ROUTE_DAY_COST_JOIN
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Everything at the Route Day, driver level. Multiple time options in this to account for different databases.
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: beb9dbc4-f4e5-424d-b766-c1f55060b043
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a7d39280-828b-47f3-b62b-0ad8fb729b47
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a8d6c04b-130f-41a6-abc4-cf79080e1d61
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 03a210a7-3172-4400-86cc-dbbbc0f27051
-                    stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-                transform: IFNULL("DRIVER_MASTER"."Employee Cost (EC01) Combined",0.00)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6eae69be-710e-4991-9475-21d606426ee2
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0043213-bcc7-499f-980d-7a42e98ee31a
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1d7252c2-0407-4bef-a98b-9d32e4428979
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Vehicle Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f6e3530c-0d27-41e7-9ae6-fc6c0232df14
-                    stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
-                transform: IFNULL(TRUCK_MASTER."TC01 Truck Cost Total",0.00)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 533a13b9-b588-47d6-9996-aae48783d353
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: End Hour
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47ca7f6d-762e-46cc-a73a-9490cfafba1b
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 042adbe0-c278-431b-b801-7ca3f5a0f1a6
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: Assumption of Gallons is fine
-            keyColumnType: None
-            name: Fuel Rate
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dc83f977-385d-4f7f-948f-14d74a179f63
-                    stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-                transform: IFNULL("FUEL_COST_CURRENT"."FC01_RATE",0.00)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c5aaa11-c207-4b4f-aa67-8c9ba7f5107e
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: Compare to Return Time and Begin Time
+        hashDetails: null
+        name: Start Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2bc7f8a9-7338-4d5f-8d24-d717586e6445
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 6af87fbf-bfb7-4fdb-836e-6900bdbd3f47
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Helper Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 49b3a2d2-fd20-4bfc-8a33-5f49536b89b4
-                    stepCounter: 9d0545fc-c66b-4536-8420-0e9bca0727fe
-                transform: IFNULL("HELPER_MASTER"."Employee Cost (EC01) Combined",0.00)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b7561165-2a41-4447-aa95-80905ad2caa7
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Odometer End
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32b9e118-73ea-49fa-98da-1bfd47825942
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: ad9c3b53-8878-4a59-b017-d532d841e378
-              stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            config: {}
-            dataType: NUMBER(28,2)
-            defaultValue: ""
-            description: Total Downtime in Minutes
-            keyColumnType: None
-            name: Total Downtime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c1354d20-7706-409c-9e06-029351f8cfcb
-                    stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2065af0d-00c9-4973-9aff-b5eeb56f4688
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: match with return time
+        hashDetails: null
+        name: Departure time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6bd9fe5c-3185-4f76-910a-b8f44d99e086
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              DRIVER_MASTER: 940b0208-f219-48a1-b5d2-0731c88fefa9
-              FUEL_COST_CURRENT: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
-              HELPER_MASTER: 9d0545fc-c66b-4536-8420-0e9bca0727fe
-              ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-              ROUTE_DAY_CLOCK_INOUT_TIME: 1487a66c-720d-47df-b75b-cd7ae7739da0
-              STG_ROUTE_DAY_DOWNTIME_AGGREGATION: 5bf6009f-b623-4637-a317-2a9d18ff2962
-              TRUCK_COST_CURRENT: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
-              TRUCK_MASTER: 8a6efe00-4604-4029-acd5-f5c728d17fdc
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: DRIVER_MASTER
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: HELPER_MASTER
-              - locationName: MASTER_DATA_CLEAN
-                nodeName: TRUCK_MASTER
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: FUEL_COST_CURRENT
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: ROUTE_DAY_CLOCK_INOUT_TIME
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_ROUTE_DAY_DOWNTIME_AGGREGATION
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: TRUCK_COST_CURRENT
-            join:
-              joinCondition: |
-                FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS') }} "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"
-                
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_CLOCK_INOUT_TIME') }} "ROUTE_DAY_CLOCK_INOUT_TIME"
-                  ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route" = "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_ROUT"
-                    and "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route Date" = "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_DATE"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Driver" = "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_DRIVER"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "ROUTE_DAY_CLOCK_INOUT_TIME"."SOURCE"
-                
-                LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'DRIVER_MASTER') }} "DRIVER_MASTER"
-                ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Driver" = "DRIVER_MASTER"."Employee Number"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "DRIVER_MASTER"."SOURCE"
-                
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'TRUCK_COST_CURRENT') }} "TRUCK_COST_CURRENT"
-                ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Truck" = "TRUCK_COST_CURRENT"."TC01_NUMB"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "TRUCK_COST_CURRENT"."SOURCE"
-                
-                LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUCK_MASTER') }} "TRUCK_MASTER"
-                ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Truck" = "TRUCK_MASTER"."Truck Number"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "TRUCK_MASTER"."SOURCE"
-                
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'FUEL_COST_CURRENT') }} "FUEL_COST_CURRENT"
-                ON "TRUCK_MASTER"."Fuel Type" = "FUEL_COST_CURRENT"."FC01_TYPE"
-                    AND "TRUCK_MASTER"."SOURCE" = "FUEL_COST_CURRENT"."SOURCE"
-                
-                LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'HELPER_MASTER') }} "HELPER_MASTER"
-                ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Helper" = "HELPER_MASTER"."Employee Number"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "HELPER_MASTER"."SOURCE"
-                
-                LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_ROUTE_DAY_DOWNTIME_AGGREGATION') }} "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"
-                ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Route"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route Date" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Route Date"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Driver" ="STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Driver"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Truck" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Vehicle"
-                    AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."SOURCE"
-                
-            name: ROUTE_DAY_COST_JOIN
-            noLinkRefs: []
-      name: ROUTE_DAY_COST_JOIN
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4672cde6-b489-49b1-bc3d-4e6142a8fc49
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Driver
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ec6f2dd4-1d6f-4dec-bed7-2e8dae712a84
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fde903b6-40af-423f-844c-4e742d88967c
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: match with departure time
+        hashDetails: null
+        name: Return Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d13ec5bd-c9e9-4663-9f73-e2cf68b73e1c
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9fa588be-547c-4f7a-8e39-97037333e0c0
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Start Hour
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4ea5ee4d-df2d-4b33-bf8f-e28dd6177e19
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7df5016d-2267-4c23-b085-b3f5f0d0d297
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: Time1 match with Time 2 or End Time
+        hashDetails: null
+        name: Begin Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72c52b5d-22a3-46c7-bbd1-c25744d8f91a
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2f571dea-7a23-49a3-880b-307ca70f805a
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Helper
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b76f32a0-42d8-49e6-bbd0-65edc4db5355
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b68f73fd-8de1-4d6a-b91a-4f2be5f32a02
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: Time2 Match with Begin Time
+        hashDetails: null
+        name: End Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e427befe-a57a-4ebe-877a-6950ee35429f
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 787ef066-214d-4a33-9b6a-07858450f789
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(8,2)
+        description: ""
+        hashDetails: null
+        name: Fuel Used
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dcb72ee3-ecfd-4cb3-b911-2f42d240cec5
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2327016b-dd9a-4342-a85d-f1894b9b4a9c
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Truck
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5fa7734b-1550-4409-9cb4-81a2035f3d8a
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 765e1a39-6731-4478-96c2-bf4e869e3a67
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Odometer Start
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8334b38-0a81-466b-99bc-c92157f060d9
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9d910dbc-27b8-45c3-87b6-dc2909792285
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 53a25cfd-a8b1-4516-824e-5e7f30346cf3
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9c4da7d-ab8f-4aa8-b0c6-fed6bf22809a
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Odometer Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ee5fdbb8-ff15-479f-b52a-c4b3dac7814f
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3f2fc968-a7ad-4cb4-80af-570a39c2ec23
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Difference between time 1 and time 2 (start time and end time)
+        hashDetails: null
+        name: Time Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6065bcff-de99-4881-85c9-3b820123af80
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 99b946e4-40c4-40cf-a7cd-b7240f7705a8
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Difference between Departure Time and Return Time
+        hashDetails: null
+        name: Trip Duration
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33aeb0a2-93cd-4020-9e61-a74bb7b75508
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2e2c462c-d59e-4543-a064-71f25ac9fea5
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6f2de068-a459-4192-a6a2-ea0d6d23d1df
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4de6704f-153c-4cb0-800b-106b72a45821
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER
+        description: ""
+        hashDetails: null
+        name: Number of Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1e13307e-390e-44ee-814b-11feeb3980ee
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 647d126c-ac82-4a33-b4d6-4df4926ef70d
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: First Sequence
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0d5c4fc5-1995-4138-98ee-b1cefa55c32f
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ba36695-f98e-42c2-a558-caa396947583
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Last Sequence
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bb431b0f-605d-4f88-8d34-2a8d3dcb8595
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13e6d4cd-0264-4971-b0e3-d95efbecdcee
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Will need to be modified to account for decimal sequences
+        hashDetails: null
+        name: Sequence Differential
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9ba012be-1297-4257-a5a8-dc9174943a46
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f0fc0d2c-b67d-4466-9420-99242ec0409d
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Sequence Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 62247790-a5e6-4384-997b-7ce490a1fbcb
+                stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c105553-991b-4e00-8e88-231116f23775
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Clock Total Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 066b11e3-723b-415d-ab7c-f38c7be28506
+                stepCounter: 1487a66c-720d-47df-b75b-cd7ae7739da0
+            transform: IFNULL(TIMEDIFF(MINUTE,"ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKIN","ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_CLOCKOUT"),0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8d6c04b-130f-41a6-abc4-cf79080e1d61
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 03a210a7-3172-4400-86cc-dbbbc0f27051
+                stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
+            transform: IFNULL("DRIVER_MASTER"."Employee Cost (EC01) Combined",0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1d7252c2-0407-4bef-a98b-9d32e4428979
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Vehicle Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f6e3530c-0d27-41e7-9ae6-fc6c0232df14
+                stepCounter: 8a6efe00-4604-4029-acd5-f5c728d17fdc
+            transform: IFNULL(TRUCK_MASTER."TC01 Truck Cost Total",0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 042adbe0-c278-431b-b801-7ca3f5a0f1a6
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: Assumption of Gallons is fine
+        keyColumnType: None
+        name: Fuel Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dc83f977-385d-4f7f-948f-14d74a179f63
+                stepCounter: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+            transform: IFNULL("FUEL_COST_CURRENT"."FC01_RATE",0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6af87fbf-bfb7-4fdb-836e-6900bdbd3f47
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Helper Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49b3a2d2-fd20-4bfc-8a33-5f49536b89b4
+                stepCounter: 9d0545fc-c66b-4536-8420-0e9bca0727fe
+            transform: IFNULL("HELPER_MASTER"."Employee Cost (EC01) Combined",0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad9c3b53-8878-4a59-b017-d532d841e378
+          stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        config: {}
+        dataType: NUMBER(28,2)
+        defaultValue: ""
+        description: Total Downtime in Minutes
+        keyColumnType: None
+        name: Total Downtime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c1354d20-7706-409c-9e06-029351f8cfcb
+                stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DRIVER_MASTER: 940b0208-f219-48a1-b5d2-0731c88fefa9
+          FUEL_COST_CURRENT: a6ab8fb6-10dc-4f77-ad4a-7f99f5750973
+          HELPER_MASTER: 9d0545fc-c66b-4536-8420-0e9bca0727fe
+          ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+          ROUTE_DAY_CLOCK_INOUT_TIME: 1487a66c-720d-47df-b75b-cd7ae7739da0
+          STG_ROUTE_DAY_DOWNTIME_AGGREGATION: 5bf6009f-b623-4637-a317-2a9d18ff2962
+          TRUCK_COST_CURRENT: 7b446262-338d-40ee-ad85-a1a2b8fb6bce
+          TRUCK_MASTER: 8a6efe00-4604-4029-acd5-f5c728d17fdc
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: DRIVER_MASTER
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: HELPER_MASTER
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUCK_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: FUEL_COST_CURRENT
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: ROUTE_DAY_CLOCK_INOUT_TIME
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_ROUTE_DAY_DOWNTIME_AGGREGATION
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: TRUCK_COST_CURRENT
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS') }} "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_CLOCK_INOUT_TIME') }} "ROUTE_DAY_CLOCK_INOUT_TIME"
+              ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route" = "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_ROUT"
+                and "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route Date" = "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_DATE"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Driver" = "ROUTE_DAY_CLOCK_INOUT_TIME"."RM17_DRIVER"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "ROUTE_DAY_CLOCK_INOUT_TIME"."SOURCE"
+
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'DRIVER_MASTER') }} "DRIVER_MASTER"
+            ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Driver" = "DRIVER_MASTER"."Employee Number"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "DRIVER_MASTER"."SOURCE"
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'TRUCK_COST_CURRENT') }} "TRUCK_COST_CURRENT"
+            ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Truck" = "TRUCK_COST_CURRENT"."TC01_NUMB"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "TRUCK_COST_CURRENT"."SOURCE"
+
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUCK_MASTER') }} "TRUCK_MASTER"
+            ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Truck" = "TRUCK_MASTER"."Truck Number"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "TRUCK_MASTER"."SOURCE"
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'FUEL_COST_CURRENT') }} "FUEL_COST_CURRENT"
+            ON "TRUCK_MASTER"."Fuel Type" = "FUEL_COST_CURRENT"."FC01_TYPE"
+                AND "TRUCK_MASTER"."SOURCE" = "FUEL_COST_CURRENT"."SOURCE"
+
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'HELPER_MASTER') }} "HELPER_MASTER"
+            ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Helper" = "HELPER_MASTER"."Employee Number"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "HELPER_MASTER"."SOURCE"
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_ROUTE_DAY_DOWNTIME_AGGREGATION') }} "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"
+            ON "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Route"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Route Date" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Route Date"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Driver" ="STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Driver"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."Truck" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."Vehicle"
+                AND "ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS"."SOURCE" = "STG_ROUTE_DAY_DOWNTIME_AGGREGATION"."SOURCE"
+        name: ROUTE_DAY_COST_JOIN
+        noLinkRefs: []
+  name: ROUTE_DAY_COST_JOIN
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

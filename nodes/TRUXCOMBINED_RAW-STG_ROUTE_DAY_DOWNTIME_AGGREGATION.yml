@@ -1,124 +1,132 @@
-steps:
-  STG_ROUTE_DAY_DOWNTIME_AGGREGATION-5bf6009f-b623-4637-a317-2a9d18ff2962:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 790c7dd1-5d52-43a2-8785-d354c1824c21
-              stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ec445d4c-d39b-4677-85b4-e79cf37cc4a4
-                    stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
-                transform: ""
-          - columnReference:
-              columnCounter: 621c493c-b0e7-40b2-82d4-22555aebbc8d
-              stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6f4b40c4-1637-4a9c-aa29-5e0f1c0a1b48
-                    stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
-                transform: ""
-          - columnReference:
-              columnCounter: c1354d20-7706-409c-9e06-029351f8cfcb
-              stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
-            dataType: NUMBER(38,0)
-            description: Minutes
-            hashColumns: []
-            hashDetails: null
-            name: Total Downtime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 475ef350-9149-45e0-985f-6e6662373a3d
-                    stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
-                transform: SUM("STG_ROUTE_DOWNTIME"."Total Time")
-          - columnReference:
-              columnCounter: 18351bdf-1743-4000-89ba-f902c1a2b2a6
-              stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Vehicle
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 37ec14dc-3413-4357-b0d2-668eb9478725
-                    stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
-                transform: ""
-          - columnReference:
-              columnCounter: b0bb7c1e-e4b1-4167-8be5-844e95cb58a8
-              stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Driver
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c852a5c0-ee9f-44c1-b84c-600dfde7d2ae
-                    stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
-                transform: ""
-          - columnReference:
-              columnCounter: c57d0af1-19ad-442f-93ca-d436b309f036
-              stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d334f1cd-e05e-458a-a392-b911bbb48512
-                    stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              STG_ROUTE_DOWNTIME: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: STG_ROUTE_DOWNTIME
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_ROUTE_DOWNTIME') }} "STG_ROUTE_DOWNTIME"
-                GROUP BY "Route","Driver","Vehicle","Route Date","SOURCE"
-            name: STG_ROUTE_DAY_DOWNTIME_AGGREGATION
-            noLinkRefs: []
-      name: STG_ROUTE_DAY_DOWNTIME_AGGREGATION
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+fileVersion: 1
+id: 5bf6009f-b623-4637-a317-2a9d18ff2962
+name: STG_ROUTE_DAY_DOWNTIME_AGGREGATION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 790c7dd1-5d52-43a2-8785-d354c1824c21
+          stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ec445d4c-d39b-4677-85b4-e79cf37cc4a4
+                stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 621c493c-b0e7-40b2-82d4-22555aebbc8d
+          stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6f4b40c4-1637-4a9c-aa29-5e0f1c0a1b48
+                stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1354d20-7706-409c-9e06-029351f8cfcb
+          stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Minutes
+        hashDetails: null
+        name: Total Downtime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 475ef350-9149-45e0-985f-6e6662373a3d
+                stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
+            transform: SUM("STG_ROUTE_DOWNTIME"."Total Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18351bdf-1743-4000-89ba-f902c1a2b2a6
+          stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Vehicle
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 37ec14dc-3413-4357-b0d2-668eb9478725
+                stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0bb7c1e-e4b1-4167-8be5-844e95cb58a8
+          stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Driver
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c852a5c0-ee9f-44c1-b84c-600dfde7d2ae
+                stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c57d0af1-19ad-442f-93ca-d436b309f036
+          stepCounter: 5bf6009f-b623-4637-a317-2a9d18ff2962
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d334f1cd-e05e-458a-a392-b911bbb48512
+                stepCounter: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_ROUTE_DOWNTIME: 5c1ba946-4a30-42ae-98fc-71d5f802e21f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_ROUTE_DOWNTIME
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_ROUTE_DOWNTIME') }} "STG_ROUTE_DOWNTIME"
+            GROUP BY "Route","Driver","Vehicle","Route Date","SOURCE"
+        name: STG_ROUTE_DAY_DOWNTIME_AGGREGATION
+        noLinkRefs: []
+  name: STG_ROUTE_DAY_DOWNTIME_AGGREGATION
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

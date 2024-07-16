@@ -1,103 +1,108 @@
-steps:
-  VW_AR_Payment_Check-a4418938-9502-4ab1-a682-8ae8b004992d:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: FINANCIAL_DATA_MODEL
-      materializationType: view
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 597d030e-048b-450d-9236-0a204630ac5e
-              stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
-            dataType: VARCHAR
-            description: Joins with unique ID in Invoice_Amounts
-            hashColumns: []
-            hashDetails: null
-            name: Link to Invoice
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6124fe49-29e5-42d3-b99c-32e4e0f6bb74
-                    stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-                transform: ""
-          - columnReference:
-              columnCounter: 5f8608e0-6169-4d25-b66a-6cbb624f1033
-              stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e8d9996c-bd50-44ab-9dd9-7851e4a95582
-                    stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-                transform: ""
-          - columnReference:
-              columnCounter: 6c7ad6f9-d908-482b-908f-765cb0eea700
-              stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
-            dataType: varchar
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Link_Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4c88547b-bcca-467c-a246-be621d5bc613
-                    stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a7bcfa93-b715-482b-9b26-c9eb5162e756
-              stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Record Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: COUNT("AR_Payment_Details"."Link_Source")
-            systemColumnType: None
+fileVersion: 1
+id: a4418938-9502-4ab1-a682-8ae8b004992d
+name: VW_AR_Payment_Check
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 597d030e-048b-450d-9236-0a204630ac5e
+          stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
+        config: {}
+        dataType: VARCHAR
+        description: Joins with unique ID in Invoice_Amounts
+        hashDetails: null
+        name: Link to Invoice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6124fe49-29e5-42d3-b99c-32e4e0f6bb74
+                stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              AR_Payment_Details: b440fc4f-079f-4e49-96bf-221deac14011
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: FINANCIAL_DATA_MODEL
-                nodeName: AR_Payment_Details
-            join:
-              joinCondition: |-
-                FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Payment_Details') }} "AR_Payment_Details"
-                GROUP BY "Link to Invoice","SOURCE","Link_Source"
-            name: VW_AR_Payment_Check
-            noLinkRefs: []
-      name: VW_AR_Payment_Check
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5f8608e0-6169-4d25-b66a-6cbb624f1033
+          stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e8d9996c-bd50-44ab-9dd9-7851e4a95582
+                stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c7ad6f9-d908-482b-908f-765cb0eea700
+          stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
+        config: {}
+        dataType: varchar
+        description: ""
+        hashDetails: null
+        name: Link_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4c88547b-bcca-467c-a246-be621d5bc613
+                stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a7bcfa93-b715-482b-9b26-c9eb5162e756
+          stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Record Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COUNT("AR_Payment_Details"."Link_Source")
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          AR_Payment_Details: b440fc4f-079f-4e49-96bf-221deac14011
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: AR_Payment_Details
+        join:
+          joinCondition: |-
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Payment_Details') }} "AR_Payment_Details"
+            GROUP BY "Link to Invoice","SOURCE","Link_Source"
+        name: VW_AR_Payment_Check
+        noLinkRefs: []
+  name: VW_AR_Payment_Check
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

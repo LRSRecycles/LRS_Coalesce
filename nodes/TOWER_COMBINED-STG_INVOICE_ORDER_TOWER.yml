@@ -1,134 +1,141 @@
-steps:
-  STG_INVOICE_ORDER_TOWER-e2a9cc59-3c78-48d7-bfe4-765a7a1f0805:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: fce87ba0-c9ff-4c82-a045-8b09b91a93c2
-              stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Unique Invoice ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3d3eb32a-8d77-4978-8f65-c4719fcd8022
-                    stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-                transform: ""
-          - columnReference:
-              columnCounter: 359f1405-aded-4a2d-b822-ce59589f8e24
-              stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 805cb634-6fcb-45ba-8537-755e1c5b7228
-                    stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-                transform: ""
-          - columnReference:
-              columnCounter: f13c6477-b930-4d80-9cd8-67572ef975bf
-              stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ad251460-54b0-4b2c-a4a8-2ed433f20390
-                    stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-                transform: ""
-          - columnReference:
-              columnCounter: 4487cc2a-7905-4d1a-8dff-609d49a17965
-              stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer UID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4efd84cd-17d9-4f68-9b6c-6cf321a1259b
-                    stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 7656b90a-1069-48f9-b653-713f980083e9
-              stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Customer Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 62237e4b-5ec1-4b1a-ae88-9a7ec2cec2ec
-                    stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+name: STG_INVOICE_ORDER_TOWER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fce87ba0-c9ff-4c82-a045-8b09b91a93c2
+          stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Unique Invoice ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3d3eb32a-8d77-4978-8f65-c4719fcd8022
+                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: a2845e7d-fdc9-46b3-b92e-1b50bb57b66d
-              stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Sort Order
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: ROW_NUMBER() OVER (PARTITION BY "STG_INVOICE_COMBINED"."Customer Number" ORDER BY "STG_INVOICE_COMBINED"."Invoice Date" DESC)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 359f1405-aded-4a2d-b822-ce59589f8e24
+          stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 805cb634-6fcb-45ba-8537-755e1c5b7228
+                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: STG_INVOICE_COMBINED
-            join:
-              joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_INVOICE_COMBINED') }} "STG_INVOICE_COMBINED"
-            name: STG_INVOICE_ORDER_TOWER
-            noLinkRefs: []
-      name: STG_INVOICE_ORDER_TOWER
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f13c6477-b930-4d80-9cd8-67572ef975bf
+          stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Invoice Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad251460-54b0-4b2c-a4a8-2ed433f20390
+                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4487cc2a-7905-4d1a-8dff-609d49a17965
+          stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer UID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4efd84cd-17d9-4f68-9b6c-6cf321a1259b
+                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7656b90a-1069-48f9-b653-713f980083e9
+          stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 62237e4b-5ec1-4b1a-ae88-9a7ec2cec2ec
+                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2845e7d-fdc9-46b3-b92e-1b50bb57b66d
+          stepCounter: e2a9cc59-3c78-48d7-bfe4-765a7a1f0805
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Sort Order
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ROW_NUMBER() OVER (PARTITION BY "STG_INVOICE_COMBINED"."Customer Number" ORDER BY "STG_INVOICE_COMBINED"."Invoice Date" DESC)
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: STG_INVOICE_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_INVOICE_COMBINED') }} "STG_INVOICE_COMBINED"
+        name: STG_INVOICE_ORDER_TOWER
+        noLinkRefs: []
+  name: STG_INVOICE_ORDER_TOWER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

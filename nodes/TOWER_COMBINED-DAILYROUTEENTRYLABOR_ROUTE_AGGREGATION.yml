@@ -1,110 +1,117 @@
-steps:
-  DAILYROUTEENTRYLABOR_ROUTE_AGGREGATION-7165467c-0772-42c4-b418-a9ffd940931e:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 201de76a-bbde-49e1-b8db-e31ae13e12c6
-              stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DAILYROUTEENTRYUID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 414f0294-51aa-41a5-9fb2-9da5f61d9e4c
-                    stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
-                transform: ""
-          - columnReference:
-              columnCounter: 507e7d59-185e-4dc5-b81f-6d2e5e332350
-              stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: WORKER
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1cc3b2b8-d798-4236-941e-e2ab5fccbf56
-                    stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
-                transform: LISTAGG(DISTINCT "DAILYROUTEENTRYLABOR_COMBINED"."WORKER",', ')
-          - columnReference:
-              columnCounter: 164f2d59-9357-4f6f-81b8-4fa51d7f8ab9
-              stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Total Working Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b2883471-7678-478d-b155-76cc4c7102a8
-                    stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
-                transform: SUM("DAILYROUTEENTRYLABOR_COMBINED"."Total Work Time")
-          - columnReference:
-              columnCounter: 11ffc56a-2fe8-4242-b863-a5132d81895e
-              stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Total Lunch Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 129d20ab-5b7b-4de8-b7bb-d993bbad2e36
-                    stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
-                transform: SUM("DAILYROUTEENTRYLABOR_COMBINED"."Total Lunch Time")
-          - columnReference:
-              columnCounter: 0a85f1d6-5de5-43b6-b6c9-89cd37176c4d
-              stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: VEHICLE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7cba1578-7f62-46f4-8ca9-7469d1478758
-                    stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
-                transform: LISTAGG(DISTINCT "DAILYROUTEENTRYLABOR_COMBINED"."VEHICLE",', ')
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              DAILYROUTEENTRYLABOR_COMBINED: 6f0e7589-0436-49aa-be80-f7fca181bb3b
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_COMBINED
-                nodeName: DAILYROUTEENTRYLABOR_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TOWER_COMBINED', 'DAILYROUTEENTRYLABOR_COMBINED') }} "DAILYROUTEENTRYLABOR_COMBINED"
-                GROUP BY "DAILYROUTEENTRYUID"
-            name: DAILYROUTEENTRYLABOR_ROUTE_AGGREGATION
-            noLinkRefs: []
-      name: DAILYROUTEENTRYLABOR_ROUTE_AGGREGATION
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
+fileVersion: 1
+id: 7165467c-0772-42c4-b418-a9ffd940931e
+name: DAILYROUTEENTRYLABOR_ROUTE_AGGREGATION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 201de76a-bbde-49e1-b8db-e31ae13e12c6
+          stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: DAILYROUTEENTRYUID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 414f0294-51aa-41a5-9fb2-9da5f61d9e4c
+                stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 507e7d59-185e-4dc5-b81f-6d2e5e332350
+          stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: WORKER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1cc3b2b8-d798-4236-941e-e2ab5fccbf56
+                stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
+            transform: LISTAGG(DISTINCT "DAILYROUTEENTRYLABOR_COMBINED"."WORKER",', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 164f2d59-9357-4f6f-81b8-4fa51d7f8ab9
+          stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Total Working Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b2883471-7678-478d-b155-76cc4c7102a8
+                stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
+            transform: SUM("DAILYROUTEENTRYLABOR_COMBINED"."Total Work Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11ffc56a-2fe8-4242-b863-a5132d81895e
+          stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Total Lunch Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 129d20ab-5b7b-4de8-b7bb-d993bbad2e36
+                stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
+            transform: SUM("DAILYROUTEENTRYLABOR_COMBINED"."Total Lunch Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0a85f1d6-5de5-43b6-b6c9-89cd37176c4d
+          stepCounter: 7165467c-0772-42c4-b418-a9ffd940931e
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: VEHICLE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7cba1578-7f62-46f4-8ca9-7469d1478758
+                stepCounter: 6f0e7589-0436-49aa-be80-f7fca181bb3b
+            transform: LISTAGG(DISTINCT "DAILYROUTEENTRYLABOR_COMBINED"."VEHICLE",', ')
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DAILYROUTEENTRYLABOR_COMBINED: 6f0e7589-0436-49aa-be80-f7fca181bb3b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: DAILYROUTEENTRYLABOR_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TOWER_COMBINED', 'DAILYROUTEENTRYLABOR_COMBINED') }} "DAILYROUTEENTRYLABOR_COMBINED"
+            GROUP BY "DAILYROUTEENTRYUID"
+        name: DAILYROUTEENTRYLABOR_ROUTE_AGGREGATION
+        noLinkRefs: []
+  name: DAILYROUTEENTRYLABOR_ROUTE_AGGREGATION
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,152 +1,161 @@
-steps:
-  MT00_COMBINED-066dbe24-ee57-42f2-84b1-01371ce924b2:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 66d02c38-c199-4246-af1f-92f8fe998e7c
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT00_CODE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e4898cf7-07ab-43ad-8349-ea22458e6154
-                    stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
-                transform: ""
-          - columnReference:
-              columnCounter: e84ddc4d-65d7-43f1-9c49-e3a6ca0d4116
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            dataType: VARCHAR(40)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT00_DESC
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2ec938f4-baea-411a-9991-e78ad4912e40
-                    stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
-                transform: ""
-          - columnReference:
-              columnCounter: b1affd6e-d2ee-43f7-9698-8bf48f537788
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            dataType: NUMBER(18,3)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT00_RATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 68903642-6f43-443d-9dfa-b138a58872f1
-                    stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
-                transform: ""
-          - columnReference:
-              columnCounter: 7b7b3655-6508-4222-9714-c5ab1ae7f9ac
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            dataType: VARCHAR(5)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT00_ACTIVE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6a81fae5-ff88-4efd-8e96-74d865ca856e
-                    stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
-                transform: ""
-          - columnReference:
-              columnCounter: fd67aed3-d424-49a0-beb6-38b786965ffb
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT00_SURCHRG
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3d64c64d-4976-4f82-916f-6b42fb8d9813
-                    stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
-                transform: ""
-          - columnReference:
-              columnCounter: 04afae52-cbe1-4b3b-9327-0542e7c0789f
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            dataType: VARCHAR(5)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT00_ONCE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2b0daa55-4b78-449d-b47f-9a88a37b377e
-                    stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
-                transform: ""
-          - columnReference:
-              columnCounter: 7f79a98e-ec6a-4bb8-84b5-ec58c256836b
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            dataType: VARCHAR(5)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: MT00_SERVNUMBREQ
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ee1515e6-1fa3-43ac-bfde-ef82aa7d3a29
-                    stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 00bded1b-e321-440a-9613-35f6968ff1cc
-              stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_ES_COMP_RAW
-                nodeName: MT00
-            join:
-              joinCondition: FROM {{ ref('TRUX_ES_COMP_RAW', 'MT00') }} "MT00"
-            name: MT00_COMBINED
-            noLinkRefs: []
-      name: MT00_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+fileVersion: 1
+id: 066dbe24-ee57-42f2-84b1-01371ce924b2
+name: MT00_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 66d02c38-c199-4246-af1f-92f8fe998e7c
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: MT00_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e4898cf7-07ab-43ad-8349-ea22458e6154
+                stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e84ddc4d-65d7-43f1-9c49-e3a6ca0d4116
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        hashDetails: null
+        name: MT00_DESC
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2ec938f4-baea-411a-9991-e78ad4912e40
+                stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1affd6e-d2ee-43f7-9698-8bf48f537788
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: NUMBER(18,3)
+        description: ""
+        hashDetails: null
+        name: MT00_RATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 68903642-6f43-443d-9dfa-b138a58872f1
+                stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7b7b3655-6508-4222-9714-c5ab1ae7f9ac
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        hashDetails: null
+        name: MT00_ACTIVE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6a81fae5-ff88-4efd-8e96-74d865ca856e
+                stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fd67aed3-d424-49a0-beb6-38b786965ffb
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: MT00_SURCHRG
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3d64c64d-4976-4f82-916f-6b42fb8d9813
+                stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 04afae52-cbe1-4b3b-9327-0542e7c0789f
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        hashDetails: null
+        name: MT00_ONCE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b0daa55-4b78-449d-b47f-9a88a37b377e
+                stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7f79a98e-ec6a-4bb8-84b5-ec58c256836b
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        hashDetails: null
+        name: MT00_SERVNUMBREQ
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ee1515e6-1fa3-43ac-bfde-ef82aa7d3a29
+                stepCounter: 006e2f26-eb98-4b7b-946e-10568e023d67
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00bded1b-e321-440a-9613-35f6968ff1cc
+          stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_ES_COMP_RAW
+            nodeName: MT00
+        join:
+          joinCondition: FROM {{ ref('TRUX_ES_COMP_RAW', 'MT00') }} "MT00"
+        name: MT00_COMBINED
+        noLinkRefs: []
+  name: MT00_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

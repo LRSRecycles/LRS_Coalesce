@@ -1,124 +1,131 @@
-steps:
-  PC03_COMBINED-f738c71e-3b4e-4f2e-bdd9-4b19f187d227:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 59e4a81b-f889-4756-87c9-22a2050b0d4b
-              stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC03_PCSID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e70a804f-e07a-4711-b2a4-984ec2246ac2
-                    stepCounter: 05933d20-0970-457c-9655-672c2200ef04
-                transform: ""
-          - columnReference:
-              columnCounter: cf067b93-c34b-468a-8d75-cb8c8396dd3b
-              stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC03_ACTIVITY
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9a55581f-e65c-4e8e-993e-43690015493d
-                    stepCounter: 05933d20-0970-457c-9655-672c2200ef04
-                transform: ""
-          - columnReference:
-              columnCounter: c40b214d-951f-44fb-ae37-92701c0ca575
-              stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC03_BILLUNIT
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9bc7ab84-3fe7-4c65-a7ad-db1a94508473
-                    stepCounter: 05933d20-0970-457c-9655-672c2200ef04
-                transform: ""
-          - columnReference:
-              columnCounter: 79be4416-3589-410f-b40c-4fa1c1777997
-              stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC03_RATE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c069f55f-6d3a-4a72-a2b6-50963faebc24
-                    stepCounter: 05933d20-0970-457c-9655-672c2200ef04
-                transform: ""
-          - columnReference:
-              columnCounter: 12a06c56-6810-468e-b68e-8c35d7e50176
-              stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PC03_ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ab3a4866-83c6-4ccd-a7b3-91abe1086825
-                    stepCounter: 05933d20-0970-457c-9655-672c2200ef04
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c6d439ac-0f48-46e6-9b97-7054a0132d23
-              stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_VC_COMP_RAW
-                nodeName: PC03
-            join:
-              joinCondition: FROM {{ ref('TRUX_VC_COMP_RAW', 'PC03') }} "PC03"
-            name: PC03_COMBINED
-            noLinkRefs: []
-      name: PC03_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+fileVersion: 1
+id: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+name: PC03_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 59e4a81b-f889-4756-87c9-22a2050b0d4b
+          stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: PC03_PCSID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e70a804f-e07a-4711-b2a4-984ec2246ac2
+                stepCounter: 05933d20-0970-457c-9655-672c2200ef04
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cf067b93-c34b-468a-8d75-cb8c8396dd3b
+          stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: PC03_ACTIVITY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9a55581f-e65c-4e8e-993e-43690015493d
+                stepCounter: 05933d20-0970-457c-9655-672c2200ef04
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c40b214d-951f-44fb-ae37-92701c0ca575
+          stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: PC03_BILLUNIT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9bc7ab84-3fe7-4c65-a7ad-db1a94508473
+                stepCounter: 05933d20-0970-457c-9655-672c2200ef04
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79be4416-3589-410f-b40c-4fa1c1777997
+          stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: PC03_RATE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c069f55f-6d3a-4a72-a2b6-50963faebc24
+                stepCounter: 05933d20-0970-457c-9655-672c2200ef04
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12a06c56-6810-468e-b68e-8c35d7e50176
+          stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: PC03_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ab3a4866-83c6-4ccd-a7b3-91abe1086825
+                stepCounter: 05933d20-0970-457c-9655-672c2200ef04
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c6d439ac-0f48-46e6-9b97-7054a0132d23
+          stepCounter: f738c71e-3b4e-4f2e-bdd9-4b19f187d227
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_VC_COMP_RAW
+            nodeName: PC03
+        join:
+          joinCondition: FROM {{ ref('TRUX_VC_COMP_RAW', 'PC03') }} "PC03"
+        name: PC03_COMBINED
+        noLinkRefs: []
+  name: PC03_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

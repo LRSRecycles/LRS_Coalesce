@@ -1,148 +1,159 @@
-steps:
-  CUSTTYPE_COMBINED-8ad45caf-9e12-4785-8947-74853b02a513:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: de29ea4b-0cd4-488c-88fb-b88783647d0f
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CUSTTYPE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f0b48554-52da-497e-b683-8e75021d4bd8
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-          - columnReference:
-              columnCounter: 9ad9d066-4ef9-49e6-9361-09bc720db9a9
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CUSTTYPEUID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 36bcf19e-165d-4e93-823f-e770800b030b
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-          - columnReference:
-              columnCounter: a2fd2c15-5a45-4e8a-a3b0-0abdf7bad52e
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: DESCRIPTION
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d5fd2177-4d2f-46c0-ac51-557b066e20f0
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-          - columnReference:
-              columnCounter: b8faa483-e2bf-4bbe-a979-c63db6bf6930
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: NUMBER(5,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ACTIVE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 933fbc2c-867f-48f9-8830-6dcc29a74c9b
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-          - columnReference:
-              columnCounter: 7575084c-eb83-40a4-8280-b38169609ba6
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CREDITCARDLIMIT
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 916611cd-03ae-4e6c-a541-d81c00ebc13e
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-          - columnReference:
-              columnCounter: 4e8f938d-2a7d-415a-b6dd-2f5f4ae2715d
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: VARCHAR(128)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ALLOWBANKDEBITPAYMENTS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 71ac85b2-f6df-414b-bdb2-73514c9c9716
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-          - columnReference:
-              columnCounter: 104fefb0-5e90-4279-828c-100218612808
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: VARCHAR(128)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ALLOWCREDITCARDPAYMENTS
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a5b45fd4-8b37-409b-9c01-ad455a98bea3
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-          - columnReference:
-              columnCounter: a4e5758a-6bf7-47d5-a849-225e690c1695
-              stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: PREPAYMENTMINIMUM
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8be8d6dd-2b79-4ec6-a909-6c3e74e2b1f5
-                    stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_RAW
-                nodeName: CUSTTYPE
-            join:
-              joinCondition: FROM {{ ref('TOWER_RAW', 'CUSTTYPE') }} "CUSTTYPE"
-            name: CUSTTYPE_COMBINED
-            noLinkRefs: []
-      name: CUSTTYPE_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+fileVersion: 1
+id: 8ad45caf-9e12-4785-8947-74853b02a513
+name: CUSTTYPE_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: de29ea4b-0cd4-488c-88fb-b88783647d0f
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: CUSTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0b48554-52da-497e-b683-8e75021d4bd8
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ad9d066-4ef9-49e6-9361-09bc720db9a9
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: CUSTTYPEUID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36bcf19e-165d-4e93-823f-e770800b030b
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2fd2c15-5a45-4e8a-a3b0-0abdf7bad52e
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d5fd2177-4d2f-46c0-ac51-557b066e20f0
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b8faa483-e2bf-4bbe-a979-c63db6bf6930
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        hashDetails: null
+        name: ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 933fbc2c-867f-48f9-8830-6dcc29a74c9b
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7575084c-eb83-40a4-8280-b38169609ba6
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: CREDITCARDLIMIT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 916611cd-03ae-4e6c-a541-d81c00ebc13e
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e8f938d-2a7d-415a-b6dd-2f5f4ae2715d
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: VARCHAR(128)
+        description: ""
+        hashDetails: null
+        name: ALLOWBANKDEBITPAYMENTS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 71ac85b2-f6df-414b-bdb2-73514c9c9716
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 104fefb0-5e90-4279-828c-100218612808
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: VARCHAR(128)
+        description: ""
+        hashDetails: null
+        name: ALLOWCREDITCARDPAYMENTS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5b45fd4-8b37-409b-9c01-ad455a98bea3
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4e5758a-6bf7-47d5-a849-225e690c1695
+          stepCounter: 8ad45caf-9e12-4785-8947-74853b02a513
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: PREPAYMENTMINIMUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8be8d6dd-2b79-4ec6-a909-6c3e74e2b1f5
+                stepCounter: 1fae02c5-6343-48c5-b9a8-38265c0f71d0
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_RAW
+            nodeName: CUSTTYPE
+        join:
+          joinCondition: FROM {{ ref('TOWER_RAW', 'CUSTTYPE') }} "CUSTTYPE"
+        name: CUSTTYPE_COMBINED
+        noLinkRefs: []
+  name: CUSTTYPE_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

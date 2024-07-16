@@ -1,114 +1,128 @@
-steps:
-  STG_AGGREGATE_TRUCK_DATE_ROUTE_SEQUENCE-a404ca8c-fd28-463f-b770-97ed206ff3c8:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 5df17d28-81ac-46a9-9d86-4f2236a6a8f4
-              stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            name: RM05_DATE
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ba881bf8-2741-49b7-9012-8e2c5fa5d249
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-          - columnReference:
-              columnCounter: 6411ebff-04c6-48f1-a50b-d849a5438d83
-              stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
-            dataType: VARCHAR
-            description: ""
-            name: RM05_ROUT
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d45515c6-5e54-4bc1-8dde-6589a5168487
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-          - columnReference:
-              columnCounter: 3517013e-f864-45dd-a088-c3739567c1fe
-              stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
-            dataType: NUMBER(18,2)
-            description: ""
-            name: RM05_SEQ1
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3f0847f0-05b5-465f-8efd-3f1f255c5734
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-          - columnReference:
-              columnCounter: 43159643-a785-4917-8c59-a5fcc2d7efa0
-              stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
-            dataType: NUMBER(18,2)
-            description: ""
-            name: RM05_SEQ2
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6fe30f3a-ba5c-494d-82fc-1d68ed68420b
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-          - columnReference:
-              columnCounter: c9c8a755-1c0c-4d51-889d-34d7a229a58b
-              stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
-            dataType: NUMBER(38,0)
-            description: ""
-            name: RM05_TRUK
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1f78371a-a836-4bd2-b9fa-c22073f2f1ac
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-          - columnReference:
-              columnCounter: a4e74039-d170-4ca2-984e-3f6bd86490a7
-              stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
-            dataType: VARCHAR
-            description: ""
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 536e3f9b-b868-4851-8de7-e5933e2d276a
-                    stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: RM05_COMBINED
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
-                WHERE "SORT" = 1 
-                  AND "_FIVETRAN_DELETED" = FALSE 
-                  AND "METADATA$ACTION" = 'INSERT'
-            name: STG_AGGREGATE_TRUCK_DATE_ROUTE_SEQUENCE
-            noLinkRefs: []
-      name: STG_AGGREGATE_TRUCK_DATE_ROUTE_SEQUENCE
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
+fileVersion: 1
+id: a404ca8c-fd28-463f-b770-97ed206ff3c8
+name: STG_AGGREGATE_TRUCK_DATE_ROUTE_SEQUENCE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5df17d28-81ac-46a9-9d86-4f2236a6a8f4
+          stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: RM05_DATE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ba881bf8-2741-49b7-9012-8e2c5fa5d249
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6411ebff-04c6-48f1-a50b-d849a5438d83
+          stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RM05_ROUT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d45515c6-5e54-4bc1-8dde-6589a5168487
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3517013e-f864-45dd-a088-c3739567c1fe
+          stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: RM05_SEQ1
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3f0847f0-05b5-465f-8efd-3f1f255c5734
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 43159643-a785-4917-8c59-a5fcc2d7efa0
+          stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: RM05_SEQ2
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6fe30f3a-ba5c-494d-82fc-1d68ed68420b
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9c8a755-1c0c-4d51-889d-34d7a229a58b
+          stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: RM05_TRUK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1f78371a-a836-4bd2-b9fa-c22073f2f1ac
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4e74039-d170-4ca2-984e-3f6bd86490a7
+          stepCounter: a404ca8c-fd28-463f-b770-97ed206ff3c8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 536e3f9b-b868-4851-8de7-e5933e2d276a
+                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: RM05_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
+            WHERE "SORT" = 1 
+              AND "_FIVETRAN_DELETED" = FALSE 
+              AND "METADATA$ACTION" = 'INSERT'
+        name: STG_AGGREGATE_TRUCK_DATE_ROUTE_SEQUENCE
+        noLinkRefs: []
+  name: STG_AGGREGATE_TRUCK_DATE_ROUTE_SEQUENCE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,176 +1,194 @@
-steps:
-  SITESTATUSHISTORY_COMBINED-b2f367a9-6698-4b58-b6d8-c49dfce181d6:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TOWER_COMBINED
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 132fcb36-6aa4-48d6-8896-1e3864e7255a
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashDetails: null
-            name: Site Status History UID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e57d7a93-e84b-4d0b-9e3b-782a14ca09bd
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-          - columnReference:
-              columnCounter: d84f417b-842b-44fc-9801-a74d0215637f
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashDetails: null
-            name: Site Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b9f51a71-f91a-476f-bdce-270b15bc6ea3
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-          - columnReference:
-              columnCounter: 00e66af3-1549-4388-9800-7dd63e9bd9bf
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashDetails: null
-            name: Site Status
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 494b7524-d8b6-4fad-9aca-60c7a605252b
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 998286d9-c956-4edd-aa53-cc640a3c6182
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            config: {}
-            dataType: VARCHAR(16777216)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Site Status Desc
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: |-
-                  CASE 
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'AP' THEN 'Active Pickup'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'CH' THEN 'Credit Hold'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'VH' THEN 'Vacation Hold'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'CN' THEN 'Cancelled Stop'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'IN' THEN 'Inactive'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'IP' THEN 'Inactive - Pending Removal'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'PS' THEN 'Prospect'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'VA' THEN 'Vacant'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'EX' THEN 'Exempt from service'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'SR' THEN 'Survey Required'
-                    WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'PA' THEN 'Pending Approval'
-                    ELSE NULL
-                  END
-            systemColumnType: None
+fileVersion: 1
+id: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+name: SITESTATUSHISTORY_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 132fcb36-6aa4-48d6-8896-1e3864e7255a
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Site Status History UID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e57d7a93-e84b-4d0b-9e3b-782a14ca09bd
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
             transform: ""
-          - columnReference:
-              columnCounter: 5f6affa5-8123-40ff-b09e-f44f733781b5
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashDetails: null
-            name: Effective Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b5944712-c899-4b5b-8cd0-cd9d126118a6
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-          - columnReference:
-              columnCounter: 18b5494c-b41d-4176-b7bc-97e8b8642a75
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashDetails: null
-            name: Status Change Reason
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: b3b54930-89b5-4eb3-8fb7-04646b7f2725
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-          - columnReference:
-              columnCounter: abcef2e2-b83c-42a1-8d01-2c9d3cba171f
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashDetails: null
-            name: Request Date Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: afa9dd1a-efa6-413d-9345-5e190d9edad5
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-          - columnReference:
-              columnCounter: ae1fcd6c-2ec9-4281-9449-1755051f85c0
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: VARCHAR(16777216)
-            description: ""
-            hashDetails: null
-            name: Request User
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c8055aed-7e4b-43ad-9a04-aabec80709e2
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-          - columnReference:
-              columnCounter: 2826925a-951b-42c0-ab3a-8ab661e8383d
-              stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Active
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 90f8b544-2c1b-435d-a984-a91a348ae661
-                    stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TOWER_RAW
-                nodeName: SITESTATUSHISTORY
-            join:
-              joinCondition: FROM {{ ref('TOWER_RAW', 'SITESTATUSHISTORY') }} "SITESTATUSHISTORY"
-            name: SITESTATUSHISTORY_COMBINED
-            noLinkRefs: []
-      name: SITESTATUSHISTORY_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d84f417b-842b-44fc-9801-a74d0215637f
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b9f51a71-f91a-476f-bdce-270b15bc6ea3
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00e66af3-1549-4388-9800-7dd63e9bd9bf
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Site Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 494b7524-d8b6-4fad-9aca-60c7a605252b
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 998286d9-c956-4edd-aa53-cc640a3c6182
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Status Desc
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'AP' THEN 'Active Pickup'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'CH' THEN 'Credit Hold'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'VH' THEN 'Vacation Hold'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'CN' THEN 'Cancelled Stop'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'IN' THEN 'Inactive'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'IP' THEN 'Inactive - Pending Removal'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'PS' THEN 'Prospect'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'VA' THEN 'Vacant'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'EX' THEN 'Exempt from service'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'SR' THEN 'Survey Required'
+                WHEN "SITESTATUSHISTORY"."SITESTATUS" = 'PA' THEN 'Pending Approval'
+                ELSE NULL
+              END
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5f6affa5-8123-40ff-b09e-f44f733781b5
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Effective Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5944712-c899-4b5b-8cd0-cd9d126118a6
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18b5494c-b41d-4176-b7bc-97e8b8642a75
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Status Change Reason
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b3b54930-89b5-4eb3-8fb7-04646b7f2725
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: abcef2e2-b83c-42a1-8d01-2c9d3cba171f
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Request Date Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: afa9dd1a-efa6-413d-9345-5e190d9edad5
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae1fcd6c-2ec9-4281-9449-1755051f85c0
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashDetails: null
+        name: Request User
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8055aed-7e4b-43ad-9a04-aabec80709e2
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2826925a-951b-42c0-ab3a-8ab661e8383d
+          stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Active
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90f8b544-2c1b-435d-a984-a91a348ae661
+                stepCounter: 95d92b03-bf54-415c-989b-b0cf578d4412
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_RAW
+            nodeName: SITESTATUSHISTORY
+        join:
+          joinCondition: FROM {{ ref('TOWER_RAW', 'SITESTATUSHISTORY') }} "SITESTATUSHISTORY"
+        name: SITESTATUSHISTORY_COMBINED
+        noLinkRefs: []
+  name: SITESTATUSHISTORY_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

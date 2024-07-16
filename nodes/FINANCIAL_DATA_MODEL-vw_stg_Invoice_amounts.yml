@@ -1,219 +1,232 @@
-steps:
-  vw_stg_Invoice_amounts-cd6babd1-6b13-444d-aeee-aec81afac6f6:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: FINANCIAL_DATA_MODEL
-      materializationType: view
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: d0453576-5283-4c5f-be8e-5a80ab2d9df8
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Unique ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3c5e210c-c1a6-409a-a4a9-74f4a104ccc4
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: 61f98f94-5fce-4d62-bdf7-438c7ab0cde3
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: 59a4e0d8-d7c2-4e92-bc1e-0c8b1b153ce0
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5379cca1-7f0b-4e64-bbd8-c71aec741730
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: cb00db74-ea81-4410-af92-e1ebfd7f2329
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: VARCHAR(13)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 581c44d4-daea-4fc9-a443-158eec519821
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: c82b2a0d-174f-4093-b320-98084437b0aa
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Invoice Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e6f56b2b-1b54-43c6-98e4-586d31c8653d
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: 857fccd2-c820-483d-a953-9e467169f522
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Amount
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5a271921-8496-4417-9c96-77c87aa5e397
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: d73a40da-f38f-4121-adbd-9c00b74d2b03
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e4337c49-1766-460d-ad3f-94fbcba823cc
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: e59afc8d-774a-4621-a5ef-85cb77b2e53e
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: varchar
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer_Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: 95c08212-991f-4e74-8380-0850ce1be605
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: varchar
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer_Site_Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9201fbce-c10b-4c18-9853-a9b4bba17628
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: 8c29ddd0-589e-4e86-be05-f1ecb2c52626
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: varchar
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: ID_Source
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: bbaeae2b-c40f-4a97-be3d-688aaaf24606
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - columnReference:
-              columnCounter: 786eda46-1c4c-4847-92a1-26b99360fc48
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            dataType: DATETIME
-            description: Eventually will be Terms + invoice date where applicable in TRUX, correct in Tower
-            hashColumns: []
-            hashDetails: null
-            name: Due Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6c02cb13-aac2-4697-8a30-eee9804bcb6b
-                    stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 525e0090-eb1e-4ae5-a07d-93e90592c92a
-              stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
-            config: {}
-            dataType: Number
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Payment Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a7bcfa93-b715-482b-9b26-c9eb5162e756
-                    stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
-                transform: case when "AR_Invoice_Amounts"."SOURCE" = 'TOWER' then 1 when "VW_AR_Payment_Check"."Record Count">=1 then 1 when "AR_Invoice_Amounts"."Amount"<> 0 then 1 else 0 end
-            systemColumnType: None
+fileVersion: 1
+id: cd6babd1-6b13-444d-aeee-aec81afac6f6
+name: vw_stg_Invoice_amounts
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d0453576-5283-4c5f-be8e-5a80ab2d9df8
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Unique ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3c5e210c-c1a6-409a-a4a9-74f4a104ccc4
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              AR_Invoice_Amounts: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-              VW_AR_Payment_Check: a4418938-9502-4ab1-a682-8ae8b004992d
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: FINANCIAL_DATA_MODEL
-                nodeName: AR_Invoice_Amounts
-              - locationName: FINANCIAL_DATA_MODEL
-                nodeName: VW_AR_Payment_Check
-            join:
-              joinCondition: |-
-                FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Invoice_Amounts') }} "AR_Invoice_Amounts"
-                LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_Payment_Check') }} "VW_AR_Payment_Check"
-                ON "AR_Invoice_Amounts"."ID_Source" = "VW_AR_Payment_Check"."Link_Source"
-            name: vw_stg_Invoice_amounts
-            noLinkRefs: []
-      name: vw_stg_Invoice_amounts
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61f98f94-5fce-4d62-bdf7-438c7ab0cde3
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f799cde5-2702-492d-be83-b43e55baefd9
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 59a4e0d8-d7c2-4e92-bc1e-0c8b1b153ce0
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5379cca1-7f0b-4e64-bbd8-c71aec741730
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb00db74-ea81-4410-af92-e1ebfd7f2329
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: VARCHAR(13)
+        description: ""
+        hashDetails: null
+        name: Invoice Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 581c44d4-daea-4fc9-a443-158eec519821
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c82b2a0d-174f-4093-b320-98084437b0aa
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Invoice Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e6f56b2b-1b54-43c6-98e4-586d31c8653d
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 857fccd2-c820-483d-a953-9e467169f522
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Amount
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5a271921-8496-4417-9c96-77c87aa5e397
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d73a40da-f38f-4121-adbd-9c00b74d2b03
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e4337c49-1766-460d-ad3f-94fbcba823cc
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e59afc8d-774a-4621-a5ef-85cb77b2e53e
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: varchar
+        description: ""
+        hashDetails: null
+        name: Customer_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 95c08212-991f-4e74-8380-0850ce1be605
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: varchar
+        description: ""
+        hashDetails: null
+        name: Customer_Site_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9201fbce-c10b-4c18-9853-a9b4bba17628
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c29ddd0-589e-4e86-be05-f1ecb2c52626
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: varchar
+        description: ""
+        hashDetails: null
+        name: ID_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bbaeae2b-c40f-4a97-be3d-688aaaf24606
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 786eda46-1c4c-4847-92a1-26b99360fc48
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: DATETIME
+        description: Eventually will be Terms + invoice date where applicable in TRUX, correct in Tower
+        hashDetails: null
+        name: Due Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6c02cb13-aac2-4697-8a30-eee9804bcb6b
+                stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 525e0090-eb1e-4ae5-a07d-93e90592c92a
+          stepCounter: cd6babd1-6b13-444d-aeee-aec81afac6f6
+        config: {}
+        dataType: Number
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a7bcfa93-b715-482b-9b26-c9eb5162e756
+                stepCounter: a4418938-9502-4ab1-a682-8ae8b004992d
+            transform: case when "AR_Invoice_Amounts"."SOURCE" = 'TOWER' then 1 when "VW_AR_Payment_Check"."Record Count">=1 then 1 when "AR_Invoice_Amounts"."Amount"<> 0 then 1 else 0 end
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          AR_Invoice_Amounts: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+          VW_AR_Payment_Check: a4418938-9502-4ab1-a682-8ae8b004992d
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: AR_Invoice_Amounts
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: VW_AR_Payment_Check
+        join:
+          joinCondition: |-
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Invoice_Amounts') }} "AR_Invoice_Amounts"
+            LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_Payment_Check') }} "VW_AR_Payment_Check"
+            ON "AR_Invoice_Amounts"."ID_Source" = "VW_AR_Payment_Check"."Link_Source"
+        name: vw_stg_Invoice_amounts
+        noLinkRefs: []
+  name: vw_stg_Invoice_amounts
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

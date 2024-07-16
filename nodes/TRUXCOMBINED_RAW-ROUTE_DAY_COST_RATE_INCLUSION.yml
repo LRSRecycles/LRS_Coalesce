@@ -1,387 +1,422 @@
-steps:
-  ROUTE_DAY_COST_RATE_INCLUSION-a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: Everything at the Route Day, driver level. Multiple time options in this to account for different databases. Last stage where driver, truck, and helper are listed separately to get to a unique route, route day, source cost table
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: bd4d2a9e-26d1-48d0-9f5a-4362aac47517
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: beb9dbc4-f4e5-424d-b766-c1f55060b043
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 6e7a2564-5369-4577-af4a-ac1f63348662
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Route
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6eae69be-710e-4991-9475-21d606426ee2
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: a208a101-60af-4cdf-accb-b8a04949d58a
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Driver
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4672cde6-b489-49b1-bc3d-4e6142a8fc49
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 777cd5f1-8cca-4f85-94da-6e9083de61c9
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Helper
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2f571dea-7a23-49a3-880b-307ca70f805a
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 0773d4f5-0a43-4604-9c29-b48a152bf250
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(8,2)
-            description: ""
-            hashDetails: null
-            name: Fuel Used
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 787ef066-214d-4a33-9b6a-07858450f789
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 9082a624-3bd9-4a00-8920-51bc5748d3d8
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Truck
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2327016b-dd9a-4342-a85d-f1894b9b4a9c
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 22526f6c-7155-48cc-9258-a42318040c90
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9d910dbc-27b8-45c3-87b6-dc2909792285
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 29976737-e868-4a80-b699-eeb81ee5dbf8
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(38,2)
-            description: ""
-            hashDetails: null
-            name: Odometer Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c9c4da7d-ab8f-4aa8-b0c6-fed6bf22809a
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 9617f1b2-d2fd-422c-b2ef-0884a0207eb2
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(38,2)
-            description: Difference between time 1 and time 2 (start time and end time)
-            hashDetails: null
-            name: Time Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3f2fc968-a7ad-4cb4-80af-570a39c2ec23
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 0c65ef5c-1fb6-438d-a13c-476ec74f21fd
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(38,2)
-            description: Difference between Departure Time and Return Time
-            hashDetails: null
-            name: Trip Duration
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 99b946e4-40c4-40cf-a7cd-b7240f7705a8
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: bb3e46a8-079a-42a3-b6db-d26755b6b671
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Route Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2e2c462c-d59e-4543-a064-71f25ac9fea5
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 9e427368-03ee-4cd9-99c4-58c5b46d5e42
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER
-            description: ""
-            hashDetails: null
-            name: Number of Stops
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4de6704f-153c-4cb0-800b-106b72a45821
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 92740907-ec1a-4479-89d9-d10ac9871c1d
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Sequence Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f0fc0d2c-b67d-4466-9420-99242ec0409d
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: a3624899-1541-406e-afe6-1b6ee86eea6b
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Clock Total Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4c105553-991b-4e00-8e88-231116f23775
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: aea61ed4-f61e-4d02-b6ed-70558156927f
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a8d6c04b-130f-41a6-abc4-cf79080e1d61
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - columnReference:
-              columnCounter: 98721e12-567d-4865-999c-f1068563dbd3
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Vehicle Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1d7252c2-0407-4bef-a98b-9d32e4428979
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0a7ef683-64de-413f-843b-5e1f1cb0078d
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Helper Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6af87fbf-bfb7-4fdb-836e-6900bdbd3f47
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+name: ROUTE_DAY_COST_RATE_INCLUSION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Everything at the Route Day, driver level. Multiple time options in this to account for different databases. Last stage where driver, truck, and helper are listed separately to get to a unique route, route day, source cost table
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd4d2a9e-26d1-48d0-9f5a-4362aac47517
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: beb9dbc4-f4e5-424d-b766-c1f55060b043
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
             transform: ""
-          - columnReference:
-              columnCounter: 326ccbe6-d23b-41cf-8a12-d46d25ac0138
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            dataType: NUMBER(18,2)
-            description: Assumption of Gallons is fine
-            hashDetails: null
-            name: Fuel Rate
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 042adbe0-c278-431b-b801-7ca3f5a0f1a6
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 2627ad5e-3e77-4064-8ad9-043c396ed685
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Total Driver Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: ifnull(ifnull(nullifzero("Clock Total Time")/60,"Time Change"/60),0.00) * ifnull("Driver Cost",0.00)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6e7a2564-5369-4577-af4a-ac1f63348662
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6eae69be-710e-4991-9475-21d606426ee2
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 5c537b7b-ce01-4eb6-bfd7-2dadb00589bf
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Total Vehicle Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "\"Time Change\"/60 * \"Vehicle Cost\""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a208a101-60af-4cdf-accb-b8a04949d58a
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Driver
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4672cde6-b489-49b1-bc3d-4e6142a8fc49
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 38731295-0e0b-4ec6-bba5-5ce3bbe8c9ae
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Total Fuel Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: ifnull("Fuel Rate" * "Fuel Used",0.00)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 777cd5f1-8cca-4f85-94da-6e9083de61c9
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Helper
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2f571dea-7a23-49a3-880b-307ca70f805a
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1a3724d9-d51b-4ce1-b72c-be1993ff07da
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Total Helper Cost
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: ifnull(ifnull(nullifzero("Clock Total Time")/60,"Time Change"/60),0.00) * ifnull("Helper Cost",0.00)
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0773d4f5-0a43-4604-9c29-b48a152bf250
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(8,2)
+        description: ""
+        hashDetails: null
+        name: Fuel Used
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 787ef066-214d-4a33-9b6a-07858450f789
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 2ed3a380-d1d7-4e6a-afda-a00ee611fb6d
-              stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Total Downtime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ad9c3b53-8878-4a59-b017-d532d841e378
-                    stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9082a624-3bd9-4a00-8920-51bc5748d3d8
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Truck
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2327016b-dd9a-4342-a85d-f1894b9b4a9c
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              ROUTE_DAY_COST_JOIN: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: ROUTE_DAY_COST_JOIN
-            join:
-              joinCondition: |
-                FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_COST_JOIN') }} "ROUTE_DAY_COST_JOIN"
-                
-            name: ROUTE_DAY_COST_RATE_INCLUSION
-            noLinkRefs: []
-      name: ROUTE_DAY_COST_RATE_INCLUSION
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22526f6c-7155-48cc-9258-a42318040c90
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9d910dbc-27b8-45c3-87b6-dc2909792285
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29976737-e868-4a80-b699-eeb81ee5dbf8
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Odometer Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c9c4da7d-ab8f-4aa8-b0c6-fed6bf22809a
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9617f1b2-d2fd-422c-b2ef-0884a0207eb2
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(38,2)
+        description: Difference between time 1 and time 2 (start time and end time)
+        hashDetails: null
+        name: Time Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3f2fc968-a7ad-4cb4-80af-570a39c2ec23
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c65ef5c-1fb6-438d-a13c-476ec74f21fd
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(38,2)
+        description: Difference between Departure Time and Return Time
+        hashDetails: null
+        name: Trip Duration
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 99b946e4-40c4-40cf-a7cd-b7240f7705a8
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bb3e46a8-079a-42a3-b6db-d26755b6b671
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2e2c462c-d59e-4543-a064-71f25ac9fea5
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e427368-03ee-4cd9-99c4-58c5b46d5e42
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER
+        description: ""
+        hashDetails: null
+        name: Number of Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4de6704f-153c-4cb0-800b-106b72a45821
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 92740907-ec1a-4479-89d9-d10ac9871c1d
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Sequence Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0fc0d2c-b67d-4466-9420-99242ec0409d
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a3624899-1541-406e-afe6-1b6ee86eea6b
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Clock Total Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4c105553-991b-4e00-8e88-231116f23775
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aea61ed4-f61e-4d02-b6ed-70558156927f
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8d6c04b-130f-41a6-abc4-cf79080e1d61
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98721e12-567d-4865-999c-f1068563dbd3
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Vehicle Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1d7252c2-0407-4bef-a98b-9d32e4428979
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0a7ef683-64de-413f-843b-5e1f1cb0078d
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Helper Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6af87fbf-bfb7-4fdb-836e-6900bdbd3f47
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 326ccbe6-d23b-41cf-8a12-d46d25ac0138
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        description: Assumption of Gallons is fine
+        hashDetails: null
+        name: Fuel Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 042adbe0-c278-431b-b801-7ca3f5a0f1a6
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2627ad5e-3e77-4064-8ad9-043c396ed685
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Driver Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ifnull(ifnull(nullifzero("Clock Total Time")/60,"Time Change"/60),0.00) * ifnull("Driver Cost",0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5c537b7b-ce01-4eb6-bfd7-2dadb00589bf
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Vehicle Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"Time Change\"/60 * \"Vehicle Cost\""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38731295-0e0b-4ec6-bba5-5ce3bbe8c9ae
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Fuel Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ifnull("Fuel Rate" * "Fuel Used",0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a3724d9-d51b-4ce1-b72c-be1993ff07da
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Helper Cost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ifnull(ifnull(nullifzero("Clock Total Time")/60,"Time Change"/60),0.00) * ifnull("Helper Cost",0.00)
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ed3a380-d1d7-4e6a-afda-a00ee611fb6d
+          stepCounter: a5ec92a2-6eb9-4273-b44f-aa11dfc6f7dc
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Downtime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad9c3b53-8878-4a59-b017-d532d841e378
+                stepCounter: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          ROUTE_DAY_COST_JOIN: fe28f9e6-ea5f-4b22-8ddd-0d82e1822e8b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: ROUTE_DAY_COST_JOIN
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'ROUTE_DAY_COST_JOIN') }} "ROUTE_DAY_COST_JOIN"
+        name: ROUTE_DAY_COST_RATE_INCLUSION
+        noLinkRefs: []
+  name: ROUTE_DAY_COST_RATE_INCLUSION
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

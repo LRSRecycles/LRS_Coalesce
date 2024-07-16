@@ -1,111 +1,116 @@
-steps:
-  CM21A_COMBINED-36bb0d3a-8034-4bad-917a-1f3f9ec03495:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        storageLocationSearchText: TRUX_
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 4d74b7fc-edf6-4dfb-af97-fc00e6da851c
-              stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CM21A_TXID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0f61ffa3-814d-4dad-8b2b-55a051f1c52a
-                    stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
-                transform: ""
-          - columnReference:
-              columnCounter: e8abf53e-0faf-4b20-b79c-6001a7f3b815
-              stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: CM21A_ACTV
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f4f6f1a2-d372-4c5d-9545-6119ee9dd547
-                    stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
-                transform: ""
-          - columnReference:
-              columnCounter: fb2a46b8-3468-4e56-9d89-84ec05ad3c88
-              stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
-            dataType: BOOLEAN
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_DELETED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2a522b57-67a5-4697-97a2-2e7989772235
-                    stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
-                transform: ""
-          - columnReference:
-              columnCounter: dd274753-d484-4e41-9095-7bd1332ae9e9
-              stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
-            dataType: TIMESTAMP_TZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: _FIVETRAN_SYNCED
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3791fe4b-39e8-4a5b-a594-476eb1f9528f
-                    stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 992277a6-1a40-40dd-a021-d260b1bf8e34
-              stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            hashColumns: []
-            isSystemSource: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUX_AL_COMP_RAW
-                nodeName: CM21A
-            join:
-              joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CM21A') }} "CM21A"
-            name: CM21A_COMBINED
-            noLinkRefs: []
-      name: CM21A_COMBINED
-      overrideSQL: false
-      schema: ""
-      sqlType: "4"
-      type: sql
-    stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
+fileVersion: 1
+id: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
+name: CM21A_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d74b7fc-edf6-4dfb-af97-fc00e6da851c
+          stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: CM21A_TXID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0f61ffa3-814d-4dad-8b2b-55a051f1c52a
+                stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e8abf53e-0faf-4b20-b79c-6001a7f3b815
+          stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: CM21A_ACTV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f4f6f1a2-d372-4c5d-9545-6119ee9dd547
+                stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb2a46b8-3468-4e56-9d89-84ec05ad3c88
+          stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2a522b57-67a5-4697-97a2-2e7989772235
+                stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dd274753-d484-4e41-9095-7bd1332ae9e9
+          stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        hashDetails: null
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3791fe4b-39e8-4a5b-a594-476eb1f9528f
+                stepCounter: 5f9df25d-8246-4763-868d-67092bd51a6f
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 992277a6-1a40-40dd-a021-d260b1bf8e34
+          stepCounter: 36bb0d3a-8034-4bad-917a-1f3f9ec03495
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: CM21A
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CM21A') }} "CM21A"
+        name: CM21A_COMBINED
+        noLinkRefs: []
+  name: CM21A_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

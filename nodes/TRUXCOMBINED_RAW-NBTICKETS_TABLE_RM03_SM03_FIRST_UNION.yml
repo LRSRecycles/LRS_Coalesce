@@ -1,387 +1,404 @@
-steps:
-  NBTICKETS_TABLE_RM03_SM03_FIRST_UNION-5648f2b4-337b-485c-8919-b4e53a089b45:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: First union of RM03 and SM01 necessitated by Route Audit Report before including disposal ticket data
-      isMultisource: true
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: 550e5100-358a-4619-a849-d8eab36a14ac
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Work Order Number
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c5a6df09-aef3-4e91-91ed-a769f58d786d
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: cf61ff5d-28e9-4260-a13a-fd3e7e4ab485
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: c1cbfcf8-2b42-4454-bc81-45f05ba8e153
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Site
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1b9d4c76-b87b-4b27-a5e0-04a76d8e69e8
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: d3f45a97-0db1-4e56-aeb7-00864ea164b9
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: c68dfabe-9d9b-4d27-9d06-306f8248e057
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7deec57a-4649-4b48-9cac-74163b4b69fb
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 413d99ae-218c-4ab3-8890-275ce5af9bab
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: 3143e8f9-6182-408e-a362-acd9c40e9217
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: VARCHAR(2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Activity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7557aeb9-1325-4fc2-93b8-2fbf9d844a53
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 03c3135c-24e5-4640-a1d5-03b9adef6ca0
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: dc729d55-1ed6-47f4-ade0-25ed8243baeb
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Period Charges
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ccc737f3-8a20-4d5f-a441-b8bcbd5dd513
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 88db1f0d-2649-49cf-9981-c6a4a9e5b7b1
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: b4af808b-e064-4058-90ac-053eeca3d10b
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Service
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 825734ce-6877-421c-b18d-4d79b8b6efc9
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 0a89155f-f688-48d0-b110-4861c6e773a8
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: 06249cab-260f-4980-913e-926bff18e107
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Original Staged Call
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: ce59e664-f63a-495d-8f1b-9fa2059f59c6
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 15d4fa86-306a-4eb8-90a9-5a9df8b344ad
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: 556af833-d6c7-44d1-8f1d-88ccbca93623
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Quantity
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: a84b5334-9eea-42c4-a92a-b82f3a6c88d2
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: f49a93e2-bd3e-4dfd-9b9b-9e91081da07a
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: 7d5436f7-a183-4ea0-be0b-9ebb9dedf824
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Dispatch Datetime
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: cf82ae84-b3c4-4879-9058-106dc5a15244
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: d04658ee-064c-4251-af38-dc270f9ac0dc
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Time Finished
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d469a258-8f8a-4fb6-b102-3aba39b32a62
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 37b2f1d4-e062-4d51-9068-be0a80503376
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 33407523-83d4-4b86-9703-b84fa788091b
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: c8af28a4-f895-4ac2-b3b4-c61f7145eb9d
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: c0c464ad-51ad-4ad2-a093-9cad82bfe5aa
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Sequence
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 92fbd9a8-4fb1-4311-85f1-fa4c0de54796
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: ba687272-4422-4f9a-94f3-0be99a7adcdf
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: 18b64549-1bda-4d5e-8b4d-d07a1b27491d
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Call ID
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 61b2ba9a-4e24-4bd0-9a47-10b5b3916528
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 91461fa2-c401-4ad5-9d7d-b53e2af8356c
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: 87940691-80a9-4204-95c2-faaa872ba6c7
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Customer
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8c85af5a-6ee6-4ee8-9cd1-c81f39d8c240
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: 2bfb5d46-7f7d-47d0-8b8b-2216fb1623f9
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - columnReference:
-              columnCounter: 7a441c7d-d56e-461d-a18c-091338db3620
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7cb9a234-1ab3-4d86-81e6-2d5ac81cafae
-                    stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
-                transform: ""
-              - columnReferences:
-                  - columnCounter: fada5fe9-987e-4ed6-b842-276c321eadd4
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 398e8eab-62d1-4bf8-8be0-36275a6e0dec
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Billing Amount
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-              - columnReferences:
-                  - columnCounter: ee4619b4-5c66-4deb-b3cf-c4447d7b008e
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-            systemColumnType: None
+fileVersion: 1
+id: 5648f2b4-337b-485c-8919-b4e53a089b45
+name: NBTICKETS_TABLE_RM03_SM03_FIRST_UNION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: First union of RM03 and SM01 necessitated by Route Audit Report before including disposal ticket data
+  isMultisource: true
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 550e5100-358a-4619-a849-d8eab36a14ac
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Work Order Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5a6df09-aef3-4e91-91ed-a769f58d786d
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 18437cbe-cf49-40d4-bf1e-9ba1b02bcf8a
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: RM03 Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: "1"
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: "0"
-            systemColumnType: None
+          - columnReferences:
+              - columnCounter: cf61ff5d-28e9-4260-a13a-fd3e7e4ab485
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: ac1240d8-2b71-4da0-8199-cad88e180ec5
-              stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
-            config: {}
-            dataType: TIMESTAMP_NTZ(9)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Invoice Date
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-              - columnReferences:
-                  - columnCounter: b1e00118-6287-4f1c-914e-c57eb11afc1b
-                    stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-                transform: ""
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1cbfcf8-2b42-4454-bc81-45f05ba8e153
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1b9d4c76-b87b-4b27-a5e0-04a76d8e69e8
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
             transform: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              RM03_UNION_ROUTE_AUDIT: 043aaf15-b102-4309-9ffc-383530c972a5
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: RM03_UNION_ROUTE_AUDIT
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'RM03_UNION_ROUTE_AUDIT') }} "RM03_UNION_ROUTE_AUDIT"
-                WHERE YEAR("RM03_DATE")>=YEAR(CURRENT_DATE())-2
-            name: RM03_UNION_ROUTE_AUDIT
-            noLinkRefs: []
-          - aliases:
-              SM01_UNION_ROUTE_AUDIT: d56e4580-13ee-4929-b4c5-4aa24202b8c0
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: SM01_UNION_ROUTE_AUDIT
-            join:
-              joinCondition: |-
-                FROM {{ ref('TRUXCOMBINED_RAW', 'SM01_UNION_ROUTE_AUDIT') }} "SM01_UNION_ROUTE_AUDIT"
-                WHERE YEAR("SM01_DATE") >= YEAR(CURRENT_DATE())-2
-            name: SM01_UNION_ROUTE_AUDIT
-            noLinkRefs: []
-      name: NBTICKETS_TABLE_RM03_SM03_FIRST_UNION
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+          - columnReferences:
+              - columnCounter: d3f45a97-0db1-4e56-aeb7-00864ea164b9
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c68dfabe-9d9b-4d27-9d06-306f8248e057
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7deec57a-4649-4b48-9cac-74163b4b69fb
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: 413d99ae-218c-4ab3-8890-275ce5af9bab
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3143e8f9-6182-408e-a362-acd9c40e9217
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Activity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7557aeb9-1325-4fc2-93b8-2fbf9d844a53
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: 03c3135c-24e5-4640-a1d5-03b9adef6ca0
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc729d55-1ed6-47f4-ade0-25ed8243baeb
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Period Charges
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ccc737f3-8a20-4d5f-a441-b8bcbd5dd513
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: 88db1f0d-2649-49cf-9981-c6a4a9e5b7b1
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b4af808b-e064-4058-90ac-053eeca3d10b
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Service
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 825734ce-6877-421c-b18d-4d79b8b6efc9
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: 0a89155f-f688-48d0-b110-4861c6e773a8
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 06249cab-260f-4980-913e-926bff18e107
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Original Staged Call
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ce59e664-f63a-495d-8f1b-9fa2059f59c6
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: 15d4fa86-306a-4eb8-90a9-5a9df8b344ad
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 556af833-d6c7-44d1-8f1d-88ccbca93623
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a84b5334-9eea-42c4-a92a-b82f3a6c88d2
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: f49a93e2-bd3e-4dfd-9b9b-9e91081da07a
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7d5436f7-a183-4ea0-be0b-9ebb9dedf824
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Dispatch Datetime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cf82ae84-b3c4-4879-9058-106dc5a15244
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d04658ee-064c-4251-af38-dc270f9ac0dc
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Time Finished
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d469a258-8f8a-4fb6-b102-3aba39b32a62
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 37b2f1d4-e062-4d51-9068-be0a80503376
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33407523-83d4-4b86-9703-b84fa788091b
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: c8af28a4-f895-4ac2-b3b4-c61f7145eb9d
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0c464ad-51ad-4ad2-a093-9cad82bfe5aa
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Route Sequence
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 92fbd9a8-4fb1-4311-85f1-fa4c0de54796
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: ba687272-4422-4f9a-94f3-0be99a7adcdf
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18b64549-1bda-4d5e-8b4d-d07a1b27491d
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Route Call ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 61b2ba9a-4e24-4bd0-9a47-10b5b3916528
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: 91461fa2-c401-4ad5-9d7d-b53e2af8356c
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 87940691-80a9-4204-95c2-faaa872ba6c7
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8c85af5a-6ee6-4ee8-9cd1-c81f39d8c240
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: 2bfb5d46-7f7d-47d0-8b8b-2216fb1623f9
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7a441c7d-d56e-461d-a18c-091338db3620
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7cb9a234-1ab3-4d86-81e6-2d5ac81cafae
+                stepCounter: 043aaf15-b102-4309-9ffc-383530c972a5
+            transform: ""
+          - columnReferences:
+              - columnCounter: fada5fe9-987e-4ed6-b842-276c321eadd4
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 398e8eab-62d1-4bf8-8be0-36275a6e0dec
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences:
+              - columnCounter: ee4619b4-5c66-4deb-b3cf-c4447d7b008e
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18437cbe-cf49-40d4-bf1e-9ba1b02bcf8a
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: RM03 Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "1"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "0"
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ac1240d8-2b71-4da0-8199-cad88e180ec5
+          stepCounter: 5648f2b4-337b-485c-8919-b4e53a089b45
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences:
+              - columnCounter: b1e00118-6287-4f1c-914e-c57eb11afc1b
+                stepCounter: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+            transform: ""
+        systemColumnType: None
+        transform: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          RM03_UNION_ROUTE_AUDIT: 043aaf15-b102-4309-9ffc-383530c972a5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: RM03_UNION_ROUTE_AUDIT
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'RM03_UNION_ROUTE_AUDIT') }} "RM03_UNION_ROUTE_AUDIT"
+            WHERE YEAR("RM03_DATE")>=YEAR(CURRENT_DATE())-2
+        name: RM03_UNION_ROUTE_AUDIT
+        noLinkRefs: []
+      - aliases:
+          SM01_UNION_ROUTE_AUDIT: d56e4580-13ee-4929-b4c5-4aa24202b8c0
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SM01_UNION_ROUTE_AUDIT
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SM01_UNION_ROUTE_AUDIT') }} "SM01_UNION_ROUTE_AUDIT"
+            WHERE YEAR("SM01_DATE") >= YEAR(CURRENT_DATE())-2
+        name: SM01_UNION_ROUTE_AUDIT
+        noLinkRefs: []
+  name: NBTICKETS_TABLE_RM03_SM03_FIRST_UNION
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

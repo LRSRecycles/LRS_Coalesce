@@ -1,369 +1,402 @@
-steps:
-  ACTIVITY_MASTER-ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe:
-    operation:
-      config:
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-      database: ""
-      deployEnabled: true
-      description: ""
-      isMultisource: false
-      locationName: MASTER_DATA_CLEAN
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 954187db-0837-4764-b744-50d4e76355e3
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            isSurrogateKey: true
-            name: DIM_CM12_COMBINED_KEY
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-          - columnReference:
-              columnCounter: 1fe160f4-9872-4b6d-ab4d-8a9d8da6100b
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: VARCHAR(80)
-            description: ""
-            hashDetails: null
-            name: Activity Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 03fe2c40-615a-4d40-b372-7e2a1b3fbdda
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 02f0a549-4fc4-4033-9894-ceaf0b4ae739
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Demurrage Activity Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c8c6a197-710d-4a92-b61c-d002209902f6
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: e0dc1a96-9b33-41a6-9916-86450cc2623a
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Bin Delivery Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0d7cb87d-7e66-4d0c-b8bc-6ea0a7950658
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 83c52ee1-4650-4f7f-8f4a-adb5560d9d61
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Active Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2e8860e3-0359-4078-8bd2-301eacaa3162
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 5af99b08-4f48-4178-af79-cb0ac8a4b45e
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: VARCHAR(2)
-            description: ""
-            hashDetails: null
-            isBusinessKey: true
-            name: Activity Code
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9fc67b90-0764-4107-8c37-e75811cf4b1e
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 071b9398-5df6-4302-bfb7-7c59ba23aa86
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Terminate Service Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8ace3864-583e-4b64-8445-fc362c21a097
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: fb3e82fa-0d7b-4e75-9cbf-9b6f025db69d
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: VARCHAR(2)
-            description: ""
-            hashDetails: null
-            name: Default Billing Unit
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d80f9f51-81c0-4973-9c5a-c2eb7cbcabc4
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: abe54117-a04d-4c4f-a5cd-340448646937
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Default Billing Unit Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: d80f9f51-81c0-4973-9c5a-c2eb7cbcabc4
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: |-
-                  CASE
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = '2' THEN '28 Day'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'S' THEN 'Service'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'P' THEN 'Per Stop'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'M' THEN 'Month'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'D' THEN 'Day'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'Q' THEN 'Quarter'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'V' THEN 'Volume'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'W' THEN 'Week'
-                      WHEN "CM12_COMBINED"."CM12_UNIT" = 'Y' THEN 'Year'
-                      ELSE 'Other'
-                  END
-          - columnReference:
-              columnCounter: cb67201b-e8cb-4899-be3e-6fa804aade86
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Staged Activity Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2964b88c-07f3-41f0-9c2f-6edd27131470
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: dc3b3f1a-e9d7-432c-af18-cee84b73f52b
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: NUMBER(18,2)
-            description: ""
-            hashDetails: null
-            name: Production Factor
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 8ef05d91-eae6-4cbc-9a62-63829523e79f
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 5af11925-7987-4ecb-bc3d-5ab574706781
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: VARCHAR(2)
-            description: ""
-            hashDetails: null
-            name: Inventory Action
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 14d4edea-d2bf-4e9c-9b9f-342641c9507b
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 51f933b2-f564-481b-bc6d-45f390751163
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            name: Inventory Action Description
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 14d4edea-d2bf-4e9c-9b9f-342641c9507b
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: |-
-                  CASE
-                      WHEN "CM12_COMBINED"."CM12_INVN" = 'N' THEN 'None'
-                      WHEN "CM12_COMBINED"."CM12_INVN" = 'A' THEN 'Assign'
-                      WHEN "CM12_COMBINED"."CM12_INVN" = 'U' THEN 'Unassign'
-                      WHEN "CM12_COMBINED"."CM12_INVN" = 'E' THEN 'Exchange'
-                      ELSE 'Other'
-                  END
-          - columnReference:
-              columnCounter: c9504b31-f61b-4578-a816-ceed4eeb6820
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: NUMBER(18,3)
-            description: ""
-            hashDetails: null
-            name: Default Billing Rate
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 661673c8-0844-4792-87d5-9ef11c244d3b
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 0d2c848f-0637-4158-abfe-b0c051872b3c
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: BOOLEAN
-            description: ""
-            hashDetails: null
-            name: Routable Activity Flag
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e39d5ecd-4f9d-4701-a5dc-0c8730a858fd
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - columnReference:
-              columnCounter: 7934633e-eed0-466d-ae21-4b5d2051bf4b
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            dataType: VARCHAR
-            description: ""
-            hashDetails: null
-            isBusinessKey: true
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c91d38fb-113f-4264-bb3b-d63dc1079487
-                    stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 7c7d69bf-71a6-4da6-8f63-d2985e216f72
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            config: {}
-            dataType: NUMBER
-            defaultValue: ""
-            description: ""
-            isSystemVersion: true
-            name: SYSTEM_VERSION
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 99fb1fea-5b29-42fa-8e34-a7d8ac9e90d0
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            config: {}
-            dataType: VARCHAR
-            defaultValue: ""
-            description: ""
-            isSystemCurrentFlag: true
-            name: SYSTEM_CURRENT_FLAG
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0d0a4270-35ee-41b3-8ff4-00686f116824
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemStartDate: true
-            name: SYSTEM_START_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 34170faa-c3be-4b1f-a542-5f34ad33f0a0
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemEndDate: true
-            name: SYSTEM_END_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 14d0757f-c820-40d3-83f5-8ff8d96c64fb
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemCreateDate: true
-            name: SYSTEM_CREATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 03010548-b70d-430c-8950-0fb5005b14f0
-              stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
-            config: {}
-            dataType: TIMESTAMP
-            defaultValue: ""
-            description: ""
-            isSystemUpdateDate: true
-            name: SYSTEM_UPDATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences: []
-                transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: TRUXCOMBINED_RAW
-                nodeName: CM12_COMBINED
-            join:
-              joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
-            name: ACTIVITY_MASTER
-            noLinkRefs: []
-      name: ACTIVITY_MASTER
-      overrideSQL: false
-      schema: ""
-      sqlType: Dimension
-      type: sql
-    stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+fileVersion: 1
+id: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+name: ACTIVITY_MASTER
+operation:
+  config:
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 954187db-0837-4764-b744-50d4e76355e3
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSurrogateKey: true
+        name: DIM_CM12_COMBINED_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1fe160f4-9872-4b6d-ab4d-8a9d8da6100b
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        hashDetails: null
+        name: Activity Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 03fe2c40-615a-4d40-b372-7e2a1b3fbdda
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 02f0a549-4fc4-4033-9894-ceaf0b4ae739
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Demurrage Activity Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8c6a197-710d-4a92-b61c-d002209902f6
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0dc1a96-9b33-41a6-9916-86450cc2623a
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Bin Delivery Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0d7cb87d-7e66-4d0c-b8bc-6ea0a7950658
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 83c52ee1-4650-4f7f-8f4a-adb5560d9d61
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Active Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2e8860e3-0359-4078-8bd2-301eacaa3162
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5af99b08-4f48-4178-af79-cb0ac8a4b45e
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        isBusinessKey: true
+        name: Activity Code
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9fc67b90-0764-4107-8c37-e75811cf4b1e
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 071b9398-5df6-4302-bfb7-7c59ba23aa86
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Terminate Service Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8ace3864-583e-4b64-8445-fc362c21a097
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb3e82fa-0d7b-4e75-9cbf-9b6f025db69d
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Default Billing Unit
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d80f9f51-81c0-4973-9c5a-c2eb7cbcabc4
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: abe54117-a04d-4c4f-a5cd-340448646937
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Default Billing Unit Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d80f9f51-81c0-4973-9c5a-c2eb7cbcabc4
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: |-
+              CASE
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = '2' THEN '28 Day'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'S' THEN 'Service'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'P' THEN 'Per Stop'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'M' THEN 'Month'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'D' THEN 'Day'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'Q' THEN 'Quarter'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'V' THEN 'Volume'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'W' THEN 'Week'
+                  WHEN "CM12_COMBINED"."CM12_UNIT" = 'Y' THEN 'Year'
+                  ELSE 'Other'
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb67201b-e8cb-4899-be3e-6fa804aade86
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Staged Activity Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2964b88c-07f3-41f0-9c2f-6edd27131470
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc3b3f1a-e9d7-432c-af18-cee84b73f52b
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Production Factor
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8ef05d91-eae6-4cbc-9a62-63829523e79f
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5af11925-7987-4ecb-bc3d-5ab574706781
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        hashDetails: null
+        name: Inventory Action
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14d4edea-d2bf-4e9c-9b9f-342641c9507b
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 51f933b2-f564-481b-bc6d-45f390751163
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Inventory Action Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14d4edea-d2bf-4e9c-9b9f-342641c9507b
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: |-
+              CASE
+                  WHEN "CM12_COMBINED"."CM12_INVN" = 'N' THEN 'None'
+                  WHEN "CM12_COMBINED"."CM12_INVN" = 'A' THEN 'Assign'
+                  WHEN "CM12_COMBINED"."CM12_INVN" = 'U' THEN 'Unassign'
+                  WHEN "CM12_COMBINED"."CM12_INVN" = 'E' THEN 'Exchange'
+                  ELSE 'Other'
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9504b31-f61b-4578-a816-ceed4eeb6820
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: NUMBER(18,3)
+        description: ""
+        hashDetails: null
+        name: Default Billing Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 661673c8-0844-4792-87d5-9ef11c244d3b
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d2c848f-0637-4158-abfe-b0c051872b3c
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        hashDetails: null
+        name: Routable Activity Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e39d5ecd-4f9d-4701-a5dc-0c8730a858fd
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7934633e-eed0-466d-ae21-4b5d2051bf4b
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        isBusinessKey: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c91d38fb-113f-4264-bb3b-d63dc1079487
+                stepCounter: 4f923860-b405-4745-ab70-88d5ff0d6d40
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7c7d69bf-71a6-4da6-8f63-d2985e216f72
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSystemVersion: true
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 99fb1fea-5b29-42fa-8e34-a7d8ac9e90d0
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemCurrentFlag: true
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d0a4270-35ee-41b3-8ff4-00686f116824
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemStartDate: true
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34170faa-c3be-4b1f-a542-5f34ad33f0a0
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemEndDate: true
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14d0757f-c820-40d3-83f5-8ff8d96c64fb
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03010548-b70d-430c-8950-0fb5005b14f0
+          stepCounter: ba3ef17c-e21d-485a-9bd8-49e24c2f4bfe
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM12_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
+        name: ACTIVITY_MASTER
+        noLinkRefs: []
+  name: ACTIVITY_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Dimension
+  type: sql
+  version: 1
+type: Node

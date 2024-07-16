@@ -1,419 +1,442 @@
-steps:
-  ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS-f737a2ee-87c9-4859-840d-f8fe87c59ad4:
-    operation:
-      config:
-        insertStrategy: INSERT
-        postSQL: ""
-        preSQL: ""
-        testsEnabled: true
-        truncateBefore: true
-      database: ""
-      deployEnabled: true
-      description: Everything at the Route Day, driver level. Multiple time options in this to account for different databases.
-      isMultisource: false
-      locationName: TRUXCOMBINED_RAW
-      materializationType: table
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - columnReference:
-              columnCounter: a7d39280-828b-47f3-b62b-0ad8fb729b47
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: TIMESTAMP_NTZ(9)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Date
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1fe94ca2-7e25-4844-aa6b-d6710b50f993
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: ""
-          - columnReference:
-              columnCounter: f0043213-bcc7-499f-980d-7a42e98ee31a
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6ff1582e-c61a-43d1-a8f5-9df74e4e4004
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: ""
-          - columnReference:
-              columnCounter: 47ca7f6d-762e-46cc-a73a-9490cfafba1b
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: End Hour
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4c3d7fbd-c08c-4c91-9a91-6f9b3ebbffbc
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MAX("Route_Production_Statistics"."End Hour")
-          - columnReference:
-              columnCounter: 2bc7f8a9-7338-4d5f-8d24-d717586e6445
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: TIMESTAMP_NTZ(9)
-            description: Compare to Return Time and Begin Time
-            hashColumns: []
-            hashDetails: null
-            name: Start Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: f8aa66d5-b1db-4087-8477-d9614605bceb
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MIN("Route_Production_Statistics"."Start Time")
-          - columnReference:
-              columnCounter: 32b9e118-73ea-49fa-98da-1bfd47825942
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER(38,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Odometer End
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 22c1785f-54d3-4e1c-8404-c166b17dff08
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MAX("Route_Production_Statistics"."Odometer End")
-          - columnReference:
-              columnCounter: 6bd9fe5c-3185-4f76-910a-b8f44d99e086
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: TIMESTAMP_NTZ(9)
-            description: match with return time
-            hashColumns: []
-            hashDetails: null
-            name: Departure time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 29b324ab-92e9-4eab-91a3-dccc8a259701
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MIN("Route_Production_Statistics"."Departure time")
-          - columnReference:
-              columnCounter: ec6f2dd4-1d6f-4dec-bed7-2e8dae712a84
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Driver
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 869b586b-8048-436b-b15c-962b5f100eb7
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: ""
-          - columnReference:
-              columnCounter: d13ec5bd-c9e9-4663-9f73-e2cf68b73e1c
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: TIMESTAMP_NTZ(9)
-            description: match with departure time
-            hashColumns: []
-            hashDetails: null
-            name: Return Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 6a246326-a485-4180-94f4-ad3d6deddf94
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MAX("Route_Production_Statistics"."Return Time")
-          - columnReference:
-              columnCounter: 4ea5ee4d-df2d-4b33-bf8f-e28dd6177e19
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER(18,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Start Hour
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 7b7c7235-621d-4f60-bee9-9ce2a0f8caf0
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MIN("Route_Production_Statistics"."Start Hour")
-          - columnReference:
-              columnCounter: 72c52b5d-22a3-46c7-bbd1-c25744d8f91a
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: TIMESTAMP_NTZ(9)
-            description: Time1 match with Time 2 or End Time
-            hashColumns: []
-            hashDetails: null
-            name: Begin Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4fceda5e-5aac-4197-8f6c-f8826b28d7fc
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MIN("Route_Production_Statistics"."Begin Time")
-          - columnReference:
-              columnCounter: b76f32a0-42d8-49e6-bbd0-65edc4db5355
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Helper
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 83f95329-390d-4d4a-be26-57072b70e736
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: ""
-          - columnReference:
-              columnCounter: e427befe-a57a-4ebe-877a-6950ee35429f
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: TIMESTAMP_NTZ(9)
-            description: Time2 Match with Begin Time
-            hashColumns: []
-            hashDetails: null
-            name: End Time
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 569847fb-5d2c-4ef0-9546-b408824ed8e2
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MAX("Route_Production_Statistics"."End Time")
-          - columnReference:
-              columnCounter: dcb72ee3-ecfd-4cb3-b911-2f42d240cec5
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER(8,2)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Fuel Used
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: dd3e216c-7eb6-4395-ab67-4ecdd4ba702a
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: SUM("Route_Production_Statistics"."Fuel Used")
-          - columnReference:
-              columnCounter: 5fa7734b-1550-4409-9cb4-81a2035f3d8a
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Truck
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: c6cc10fc-0a82-42d8-8a6d-bf2d0166fb77
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: ""
-          - columnReference:
-              columnCounter: c8334b38-0a81-466b-99bc-c92157f060d9
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER(38,0)
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Odometer Start
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0ee36f3c-a273-4347-ac4d-caaf31cd87bc
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MIN("Route_Production_Statistics"."Odometer Start")
-          - columnReference:
-              columnCounter: 53a25cfd-a8b1-4516-824e-5e7f30346cf3
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: SOURCE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 0dbb857a-7c53-4bda-a7bc-6c66d4f36887
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: ""
-          - columnReference:
-              columnCounter: ee5fdbb8-ff15-479f-b52a-c4b3dac7814f
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Odometer Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: e9e3ad21-d82b-4f5b-8bbf-bc0a53db96cd
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: SUM("Route_Production_Statistics"."Odometer Change")
-          - columnReference:
-              columnCounter: 6065bcff-de99-4881-85c9-3b820123af80
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER
-            description: Difference between time 1 and time 2 (start time and end time)
-            hashColumns: []
-            hashDetails: null
-            name: Time Change
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2e530c0b-8bc4-4d34-a4e2-12abf6a3529b
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: SUM("Route_Production_Statistics"."Time Change")
-          - columnReference:
-              columnCounter: 33aeb0a2-93cd-4020-9e61-a74bb7b75508
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER
-            description: Difference between Departure Time and Return Time
-            hashColumns: []
-            hashDetails: null
-            name: Trip Duration
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1ccbd3e6-a4f9-49ff-9957-1e55e66808aa
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: SUM("Route_Production_Statistics"."Trip Duration")
-          - columnReference:
-              columnCounter: 6f2de068-a459-4192-a6a2-ea0d6d23d1df
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: VARCHAR
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Route Type
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 649c68cf-bf1a-4c81-b281-bc34b40a298e
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: ""
-          - columnReference:
-              columnCounter: 1e13307e-390e-44ee-814b-11feeb3980ee
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            dataType: NUMBER
-            description: ""
-            hashColumns: []
-            hashDetails: null
-            name: Number of Stops
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 9d71d30b-0535-4b76-a027-5d410e64eceb
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: SUM("Route_Production_Statistics"."Number of Stops")
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 0d5c4fc5-1995-4138-98ee-b1cefa55c32f
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: First Sequence
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1eb09639-dec4-4628-9604-865473ebe651
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MIN("Route_Production_Statistics"."Sequence 1")
-            systemColumnType: None
+fileVersion: 1
+id: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+name: ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Everything at the Route Day, driver level. Multiple time options in this to account for different databases.
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a7d39280-828b-47f3-b62b-0ad8fb729b47
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: Route Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1fe94ca2-7e25-4844-aa6b-d6710b50f993
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: bb431b0f-605d-4f88-8d34-2a8d3dcb8595
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Last Sequence
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: aee2e715-f5a5-44bf-a05f-4eac2fd7eae8
-                    stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-                transform: MAX("Route_Production_Statistics"."Sequence 2")
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f0043213-bcc7-499f-980d-7a42e98ee31a
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6ff1582e-c61a-43d1-a8f5-9df74e4e4004
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 9ba012be-1297-4257-a5a8-dc9174943a46
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: Will need to be modified to account for decimal sequences
-            keyColumnType: None
-            name: Sequence Differential
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: MAX("Route_Production_Statistics"."Sequence 2")-MIN("Route_Production_Statistics"."Sequence 1")
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 47ca7f6d-762e-46cc-a73a-9490cfafba1b
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: End Hour
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4c3d7fbd-c08c-4c91-9a91-6f9b3ebbffbc
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MAX("Route_Production_Statistics"."End Hour")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2bc7f8a9-7338-4d5f-8d24-d717586e6445
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: Compare to Return Time and Begin Time
+        hashDetails: null
+        name: Start Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f8aa66d5-b1db-4087-8477-d9614605bceb
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MIN("Route_Production_Statistics"."Start Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32b9e118-73ea-49fa-98da-1bfd47825942
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashDetails: null
+        name: Odometer End
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22c1785f-54d3-4e1c-8404-c166b17dff08
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MAX("Route_Production_Statistics"."Odometer End")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6bd9fe5c-3185-4f76-910a-b8f44d99e086
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: match with return time
+        hashDetails: null
+        name: Departure time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29b324ab-92e9-4eab-91a3-dccc8a259701
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MIN("Route_Production_Statistics"."Departure time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec6f2dd4-1d6f-4dec-bed7-2e8dae712a84
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Driver
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 869b586b-8048-436b-b15c-962b5f100eb7
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
             transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 62247790-a5e6-4384-997b-7ce490a1fbcb
-              stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
-            config: {}
-            dataType: NUMBER(18,2)
-            defaultValue: ""
-            description: ""
-            keyColumnType: None
-            name: Sequence Count
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: "0"
-                    stepCounter: "0"
-                transform: COUNT(DISTINCT "Route_Production_Statistics"."Sequence 1")
-            systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d13ec5bd-c9e9-4663-9f73-e2cf68b73e1c
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: match with departure time
+        hashDetails: null
+        name: Return Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6a246326-a485-4180-94f4-ad3d6deddf94
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MAX("Route_Production_Statistics"."Return Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ea5ee4d-df2d-4b33-bf8f-e28dd6177e19
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: Start Hour
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b7c7235-621d-4f60-bee9-9ce2a0f8caf0
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MIN("Route_Production_Statistics"."Start Hour")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 72c52b5d-22a3-46c7-bbd1-c25744d8f91a
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: Time1 match with Time 2 or End Time
+        hashDetails: null
+        name: Begin Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4fceda5e-5aac-4197-8f6c-f8826b28d7fc
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MIN("Route_Production_Statistics"."Begin Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b76f32a0-42d8-49e6-bbd0-65edc4db5355
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Helper
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 83f95329-390d-4d4a-be26-57072b70e736
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
             transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - aliases:
-              Route_Production_Statistics: 86bcad57-ea01-431a-b5a6-dc9062cadf37
-            customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: OPERATIONS_DATA_MODEL
-                nodeName: Route_Production_Statistics
-            join:
-              joinCondition: |-
-                FROM {{ ref('OPERATIONS_DATA_MODEL', 'Route_Production_Statistics') }} "Route_Production_Statistics"
-                WHERE YEAR("Route Date")>=YEAR(CURRENT_DATE())-2
-                GROUP BY "SOURCE","Route","Route Date","Route Type","Driver","Helper","Truck"
-            name: ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS
-            noLinkRefs: []
-      name: ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS
-      overrideSQL: false
-      schema: ""
-      sqlType: Stage
-      type: sql
-    stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e427befe-a57a-4ebe-877a-6950ee35429f
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: Time2 Match with Begin Time
+        hashDetails: null
+        name: End Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 569847fb-5d2c-4ef0-9546-b408824ed8e2
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MAX("Route_Production_Statistics"."End Time")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dcb72ee3-ecfd-4cb3-b911-2f42d240cec5
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(8,2)
+        description: ""
+        hashDetails: null
+        name: Fuel Used
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dd3e216c-7eb6-4395-ab67-4ecdd4ba702a
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: SUM("Route_Production_Statistics"."Fuel Used")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5fa7734b-1550-4409-9cb4-81a2035f3d8a
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Truck
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6cc10fc-0a82-42d8-8a6d-bf2d0166fb77
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8334b38-0a81-466b-99bc-c92157f060d9
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: Odometer Start
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0ee36f3c-a273-4347-ac4d-caaf31cd87bc
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MIN("Route_Production_Statistics"."Odometer Start")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 53a25cfd-a8b1-4516-824e-5e7f30346cf3
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0dbb857a-7c53-4bda-a7bc-6c66d4f36887
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ee5fdbb8-ff15-479f-b52a-c4b3dac7814f
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER
+        description: ""
+        hashDetails: null
+        name: Odometer Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e9e3ad21-d82b-4f5b-8bbf-bc0a53db96cd
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: SUM("Route_Production_Statistics"."Odometer Change")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6065bcff-de99-4881-85c9-3b820123af80
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER
+        description: Difference between time 1 and time 2 (start time and end time)
+        hashDetails: null
+        name: Time Change
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2e530c0b-8bc4-4d34-a4e2-12abf6a3529b
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: SUM("Route_Production_Statistics"."Time Change")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33aeb0a2-93cd-4020-9e61-a74bb7b75508
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER
+        description: Difference between Departure Time and Return Time
+        hashDetails: null
+        name: Trip Duration
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1ccbd3e6-a4f9-49ff-9957-1e55e66808aa
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: SUM("Route_Production_Statistics"."Trip Duration")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6f2de068-a459-4192-a6a2-ea0d6d23d1df
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: Route Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 649c68cf-bf1a-4c81-b281-bc34b40a298e
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e13307e-390e-44ee-814b-11feeb3980ee
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER
+        description: ""
+        hashDetails: null
+        name: Number of Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9d71d30b-0535-4b76-a027-5d410e64eceb
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: SUM("Route_Production_Statistics"."Number of Stops")
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d5c4fc5-1995-4138-98ee-b1cefa55c32f
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: First Sequence
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1eb09639-dec4-4628-9604-865473ebe651
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MIN("Route_Production_Statistics"."Sequence 1")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bb431b0f-605d-4f88-8d34-2a8d3dcb8595
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Last Sequence
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aee2e715-f5a5-44bf-a05f-4eac2fd7eae8
+                stepCounter: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+            transform: MAX("Route_Production_Statistics"."Sequence 2")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ba012be-1297-4257-a5a8-dc9174943a46
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: Will need to be modified to account for decimal sequences
+        keyColumnType: None
+        name: Sequence Differential
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: MAX("Route_Production_Statistics"."Sequence 2")-MIN("Route_Production_Statistics"."Sequence 1")
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 62247790-a5e6-4384-997b-7ce490a1fbcb
+          stepCounter: f737a2ee-87c9-4859-840d-f8fe87c59ad4
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Sequence Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COUNT(DISTINCT "Route_Production_Statistics"."Sequence 1")
+        systemColumnType: None
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          Route_Production_Statistics: 86bcad57-ea01-431a-b5a6-dc9062cadf37
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: OPERATIONS_DATA_MODEL
+            nodeName: Route_Production_Statistics
+        join:
+          joinCondition: |-
+            FROM {{ ref('OPERATIONS_DATA_MODEL', 'Route_Production_Statistics') }} "Route_Production_Statistics"
+            WHERE YEAR("Route Date")>=YEAR(CURRENT_DATE())-2
+            GROUP BY "SOURCE","Route","Route Date","Route Type","Driver","Helper","Truck"
+        name: ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS
+        noLinkRefs: []
+  name: ROUTE_COST_ROUTE_DAY_PRODUCTION_STATS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
