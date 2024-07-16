@@ -96,6 +96,40 @@ operation:
               - columnCounter: 71f2b13a-b8ca-41f4-88e2-d0e2bacb512a
                 stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64676799-7dec-440d-842f-afb6333dbcd5
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: VARCHAR(25)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Customer Bill To
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (1) THEN 'Consolidated'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (2) THEN 'Separate (A/R Customer)'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (3) THEN 'Separate (A/R Site)'
+                ELSE NULL
+              END
+          - columnReferences: []
+            transform: |-
+              CASE 
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (1) THEN 'Consolidated'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (2) THEN 'Separate (A/R Customer)'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (3) THEN 'Separate (A/R Site)'
+                ELSE NULL
+              END
+        systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
           columnCounter: e9d05cca-4805-428f-b369-311cce78a54e
@@ -103,17 +137,41 @@ operation:
         config: {}
         dataType: VARCHAR(80)
         description: ""
-        name: Address
+        name: Service Address
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4ed153fe-140a-46cd-93f6-23b20903fa8f
-                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-            transform: TRIM(REPLACE("CM03_COMBINED"."CM03_ADD1" || ' ' || IFNULL("CM03_COMBINED"."CM03_ADD2", ''), '  ', ' '))
           - columnReferences:
               - columnCounter: f3cbbef7-3765-4395-9444-43af56c96472
                 stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: TRIM(REPLACE("CM04_COMBINED"."CM04_ADD2" || ' ' || IFNULL("CM04_COMBINED"."CM04_ADD3", ''), '  ', ' '))
+          - columnReferences:
+              - columnCounter: f3cbbef7-3765-4395-9444-43af56c96472
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: TRIM(REPLACE("CM04_COMBINED"."CM04_ADD2" || ' ' || IFNULL("CM04_COMBINED"."CM04_ADD3", ''), '  ', ' '))
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a117c5d8-6368-4929-9d6e-5c09436c6262
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Service City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c959112c-1262-471e-a01c-a26d021c6135
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+          - columnReferences:
+              - columnCounter: c959112c-1262-471e-a01c-a26d021c6135
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+        systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4322ed94-9cdf-4f13-a5f4-8ebd225ea487
@@ -153,6 +211,66 @@ operation:
             transform: IFNULL("CD07_COMBINED"."CD07_DESC",'No Sales Rep')
           - columnReferences: []
             transform: IFNULL("CD07_COMBINED"."CD07_DESC",'No Sales Rep')
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fa7c0892-71fd-47e5-a0bf-33180a54387e
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Customer Active Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR "CM03_COMBINED"."CM03_CDTE" > GETDATE() THEN 1
+                ELSE 0
+              END
+          - columnReferences: []
+            transform: |-
+              CASE 
+                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR "CM03_COMBINED"."CM03_CDTE" > GETDATE() THEN 1
+                ELSE 0
+              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb4180ce-fc54-401d-8fde-16667f4c984c
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Active Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL OR "CM04_COMBINED"."CM04_EDTE" > GETDATE() THEN 1
+                ELSE 0
+              END
+          - columnReferences: []
+            transform: |-
+              CASE 
+                WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL OR "CM04_COMBINED"."CM04_EDTE" > GETDATE() THEN 1
+                ELSE 0
+              END
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -689,6 +807,7 @@ operation:
           CD03_COMBINED: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
           CD07_COMBINED: bd4674f7-935e-485f-8433-a9a843dde723
           CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+          CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
           RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
           RM02_COMBINED: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
           SL01_COMBINED: 6a58c60a-fd40-458e-b415-7aa216626cb2
@@ -705,6 +824,8 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
           - locationName: TRUXCOMBINED_RAW
+            nodeName: CM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
             nodeName: RM01_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: RM02_COMBINED
@@ -713,6 +834,10 @@ operation:
         join:
           joinCondition: |2
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04_COMBINED"
+               ON "CM03_COMBINED"."CM03_CUST" = "CM04_COMBINED"."CM04_CUST"
+              AND "CM03_COMBINED"."SOURCE" = "CM04_COMBINED"."SOURCE"
+            
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
                ON "CM03_COMBINED"."CM03_SREP" = "CD07_COMBINED"."CD07_CODE"
               AND "CM03_COMBINED"."SOURCE" = "CD07_COMBINED"."SOURCE"
@@ -737,7 +862,9 @@ operation:
                ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
             WHERE "CM03_COMBINED"."CM03_SUSDATE" IS NOT NULL
+              AND "CM03_COMBINED"."CM03_BILLTO" IN (1, 2)
               AND "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CM04_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CD07_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CD03_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "RM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
@@ -745,10 +872,18 @@ operation:
             
             GROUP BY "CM03_COMBINED"."SOURCE"
                 , "TRUX_DATABASE_METADATA"."SY03_NAME"
+                
                 , "CM03_COMBINED"."CM03_CUST"
                 , "CM03_COMBINED"."CM03_NAME"
-                , "CM03_COMBINED"."CM03_ADD1"
-                , "CM03_COMBINED"."CM03_ADD2"
+                , "CM03_COMBINED"."CM03_BILLTO"
+            
+                , "CM04_COMBINED"."CM04_ADD2"
+                , "CM04_COMBINED"."CM04_ADD3"
+                , "CM04_COMBINED"."CM04_CITY"
+            
+                , "CM03_COMBINED"."CM03_CDTE"
+                , "CM04_COMBINED"."CM04_EDTE"
+                
                 , "CM03_COMBINED"."CM03_SUSDATE"
                 , "CM03_COMBINED"."CM03_SUSREA"
                 , "CM03_COMBINED"."CM03_REINSDATE"
@@ -832,6 +967,7 @@ operation:
                ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
             WHERE "CM04_COMBINED"."CM04_SUSDATE" IS NOT NULL
+              AND "CM03_COMBINED"."CM03_BILLTO" IN (3)
               AND "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CM04_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CD07_COMBINED"."_FIVETRAN_DELETED" = FALSE
@@ -845,8 +981,15 @@ operation:
                 , "CM04_COMBINED"."CM04_CUST"
                 , "CM04_COMBINED"."CM04_SITE"    
                 , "CM04_COMBINED"."CM04_NAME"
+                , "CM03_COMBINED"."CM03_BILLTO"
+            
                 , "CM04_COMBINED"."CM04_ADD2"
                 , "CM04_COMBINED"."CM04_ADD3"
+                , "CM04_COMBINED"."CM04_CITY"
+            
+                , "CM03_COMBINED"."CM03_CDTE"
+                , "CM04_COMBINED"."CM04_EDTE"
+                
                 , "CM04_COMBINED"."CM04_SUSDATE"
                 , "CM04_COMBINED"."CM04_SUSREA"
                 , "CM04_COMBINED"."CM04_REINSDATE"
