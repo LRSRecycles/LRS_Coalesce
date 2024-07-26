@@ -247,36 +247,6 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: cb4180ce-fc54-401d-8fde-16667f4c984c
-          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
-        config: {}
-        dataType: BOOLEAN
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: Site Active Flag
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: |-
-              CASE 
-                WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL OR "CM04_COMBINED"."CM04_EDTE" > GETDATE() THEN 1
-                ELSE 0
-              END
-          - columnReferences: []
-            transform: |-
-              CASE 
-                WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL OR "CM04_COMBINED"."CM04_EDTE" > GETDATE() THEN 1
-                ELSE 0
-              END
-        systemColumnType: None
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
           columnCounter: cde9f86d-0c6d-45b7-99ac-b43e915e5b68
           stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
@@ -882,7 +852,6 @@ operation:
                 , "CM04_COMBINED"."CM04_CITY"
             
                 , "CM03_COMBINED"."CM03_CDTE"
-                , "CM04_COMBINED"."CM04_EDTE"
                 
                 , "CM03_COMBINED"."CM03_SUSDATE"
                 , "CM03_COMBINED"."CM03_SUSREA"
@@ -988,7 +957,6 @@ operation:
                 , "CM04_COMBINED"."CM04_CITY"
             
                 , "CM03_COMBINED"."CM03_CDTE"
-                , "CM04_COMBINED"."CM04_EDTE"
                 
                 , "CM04_COMBINED"."CM04_SUSDATE"
                 , "CM04_COMBINED"."CM04_SUSREA"
