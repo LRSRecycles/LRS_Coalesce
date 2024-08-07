@@ -1,15 +1,13 @@
 fileVersion: 1
-id: 6ceced80-1030-47ae-b200-d20bb00669ac
-name: ROUTED_SUSPENDED_ACCOUNTS
+id: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+name: ROUTED_SUSPENDED_ACCOUNTS_FIX_ME
 operation:
   config:
-    insertStrategy: INSERT
     postSQL: ""
     preSQL: ""
     testsEnabled: true
-    truncateBefore: true
   database: ""
-  deployEnabled: true
+  deployEnabled: false
   description: ""
   isMultisource: true
   locationName: OPERATIONS_DATA_MODEL
@@ -17,13 +15,33 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c27d2d7-5314-4f2b-9ae4-7a628dedffac
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSurrogateKey: true
+        name: ROUTED_SUSPENDED_ACCOUNTS_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences: []
+            transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 6e109916-fe88-4914-8b49-b858ea6c417e
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 869c785f-ace8-4ea7-a2ec-e76b1b230d56
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: NUMBER(38,0)
         description: ""
+        isBusinessKey: true
         name: Customer Number
         nullable: false
         sourceColumnReferences:
@@ -40,12 +58,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: faecd379-b134-448d-8ea5-b7fddec5345f
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 63033ec1-70b9-4036-a063-dc8b8dfbbd3f
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
+        isBusinessKey: true
         keyColumnType: None
         name: Site Number
         nullable: true
@@ -59,18 +78,13 @@ operation:
                 stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: ""
         systemColumnType: None
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 5ad25022-71dd-4fbe-add4-827b5ad265f8
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: b093f882-bed6-4213-a197-e4d84937d872
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
-        defaultValue: ""
         description: ""
-        keyColumnType: None
         name: Site Name
         nullable: true
         sourceColumnReferences:
@@ -82,20 +96,24 @@ operation:
               - columnCounter: 71f2b13a-b8ca-41f4-88e2-d0e2bacb512a
                 stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: ""
-        systemColumnType: None
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 28b912c8-b3a9-4124-a946-da6287ffcd56
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 64676799-7dec-440d-842f-afb6333dbcd5
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(25)
+        defaultValue: ""
         description: ""
+        keyColumnType: None
         name: Invoice Type
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3fa0e5d0-4e09-4b21-bead-066e857bf31e
-                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: |-
               CASE 
                 WHEN "CM03_COMBINED"."CM03_BILLTO" IN (1) THEN 'Consolidated'
@@ -111,18 +129,14 @@ operation:
                 WHEN "CM03_COMBINED"."CM03_BILLTO" IN (3) THEN 'Separate (A/R Site)'
                 ELSE NULL
               END
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+        systemColumnType: None
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 6ca5a173-f446-44c4-9e1f-8355bd366629
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: e9d05cca-4805-428f-b369-311cce78a54e
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
-        defaultValue: ""
         description: ""
-        keyColumnType: None
         name: Service Address
         nullable: true
         sourceColumnReferences:
@@ -130,16 +144,17 @@ operation:
               - columnCounter: f3cbbef7-3765-4395-9444-43af56c96472
                 stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: TRIM(REPLACE("CM04_COMBINED"."CM04_ADD2" || ' ' || IFNULL("CM04_COMBINED"."CM04_ADD3", ''), '  ', ' '))
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: f3cbbef7-3765-4395-9444-43af56c96472
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: TRIM(REPLACE("CM04_COMBINED"."CM04_ADD2" || ' ' || IFNULL("CM04_COMBINED"."CM04_ADD3", ''), '  ', ' '))
-        systemColumnType: None
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2ca9b91d-c1e1-409c-8cfa-6685f251e1d3
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: a117c5d8-6368-4929-9d6e-5c09436c6262
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -159,8 +174,8 @@ operation:
         systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: cc27bba9-0cfa-42cf-9b12-5ae5d9ef449b
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 4322ed94-9cdf-4f13-a5f4-8ebd225ea487
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -168,18 +183,20 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9adfcf72-08fd-45ca-9732-e355649687b4
-                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-            transform: IFNULL("CM03_COMBINED"."CM03_SREP",-1)
-          - columnReferences: []
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: IFNULL("CD07_COMBINED"."CD07_CODE",-1)
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: IFNULL("CD07_COMBINED"."CD07_CODE",-1)
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e5c42ab8-4fd1-4ddf-9edf-3df1fc4991a9
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: cc1ac3d9-b60a-47e3-bdd2-cddc7fc00532
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -189,8 +206,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6bdac00a-e452-4d6a-842c-2140fced5760
-                stepCounter: bd4674f7-935e-485f-8433-a9a843dde723
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: IFNULL("CD07_COMBINED"."CD07_DESC",'No Sales Rep')
           - columnReferences: []
             transform: IFNULL("CD07_COMBINED"."CD07_DESC",'No Sales Rep')
@@ -200,86 +217,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: f57f6d22-b4b5-433a-9485-ea46e878b1de
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: fa7c0892-71fd-47e5-a0bf-33180a54387e
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: Customer Closed Date
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: fecba0cc-674a-4762-b7c5-074b167152c2
-                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-            transform: ""
-          - columnReferences:
-              - columnCounter: fecba0cc-674a-4762-b7c5-074b167152c2
-                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-            transform: ""
-        systemColumnType: None
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: e09c06d8-e915-4119-9c0b-470ea10a1a2f
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
-        config: {}
-        dataType: BOOLEAN
-        description: ""
         name: Customer Active Flag
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: fecba0cc-674a-4762-b7c5-074b167152c2
-                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-            transform: |-
-              CASE 
-                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR "CM03_COMBINED"."CM03_CDTE" > GETDATE() THEN 1
-                ELSE 0
-              END
-          - columnReferences: []
-            transform: |-
-              CASE 
-                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR "CM03_COMBINED"."CM03_CDTE" > GETDATE() THEN 1
-                ELSE 0
-              END
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 78a6bd22-4d39-47c6-9b84-00824dc1d5e3
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: Site Closed Date
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5f6c1d08-d2ce-478e-88e0-3bf1913518c1
-                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
-            transform: ""
-          - columnReferences:
-              - columnCounter: 5f6c1d08-d2ce-478e-88e0-3bf1913518c1
-                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
-            transform: ""
-        systemColumnType: None
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: eb214143-068a-475e-8774-f398f75f8245
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
-        config: {}
-        dataType: BOOLEAN
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: Site Active Flag
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -287,13 +232,13 @@ operation:
                 stepCounter: "0"
             transform: |-
               CASE 
-                WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL OR "CM04_COMBINED"."CM04_EDTE" > GETDATE() THEN 1
+                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR "CM03_COMBINED"."CM03_CDTE" > GETDATE() THEN 1
                 ELSE 0
               END
           - columnReferences: []
             transform: |-
               CASE 
-                WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL OR "CM04_COMBINED"."CM04_EDTE" > GETDATE() THEN 1
+                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR "CM03_COMBINED"."CM03_CDTE" > GETDATE() THEN 1
                 ELSE 0
               END
         systemColumnType: None
@@ -302,8 +247,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c356c1e3-1a01-45b7-94c5-5c7047835a2f
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: cde9f86d-0c6d-45b7-99ac-b43e915e5b68
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -313,16 +258,16 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 691ce933-2665-497e-8b93-b0bfbcbf9f00
-                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: TO_VARCHAR("CM03_COMBINED"."CM03_SUSDATE"::DATE, 'yyyymmdd')
           - columnReferences: []
             transform: TO_VARCHAR("CM04_COMBINED"."CM04_SUSDATE"::DATE, 'yyyymmdd')
         systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: e68fcc08-bb83-4ea0-8c0e-ff27569685b3
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: ee7d6e4d-2ceb-4d69-b5bb-b5e46af58e63
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
@@ -339,8 +284,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 9265477a-21d6-4587-913e-a252bba8bd7e
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 1d32e82f-782c-4d6b-bde6-2e2e0cda12e5
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(2)
         description: ""
@@ -360,8 +305,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9a67c58e-d302-420b-b8ac-b0bf00b230c4
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 449ec2c8-887c-4fae-b948-b21d95a246e0
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -384,8 +329,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 16d95ff6-bf2f-4f3a-937d-047e1b1c035a
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 6ec04d84-ddca-4f5b-8830-3a6786e85821
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -401,13 +346,31 @@ operation:
           - columnReferences: []
             transform: "'Site'"
         systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cd144a88-10c2-430a-8ca2-c43a7b43de99
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Reinstate Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 04542fd0-4989-4e59-88b4-7199136e9dc4
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: b282f768-205d-4569-96e4-6af1885bc8d0
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 69f7556c-aaa9-4e47-a101-052a495b37a6
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 6f28fc17-1094-4756-b9f6-15db09db2623
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(3)
         defaultValue: ""
@@ -416,11 +379,11 @@ operation:
         name: Route
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9b1128ac-317c-43b9-ba51-d078224f328f
-                stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
-            transform: SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 2, 3)
           - columnReferences: []
+            transform: SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 2, 3)
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 2, 3)
         systemColumnType: None
       - acceptedValues:
@@ -428,12 +391,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: f9d86eab-6a60-4dc7-aff0-16563ec0cea6
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: f020f50a-34ea-499a-b488-23a1dbdb8f68
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
+        isBusinessKey: true
         keyColumnType: None
         name: Route Number
         nullable: true
@@ -452,8 +416,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: aaafab59-83ec-4399-b4d7-72df17b6fe9c
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 926cd708-dd32-4eba-a1d1-c5ca56851821
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -476,8 +440,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 40875316-b996-4256-8c93-2c9b5c2224cc
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 4d4ca8ce-fb7e-4d18-bdb1-4408ea8a6e2c
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(100)
         defaultValue: ""
@@ -487,8 +451,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: d74628fc-4bda-48e9-87ac-f3ef8a7ceade
-                stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
           - columnReferences: []
             transform: TRIM("RM01_COMBINED"."RM01_NUMB" || ' - ' || IFNULL("RM01_COMBINED"."RM01_DESC", ''))
@@ -498,8 +462,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e1f89f78-09ca-46d0-9676-fa98780f2db2
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 200a4808-d3fa-4d6d-9969-11927f07c22e
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -520,8 +484,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 6706c30d-db43-4519-94ee-0b120c49849b
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: f3309bac-f6b9-4552-98c7-c18dc3fda39c
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -530,9 +494,7 @@ operation:
         name: Route Day Name
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9b1128ac-317c-43b9-ba51-d078224f328f
-                stepCounter: 214d43c4-9a9c-4c4e-bd79-79c1687f3204
+          - columnReferences: []
             transform: |-
               CASE
                 WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 1 THEN 'Monday'
@@ -544,7 +506,9 @@ operation:
                 WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 7 THEN 'Sunday'
                 ELSE NULL
               END
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: |-
               CASE
                 WHEN SUBSTRING(TO_VARCHAR("RM02_COMBINED"."RM02_NUMB"), 1, 1) = 1 THEN 'Monday'
@@ -562,8 +526,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: cfb5e361-e4e2-4f95-b82b-e9f2227b60b8
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 5365963c-ca9d-4b44-91e0-c41158610960
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -576,7 +540,9 @@ operation:
               - columnCounter: 68f411b9-2ab6-44b8-94eb-9b1578d8c48e
                 stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
             transform: IFNULL("SL01_COMBINED"."SL01_ID", -1)
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 68f411b9-2ab6-44b8-94eb-9b1578d8c48e
+                stepCounter: bd25ccfd-afa5-4e34-be04-467c3e0970fd
             transform: IFNULL("SL01_COMBINED"."SL01_ID", -1)
         systemColumnType: None
       - acceptedValues:
@@ -584,8 +550,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b262668c-5fc1-4831-863b-50fe9ffbe0db
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 4d11edd1-5749-4a64-97c2-d9b15924409b
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -598,7 +564,9 @@ operation:
               - columnCounter: 909dd0ca-34ac-428f-80e9-005e7d4805c0
                 stepCounter: 6a58c60a-fd40-458e-b415-7aa216626cb2
             transform: IFNULL("SL01_COMBINED"."SL01_NAME", 'Add Start Location in TRUX')
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 909dd0ca-34ac-428f-80e9-005e7d4805c0
+                stepCounter: 6a58c60a-fd40-458e-b415-7aa216626cb2
             transform: IFNULL("SL01_COMBINED"."SL01_NAME", 'Add Start Location in TRUX')
         systemColumnType: None
       - acceptedValues:
@@ -606,8 +574,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 10fd0021-6647-499a-a70e-92b417ce3caf
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: f2fd83f0-06d2-4a04-8790-139ec2f02fe7
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -625,11 +593,12 @@ operation:
         systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 11440e19-2bd6-47d7-aa1e-bb9a289f83b9
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 6af158d9-d25c-43fa-91d9-7f7aa5051da0
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR
         description: ""
+        isBusinessKey: true
         name: Source
         nullable: true
         sourceColumnReferences:
@@ -646,8 +615,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e41d796f-ab18-47bb-90cd-0fd98f6db7e0
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 07e6d7c7-4400-4c82-8a37-a8d9ff4750df
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(100)
         defaultValue: ""
@@ -670,8 +639,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a93ac17e-d73d-4342-b0ae-65c954377e2f
-          stepCounter: 6ceced80-1030-47ae-b200-d20bb00669ac
+          columnCounter: 4a1a087c-f249-4120-a92c-6dad51b5e0f3
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
         config: {}
         dataType: VARCHAR(80)
         defaultValue: ""
@@ -687,6 +656,120 @@ operation:
           - columnReferences: []
             transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\"||'-'||\"CM04_COMBINED\".\"CM04_SITE\""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5df1fc2c-f794-4c4a-a882-07e377b875d3
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSystemVersion: true
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fae576dd-8c07-450c-b961-cd83d1ae946f
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemCurrentFlag: true
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a8602eb-e3a5-4ee4-baae-eede498fd5b6
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemStartDate: true
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 122c121a-dfcd-4935-abb4-7fc1a3a10beb
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemEndDate: true
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e4e7a0b3-d6ac-4a87-abbc-689ac2e11c24
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 02c2ed5a-2a19-4aff-b8e8-2c8284b15b0f
+          stepCounter: 1b577bd4-1f9e-4e4e-acb8-bf43cb1c9896
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -719,7 +802,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: SL01_COMBINED
         join:
-          joinCondition: |2-
+          joinCondition: |2
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04_COMBINED"
                ON "CM03_COMBINED"."CM03_CUST" = "CM04_COMBINED"."CM04_CUST"
@@ -748,8 +831,7 @@ operation:
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
-            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (1, 2) 
-              AND "CM03_COMBINED"."CM03_SUSDATE" IS NOT NULL
+            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (1, 2) -- "CM03_COMBINED"."CM03_SUSDATE" IS NOT NULL -> removing this filter, cause data might have changed
               AND "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CM04_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CD07_COMBINED"."_FIVETRAN_DELETED" = FALSE
@@ -770,7 +852,6 @@ operation:
                 , "CM04_COMBINED"."CM04_CITY"
             
                 , "CM03_COMBINED"."CM03_CDTE"
-                , "CM04_COMBINED"."CM04_EDTE"
                 
                 , "CM03_COMBINED"."CM03_SUSDATE"
                 , "CM03_COMBINED"."CM03_SUSREA"
@@ -791,6 +872,8 @@ operation:
                 , "SL01_COMBINED"."SL01_NAME"
             
                 , "RM02_COMBINED"."RM02_NUMB"
+            
+            
         name: TRUX_SUSPENDED_CUSTOMERS
         noLinkRefs: []
       - aliases:
@@ -852,8 +935,7 @@ operation:
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
-            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (3)
-              AND "CM04_COMBINED"."CM04_SUSDATE" IS NOT NULL
+            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (3) -- "CM04_COMBINED"."CM04_SUSDATE" IS NOT NULL -> removing this filter cause data might have changed
               AND "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CM04_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CD07_COMBINED"."_FIVETRAN_DELETED" = FALSE
@@ -874,7 +956,6 @@ operation:
                 , "CM04_COMBINED"."CM04_CITY"
             
                 , "CM03_COMBINED"."CM03_CDTE"
-                , "CM04_COMBINED"."CM04_EDTE"
                 
                 , "CM04_COMBINED"."CM04_SUSDATE"
                 , "CM04_COMBINED"."CM04_SUSREA"
@@ -897,10 +978,10 @@ operation:
                 , "RM02_COMBINED"."RM02_NUMB"
         name: TRUX_SUSPENDED_SITES
         noLinkRefs: []
-  name: ROUTED_SUSPENDED_ACCOUNTS
+  name: ROUTED_SUSPENDED_ACCOUNTS_FIX_ME
   overrideSQL: false
   schema: ""
-  sqlType: Stage
+  sqlType: Dimension
   type: sql
   version: 1
 type: Node
