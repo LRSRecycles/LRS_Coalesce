@@ -1,0 +1,619 @@
+fileVersion: 1
+id: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+name: ACCOUNT_MASTER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d0a390c-46fd-40be-9aaa-8588551bd2d5
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Customer Number
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f4f0ee58-acb8-4fac-aecb-08df89feda55
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 73066796-bdd0-4d2e-9731-5689e42e40fa
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5cae3e83-678b-493a-87cc-dd74e0d7f7b4
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "0"
+          - columnReferences:
+              - columnCounter: 112edb7e-c114-4829-bb58-6e8264e56247
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fac1dc34-d7ae-4316-94ca-fb753cc36c71
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: Account Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3a89ab31-7625-4b35-a03c-d5dac82ec0de
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 08943096-4a12-474f-a6be-1812ce0724d4
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 845b9764-4a7d-47ea-b0bf-435b8218874b
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Customer Type Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a05172f0-4e08-49b5-acfa-3ea4ca4f0dc6
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: a05172f0-4e08-49b5-acfa-3ea4ca4f0dc6
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c41a1a53-09d9-4980-a99a-752b392908cd
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Customer Type Desc
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4de06533-a7c4-4c8d-8b21-67dc33ea6e83
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4de06533-a7c4-4c8d-8b21-67dc33ea6e83
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1fd3670d-35d6-4e8b-b300-4d62e14126cf
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: Bill To
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: |-
+              CASE 
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (1) THEN 'Consolidated'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (2) THEN 'Separate (A/R Customer)'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (3) THEN 'Separate (A/R Site)'
+                ELSE NULL
+              END
+          - columnReferences: []
+            transform: |-
+              CASE 
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (1) THEN 'Consolidated'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (2) THEN 'Separate (A/R Customer)'
+                WHEN "CM03_COMBINED"."CM03_BILLTO" IN (3) THEN 'Separate (A/R Site)'
+                ELSE NULL
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e007b03-cc58-432d-93ec-a6306fb5cb76
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Sales Representative Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9adfcf72-08fd-45ca-9732-e355649687b4
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: ce78dbb3-a828-465f-8145-916c6a7cb577
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3aa0b922-778d-410f-89cf-4dc222d03c83
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Sales Representative
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6bdac00a-e452-4d6a-842c-2140fced5760
+                stepCounter: bd4674f7-935e-485f-8433-a9a843dde723
+            transform: ""
+          - columnReferences:
+              - columnCounter: 6bdac00a-e452-4d6a-842c-2140fced5760
+                stepCounter: bd4674f7-935e-485f-8433-a9a843dde723
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eb70b42e-bd67-4a06-baeb-b30292446825
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Account Closed Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fecba0cc-674a-4762-b7c5-074b167152c2
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5f6c1d08-d2ce-478e-88e0-3bf1913518c1
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fca50179-08b9-4ac9-a9ed-449bd361049e
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Credit Limit
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: baa887e3-e248-4713-98e2-cc40f1ebc794
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: d3a50773-bdd8-4b00-8a1b-488139624535
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2c195c75-20dd-40bb-b64e-57de1ed7eaa7
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Credit Warning
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5171c900-eb64-408f-949b-43874c113bae
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: ad60ce9c-92b0-40cf-95c3-68742e811b8a
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d9cb095a-0760-4ab1-8ea3-4124f63151d2
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Suspend Reason Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 103edbbd-b26d-4372-a06a-6679ae4aa378
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: b6aaac48-d781-43c7-9f10-b6e115c1a505
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7a395032-8375-4ce8-bc19-c76b32166a83
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Suspend Reason
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e99d9bcb-a280-43c1-be6d-b11489821019
+                stepCounter: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
+            transform: ""
+          - columnReferences:
+              - columnCounter: e99d9bcb-a280-43c1-be6d-b11489821019
+                stepCounter: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 093ad751-ccec-4bf0-85db-18e0aabc9ed4
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Suspend Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 691ce933-2665-497e-8b93-b0bfbcbf9f00
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 2cc34c66-a262-4584-9f34-13909203e630
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fd2954b5-e902-406c-adbb-4c932a0b3219
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Reinstate Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 04542fd0-4989-4e59-88b4-7199136e9dc4
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: b282f768-205d-4569-96e4-6af1885bc8d0
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3bcc593d-8a44-43d0-b4ac-4812134d759e
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Collection Agent Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4b32b24a-3eb9-4a43-84ec-7c85c6268a39
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4b32b24a-3eb9-4a43-84ec-7c85c6268a39
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f6189286-1302-42e7-941b-0c40c8c1eba0
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Collection Agent
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ffe8a23f-9b80-47db-92ae-6b015779fabb
+                stepCounter: af2cc5f9-03e6-4b06-a245-b0719b2aa432
+            transform: ""
+          - columnReferences:
+              - columnCounter: ffe8a23f-9b80-47db-92ae-6b015779fabb
+                stepCounter: af2cc5f9-03e6-4b06-a245-b0719b2aa432
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 459c57d1-e74e-4038-a2b5-eecc37402f82
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59d6cbae-d8d4-4c16-8e69-85895469efa8
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: d294b557-2e1e-4121-a36c-9e1e63cd8fa1
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b58bf7ab-f6d3-49bf-8aa4-54dbab3d4611
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            transform: ""
+          - columnReferences:
+              - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d41f8adf-8f50-4d85-9fb1-d03ee8a92784
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUST\""
+          - columnReferences: []
+            transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f9a1aab2-5c16-43e5-978f-7bd854332efd
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Customer_Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUST\"||'-0'"
+          - columnReferences: []
+            transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\"||'-'||\"CM04_COMBINED\".\"CM04_SITE\""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c54b8dbd-b0d4-45a3-870f-1c096668e2bd
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b7f0f78d-b5b3-4320-be38-a8ff05246073
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40eb6509-cff6-4d6f-8d9b-344ccd82a709
+          stepCounter: 3cc9ac3a-72e5-4ac3-b570-24859bb3cc62
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fc1566b9-0be5-48ff-9254-57966264cc58
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CD03_COMBINED: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
+          CD07_COMBINED: bd4674f7-935e-485f-8433-a9a843dde723
+          CD11_COMBINED: 3131b480-711a-434f-be4a-e6e3315d3c0a
+          CD52_COMBINED: af2cc5f9-03e6-4b06-a245-b0719b2aa432
+          CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD07_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD11_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD52_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM03_COMBINED
+        join:
+          joinCondition: |2
+             FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD11_COMBINED') }} "CD11_COMBINED"
+               ON "CM03_COMBINED"."CM03_CUSTTYPE" = "CD11_COMBINED"."CD11_CODE"
+              AND "CM03_COMBINED"."SOURCE" = "CD11_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
+               ON "CM03_COMBINED"."CM03_SREP" = "CD07_COMBINED"."CD07_CODE"
+              AND "CM03_COMBINED"."SOURCE" = "CD07_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD03_COMBINED') }} "CD03_COMBINED"
+               ON "CM03_COMBINED"."CM03_SUSREA" = "CD03_COMBINED"."CD03_CODE"
+              AND "CM03_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD52_COMBINED') }} "CD52_COMBINED"
+               ON "CM03_COMBINED"."CM03_COLLAGNT" = "CD52_COMBINED"."CD52_CODE"
+              AND "CM03_COMBINED"."SOURCE" = "CD52_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+               ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            
+            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (1, 2) 
+              AND "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CD11_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+              AND "CD07_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CD03_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CD52_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+            
+            
+            
+            
+        name: CUSTOMER_LEVEL
+        noLinkRefs: []
+      - aliases:
+          CD03_COMBINED: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
+          CD07_COMBINED: bd4674f7-935e-485f-8433-a9a843dde723
+          CD11_COMBINED: 3131b480-711a-434f-be4a-e6e3315d3c0a
+          CD52_COMBINED: af2cc5f9-03e6-4b06-a245-b0719b2aa432
+          CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+          CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD07_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD11_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD52_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM04_COMBINED
+        join:
+          joinCondition: |2-
+             FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04_COMBINED"
+               ON "CM03_COMBINED"."CM03_CUST" = "CM04_COMBINED"."CM04_CUST"
+              AND "CM03_COMBINED"."SOURCE" = "CM04_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD11_COMBINED') }} "CD11_COMBINED"
+               ON "CM03_COMBINED"."CM03_CUSTTYPE" = "CD11_COMBINED"."CD11_CODE"
+              AND "CM03_COMBINED"."SOURCE" = "CD11_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
+               ON "CM04_COMBINED"."CM04_SREP" = "CD07_COMBINED"."CD07_CODE"
+              AND "CM04_COMBINED"."SOURCE" = "CD07_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD03_COMBINED') }} "CD03_COMBINED"
+               ON "CM04_COMBINED"."CM04_SUSREA" = "CD03_COMBINED"."CD03_CODE"
+              AND "CM04_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD52_COMBINED') }} "CD52_COMBINED"
+               ON "CM03_COMBINED"."CM03_COLLAGNT" = "CD52_COMBINED"."CD52_CODE"
+              AND "CM03_COMBINED"."SOURCE" = "CD52_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+               ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            
+            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (3) 
+              AND "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CM04_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CD11_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+              AND "CD07_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CD03_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "CD52_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+        name: SITE_LEVEL
+        noLinkRefs: []
+  name: ACCOUNT_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
