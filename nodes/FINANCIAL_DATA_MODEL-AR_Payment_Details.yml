@@ -288,10 +288,12 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: DM01P_COMBINED
         join:
-          joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
-            ON "DM01P_COMBINED"."DM01P_ADJR" = "CD02_COMBINED"."CD02_CODE" and "DM01P_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE" and "DM01P_COMBINED"."DM01P_TYPE" = "CD02_COMBINED"."CD02_TYPE"
+          joinCondition: |2-
+              FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
+              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
+                ON "DM01P_COMBINED"."DM01P_ADJR" = "CD02_COMBINED"."CD02_CODE"
+               AND "DM01P_COMBINED"."DM01P_TYPE" = "CD02_COMBINED"."CD02_TYPE"
+               AND "DM01P_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE" 
         name: DM01p_COMBINED_TRUX
         noLinkRefs: []
       - aliases:
