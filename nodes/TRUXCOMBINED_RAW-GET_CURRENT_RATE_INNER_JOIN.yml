@@ -1,0 +1,174 @@
+fileVersion: 1
+id: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+name: GET_CURRENT_RATE_INNER_JOIN
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 824e0fa4-18a2-4221-9a5d-ddbaa50ad57a
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 841d5957-06ed-4237-ba09-d2bdac8ff508
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f8ba4950-531c-4f8c-b6a5-4374d453dee4
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SITE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cb730e94-a297-4ee2-b7bd-0c885e3d89eb
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2bbaf49d-b254-47c3-b213-db17672a010b
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SERV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9880f325-a697-4e88-b083-3c0cf651964e
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aaef1688-1f4a-4df5-91a1-715e8b879d95
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM19_ACTV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be0f0805-1d15-4e3a-a802-fc5081206ece
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 35c5bdb5-22b2-4a8d-b765-8a319791143e
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be31b51a-c9bd-443d-8e7e-2263bd7d01d3
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: MAX("CM19_COMBINED"."CM19_ID")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0f6e09b-006b-4e8c-b4e0-459ed68aec52
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: CM19_EFFD
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 956daedf-a94a-47da-99b5-54f4a41adf95
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: MAX("CM19_COMBINED"."CM19_EFFD")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14591b48-0ac7-4fd9-9daa-f22f3edb8316
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ef093c12-2357-4531-81f1-74a17ddf3abb
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 884d8a1c-42e8-4e03-ae7a-2f091f33ab8c
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16e2c1f9-994e-4a8a-9ca6-e8a3659c4dd2
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8854596b-56cb-46f0-b629-9f22f9601919
+          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f5d03535-77bc-4dfb-82a8-1e969d27e06a
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CM19_COMBINED: eff228bf-ae85-4729-b262-adc8e690ab35
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM19_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CM19_COMBINED') }} "CM19_COMBINED"
+            GROUP BY "CM19_COMBINED"."CM19_CUST"
+            , "CM19_COMBINED"."CM19_SITE"
+            , "CM19_COMBINED"."CM19_SERV"
+            , "CM19_COMBINED"."CM19_ACTV"
+            , "_FIVETRAN_DELETED"
+            , "_FIVETRAN_SYNCED"
+            , "SOURCE"
+        name: GET_CURRENT_RATE_INNER_JOIN
+        noLinkRefs: []
+  name: GET_CURRENT_RATE_INNER_JOIN
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

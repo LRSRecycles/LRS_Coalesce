@@ -1,0 +1,173 @@
+fileVersion: 1
+id: c3f97a91-b31a-48aa-8219-f387d749b428
+name: GET_CURRENT_RATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8fcf5028-5220-41cf-96a3-a021ca8933f6
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 841d5957-06ed-4237-ba09-d2bdac8ff508
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ea2c30f1-7e5e-42ab-9b4d-9e1f1b94403b
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SITE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cb730e94-a297-4ee2-b7bd-0c885e3d89eb
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f943233-b802-4d52-b9cf-04120ca5cc81
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SERV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9880f325-a697-4e88-b083-3c0cf651964e
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb9786eb-62f7-472d-ac54-da2d139f72c2
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: CM19_RATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 897b0e93-3aba-4436-8365-d42aa0b304a5
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e478951-b31e-40c3-bd8d-9ccd55e9fa77
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM19_ACTV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be0f0805-1d15-4e3a-a802-fc5081206ece
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b2b96ce6-c1e1-4a4b-936c-d6bac1c75286
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: CM19_EFFD
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 956daedf-a94a-47da-99b5-54f4a41adf95
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e17fdc8e-12d2-4132-a641-d811781788d1
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ef093c12-2357-4531-81f1-74a17ddf3abb
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cd8da4d1-8e66-46eb-8f5e-56465e8c3303
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16e2c1f9-994e-4a8a-9ca6-e8a3659c4dd2
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0908ec05-bd31-43a9-a5a5-740a1388ff5b
+          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f5d03535-77bc-4dfb-82a8-1e969d27e06a
+                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CM19_COMBINED: eff228bf-ae85-4729-b262-adc8e690ab35
+          CM19_COMBINED_INNER: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM19_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: GET_CURRENT_RATE_INNER_JOIN
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CM19_COMBINED') }} "CM19_COMBINED"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'GET_CURRENT_RATE_INNER_JOIN') }} "CM19_COMBINED_INNER"
+                ON "CM19_COMBINED"."CM19_ID" = "CM19_COMBINED_INNER"."CM19_ID"
+               AND "CM19_COMBINED"."SOURCE" = "CM19_COMBINED_INNER"."SOURCE"
+        name: GET_CURRENT_RATE
+        noLinkRefs: []
+  name: GET_CURRENT_RATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

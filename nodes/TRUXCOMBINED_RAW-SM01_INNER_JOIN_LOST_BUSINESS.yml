@@ -1,0 +1,163 @@
+fileVersion: 1
+id: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+name: SM01_INNER_JOIN_LOST_BUSINESS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9ff4550-e335-401b-9cbf-06ff9f3c11ce
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59e1e977-745c-4414-a49c-87a1dc61300c
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab4f9511-3c88-4edd-86d0-4e77c90054f2
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f5bcad2c-89fc-4793-bb31-4bcadd9adf33
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ccc282fd-c105-42d3-a69c-9fab77a2c3c2
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 99268ac3-7290-487d-8f0f-48c07e7fd961
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cc402940-381a-4544-b7d3-138184e2f5ac
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: SM01_AMNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 924ec332-edc5-448d-90f6-f72b87c5a1d0
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: SUM("SM01_COMBINED"."SM01_AMNT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 45bcf4ee-b09c-4090-8f1d-b6919d691b6a
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1615b68-b197-45ac-807b-ed79b2be982a
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3de3a8c8-7efc-4fd0-b98b-1c5522169bb6
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Sort
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b8996b69-cec6-4030-8ff8-8155dd71b73d
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b14ed5d-2ff1-4b42-9218-3731882d5671
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: METADATA$ACTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: de8ff51e-3be9-4c3e-9bc9-de474b58a295
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0279ab7-25d7-4e09-8791-c10a2f89f43f
+          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
+        config: {}
+        dataType: Boolean
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c9093525-6146-46ae-8029-4f74ee3950a2
+                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SM01_COMBINED: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SM01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SM01_COMBINED') }} "SM01_COMBINED"
+            WHERE "Sort" = 1
+            AND "_FIVETRAN_DELETED" = FALSE
+            
+            GROUP BY "SM01_CUST"
+            , "SM01_SITE"
+            , "SM01_SERV"
+            , "Sort"
+            , "_FIVETRAN_DELETED"
+            , "SOURCE"
+            , "METADATA$ACTION"
+        name: SM01_INNER_JOIN_LOST_BUSINESS
+        noLinkRefs: []
+  name: SM01_INNER_JOIN_LOST_BUSINESS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
