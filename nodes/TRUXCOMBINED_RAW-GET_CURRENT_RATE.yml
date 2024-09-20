@@ -72,7 +72,7 @@ operation:
           - columnReferences:
               - columnCounter: 897b0e93-3aba-4436-8365-d42aa0b304a5
                 stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
-            transform: ""
+            transform: CASE WHEN "CM19_COMBINED"."CM19_RATE" IS NULL THEN "CM12_COMBINED"."CM12_RATE" ELSE "CM19_COMBINED"."CM19_RATE" END
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3e478951-b31e-40c3-bd8d-9ccd55e9fa77
@@ -119,11 +119,14 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
+          CM12_COMBINED: 4f923860-b405-4745-ab70-88d5ff0d6d40
           CM19_COMBINED: eff228bf-ae85-4729-b262-adc8e690ab35
           CM19_COMBINED_INNER: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
         customSQL:
           customSQL: ""
         dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM12_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM19_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -134,7 +137,11 @@ operation:
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'GET_CURRENT_RATE_INNER_JOIN') }} "CM19_COMBINED_INNER"
                 ON "CM19_COMBINED"."CM19_ID" = "CM19_COMBINED_INNER"."CM19_ID"
                AND "CM19_COMBINED"."SOURCE" = "CM19_COMBINED_INNER"."SOURCE"
-            WHERE "_FIVETRAN_DELETED" = FALSE
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
+                ON "CM19_COMBINED"."CM19_ACTV" = "CM12_COMBINED"."CM12_CODE"
+               AND "CM19_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
+            
+            WHERE "CM19_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: GET_CURRENT_RATE
         noLinkRefs: []
   name: GET_CURRENT_RATE
