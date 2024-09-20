@@ -611,6 +611,66 @@ operation:
                 stepCounter: "0"
             transform: "\"SITECD07\".\"CD07_DESC\""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 68a15d67-ba78-443c-844f-e26ee72cf2b6
+          stepCounter: c3055e38-9745-451a-8b7f-7f753e196cbf
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SOURCE-CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CM05_COMBINED\".\"SOURCE\" || '-' || \"CM05_COMBINED\".\"CM05_CUST\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c82c24f-3c41-4c7d-92c3-8178f860b061
+          stepCounter: c3055e38-9745-451a-8b7f-7f753e196cbf
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SOURCE-CUST-SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CM05_COMBINED\".\"SOURCE\" || '-' || \"CM05_COMBINED\".\"CM05_CUST\" || '-' || \"CM05_COMBINED\".\"CM05_SITE\" "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25c51833-8727-478d-9c5f-ea7edd24d2d6
+          stepCounter: c3055e38-9745-451a-8b7f-7f753e196cbf
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SOURCE-CUST-SITE-SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CM05_COMBINED\".\"SOURCE\" || '-' || \"CM05_COMBINED\".\"CM05_CUST\" || '-' || \"CM05_COMBINED\".\"CM05_SITE\" || \"CM05_COMBINED\".\"CM05_SERV\""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -702,6 +762,7 @@ operation:
               ON "CM03_CUST" = "CURRENT_RATE"."CM19_CUST"
                AND "CM04_SITE" = "CURRENT_RATE"."CM19_SITE"
                AND "CM05_SERV" = "CURRENT_RATE"."CM19_SERV"
+               AND "CM19"."CM19_ACTV" = "CURRENT_RATE"."CM19_ACTV"
                AND "CM05_COMBINED"."SOURCE" = "CURRENT_RATE"."SOURCE"
             
             WHERE "CM05_TYPE" IS NOT NULL

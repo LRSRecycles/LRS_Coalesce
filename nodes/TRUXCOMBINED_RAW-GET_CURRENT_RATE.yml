@@ -103,34 +103,6 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: e17fdc8e-12d2-4132-a641-d811781788d1
-          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
-        config: {}
-        dataType: BOOLEAN
-        description: ""
-        name: _FIVETRAN_DELETED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: ef093c12-2357-4531-81f1-74a17ddf3abb
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: cd8da4d1-8e66-46eb-8f5e-56465e8c3303
-          stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
-        config: {}
-        dataType: TIMESTAMP_TZ(9)
-        description: ""
-        name: _FIVETRAN_SYNCED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16e2c1f9-994e-4a8a-9ca6-e8a3659c4dd2
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: 0908ec05-bd31-43a9-a5a5-740a1388ff5b
           stepCounter: c3f97a91-b31a-48aa-8219-f387d749b428
         config: {}
@@ -162,6 +134,7 @@ operation:
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'GET_CURRENT_RATE_INNER_JOIN') }} "CM19_COMBINED_INNER"
                 ON "CM19_COMBINED"."CM19_ID" = "CM19_COMBINED_INNER"."CM19_ID"
                AND "CM19_COMBINED"."SOURCE" = "CM19_COMBINED_INNER"."SOURCE"
+            WHERE "_FIVETRAN_DELETED" = FALSE
         name: GET_CURRENT_RATE
         noLinkRefs: []
   name: GET_CURRENT_RATE

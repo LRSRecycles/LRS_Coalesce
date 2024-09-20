@@ -87,48 +87,6 @@ operation:
               - columnCounter: a1615b68-b197-45ac-807b-ed79b2be982a
                 stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
             transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3de3a8c8-7efc-4fd0-b98b-1c5522169bb6
-          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: Sort
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: b8996b69-cec6-4030-8ff8-8155dd71b73d
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4b14ed5d-2ff1-4b42-9218-3731882d5671
-          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: METADATA$ACTION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: de8ff51e-3be9-4c3e-9bc9-de474b58a295
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: e0279ab7-25d7-4e09-8791-c10a2f89f43f
-          stepCounter: 53a8a929-a4cf-42ec-86cd-8b7a17fbb62f
-        config: {}
-        dataType: Boolean
-        description: ""
-        name: _FIVETRAN_DELETED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: c9093525-6146-46ae-8029-4f74ee3950a2
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
-            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -140,7 +98,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: SM01_COMBINED
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'SM01_COMBINED') }} "SM01_COMBINED"
             WHERE "Sort" = 1
             AND "_FIVETRAN_DELETED" = FALSE
@@ -148,10 +106,7 @@ operation:
             GROUP BY "SM01_CUST"
             , "SM01_SITE"
             , "SM01_SERV"
-            , "Sort"
-            , "_FIVETRAN_DELETED"
             , "SOURCE"
-            , "METADATA$ACTION"
         name: SM01_INNER_JOIN_LOST_BUSINESS
         noLinkRefs: []
   name: SM01_INNER_JOIN_LOST_BUSINESS

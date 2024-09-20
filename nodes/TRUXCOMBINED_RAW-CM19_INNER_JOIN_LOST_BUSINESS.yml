@@ -89,34 +89,6 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 328b594b-e6dd-489d-acca-9ed6d1cf8784
-          stepCounter: 7c8d23d5-3a31-4e02-b8d0-ea55002d8ef8
-        config: {}
-        dataType: BOOLEAN
-        description: ""
-        name: _FIVETRAN_DELETED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: ef093c12-2357-4531-81f1-74a17ddf3abb
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 623c105a-bf39-45d3-9457-4a10511dc707
-          stepCounter: 7c8d23d5-3a31-4e02-b8d0-ea55002d8ef8
-        config: {}
-        dataType: TIMESTAMP_TZ(9)
-        description: ""
-        name: _FIVETRAN_SYNCED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16e2c1f9-994e-4a8a-9ca6-e8a3659c4dd2
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: 114ffa99-55dd-4df9-a947-b2b3d2b178bd
           stepCounter: 7c8d23d5-3a31-4e02-b8d0-ea55002d8ef8
         config: {}
@@ -143,14 +115,13 @@ operation:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM19_COMBINED') }} "CM19_COMBINED"
             WHERE "CM19_COMBINED"."CM19_UNIT" NOT IN ('S', 'V', 'P') 
+            AND "_FIVETRAN_DELETED" = FALSE
             
             GROUP BY "CM19_CUST"
             , "CM19_SITE"
             , "CM19_SERV"
             , "CM19_ACTV"
             , "CM19_UNIT"
-            , "_FIVETRAN_DELETED"
-            ,"_FIVETRAN_SYNCED"
             ,"SOURCE"
         name: CM19_INNER_JOIN_LOST_BUSINESS
         noLinkRefs: []

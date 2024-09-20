@@ -84,8 +84,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: be31b51a-c9bd-443d-8e7e-2263bd7d01d3
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: MAX("CM19_COMBINED"."CM19_ID")
       - appliedColumnTests: {}
         columnReference:
@@ -98,37 +98,9 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 956daedf-a94a-47da-99b5-54f4a41adf95
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
+              - columnCounter: "0"
+                stepCounter: "0"
             transform: MAX("CM19_COMBINED"."CM19_EFFD")
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 14591b48-0ac7-4fd9-9daa-f22f3edb8316
-          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
-        config: {}
-        dataType: BOOLEAN
-        description: ""
-        name: _FIVETRAN_DELETED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: ef093c12-2357-4531-81f1-74a17ddf3abb
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 884d8a1c-42e8-4e03-ae7a-2f091f33ab8c
-          stepCounter: 3a8dcf16-6a20-4d9e-9722-cf9f5ade004f
-        config: {}
-        dataType: TIMESTAMP_TZ(9)
-        description: ""
-        name: _FIVETRAN_SYNCED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16e2c1f9-994e-4a8a-9ca6-e8a3659c4dd2
-                stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
-            transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 8854596b-56cb-46f0-b629-9f22f9601919
@@ -156,12 +128,11 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM19_COMBINED') }} "CM19_COMBINED"
+            WHERE "_FIVETRAN_DELETED" = FALSE
             GROUP BY "CM19_COMBINED"."CM19_CUST"
             , "CM19_COMBINED"."CM19_SITE"
             , "CM19_COMBINED"."CM19_SERV"
             , "CM19_COMBINED"."CM19_ACTV"
-            , "_FIVETRAN_DELETED"
-            , "_FIVETRAN_SYNCED"
             , "SOURCE"
         name: GET_CURRENT_RATE_INNER_JOIN
         noLinkRefs: []

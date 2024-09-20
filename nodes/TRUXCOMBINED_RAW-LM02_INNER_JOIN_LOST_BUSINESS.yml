@@ -75,34 +75,6 @@ operation:
             transform: SUM("LM02_COMBINED"."LM02_BAMT")
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 1a85237e-14d2-4a44-831e-ebced17bb256
-          stepCounter: fd757e44-fc0c-44f0-9ad4-485bb3e9a3b1
-        config: {}
-        dataType: BOOLEAN
-        description: ""
-        name: _FIVETRAN_DELETED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2c07cd26-e9ba-47d4-8144-8e0011d435e4
-                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: a851b63d-5552-43e9-b9a7-c39701db21aa
-          stepCounter: fd757e44-fc0c-44f0-9ad4-485bb3e9a3b1
-        config: {}
-        dataType: TIMESTAMP_TZ(9)
-        description: ""
-        name: _FIVETRAN_SYNCED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5664fdbf-0e5a-4655-89d5-bf782f7b2273
-                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: 4275fb1c-2e81-4b7d-a2d5-df8fe8321de1
           stepCounter: fd757e44-fc0c-44f0-9ad4-485bb3e9a3b1
         config: {}
@@ -113,34 +85,6 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 680c00e7-3392-4fb4-a12f-1880827e6ac6
-                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9624c944-19d3-45d1-823e-d1f7ce105116
-          stepCounter: fd757e44-fc0c-44f0-9ad4-485bb3e9a3b1
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: METADATA$ACTION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 134a5721-7582-4e50-be4d-daa7002bd89d
-                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: d6350f68-c45a-4f44-acca-e8d6074344b1
-          stepCounter: fd757e44-fc0c-44f0-9ad4-485bb3e9a3b1
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: SORT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 31d89c75-fb67-4677-b8c8-32588b7db0f1
                 stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
             transform: ""
     cteString: ""
@@ -154,7 +98,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: LM02_COMBINED
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }} "LM02_COMBINED"
             WHERE "LM02_COMBINED"."SORT" = 1
               AND "LM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
@@ -162,11 +106,7 @@ operation:
             GROUP BY "LM02_CUST"
             , "LM02_SITE"
             , "LM02_SERV"
-            , "_FIVETRAN_DELETED"
-            , "_FIVETRAN_SYNCED"
-            , "METADATA$ACTION"
             , "SOURCE"
-            , "SORT"
         name: LM02_INNER_JOIN_LOST_BUSINESS
         noLinkRefs: []
   name: LM02_INNER_JOIN_LOST_BUSINESS
