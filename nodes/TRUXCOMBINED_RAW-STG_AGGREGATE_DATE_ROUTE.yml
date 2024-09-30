@@ -91,12 +91,12 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: RM05_COMBINED
         join:
-          joinCondition: |
-            FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
-            WHERE "SORT" = 1 
-              AND "_FIVETRAN_DELETED" = FALSE 
-              AND "METADATA$ACTION" = 'INSERT'
-            GROUP BY "RM05_DATE", "RM05_ROUT", SOURCE
+          joinCondition: |2-
+              FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
+             WHERE "RM05_COMBINED"."SORT" = 1 
+               AND "RM05_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+               AND "RM05_COMBINED"."METADATA$ACTION" = 'INSERT'
+             GROUP BY "RM05_COMBINED"."RM05_DATE", "RM05_COMBINED"."RM05_ROUT", "RM05_COMBINED"."SOURCE"
         name: STG_AGGREGATE_DATE_ROUTE
         noLinkRefs: []
   name: STG_AGGREGATE_DATE_ROUTE

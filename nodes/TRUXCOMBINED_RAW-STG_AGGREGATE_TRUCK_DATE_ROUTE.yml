@@ -92,6 +92,7 @@ operation:
     sourceMapping:
       - aliases:
           RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+          STG_AGGREGATE_DATE_ROUTE: 97dcee52-7fce-4166-9ceb-04594ca676bd
         customSQL:
           customSQL: ""
         dependencies:
@@ -100,13 +101,17 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_AGGREGATE_DATE_ROUTE
         join:
-          joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_AGGREGATE_DATE_ROUTE') }} "STG_AGGREGATE_DATE_ROUTE"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED')}} "RM05_COMBINED"
+          joinCondition: |2-
+              FROM {{ ref('TRUXCOMBINED_RAW', 'STG_AGGREGATE_DATE_ROUTE') }} "STG_AGGREGATE_DATE_ROUTE"
+              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED')}} "RM05_COMBINED"
                 ON "RM05_COMBINED"."RM05_DATE" = "STG_AGGREGATE_DATE_ROUTE"."RM05_DATE"
                AND "RM05_COMBINED"."RM05_ROUT" = "STG_AGGREGATE_DATE_ROUTE"."RM05_ROUT"
                AND "RM05_COMBINED"."RM05_SEQ1" = "STG_AGGREGATE_DATE_ROUTE"."RM05_SEQ1_MIN"
                AND "RM05_COMBINED"."SOURCE" = "STG_AGGREGATE_DATE_ROUTE"."SOURCE"
+               
+             WHERE "RM05_COMBINED"."SORT" = 1 
+               AND "RM05_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+               AND "RM05_COMBINED"."METADATA$ACTION" = 'INSERT'
         name: STG_AGGREGATE_TRUCK_DATE_ROUTE
         noLinkRefs: []
   name: STG_AGGREGATE_TRUCK_DATE_ROUTE

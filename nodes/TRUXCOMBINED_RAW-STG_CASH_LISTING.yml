@@ -424,7 +424,7 @@ operation:
             nodeName: STG_DM01P_PAYMENTS
         join:
           joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM01P_PAYMENTS') }} "STG_DM01P_PAYMENTS"
+             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM01P_PAYMENTS') }} "STG_DM01P_PAYMENTS" -- Invoice Payments and Adjustments
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
                ON "STG_DM01P_PAYMENTS"."DM01P_LINK" = "DM01_COMBINED"."DM01_ID"
@@ -496,7 +496,7 @@ operation:
             nodeName: DM03_COMBINED
         join:
           joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'DM03_COMBINED') }} "DM03_COMBINED"
+             FROM {{ ref('TRUXCOMBINED_RAW', 'DM03_COMBINED') }} "DM03_COMBINED" -- Cash Receipts
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                ON "DM03_COMBINED"."DM03_TYPE" = "CD02_COMBINED"."CD02_CODE"

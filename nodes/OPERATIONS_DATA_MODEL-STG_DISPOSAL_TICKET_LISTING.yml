@@ -735,7 +735,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: DUOM.CD04_DESC
+            transform: "\"DUOM\".\"CD04_DESC\""
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -1172,46 +1172,46 @@ operation:
               FROM {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }} "LM02_COMBINED"
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "DUOM" 
                 ON "LM02_COMBINED"."LM02_DUOM" = "DUOM"."CD04_CODE"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE", 2)||'_COMP_RAW' = "DUOM"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "DUOM"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "BUOM"
                 ON "LM02_COMBINED"."LM02_BUOM" = "BUOM"."CD04_CODE"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "BUOM"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "BUOM"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "D1"
                 ON "LM02_COMBINED"."LM02_DUOM" = "D1"."LM06_UOM1"
                AND "LM02_COMBINED"."LM02_DRATEUOM" = "D1"."LM06_UOM2"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "D1"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "D1"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "B1" 
                 ON "LM02_COMBINED"."LM02_BUOM" = "B1"."LM06_UOM1" 
                AND "LM02_COMBINED"."LM02_UCHGUOM" = "B1"."LM06_UOM2"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "B1"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "B1"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "D2" 
                 ON "LM02_COMBINED"."LM02_DUOM" = "D2"."LM06_UOM1" 
                AND "D2"."LM06_UOM2" = '  '
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "D2"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "D2"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03"
                 ON "LM02_COMBINED"."LM02_CUST" = "CM03"."CM03_CUST"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "CM03"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "CM03"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04"
                 ON "LM02_COMBINED"."LM02_CUST" = "CM04"."CM04_CUST" 
                AND "LM02_COMBINED"."LM02_SITE" = "CM04"."CM04_SITE"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "CM04"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "CM04"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM05_COMBINED') }} "CM05"
                 ON "LM02_COMBINED"."LM02_CUST" = "CM05"."CM05_CUST" 
                AND "LM02_COMBINED"."LM02_SITE" = "CM05"."CM05_SITE" 
                AND "LM02_COMBINED"."LM02_SERV" = "CM05"."CM05_SERV"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "CM05"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "CM05"."SOURCE"
             
               INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01" 
                 ON "LM02_COMBINED"."LM02_DSTE" = "LM01"."LM01_DSTE" 
                AND "LM01"."LM01_OWN" = 1
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "LM01"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "LM01"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD05_COMBINED') }} "CD05"
                 ON "CM05"."CM05_TYPE" = "CD05"."CD05_CODE"
@@ -1219,11 +1219,11 @@ operation:
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04" 
                 ON "LM02_COMBINED"."LM02_MATL" = "LM04"."LM04_CODE"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "LM04"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "LM04"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'RM01_COMBINED') }} "RM01"
                 ON "LM02_COMBINED"."LM02_ROUT" = "RM01"."RM01_NUMB"
-               AND 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW' = "RM01"."SOURCE"
+               AND 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW' = "RM01"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14"
                 ON "CD14"."CD14_CODE" = "RM01"."RM01_TYPE"
@@ -1236,19 +1236,20 @@ operation:
                AND "LM02_COMBINED"."LM02_SEQ2" <= "RM05_1"."RM05_SEQ2"
                AND "LM02_COMBINED"."SOURCE" = "RM05_1"."SOURCE"
             
-              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_AGGREGATE_TRUCK_DATE_ROUTE') }} "RM05_2" 
-                ON "LM02_COMBINED"."LM02_RDATE" = "RM05_2"."RM05_DATE" 
-               AND "LM02_COMBINED"."LM02_ROUT" = "RM05_2"."RM05_ROUT"
-               AND "LM02_COMBINED"."SOURCE" = "RM05_2"."SOURCE"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_AGGREGATE_TRUCK_DATE_ROUTE') }} "RM05_2" 
+               ON "LM02_COMBINED"."LM02_RDATE" = "RM05_2"."RM05_DATE" 
+              AND "LM02_COMBINED"."LM02_ROUT" = "RM05_2"."RM05_ROUT"
+              AND "LM02_COMBINED"."SOURCE" = "RM05_2"."SOURCE"
             
-              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'TR03_COMBINED') }} "TR03"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'TR03_COMBINED') }} "TR03"
                ON "TR03"."TR03_NUMB" = "LM02_COMBINED"."LM02_ROUT" 
               AND "TR03"."TR03_DATE" = "LM02_COMBINED"."LM02_RDATE"
-              AND "TR03"."SOURCE" = 'TRUX_'||right("LM02_COMBINED"."SOURCE",2)||'_COMP_RAW'
+              AND "TR03"."SOURCE" = 'TRUX_' || RIGHT("LM02_COMBINED"."SOURCE", 2) || '_COMP_RAW'
             
             WHERE ("LM02_COMBINED"."LM02_DSTE" = '01' OR "LM02_COMBINED"."LM02_DSTE" = '02')
               AND "LM02_COMBINED"."SORT" = 1
               AND "LM02_COMBINED"."_FIVETRAN_DELETED" = FALSE
+              AND "LM02_COMBINED"."METADATA$ACTION" = 'INSERT'
             
         name: STG_DISPOSAL_TICKET_LISTING
         noLinkRefs: []
