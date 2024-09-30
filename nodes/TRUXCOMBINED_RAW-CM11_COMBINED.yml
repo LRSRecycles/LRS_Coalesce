@@ -1,0 +1,140 @@
+fileVersion: 1
+id: c810663f-a5b9-434b-a506-ea1cd2e55cef
+name: CM11_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7fcf7a14-f21d-409b-bedc-46c7c3e34916
+          stepCounter: c810663f-a5b9-434b-a506-ea1cd2e55cef
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM11_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 46c63af2-370d-4ccd-8f1f-785f403478e6
+                stepCounter: d0f412cf-a8c4-43bb-ae0d-2441a197c466
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 75353900-5282-4b4a-a970-c1a8e84b17c1
+          stepCounter: c810663f-a5b9-434b-a506-ea1cd2e55cef
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM11_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 05787278-06e5-4126-815b-a70a351ba9be
+                stepCounter: d0f412cf-a8c4-43bb-ae0d-2441a197c466
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 47eee329-c897-4127-b37a-07e5bb091ab7
+          stepCounter: c810663f-a5b9-434b-a506-ea1cd2e55cef
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM11_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8494908e-9bca-4b4e-a61b-dff9ccee9aae
+                stepCounter: d0f412cf-a8c4-43bb-ae0d-2441a197c466
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b85f8c0b-086e-4115-ae0b-e1b4b447fa3f
+          stepCounter: c810663f-a5b9-434b-a506-ea1cd2e55cef
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: CM11_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 92551b90-2398-4465-97fa-f092261aee13
+                stepCounter: d0f412cf-a8c4-43bb-ae0d-2441a197c466
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40b133d3-e1e9-4d66-8d5a-a2746cc8ef2b
+          stepCounter: c810663f-a5b9-434b-a506-ea1cd2e55cef
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: CM11_CHEQ
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a97b22d-5676-4afb-9ab2-a1bcc2735e01
+                stepCounter: d0f412cf-a8c4-43bb-ae0d-2441a197c466
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 446ee932-4095-4dfd-b39b-78e9b8b0665f
+          stepCounter: c810663f-a5b9-434b-a506-ea1cd2e55cef
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: CM11_CAMT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d5857fab-448b-4891-84b9-542aaf51c011
+                stepCounter: d0f412cf-a8c4-43bb-ae0d-2441a197c466
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 040066f1-cc44-4a3b-aed2-8dc113ddfff6
+          stepCounter: c810663f-a5b9-434b-a506-ea1cd2e55cef
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_DC_COMP_RAW
+            nodeName: CM11
+        join:
+          joinCondition: FROM {{ ref('TRUX_DC_COMP_RAW', 'CM11') }} "CM11"
+        name: CM11_COMBINED
+        noLinkRefs: []
+  name: CM11_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node
