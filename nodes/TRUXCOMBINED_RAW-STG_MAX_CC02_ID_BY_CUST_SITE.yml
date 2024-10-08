@@ -1,0 +1,98 @@
+fileVersion: 1
+id: 1b78b294-c580-4445-87df-0f457347a0a9
+name: STG_MAX_CC02_ID_BY_CUST_SITE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ef7e75e-58a3-4267-8268-6b39cb634919
+          stepCounter: 1b78b294-c580-4445-87df-0f457347a0a9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CC02_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 60c96668-04e3-48f3-8939-217403ae6cd6
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 863d5170-659b-4471-b3a9-fb6977317dd1
+          stepCounter: 1b78b294-c580-4445-87df-0f457347a0a9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CC02_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3cf5e9a1-7839-40cc-9ea3-b66a9c6d6752
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: IFNULL("CC02_COMBINED"."CC02_SITE", 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d5cc8a3-ae4c-42f1-a584-d2742a72f096
+          stepCounter: 1b78b294-c580-4445-87df-0f457347a0a9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CC02_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10e3f34b-9832-4a25-8901-f780b6d44bd1
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: MAX("CC02_COMBINED"."CC02_ID")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6365a4d2-16cb-4dfb-a4aa-36b52a21846d
+          stepCounter: 1b78b294-c580-4445-87df-0f457347a0a9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a7c1858c-eee6-4f3f-9649-19969b91a9bf
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CC02_COMBINED: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CC02_COMBINED
+        join:
+          joinCondition: |2
+              FROM {{ ref('TRUXCOMBINED_RAW', 'CC02_COMBINED') }} "CC02_COMBINED"
+             GROUP BY "CC02_COMBINED"."SOURCE", "CC02_COMBINED"."CC02_CUST", "CC02_COMBINED"."CC02_SITE"
+        name: STG_MAX_CC02_ID_BY_CUST_SITE
+        noLinkRefs: []
+  name: STG_MAX_CC02_ID_BY_CUST_SITE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

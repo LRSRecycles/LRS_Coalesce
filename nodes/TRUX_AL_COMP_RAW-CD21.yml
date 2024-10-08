@@ -1,0 +1,96 @@
+fileVersion: 1
+id: a52700ee-6771-4809-b6d0-bbb398cb3719
+name: CD21
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: TRUX_AL_COMP_RAW
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93a61a84-eaca-4a51-bd75-b6d49354f12b
+          stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        name: CD21_CODE
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: af1ca2b5-ee39-4409-8401-2b49cdeb1de2
+          stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        name: CD21_PMT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3d169172-ff36-47d4-854c-6120ba3acd38
+          stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89527796-aadb-442e-8ed9-dffc11691055
+          stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD21') }}
+  name: CD21
+  schema: ""
+  sqlType: Source
+  table: CD21
+  type: sourceInput
+  version: 1
+type: Node

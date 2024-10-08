@@ -1,0 +1,112 @@
+fileVersion: 1
+id: 5709592a-65be-4bb7-a4ca-fcc1433870a5
+name: CD21_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 06057cb0-434a-4c4f-907b-ba39b97bb603
+          stepCounter: 5709592a-65be-4bb7-a4ca-fcc1433870a5
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CD21_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 93a61a84-eaca-4a51-bd75-b6d49354f12b
+                stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae7570c4-2d67-4c55-9380-1f287e268e99
+          stepCounter: 5709592a-65be-4bb7-a4ca-fcc1433870a5
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CD21_PMT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: af1ca2b5-ee39-4409-8401-2b49cdeb1de2
+                stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e936e0bd-1a90-4262-ab82-03bec09a7e0f
+          stepCounter: 5709592a-65be-4bb7-a4ca-fcc1433870a5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ba64d44-773e-4cb7-9efb-5d44f616cc63
+          stepCounter: 5709592a-65be-4bb7-a4ca-fcc1433870a5
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3d169172-ff36-47d4-854c-6120ba3acd38
+                stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 35f6178f-b239-495d-aaaf-9eea2d608b43
+          stepCounter: 5709592a-65be-4bb7-a4ca-fcc1433870a5
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 89527796-aadb-442e-8ed9-dffc11691055
+                stepCounter: a52700ee-6771-4809-b6d0-bbb398cb3719
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: CD21
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD21') }} "CD21"
+        name: CD21_COMBINED
+        noLinkRefs: []
+  name: CD21_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,308 @@
+fileVersion: 1
+id: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+name: ACTIVE_PAYMENT_METHOD_BY_CUSTOMER_SITE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc9d7a1e-5a72-4840-b5b6-178eb7f2242a
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Unique Identifier
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10e3f34b-9832-4a25-8901-f780b6d44bd1
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e2ae2197-647b-41b1-8a89-85f957f0b2df
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 60c96668-04e3-48f3-8939-217403ae6cd6
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c79b19e1-fa6c-4688-8faf-cd5c77cfa52d
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: IFNULL("CC02_COMBINED"."CC02_SITE", 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 58c86839-c8e7-4f74-88f9-1aafa226de59
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Credit Card Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 55c7ab02-f321-41ad-acb1-15e3c7429b3c
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15f91015-6bc9-425f-b76e-9a1a661d251c
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d47145b3-abd6-402c-a715-bb12a567f1d6
+                stepCounter: 02655129-1956-4b02-af2d-78f83f5b43a3
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 850a1f79-5f7c-4b68-9b6f-6f66d7ac07ff
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Month of Expiration
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2da2ea70-2376-4963-b806-5dc6ac19e89c
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5dfd1d22-6b41-4ff3-a2c7-03ab4a9b7147
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Year of Expiration
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1f6dbcc2-b82b-4d51-a159-086171f307a0
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6e139faa-6f2f-4829-91f8-767861c06667
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: Active Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cb896012-7e0e-40b8-ae27-02413793f2fb
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f094e5df-0b13-40ee-ac99-2cd18a5308d4
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: Charge Type Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2794ed5a-d69e-458a-af49-d26f58ea7672
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6762559-6090-4860-bac7-eac9db888f9c
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(40)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Charge Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                WHEN "CC02_COMBINED"."CC02_CHRGTYPE" = 'V' THEN 'Variable Recurring'
+                WHEN "CC02_COMBINED"."CC02_CHRGTYPE" = 'F' THEN 'Fixed Recurring'
+                WHEN "CC02_COMBINED"."CC02_CHRGTYPE" = 'S' THEN 'Single Charge'
+                ELSE NULL
+              END
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7299051a-a9b6-44d2-8b14-7f4ff86ef6a1
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: Bank Account Type Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 990acb4d-8e71-4ae2-9e0e-3ec688015889
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a56702b5-632b-413f-bea8-4c5e65a0d040
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Bank Account Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                WHEN "CC02_COMBINED"."CC02_ACCTYPE" = 0 THEN 'Checking'
+                WHEN "CC02_COMBINED"."CC02_ACCTYPE" = 1 THEN 'Saving'
+                ELSE NULL
+              END
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42a9e456-6171-44d5-bcc4-5918518b2582
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a7c1858c-eee6-4f3f-9649-19969b91a9bf
+                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ea4e8ad-9b70-4924-9374-16c29ba83e41
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CC02_COMBINED\".\"SOURCE\"||'-'||\"CC02_COMBINED\".\"CC02_CUST\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dec80747-d676-4b1c-89d6-eebeec12d9cb
+          stepCounter: e446e0f4-7f16-4166-827d-5ae1f29e3f38
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Customer_Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CC02_COMBINED\".\"SOURCE\"||'-'||\"CC02_COMBINED\".\"CC02_CUST\"||'-'||IFNULL(\"CC02_COMBINED\".\"CC02_SITE\", 0)"
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CC02_COMBINED: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+          CD02_COMBINED: 02655129-1956-4b02-af2d-78f83f5b43a3
+          CD21_COMBINED: 5709592a-65be-4bb7-a4ca-fcc1433870a5
+          STG_MAX_CC02_ID_BY_CUST_SITE: 1b78b294-c580-4445-87df-0f457347a0a9
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CC02_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD02_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD21_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_MAX_CC02_ID_BY_CUST_SITE
+        join:
+          joinCondition: |2-
+              FROM {{ ref('TRUXCOMBINED_RAW', 'CC02_COMBINED') }} "CC02_COMBINED"
+             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_MAX_CC02_ID_BY_CUST_SITE') }} "STG_MAX_CC02_ID_BY_CUST_SITE"
+                ON "CC02_COMBINED"."CC02_ID" = "STG_MAX_CC02_ID_BY_CUST_SITE"."CC02_ID"
+               AND "CC02_COMBINED"."SOURCE" = "STG_MAX_CC02_ID_BY_CUST_SITE"."SOURCE"
+              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD21_COMBINED') }} "CD21_COMBINED"
+                ON "CC02_COMBINED"."CC02_TYPE" = "CD21_COMBINED"."CD21_CODE"
+               AND "CC02_COMBINED"."SOURCE" = "CD21_COMBINED"."SOURCE"
+              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
+                ON "CD21_COMBINED"."CD21_PMT" = "CD02_COMBINED"."CD02_CODE"
+               AND "CD21_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE"
+        name: ACTIVE_PAYMENT_METHOD_BY_CUSTOMER_SITE
+        noLinkRefs: []
+  name: ACTIVE_PAYMENT_METHOD_BY_CUSTOMER_SITE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
