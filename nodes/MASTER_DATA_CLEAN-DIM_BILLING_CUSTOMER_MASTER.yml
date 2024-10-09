@@ -1266,12 +1266,12 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 340c7fb6-b7d8-43be-9fd5-703a8af375b1
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: 1ce67849-b0c4-4c59-8d6d-ffebb21fa276
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
           - columnReferences:
-              - columnCounter: 340c7fb6-b7d8-43be-9fd5-703a8af375b1
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: 1ce67849-b0c4-4c59-8d6d-ffebb21fa276
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
         systemColumnType: None
       - acceptedValues:
@@ -1290,12 +1290,12 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: b4ae306c-4952-4ac5-b699-1768c4d534b9
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: efcf33ce-57b1-4006-b5d9-0e2cd049b0cf
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
           - columnReferences:
-              - columnCounter: b4ae306c-4952-4ac5-b699-1768c4d534b9
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: efcf33ce-57b1-4006-b5d9-0e2cd049b0cf
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
         systemColumnType: None
       - acceptedValues:
@@ -1314,12 +1314,12 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: e9cabe8f-b8d0-4cfc-a326-be6f5d6da0c3
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
           - columnReferences:
-              - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: e9cabe8f-b8d0-4cfc-a326-be6f5d6da0c3
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
         systemColumnType: None
       - appliedColumnTests: {}
@@ -1569,7 +1569,7 @@ operation:
           CD29_COMBINED: 893f4c8e-1047-48f2-960d-dc4b4588a0e7
           CD52_COMBINED: af2cc5f9-03e6-4b06-a245-b0719b2aa432
           CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-          CP01_COMBINED: 83f237e0-2bb1-4230-bef1-d6b54576823f
+          STG_CP01_COMBINED_FILTERED: b527731c-69d1-434c-9076-a2ff49859bf4
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
           customSQL: ""
@@ -1589,10 +1589,11 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CP01_COMBINED
+            nodeName: STG_CP01_COMBINED_FILTERED
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+            
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD11_COMBINED') }} "CD11_COMBINED"
                ON "CM03_COMBINED"."CM03_CUSTTYPE" = "CD11_COMBINED"."CD11_CODE"
               AND "CM03_COMBINED"."SOURCE" = "CD11_COMBINED"."SOURCE"
@@ -1613,22 +1614,15 @@ operation:
                ON "CM03_COMBINED"."CM03_COLLAGNT" = "CD52_COMBINED"."CD52_CODE"
               AND "CM03_COMBINED"."SOURCE" = "CD52_COMBINED"."SOURCE"
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
-               ON "CM03_COMBINED"."CM03_CUST" = "CP01_COMBINED"."CP01_CUST"
-              AND "CP01_COMBINED"."CP01_SITE" IS NULL
-              AND "CM03_COMBINED"."SOURCE" = "CP01_COMBINED"."SOURCE" 
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CP01_COMBINED_FILTERED') }} "STG_CP01_COMBINED_FILTERED"
+               ON "CM03_COMBINED"."CM03_CUST" = "STG_CP01_COMBINED_FILTERED"."CP01_CUST"
+              AND "STG_CP01_COMBINED_FILTERED"."CP01_SITE" IS NULL
+              AND "CM03_COMBINED"."SOURCE" = "STG_CP01_COMBINED_FILTERED"."SOURCE" 
             
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
-            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (1, 2) 
-              AND "CM03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CD11_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
-              AND "CD07_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CD03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
-              AND "CD29_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CD52_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CP01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+            WHERE "CM03_COMBINED"."CM03_BILLTO" IN (1, 2)
         name: CONSOLIDATED
         noLinkRefs: []
       - aliases:
@@ -1639,7 +1633,7 @@ operation:
           CD52_COMBINED: af2cc5f9-03e6-4b06-a245-b0719b2aa432
           CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
           CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
-          CP01_COMBINED: 83f237e0-2bb1-4230-bef1-d6b54576823f
+          STG_CP01_COMBINED_FILTERED: b527731c-69d1-434c-9076-a2ff49859bf4
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
           customSQL: ""
@@ -1661,7 +1655,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM04_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CP01_COMBINED
+            nodeName: STG_CP01_COMBINED_FILTERED
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
@@ -1682,30 +1676,22 @@ operation:
               AND "CM04_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD29_COMBINED') }} "CD29_COMBINED"
-               ON "CM03_COMBINED"."CM03_LOST" = "CD29_COMBINED"."CD29_CODE"
-              AND "CM03_COMBINED"."SOURCE" = "CD29_COMBINED"."SOURCE"
+               ON "CM04_COMBINED"."CM04_LOST" = "CD29_COMBINED"."CD29_CODE"
+              AND "CM04_COMBINED"."SOURCE" = "CD29_COMBINED"."SOURCE"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD52_COMBINED') }} "CD52_COMBINED"
                ON "CM03_COMBINED"."CM03_COLLAGNT" = "CD52_COMBINED"."CD52_CODE"
               AND "CM03_COMBINED"."SOURCE" = "CD52_COMBINED"."SOURCE"
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
-               ON "CM04_COMBINED"."CM04_CUST" = "CP01_COMBINED"."CP01_CUST"
-              AND "CM04_COMBINED"."CM04_SITE" = "CP01_COMBINED"."CP01_SITE"
-              AND "CM04_COMBINED"."SOURCE" = "CP01_COMBINED"."SOURCE" 
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CP01_COMBINED_FILTERED') }} "STG_CP01_COMBINED_FILTERED"
+               ON "CM04_COMBINED"."CM04_CUST" = "STG_CP01_COMBINED_FILTERED"."CP01_CUST"
+              AND "CM04_COMBINED"."CM04_SITE" = "STG_CP01_COMBINED_FILTERED"."CP01_SITE"
+              AND "CM04_COMBINED"."SOURCE" = "STG_CP01_COMBINED_FILTERED"."SOURCE" 
             
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
             WHERE "CM03_COMBINED"."CM03_BILLTO" IN (3)
-              AND "CM03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CM04_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CD11_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
-              AND "CD07_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CD03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
-              AND "CD29_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CD52_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
-              AND "CP01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
         name: SEPARATE_AR_SITE
         noLinkRefs: []
   name: DIM_BILLING_CUSTOMER_MASTER
