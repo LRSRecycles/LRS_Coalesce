@@ -373,7 +373,7 @@ operation:
                 stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
             transform: ""
           - columnReferences:
-              - columnCounter: 39183275-f780-4891-ad56-97eb0a96c555
+              - columnCounter: a4085e19-dca0-4c4a-a015-04e189bff07f
                 stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: ""
       - appliedColumnTests: {}
@@ -1622,6 +1622,13 @@ operation:
                ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
             WHERE "CM03_COMBINED"."CM03_BILLTO" IN (1, 2) 
+              AND "CM03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CD11_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
+              AND "CD07_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CD03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
+              AND "CD29_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CD52_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CP01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
         name: CONSOLIDATED
         noLinkRefs: []
       - aliases:
@@ -1691,6 +1698,14 @@ operation:
                ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
             WHERE "CM03_COMBINED"."CM03_BILLTO" IN (3)
+              AND "CM03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CM04_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CD11_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
+              AND "CD07_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CD03_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'  
+              AND "CD29_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CD52_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "CP01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
         name: SEPARATE_AR_SITE
         noLinkRefs: []
   name: DIM_BILLING_CUSTOMER_MASTER
