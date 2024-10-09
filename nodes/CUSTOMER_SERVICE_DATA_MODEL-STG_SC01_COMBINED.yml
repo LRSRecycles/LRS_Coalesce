@@ -600,7 +600,9 @@ operation:
             
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "SC01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+               
             WHERE "SC01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "SC01_COMBINED"."SC01_DREC" >= DATEADD(DAY, -730, CURRENT_DATE())
         name: STG_SC01_COMBINED
         noLinkRefs: []
   name: STG_SC01_COMBINED

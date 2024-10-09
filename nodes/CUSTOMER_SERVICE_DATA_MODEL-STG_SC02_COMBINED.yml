@@ -213,6 +213,7 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
+          SC01_COMBINED: 04e4e698-447f-4a99-a218-977ceb126b96
           SC02_COMBINED: eb43cbba-8c6b-4d32-9693-db66adf81242
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
@@ -221,13 +222,23 @@ operation:
           - locationName: MASTER_DATA_CLEAN
             nodeName: TRUX_DATABASE_METADATA
           - locationName: TRUXCOMBINED_RAW
+            nodeName: SC01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
             nodeName: SC02_COMBINED
         join:
           joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'SC02_COMBINED') }} "SC02_COMBINED"
-             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+             FROM {{ ref('TRUXCOMBINED_RAW', 'SC01_COMBINED') }} "SC01_COMBINED"
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'SC02_COMBINED') }}  "SC02_COMBINED"
+               ON "SC01_COMBINED"."SC01_CALL" = "SC02_COMBINED"."SC02_CALL"
+              AND "SC01_COMBINED"."SOURCE" = "SC02_COMBINED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "SC02_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-            WHERE "SC02_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+            
+            WHERE "SC01_COMBINED"."SC01_DREC" >= DATEADD(DAY, -730, CURRENT_DATE())
+              AND "SC01_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
+              AND "SC02_COMBINED"."_FIVETRAN_DELETED" = 'FALSE'
         name: STG_SC02_COMBINED
         noLinkRefs: []
   name: STG_SC02_COMBINED
