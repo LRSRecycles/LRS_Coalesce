@@ -80,7 +80,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: join with CD05
-        name: Service Type
+        name: Service Type Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -94,7 +94,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Service Type Description
+        name: Service Type
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -108,7 +108,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: Service Size
+        name: Container Size
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -122,7 +122,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: Unit of Measure
+        name: Container UOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -136,7 +136,7 @@ operation:
         config: {}
         dataType: VARCHAR(5)
         description: ""
-        name: Service Compaction Flag
+        name: Container Compaction Flag
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -150,7 +150,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: Service Container Quantity
+        name: Container Quantity
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -192,7 +192,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Service Week Desc
+        name: Service Week
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -211,6 +211,23 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 853d8082-d463-4d12-8f89-6af7e5f31424
+                stepCounter: cd02e258-8f28-4971-8f0b-ba70c7e2d8c4
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ce03d5f9-3453-4672-ac04-1eba62024a47
+          stepCounter: 1d7a202a-3cb5-45d7-8ad4-59e48f175d2d
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: Service Active Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1fcd938-6517-4ba3-aebe-a44a5b7da93c
                 stepCounter: cd02e258-8f28-4971-8f0b-ba70c7e2d8c4
             transform: ""
       - appliedColumnTests: {}
@@ -234,7 +251,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Stop Reason Description
+        name: Stop Reason
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -262,7 +279,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: Join on CD17
-        name: Billing Cycle
+        name: Billing Cycle Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -276,7 +293,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Billing Cycle Description
+        name: Billing Cycle
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -323,6 +340,23 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4accc430-c150-4518-9f2c-050dd4e17887
+                stepCounter: cd02e258-8f28-4971-8f0b-ba70c7e2d8c4
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d3f7c0f6-779b-465e-b5d5-8e15ff2d209b
+          stepCounter: 1d7a202a-3cb5-45d7-8ad4-59e48f175d2d
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: Service Start Reason
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ac370296-e85b-4737-9388-0d33b23a4c1d
                 stepCounter: cd02e258-8f28-4971-8f0b-ba70c7e2d8c4
             transform: ""
       - appliedColumnTests: {}
@@ -528,11 +562,28 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: CD29 Join
-        name: Service Lost To
+        name: Service Lost To Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: a10e83b9-0b54-4e37-a997-c6315fc1beb0
+                stepCounter: cd02e258-8f28-4971-8f0b-ba70c7e2d8c4
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 52ec0d20-6f02-4811-b52b-da7c2d9e72e5
+          stepCounter: 1d7a202a-3cb5-45d7-8ad4-59e48f175d2d
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: Service Lost To
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 181f6a50-77b4-4097-bb56-253b22615932
                 stepCounter: cd02e258-8f28-4971-8f0b-ba70c7e2d8c4
             transform: ""
       - appliedColumnTests: {}
@@ -570,7 +621,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: CD50_Join
-        name: Service Category
+        name: Service Category Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -584,7 +635,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Service Category Description
+        name: Service Category
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -598,7 +649,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: LM01 Join
-        name: Default Facility
+        name: Default Facility Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -612,7 +663,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Default Facility Description
+        name: Default Facility
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -626,7 +677,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: LM04 Join
-        name: Default Material
+        name: Default Material Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -640,7 +691,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Default Material Description
+        name: Default Material
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -696,7 +747,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: CM12 Join
-        name: Scheduled Activity
+        name: Scheduled Activity Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -710,7 +761,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Scheduled Activity Description
+        name: Scheduled Activity
         nullable: true
         sourceColumnReferences:
           - columnReferences:
