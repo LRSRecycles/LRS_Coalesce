@@ -231,7 +231,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: Source_Customer_Site
+        name: Billing_Source_Customer_Site
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -306,8 +306,8 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: DM01_COMBINED
         join:
-          joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
+          joinCondition: |2-
+             FROM {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
             WHERE "DM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "DM01_COMBINED"."Sort" = 1
               AND "DM01_COMBINED"."METADATA$ACTION" = 'INSERT'

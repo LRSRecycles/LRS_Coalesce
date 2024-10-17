@@ -24,7 +24,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: Unique Identifier
+        name: Account Unique Identifier
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -78,15 +78,15 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: Link to Online Payment Account
+        name: Access Unique Identifier
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4b366bb3-6a60-431c-8eb9-31a5dada67e3
+              - columnCounter: ae9b34af-6622-45cc-a8a1-fe35e07d99bf
                 stepCounter: fb59c4ea-af97-447b-bc96-5b91e4c5dac6
             transform: ""
           - columnReferences:
-              - columnCounter: 9936e176-d838-4dc9-921d-9574243d0272
+              - columnCounter: a4ee08be-feee-4293-ab33-0144d4056412
                 stepCounter: 3d92e0c4-1198-4705-847d-b9e3b5e2478a
             transform: ""
       - appliedColumnTests: {}
@@ -199,7 +199,7 @@ operation:
                 stepCounter: "0"
             transform: "'TRUX_'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW'"
           - columnReferences: []
-            transform: "'TRUX_'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW'"
+            transform: "'TRUX_'||UPPER(\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_COMP\")||'_COMP_RAW'"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -221,7 +221,7 @@ operation:
                 stepCounter: "0"
             transform: "'TRUX_'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW-'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_CUST\""
           - columnReferences: []
-            transform: "'TRUX_'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_CUST\""
+            transform: "'TRUX_'||UPPER(\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_COMP\")||'_COMP_RAW-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_CUST\""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -243,29 +243,67 @@ operation:
                 stepCounter: "0"
             transform: "'TRUX_'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW-'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_CUST\"||'-'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_SITE\""
           - columnReferences: []
-            transform: "'TRUX_'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_CUST\"||'-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_SITE\""
+            transform: "'TRUX_'||UPPER(\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_COMP\")||'_COMP_RAW-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_CUST\"||'-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_SITE\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b02cf37d-177d-4e16-8c6c-ecafe844c0ad
+          stepCounter: dddbc35e-07ad-4a38-8688-bf30fa1d5a2b
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Customer_Site_Bill_To
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'TRUX_'||UPPER(\"LEGACY_ONLINE_ACCT\".\"OPACCESS_COMP\")||'_COMP_RAW-'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_CUST\"||'-'||\"LEGACY_ONLINE_ACCT\".\"OPACCESS_SITE\"||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'TRUX_'||UPPER(\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_COMP\")||'_COMP_RAW-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_CUST\"||'-'||\"MIDWEST_ONLINE_ACCT\".\"OPACCESS_SITE\"||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
         systemColumnType: None
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+          LEGACY_ONLINE_ACCT: fb59c4ea-af97-447b-bc96-5b91e4c5dac6
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: MASTER_DATA
             nodeName: LEGACY_ONLINE_ACCT
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM03_COMBINED
         join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'LEGACY_ONLINE_ACCT') }} "LEGACY_ONLINE_ACCT"
-        name: LEGACY_ONLINE_ACCT
+          joinCondition: |2-
+             FROM {{ ref('MASTER_DATA', 'LEGACY_ONLINE_ACCT') }} "LEGACY_ONLINE_ACCT"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+               ON "LEGACY_ONLINE_ACCT"."OPACCESS_CUST" = "CM03_COMBINED"."CM03_CUST"
+              AND 'TRUX_'||"LEGACY_ONLINE_ACCT"."OPACCESS_COMP"||'_COMP_RAW' = "CM03_COMBINED"."SOURCE"
+        name: TRUX_ONLINE_ACCTS_COMBINED
         noLinkRefs: []
       - aliases:
+          CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
           MIDWEST_ONLINE_ACCT: 3d92e0c4-1198-4705-847d-b9e3b5e2478a
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: MASTER_DATA
             nodeName: MIDWEST_ONLINE_ACCT
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM03_COMBINED
         join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'MIDWEST_ONLINE_ACCT') }} "MIDWEST_ONLINE_ACCT"
+          joinCondition: |2-
+             FROM {{ ref('MASTER_DATA', 'MIDWEST_ONLINE_ACCT') }} "MIDWEST_ONLINE_ACCT"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+               ON "MIDWEST_ONLINE_ACCT"."OPACCESS_CUST" = "CM03_COMBINED"."CM03_CUST"
+              AND 'TRUX_'||"MIDWEST_ONLINE_ACCT"."OPACCESS_COMP"||'_COMP_RAW' = "CM03_COMBINED"."SOURCE"
+              
         name: MIDWEST_ONLINE_ACCT
         noLinkRefs: []
   name: TRUX_ONLINE_ACCTS_COMBINED
