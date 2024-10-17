@@ -241,6 +241,26 @@ operation:
               - columnCounter: ad739087-52d8-4163-b6b9-c807e8ed4743
                 stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70482ec2-e8f7-44ff-a00c-2d1c45cfce48
+          stepCounter: 7d23db81-0212-4403-9535-94e1ccc07d62
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Invoice_UID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"DM01P_COMBINED\".\"SOURCE\"||'-'||\"DM01P_COMBINED\".\"DM01P_LINK\""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -254,7 +274,7 @@ operation:
         join:
           joinCondition: |2-
               FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
-             WHERE "DM01P_COMBINED"."DM01P_TYPE" =  'P'
+             WHERE "DM01P_COMBINED"."DM01P_TYPE" = 'P'
         name: STG_DM01P_PAYMENTS
         noLinkRefs: []
   name: STG_DM01P_PAYMENTS

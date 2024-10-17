@@ -540,10 +540,10 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 219bd89e-9c59-4260-9c71-63f2fabbb1aa
+          columnCounter: 066b7c07-2198-4d95-bfe7-86cb0bb5a48f
           stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
         config: {}
-        dataType: VARCHAR
+        dataType: VARCHAR(80)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -553,17 +553,17 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_CUST\")"
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\"||'-'||\"STG_DM05_COMBINED\".\"DM01_CUST\""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 56dbe1a3-1512-4c35-8f67-ae9d8e0b3fe6
+          columnCounter: 1bd94b61-ace0-4b37-a8a8-db20eae1bfed
           stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
         config: {}
-        dataType: VARCHAR
+        dataType: VARCHAR(80)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -573,17 +573,17 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_CUST\") || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_SITE\")"
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\"||'-'||\"STG_DM05_COMBINED\".\"DM01_CUST\"||'-'||\"STG_DM05_COMBINED\".\"DM01_SITE\""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 565dc3c4-1a64-474c-ad3d-e97c6962b669
+          columnCounter: eb09f2fe-4b41-4139-9173-2a1f0b0758a6
           stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
         config: {}
-        dataType: VARCHAR
+        dataType: VARCHAR(80)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -593,7 +593,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_CUST\") || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM05_SSIT\") || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM05_SERV\")"
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\"||'-'||\"STG_DM05_COMBINED\".\"DM01_CUST\"||'-'||\"STG_DM05_COMBINED\".\"DM05_SSIT\"||'-'||\"STG_DM05_COMBINED\".\"DM05_SERV\""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -613,7 +613,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM05_LINK\")"
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\"||'-'||\"STG_DM05_COMBINED\".\"DM05_LINK\""
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
@@ -626,9 +626,9 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_DM05_COMBINED
         join:
-          joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM05_COMBINED') }} "STG_DM05_COMBINED"
-            WHERE "STG_DM05_COMBINED"."DM05_TDTE" >= dateadd(day,-730,current_date())
+          joinCondition: |2-
+             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM05_COMBINED') }} "STG_DM05_COMBINED"
+            WHERE "STG_DM05_COMBINED"."DM05_TDTE" >= DATEADD(DAY, -730, CURRENT_DATE())
         name: STG_DM05_COMBINED_FILTERED
         noLinkRefs: []
   name: STG_DM05_COMBINED_FILTERED

@@ -1125,10 +1125,10 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_SM01_COMBINED_FILTERED
         join:
-          joinCondition: |2
+          joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05A_COMBINED') }} "DM05A_COMBINED"
             
-            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
                ON "DM05A_COMBINED"."DM05A_LINK" = "STG_DM01_COMBINED_FILTERED"."Unique Identifier"
               AND "DM05A_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
             
@@ -1171,7 +1171,7 @@ operation:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05B_COMBINED') }} "DM05B_COMBINED"
             
-            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
                ON "DM05B_COMBINED"."DM05B_LINK" = "STG_DM01_COMBINED_FILTERED"."Unique Identifier"
               AND "DM05B_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
             
