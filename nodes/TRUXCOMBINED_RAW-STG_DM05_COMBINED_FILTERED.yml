@@ -543,7 +543,7 @@ operation:
           columnCounter: 219bd89e-9c59-4260-9c71-63f2fabbb1aa
           stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
         config: {}
-        dataType: VARCHAR(80)
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -553,7 +553,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || \"STG_DM05_COMBINED\".\"DM01_CUST\""
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_CUST\")"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -573,7 +573,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || \"STG_DM05_COMBINED\".\"DM01_CUST\" || '-' || \"STG_DM05_COMBINED\".\"DM01_SITE\""
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_CUST\") || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_SITE\")"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -593,7 +593,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || \"STG_DM05_COMBINED\".\"DM01_CUST\" || '-' || \"STG_DM05_COMBINED\".\"DM05_SSIT\" || '-' || \"STG_DM05_COMBINED\".\"DM05_SERV\""
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM01_CUST\") || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM05_SSIT\") || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM05_SERV\")"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -613,7 +613,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || \"STG_DM05_COMBINED\".\"DM05_LINK\""
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\" || '-' || TO_VARCHAR(\"STG_DM05_COMBINED\".\"DM05_LINK\")"
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
