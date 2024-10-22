@@ -24,7 +24,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: Unique Identifier
+        name: Invoice UID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -59,6 +59,26 @@ operation:
               - columnCounter: 7b326805-baf1-47c8-9ed1-58caf894f91d
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b090b794-8454-4a13-b718-7ae298dca522
+          stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Bill To Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6009c31-e1d0-490a-954a-edc52acfe97c
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+        systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1bfc23d2-9d0b-4404-a014-d3fffdc7b9d6
@@ -204,6 +224,26 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
+          columnCounter: 7c1fdb22-40f7-4c75-aea4-1756537afa43
+          stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
           columnCounter: b1865554-066d-4d76-9c2c-fc7a5eaebe7b
           stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
         config: {}
@@ -238,6 +278,26 @@ operation:
               - columnCounter: "0"
                 stepCounter: "0"
             transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\"||'-'||\"DM01_COMBINED\".\"DM01_SITE\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5cee64e4-5dc2-47a8-8b99-9ff2bd135e99
+          stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Customer_Site_Bill_To
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\"||'-'||\"DM01_COMBINED\".\"DM01_SITE\"||'-'||\"STG_CM03_COMBINED_FILTERED\".\"CM03_BILLTO\""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -320,17 +380,31 @@ operation:
     sourceMapping:
       - aliases:
           DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
+          STG_CM03_COMBINED_FILTERED: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
           customSQL: ""
         dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
           - locationName: TRUXCOMBINED_RAW
             nodeName: DM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM03_COMBINED_FILTERED
         join:
           joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
-            WHERE "DM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
-              AND "DM01_COMBINED"."Sort" = 1
-              AND "DM01_COMBINED"."METADATA$ACTION" = 'INSERT'
+              FROM {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
+            
+             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
+                ON "DM01_COMBINED"."DM01_CUST" = "STG_CM03_COMBINED_FILTERED"."CM03_CUST"
+               AND "DM01_COMBINED"."SOURCE" = "STG_CM03_COMBINED_FILTERED"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+               ON "DM01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            
+             WHERE "DM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
+               AND "DM01_COMBINED"."Sort" = 1
+               AND "DM01_COMBINED"."METADATA$ACTION" = 'INSERT'
         name: STG_DM01_COMBINED_FILTERED
         noLinkRefs: []
   name: STG_DM01_COMBINED_FILTERED

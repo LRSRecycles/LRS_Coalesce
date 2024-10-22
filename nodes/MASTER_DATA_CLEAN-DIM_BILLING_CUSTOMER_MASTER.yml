@@ -101,7 +101,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: Customer Type
+        name: Customer Type Code
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -124,7 +124,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: Customer Type Desc
+        name: Customer Type
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -1451,7 +1451,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUST\"||'-0'||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
+            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUST\"||'-0-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
           - columnReferences: []
             transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\"||'-'||\"CM04_COMBINED\".\"CM04_SITE\"||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
         systemColumnType: None

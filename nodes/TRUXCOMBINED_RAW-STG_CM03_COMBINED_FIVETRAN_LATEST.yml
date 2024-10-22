@@ -88,8 +88,8 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
         join:
-          joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
+          joinCondition: |2-
+             FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
             WHERE "CM03_COMBINED"."_FIVETRAN_DELETED" = FALSE
             GROUP BY "CM03_COMBINED"."SOURCE", "CM03_COMBINED"."CM03_CUST", "CM03_COMBINED"."_FIVETRAN_DELETED"
         name: STG_CM03_COMBINED_FIVETRAN_LATEST

@@ -1,6 +1,6 @@
 fileVersion: 1
 id: d3ad60e4-7918-4136-9751-531e378c67c3
-name: STG_DM05_COMBINED_FILTERED
+name: VW_DM05_COMBINED
 operation:
   config:
     insertStrategy: INSERT
@@ -13,7 +13,7 @@ operation:
   description: ""
   isMultisource: false
   locationName: TRUXCOMBINED_RAW
-  materializationType: table
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -92,6 +92,23 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4028313f-755a-42b5-825e-fc5958e01200
+                stepCounter: 1cac55f3-17d5-4de8-9981-4296288a10ad
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 195b62b1-1eda-4dd3-a020-0ad6fec4468c
+          stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 74557574-cb98-4ff7-b5d0-f422e3286910
                 stepCounter: 1cac55f3-17d5-4de8-9981-4296288a10ad
             transform: ""
       - acceptedValues:
@@ -580,6 +597,26 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
+          columnCounter: cdb071fa-791b-45e1-aeaa-7a04aaf75cda
+          stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Service_Source_Customer_Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"STG_DM05_COMBINED\".\"SOURCE\"||'-'||\"STG_DM05_COMBINED\".\"DM01_CUST\"||'-'||\"STG_DM05_COMBINED\".\"DM05_SSIT\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
           columnCounter: eb09f2fe-4b41-4139-9173-2a1f0b0758a6
           stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
         config: {}
@@ -626,12 +663,10 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_DM05_COMBINED
         join:
-          joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM05_COMBINED') }} "STG_DM05_COMBINED"
-            WHERE "STG_DM05_COMBINED"."DM05_TDTE" >= DATEADD(DAY, -730, CURRENT_DATE())
-        name: STG_DM05_COMBINED_FILTERED
+          joinCondition: " FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM05_COMBINED') }} \"STG_DM05_COMBINED\""
+        name: VW_DM05_COMBINED
         noLinkRefs: []
-  name: STG_DM05_COMBINED_FILTERED
+  name: VW_DM05_COMBINED
   overrideSQL: false
   schema: ""
   sqlType: Stage

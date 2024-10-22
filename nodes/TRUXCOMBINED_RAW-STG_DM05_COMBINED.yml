@@ -178,6 +178,42 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
+          columnCounter: 74557574-cb98-4ff7-b5d0-f422e3286910
+          stepCounter: 1cac55f3-17d5-4de8-9981-4296288a10ad
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DM01_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4bf4fbcb-a091-42a3-b5c8-09bf630c5371
+                stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4bf4fbcb-a091-42a3-b5c8-09bf630c5371
+                stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4bf4fbcb-a091-42a3-b5c8-09bf630c5371
+                stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4bf4fbcb-a091-42a3-b5c8-09bf630c5371
+                stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4bf4fbcb-a091-42a3-b5c8-09bf630c5371
+                stepCounter: b553d0dd-cbb8-443a-8025-cf4e8416eb1e
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
           columnCounter: 1adb5048-393a-4b15-8914-e90b30e26507
           stepCounter: 1cac55f3-17d5-4de8-9981-4296288a10ad
         config: {}
@@ -1128,8 +1164,8 @@ operation:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05A_COMBINED') }} "DM05A_COMBINED"
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
-               ON "DM05A_COMBINED"."DM05A_LINK" = "STG_DM01_COMBINED_FILTERED"."Unique Identifier"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
+               ON "DM05A_COMBINED"."DM05A_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05A_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SM01_COMBINED_FILTERED') }} "STG_SM01_COMBINED_FILTERED"
@@ -1171,8 +1207,8 @@ operation:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05B_COMBINED') }} "DM05B_COMBINED"
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
-               ON "DM05B_COMBINED"."DM05B_LINK" = "STG_DM01_COMBINED_FILTERED"."Unique Identifier"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
+               ON "DM05B_COMBINED"."DM05B_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05B_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM19_COMBINED') }} "CM19_COMBINED"
@@ -1213,7 +1249,7 @@ operation:
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05L_COMBINED') }} "DM05L_COMBINED"
             
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
-               ON "DM05L_COMBINED"."DM05L_LINK" = "STG_DM01_COMBINED_FILTERED"."Unique Identifier"
+               ON "DM05L_COMBINED"."DM05L_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05L_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM02_COMBINED_FILTERED') }} "STG_LM02_COMBINED_FILTERED"
@@ -1256,7 +1292,7 @@ operation:
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05Z_COMBINED') }} "DM05Z_COMBINED"
             
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
-               ON "DM05Z_COMBINED"."DM05Z_LINK" = "STG_DM01_COMBINED_FILTERED"."Unique Identifier"
+               ON "DM05Z_COMBINED"."DM05Z_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05Z_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'MT02_COMBINED') }} "MT02_COMBINED"
@@ -1294,7 +1330,7 @@ operation:
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05FT_COMBINED') }} "DM05FT_COMBINED"
             
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
-               ON "DM05FT_COMBINED"."DM05FT_LINK" = "STG_DM01_COMBINED_FILTERED"."Unique Identifier"
+               ON "DM05FT_COMBINED"."DM05FT_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05FT_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM20_COMBINED') }} "CM20_COMBINED"
