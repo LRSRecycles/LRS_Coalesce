@@ -1,6 +1,6 @@
 fileVersion: 1
 id: fb5e1fbb-d68c-4089-b2dc-cd6c45737898
-name: VW_AR_INVOICE_TRANSACTION
+name: VW_TRUX_AR_TRANSACTIONS
 operation:
   config:
     insertStrategy: INSERT
@@ -75,21 +75,6 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 748378fb-8fd3-4f62-9b43-ab2badf53830
-                stepCounter: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8b06c979-dffc-4fef-87d1-24cfaa908fce
-          stepCounter: fb5e1fbb-d68c-4089-b2dc-cd6c45737898
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        hashDetails: null
-        name: DB - Cust
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 79ad6089-a71d-447e-837a-dd98b97a15c4
                 stepCounter: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
             transform: ""
       - appliedColumnTests: {}
@@ -317,41 +302,21 @@ operation:
               - columnCounter: 6174c3cc-b1a6-4554-99e6-5676a8313638
                 stepCounter: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 58a58851-267e-408e-aec8-e454080feec8
-          stepCounter: fb5e1fbb-d68c-4089-b2dc-cd6c45737898
-        config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: View Source
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1bcf425c-e7ea-4f12-bbe8-282d0f0ec820
-                stepCounter: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
-            transform: ""
-        systemColumnType: None
-        transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          TRUX_AR_TRANSACTIONS: d498ce99-b60e-4c2c-ad6b-df38aad4cf45
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: FINANCIAL_DATA_MODEL
-            nodeName: AR_INVOICE_TRANSACTION
+            nodeName: TRUX_AR_TRANSACTIONS
         join:
-          joinCondition: FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_INVOICE_TRANSACTION') }} "AR_INVOICE_TRANSACTION"
-        name: VW_AR_INVOICE_TRANSACTION
+          joinCondition: FROM {{ ref('FINANCIAL_DATA_MODEL', 'TRUX_AR_TRANSACTIONS') }} "TRUX_AR_TRANSACTIONS"
+        name: VW_TRUX_AR_TRANSACTIONS
         noLinkRefs: []
-  name: VW_AR_INVOICE_TRANSACTION
+  name: VW_TRUX_AR_TRANSACTIONS
   overrideSQL: false
   schema: ""
   sqlType: Stage

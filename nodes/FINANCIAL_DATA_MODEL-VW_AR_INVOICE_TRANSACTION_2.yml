@@ -347,12 +347,11 @@ operation:
             	CREATE OR REPLACE VIEW {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_INVOICE_TRANSACTION_2')}} AS (
             WITH 
             trux_payments AS (
-            SELECT pym."Unique ID" AS "Payment ID"
-                 , inv."Unique ID" AS "Invoice ID"
-                 --, inv."Customer_Source"
-                 , inv."Site Number" AS "Site_Source"
-                 , CONCAT(inv.source, '-', "Customer Number") AS "Source_Customer"
-                 , CONCAT(inv.source, '-', inv."Customer Number", '-', inv."Site Number") AS "Source_Customer_Site"
+            SELECT pym."Payment ID" AS "Payment ID"
+                 , inv."Invoice ID" AS "Invoice ID"
+                 , inv."Site Number" AS "Site_Source" -- delete later
+                 , inv."Source_Customer" AS "Source_Customer"
+                 , inv."Source_Customer_Site" AS "Source_Customer_Site"
                  , inv."Invoice Number" AS "Invoice Number"
                  , CASE 
                      WHEN pym."Payment or Adjustment" = 'P' THEN 'Payment'
@@ -373,26 +372,25 @@ operation:
                  , pym."GL Number" AS "GL Number"
                  , pym."Group ID" AS "Group ID"
                  , CASE 
-                     WHEN pym."Payment or Adjustment" = 'P' THEN DATEDIFF(DAY,inv."Due Date",pym."Payment Date")
+                     WHEN pym."Payment or Adjustment" = 'P' THEN DATEDIFF(DAY, inv."Due Date", pym."Payment Date")
                      ELSE NULL 
                    END AS "dso_from_due"
                  , CASE 
-                     WHEN pym."Payment or Adjustment" = 'P' THEN DATEDIFF(DAY, inv."Invoice Date",pym."Payment Date")
+                     WHEN pym."Payment or Adjustment" = 'P' THEN DATEDIFF(DAY, inv."Invoice Date", pym."Payment Date")
                      ELSE NULL 
                    END AS "dso_from_invoice"
                  , pym."Source" AS "Source"
-              FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Payment_Details" pym
-              LEFT JOIN LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Invoice_Amounts" inv
-                ON pym."Link_Source" = inv."ID_Source"
-             WHERE pym."Source" NOT LIKE '%TOWER%'
+              FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL.AR_PAYMENT_DETAILS pym
+              LEFT JOIN LRS_PRODUCTION.FINANCIAL_DATA_MODEL.AR_INVOICE_AMOUNTS inv
+                ON pym."Source_Invoice_ID" = inv."Source_Invoice_ID"
+             --WHERE pym."Source" NOT LIKE '%TOWER%' -- delete later
             ),
             trux_invoices AS (
             SELECT NULL AS "Payment ID"
-                 , "Unique ID" AS "Invoice ID"
-                 --,"Customer_Source" AS "Customer_Source"
-                 , "Site Number" AS "Site_Source"
-                 , CONCAT(source, '-', "Customer Number") AS "Source_Customer"
-                 , CONCAT(source, '-', "Customer Number", '-', "Site Number") AS "Source_Customer_Site"
+                 , "Invoice ID" AS "Invoice ID"
+                 , "Site Number" AS "Site_Source" -- delete later
+                 , "Source_Customer" AS "Source_Customer"
+                 , "Source_Customer_Site" AS "Source_Customer_Site"
                  , "Invoice Number" AS "Invoice Number"
                  , CASE 
                      WHEN CONTAINS("Invoice Number", 'A') = TRUE THEN 'Invoice Adjustment'
@@ -411,9 +409,9 @@ operation:
                  , NULL AS "Group ID"
                  , NULL AS "dso_from_due"
                  , NULL AS "dso_from_invoice"
-                 , source AS "Source"
-              FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL."AR_Invoice_Amounts" 
-             WHERE source NOT LIKE '%TOWER%'
+                 , "Source" AS "Source"
+              FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL.AR_INVOICE_AMOUNTS
+             --WHERE "Source" NOT LIKE '%TOWER%' -- delete later
             ),
             tower_open_balance AS (
             SELECT NULL AS "Payment ID"
@@ -421,7 +419,7 @@ operation:
                  --, a.custid AS "Customer_Source"
                  , a.siteid AS "Site_Source"
                  , concat('TOWER_', a.companyid, '-', a.custid) AS "Source_Customer"
-                 , concat('TOWER_', a.companyid, '-', a.custid, '-', a.siteid)as "Source_Customer_Site"
+                 , concat('TOWER_', a.companyid, '-', a.custid, '-', a.siteid) AS "Source_Customer_Site"
                  , b.invoiceid AS "Invoice Number"
                  , 'Open Balance' AS "Transaction Type"
                  , b.invoicedate AS "Transaction Date"

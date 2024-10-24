@@ -9,7 +9,7 @@ operation:
     testsEnabled: true
     truncateBefore: true
   database: ""
-  deployEnabled: true
+  deployEnabled: false
   description: ""
   isMultisource: false
   locationName: FINANCIAL_DATA_MODEL
@@ -80,22 +80,22 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: COUNT("AR_Payment_Details"."Link_Source")
+            transform: COUNT("AR_PAYMENT_DETAILS"."Link_Source")
         systemColumnType: None
         transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          AR_Payment_Details: b440fc4f-079f-4e49-96bf-221deac14011
+          AR_PAYMENT_DETAILS: b440fc4f-079f-4e49-96bf-221deac14011
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: FINANCIAL_DATA_MODEL
-            nodeName: AR_Payment_Details
+            nodeName: AR_PAYMENT_DETAILS
         join:
           joinCondition: |-
-            FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Payment_Details') }} "AR_Payment_Details"
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_PAYMENT_DETAILS') }} "AR_PAYMENT_DETAILS"
             GROUP BY "Link to Invoice","SOURCE","Link_Source"
         name: VW_AR_Payment_Check
         noLinkRefs: []

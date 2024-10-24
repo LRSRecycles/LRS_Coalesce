@@ -9,7 +9,7 @@ operation:
     testsEnabled: true
     truncateBefore: true
   database: ""
-  deployEnabled: true
+  deployEnabled: false
   description: ""
   isMultisource: false
   locationName: FINANCIAL_DATA_MODEL
@@ -207,20 +207,20 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          AR_Invoice_Amounts: 6cbdcc75-9616-48ec-95e9-b79240d9b295
+          AR_INVOICE_AMOUNTS: 6cbdcc75-9616-48ec-95e9-b79240d9b295
           VW_AR_Payment_Check: a4418938-9502-4ab1-a682-8ae8b004992d
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: FINANCIAL_DATA_MODEL
-            nodeName: AR_Invoice_Amounts
+            nodeName: AR_INVOICE_AMOUNTS
           - locationName: FINANCIAL_DATA_MODEL
             nodeName: VW_AR_Payment_Check
         join:
           joinCondition: |-
-            FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_Invoice_Amounts') }} "AR_Invoice_Amounts"
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_INVOICE_AMOUNTS') }} "AR_INVOICE_AMOUNTS"
             LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_Payment_Check') }} "VW_AR_Payment_Check"
-            ON "AR_Invoice_Amounts"."ID_Source" = "VW_AR_Payment_Check"."Link_Source"
+            ON "AR_INVOICE_AMOUNTS"."ID_Source" = "VW_AR_Payment_Check"."Link_Source"
         name: vw_stg_Invoice_amounts
         noLinkRefs: []
   name: vw_stg_Invoice_amounts

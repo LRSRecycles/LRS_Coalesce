@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 6cbdcc75-9616-48ec-95e9-b79240d9b295
-name: AR_Invoice_Amounts
+name: AR_INVOICE_AMOUNTS
 operation:
   config:
     insertStrategy: UNION
@@ -11,7 +11,7 @@ operation:
   database: ""
   deployEnabled: true
   description: ""
-  isMultisource: true
+  isMultisource: false
   locationName: FINANCIAL_DATA_MODEL
   materializationType: table
   metadata:
@@ -26,16 +26,12 @@ operation:
         description: ""
         hashDetails: null
         isBusinessKey: true
-        name: Unique ID
+        name: Invoice ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: e5423fef-7aee-4bf3-9b57-2e7e806b9a22
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
-            transform: ""
-          - columnReferences:
-              - columnCounter: 3d3eb32a-8d77-4978-8f65-c4719fcd8022
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -53,10 +49,6 @@ operation:
               - columnCounter: 09351083-f732-4f8a-801a-a2bc4f64bda7
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
             transform: ""
-          - columnReferences:
-              - columnCounter: 4efd84cd-17d9-4f68-9b6c-6cf321a1259b
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-            transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 5379cca1-7f0b-4e64-bbd8-c71aec741730
@@ -72,10 +64,6 @@ operation:
           - columnReferences:
               - columnCounter: 7b326805-baf1-47c8-9ed1-58caf894f91d
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
-            transform: ""
-          - columnReferences:
-              - columnCounter: 9d2407a2-d40d-40aa-a36a-9de8401cf0f8
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -93,10 +81,6 @@ operation:
               - columnCounter: f78d0f7c-d4e1-474e-bff4-a887072d5695
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
             transform: ""
-          - columnReferences:
-              - columnCounter: ad251460-54b0-4b2c-a4a8-2ed433f20390
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-            transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: e6f56b2b-1b54-43c6-98e4-586d31c8653d
@@ -111,10 +95,6 @@ operation:
           - columnReferences:
               - columnCounter: d2971ee2-7bad-4ec7-aa04-519131f4de3f
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
-            transform: ""
-          - columnReferences:
-              - columnCounter: 805cb634-6fcb-45ba-8537-755e1c5b7228
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -131,10 +111,6 @@ operation:
               - columnCounter: 3b7bb00d-8441-4567-bcd9-6aa73adb48dd
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
             transform: ""
-          - columnReferences:
-              - columnCounter: 01a9f20d-aa72-4469-b69d-71ca043cd928
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-            transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: e4337c49-1766-460d-ad3f-94fbcba823cc
@@ -145,16 +121,12 @@ operation:
         description: ""
         hashDetails: null
         isBusinessKey: true
-        name: SOURCE
+        name: Source
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 7ceee4ba-fa87-4c5e-a8c0-fbad648ced91
                 stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
-            transform: ""
-          - columnReferences:
-              - columnCounter: 8a761f68-1b4a-4667-bfb4-df73c01afd8f
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -164,20 +136,18 @@ operation:
           columnCounter: c6879ef4-beac-426d-aa95-ec4058ddb673
           stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
         config: {}
-        dataType: varchar
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         isBusinessKey: true
         keyColumnType: None
-        name: Customer_Source
+        name: Source_Customer
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01_COMBINED\".\"DM01_CUST\"||\"DM01_COMBINED\".\"SOURCE\""
-          - columnReferences: []
-            transform: "\"STG_INVOICE_COMBINED\".\"Customer UID\"||\"STG_INVOICE_COMBINED\".\"Source\""
+            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\""
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -188,19 +158,17 @@ operation:
           columnCounter: 9201fbce-c10b-4c18-9853-a9b4bba17628
           stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
         config: {}
-        dataType: varchar
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: Customer_Site_Source
+        name: Source_Customer_Site
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01_COMBINED\".\"DM01_CUST\"||\"DM01_COMBINED\".\"DM01_SITE\"||\"DM01_COMBINED\".\"SOURCE\""
-          - columnReferences: []
-            transform: ""
+            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\"||'-'||\"DM01_COMBINED\".\"DM01_SITE\""
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -211,20 +179,18 @@ operation:
           columnCounter: bbaeae2b-c40f-4a97-be3d-688aaaf24606
           stepCounter: 6cbdcc75-9616-48ec-95e9-b79240d9b295
         config: {}
-        dataType: varchar
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         isBusinessKey: true
         keyColumnType: None
-        name: ID_Source
+        name: Source_Invoice_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
             transform: "\"DM01_COMBINED\".\"DM01_ID\"||\"DM01_COMBINED\".\"SOURCE\""
-          - columnReferences: []
-            transform: "\"STG_INVOICE_COMBINED\".\"Unique Invoice ID\"||\"STG_INVOICE_COMBINED\".\"Source\""
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -255,10 +221,6 @@ operation:
                       ,"DM01_COMBINED"."DM01_DATE") 
                   ELSE "DM01_COMBINED"."DM01_DATE" 
                   END
-          - columnReferences:
-              - columnCounter: 40667035-d9fe-4b6d-8297-34eb08255553
-                stepCounter: 926de0bb-edd5-4689-b171-81b4c6a87565
-            transform: ""
         systemColumnType: None
         transform: ""
     enabledColumnTestIDs: []
@@ -283,37 +245,31 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: DM01_COMBINED
         join:
-          joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CUST_SITE_PREFERENCES') }} "CUST_SITE_PREFERENCES"
-            ON "DM01_COMBINED"."DM01_SITE" = "CUST_SITE_PREFERENCES"."Site" 
-            and "DM01_COMBINED"."DM01_CUST" = "CUST_SITE_PREFERENCES"."Customer" 
-            and "DM01_COMBINED"."SOURCE"="CUST_SITE_PREFERENCES"."SOURCE"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_PREFERENCES') }} "CUSTOMER_PREFERENCES"
-            ON "DM01_COMBINED"."DM01_CUST" = "CUSTOMER_PREFERENCES"."Customer" 
-            and "DM01_COMBINED"."SOURCE" = "CUSTOMER_PREFERENCES"."SOURCE"
-            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
-            ON "DM01_COMBINED"."DM01_CUST"= "CUSTOMER_MASTER"."Customer Number"
-            AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_MASTER"."Source"
+          joinCondition: |2-
+             FROM {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CUST_SITE_PREFERENCES') }} "CUST_SITE_PREFERENCES"
+               ON "DM01_COMBINED"."DM01_CUST" = "CUST_SITE_PREFERENCES"."Customer" 
+              AND "DM01_COMBINED"."DM01_SITE" = "CUST_SITE_PREFERENCES"."Site" 
+              AND "DM01_COMBINED"."SOURCE" = "CUST_SITE_PREFERENCES"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_PREFERENCES') }} "CUSTOMER_PREFERENCES"
+               ON "DM01_COMBINED"."DM01_CUST" = "CUSTOMER_PREFERENCES"."Customer" 
+              AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_PREFERENCES"."SOURCE"
+            
+             LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
+               ON "DM01_COMBINED"."DM01_CUST" = "CUSTOMER_MASTER"."Customer Number"
+              AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_MASTER"."Source"
+            
             INNER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
-            ON "DM01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-            where "DM01_COMBINED"."Sort" =1 
-            AND "DM01_COMBINED"."_FIVETRAN_DELETED"=FALSE 
-            and "DM01_COMBINED"."METADATA$ACTION" ='INSERT'
-        name: DM01_COMBINED_TRUX
+               ON "DM01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            
+            WHERE "DM01_COMBINED"."Sort" = 1 
+              AND "DM01_COMBINED"."_FIVETRAN_DELETED" = FALSE 
+              AND "DM01_COMBINED"."METADATA$ACTION" = 'INSERT'
+        name: AR_INVOICE_AMOUNTS
         noLinkRefs: []
-      - aliases:
-          STG_INVOICE_COMBINED: 926de0bb-edd5-4689-b171-81b4c6a87565
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: TOWER_COMBINED
-            nodeName: STG_INVOICE_COMBINED
-        join:
-          joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_INVOICE_COMBINED') }} "STG_INVOICE_COMBINED"
-        name: STG_INVOICE_COMBINED
-        noLinkRefs: []
-  name: AR_Invoice_Amounts
+  name: AR_INVOICE_AMOUNTS
   overrideSQL: false
   schema: ""
   sqlType: Stage

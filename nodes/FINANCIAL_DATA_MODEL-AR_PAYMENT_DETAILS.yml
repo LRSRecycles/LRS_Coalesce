@@ -1,6 +1,6 @@
 fileVersion: 1
 id: b440fc4f-079f-4e49-96bf-221deac14011
-name: AR_Payment_Details
+name: AR_PAYMENT_DETAILS
 operation:
   config:
     insertStrategy: UNION
@@ -11,7 +11,7 @@ operation:
   database: ""
   deployEnabled: true
   description: ""
-  isMultisource: true
+  isMultisource: false
   locationName: FINANCIAL_DATA_MODEL
   materializationType: table
   metadata:
@@ -26,7 +26,7 @@ operation:
         description: ""
         hashDetails: null
         isBusinessKey: true
-        name: Unique ID
+        name: Payment ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -46,7 +46,7 @@ operation:
         description: Joins with unique ID in Invoice_Amounts
         hashDetails: null
         isBusinessKey: true
-        name: Link to Invoice
+        name: Invoice ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -209,18 +209,18 @@ operation:
           columnCounter: 4c88547b-bcca-467c-a246-be621d5bc613
           stepCounter: b440fc4f-079f-4e49-96bf-221deac14011
         config: {}
-        dataType: varchar
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         isBusinessKey: true
         keyColumnType: None
-        name: Link_Source
+        name: Source_Invoice_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01P_COMBINED\".\"DM01P_LINK\"||\"DM01P_COMBINED\".\"SOURCE\""
+            transform: "\"DM01P_COMBINED\".\"SOURCE\"||'-'||\"DM01P_COMBINED\".\"DM01P_LINK\""
           - columnReferences: []
             transform: "\"STG_CHARGE_PAYMENT_COMBINED\".\"Link to Invoice\"||\"STG_CHARGE_PAYMENT_COMBINED\".\"Source\""
         systemColumnType: None
@@ -294,7 +294,7 @@ operation:
                 ON "DM01P_COMBINED"."DM01P_ADJR" = "CD02_COMBINED"."CD02_CODE"
                AND "DM01P_COMBINED"."DM01P_TYPE" = "CD02_COMBINED"."CD02_TYPE"
                AND "DM01P_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE" 
-        name: DM01p_COMBINED_TRUX
+        name: AR_PAYMENT_DETAILS
         noLinkRefs: []
       - aliases:
           STG_CHARGE_PAYMENT_COMBINED: 5f0caff1-7f4e-4c9d-a9ea-32e79e04cbc4
@@ -307,7 +307,7 @@ operation:
           joinCondition: FROM {{ ref('TOWER_COMBINED', 'STG_CHARGE_PAYMENT_COMBINED') }} "STG_CHARGE_PAYMENT_COMBINED"
         name: STG_CHARGE_PAYMENT_COMBINED
         noLinkRefs: []
-  name: AR_Payment_Details
+  name: AR_PAYMENT_DETAILS
   overrideSQL: false
   schema: ""
   sqlType: Stage
