@@ -1337,14 +1337,24 @@ operation:
         name: Payment Terms
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: e9cabe8f-b8d0-4cfc-a326-be6f5d6da0c3
-                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
-            transform: ""
-          - columnReferences:
-              - columnCounter: e9cabe8f-b8d0-4cfc-a326-be6f5d6da0c3
-                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
-            transform: ""
+          - columnReferences: []
+            transform: |-
+              CASE 
+                WHEN "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" IS NULL 
+                THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" 
+                WHEN "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" = 0 
+                THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" 
+                ELSE "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" 
+              END
+          - columnReferences: []
+            transform: |-
+              CASE 
+                WHEN "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" IS NULL 
+                THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" 
+                WHEN "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" = 0 
+                THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" 
+                ELSE "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" 
+              END
         systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
@@ -1454,6 +1464,50 @@ operation:
             transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUST\"||'-0-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
           - columnReferences: []
             transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\"||'-'||\"CM04_COMBINED\".\"CM04_SITE\"||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5b48e463-2aca-4489-a3be-b8eeff86f3f6
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Customer_Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUSTTYPE\""
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_CUSTTYPE\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 58d1db3b-d2a0-44f8-b0b8-6791f99a8c82
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Collection_Agent
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_COLLAGNT\""
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"CM03_COMBINED\".\"SOURCE\"||'-'||\"CM03_COMBINED\".\"CM03_COLLAGNT\""
         systemColumnType: None
       - appliedColumnTests: {}
         columnReference:

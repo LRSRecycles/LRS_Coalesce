@@ -9,7 +9,7 @@ operation:
     testsEnabled: true
     truncateBefore: true
   database: ""
-  deployEnabled: true
+  deployEnabled: false
   description: ""
   isMultisource: false
   locationName: TRUXCOMBINED_RAW
@@ -25,49 +25,13 @@ operation:
         dataType: NUMBER(38,0)
         description: ""
         hashDetails: null
-        name: Customer
+        name: Customer Number
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: c7cf425f-6667-495d-b51b-aed4121159af
                 stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
             transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 10fb386b-f8e9-4133-beb3-f3639e7ce345
-          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        hashDetails: null
-        name: SOURCE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 69355b57-209e-477f-999c-f142302970cd
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6e21df20-8754-4f59-8300-46165c2271cc
-          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
-        config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: Payment Terms 2
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-            transform: CASE WHEN "CP01_COMBINED"."CP01_PAYTERMS" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" WHEN "CP01_COMBINED"."CP01_PAYTERMS" = 0 THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CP01_COMBINED"."CP01_PAYTERMS" END
-        systemColumnType: None
-        transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -89,6 +53,42 @@ operation:
             transform: ""
         systemColumnType: None
         transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6e21df20-8754-4f59-8300-46165c2271cc
+          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Terms 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
+                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+            transform: CASE WHEN "CP01_COMBINED"."CP01_PAYTERMS" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" WHEN "CP01_COMBINED"."CP01_PAYTERMS" = 0 THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CP01_COMBINED"."CP01_PAYTERMS" END
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10fb386b-f8e9-4133-beb3-f3639e7ce345
+          stepCounter: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 69355b57-209e-477f-999c-f142302970cd
+                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
