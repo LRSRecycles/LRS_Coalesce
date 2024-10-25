@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 828f44ad-9ea8-4f17-8021-698a7dd934d1
-name: CUST_SITE_PREFERENCES
+name: CUSTOMER_SITE_PREFERENCES
 operation:
   config:
     insertStrategy: INSERT
@@ -9,7 +9,7 @@ operation:
     testsEnabled: true
     truncateBefore: true
   database: ""
-  deployEnabled: false
+  deployEnabled: true
   description: ""
   isMultisource: false
   locationName: TRUXCOMBINED_RAW
@@ -29,8 +29,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: c7cf425f-6667-495d-b51b-aed4121159af
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: 46e0f011-dd1c-4797-a27a-fb31ff398208
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -44,8 +44,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 91be9554-51f2-493a-9e11-d72295463676
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: ccad7fa1-5c3b-48e5-88f1-e259b7b3e793
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -63,8 +63,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 340c7fb6-b7d8-43be-9fd5-703a8af375b1
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: 1ce67849-b0c4-4c59-8d6d-ffebb21fa276
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
         systemColumnType: None
         transform: ""
@@ -80,9 +80,16 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: fec664e4-3042-4817-a97b-ff6c4cac7cda
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
-            transform: CASE WHEN "CP01_COMBINED"."CP01_PAYTERMS" IS NULL THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" WHEN "CP01_COMBINED"."CP01_PAYTERMS" = 0 THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" ELSE "CP01_COMBINED"."CP01_PAYTERMS" END
+              - columnCounter: e9cabe8f-b8d0-4cfc-a326-be6f5d6da0c3
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
+            transform: |-
+              CASE 
+                WHEN "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" IS NULL 
+                THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" 
+                WHEN "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" = 0 
+                THEN "TRUX_DATABASE_METADATA"."SY03_DEFAULTPAYTERMS" 
+                ELSE "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" 
+              END
       - appliedColumnTests: {}
         columnReference:
           columnCounter: c5e323eb-b1f6-4cd0-b40c-1b62f73faa27
@@ -95,14 +102,14 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 69355b57-209e-477f-999c-f142302970cd
-                stepCounter: 83f237e0-2bb1-4230-bef1-d6b54576823f
+              - columnCounter: 40cbe3dd-6aec-484e-9f1e-a33d928e4f62
+                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CP01_COMBINED: 83f237e0-2bb1-4230-bef1-d6b54576823f
+          STG_CP01_COMBINED_FILTERED: b527731c-69d1-434c-9076-a2ff49859bf4
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
           customSQL: ""
@@ -110,18 +117,18 @@ operation:
           - locationName: MASTER_DATA_CLEAN
             nodeName: TRUX_DATABASE_METADATA
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CP01_COMBINED
+            nodeName: STG_CP01_COMBINED_FILTERED
         join:
           joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'CP01_COMBINED') }} "CP01_COMBINED"
-            LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
-              ON "CP01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CP01_COMBINED_FILTERED') }} "STG_CP01_COMBINED_FILTERED"
             
-            WHERE "CP01_COMBINED"."CP01_SITE" IS NOT NULL 
-              AND ("CP01_COMBINED"."CP01_SITE" <> 37 AND "CP01_COMBINED"."CP01_CUST" <> 6648)
-        name: CUST_SITE_PREFERENCES
+            LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+              ON "STG_CP01_COMBINED_FILTERED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            
+            WHERE "STG_CP01_COMBINED_FILTERED"."CP01_SITE" IS NOT NULL
+        name: CUSTOMER_SITE_PREFERENCES
         noLinkRefs: []
-  name: CUST_SITE_PREFERENCES
+  name: CUSTOMER_SITE_PREFERENCES
   overrideSQL: false
   schema: ""
   sqlType: Stage
