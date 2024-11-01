@@ -1020,7 +1020,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: Source_Customer_Site
+        name: Service_Source_Customer_Site
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -1050,6 +1050,40 @@ operation:
             transform: "\"CM05_COMBINED\".\"SOURCE\"||'-'||\"CM05_COMBINED\".\"CM05_CUST\"||'-'||\"CM05_COMBINED\".\"CM05_SITE\"||'-'||\"CM05_COMBINED\".\"CM05_SERV\""
         systemColumnType: None
         transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 92e82610-006e-4517-9fd9-509cd46f19a5
+          stepCounter: 413e698a-c7aa-4e94-955a-d8dfc055d7ed
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39f3840d-fa70-4eff-8268-d23a7e5381ed
+                stepCounter: 032285e8-04c7-4507-ad3c-3192527dc47a
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6f56e306-d9e2-4639-9f71-da8dba628ee3
+          stepCounter: 413e698a-c7aa-4e94-955a-d8dfc055d7ed
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 413e1982-bafd-4f2b-b6bd-b1bd9bc4ba3b
+                stepCounter: 032285e8-04c7-4507-ad3c-3192527dc47a
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
