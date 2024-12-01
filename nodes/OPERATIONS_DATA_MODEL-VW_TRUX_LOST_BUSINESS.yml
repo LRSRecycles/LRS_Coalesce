@@ -555,38 +555,38 @@ operation:
                 stepCounter: "0"
             transform: |2-
                CASE 
-                          WHEN (DATEDIFF(DAY, CM05_SDTE, CM05_EDTE) + 1) / (365 / 12) >= 1 THEN 
-                              ROUND(
-                                  SUM(
-                                      CASE
-                                          WHEN CM19_UNIT = 'M' THEN "Rate" / 1
-                                          WHEN CM19_UNIT = 'Q' THEN "Rate" / 3
-                                          WHEN CM19_UNIT = 'Y' THEN "Rate" / 12
-                                          WHEN CM19_UNIT = 'W' THEN "Rate" * 52 / 12
-                                          ELSE "Rate"
-                                      END
-                                  ), 2
-                              ) + 
-                              (IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0)) / 
-                              (DATEDIFF(DAY, CM05_SDTE, CM05_EDTE) + 1) / (365 / 12)
-                              
-                          WHEN (DATEDIFF(DAY, CM05_SDTE, CM05_EDTE) + 1) / (365 / 12) > 0 THEN 
-                              ROUND(
-                                  SUM(
-                                      CASE
-                                          WHEN CM19_UNIT = 'M' THEN "Rate" / 1
-                                          WHEN CM19_UNIT = 'Q' THEN "Rate" / 3
-                                          WHEN CM19_UNIT = 'Y' THEN "Rate" / 12
-                                          WHEN CM19_UNIT = 'W' THEN "Rate" * 52 / 12
-                                          ELSE "Rate"
-                                      END
-                                  ), 2
-                              ) + 
-                              (IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0))
+                  WHEN (DATEDIFF(DAY, CM05_SDTE, CM05_EDTE) + 1) / (365 / 12) >= 1 THEN 
+                      ROUND(
+                          SUM(
+                              CASE
+                                  WHEN CM19_UNIT = 'M' THEN "Rate" / 1
+                                  WHEN CM19_UNIT = 'Q' THEN "Rate" / 3
+                                  WHEN CM19_UNIT = 'Y' THEN "Rate" / 12
+                                  WHEN CM19_UNIT = 'W' THEN "Rate" * 52 / 12
+                                  ELSE "Rate"
+                              END
+                          ), 2
+                      ) + 
+                      (IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0)) / 
+                      (DATEDIFF(DAY, CM05_SDTE, CM05_EDTE) + 1) / (365 / 12)
+                      
+                  WHEN (DATEDIFF(DAY, CM05_SDTE, CM05_EDTE) + 1) / (365 / 12) > 0 THEN 
+                      ROUND(
+                          SUM(
+                              CASE
+                                  WHEN CM19_UNIT = 'M' THEN "Rate" / 1
+                                  WHEN CM19_UNIT = 'Q' THEN "Rate" / 3
+                                  WHEN CM19_UNIT = 'Y' THEN "Rate" / 12
+                                  WHEN CM19_UNIT = 'W' THEN "Rate" * 52 / 12
+                                  ELSE "Rate"
+                              END
+                          ), 2
+                      ) + 
+                      (IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0))
               
-                          ELSE 
-                              IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0)
-                      END
+                  ELSE 
+                      IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0)
+              END
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
