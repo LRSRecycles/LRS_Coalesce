@@ -293,7 +293,7 @@ operation:
           - columnReferences:
               - columnCounter: 0c9b3191-2014-4fad-9e1c-e1c6a2be0bec
                 stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
-            transform: SUM("Outstanding Balance")
+            transform: SUM("VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance")
       - acceptedValues:
           strictMatch: true
           values: []
@@ -312,14 +312,14 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: (CURRENT_DATE) - TO_DATE("Due Date")
+            transform: (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date")
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 93ad3145-5c00-4088-b537-ae32de625a8c
+          columnCounter: a6a4b7d9-8583-4cd1-a776-21ecd6bcf66d
           stepCounter: 8e977b5d-c58e-4351-9f1f-4c97a1a5602e
         config: {}
         dataType: NUMBER(38,2)
@@ -334,7 +334,31 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("Due Date") <= 30 THEN "Outstanding Balance"
+                      WHEN (CURRENT_DATE) > TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      ELSE 0
+                  END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93ad3145-5c00-4088-b537-ae32de625a8c
+          stepCounter: 8e977b5d-c58e-4351-9f1f-4c97a1a5602e
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: <30 Days Past Due
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 1 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 30 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -358,7 +382,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("Due Date") > 30 AND (CURRENT_DATE) - TO_DATE("Due Date") <= 60 THEN "Outstanding Balance"
+                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 30 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 60 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -382,7 +406,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("Due Date") > 61 AND (CURRENT_DATE) - TO_DATE("Due Date") <= 90 THEN "Outstanding Balance"
+                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 61 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 90 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -406,7 +430,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("Due Date") > 91 AND (CURRENT_DATE) - TO_DATE("Due Date") <= 120 THEN "Outstanding Balance"
+                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 91 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 120 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -430,7 +454,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("Due Date") > 120 THEN "Outstanding Balance"
+                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 120 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
                       ELSE 0
                   END)
         systemColumnType: None
