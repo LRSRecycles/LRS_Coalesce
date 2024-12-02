@@ -284,7 +284,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: SUM("VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance")
+            transform: SUM(CASE WHEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount" ELSE 0 END)
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -304,7 +304,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date")
+            transform: CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date")
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -326,7 +326,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) > TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      WHEN CURRENT_DATE < TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -350,7 +350,8 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 1 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 30 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") >= 1 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 30
+                      AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -374,7 +375,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 30 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 60 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 30 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 60 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -398,7 +399,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 61 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 90 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 61 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 90 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -422,7 +423,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 91 AND (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 120 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 91 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 120 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -446,7 +447,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 120 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 120 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -470,7 +471,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 35 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 35 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -501,7 +502,7 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_INVOICE_TRANSACTION_WHALE') }} "VW_AR_INVOICE_TRANSACTION_WHALE"
-            
+
             GROUP BY
             "VW_AR_INVOICE_TRANSACTION_WHALE"."Payment ID",
             "VW_AR_INVOICE_TRANSACTION_WHALE"."Invoice ID",
