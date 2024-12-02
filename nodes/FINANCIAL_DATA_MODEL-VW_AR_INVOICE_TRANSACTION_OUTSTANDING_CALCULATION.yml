@@ -450,6 +450,30 @@ operation:
                       ELSE 0
                   END)
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 678ab47d-4c4c-45c1-a40c-94abf5a6fbaa
+          stepCounter: c67004cb-14a0-40e5-b304-dac51938d1c4
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: ">35 Days Past Due"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN (CURRENT_DATE) - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 35 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Outstanding Balance"
+                      ELSE 0
+                  END)
+        systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 664c37a0-bb9a-45ab-9818-f325723dd68d
