@@ -1,0 +1,188 @@
+fileVersion: 1
+id: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+name: VW_EA01_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dbe02d69-544a-4196-a9b5-013f45eccd3d
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Email Audit UID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 04cfde97-def4-4fbb-b0cb-718153d7d6cd
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8708af7f-0eaa-4906-ab00-be4e5c8f4a34
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Invoice UID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 94fa0847-7684-4ff8-9b66-ec91257c669e
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ce49ec01-d7be-483c-b04b-f7436efd8c8a
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Emailed To
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4b397db2-c057-4c4f-9b9b-ca3c4908fcc3
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3d79a4a7-1e7a-459a-8575-24d7a3fc7a76
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: User
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7122b9e4-15f3-4680-9d68-8a433df3944f
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cd73fe10-730e-4b0f-aac7-3d5848f44efe
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Sent Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26b96996-596a-4334-a571-219bcfa0488e
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 197a8394-7550-4919-9274-e33a87277b96
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5112dab3-0f67-43b7-836b-c649411ccda6
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0218614c-bdd5-4e4a-a939-9fc9ac77ea89
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Message
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4667a4d5-7046-4903-bc67-2ea880010147
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11013a91-8979-485a-89fb-f844da33325a
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7042af85-43a3-4c4c-aaf0-2007ac93eed2
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5934ef32-69bd-4df3-b723-4d7a59f3d0cd
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Invoice_UID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"EA01_COMBINED\".\"SOURCE\"|| '-' ||\"EA01_COMBINED\".\"EA01_DM01ID\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f898c26f-f206-4b35-b87b-8df49ca148a8
+          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: ADF_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e1571e34-2d26-4ae5-b161-ddcde68b683f
+                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: EA01_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'EA01_COMBINED') }} "EA01_COMBINED"
+        name: VW_EA01_COMBINED
+        noLinkRefs: []
+  name: VW_EA01_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
