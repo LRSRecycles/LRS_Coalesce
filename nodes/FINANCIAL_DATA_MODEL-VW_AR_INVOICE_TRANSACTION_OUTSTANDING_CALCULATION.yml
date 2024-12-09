@@ -489,6 +489,127 @@ operation:
               - columnCounter: 623c452f-54af-417d-b54e-d987ce7a0e63
                 stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 51365900-1ac1-4b9e-8815-0be414d9dd47
+          stepCounter: c67004cb-14a0-40e5-b304-dac51938d1c4
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: <= 35 Days Past Due
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 0 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 35
+                      AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      ELSE 0
+                  END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 87eb0b90-d11a-44f5-b611-e71ca2833c70
+          stepCounter: c67004cb-14a0-40e5-b304-dac51938d1c4
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: 36-50 Days Past Due
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 35 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 50 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      ELSE 0
+                  END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2186c63-f01a-4e8c-b2c1-c4e9f66cc4b0
+          stepCounter: c67004cb-14a0-40e5-b304-dac51938d1c4
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: 51-65 Days Past Due
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 50 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 65 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      ELSE 0
+                  END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb0679da-00cf-409a-ac5c-37a3c0110726
+          stepCounter: c67004cb-14a0-40e5-b304-dac51938d1c4
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: 66-85 Days Past Due
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 65 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 85 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      ELSE 0
+                  END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc97f67b-ef85-4463-bad6-28f31b578d19
+          stepCounter: c67004cb-14a0-40e5-b304-dac51938d1c4
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: 86-120 Days Past Due
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 85 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 120 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      ELSE 0
+                  END)
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
