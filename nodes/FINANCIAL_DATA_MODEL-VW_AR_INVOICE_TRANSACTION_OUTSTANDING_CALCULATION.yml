@@ -501,7 +501,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: <= 35 Days Past Due
+        name: <= 34 Days Past Due
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -509,7 +509,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 0 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 35
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 0 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") < 35
                       AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
@@ -526,7 +526,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: 36-50 Days Past Due
+        name: 35-49 Days Service Interruption Notice
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -534,7 +534,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 35 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 50 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") >= 35 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") < 50 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -550,7 +550,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: 51-65 Days Past Due
+        name: 50-64 Days Service Interruption Effective
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -558,7 +558,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 50 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 65 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") >= 50 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") < 65 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -574,7 +574,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: 66-85 Days Past Due
+        name: 65-84 Days Container Removal
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -582,7 +582,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 65 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 85 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") >= 65 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") < 85 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
@@ -598,7 +598,7 @@ operation:
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: 86-120 Days Past Due
+        name: 85-119 Days Final Customer Notice
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -606,7 +606,7 @@ operation:
                 stepCounter: "0"
             transform: |-
               SUM(CASE
-                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") > 85 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") <= 120 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
+                      WHEN CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") >= 85 AND CURRENT_DATE - TO_DATE("VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date") < 120 AND "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type" IN ('Invoice', 'Adjustment Payment', 'Payment','Open Balance') THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount"
                       ELSE 0
                   END)
         systemColumnType: None
