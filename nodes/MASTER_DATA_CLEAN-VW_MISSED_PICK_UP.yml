@@ -21,7 +21,7 @@ operation:
         customSQL:
           customSQL: |-
             {{ stage('Override Create SQL') }}
-            	CREATE OR REPLACE VIEW {{ ref('TRUXCOMBINED_RAW', 'VW_MISSED_PICK_UP')}} AS (
+            	CREATE OR REPLACE VIEW {{ ref('MASTER_DATA_CLEAN', 'VW_MISSED_PICK_UP')}} AS (
             
             SELECT DISTINCT
              sc01.SOURCE AS "From Database"
