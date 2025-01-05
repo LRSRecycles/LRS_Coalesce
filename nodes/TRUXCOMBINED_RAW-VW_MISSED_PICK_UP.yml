@@ -1,0 +1,257 @@
+fileVersion: 1
+id: 2cecf166-02a4-487a-b579-61768a08998c
+name: VW_MISSED_PICK_UP
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('TRUXCOMBINED_RAW', 'VW_MISSED_PICK_UP')}} AS (
+            
+            SELECT DISTINCT
+             sc01.SOURCE AS "From Database"
+             , "RM04_FNAM" AS "Driver First Name"
+             , "RM04_LNAM" AS "Driver Last Name"
+             , "SC01_CUST" || '-' || "SC01_SITE" || '-' || "SC01_SERV" AS "Customer-Site-Serv"
+             , "SC01_CALL" AS "Issue #"
+             , "SL01_NAME" AS "Start Loc. Name"
+             , "SC01_MISC" AS "Customer Name"
+             , "SC01_NAME" AS "Caller Name"
+             , CASE
+                 WHEN "SC01_DCLO" IS NULL THEN 'Open'
+                 ELSE 'Closed'
+               END AS "Case Status"
+             , "CD05_DESC" AS "Service Type Code Description"
+             , "CM04_NAME" AS "Site Name"
+             , "SC01_PROB" AS "Call Problem"
+             , "CM04_ADD2" AS "Street"
+             , "CM04_ANUM" AS "Address Number"
+             , "CM04_UNIT" AS "Unit Number"
+             , "CM04_SPFX" AS "Street Prefix"
+             , "CM04_ROAD" AS "Road Name"
+             , "CM04_NESW" AS "Direction"
+             , "CM04_CITY" AS "City"
+             , "CM04_STAT" AS "State"
+             , "CM04_LATT" AS "Site Latitude"
+             , "CM04_LONG" AS "Site Longitude"
+             , "CM05_SIZE" AS "Service Size"
+             , "CM05_TYPE" AS "Service Type"
+             , "SC01_CMNT" AS "Subject"
+             , "CD18_DESC" AS "Type"
+             , "CD19_DESC" AS "Urgency"
+             , "SC01_DREC" AS "Date"
+             , "SC01_DMOD" AS "Date Modified"
+             , "SC01_UREC" AS "Call Received By User"
+             , "SC01_UMOD" AS "Last Modified By User"
+             , "SC01_UCLO" AS "Closed By User"
+             , "SC01_TYPE" AS "Call Type Code"
+             , "SC01_URGN" AS "Call Urgency Code"
+             , "SC01_MESG" AS "Notification Number"
+             , "SC01_ROUT" AS "Route Number"
+             , "SC01_SDTE" AS "Service Date"
+             , "SC01_PDTE" AS "Promise Date"
+             , "SC01_PHON" AS "Phone Number"
+             , "SC01_SCHEDULEDCALL" AS "Call Scheduled"
+             , "SC01_UAGN" AS "User Assigned To"
+             , "SC01_RDTE" AS "Route Date"
+             , "SC01_ORIGCALL" AS "Original Call"
+             , "SC01_DCLO" AS "Date Closed"
+            
+            FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED sc01
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CM03_COMBINED cm03
+                ON sc01."SC01_CUST" = cm03."CM03_CUST" 
+               AND sc01.SOURCE = cm03.SOURCE
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CM04_COMBINED cm04
+                ON sc01."SC01_CUST" = cm04."CM04_CUST" 
+               AND sc01."SC01_SITE" = cm04."CM04_SITE"
+               AND sc01.SOURCE = cm04.SOURCE
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CM05_COMBINED cm05
+                ON sc01."SC01_CUST" = cm05."CM05_CUST" 
+               AND sc01."SC01_SITE" = cm05."CM05_SITE" 
+               AND sc01."SC01_SERV" = cm05."CM05_SERV"
+               AND sc01.SOURCE = cm05.SOURCE
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CD05_COMBINED cd05
+                ON cm05."CM05_TYPE" = cd05."CD05_CODE"
+               AND cm05.SOURCE = cd05.SOURCE
+            LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CD18_COMBINED cd18 
+                ON sc01."SC01_TYPE" = cd18."CD18_CODE"
+               AND sc01.SOURCE = cd18.SOURCE
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CD19_COMBINED cd19
+            	ON sc01."SC01_URGN" = cd19."CD19_CODE"
+               AND sc01.SOURCE = cd19.SOURCE
+            LEFT  JOIN (SELECT DISTINCT L."LOGID" AS "SC_LOGID"
+                                , L."ROUTE" || '-' || rm01_2.RM01_DESC AS "SC_ROUTE"
+                                , L."RTEDATE" AS "SC_RTEDTE"
+                                , L."SEQU" AS "SC_SEQU"
+                                , L.SOURCE
+                             FROM (SELECT rm03."RM03_LOGID" AS "LOGID"
+                                        , rm03."RM03_ROUT" AS "ROUTE"
+                                        , rm03."RM03_DATE" AS "RTEDATE"
+                                        , rm03."RM03_SEQU" AS "SEQU"
+                                        , rm03.SOURCE
+                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03_COMBINED rm03 
+                                    INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED sc01_6 
+                                       ON rm03."RM03_LOGID" = sc01_6."SC01_SCHEDULEDCALL" 
+                                      AND sc01_6."SC01_ORIGCALL" IS NOT NULL 
+                                      AND rm03.SOURCE = sc01_6.SOURCE
+                                    
+                                    UNION
+                                   
+                                   SELECT rm03u."RM03U_LOGID" AS "LOGID"
+                                        , NULL AS "ROUTE"
+                                        , rm03u."RM03U_DATE" AS "RTEDATE"
+                                        , NULL AS "SEQU"
+                                        , rm03u.SOURCE
+                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03U_COMBINED rm03u
+                                    INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED sc01_5 
+                                       ON rm03u."RM03U_LOGID" = sc01_5."SC01_SCHEDULEDCALL" 
+                                      AND sc01_5."SC01_ORIGCALL" IS NOT NULL 
+                                      AND rm03u.SOURCE = sc01_5.SOURCE
+                                    
+                                    UNION 
+                                   
+                                   SELECT sm01."SM01_LOGID" AS "LOGID"
+                                        , sm01."SM01_ROUT" AS "ROUTE"
+                                        , sm01."SM01_DATE" AS "RTEDATE"
+                                        , sm01."SM01_SEQU" AS "SEQU"
+                                        , sm01.SOURCE
+                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SM01_COMBINED sm01
+                                    INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_4 
+                                       ON sm01."SM01_LOGID" = sc01_4."SC01_SCHEDULEDCALL" 
+                                      AND sc01_4."SC01_ORIGCALL" IS NOT NULL 
+                                      AND sm01.SOURCE = sc01_4.SOURCE
+            
+                                  ) AS L
+                             LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM01_COMBINED AS rm01_2 
+                               ON rm01_2."RM01_NUMB" = L."ROUTE"
+                              AND rm01_2.SOURCE = L.SOURCE
+                          ) AS SC -- Scheduled Call
+                ON (CASE WHEN sc01."SC01_ORIGCALL" IS NOT NULL THEN sc01."SC01_SCHEDULEDCALL" ELSE NULL END = SC."SC_LOGID")
+               AND sc01.SOURCE = SC.SOURCE
+            INNER JOIN (SELECT DISTINCT L_1."LOGID" AS "OC_LOGID"
+                              , L_1."ROUTE" || '-' || rm01_1."RM01_DESC" AS "OC_ROUTE"
+                              , L_1."RTEDATE" AS "OC_RTEDTE"
+                              , L_1."SEQU" AS "OC_SEQU"
+                              , rm01_1."RM01_NUMB"
+                              , L_1."ROUTE"
+                              , L_1.SOURCE
+                           FROM (SELECT rm03_1."RM03_LOGID" AS "LOGID"
+                                      , rm03_1."RM03_ROUT" AS "ROUTE"
+                                      , rm03_1."RM03_DATE" AS "RTEDATE"
+                                      , rm03_1."RM03_SEQU" AS "SEQU"
+                                      , rm03_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03_COMBINED AS rm03_1 
+                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_3 
+                                     ON rm03_1."RM03_LOGID" = sc01_3."SC01_ORIGCALL" 
+                                    AND rm03_1.SOURCE = sc01_3.SOURCE
+            
+                                  UNION
+                                 
+                                 SELECT rm03_1."RM03_LOGID" AS "LOGID"
+                                      , rm03_1."RM03_ROUT" AS "ROUTE"
+                                      , rm03_1."RM03_DATE" AS "RTEDATE"
+                                      , rm03_1."RM03_SEQU" AS "SEQU"
+                                      , rm03_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03_COMBINED AS rm03_1 
+                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_3 
+                                     ON sc01_3."SC01_ORIGCALL" IS NULL 
+                                    AND rm03_1."RM03_LOGID" = sc01_3."SC01_SCHEDULEDCALL" 
+                                    AND rm03_1.SOURCE = sc01_3.SOURCE
+                                 
+                                  UNION
+            
+                                 SELECT rm03u_1."RM03U_LOGID" AS "LOGID"
+                                      , NULL AS "ROUTE"
+                                      , rm03u_1."RM03U_DATE" AS "RTEDATE"
+                                      , NULL AS "SEQU"
+                                      , rm03u_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03U_COMBINED AS rm03u_1 
+                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_2 
+                                     ON rm03u_1."RM03U_LOGID" = sc01_2."SC01_ORIGCALL" 
+                                    AND rm03u_1.SOURCE = sc01_2.SOURCE
+            
+                                  UNION
+            
+                                 SELECT rm03u_1."RM03U_LOGID" AS "LOGID"
+                                      , NULL AS "ROUTE"
+                                      , rm03u_1."RM03U_DATE" AS "RTEDATE"
+                                      , NULL AS "SEQU"
+                                      , rm03u_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03U_COMBINED AS rm03u_1 
+                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_2 
+                                     ON sc01_2."SC01_ORIGCALL" IS NULL 
+                                    AND rm03u_1."RM03U_LOGID" = sc01_2."SC01_SCHEDULEDCALL"
+                                    AND rm03u_1.SOURCE = sc01_2.SOURCE
+                                    
+                                  UNION
+                               
+                                 SELECT sm01_1."SM01_LOGID" AS "LOGID"
+                                      , sm01_1."SM01_ROUT" AS "ROUTE"
+                                      , sm01_1."SM01_DATE" AS "RTEDATE"
+                                      , sm01_1."SM01_SEQU" AS "SEQU"
+                                      , sm01_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SM01_COMBINED AS sm01_1 
+                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_1 
+                                     ON sm01_1."SM01_LOGID" = sc01_1."SC01_ORIGCALL" 
+                                    AND sm01_1.SOURCE = sc01_1.SOURCE 
+                                    
+                                  UNION
+                               
+                                 SELECT sm01_1."SM01_LOGID" AS "LOGID"
+                                      , sm01_1."SM01_ROUT" AS "ROUTE"
+                                      , sm01_1."SM01_DATE" AS "RTEDATE"
+                                      , sm01_1."SM01_SEQU" AS "SEQU"
+                                      , sm01_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SM01_COMBINED AS sm01_1 
+                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_1 
+                                     ON sc01_1."SC01_ORIGCALL" IS NULL 
+                                    AND sm01_1."SM01_LOGID" = sc01_1."SC01_SCHEDULEDCALL"
+                                    AND sm01_1.SOURCE = sc01_1.SOURCE 
+                               ) AS L_1
+                           LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM01_COMBINED AS rm01_1 
+                             ON rm01_1."RM01_NUMB" = L_1."ROUTE"
+                            AND rm01_1.SOURCE = L_1.SOURCE
+                         
+                        ) AS OC -- Original Call
+            	ON (CASE WHEN sc01."SC01_ORIGCALL" IS NOT NULL THEN sc01."SC01_ORIGCALL" ELSE sc01."SC01_SCHEDULEDCALL" END = OC."OC_LOGID")
+               AND sc01.SOURCE = OC.SOURCE    
+            INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM01_COMBINED rm01  
+                ON rm01."RM01_NUMB" = OC."RM01_NUMB"
+               AND rm01.SOURCE = OC.SOURCE
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM04_COMBINED rm04
+                ON rm01.RM01_DRIV = rm04.RM04_NUMB
+               AND rm01.SOURCE = rm04.SOURCE
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SL01_COMBINED sl01
+                ON rm01.RM01_SLID = sl01.SL01_ID 
+               AND rm01.SOURCE = sl01.SOURCE
+            
+            WHERE sc01."SC01_TYPE" = 'MP' 
+            
+            	)
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: VW_MISSED_PICK_UP
+        noLinkRefs: []
+  name: VW_MISSED_PICK_UP
+  overrideSQL: true
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
