@@ -23,22 +23,22 @@ operation:
             {{ stage('Override Create SQL') }}
             	CREATE OR REPLACE VIEW {{ ref('MASTER_DATA_CLEAN', 'VW_MISSED_PICK_UP')}} AS (
             
-            SELECT DISTINCT
-             sc01.SOURCE AS "From Database"
+            SELECT 
+             sc01."Source" AS "From Database"
              , "RM04_FNAM" AS "Driver First Name"
              , "RM04_LNAM" AS "Driver Last Name"
-             , "SC01_CUST" || '-' || "SC01_SITE" || '-' || "SC01_SERV" AS "Customer-Site-Serv"
-             , "SC01_CALL" AS "Issue #"
+             , "Customer Number" || '-' || "Site Number" || '-' || "Service Number" AS "Customer-Site-Serv"
+             , "Customer Issue Call Number" AS "Issue #"
              , "SL01_NAME" AS "Start Loc. Name"
-             , "SC01_MISC" AS "Customer Name"
-             , "SC01_NAME" AS "Caller Name"
+             , "Customer Name" AS "Customer Name"
+             , "Caller Name" AS "Caller Name"
              , CASE
-                 WHEN "SC01_DCLO" IS NULL THEN 'Open'
+                 WHEN "Date Closed" IS NULL THEN 'Open'
                  ELSE 'Closed'
                END AS "Case Status"
              , "CD05_DESC" AS "Service Type Code Description"
              , "CM04_NAME" AS "Site Name"
-             , "SC01_PROB" AS "Call Problem"
+             , "Call Problem" AS "Call Problem"
              , "CM04_ADD2" AS "Street"
              , "CM04_ANUM" AS "Address Number"
              , "CM04_UNIT" AS "Unit Number"
@@ -51,49 +51,43 @@ operation:
              , "CM04_LONG" AS "Site Longitude"
              , "CM05_SIZE" AS "Service Size"
              , "CM05_TYPE" AS "Service Type"
-             , "SC01_CMNT" AS "Subject"
-             , "CD18_DESC" AS "Type"
-             , "CD19_DESC" AS "Urgency"
-             , "SC01_DREC" AS "Date"
-             , "SC01_DMOD" AS "Date Modified"
-             , "SC01_UREC" AS "Call Received By User"
-             , "SC01_UMOD" AS "Last Modified By User"
-             , "SC01_UCLO" AS "Closed By User"
-             , "SC01_TYPE" AS "Call Type Code"
-             , "SC01_URGN" AS "Call Urgency Code"
-             , "SC01_MESG" AS "Notification Number"
-             , "SC01_ROUT" AS "Route Number"
-             , "SC01_SDTE" AS "Service Date"
-             , "SC01_PDTE" AS "Promise Date"
-             , "SC01_PHON" AS "Phone Number"
-             , "SC01_SCHEDULEDCALL" AS "Call Scheduled"
-             , "SC01_UAGN" AS "User Assigned To"
-             , "SC01_RDTE" AS "Route Date"
-             , "SC01_ORIGCALL" AS "Original Call"
-             , "SC01_DCLO" AS "Date Closed"
+             , "Comment" AS "Subject"
+             , "Service Call Type" AS "Type"
+             , "Urgency Desc" AS "Urgency"
+             , "Date Received" AS "Date"
+             , "Date Modified" AS "Date Modified"
+             , "Call Received By User" AS "Call Received By User"
+             , "Last Modified By User" AS "Last Modified By User"
+             , "Closed By User" AS "Closed By User"
+             , "Service Call Type Code" AS "Call Type Code"
+             , "Call Urgency Code" AS "Call Urgency Code"
+             , "Notification Number" AS "Notification Number"
+             , "Route Number" AS "Route Number"
+             , "Service Date" AS "Service Date"
+             , "Promise Date" AS "Promise Date"
+             , "Telephone Number" AS "Phone Number"
+             , "Call Scheduled" AS "Call Scheduled"
+             , "User Assigned to" AS "User Assigned To"
+             , "Route Date" AS "Route Date"
+             , "Original Call" AS "Original Call"
+             , "Date Closed" AS "Date Closed"
             
-            FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED sc01
+            FROM LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED sc01
             LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CM03_COMBINED cm03
-                ON sc01."SC01_CUST" = cm03."CM03_CUST" 
-               AND sc01.SOURCE = cm03.SOURCE
+                ON sc01."Customer Number" = cm03."CM03_CUST" 
+               AND sc01."Source" = cm03.SOURCE
             LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CM04_COMBINED cm04
-                ON sc01."SC01_CUST" = cm04."CM04_CUST" 
-               AND sc01."SC01_SITE" = cm04."CM04_SITE"
-               AND sc01.SOURCE = cm04.SOURCE
+                ON sc01."Customer Number" = cm04."CM04_CUST" 
+               AND sc01."Site Number" = cm04."CM04_SITE"
+               AND sc01."Source" = cm04.SOURCE
             LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CM05_COMBINED cm05
-                ON sc01."SC01_CUST" = cm05."CM05_CUST" 
-               AND sc01."SC01_SITE" = cm05."CM05_SITE" 
-               AND sc01."SC01_SERV" = cm05."CM05_SERV"
-               AND sc01.SOURCE = cm05.SOURCE
+                ON sc01."Customer Number" = cm05."CM05_CUST" 
+               AND sc01."Site Number" = cm05."CM05_SITE" 
+               AND sc01."Service Number" = cm05."CM05_SERV"
+               AND sc01."Source" = cm05.SOURCE
             LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CD05_COMBINED cd05
                 ON cm05."CM05_TYPE" = cd05."CD05_CODE"
                AND cm05.SOURCE = cd05.SOURCE
-            LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CD18_COMBINED cd18 
-                ON sc01."SC01_TYPE" = cd18."CD18_CODE"
-               AND sc01.SOURCE = cd18.SOURCE
-            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CD19_COMBINED cd19
-            	ON sc01."SC01_URGN" = cd19."CD19_CODE"
-               AND sc01.SOURCE = cd19.SOURCE
             LEFT  JOIN (SELECT DISTINCT L."LOGID" AS "SC_LOGID"
                                 , L."ROUTE" || '-' || rm01_2.RM01_DESC AS "SC_ROUTE"
                                 , L."RTEDATE" AS "SC_RTEDTE"
@@ -104,11 +98,11 @@ operation:
                                         , rm03."RM03_DATE" AS "RTEDATE"
                                         , rm03."RM03_SEQU" AS "SEQU"
                                         , rm03.SOURCE
-                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03_COMBINED rm03 
-                                    INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED sc01_6 
-                                       ON rm03."RM03_LOGID" = sc01_6."SC01_SCHEDULEDCALL" 
-                                      AND sc01_6."SC01_ORIGCALL" IS NOT NULL 
-                                      AND rm03.SOURCE = sc01_6.SOURCE
+                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM03_COMBINED rm03 
+                                    INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED sc01_6 
+                                       ON rm03."RM03_LOGID" = sc01_6."Call Scheduled" 
+                                      AND sc01_6."Original Call" IS NOT NULL 
+                                      AND rm03.SOURCE = sc01_6."Source"
                                     
                                     UNION
                                    
@@ -117,11 +111,11 @@ operation:
                                         , rm03u."RM03U_DATE" AS "RTEDATE"
                                         , NULL AS "SEQU"
                                         , rm03u.SOURCE
-                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03U_COMBINED rm03u
-                                    INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED sc01_5 
-                                       ON rm03u."RM03U_LOGID" = sc01_5."SC01_SCHEDULEDCALL" 
-                                      AND sc01_5."SC01_ORIGCALL" IS NOT NULL 
-                                      AND rm03u.SOURCE = sc01_5.SOURCE
+                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM03U_COMBINED rm03u
+                                    INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED sc01_5 
+                                       ON rm03u."RM03U_LOGID" = sc01_5."Call Scheduled" 
+                                      AND sc01_5."Original Call" IS NOT NULL 
+                                      AND rm03u.SOURCE = sc01_5."Source"
                                     
                                     UNION 
                                    
@@ -130,19 +124,19 @@ operation:
                                         , sm01."SM01_DATE" AS "RTEDATE"
                                         , sm01."SM01_SEQU" AS "SEQU"
                                         , sm01.SOURCE
-                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SM01_COMBINED sm01
-                                    INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_4 
-                                       ON sm01."SM01_LOGID" = sc01_4."SC01_SCHEDULEDCALL" 
-                                      AND sc01_4."SC01_ORIGCALL" IS NOT NULL 
-                                      AND sm01.SOURCE = sc01_4.SOURCE
+                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_SM01_COMBINED_FILTERED sm01
+                                    INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_4 
+                                       ON sm01."SM01_LOGID" = sc01_4."Call Scheduled" 
+                                      AND sc01_4."Original Call" IS NOT NULL 
+                                      AND sm01.SOURCE = sc01_4."Source"
             
                                   ) AS L
-                             LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM01_COMBINED AS rm01_2 
+                             LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM01_COMBINED AS rm01_2 
                                ON rm01_2."RM01_NUMB" = L."ROUTE"
                               AND rm01_2.SOURCE = L.SOURCE
                           ) AS SC -- Scheduled Call
-                ON (CASE WHEN sc01."SC01_ORIGCALL" IS NOT NULL THEN sc01."SC01_SCHEDULEDCALL" ELSE NULL END = SC."SC_LOGID")
-               AND sc01.SOURCE = SC.SOURCE
+                ON (CASE WHEN sc01."Original Call" IS NOT NULL THEN sc01."Call Scheduled" ELSE NULL END = SC."SC_LOGID")
+               AND sc01."Source" = SC.SOURCE
             INNER JOIN (SELECT DISTINCT L_1."LOGID" AS "OC_LOGID"
                               , L_1."ROUTE" || '-' || rm01_1."RM01_DESC" AS "OC_ROUTE"
                               , L_1."RTEDATE" AS "OC_RTEDTE"
@@ -155,49 +149,48 @@ operation:
                                       , rm03_1."RM03_DATE" AS "RTEDATE"
                                       , rm03_1."RM03_SEQU" AS "SEQU"
                                       , rm03_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03_COMBINED AS rm03_1 
-                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_3 
-                                     ON rm03_1."RM03_LOGID" = sc01_3."SC01_ORIGCALL" 
-                                    AND rm03_1.SOURCE = sc01_3.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM03_COMBINED AS rm03_1 
+                                  INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_3 
+                                     ON rm03_1."RM03_LOGID" = sc01_3."Original Call"
+                                    AND rm03_1.SOURCE = sc01_3."Source"
             
                                   UNION
-                                 
-                                 SELECT rm03_1."RM03_LOGID" AS "LOGID"
+            
+                                  SELECT rm03_1."RM03_LOGID" AS "LOGID"
                                       , rm03_1."RM03_ROUT" AS "ROUTE"
                                       , rm03_1."RM03_DATE" AS "RTEDATE"
                                       , rm03_1."RM03_SEQU" AS "SEQU"
                                       , rm03_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03_COMBINED AS rm03_1 
-                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_3 
-                                     ON sc01_3."SC01_ORIGCALL" IS NULL 
-                                    AND rm03_1."RM03_LOGID" = sc01_3."SC01_SCHEDULEDCALL" 
-                                    AND rm03_1.SOURCE = sc01_3.SOURCE
-                                 
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM03_COMBINED AS rm03_1 
+                                  INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_3 
+                                     ON (sc01_3."Original Call" IS NULL AND rm03_1."RM03_LOGID" = sc01_3."Call Scheduled")
+                                    AND rm03_1.SOURCE = sc01_3."Source"
+                                  
                                   UNION
-            
-                                 SELECT rm03u_1."RM03U_LOGID" AS "LOGID"
-                                      , NULL AS "ROUTE"
-                                      , rm03u_1."RM03U_DATE" AS "RTEDATE"
-                                      , NULL AS "SEQU"
-                                      , rm03u_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03U_COMBINED AS rm03u_1 
-                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_2 
-                                     ON rm03u_1."RM03U_LOGID" = sc01_2."SC01_ORIGCALL" 
-                                    AND rm03u_1.SOURCE = sc01_2.SOURCE
-            
-                                  UNION
-            
-                                 SELECT rm03u_1."RM03U_LOGID" AS "LOGID"
-                                      , NULL AS "ROUTE"
-                                      , rm03u_1."RM03U_DATE" AS "RTEDATE"
-                                      , NULL AS "SEQU"
-                                      , rm03u_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03U_COMBINED AS rm03u_1 
-                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_2 
-                                     ON sc01_2."SC01_ORIGCALL" IS NULL 
-                                    AND rm03u_1."RM03U_LOGID" = sc01_2."SC01_SCHEDULEDCALL"
-                                    AND rm03u_1.SOURCE = sc01_2.SOURCE
                                     
+                                 SELECT rm03u_1."RM03U_LOGID" AS "LOGID"
+                                      , NULL AS "ROUTE"
+                                      , rm03u_1."RM03U_DATE" AS "RTEDATE"
+                                      , NULL AS "SEQU"
+                                      , rm03u_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM03U_COMBINED AS rm03u_1 
+                                  INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_2 
+                                     ON rm03u_1."RM03U_LOGID" = sc01_2."Original Call"
+                                    AND rm03u_1.SOURCE = sc01_2."Source"
+            
+                                  UNION
+                                    
+                                 SELECT rm03u_1."RM03U_LOGID" AS "LOGID"
+                                      , NULL AS "ROUTE"
+                                      , rm03u_1."RM03U_DATE" AS "RTEDATE"
+                                      , NULL AS "SEQU"
+                                      , rm03u_1.SOURCE
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM03U_COMBINED AS rm03u_1 
+                                  INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_2 
+                                     ON (sc01_2."Original Call" IS NULL 
+                                    AND rm03u_1."RM03U_LOGID" = sc01_2."Call Scheduled")
+                                    AND rm03u_1.SOURCE = sc01_2."Source"
+            
                                   UNION
                                
                                  SELECT sm01_1."SM01_LOGID" AS "LOGID"
@@ -205,11 +198,11 @@ operation:
                                       , sm01_1."SM01_DATE" AS "RTEDATE"
                                       , sm01_1."SM01_SEQU" AS "SEQU"
                                       , sm01_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SM01_COMBINED AS sm01_1 
-                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_1 
-                                     ON sm01_1."SM01_LOGID" = sc01_1."SC01_ORIGCALL" 
-                                    AND sm01_1.SOURCE = sc01_1.SOURCE 
-                                    
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_SM01_COMBINED_FILTERED AS sm01_1 
+                                  INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_1 
+                                     ON sm01_1."SM01_LOGID" = sc01_1."Original Call"
+                                    AND sm01_1.SOURCE = sc01_1."Source" 
+            
                                   UNION
                                
                                  SELECT sm01_1."SM01_LOGID" AS "LOGID"
@@ -217,30 +210,32 @@ operation:
                                       , sm01_1."SM01_DATE" AS "RTEDATE"
                                       , sm01_1."SM01_SEQU" AS "SEQU"
                                       , sm01_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SM01_COMBINED AS sm01_1 
-                                  INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SC01_COMBINED AS sc01_1 
-                                     ON sc01_1."SC01_ORIGCALL" IS NULL 
-                                    AND sm01_1."SM01_LOGID" = sc01_1."SC01_SCHEDULEDCALL"
-                                    AND sm01_1.SOURCE = sc01_1.SOURCE 
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_SM01_COMBINED_FILTERED AS sm01_1 
+                                  INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_1 
+                                     ON (sc01_1."Original Call" IS NULL 
+                                    AND sm01_1."SM01_LOGID" = sc01_1."Call Scheduled")
+                                    AND sm01_1.SOURCE = sc01_1."Source" 
+                                
                                ) AS L_1
-                           LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM01_COMBINED AS rm01_1 
+                           LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM01_COMBINED AS rm01_1 
                              ON rm01_1."RM01_NUMB" = L_1."ROUTE"
                             AND rm01_1.SOURCE = L_1.SOURCE
-                         
+            
                         ) AS OC -- Original Call
-            	ON (CASE WHEN sc01."SC01_ORIGCALL" IS NOT NULL THEN sc01."SC01_ORIGCALL" ELSE sc01."SC01_SCHEDULEDCALL" END = OC."OC_LOGID")
-               AND sc01.SOURCE = OC.SOURCE    
-            INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM01_COMBINED rm01  
+            	ON (CASE WHEN sc01."Original Call" IS NOT NULL THEN sc01."Original Call" ELSE sc01."Call Scheduled" END = OC."OC_LOGID")
+               AND sc01."Source" = OC.SOURCE    
+            INNER JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM01_COMBINED rm01  
                 ON rm01."RM01_NUMB" = OC."RM01_NUMB"
                AND rm01.SOURCE = OC.SOURCE
-            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.RM04_COMBINED rm04
+            LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM04_COMBINED rm04
                 ON rm01.RM01_DRIV = rm04.RM04_NUMB
                AND rm01.SOURCE = rm04.SOURCE
             LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SL01_COMBINED sl01
                 ON rm01.RM01_SLID = sl01.SL01_ID 
                AND rm01.SOURCE = sl01.SOURCE
             
-            WHERE sc01."SC01_TYPE" = 'MP' 
+            WHERE sc01."Service Call Type Code" = 'MP' 
+            
             
             	)
         dependencies: []
