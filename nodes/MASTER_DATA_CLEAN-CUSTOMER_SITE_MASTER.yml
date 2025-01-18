@@ -49,10 +49,8 @@ operation:
               - columnCounter: 73066796-bdd0-4d2e-9731-5689e42e40fa
                 stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
             transform: ""
-          - columnReferences:
-              - columnCounter: 1a8f02ec-6c91-4406-b462-ba1d391996aa
-                stepCounter: d0ee8791-10a2-4747-967f-b22621b20d21
-            transform: ""
+          - columnReferences: []
+            transform: TRIM("SITE_COMBINED"."Customer Number")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 485c2b88-c684-4118-b1ec-68cf560c073c
@@ -1034,7 +1032,7 @@ operation:
                 stepCounter: "0"
             transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\""
           - columnReferences: []
-            transform: "'TOWER_'||\"SITE_COMBINED\".\"COMPANYID\"||'-'||\"SITE_COMBINED\".\"Customer Number\""
+            transform: "'TOWER_'||\"SITE_COMBINED\".\"COMPANYID\"||'-'||TRIM(\"SITE_COMBINED\".\"Customer Number\")"
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -1057,7 +1055,7 @@ operation:
                 stepCounter: "0"
             transform: "\"CM04_COMBINED\".\"SOURCE\"||'-'||\"CM04_COMBINED\".\"CM04_CUST\"||'-'||\"CM04_COMBINED\".\"CM04_SITE\""
           - columnReferences: []
-            transform: "'TOWER_'||\"SITE_COMBINED\".\"COMPANYID\"||'-'||\"SITE_COMBINED\".\"Customer Number\"||'-'||\"SITE_COMBINED\".\"Site Number\""
+            transform: "'TOWER_'||\"SITE_COMBINED\".\"COMPANYID\"||'-'||TRIM(\"SITE_COMBINED\".\"Customer Number\")||'-'||TRIM(\"SITE_COMBINED\".\"Site Number\")"
         systemColumnType: None
         transform: ""
       - acceptedValues:
