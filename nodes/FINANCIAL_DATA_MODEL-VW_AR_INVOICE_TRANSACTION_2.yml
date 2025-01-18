@@ -434,8 +434,8 @@ operation:
                  , NULL AS "dso_from_due"
                  , NULL AS "dso_from_invoice"
                  , CONCAT('TOWER_', a.companyid) AS "Source"
-              FROM LRS_RAW.TOWER_RAW.ARDETAIL a
-              LEFT JOIN LRS_RAW.TOWER_RAW.INVOICE b
+              FROM LRS_PRODUCTION.TOWER_COMBINED_RAW.ARDETAIL_COMBINED a
+              LEFT JOIN LRS_PRODUCTION.TOWER_COMBINED_RAW.INVOICE_COMBINED b
                 ON a.invoiceuid = b.invoiceuid
              WHERE a.balance <> 0
                AND a.status NOT IN (0, 2)
