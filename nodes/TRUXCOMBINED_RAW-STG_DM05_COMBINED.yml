@@ -1161,7 +1161,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_SM01_COMBINED_FILTERED
         join:
-          joinCondition: |2-
+          joinCondition: |2
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05A_COMBINED') }} "DM05A_COMBINED"
             
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
@@ -1182,6 +1182,7 @@ operation:
                ON "DM05A_COMBINED"."DM05A_ADJR" = "CD02_COMBINED"."CD02_CODE"
               AND "CD02_COMBINED"."CD02_TYPE" = 'A'
               AND "DM05A_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE"
+            
         name: DM05A_COMBINED - SERVICE CHARGES
         noLinkRefs: []
       - aliases:
@@ -1206,19 +1207,19 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05B_COMBINED') }} "DM05B_COMBINED"
-            
+
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
                ON "DM05B_COMBINED"."DM05B_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05B_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM19_COMBINED') }} "CM19_COMBINED"
                ON "DM05B_COMBINED"."DM05B_ARATEID" = "CM19_COMBINED"."CM19_ID"
               AND "DM05B_COMBINED"."SOURCE" = "CM19_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
                ON "DM05B_COMBINED"."DM05B_CODE" = "CM12_COMBINED"."CM12_CODE"
               AND "DM05B_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                ON "DM05B_COMBINED"."DM05B_ADJR" = "CD02_COMBINED"."CD02_CODE"
               AND "CD02_COMBINED"."CD02_TYPE" = 'A'
@@ -1247,21 +1248,21 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05L_COMBINED') }} "DM05L_COMBINED"
-            
+
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
                ON "DM05L_COMBINED"."DM05L_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05L_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM02_COMBINED_FILTERED') }} "STG_LM02_COMBINED_FILTERED"
                ON "DM05L_COMBINED"."DM05L_DSTE" = "STG_LM02_COMBINED_FILTERED"."LM02_DSTE"
               AND "DM05L_COMBINED"."DM05L_TICK" = "STG_LM02_COMBINED_FILTERED"."LM02_NUMB"
               AND "DM05L_COMBINED"."DM05L_DTID" = "STG_LM02_COMBINED_FILTERED"."LM02_ID"
               AND "DM05L_COMBINED"."SOURCE" = "STG_LM02_COMBINED_FILTERED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
                ON "DM05L_COMBINED"."DM05L_CODE" = "LM04_COMBINED"."LM04_CODE"
               AND "DM05L_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                ON "DM05L_COMBINED"."DM05L_ADJR" = "CD02_COMBINED"."CD02_CODE"
               AND "CD02_COMBINED"."CD02_TYPE" = 'A'
@@ -1290,19 +1291,19 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM05Z_COMBINED') }} "DM05Z_COMBINED"
-            
+
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
                ON "DM05Z_COMBINED"."DM05Z_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "DM05Z_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'MT02_COMBINED') }} "MT02_COMBINED"
                ON "DM05Z_COMBINED"."DM05Z_REFN" = "MT02_COMBINED"."MT02_REFR"
               AND "DM05Z_COMBINED"."SOURCE" = "MT02_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'MT00_COMBINED') }} "MT00_COMBINED"
                ON "DM05Z_COMBINED"."DM05Z_CODE" = "MT00_COMBINED"."MT00_CODE"
               AND "DM05Z_COMBINED"."SOURCE" = "MT00_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                ON "DM05Z_COMBINED"."DM05Z_ADJR" = "CD02_COMBINED"."CD02_CODE"
               AND "CD02_COMBINED"."CD02_TYPE" = 'A'
@@ -1341,6 +1342,8 @@ operation:
                ON "DM05FT_COMBINED"."DM05FT_ADJR" = "CD02_COMBINED"."CD02_CODE"
               AND "CD02_COMBINED"."CD02_TYPE" = 'A'
               AND "DM05FT_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE"
+            
+            WHERE "DM05FT_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: DM05FT_COMBINED - TAXES
         noLinkRefs: []
   name: STG_DM05_COMBINED
