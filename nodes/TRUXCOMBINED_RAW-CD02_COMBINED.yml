@@ -187,14 +187,18 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CD02: 11003850-274c-4bcb-bfc4-47d3213daddf
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUX_IP_COMP_RAW
             nodeName: CD02
         join:
-          joinCondition: FROM {{ ref('TRUX_IP_COMP_RAW', 'CD02') }} "CD02"
+          joinCondition: |-
+            FROM {{ ref('TRUX_IP_COMP_RAW', 'CD02') }} "CD02"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
         name: CD02_COMBINED
         noLinkRefs: []
   name: CD02_COMBINED
