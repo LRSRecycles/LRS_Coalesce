@@ -1,0 +1,155 @@
+fileVersion: 1
+id: e06a2d72-cad6-4af4-8ea2-e7685c358289
+name: STG_MT00_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e4388107-4862-4a62-8941-9c099050913b
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: MT00_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 66d02c38-c199-4246-af1f-92f8fe998e7c
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0d28216-e443-4239-a762-88cf91fe3287
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: MT00_DESC
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e84ddc4d-65d7-43f1-9c49-e3a6ca0d4116
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 86567f0a-bf66-4335-a21e-2ea31fd4e85f
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: NUMBER(18,3)
+        description: ""
+        name: MT00_RATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b1affd6e-d2ee-43f7-9698-8bf48f537788
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64ac63a9-36ea-4946-84f1-02abd67dbca3
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: MT00_ACTIVE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7b7b3655-6508-4222-9714-c5ab1ae7f9ac
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: de06a03a-70c6-43bc-a47c-bb4cf3b34111
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: MT00_SURCHRG
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fd67aed3-d424-49a0-beb6-38b786965ffb
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 78f1690c-786d-4f79-97d2-5ec6f6fdb07f
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: MT00_ONCE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 04afae52-cbe1-4b3b-9327-0542e7c0789f
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f688aa4d-821a-4ce8-8cfe-468da6d7cc06
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: MT00_SERVNUMBREQ
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7f79a98e-ec6a-4bb8-84b5-ec58c256836b
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d1b7f87-9710-4ef2-8fc7-4b2d8091b73d
+          stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 00bded1b-e321-440a-9613-35f6968ff1cc
+                stepCounter: 066dbe24-ee57-42f2-84b1-01371ce924b2
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          MT00_COMBINED: 066dbe24-ee57-42f2-84b1-01371ce924b2
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: MT00_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'MT00_COMBINED') }} "MT00_COMBINED"
+            
+            WHERE  "MT00_ACTIVE" = TRUE
+        name: STG_MT00_COMBINED
+        noLinkRefs: []
+  name: STG_MT00_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
