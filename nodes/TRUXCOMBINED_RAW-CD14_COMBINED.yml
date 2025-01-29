@@ -229,17 +229,52 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 673f2ccb-b6db-40d1-a4bd-831117b9b2d0
+          stepCounter: f21fe296-8b27-43b1-978c-64999978c610
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5bfaf691-5e9c-40ee-9fd6-6d5a12a229d9
+                stepCounter: 7408de80-8473-4b89-ab59-42329ec92e59
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98eb39fd-2720-4dc2-bfc2-4d7765f06981
+          stepCounter: f21fe296-8b27-43b1-978c-64999978c610
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3abac91b-b723-4b47-ba9a-e921f2aabc9e
+                stepCounter: 7408de80-8473-4b89-ab59-42329ec92e59
+            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CD14: 7408de80-8473-4b89-ab59-42329ec92e59
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TRUX_MH_COMP_RAW
+          - locationName: TRUX_AL_COMP_RAW
             nodeName: CD14
         join:
-          joinCondition: FROM {{ ref('TRUX_MH_COMP_RAW', 'CD14') }} "CD14"
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD14') }} "CD14"
         name: CD14_COMBINED
         noLinkRefs: []
   name: CD14_COMBINED

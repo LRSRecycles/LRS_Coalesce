@@ -1,0 +1,130 @@
+fileVersion: 1
+id: 52b84211-10eb-4e3f-a37b-66d61f192036
+name: TRUX_ANDROID_ROUTES_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 235a604b-d9bf-4b8d-8109-fb1384b2c8dc
+          stepCounter: 52b84211-10eb-4e3f-a37b-66d61f192036
+        config: {}
+        dataType: VARCHAR(3)
+        description: ""
+        name: AN_ROUTE_ROUTE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e725a54e-d8da-41e3-8683-ef6908aca1f0
+                stepCounter: 19bb0e42-ead8-469d-a7a6-d4ea4f32d8aa
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5811ea5e-8af0-4217-b937-ec1c5245dc55
+                stepCounter: 49c6d3f2-264d-464b-a58f-db8e77591443
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b6fd328-8794-44f6-b8e7-6702beee15a5
+          stepCounter: 52b84211-10eb-4e3f-a37b-66d61f192036
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: AN_ROUTE_COMPANY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3ce9a141-344f-4b65-8a72-37b243c53d9d
+                stepCounter: 19bb0e42-ead8-469d-a7a6-d4ea4f32d8aa
+            transform: ""
+          - columnReferences:
+              - columnCounter: f71cfafe-6b2a-4247-929f-77a835a106bc
+                stepCounter: 49c6d3f2-264d-464b-a58f-db8e77591443
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8297f9c0-68d4-4770-8792-23324429699c
+          stepCounter: 52b84211-10eb-4e3f-a37b-66d61f192036
+        config: {}
+        dataType: VARCHAR(40)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'TRUX_'||\"LEGACY_AN_ROUTE\".\"AN_ROUTE_COMPANY\"||'_COMP_RAW'"
+          - columnReferences: []
+            transform: "'TRUX_'||\"MIDWEST_AN_ROUTE\".\"AN_ROUTE_COMPANY\"||'_COMP_RAW'"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17e0541a-e778-41f0-a126-9c71b3055581
+          stepCounter: 52b84211-10eb-4e3f-a37b-66d61f192036
+        config: {}
+        dataType: VARCHAR(40)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'TRUX_'||\"LEGACY_AN_ROUTE\".\"AN_ROUTE_COMPANY\"||'_COMP_RAW'||'-'||\"LEGACY_AN_ROUTE\".\"AN_ROUTE_ROUTE\""
+          - columnReferences: []
+            transform: "'TRUX_'||\"MIDWEST_AN_ROUTE\".\"AN_ROUTE_COMPANY\"||'_COMP_RAW'||'-'||\"MIDWEST_AN_ROUTE\".\"AN_ROUTE_ROUTE\""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA
+            nodeName: LEGACY_AN_ROUTE
+        join:
+          joinCondition: FROM {{ ref('MASTER_DATA', 'LEGACY_AN_ROUTE') }} "LEGACY_AN_ROUTE"
+        name: LEGACY_AN_ROUTE
+        noLinkRefs: []
+      - aliases:
+          MIDWEST_AN_ROUTE: 49c6d3f2-264d-464b-a58f-db8e77591443
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA
+            nodeName: MIDWEST_AN_ROUTE
+        join:
+          joinCondition: FROM {{ ref('MASTER_DATA', 'MIDWEST_AN_ROUTE') }} "MIDWEST_AN_ROUTE"
+        name: MIDWEST_AN_ROUTE
+        noLinkRefs: []
+  name: TRUX_ANDROID_ROUTES_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
