@@ -1,0 +1,141 @@
+fileVersion: 1
+id: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+name: STG_CD11_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6a300bf8-61dc-43db-85b9-05c324a4e541
+          stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CD11_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9ee338cc-0c70-40be-aa56-078d553c3e5a
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33bc285d-f766-4c14-9b04-8650527c3a5f
+          stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: CD11_DESC
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4de06533-a7c4-4c8d-8b21-67dc33ea6e83
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 08d07255-1712-47b9-b464-6c1958cadbe5
+          stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: CD11_ACTIVE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b1ddc3c-cf47-4bd5-8c79-dbaf8218f705
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 92c28f3d-e9f4-4e68-b0ed-dbab9a30a660
+          stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CD11_CASH
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 09cedfdb-9850-4c90-8837-9557b2697b2a
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e1b191d-167f-4877-b7c3-b0692f1f4caa
+          stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1956f40e-107b-4618-b383-933d37e80ae2
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e5aec71-6cf4-4b5d-ada3-3db56d7bc12f
+          stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5422c459-a65b-4f52-bdd1-f31663de4f2e
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36b1905a-ff3b-4a93-bc14-da4b8e183a68
+          stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e97340cd-5210-4ae0-9999-e05a1260bd64
+                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CD11_COMBINED: 3131b480-711a-434f-be4a-e6e3315d3c0a
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD11_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CD11_COMBINED') }} "CD11_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
+        name: STG_CD11_COMBINED
+        noLinkRefs: []
+  name: STG_CD11_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
