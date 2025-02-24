@@ -403,8 +403,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5703ca06-5df4-4a48-a60e-3b6c17cde0df
-                stepCounter: 71001026-e5b6-431c-99fc-8c83d39aed33
+              - columnCounter: 9add43d3-c993-4db4-aae8-263aad5c1481
+                stepCounter: bcd2bc30-d0b3-4ec8-8156-126a59868c2a
             transform: ""
           - columnReferences: []
             transform: ""
@@ -549,8 +549,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: e99d9bcb-a280-43c1-be6d-b11489821019
-                stepCounter: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
+              - columnCounter: c384684c-ffac-4fe9-85a2-5356e2eed7d0
+                stepCounter: 28e54d5d-66e5-47e8-8b29-d8b276155b2b
             transform: ""
           - columnReferences: []
             transform: ""
@@ -898,8 +898,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6bdac00a-e452-4d6a-842c-2140fced5760
-                stepCounter: bd4674f7-935e-485f-8433-a9a843dde723
+              - columnCounter: 9ec02c6f-3190-4090-8e55-6b83a126da14
+                stepCounter: 14a335e1-493e-4bfc-9b02-2dbb2ca32d51
             transform: ""
           - columnReferences:
               - columnCounter: 9d9477ef-aeb0-4564-9c7f-f3ace5bb056a
@@ -1228,34 +1228,30 @@ operation:
         transform: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          CD01_COMBINED: 71001026-e5b6-431c-99fc-8c83d39aed33
-          CD03_COMBINED: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
-          CD07_COMBINED: bd4674f7-935e-485f-8433-a9a843dde723
-          CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CD01_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CD03_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CD07_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: CM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD07_COMBINED
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04_COMBINED"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD01_COMBINED') }} "CD01_COMBINED"
-              ON "CM04_COMBINED"."CM04_BUCD" = "CD01_COMBINED"."CD01_CODE" 
-             AND "CM04_COMBINED"."SOURCE" = "CD01_COMBINED"."SOURCE"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD03_COMBINED') }} "CD03_COMBINED"
-              ON "CM04_COMBINED"."CM04_SUSREA" = "CD03_COMBINED"."CD03_CODE" 
-             AND "CM04_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
-              ON "CM04_COMBINED"."CM04_SREP" = "CD07_COMBINED"."CD07_CODE" 
-             AND "CM04_COMBINED"."SOURCE" = "CD07_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD01_COMBINED') }} "STG_CD01_COMBINED"
+              ON "CM04_COMBINED"."CM04_BUCD" = "STG_CD01_COMBINED"."CD01_CODE" 
+             AND "CM04_COMBINED"."SOURCE" = "STG_CD01_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD03_COMBINED') }} "STG_CD03_COMBINED"
+              ON "CM04_COMBINED"."CM04_SUSREA" = "STG_CD03_COMBINED"."CD03_CODE" 
+             AND "CM04_COMBINED"."SOURCE" = "STG_CD03_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD07_COMBINED') }} "STG_CD07_COMBINED"
+              ON "CM04_COMBINED"."CM04_SREP" = "STG_CD07_COMBINED"."CD07_CODE" 
+             AND "CM04_COMBINED"."SOURCE" = "STG_CD07_COMBINED"."SOURCE"
         name: CM04_COMBINED
         noLinkRefs: []
       - aliases:

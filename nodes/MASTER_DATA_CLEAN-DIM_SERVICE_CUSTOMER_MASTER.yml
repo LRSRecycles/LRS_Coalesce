@@ -246,8 +246,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5703ca06-5df4-4a48-a60e-3b6c17cde0df
-                stepCounter: 71001026-e5b6-431c-99fc-8c83d39aed33
+              - columnCounter: 9add43d3-c993-4db4-aae8-263aad5c1481
+                stepCounter: bcd2bc30-d0b3-4ec8-8156-126a59868c2a
             transform: ""
         systemColumnType: None
       - acceptedValues:
@@ -283,8 +283,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4d33b4d8-3cfd-43e4-81c6-d1d0ecff1cfb
-                stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+              - columnCounter: 56abb70d-d167-458e-a73a-bfb2f7a955f6
+                stepCounter: eaa785f1-6571-4cf5-bedd-5d30e8ca7b0c
             transform: ""
         systemColumnType: None
       - appliedColumnTests: {}
@@ -777,22 +777,18 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          CD01_COMBINED: 71001026-e5b6-431c-99fc-8c83d39aed33
-          CD09_COMBINED: 32609796-eba8-48e6-bc51-139668a14e56
-          CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-          CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CD01_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CD09_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD09_COMBINED
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
@@ -800,13 +796,13 @@ operation:
                ON "CM03_COMBINED"."CM03_CUST" = "CM04_COMBINED"."CM04_CUST"
               AND "CM03_COMBINED"."SOURCE" = "CM04_COMBINED"."SOURCE"
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD01_COMBINED') }} "CD01_COMBINED"
-               ON "CM04_COMBINED"."CM04_BUCD" = "CD01_COMBINED"."CD01_CODE"
-              AND "CM04_COMBINED"."SOURCE" = "CD01_COMBINED"."SOURCE"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD01_COMBINED') }} "STG_CD01_COMBINED"
+               ON "CM04_COMBINED"."CM04_BUCD" = "STG_CD01_COMBINED"."CD01_CODE"
+              AND "CM04_COMBINED"."SOURCE" = "STG_CD01_COMBINED"."SOURCE"
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD09_COMBINED') }} "CD09_COMBINED"
-               ON "CM04_COMBINED"."CM04_TXJU" = "CD09_COMBINED"."CD09_CODE"
-              AND "CM04_COMBINED"."SOURCE" = "CD09_COMBINED"."SOURCE"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD09_COMBINED') }} "STG_CD09_COMBINED"
+               ON "CM04_COMBINED"."CM04_TXJU" = "STG_CD09_COMBINED"."CD09_CODE"
+              AND "CM04_COMBINED"."SOURCE" = "STG_CD09_COMBINED"."SOURCE"
         name: DIM_SERVICE_CUSTOMER_MASTER
         noLinkRefs: []
   name: DIM_SERVICE_CUSTOMER_MASTER
