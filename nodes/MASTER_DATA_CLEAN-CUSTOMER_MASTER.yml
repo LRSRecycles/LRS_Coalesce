@@ -115,8 +115,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4de06533-a7c4-4c8d-8b21-67dc33ea6e83
-                stepCounter: 3131b480-711a-434f-be4a-e6e3315d3c0a
+              - columnCounter: 33bc285d-f766-4c14-9b04-8650527c3a5f
+                stepCounter: 0f5974cd-75ab-4abb-8a78-54d42e549a47
             transform: ""
           - columnReferences:
               - columnCounter: c3678862-41f2-4cd1-b4c0-65363e429609
@@ -347,8 +347,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6bdac00a-e452-4d6a-842c-2140fced5760
-                stepCounter: bd4674f7-935e-485f-8433-a9a843dde723
+              - columnCounter: 9ec02c6f-3190-4090-8e55-6b83a126da14
+                stepCounter: 14a335e1-493e-4bfc-9b02-2dbb2ca32d51
             transform: ""
           - columnReferences:
               - columnCounter: 451225d1-344a-42f7-9294-650f89b574b5
@@ -544,8 +544,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4d33b4d8-3cfd-43e4-81c6-d1d0ecff1cfb
-                stepCounter: 32609796-eba8-48e6-bc51-139668a14e56
+              - columnCounter: 56abb70d-d167-458e-a73a-bfb2f7a955f6
+                stepCounter: eaa785f1-6571-4cf5-bedd-5d30e8ca7b0c
             transform: ""
           - columnReferences: []
             transform: ""
@@ -584,8 +584,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: e99d9bcb-a280-43c1-be6d-b11489821019
-                stepCounter: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
+              - columnCounter: c384684c-ffac-4fe9-85a2-5356e2eed7d0
+                stepCounter: 28e54d5d-66e5-47e8-8b29-d8b276155b2b
             transform: ""
           - columnReferences: []
             transform: ""
@@ -1110,8 +1110,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ffe8a23f-9b80-47db-92ae-6b015779fabb
-                stepCounter: af2cc5f9-03e6-4b06-a245-b0719b2aa432
+              - columnCounter: c0b7304c-2d53-4188-a7db-ddbec2cfe48c
+                stepCounter: 70d95058-6b0e-4d1f-ac2c-9de7e79bfa3b
             transform: ""
           - columnReferences:
               - columnCounter: 9301a2c3-3989-4e2a-bf1e-3fe1d37c940b
@@ -1468,61 +1468,53 @@ operation:
             transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          CD03_COMBINED: 438b5c12-3ccb-4c0d-bce9-4a236319d37a
-          CD07_COMBINED: bd4674f7-935e-485f-8433-a9a843dde723
-          CD09_COMBINED: 32609796-eba8-48e6-bc51-139668a14e56
-          CD11_COMBINED: 3131b480-711a-434f-be4a-e6e3315d3c0a
-          CD52_COMBINED: af2cc5f9-03e6-4b06-a245-b0719b2aa432
-          CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
-          STG_CP01_COMBINED_FILTERED: b527731c-69d1-434c-9076-a2ff49859bf4
-          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: MASTER_DATA_CLEAN
             nodeName: TRUX_DATABASE_METADATA
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CD03_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CD07_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CD09_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CD11_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CD52_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD07_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD09_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD11_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD52_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CP01_COMBINED_FILTERED
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
-
-            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD11_COMBINED') }} "CD11_COMBINED"
-               ON "CM03_COMBINED"."CM03_CUSTTYPE" = "CD11_COMBINED"."CD11_CODE" 
-              AND "CM03_COMBINED"."SOURCE" = "CD11_COMBINED"."SOURCE"
-
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD11_COMBINED') }} "STG_CD11_COMBINED"
+               ON "CM03_COMBINED"."CM03_CUSTTYPE" = "STG_CD11_COMBINED"."CD11_CODE" 
+              AND "CM03_COMBINED"."SOURCE" = "STG_CD11_COMBINED"."SOURCE"
+            
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-
-             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD03_COMBINED') }} "CD03_COMBINED"
-               ON "CM03_COMBINED"."CM03_SUSREA" = "CD03_COMBINED"."CD03_CODE" 
-              AND "CM03_COMBINED"."SOURCE" = "CD03_COMBINED"."SOURCE"
-
-             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD07_COMBINED') }} "CD07_COMBINED"
-               ON "CM03_COMBINED"."CM03_SREP" = "CD07_COMBINED"."CD07_CODE" 
-              AND "CM03_COMBINED"."SOURCE" = "CD07_COMBINED"."SOURCE"
-
-             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD09_COMBINED') }} "CD09_COMBINED"
-               ON "CM03_COMBINED"."CM03_TXJU" = "CD09_COMBINED"."CD09_CODE" 
-              AND "CM03_COMBINED"."SOURCE" = "CD09_COMBINED"."SOURCE"
-
-             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD52_COMBINED') }} "CD52_COMBINED"
-               ON "CM03_COMBINED"."CM03_COLLAGNT" = "CD52_COMBINED"."CD52_CODE" 
-              AND "CM03_COMBINED"."SOURCE" = "CD52_COMBINED"."SOURCE"
-
+            
+             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD03_COMBINED') }} "STG_CD03_COMBINED"
+               ON "CM03_COMBINED"."CM03_SUSREA" = "STG_CD03_COMBINED"."CD03_CODE" 
+              AND "CM03_COMBINED"."SOURCE" = "STG_CD03_COMBINED"."SOURCE"
+            
+             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD07_COMBINED') }} "STG_CD07_COMBINED"
+               ON "CM03_COMBINED"."CM03_SREP" = "STG_CD07_COMBINED"."CD07_CODE" 
+              AND "CM03_COMBINED"."SOURCE" = "STG_CD07_COMBINED"."SOURCE"
+            
+             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD09_COMBINED') }} "STG_CD09_COMBINED"
+               ON "CM03_COMBINED"."CM03_TXJU" = "STG_CD09_COMBINED"."CD09_CODE" 
+              AND "CM03_COMBINED"."SOURCE" = "STG_CD09_COMBINED"."SOURCE"
+            
+             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD52_COMBINED') }} "STG_CD52_COMBINED"
+               ON "CM03_COMBINED"."CM03_COLLAGNT" = "STG_CD52_COMBINED"."CD52_CODE" 
+              AND "CM03_COMBINED"."SOURCE" = "STG_CD52_COMBINED"."SOURCE"
+            
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CP01_COMBINED_FILTERED') }} "STG_CP01_COMBINED_FILTERED"
                ON "CM03_COMBINED"."CM03_CUST" = "STG_CP01_COMBINED_FILTERED"."CP01_CUST" 
               AND "CM03_COMBINED"."SOURCE" = "STG_CP01_COMBINED_FILTERED"."SOURCE" 
