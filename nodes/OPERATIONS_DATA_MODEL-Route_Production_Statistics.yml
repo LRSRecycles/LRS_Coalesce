@@ -470,9 +470,7 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-          ROUTE_MASTER: bcc56605-9b2f-4640-99de-4dcb0b7d1dce
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
@@ -485,7 +483,7 @@ operation:
              FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'ROUTE_MASTER') }} "ROUTE_MASTER"
                ON "RM05_COMBINED"."RM05_ROUT" = "ROUTE_MASTER"."Route Number"
-              AND "RM05_COMBINED"."SOURCE" = "ROUTE_MASTER"."SOURCE"
+              AND "RM05_COMBINED"."SOURCE" = "ROUTE_MASTER"."Source"
             WHERE "SORT" = 1 
               and "_FIVETRAN_DELETED" = FALSE 
               and "METADATA$ACTION" = 'INSERT'
