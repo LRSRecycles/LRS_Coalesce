@@ -11,7 +11,7 @@ operation:
   database: ""
   deployEnabled: true
   description: ""
-  isMultisource: true
+  isMultisource: false
   locationName: MASTER_DATA_CLEAN
   materializationType: table
   metadata:
@@ -29,8 +29,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: b3339426-2f8c-4fee-9df0-402a03db75cd
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+              - columnCounter: 0ec29b52-4ce3-4798-8d70-162d8919dcd7
+                stepCounter: d6c0ec69-5a44-423c-b330-dff376fbb71f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -44,8 +44,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 10e943a8-816a-4d5d-996c-03d01d0de5be
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+              - columnCounter: 5b0f0785-cce0-4586-80be-e18f575aaaef
+                stepCounter: d6c0ec69-5a44-423c-b330-dff376fbb71f
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -63,8 +63,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+              - columnCounter: bebc3232-7539-45ae-80b4-b0f1be390e09
+                stepCounter: d6c0ec69-5a44-423c-b330-dff376fbb71f
             transform: ""
         systemColumnType: None
         transform: ""
@@ -83,16 +83,14 @@ operation:
         name: Company Type
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: f4fe8deb-ff74-435f-a7a4-1ade8f38153a
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+          - columnReferences: []
             transform: |-
-              CASE WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
-                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
-                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
-                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
-                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
-                WHEN "STG_MIDWEST_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
+              CASE WHEN "STG_TRUX_DATA_SY03"."SY03_HWR" = '001' THEN UPPER('Maintain-IT') WHEN "STG_TRUX_DATA_SY03"."SY03_HWR" = '010' THEN UPPER('Weigh-IT')
+                WHEN "STG_TRUX_DATA_SY03"."SY03_HWR" = '011' THEN UPPER('Weigh-IT & Maintain-IT')
+                WHEN "STG_TRUX_DATA_SY03"."SY03_HWR" = '100' THEN UPPER('Haul-IT')
+                WHEN "STG_TRUX_DATA_SY03"."SY03_HWR" = '101' THEN UPPER('Haul-IT & Maintain-IT')
+                WHEN "STG_TRUX_DATA_SY03"."SY03_HWR" = '110' THEN UPPER('Haul-IT & Weigh-IT')
+                WHEN "STG_TRUX_DATA_SY03"."SY03_HWR" = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
                 END
         systemColumnType: None
         transform: ""
@@ -112,8 +110,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 0c9bdd37-d140-44d3-a387-9dbf693dcedf
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+              - columnCounter: 76ddff44-6524-42ab-9533-b69851951f6d
+                stepCounter: d6c0ec69-5a44-423c-b330-dff376fbb71f
             transform: ""
         systemColumnType: None
         transform: ""
@@ -131,8 +129,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3a3ac261-c854-4ab3-aa49-1d24242e6c5e
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
+              - columnCounter: fd516298-cc74-467e-9b22-2164e9254777
+                stepCounter: d6c0ec69-5a44-423c-b330-dff376fbb71f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -145,10 +143,8 @@ operation:
         name: SQL_DB_NAME
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6013d6bb-b58c-4974-a5a8-a16275c5837a
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-            transform: ""
+          - columnReferences: []
+            transform: "'TRUX_' || \"STG_TRUX_DATA_SY03\".\"SY03_CODE\" || '_COMP'"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 0539cd47-31c6-4ddd-aa09-b5ebc12b2804
@@ -160,21 +156,40 @@ operation:
         name: SNOWFLAKE_NAME
         nullable: true
         sourceColumnReferences:
+          - columnReferences: []
+            transform: "'TRUX_' || \"STG_TRUX_DATA_SY03\".\"SY03_CODE\" || '_COMP_RAW'"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1d8f2f3c-3863-4495-9193-029e4bf39bd9
+          stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SNOWFLAKE_SCHEMA_NEW
+        nullable: true
+        sourceColumnReferences:
           - columnReferences:
-              - columnCounter: b4679835-de41-4a83-87bd-e625005192d8
-                stepCounter: b77be2d5-379c-4efc-aacd-b5e7896bf012
-            transform: ""
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'TRX_' || \"STG_TRUX_DATA_SY03\".\"SY03_CODE\" || '_DBO'"
+        systemColumnType: None
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          STG_TRUX_DATA_SY03: d6c0ec69-5a44-423c-b330-dff376fbb71f
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: MASTER_DATA
-            nodeName: STG_MIDWEST_SY03
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TRUX_DATA_SY03
         join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'STG_MIDWEST_SY03') }} "STG_MIDWEST_SY03"
-        name: STG_SY03
+          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'STG_TRUX_DATA_SY03') }} "STG_TRUX_DATA_SY03"
+        name: TRUX_DATABASE_METADATA
         noLinkRefs: []
   name: TRUX_DATABASE_METADATA
   overrideSQL: false

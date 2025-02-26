@@ -641,15 +641,7 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          ADDRESS_COMBINED: fbe45288-4a07-432c-acda-23662c07ee60
-          EQUIPMENTCATEGORY_COMBINED: 4dc15b1b-41e6-44b1-9366-cc2086903b40
-          SERVICECODE_COMBINED: 9c12b8a3-4a55-4177-86d0-cf171716c622
-          SERVICEFREQUENCY_COMBINED: f0b8aa18-97f2-46c1-8686-63242f98f160
-          SERVICEINFO_COMBINED: 2b620489-23e0-4efd-8d2b-1b24b49853c4
-          SERVICELOCATION_COMBINED: 7e654823-9c79-4f99-90d1-eebf941628c0
-          SERVICE_COMBINED: fcf37f89-5794-47c7-83e2-7dc1b52e6b30
-          SITE_COMBINED: d0ee8791-10a2-4747-967f-b22621b20d21
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
@@ -666,9 +658,9 @@ operation:
           - locationName: TOWER_COMBINED
             nodeName: SERVICEINFO_COMBINED
           - locationName: TOWER_COMBINED
-            nodeName: SERVICELOCATION_COMBINED
-          - locationName: TOWER_COMBINED
             nodeName: SITE_COMBINED
+          - locationName: TOWER_RAW
+            nodeName: SERVICELOCATION
         join:
           joinCondition: |2-
              FROM {{ ref('TOWER_COMBINED', 'SITE_COMBINED') }} "SITE_COMBINED"
@@ -688,11 +680,11 @@ operation:
             INNER JOIN {{ ref('TOWER_COMBINED', 'SERVICEFREQUENCY_COMBINED') }} "SERVICEFREQUENCY_COMBINED"
                ON "SERVICEINFO_COMBINED"."SVCFREQUENCY" = "SERVICEFREQUENCY_COMBINED"."SERVICEFREQUENCY"
             
-            INNER JOIN {{ ref('TOWER_COMBINED', 'SERVICELOCATION_COMBINED') }} "SERVICELOCATION_COMBINED"
-               ON "SITE_COMBINED"."SERVICELOCATION" = "SERVICELOCATION_COMBINED"."SERVICELOCATION"
+            INNER JOIN {{ ref('TOWER_RAW', 'SERVICELOCATION') }} "SERVICELOCATION"
+               ON "SITE_COMBINED"."SERVICELOCATION" = "SERVICELOCATION"."SERVICELOCATION"
             
             INNER JOIN {{ ref('TOWER_COMBINED', 'ADDRESS_COMBINED') }} "ADDRESS_COMBINED"
-               ON "SERVICELOCATION_COMBINED"."SERVICEADDRESSUID" = "ADDRESS_COMBINED"."ADDRESSUID"
+               ON "SERVICELOCATION"."SERVICEADDRESSUID" = "ADDRESS_COMBINED"."ADDRESSUID"
         name: TOWER_SERVICE_MASTER
         noLinkRefs: []
   name: TOWER_SERVICE_MASTER

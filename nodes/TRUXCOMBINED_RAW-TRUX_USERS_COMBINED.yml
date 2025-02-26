@@ -11,7 +11,7 @@ operation:
   database: ""
   deployEnabled: true
   description: ""
-  isMultisource: true
+  isMultisource: false
   locationName: TRUXCOMBINED_RAW
   materializationType: table
   metadata:
@@ -28,13 +28,9 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: df413767-0ae2-4c5b-b2ec-e22901df392f
-                stepCounter: b5650b3d-300d-4aac-81ce-b0490e4aad88
-            transform: TRIM("MIDWEST_USER"."USER_CODE")
-          - columnReferences:
-              - columnCounter: 95fb990b-f07c-49de-ac0a-04a481b95ba6
-                stepCounter: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
-            transform: TRIM("LEGACY_USER"."USER_CODE")
+              - columnCounter: 0d312011-6b1f-4228-a2fa-bdcd91031bf9
+                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
+            transform: TRIM("TRUX_DATA_USER"."USER_CODE")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 9935785d-2c98-40d9-bc33-69695e6229fc
@@ -46,12 +42,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 11e50487-51be-4d48-873c-0b6c13b8652b
-                stepCounter: b5650b3d-300d-4aac-81ce-b0490e4aad88
-            transform: ""
-          - columnReferences:
-              - columnCounter: 728850f5-62c9-4e4e-bdcd-911f6bf89eb2
-                stepCounter: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
+              - columnCounter: aa66c439-f68e-487f-95f8-802f8c3c3a91
+                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -64,12 +56,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 63a5e2f2-3864-4d1b-856e-dc2c50e6ba60
-                stepCounter: b5650b3d-300d-4aac-81ce-b0490e4aad88
-            transform: ""
-          - columnReferences:
-              - columnCounter: 7b1b5198-6edd-4d89-a36e-eaba6bcf7986
-                stepCounter: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
+              - columnCounter: 81a4495a-142a-42e5-9d66-114298eeaf15
+                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -82,12 +70,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5f7580c3-ee38-4e51-bef7-6eca0a2f7c31
-                stepCounter: b5650b3d-300d-4aac-81ce-b0490e4aad88
-            transform: ""
-          - columnReferences:
-              - columnCounter: 3bd8f59a-5550-4c1d-b243-74bd393c1756
-                stepCounter: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
+              - columnCounter: 2bf4fb02-4ee3-40b0-b173-118245fadfab
+                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -100,12 +84,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: fbb3629b-3f8b-4094-8f96-857266cf3278
-                stepCounter: b5650b3d-300d-4aac-81ce-b0490e4aad88
-            transform: ""
-          - columnReferences:
-              - columnCounter: 8ee89c9d-ce69-45dd-b257-a2a227d3b4d4
-                stepCounter: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
+              - columnCounter: 6d52465d-db91-4f7c-9b22-e698aea807a0
+                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -118,81 +98,21 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: eb32258b-dc0d-4230-9ca2-f5396661e6bd
-                stepCounter: b5650b3d-300d-4aac-81ce-b0490e4aad88
+              - columnCounter: fbafe517-85e8-4b83-b86c-0e0908a11fd6
+                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
             transform: ""
-          - columnReferences:
-              - columnCounter: f8eb764b-32f3-46e2-92bc-6a91c8f36641
-                stepCounter: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f9c641bc-80bb-45f5-beeb-03778e65c596
-          stepCounter: f5c3eeaa-cd6b-437a-a31c-1ea82038ab6b
-        config: {}
-        dataType: VARCHAR(50)
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: SERVER_USER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: "'MIDWEST-'||TRIM(\"MIDWEST_USER\".\"USER_CODE\")"
-          - columnReferences: []
-            transform: "'LEGACY-'||TRIM(\"LEGACY_USER\".\"USER_CODE\")"
-        systemColumnType: None
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7335a0a3-e8b8-4e19-9d03-2c2e9469d914
-          stepCounter: f5c3eeaa-cd6b-437a-a31c-1ea82038ab6b
-        config: {}
-        dataType: VARCHAR(50)
-        defaultValue: ""
-        description: ""
-        keyColumnType: None
-        name: SQL_SERVER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: "'MIDWEST'"
-          - columnReferences: []
-            transform: "'LEGACY'"
-        systemColumnType: None
-        transform: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: MASTER_DATA
-            nodeName: MIDWEST_USER
-        join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'MIDWEST_USER') }} "MIDWEST_USER"
-        name: MIDWEST_USER
-        noLinkRefs: []
       - aliases:
-          LEGACY_USER: dbb19d5c-cbf6-44e9-a42f-0e9504da6a25
+          TRUX_DATA_USER: 195bdc52-d09e-44a4-b7df-d3872bd83064
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: MASTER_DATA
-            nodeName: LEGACY_USER
+            nodeName: TRUX_DATA_USER
         join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'LEGACY_USER') }} "LEGACY_USER"
-        name: LEGACY_USER
+          joinCondition: FROM {{ ref('MASTER_DATA', 'TRUX_DATA_USER') }} "TRUX_DATA_USER"
+        name: TRUX_USERS_COMBINED
         noLinkRefs: []
   name: TRUX_USERS_COMBINED
   overrideSQL: false

@@ -468,9 +468,9 @@ operation:
                 stepCounter: "0"
             transform: |-
               CASE 
-                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR "CM03_COMBINED"."CM03_CDTE" > GETDATE() THEN 1
+                WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL OR TO_DATE("CM03_COMBINED"."CM03_CDTE") > CURRENT_DATE() THEN 1
                 ELSE 0
-              END 
+              END
           - columnReferences: []
             transform: |-
               CASE 
