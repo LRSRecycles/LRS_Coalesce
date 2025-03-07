@@ -1,0 +1,118 @@
+fileVersion: 1
+id: 7207b4a4-f73f-40aa-870a-ea7867420379
+name: CDC_NODE
+operation:
+  config:
+    undefined: null
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 77ff503e-8a86-492c-aaae-c2938f5588a9
+          stepCounter: 7207b4a4-f73f-40aa-870a-ea7867420379
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: Indicates the DML operation (INSERT, DELETE) recorded.
+        isStreamMetadataAction: true
+        name: METADATA$ACTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$ACTION
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 88fad62c-a237-48ad-bc5c-49096f768685
+          stepCounter: 7207b4a4-f73f-40aa-870a-ea7867420379
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: Indicates whether the operation was part of an UPDATE statement.
+        isStreamMetadataIsUpdate: true
+        name: METADATA$ISUPDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$ISUPDATE
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 146505f8-4900-416c-99eb-d89c44d8a0f0
+          stepCounter: 7207b4a4-f73f-40aa-870a-ea7867420379
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: Specifies the unique and immutable ID for the row, which can be used to track changes to specific rows over time.
+        isStreamMetadataRowId: true
+        name: METADATA$ROW_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$ROW_ID
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79053c8b-7cc7-4693-a2b9-19d19b6c4d16
+          stepCounter: 7207b4a4-f73f-40aa-870a-ea7867420379
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: specific CDC identifier based on a sequence.
+        isStreamMetadataCDCId: true
+        name: CDC_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8ebf6858-ecc9-454c-9d25-7fc0b15d6410
+          stepCounter: 7207b4a4-f73f-40aa-870a-ea7867420379
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: specific attribute containing the timestamp of storing the CDC record.
+        isSystemCreateDate: true
+        name: CDC_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: CDC_NODE
+        noLinkRefs: []
+  name: CDC_NODE
+  overrideSQL: false
+  schema: ""
+  sqlType: "6"
+  type: sql
+  version: 1
+type: Node
