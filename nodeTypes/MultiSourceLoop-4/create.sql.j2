@@ -29,7 +29,7 @@
     {% for source in sources %}
         SELECT
         {% for col in source.columns %}
-            {{ get_source_transform(col) }} AS "{{ col.name }}"
+            {{ col.source }}.{{ col.name }} AS "{{ col.name }}"
             {%- if not loop.last -%}, {% endif %}
         {% endfor %}
         {{ source.join }}

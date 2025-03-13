@@ -1,0 +1,169 @@
+fileVersion: 1
+id: b46b78c7-956f-484b-93f4-48110742484a
+name: STG_BK01_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc3abffd-6a6c-4396-b6bb-8835fce737b6
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: BK01_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bcbe8af6-94fa-4557-a303-0c1d584a77b2
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a7a83c7-63c5-4653-907a-ba42699d02ba
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: BK01_HNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 696d6d6b-f5c3-47ee-ae5e-40c7efb599bf
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5fd29baf-eb00-4d89-9a78-2f6f7484d644
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        name: BK01_HID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8e589317-20ba-45db-a366-db7b6a638451
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 829e1bd0-60c6-4262-a77b-3e1690f44205
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BK01_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6f8760ba-11d8-428c-be03-cd902c3497c4
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7df5ba53-5429-40c4-98c3-93bbf488f8c0
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: BK01_CLASSNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 55a49c6c-1763-4ce8-957f-1c2a7967dce6
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dd82ddfa-4125-4ea6-8029-0b2ffabc2411
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: BK01_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 57c65e63-3682-47d6-8dae-a394c8989f6f
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 50432f84-cfc9-4daa-a6aa-d3d2ca76acdb
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2db5aaa7-e065-414a-8629-66568b10e6a8
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 92f2114a-a8de-4473-8593-4999eedeac90
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6db43822-2603-49cd-8485-e4876ceccc25
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3248d6c1-3ccf-43b3-b5ad-4e436a932269
+          stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 466036bf-ef74-4ea2-b2e7-e9a18ea7aff0
+                stepCounter: e474881b-b808-4cc2-92c2-47f5addb8379
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BK01_COMBINED: e474881b-b808-4cc2-92c2-47f5addb8379
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: BK01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'BK01_COMBINED') }} "BK01_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
+        name: STG_BK01_COMBINED
+        noLinkRefs: []
+  name: STG_BK01_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
