@@ -1,0 +1,99 @@
+fileVersion: 1
+id: d61c3736-9a92-40db-a1df-325f8e00bd4a
+name: SITE_START_DATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 484b1b8e-76f8-4b0e-bee6-e2e37ea62d1c
+          stepCounter: d61c3736-9a92-40db-a1df-325f8e00bd4a
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 97149e71-6369-4344-a8d7-cf2b2aebc347
+                stepCounter: f0c2fd83-a226-448c-9861-65172e3db6b5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e3a81ede-0f4d-4a3d-94ee-0173cb46d600
+          stepCounter: d61c3736-9a92-40db-a1df-325f8e00bd4a
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SITE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e98adae7-d7bf-4abb-865d-91b43ea3a267
+                stepCounter: f0c2fd83-a226-448c-9861-65172e3db6b5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 058a8710-a1e5-41ce-b77c-774dd52d113e
+          stepCounter: d61c3736-9a92-40db-a1df-325f8e00bd4a
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: SiteStartDate
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "MIN(\"SITE_START_DATE_INNER_JOIN\".CM19_EFFD) "
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16deca45-3754-4589-adc6-ac98641323d4
+          stepCounter: d61c3736-9a92-40db-a1df-325f8e00bd4a
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 03210571-9fd1-4b89-a7b5-5a56d13ef598
+                stepCounter: f0c2fd83-a226-448c-9861-65172e3db6b5
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SITE_START_DATE_INNER_JOIN: f0c2fd83-a226-448c-9861-65172e3db6b5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SITE_START_DATE_INNER_JOIN
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SITE_START_DATE_INNER_JOIN') }} "SITE_START_DATE_INNER_JOIN"
+            
+            WHERE "SITE_START_DATE_INNER_JOIN".RN = 1
+            
+            GROUP BY CM19_CUST, CM19_SITE, "SITE_START_DATE_INNER_JOIN"."SOURCE"
+        name: SITE_START_DATE
+        noLinkRefs: []
+  name: SITE_START_DATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

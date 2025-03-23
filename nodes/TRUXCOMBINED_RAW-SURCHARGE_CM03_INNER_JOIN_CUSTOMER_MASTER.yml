@@ -1,0 +1,115 @@
+fileVersion: 1
+id: 7295739f-88c5-4348-b73f-5f006ada3215
+name: SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 06dcfc41-f463-4aa4-a6ff-a3996a340884
+          stepCounter: 7295739f-88c5-4348-b73f-5f006ada3215
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM03_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1708ec29-a9e4-433a-92c2-1717c5e44466
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences:
+              - columnCounter: 9c90e8dc-fbcb-4aab-948e-10e5e0735749
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bb0c15ac-d57b-4788-a5ac-3ee4ea58c13d
+          stepCounter: 7295739f-88c5-4348-b73f-5f006ada3215
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM04_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "0"
+          - columnReferences:
+              - columnCounter: 6fdff7ab-24cf-4cbc-9caa-e0fc0fccddd4
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7ce27da2-26e5-44e0-a3f6-aa97f27b70ca
+          stepCounter: 7295739f-88c5-4348-b73f-5f006ada3215
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aed0d01f-7ce0-4529-a734-0b28c7445d71
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences:
+              - columnCounter: 98f0cd51-e1a6-4a6f-8ff7-bd9982d1c93c
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_CM03_COMBINED_FILTERED: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM03_COMBINED_FILTERED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
+
+            WHERE COALESCE(CM03_CDTE, '2069-12-31') > GETDATE()
+        name: CM03
+        noLinkRefs: []
+      - aliases:
+          STG_CM04_COMBINED: 0af6c022-441d-44b9-83d1-a27a9c20205f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM04_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED"
+        name: CM04
+        noLinkRefs: []
+  name: SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

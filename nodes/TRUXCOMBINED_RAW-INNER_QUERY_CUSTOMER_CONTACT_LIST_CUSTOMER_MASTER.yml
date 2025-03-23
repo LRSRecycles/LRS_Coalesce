@@ -1,0 +1,167 @@
+fileVersion: 1
+id: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+name: INNER_QUERY_CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 54748a09-0720-465e-ac5e-6d822778f589
+          stepCounter: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c43511e0-a407-458e-9c8b-3de703ac0c5d
+                stepCounter: 4229827b-5a38-424b-b0d7-5b090b3782d4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39bec540-06eb-4f5c-b0b6-70c60926f09e
+          stepCounter: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CC01_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c795d258-9dd5-42d8-8d9a-8bd453ce45ae
+                stepCounter: 78df01db-85f6-4c22-94f1-1c8e962f909f
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc9575f5-a841-4af2-b5a2-8cc33991f531
+          stepCounter: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CC01_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ddc0198c-33de-4449-a529-ee316b0ea40c
+                stepCounter: 78df01db-85f6-4c22-94f1-1c8e962f909f
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e736e058-df63-4671-bd29-1660550cd821
+          stepCounter: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CC01_EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1f72f82e-ba5b-4b68-adfd-a13080e488ac
+                stepCounter: 78df01db-85f6-4c22-94f1-1c8e962f909f
+            transform: LOWER(LTRIM(RTRIM("CC01_COMBINED".CC01_EMAIL)))
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7b1c0bac-aac2-4454-a29c-63c8b17b3a26
+          stepCounter: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CC01_SHARED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3c02080e-0c9f-4afa-8733-4a01af4e5cb8
+                stepCounter: 78df01db-85f6-4c22-94f1-1c8e962f909f
+            transform: MAX(CAST("CC01_COMBINED".CC01_SHARED AS INT))
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3d57983f-10e9-41f2-a9fa-9117e45f2dee
+          stepCounter: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: EMAIL_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1f72f82e-ba5b-4b68-adfd-a13080e488ac
+                stepCounter: 78df01db-85f6-4c22-94f1-1c8e962f909f
+            transform: COUNT("CC01_COMBINED".CC01_EMAIL)
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CC01_COMBINED: 78df01db-85f6-4c22-94f1-1c8e962f909f
+          EN01_COMBINED: 4229827b-5a38-424b-b0d7-5b090b3782d4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CC01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: EN01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'EN01_COMBINED') }} "EN01_COMBINED"
+
+
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CC01_COMBINED') }} "CC01_COMBINED" 
+            ON  "EN01_COMBINED".EN01_LINK = "CC01_COMBINED".CC01_NUM
+            AND "EN01_COMBINED".SOURCE = "CC01_COMBINED".SOURCE
+            WHERE "EN01_COMBINED".EN01_TYPE = 1
+            AND "EN01_COMBINED"."_FIVETRAN_DELETED" = FALSE
+            AND "CC01_COMBINED"."_FIVETRAN_DELETED" = FALSE
+            GROUP BY ALL
+        name: INNER_QUERY_CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+        noLinkRefs: []
+  name: INNER_QUERY_CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

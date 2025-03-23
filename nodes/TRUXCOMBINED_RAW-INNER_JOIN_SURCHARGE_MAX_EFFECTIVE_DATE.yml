@@ -1,0 +1,88 @@
+fileVersion: 1
+id: baf54276-edd4-453b-986e-44fd9f16a308
+name: INNER_JOIN_SURCHARGE_MAX_EFFECTIVE_DATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad748744-b41e-4b1d-bf7f-a4cba38b8960
+          stepCounter: baf54276-edd4-453b-986e-44fd9f16a308
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LNK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fe9c74ef-22a4-495e-909e-095138a37c85
+                stepCounter: b9c350b0-dbd3-4f4d-8e1c-7d8b2b4b7e99
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12a8b195-6b23-477e-858a-cfc8784460fd
+          stepCounter: baf54276-edd4-453b-986e-44fd9f16a308
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: EFFD
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: MAX("STG_SP04_COMBINED"."SP04_EFFD")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 938a08fd-306b-443d-b1da-505738cd737c
+          stepCounter: baf54276-edd4-453b-986e-44fd9f16a308
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 81cf877f-7fda-4bf5-b683-d7cbc8391a7f
+                stepCounter: b9c350b0-dbd3-4f4d-8e1c-7d8b2b4b7e99
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_SP04_COMBINED: b9c350b0-dbd3-4f4d-8e1c-7d8b2b4b7e99
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_SP04_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_SP04_COMBINED') }} "STG_SP04_COMBINED"
+
+            WHERE "SP04_EFFD" <= GETDATE()
+            AND "SP04_CUST" IS NULL
+            AND "SP04_SITE" IS NULL
+
+            GROUP BY "SP04_LINK", 
+            SOURCE
+        name: INNER_JOIN_SURCHARGE_MAX_EFFECTIVE_DATE
+        noLinkRefs: []
+  name: INNER_JOIN_SURCHARGE_MAX_EFFECTIVE_DATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

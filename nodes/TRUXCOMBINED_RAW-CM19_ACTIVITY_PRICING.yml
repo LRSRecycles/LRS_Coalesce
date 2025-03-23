@@ -1,0 +1,113 @@
+fileVersion: 1
+id: 2de20ed0-e859-405d-95f1-0a7b25d455d9
+name: CM19_ACTIVITY_PRICING
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7b61ae35-427a-4869-9e2c-aabfdb1092a8
+          stepCounter: 2de20ed0-e859-405d-95f1-0a7b25d455d9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a92545fc-09f7-45cc-af71-ad5a94525d4b
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aed190c3-4bfa-4ea0-953e-fd13cde9f031
+          stepCounter: 2de20ed0-e859-405d-95f1-0a7b25d455d9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SITE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aca0556f-0640-4aff-bc0c-8a23e6771f4f
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5bf9f030-ae0e-4802-a6f3-eaf14d879b5f
+          stepCounter: 2de20ed0-e859-405d-95f1-0a7b25d455d9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SERV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: af6ac132-a0aa-4ec3-9c3f-a47f249b3f12
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89bb0eba-1453-4c54-a3a1-4a5f96dc8e5f
+          stepCounter: 2de20ed0-e859-405d-95f1-0a7b25d455d9
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM19_ACTV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 48d02d3d-aba0-4f18-ba30-7a6912bcd376
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eb0c5bd4-c0e3-48fb-9820-86747db5900d
+          stepCounter: 2de20ed0-e859-405d-95f1-0a7b25d455d9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8d7cd413-395b-44f1-9a55-2186ea5dddc8
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_CM19_COMBINED: 629e5313-2385-4ef2-b113-2583d5d40b3c
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM19_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM19_COMBINED') }} "STG_CM19_COMBINED"
+
+            GROUP BY CM19_CUST, CM19_SITE, CM19_SERV, CM19_ACTV, "SOURCE"
+        name: CM19_ACTIVITY_PRICING
+        noLinkRefs: []
+  name: CM19_ACTIVITY_PRICING
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

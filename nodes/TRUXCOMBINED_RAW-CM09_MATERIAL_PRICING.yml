@@ -1,0 +1,141 @@
+fileVersion: 1
+id: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+name: CM09_MATERIAL_PRICING
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3dbb78b4-04cd-45f5-b01f-58c30a6490af
+          stepCounter: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM09_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7e1d91f7-2559-4d21-aec7-f09be5955ac4
+                stepCounter: 2ee45e25-cf37-43ae-8011-752b18a9375f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6f85982-0ed0-4942-be58-aeb6fc56c23b
+          stepCounter: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM09_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad37563f-bb1d-46f2-9c2b-c6698dbeb65e
+                stepCounter: 2ee45e25-cf37-43ae-8011-752b18a9375f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 165696cb-01ca-4c0b-bdc1-147d25e1026d
+          stepCounter: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM09_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d6446979-6c61-4ec3-b21d-87d001a27053
+                stepCounter: 2ee45e25-cf37-43ae-8011-752b18a9375f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 116600fd-232f-4289-be75-2c7bae9c56e2
+          stepCounter: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM09_MATL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b427762f-3d57-4da3-be61-61546f4307ef
+                stepCounter: 2ee45e25-cf37-43ae-8011-752b18a9375f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 88ec90cd-a585-43e1-adee-2ecea57e05b5
+          stepCounter: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM09_UOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5eaeb67c-c70a-4fce-9aef-a1659a51c03b
+                stepCounter: 2ee45e25-cf37-43ae-8011-752b18a9375f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b144ca9-d7ba-4ab5-a2c4-97620eede2f2
+          stepCounter: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        config: {}
+        dataType: VARCHAR(4)
+        description: ""
+        name: CM09_DSTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b67c3546-02f5-4957-8200-61c0705b01cc
+                stepCounter: 2ee45e25-cf37-43ae-8011-752b18a9375f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 341efbc2-3e6e-4ba3-bbb3-b6c3bb178eb4
+          stepCounter: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b786151b-a487-4b3b-990a-7b81dc8e6ee0
+                stepCounter: 2ee45e25-cf37-43ae-8011-752b18a9375f
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_CM09_COMBINED: 2ee45e25-cf37-43ae-8011-752b18a9375f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM09_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM09_COMBINED') }} "STG_CM09_COMBINED"
+            
+            GROUP BY ALL
+        name: CM09_MATERIAL_PRICING
+        noLinkRefs: []
+  name: CM09_MATERIAL_PRICING
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

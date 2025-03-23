@@ -1,0 +1,126 @@
+fileVersion: 1
+id: 86741daa-c181-4eff-9642-61ae22be40ff
+name: SURCHARGE_PART_2_CUSTOMER_MASTER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9da15fbc-4e63-4da9-b02e-9e66efd43456
+          stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM03_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: t2."CM03_CUST"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b35c67ce-9ebd-4ae3-b1c1-2cff9793e367
+          stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM04_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: IFNULL(t2.CM04_SITE,0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6b43b930-e68d-4a35-8357-5f9eece588c9
+          stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: t2."SOURCE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4348519-df45-43f2-97e9-fa52cee3f4de
+          stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SCHID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: T2."SCHID"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 430a6000-23c2-47bf-8785-0ae634ef544a
+          stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Surcharge
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              LTRIM(
+                      LISTAGG(' - ' || t1.SP01LF_NAME, '') 
+                      WITHIN GROUP (ORDER BY t1.SP01LF_NAME), 
+                      ' - '
+                  )
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          T1: 4355fdfd-916e-4c5b-8d5b-d54914cda979
+          T2: 4355fdfd-916e-4c5b-8d5b-d54914cda979
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SURCHARGE_CUSTOMER_MASTER
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_CUSTOMER_MASTER') }} t2
+
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_CUSTOMER_MASTER') }} t1
+            ON t1.CM03_CUST = t2.CM03_CUST
+            AND IFNULL(t1.CM04_SITE, 0) = IFNULL(t2.CM04_SITE, 0)
+            AND t1."SOURCE" = t2."SOURCE"
+
+            GROUP BY 
+                t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0), t2.SOURCE, t2."SCHID"
+
+            ORDER BY 
+                t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0)
+        name: SURCHARGE_PART_2_CUSTOMER_MASTER
+        noLinkRefs: []
+  name: SURCHARGE_PART_2_CUSTOMER_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

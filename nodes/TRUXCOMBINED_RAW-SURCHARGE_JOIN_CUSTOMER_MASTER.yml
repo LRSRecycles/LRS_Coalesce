@@ -1,0 +1,233 @@
+fileVersion: 1
+id: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+name: SURCHARGE_JOIN_CUSTOMER_MASTER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 67049ebc-7cd3-4927-bbb6-f4de49d48cdc
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM03_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 06dcfc41-f463-4aa4-a6ff-a3996a340884
+                stepCounter: 7295739f-88c5-4348-b73f-5f006ada3215
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 99a5e6ab-efb0-4a32-89f8-4d4906b3cc59
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM04_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bb0c15ac-d57b-4788-a5ac-3ee4ea58c13d
+                stepCounter: 7295739f-88c5-4348-b73f-5f006ada3215
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c095a907-70e4-4a85-876b-74994bef60ba
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7ce27da2-26e5-44e0-a3f6-aa97f27b70ca
+                stepCounter: 7295739f-88c5-4348-b73f-5f006ada3215
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1558e538-c939-4de4-89e3-75c2ca1161ec
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SCHID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: S1.SP01_ID
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74360c1f-ba2e-4521-8685-598ccb311ebb
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SP01LF_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "S1.SP01_NAME "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c687eca7-4636-4c3b-854b-0318ee271b2c
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: INCLUDE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE
+              WHEN (S1.SP01_DEFA = 1 AND
+                    SP03_CUST IS NULL
+                  ) OR
+                    (S1.SP01_DEFA = 0 AND
+                     SP03_CUST IS NOT NULL
+                  )
+              THEN 1
+              ELSE 0
+              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73b662d1-30d9-47c8-9d8b-4bd9625652fd
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SP04_RATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE
+                                  WHEN CR.SP04_RATE IS NULL
+                                  THEN DR.SP04_RATE
+                                  ELSE CR.SP04_RATE
+                              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3f1bb85f-a08a-4a72-9187-172282dcff5d
+          stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SP04_RATETYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE
+                                  WHEN CR.SP04_RATETYPE IS NULL
+                                  THEN DR.SP04_RATETYPE
+                                  ELSE CR.SP04_RATETYPE
+                              END
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CR: 2bdb5c69-af2a-4bc6-bdff-68db3ef66d03
+          DR: 8c3ee68e-1e61-4073-88af-a718ed9b1468
+          S1: 168c981f-a7da-4794-a4ed-188c34b07c73
+          S3: 880b4537-5701-49d2-9087-95782f0eb23b
+          SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER: 7295739f-88c5-4348-b73f-5f006ada3215
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SP03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SURCHARGE_DEFAULT_RATE_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SURCHARGE_DEFAULT_RATE_SECOND_JOIN_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SURCHARGE_PARAMETER_CONFIGURATION_CUSTOMER_MASTER
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER') }} "SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER"
+
+            CROSS JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_PARAMETER_CONFIGURATION_CUSTOMER_MASTER') }} S1
+
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SP03_COMBINED') }} S3
+            ON S3.SP03_LINK = S1.SP01_ID
+            AND S3.SP03_CUST = CM03_CUST
+            AND IFNULL(S3.SP03_SITE, 0) = IFNULL(CM04_SITE, 0)
+            AND S3.SOURCE = "SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER".SOURCE
+
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_DEFAULT_RATE_CUSTOMER_MASTER') }} CR 
+            ON CR.SP04_LINK = S1.SP01_ID
+            AND CR.SP04_CUST = CM03_CUST
+            AND IFNULL(CR.SP04_SITE, 0) = IFNULL(CM04_SITE, 0)
+            AND CR.SOURCE = "SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER".SOURCE
+
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_DEFAULT_RATE_SECOND_JOIN_CUSTOMER_MASTER') }} DR 
+            ON DR.SP04_LINK = S1.SP01_ID
+            AND DR.SOURCE = S1.SOURCE
+        name: SURCHARGE_JOIN_CUSTOMER_MASTER
+        noLinkRefs: []
+  name: SURCHARGE_JOIN_CUSTOMER_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

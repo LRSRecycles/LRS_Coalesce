@@ -1,0 +1,317 @@
+fileVersion: 1
+id: d10e8397-b96b-42b4-b54f-57b749e34338
+name: GET_NEXT_PRICING_CHANGE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec111deb-ebe0-400b-b8bf-aa42563846bd
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3c136abc-96a5-4675-9666-8b2ebcfc8bb8
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ebd7995-fc15-426a-9c8b-3802a53addcd
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SITE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 81a6f11d-3669-48c2-aaec-4e6ffe8d15fc
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b73f83e5-13a2-4186-a6af-1986286feadc
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_SERV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 74b3df2d-ad14-41ec-9826-cb4c20b5affc
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 50c8a80d-62d5-415a-b244-d08567386dba
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM19_ACTV
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5f4f7d68-219a-4b6b-9120-8882c06986b9
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: af7961e6-f6c8-45e2-a416-2c6b2f457293
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: CM19_UNIT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a83d775e-40a0-4f9c-a98e-9971230986e2
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ccd6ec4c-928a-4019-a0e4-f4de2482ce8d
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: CM19_RATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5cf383f7-28e6-4585-814f-5fc4d68fab63
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: aba07fbc-8bd4-4ea6-85e2-25926c6b8815
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Activity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                  WHEN LTRIM(RTRIM(IFNULL(CM19_DESC,''))) <> '' 
+                  THEN LTRIM(RTRIM(CM19_DESC))
+                  ELSE CM12_DESC
+              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: da98a443-22a8-4b1f-8226-7e061b2d698e
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Unit
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE CM19_UNIT  
+                  WHEN '2' THEN '28 Day'
+                  WHEN 'D' THEN 'Day'
+                  WHEN 'M' THEN 'Month'
+                  WHEN 'P' THEN 'Per Stop'
+                  WHEN 'Q' THEN 'Quarter'
+                  WHEN 'S' THEN 'Service'
+                  WHEN 'V' THEN 'Volume'
+                  WHEN 'W' THEN 'Week'
+                  WHEN 'Y' THEN 'Year'
+              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ccd807ef-6f39-44a1-921a-67c28d0caf9b
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Monthly Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE CM19_UNIT 
+                  WHEN '2' THEN ( (365/28.0) * CM19_RATE ) / 12.0  
+                  WHEN 'D' THEN (365.0 * CM19_RATE) / 12.0
+                  WHEN 'M' THEN CM19_RATE * 1.0
+                  WHEN 'Q' THEN (  4.0 * CM19_RATE) / 12.0
+                  WHEN 'W' THEN ((CM19_RATE / 7.0) * 365) / 12.0
+                  WHEN 'Y' THEN CM19_RATE / 12.0
+                  ELSE NULL
+              END
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b90bbcb5-ea61-45e7-a4f7-6c1daa65e5ed
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: CM19_EFFD
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28cf3a4d-6bf2-4cc3-a83b-1d76698a6407
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3604451f-82c3-4cf7-ba21-3ce656047201
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM19_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e9c3913c-a31e-4bb6-8978-197d1acb51ad
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e61a0b3b-115d-4a84-be64-ee7795cbbeaf
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: CM19_BILL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e9b53a43-2b92-410e-a0f3-191b069f3d37
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1ccc7f2-54fd-4f93-9255-4e58fb611cd4
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: CM19_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b8ef47a3-06cf-4ae2-b4dd-43c8bdc20114
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: baee409c-5790-40fe-b648-a283d7332179
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bfcae7d3-458e-4465-9bbc-d238f858972b
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a44c4bf6-de50-4431-b330-445e8c2be80d
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: CM19_ENDD
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 66d43737-c7d7-4113-a577-386d29d75a37
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97886211-5d75-413b-8850-55d69d1c2777
+          stepCounter: d10e8397-b96b-42b4-b54f-57b749e34338
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: RN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 810d2368-e586-4edd-be57-fa52a72ee39c
+                stepCounter: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CM12: 4d57f46f-ef85-4768-b448-acd77154ee4e
+          GET_NEXT_PRICING_CHANGE_ORDER_PRICING: ae47d2e0-341f-4218-97fe-d991ee9b16d4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: GET_NEXT_PRICING_CHANGE_ORDER_PRICING
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM12_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'GET_NEXT_PRICING_CHANGE_ORDER_PRICING') }} GET_NEXT_PRICING_CHANGE_ORDER_PRICING
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM12_COMBINED') }} CM12
+            ON CM19_ACTV = CM12_CODE
+            AND GET_NEXT_PRICING_CHANGE_ORDER_PRICING."SOURCE" = CM12."SOURCE"
+            
+            WHERE RN = 1 
+        name: GET_NEXT_PRICING_CHANGE
+        noLinkRefs: []
+  name: GET_NEXT_PRICING_CHANGE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

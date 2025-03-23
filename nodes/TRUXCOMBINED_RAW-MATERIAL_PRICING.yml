@@ -1,0 +1,600 @@
+fileVersion: 1
+id: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+name: MATERIAL_PRICING
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e73c9bb8-6480-4aa6-b192-1ad9b536f52e
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: RATE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'M'"
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c6cbcb9-6ac6-4ec3-bc3f-cab1993a9d1c
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM09_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: t1."CM09_CUST"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d0df901-0fe1-4f6b-beb5-b36952b06828
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM09_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: t1."CM09_SITE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 716ed494-e67a-4578-b166-c1c867b16878
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM09_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: IFNULL(t1.CM09_SERV,0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 904c26a4-59e8-49c9-ba6d-983b936e7c3c
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM09_MATL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: t1."CM09_MATL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a0076db-4661-4299-a3ef-9d8f4c304311
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM09_UOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: " IFNULL(t1.CM09_UOM ,'')"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ce53bb00-640e-4c59-a17a-cd8cd91a23fc
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR(4)
+        description: ""
+        name: CM09_DSTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: IFNULL(t1.CM09_DSTE,'')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b6186250-ec22-4b67-8df8-facfa59fb1af
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: t1."SOURCE"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bcc5bc45-e21f-4e77-8859-677e429fa292
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Disposal Facility
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: LM01_NAME
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 60a500ba-68a9-463e-8df0-7efd9a0e7085
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Disposal Facility Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              UPPER(TRIM(LM01_STRT)) || ', ' || UPPER(TRIM(LM01_CITY)) || ' ' || UPPER(TRIM(LM01_STAT))
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0da43dd0-f362-4209-a767-9bd4a9267cae
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Material Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "LM04_DESC "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61660485-5e40-4aa0-86ae-59833f948b4d
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Current Billing UoM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "IFNULL(CM09curr.CM09_UOM,'') "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cbb94d38-5b5d-44aa-87c9-a2328427b407
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Current Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CM09curr.CM09_RATE
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a33229f-3bee-4d2e-9491-ee30f4c81f83
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Current Effective Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "CM09curr.CM09_EFFD "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4728d9f4-21d1-417e-9837-c23ab8eb020e
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Current End Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "CM09curr.CM09_ENDD "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e5ea2cb-7f12-42a6-bc31-b54710e2d57f
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Current MIN/MAX CAP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE IFNULL(CM09curr.CM09_TYPE,'')
+                  WHEN 0 THEN 'Minimum'
+                  WHEN 1 THEN 'Maximum'
+                  ELSE ''
+              END 
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4dd68760-a7d8-4c4b-8fec-266d2435d05c
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Current Rate Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE IFNULL(CM09curr.CM09_PRICETYPE,'')
+                  WHEN 'F' THEN 'Fixed'
+                  WHEN 'V' THEN 'Variable'
+                  ELSE ''
+              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e5d9c82-8ff2-4401-9142-a50830415e4f
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Current Weight Cap
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CM09curr.CM09_CAP
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28d94cc9-66df-4c1d-a341-aa9b7d9bcd8f
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Prior Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CM09Prior.CM09_RATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb6e4608-b3c1-4bc3-96ea-c8ce60eaf8cd
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Prior Effective Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "CM09Prior.CM09_EFFD "
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1f9cc040-9551-4d4a-b260-6635e8d21f16
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Prior End Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "CM09Prior.CM09_ENDD "
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d561640-9357-4f36-87d2-6aa10781af13
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Prior MIN/MAX CAP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE IFNULL(CM09Prior.CM09_TYPE,'')
+                  WHEN 0 THEN 'Minimum'
+                  WHEN 1 THEN 'Maximum'
+                  ELSE ''
+              END 
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e663f3aa-ceb0-4653-ba3f-6192c7939f98
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Prior Rate Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE IFNULL(CM09Prior.CM09_PRICETYPE,'')
+                  WHEN 'F' THEN 'Fixed'
+                  WHEN 'V' THEN 'Variable'
+                  ELSE ''
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0e67608-d251-432b-be8e-6218233d21c2
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Prior Weight Cap
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CM09Prior.CM09_CAP
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29f01787-b9c6-469d-b15e-5d805a00d13b
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Next Rate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CM09Next.CM09_RATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca427f6b-6256-4ec8-867e-57dcdf9f1dc2
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Next Effective Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "CM09Next.CM09_EFFD "
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c89c4836-c7ee-4957-9d8d-3e7bcba15a88
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Next End Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "CM09Next.CM09_ENDD "
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fcd1eb19-bebe-4c55-815d-c38ecac5d2b1
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Next MIN/MAX CAP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE IFNULL(CM09Next.CM09_TYPE,'')
+                  WHEN 0 THEN 'Minimum'
+                  WHEN 1 THEN 'Maximum'
+                  ELSE ''
+              END 
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f7d6a08-3131-4ec4-98f9-1f43f6928732
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Next Rate Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE IFNULL(CM09Next.CM09_PRICETYPE,'')
+                  WHEN 'F' THEN 'Fixed'
+                  WHEN 'V' THEN 'Variable'
+                  ELSE ''
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d93672c8-c6f0-4bd6-a05a-f6af78f98a79
+          stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Next Weight Cap
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CM09Next.CM09_CAP
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CM09CURR: 056bd8ef-bf28-494b-b606-7309eeaeec64
+          CM09NEXT: 1c43efab-0f11-4f3d-bf50-d31d81e1d84b
+          CM09PRIOR: 8b56a219-e6f7-4387-a9b6-c901f56945d6
+          LM01: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+          LM04: f444d93a-cf72-4d04-bb6a-d32f667d27c3
+          T1: cc20bdf2-5b98-48b2-b61b-9b43ff3c19d6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM09_MATERIAL_PRICING
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CURRENT_MATERIAL_PRICING
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: FUTURE_MATERIAL_PRICING
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: PRIOR_MATERIAL_PRICING
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM04_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CM09_MATERIAL_PRICING') }} t1
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} LM04
+            ON t1.CM09_MATL = LM04_CODE
+            AND t1."SOURCE" = LM04."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} LM01
+            ON IFNULL(t1.CM09_DSTE,'zzz') = LM01_DSTE
+            AND t1."SOURCE" = LM01."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CURRENT_MATERIAL_PRICING') }} CM09curr 
+            ON  CM09curr.CM09_CUST = t1.CM09_CUST 
+            AND CM09curr.CM09_SITE = t1.CM09_SITE
+            AND CM09curr.CM09_SERV = t1.CM09_SERV
+            AND (IFNULL(CM09curr.CM09_SERV,0) = 0 
+            OR   IFNULL(CM09curr.CM09_SERV,0) = t1.CM09_SERV)
+            AND CM09curr.CM09_MATL = t1.CM09_MATL
+            AND IFNULL(CM09curr.CM09_UOM ,'') = IFNULL(t1.CM09_UOM,'')
+            AND IFNULL(CM09curr.CM09_DSTE,'') = IFNULL(t1.CM09_DSTE,'') 
+            AND "CM09CURR"."SOURCE" = t1."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'PRIOR_MATERIAL_PRICING') }} CM09prior 
+            ON  CM09prior.CM09_CUST = t1.CM09_CUST 
+            AND CM09prior.CM09_SITE = t1.CM09_SITE
+            AND (IFNULL(CM09prior.CM09_SERV,0) = 0 
+            OR   IFNULL(CM09prior.CM09_SERV,0) = t1.CM09_SERV)
+            AND CM09prior.CM09_MATL = t1.CM09_MATL
+            AND IFNULL(CM09prior.CM09_UOM ,'') = IFNULL(t1.CM09_UOM,'')
+            AND IFNULL(CM09prior.CM09_DSTE,'') = IFNULL(t1.CM09_DSTE,'') 
+            AND CM09prior."SOURCE" = t1."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'FUTURE_MATERIAL_PRICING') }} CM09next 
+            ON  CM09next.CM09_CUST = t1.CM09_CUST 
+            AND CM09next.CM09_SITE = t1.CM09_SITE
+            AND (IFNULL(CM09next.CM09_SERV,0) = 0 
+            OR   IFNULL(CM09next.CM09_SERV,0) = t1.CM09_SERV)
+            AND CM09next.CM09_MATL = t1.CM09_MATL
+            AND IFNULL(CM09next.CM09_UOM ,'') = IFNULL(t1.CM09_UOM,'')
+            AND IFNULL(CM09next.CM09_DSTE,'') = IFNULL(t1.CM09_DSTE,'') 
+            AND CM09next."SOURCE" = t1."SOURCE"
+            
+            ORDER BY t1.CM09_CUST, t1.CM09_SITE, t1.CM09_SERV, t1.CM09_MATL, t1.CM09_UOM, t1.CM09_DSTE
+        name: MATERIAL_PRICING
+        noLinkRefs: []
+  name: MATERIAL_PRICING
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

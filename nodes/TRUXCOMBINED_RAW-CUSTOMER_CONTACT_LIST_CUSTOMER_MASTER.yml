@@ -1,0 +1,191 @@
+fileVersion: 1
+id: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
+name: CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+operation:
+  config:
+    insertStrategy: UNION
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1ea0bec-7749-465e-9598-fa5d712e64e2
+          stepCounter: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aed0d01f-7ce0-4529-a734-0b28c7445d71
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences:
+              - columnCounter: aed0d01f-7ce0-4529-a734-0b28c7445d71
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7aab203e-4f9b-4b49-8aea-027636f2de62
+          stepCounter: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM04_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9c90e8dc-fbcb-4aab-948e-10e5e0735749
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 9c90e8dc-fbcb-4aab-948e-10e5e0735749
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b63c4d7b-f8e1-45d2-b778-54172a01eed2
+          stepCounter: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM04_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "0"
+          - columnReferences:
+              - columnCounter: 6fdff7ab-24cf-4cbc-9caa-e0fc0fccddd4
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f2db6f95-46b8-4274-8a08-4866c66eba53
+          stepCounter: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"EMAIL\".\"CC01_EMAIL\""
+          - columnReferences: []
+            transform: "\"EMAIL\".\"CC01_EMAIL\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e76a8173-114b-4a68-858f-9c06895d0e0a
+          stepCounter: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: EMAIL_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: COUNT("EMAIL"."CC01_EMAIL")
+          - columnReferences: []
+            transform: COUNT("EMAIL"."CC01_EMAIL")
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          EMAIL: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+          STG_CM03_COMBINED_FILTERED: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+          STG_CM04_COMBINED: 0af6c022-441d-44b9-83d1-a27a9c20205f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: INNER_QUERY_CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM03_COMBINED_FILTERED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM04_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
+
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED" 
+            ON "STG_CM04_COMBINED"."CM04_CUST" = "STG_CM03_COMBINED_FILTERED"."CM03_CUST"
+            AND "STG_CM04_COMBINED"."SOURCE" = "STG_CM03_COMBINED_FILTERED"."SOURCE"
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'INNER_QUERY_CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER') }} "EMAIL"
+            ON "EMAIL"."CC01_SHARED" = 1 
+            And "STG_CM04_COMBINED"."CM04_CUST" = "EMAIL"."CC01_CUST"
+            AND "STG_CM04_COMBINED"."SOURCE" = "EMAIL"."SOURCE"
+            WHERE "EMAIL"."CC01_EMAIL" Is Not Null
+            AND "STG_CM03_COMBINED_FILTERED"."CM03_BILLTO" IN (1,2)
+            GROUP BY ALL
+        name: CUSTOMER_CONTACT_LIST_CONSOLIDATED
+        noLinkRefs: []
+      - aliases:
+          EMAIL: 22aee1bf-248f-4d7b-b592-7cdc32e4e00e
+          STG_CM03_COMBINED_FILTERED: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+          STG_CM04_COMBINED: 0af6c022-441d-44b9-83d1-a27a9c20205f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: INNER_QUERY_CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM03_COMBINED_FILTERED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM04_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
+
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED" 
+            ON "STG_CM04_COMBINED"."CM04_CUST" = "STG_CM03_COMBINED_FILTERED"."CM03_CUST"
+            AND "STG_CM04_COMBINED"."SOURCE" = "STG_CM03_COMBINED_FILTERED"."SOURCE"
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'INNER_QUERY_CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER') }} "EMAIL"
+            ON "STG_CM04_COMBINED"."CM04_CUST" = "EMAIL"."CC01_CUST"
+            AND "STG_CM04_COMBINED"."CM04_SITE" = IFNULL("EMAIL"."CC01_SITE", 0)
+            AND "STG_CM04_COMBINED"."SOURCE" = "EMAIL"."SOURCE"
+            WHERE "EMAIL"."CC01_EMAIL" Is Not Null
+            AND "STG_CM03_COMBINED_FILTERED"."CM03_BILLTO" = 3
+            GROUP BY ALL
+        name: CUSTOMER_CONTACT_LIST_SEPARATE_AR_SITE
+        noLinkRefs: []
+  name: CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
