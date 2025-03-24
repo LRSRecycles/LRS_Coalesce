@@ -195,9 +195,8 @@ operation:
           - locationName: TRUX_AL_COMP_RAW
             nodeName: RM02
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TRUX_AL_COMP_RAW', 'RM02') }} "RM02"
-            WHERE "RM02"."_FIVETRAN_DELETED" = 'false'
         name: RM02_COMBINED
         noLinkRefs: []
   name: RM02_COMBINED

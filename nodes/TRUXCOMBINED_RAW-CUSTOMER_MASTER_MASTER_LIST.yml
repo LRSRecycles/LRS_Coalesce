@@ -49,7 +49,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: TRIM(TO_CHAR(CM03_CUST)) || '.' || TRIM(TO_CHAR(COALESCE(CM04_SITE, 0))) || '.' || TRIM(TO_CHAR(COALESCE(CM05_SERV, 0)))
+            transform: TRIM(TO_CHAR(CM03_CUST)) || '.' || TRIM(TO_CHAR(COALESCE(CM04_SITE, 0))) || '.' || TRIM(TO_CHAR(LTRIM(TO_CHAR(COALESCE(CM05_SERV, 0)), '0')))
         systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
