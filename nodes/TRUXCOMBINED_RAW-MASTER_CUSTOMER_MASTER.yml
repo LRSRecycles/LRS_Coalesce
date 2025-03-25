@@ -12,7 +12,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: MASTER_DATA_CLEAN
+  locationName: TRUXCOMBINED_RAW
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -2620,28 +2620,28 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_MASTER_MASTER_LIST') }} "CUSTOMER_MASTER_MASTER_LIST"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'ACTIVITY_AND_MATERIAL_PRICING') }} p1 
              ON p1.RATE_CUST = "CUSTOMER_MASTER_MASTER_LIST"."Customer Number"
             AND p1.RATE_SITE = "CUSTOMER_MASTER_MASTER_LIST"."Site Number" 
             AND p1.RATE_SERV = "CUSTOMER_MASTER_MASTER_LIST"."Service Number"
             AND p1."SOURCE" = "CUSTOMER_MASTER_MASTER_LIST"."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_PART_2_CUSTOMER_MASTER') }} SurCust 
              ON SurCust.CM03_CUST = "CUSTOMER_MASTER_MASTER_LIST"."Customer Number"
             AND IFNULL(SurCust.CM04_SITE,0) = 0
             AND SurCust."SOURCE" = "CUSTOMER_MASTER_MASTER_LIST"."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_PART_2_CUSTOMER_MASTER') }} SurSite 
              ON SurSite.CM03_CUST = "CUSTOMER_MASTER_MASTER_LIST"."Customer Number"
             AND SurSite.CM04_SITE = "CUSTOMER_MASTER_MASTER_LIST"."Site Number"
             AND SurSite.Source = "CUSTOMER_MASTER_MASTER_LIST".Source
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SITE_START_DATE') }} SiteSD 
              ON "CUSTOMER_MASTER_MASTER_LIST"."Customer Number" = SiteSD.CM19_CUST
             AND "CUSTOMER_MASTER_MASTER_LIST"."Site Number" = SiteSD.CM19_SITE
             AND "CUSTOMER_MASTER_MASTER_LIST"."SOURCE" = SiteSD.Source
-            
+
             WHERE "Site Number" IS NOT NULL 
             AND "Service Number" IS NOT NULL 
             AND (IFNULL("Service Stop Reason", '') LIKE '%VACATION%' 
@@ -2649,9 +2649,8 @@ operation:
                  OR IFNULL("Service Stop Reason", '') = '' 
                  OR IFNULL("Service Stop Reason", '') LIKE '%HOLD%' 
                  OR IFNULL("Service Stop Reason", '') = 'Temporary Closed') 
-            
+
             ORDER BY LTRIM(RTRIM("Customer Name")), "Customer Number", "Site Number", "Service Number", p1."Description"
-            
         name: MASTER_CUSTOMER_MASTER
         noLinkRefs: []
   name: MASTER_CUSTOMER_MASTER
