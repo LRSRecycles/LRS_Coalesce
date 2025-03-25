@@ -53,18 +53,6 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: t2."SOURCE"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: a4348519-df45-43f2-97e9-fa52cee3f4de
-          stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: SCHID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: T2."SCHID"
       - acceptedValues:
           strictMatch: true
           values: []
@@ -104,15 +92,15 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_CUSTOMER_MASTER') }} t2
-
+            
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_CUSTOMER_MASTER') }} t1
             ON t1.CM03_CUST = t2.CM03_CUST
             AND IFNULL(t1.CM04_SITE, 0) = IFNULL(t2.CM04_SITE, 0)
             AND t1."SOURCE" = t2."SOURCE"
-
+            
             GROUP BY 
-                t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0), t2.SOURCE, t2."SCHID"
-
+                t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0), t2.SOURCE
+            
             ORDER BY 
                 t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0)
         name: SURCHARGE_PART_2_CUSTOMER_MASTER
