@@ -6,7 +6,7 @@ operation:
     insertStrategy: UNION
     selectDistinct: false
   database: ""
-  deployEnabled: false
+  deployEnabled: true
   description: ""
   isMultisource: false
   locationName: MASTER_DATA_CLEAN
@@ -22,7 +22,7 @@ operation:
           customSQL: |-
             {{ stage('Override Create SQL') }}
             	CREATE OR REPLACE VIEW {{ ref('MASTER_DATA_CLEAN', 'VW_MISSED_PICK_UP')}} AS (
-            
+
             SELECT 
              sc01."Source" AS "From Database"
              , "RM04_FNAM" AS "Driver First Name"
@@ -71,7 +71,7 @@ operation:
              , "Route Date" AS "Route Date"
              , "Original Call" AS "Original Call"
              , "Date Closed" AS "Date Closed"
-            
+
             FROM LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED sc01
             LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.CM03_COMBINED cm03
                 ON sc01."Customer Number" = cm03."CM03_CUST" 
@@ -129,7 +129,7 @@ operation:
                                        ON sm01."SM01_LOGID" = sc01_4."Call Scheduled" 
                                       AND sc01_4."Original Call" IS NOT NULL 
                                       AND sm01.SOURCE = sc01_4."Source"
-            
+
                                   ) AS L
                              LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM01_COMBINED AS rm01_2 
                                ON rm01_2."RM01_NUMB" = L."ROUTE"
@@ -153,9 +153,9 @@ operation:
                                   INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_3 
                                      ON rm03_1."RM03_LOGID" = sc01_3."Original Call"
                                     AND rm03_1.SOURCE = sc01_3."Source"
-            
+
                                   UNION
-            
+
                                   SELECT rm03_1."RM03_LOGID" AS "LOGID"
                                       , rm03_1."RM03_ROUT" AS "ROUTE"
                                       , rm03_1."RM03_DATE" AS "RTEDATE"
@@ -177,7 +177,7 @@ operation:
                                   INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_2 
                                      ON rm03u_1."RM03U_LOGID" = sc01_2."Original Call"
                                     AND rm03u_1.SOURCE = sc01_2."Source"
-            
+
                                   UNION
                                     
                                  SELECT rm03u_1."RM03U_LOGID" AS "LOGID"
@@ -190,7 +190,7 @@ operation:
                                      ON (sc01_2."Original Call" IS NULL 
                                     AND rm03u_1."RM03U_LOGID" = sc01_2."Call Scheduled")
                                     AND rm03u_1.SOURCE = sc01_2."Source"
-            
+
                                   UNION
                                
                                  SELECT sm01_1."SM01_LOGID" AS "LOGID"
@@ -202,7 +202,7 @@ operation:
                                   INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_1 
                                      ON sm01_1."SM01_LOGID" = sc01_1."Original Call"
                                     AND sm01_1.SOURCE = sc01_1."Source" 
-            
+
                                   UNION
                                
                                  SELECT sm01_1."SM01_LOGID" AS "LOGID"
@@ -220,7 +220,7 @@ operation:
                            LEFT  JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_RM01_COMBINED AS rm01_1 
                              ON rm01_1."RM01_NUMB" = L_1."ROUTE"
                             AND rm01_1.SOURCE = L_1.SOURCE
-            
+
                         ) AS OC -- Original Call
             	ON (CASE WHEN sc01."Original Call" IS NOT NULL THEN sc01."Original Call" ELSE sc01."Call Scheduled" END = OC."OC_LOGID")
                AND sc01."Source" = OC.SOURCE    
@@ -233,10 +233,10 @@ operation:
             LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SL01_COMBINED sl01
                 ON rm01.RM01_SLID = sl01.SL01_ID 
                AND rm01.SOURCE = sl01.SOURCE
-            
+
             WHERE sc01."Service Call Type Code" = 'MP' 
-            
-            
+
+
             	)
         dependencies: []
         join:
