@@ -22,7 +22,7 @@ operation:
           columnCounter: 859cba19-02ec-4c06-b06f-2063b49b1b29
           stepCounter: c4bd6358-8cbd-497f-83d0-dffa858471c1
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR
         description: ""
         name: RM04_NUMB
         nullable: false
@@ -296,7 +296,7 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
-            
+
             WHERE "_FIVETRAN_DELETED" = FALSE
         name: STG_RM04_COMBINED
         noLinkRefs: []
