@@ -21,7 +21,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: LM02_ID
+        name: ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -35,7 +35,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: LM02_LEEDWEIGHT
+        name: Leed Weight
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -49,7 +49,7 @@ operation:
         config: {}
         dataType: BOOLEAN
         description: ""
-        name: LM02_LEED
+        name: Leed Material
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -63,7 +63,7 @@ operation:
         config: {}
         dataType: VARCHAR(12)
         description: ""
-        name: LM02_NUMB
+        name: Ticket Number
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -77,7 +77,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_RDATE
+        name: Route Date
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -91,7 +91,7 @@ operation:
         config: {}
         dataType: NUMBER(18,4)
         description: ""
-        name: DRATE
+        name: Disposal Rate
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -105,7 +105,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: LM02_CUST
+        name: Customer Number
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -119,7 +119,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: DRATEUOM
+        name: Disposal Rate Unit of Measure
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -133,7 +133,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: LM02_LM05ID
+        name: Link To LF05 Ticket
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -147,7 +147,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_CDATE
+        name: Created Date
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -161,7 +161,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: LM02_LEEDWEIGHTUOM
+        name: LEED Weight UOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -189,7 +189,7 @@ operation:
         config: {}
         dataType: NUMBER(18,4)
         description: ""
-        name: BRATE
+        name: Unit Charge
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -203,7 +203,7 @@ operation:
         config: {}
         dataType: VARCHAR(4)
         description: ""
-        name: LM02_DSTE
+        name: Facility
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -217,7 +217,7 @@ operation:
         config: {}
         dataType: VARCHAR(120)
         description: ""
-        name: LM02_BLAD
+        name: Bill of Lading
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -231,7 +231,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: LM02_SITE
+        name: Site Number
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -245,7 +245,7 @@ operation:
         config: {}
         dataType: VARCHAR(82)
         description: ""
-        name: LM02_CARR
+        name: Carrier
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -259,7 +259,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_TOUT
+        name: Time Out
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -273,7 +273,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: DUOM
+        name: Disposal Unit of Measure
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -287,7 +287,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_FDAT
+        name: Facility Invoice Date
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -301,7 +301,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_DATE
+        name: Ticket Date
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -315,7 +315,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: LM02_BAMT
+        name: Billing Amount
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -329,7 +329,7 @@ operation:
         config: {}
         dataType: BOOLEAN
         description: ""
-        name: LM02_INOT
+        name: In/Out Indicator
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -343,13 +343,16 @@ operation:
         config: {}
         dataType: VARCHAR(1)
         description: ""
-        name: LM02_OWN
+        name: Haul-IT or Weigh_IT
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8aa29dc3-a983-487b-afb2-a9cec33f187d
-                stepCounter: 0cd539f6-680f-47a2-8848-984b31f64e8a
-            transform: ""
+          - columnReferences: []
+            transform: |-
+              CASE 
+                  WHEN "STG_DISPOSAL_TICKET_LISTING_NO_FILTERS"."LM02_OWN" = 1 THEN 'Haul-IT'
+                  WHEN "STG_DISPOSAL_TICKET_LISTING_NO_FILTERS"."LM02_OWN" = 2 THEN 'Weigh-IT'
+                  ELSE "STG_DISPOSAL_TICKET_LISTING_NO_FILTERS"."LM02_OWN"
+              END
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 7604b497-9d15-431f-87a2-8808f42e1a9e
@@ -357,7 +360,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: BUOM
+        name: Billing Unit of Measure
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -371,7 +374,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: LM02_MATL
+        name: Material
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -385,7 +388,7 @@ operation:
         config: {}
         dataType: VARCHAR(20)
         description: ""
-        name: LM02_FINV
+        name: Facility Invoice
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -399,7 +402,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_TIN
+        name: Time In
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -413,7 +416,7 @@ operation:
         config: {}
         dataType: VARCHAR(1)
         description: ""
-        name: LM02_MIN
+        name: Charge Type
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -427,7 +430,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: LM02_ROUT
+        name: Route Number
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -441,7 +444,7 @@ operation:
         config: {}
         dataType: VARCHAR(100)
         description: ""
-        name: LM02_NOT1
+        name: Note 1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -455,7 +458,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: BRATEUOM
+        name: Unit Charge Unit of Measure
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -469,7 +472,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: LM02_DAMT
+        name: Disposal Amount
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -483,7 +486,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: LM02_SEQ1
+        name: Sequence 1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -497,7 +500,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: DQTY
+        name: Disposal Quantity
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -511,7 +514,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: BQTY
+        name: Billing Quantity
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -525,7 +528,7 @@ operation:
         config: {}
         dataType: NUMBER(18,2)
         description: ""
-        name: LM02_SEQ2
+        name: Sequence 2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -539,7 +542,7 @@ operation:
         config: {}
         dataType: VARCHAR(10)
         description: ""
-        name: LM02_FUSE
+        name: Reconcile User
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -553,7 +556,7 @@ operation:
         config: {}
         dataType: VARCHAR(30)
         description: ""
-        name: LM02_PORD
+        name: Purchase Order Number
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -567,7 +570,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_FRDT
+        name: Reconcile Date
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -581,7 +584,7 @@ operation:
         config: {}
         dataType: VARCHAR(2)
         description: ""
-        name: LM02_FUOM
+        name: Fuel Unit of Measure
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -595,7 +598,7 @@ operation:
         config: {}
         dataType: NUMBER(18,3)
         description: ""
-        name: LM02_FQTY
+        name: Fuel Quantity
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -609,7 +612,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: LM02_CM09ID
+        name: Link to Customer Variable Rate
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -623,7 +626,7 @@ operation:
         config: {}
         dataType: VARCHAR(100)
         description: ""
-        name: LM02_NOT2
+        name: Note 2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -637,7 +640,7 @@ operation:
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
-        name: LM02_IDTE
+        name: Invoice Date
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -651,7 +654,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: LM02_SERV
+        name: Service Number
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -707,7 +710,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: CD04_DESC
+        name: Disposal Unit of Measure Description
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -721,7 +724,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: BUOM_DESC
+        name: Billing Unit of Measure Description
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -735,7 +738,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: CM03_NAME
+        name: Customer Name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -749,7 +752,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: CM04_NAME
+        name: Site Name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -763,7 +766,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: CM05_TYPE
+        name: Service Type
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -777,7 +780,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: CM05_SIZE
+        name: Service Size
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -791,7 +794,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: LM01_NAME
+        name: Facility Name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -805,7 +808,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: RM05_TRUK
+        name: Vehicle Name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -819,7 +822,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: LM04_DESC
+        name: Material Description
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -833,7 +836,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: RM01_TYPE
+        name: Route Type
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -847,7 +850,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: CD05_DESC
+        name: Service Type Description
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -861,7 +864,7 @@ operation:
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: CONVFACTOR
+        name: Conversion Factor
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -889,7 +892,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: RM01_DESC
+        name: Route Description
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -903,7 +906,7 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        name: CD14_DESC
+        name: Route Type Description
         nullable: true
         sourceColumnReferences:
           - columnReferences:
