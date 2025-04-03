@@ -204,7 +204,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: COUNT(DISTINCT VW_Route_Sequence_Revenue.SOURCE || '-' || "Customer" || '-' || "Site" || '-' || "Service")
+            transform: SUM(SERVICES_AGGREGATE_ROUTE_STATISTICS_ADAPTIVE."Service")
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -376,10 +376,10 @@ operation:
     sourceMapping:
       - aliases:
           LOB_COLLECTIONS_MAPPING: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+          SERVICES_AGGREGATE_ROUTE_STATISTICS_ADAPTIVE: 65cf2476-0f9a-4f9a-b672-48064c04752a
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
           VW_ROUTE_MASTER: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
           VW_ROUTE_PROFITABILITY: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
-          VW_ROUTE_SEQUENCE_REVENUE: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
         customSQL:
           customSQL: ""
         dependencies:
@@ -391,8 +391,8 @@ operation:
             nodeName: VW_ROUTE_MASTER
           - locationName: OPERATIONS_DATA_MODEL
             nodeName: VW_ROUTE_PROFITABILITY
-          - locationName: OPERATIONS_DATA_MODEL
-            nodeName: VW_Route_Sequence_Revenue
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SERVICES_AGGREGATE_ROUTE_STATISTICS_ADAPTIVE
         join:
           joinCondition: |
             FROM {{ ref('OPERATIONS_DATA_MODEL', 'VW_ROUTE_PROFITABILITY') }} VW_ROUTE_PROFITABILITY
@@ -403,8 +403,8 @@ operation:
             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'LOB_COLLECTIONS_MAPPING') }} LOB_COLLECTIONS_MAPPING
                 ON VW_ROUTE_MASTER."Source" || '-' || VW_ROUTE_MASTER."Route Type" = LOB_COLLECTIONS_MAPPING.SOURCE || '-' || LOB_COLLECTIONS_MAPPING.ROUTE_TYPE_NUMBER
                 
-            LEFT JOIN {{ ref('OPERATIONS_DATA_MODEL', 'VW_Route_Sequence_Revenue') }} VW_Route_Sequence_Revenue
-                ON VW_ROUTE_PROFITABILITY.SOURCE || '-' || VW_ROUTE_PROFITABILITY."Route" || '-' || VW_ROUTE_PROFITABILITY."Route Date" = VW_Route_Sequence_Revenue."SOURCE" || '-' || VW_Route_Sequence_Revenue."Route" || '-' || VW_Route_Sequence_Revenue."Route Date"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'SERVICES_AGGREGATE_ROUTE_STATISTICS_ADAPTIVE') }} SERVICES_AGGREGATE_ROUTE_STATISTICS_ADAPTIVE
+                ON VW_ROUTE_PROFITABILITY.SOURCE || '-' || VW_ROUTE_PROFITABILITY."Route" || '-' || VW_ROUTE_PROFITABILITY."Route Date" = SERVICES_AGGREGATE_ROUTE_STATISTICS_ADAPTIVE."Source_Route_RouteDate"
             
             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} TRUX_DATABASE_METADATA
                ON VW_ROUTE_PROFITABILITY."SOURCE" = TRUX_DATABASE_METADATA."SNOWFLAKE_NAME"
