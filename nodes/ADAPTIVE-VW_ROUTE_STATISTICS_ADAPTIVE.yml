@@ -1,0 +1,421 @@
+fileVersion: 1
+id: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+name: VW_ROUTE_STATISTICS_ADAPTIVE
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ADAPTIVE
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7330d826-e886-4497-a5fe-31da579bba85
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: VW_ROUTE_PROFITABILITY."SOURCE"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2f54e02-8d4a-41d2-9011-0a2c54870164
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Start Location Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: VW_ROUTE_MASTER."Start Location Name"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 84704621-01e9-4bb9-8049-05f793748b2c
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Route Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "VW_ROUTE_PROFITABILITY.\"Route Date\" "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7102d7d6-9b50-4f84-b6ed-1504103f3859
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Route Type Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: VW_ROUTE_MASTER."Route Type Description"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5a8cb74-2845-428b-a506-632c99a52fa4
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Line of Business
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: LOB_COLLECTIONS_MAPPING.LOB
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d85898ed-4286-40c3-b6e9-641ed51c1826
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Route
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: VW_ROUTE_MASTER."Route"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6cbd47fb-ecec-44c1-9564-86ce72799112
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Lifts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM(VW_ROUTE_PROFITABILITY."Lifts")
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b676dc60-0a95-4454-b01a-56b3cf219c43
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Drive By/Stops
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("Number of Stops")
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1b28d276-f490-44b9-8919-c9356ba40173
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Hauls/Loads
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("Tickets Count")
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 131911e8-8afe-4a82-ae6a-27fefb1cea9a
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Services
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COUNT(DISTINCT VW_Route_Sequence_Revenue.SOURCE || '-' || "Customer" || '-' || "Site" || '-' || "Service")
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2877fd81-161f-4c64-873a-ef40bbde2185
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Yards
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM(VW_ROUTE_PROFITABILITY."Yards")
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e868864-6b3b-4d67-a31d-5797a4bf0d1e
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Yards per Hour
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COALESCE(SUM(VW_ROUTE_PROFITABILITY."Yards") / (NULLIF(SUM("Clock Total Time"), 0) / 60), 0)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cdee7922-fb11-4953-b2d2-c788da990cdc
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Tonnage
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              SUM(CASE
+                      WHEN "Disposal Weight (Converted)" IS NULL THEN "Disposal Quantity LM02"
+                      ELSE "Disposal Weight (Converted)"
+                      END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9543075f-a18d-4366-9f8d-c35f35a81e23
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Minutes per Haul
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              COALESCE(SUM("Clock Total Time") / NULLIF(SUM("Tickets Count"), 0), 0)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0879606-6a4b-4fbd-b398-6bc7525022ed
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Miles Traveled
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("Odometer Change")
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d5559c07-3752-4006-a05c-eb401bfcea2c
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Time
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("Clock Total Time")/60
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 46bfacf9-8be1-4bb6-aa4a-5404d30f0211
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Total Downtime
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("Total Downtime")/60
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e920d8f3-6a3a-4c91-a410-56e73ff2a1ab
+          stepCounter: 2ca1e9bb-d985-486b-a27e-814bfbc3c6d9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TRUX_DATABASE_METADATA."SNOWFLAKE_NAME"
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          LOB_COLLECTIONS_MAPPING: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+          VW_ROUTE_MASTER: adf9b8f8-daba-4aff-8cb5-f04b0a0d306d
+          VW_ROUTE_PROFITABILITY: 43e51f9e-95a0-4ce8-b0c2-6a27d82c11b3
+          VW_ROUTE_SEQUENCE_REVENUE: 9fac3659-362b-4ca2-b2f6-34c5ac2f8b98
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: LOB_COLLECTIONS_MAPPING
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_ROUTE_MASTER
+          - locationName: OPERATIONS_DATA_MODEL
+            nodeName: VW_ROUTE_PROFITABILITY
+          - locationName: OPERATIONS_DATA_MODEL
+            nodeName: VW_Route_Sequence_Revenue
+        join:
+          joinCondition: |
+            FROM {{ ref('OPERATIONS_DATA_MODEL', 'VW_ROUTE_PROFITABILITY') }} VW_ROUTE_PROFITABILITY
+            
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_ROUTE_MASTER') }} VW_ROUTE_MASTER
+                ON VW_ROUTE_PROFITABILITY.SOURCE || '-' || VW_ROUTE_PROFITABILITY."Route" = VW_ROUTE_MASTER."Source_Route_Number"
+                
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'LOB_COLLECTIONS_MAPPING') }} LOB_COLLECTIONS_MAPPING
+                ON VW_ROUTE_MASTER."Source" || '-' || VW_ROUTE_MASTER."Route Type" = LOB_COLLECTIONS_MAPPING.SOURCE || '-' || LOB_COLLECTIONS_MAPPING.ROUTE_TYPE_NUMBER
+                
+            LEFT JOIN {{ ref('OPERATIONS_DATA_MODEL', 'VW_Route_Sequence_Revenue') }} VW_Route_Sequence_Revenue
+                ON VW_ROUTE_PROFITABILITY.SOURCE || '-' || VW_ROUTE_PROFITABILITY."Route" || '-' || VW_ROUTE_PROFITABILITY."Route Date" = VW_Route_Sequence_Revenue."SOURCE" || '-' || VW_Route_Sequence_Revenue."Route" || '-' || VW_Route_Sequence_Revenue."Route Date"
+            
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} TRUX_DATABASE_METADATA
+               ON VW_ROUTE_PROFITABILITY."SOURCE" = TRUX_DATABASE_METADATA."SNOWFLAKE_NAME"
+            
+            GROUP BY ALL
+        name: VW_ROUTE_STATISTICS_ADAPTIVE
+        noLinkRefs: []
+  name: VW_ROUTE_STATISTICS_ADAPTIVE
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
