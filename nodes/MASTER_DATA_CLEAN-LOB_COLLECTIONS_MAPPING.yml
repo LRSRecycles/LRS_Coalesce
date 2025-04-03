@@ -1,0 +1,137 @@
+fileVersion: 1
+id: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+name: LOB_COLLECTIONS_MAPPING
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c84de1b7-dd53-4208-b3c4-3e840d77b437
+          stepCounter: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: _LINE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5085ecec-d0d6-445e-af41-422e72186160
+                stepCounter: 1e699298-abc1-4bba-a3ef-22f29c34e47d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 94cb96e6-049f-4427-bf81-5dbcf1c07943
+          stepCounter: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 98677fa8-6294-4293-8687-56ba27ed43db
+                stepCounter: 1e699298-abc1-4bba-a3ef-22f29c34e47d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad6f9f3e-2117-4f1b-9af6-d975ab2ceedb
+          stepCounter: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: ROUTE_TYPE_DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ab8501ae-3c85-4bdd-8343-65411e5edcd8
+                stepCounter: 1e699298-abc1-4bba-a3ef-22f29c34e47d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0cb75fe3-6715-4266-aece-78ded1329fc1
+          stepCounter: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SOURCE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 63903ce9-1ed7-4f96-bd24-1a78e4593808
+                stepCounter: 1e699298-abc1-4bba-a3ef-22f29c34e47d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: df662e0c-e311-4783-9d4c-f5f7a3103001
+          stepCounter: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 881526f1-63e8-4605-8c9c-2565267309ac
+                stepCounter: 1e699298-abc1-4bba-a3ef-22f29c34e47d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bf33fdd3-59ae-4aba-8e68-f4a560800fbc
+          stepCounter: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: ROUTE_TYPE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ece4397c-5106-4ec2-9d7b-9a77f956d985
+                stepCounter: 1e699298-abc1-4bba-a3ef-22f29c34e47d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00304397-45f2-44d2-8fe2-6f1eef9f8f5c
+          stepCounter: 1789b5fb-37f6-4164-a7c7-54c316cd2bef
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: LOB
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f02b06b6-9d9d-4857-b465-f6dbef14a1cc
+                stepCounter: 1e699298-abc1-4bba-a3ef-22f29c34e47d
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SHAREPOINT_RAW
+            nodeName: DATA_ESTATE_MAPPING_INPUTS_COLLECTIONS_LOB_MAPPING
+        join:
+          joinCondition: FROM {{ ref('SHAREPOINT_RAW', 'DATA_ESTATE_MAPPING_INPUTS_COLLECTIONS_LOB_MAPPING') }} "DATA_ESTATE_MAPPING_INPUTS_COLLECTIONS_LOB_MAPPING"
+        name: LOB_COLLECTIONS_MAPPING
+        noLinkRefs: []
+  name: LOB_COLLECTIONS_MAPPING
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

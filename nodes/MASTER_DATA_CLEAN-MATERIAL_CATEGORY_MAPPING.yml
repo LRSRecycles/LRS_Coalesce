@@ -1,0 +1,165 @@
+fileVersion: 1
+id: 8ba13156-4ac5-4bba-8318-078b94cae131
+name: MATERIAL_CATEGORY_MAPPING
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7ebd987b-da27-4766-9730-5bd7049f6900
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: _LINE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 04ea224c-c394-4c5b-b8cc-1693d1d41162
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dbfc5f4a-fd1f-4848-9c1c-71b7e3fc7a23
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a0878355-def5-4269-8a2a-6c55adf67fb6
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ad04e00-412f-4da2-a5b5-514f73fafaf1
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: MATERIAL_GROUP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1a2e8442-7723-44a2-89c5-35d1b092cb4b
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ea81687e-4a3f-41aa-8ac7-ec0e9cdd9805
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SOURCE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6e04ed76-bd69-465f-8963-78a3beaf0a5f
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7ddd77ac-4185-434f-99fc-baa2b0723980
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: MATERIAL_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5b1932d1-5298-4463-89a8-0c34ed4dc53f
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: efccfeae-9eca-4ad1-8acb-230191076add
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: OUTBOUND_FLASH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 69d81074-6a0b-40d4-a5c6-a3cf9167bd55
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8772faa-7c77-47f5-9999-85470255e604
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: MATERIAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39a6179a-46fd-4915-a251-6e7ef66f1766
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae103ad1-cfc4-430c-8716-4f4482c8088a
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: INBOUND_FLASH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fcb1d311-c80c-4b1a-aeee-b0aab5a728e9
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ed4fb1c-1928-4e94-a32c-f34a674c7b96
+          stepCounter: 8ba13156-4ac5-4bba-8318-078b94cae131
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7cdf283c-51cf-403e-98fa-6adb501bfa9a
+                stepCounter: 999fa691-2197-4956-a769-0d4a9e0a4f62
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SHAREPOINT_RAW
+            nodeName: DATA_ESTATE_MAPPING_INPUTS_MATERIAL_CATEGORY_MAPPING
+        join:
+          joinCondition: FROM {{ ref('SHAREPOINT_RAW', 'DATA_ESTATE_MAPPING_INPUTS_MATERIAL_CATEGORY_MAPPING') }} "DATA_ESTATE_MAPPING_INPUTS_MATERIAL_CATEGORY_MAPPING"
+        name: MATERIAL_CATEGORY_MAPPING
+        noLinkRefs: []
+  name: MATERIAL_CATEGORY_MAPPING
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
