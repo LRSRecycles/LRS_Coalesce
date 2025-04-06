@@ -1,0 +1,403 @@
+fileVersion: 1
+id: d139205b-3364-49b3-a002-2b1516935c19
+name: TRUX_SECURITY_PROFILE
+operation:
+  config:
+    insertStrategy: UNION ALL
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e245ac9-f316-4828-a34b-0c71cf04c77c
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company Type Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SY03_HWR
+          - columnReferences: []
+            transform: SY03_HWR
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6b9dec37-8e4f-4086-b501-0c9cdba51de1
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              CASE 
+                  WHEN SY03_HWR = '001' THEN UPPER('Maintain-IT')
+                  WHEN SY03_HWR = '010' THEN UPPER('Weigh-IT')
+                  WHEN SY03_HWR = '011' THEN UPPER('Weigh-IT & Maintain-IT')
+                  WHEN SY03_HWR = '100' THEN UPPER('Haul-IT')
+                  WHEN SY03_HWR = '101' THEN UPPER('Haul-IT & Maintain-IT')
+                  WHEN SY03_HWR = '110' THEN UPPER('Haul-IT & Weigh-IT')
+                  WHEN SY03_HWR = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
+              END
+          - columnReferences: []
+            transform: |
+              CASE 
+                  WHEN SY03_HWR = '001' THEN UPPER('Maintain-IT')
+                  WHEN SY03_HWR = '010' THEN UPPER('Weigh-IT')
+                  WHEN SY03_HWR = '011' THEN UPPER('Weigh-IT & Maintain-IT')
+                  WHEN SY03_HWR = '100' THEN UPPER('Haul-IT')
+                  WHEN SY03_HWR = '101' THEN UPPER('Haul-IT & Maintain-IT')
+                  WHEN SY03_HWR = '110' THEN UPPER('Haul-IT & Weigh-IT')
+                  WHEN SY03_HWR = '111' THEN UPPER('Haul-IT & Weigh-IT & Maintain-IT')
+              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fba18735-a45e-41ca-8143-e403f37e4a55
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SY03_CODE
+          - columnReferences: []
+            transform: SY03_CODE
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 48b44935-2104-4591-b54f-477c1bcc2f6a
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SY03_NAME
+          - columnReferences: []
+            transform: SY03_NAME
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74f67497-46ec-47d1-a197-e6730a049e61
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company State
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SY03_STAT
+          - columnReferences: []
+            transform: SY03_STAT
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0ccae34-d2ab-4246-b001-070c7668e27e
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Security Profile Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: PROFILE_NAME
+          - columnReferences: []
+            transform: PROFILE_NAME
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ecdb6cb-3af3-4425-8919-00dcdebeb472
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Username
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TRIM(USER_CODE)
+          - columnReferences: []
+            transform: TRIM(USER_CODE)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a277fca-bbf7-4080-a456-ebd2e6a7c885
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: First Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TRIM(USER_FNAME)
+          - columnReferences: []
+            transform: TRIM(USER_FNAME)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f628bac2-bec8-4c18-b0e5-549400a8dce0
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Last Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TRIM(USER_LNAME)
+          - columnReferences: []
+            transform: TRIM(USER_LNAME)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb5fa8e6-bae8-4670-b13c-dce7370a021f
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Full Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TRIM(USER_LNAME) || ', ' || TRIM(USER_FNAME)
+          - columnReferences: []
+            transform: TRIM(USER_LNAME) || ', ' || TRIM(USER_FNAME)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6462783a-7951-431a-a6c7-a51755374da4
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Employee ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TRIM(USER_EMPLOYEEID)
+          - columnReferences: []
+            transform: TRIM(USER_EMPLOYEEID)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c2b2aba-3ede-4a49-8f97-5ecf403e1c1d
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Email
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: TRIM(USER_EMAIL)
+          - columnReferences: []
+            transform: TRIM(USER_EMAIL)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5b7209fa-7614-4549-be7f-e8138d6f3958
+          stepCounter: d139205b-3364-49b3-a002-2b1516935c19
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: User Active Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE
+                  WHEN USER_DISABLED = 0 THEN 'Active'
+                  ELSE 'Disabled'
+              END
+          - columnReferences: []
+            transform: |-
+              CASE
+                  WHEN USER_DISABLED = 0 THEN 'Active'
+                  ELSE 'Disabled'
+              END
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_TRUX_DATA_PROFILE: df100bca-2b09-4737-a184-e16623056d42
+          STG_TRUX_DATA_SY03: d6c0ec69-5a44-423c-b330-dff376fbb71f
+          STG_TRUX_DATA_USERCOMP: 9085c0ad-8979-4443-9907-c8f359ba69aa
+          TRUX_USERS_COMBINED: f5c3eeaa-cd6b-437a-a31c-1ea82038ab6b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TRUX_DATA_PROFILE
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TRUX_DATA_SY03
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TRUX_DATA_USERCOMP
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: TRUX_USERS_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_TRUX_DATA_USERCOMP') }} "STG_TRUX_DATA_USERCOMP"
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TRUX_DATA_SY03') }} -- Company Master
+                ON USERCOMP_COMPANY = SY03_CODE
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TRUX_DATA_PROFILE') }} -- Security Profiles
+                ON PROFILE_ID = USERCOMP_PROFILE
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'TRUX_USERS_COMBINED') }} -- Users
+                ON USERCOMP_USER = USER_CODE
+             WHERE SY03_HWR = '100' -- 100 = Haul-IT
+        name: Haul-IT
+        noLinkRefs: []
+      - aliases:
+          STG_TRUX_DATA_PROFILE: df100bca-2b09-4737-a184-e16623056d42
+          STG_TRUX_DATA_SY03: d6c0ec69-5a44-423c-b330-dff376fbb71f
+          STG_TRUX_DATA_USERCOMP: 9085c0ad-8979-4443-9907-c8f359ba69aa
+          TRUX_USERS_COMBINED: f5c3eeaa-cd6b-437a-a31c-1ea82038ab6b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TRUX_DATA_PROFILE
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TRUX_DATA_SY03
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TRUX_DATA_USERCOMP
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: TRUX_USERS_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_TRUX_DATA_USERCOMP') }} "STG_TRUX_DATA_USERCOMP"
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TRUX_DATA_SY03') }} -- Company Master
+                ON USERCOMP_COMPANY = SY03_CODE
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TRUX_DATA_PROFILE') }} -- Security Profiles
+                ON PROFILE_ID = USERCOMP_PROFILE
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'TRUX_USERS_COMBINED') }} -- Users
+                ON USERCOMP_USER = USER_CODE
+            WHERE SY03_HWR = '010' -- 100 = Weight-IT
+        name: Weigh-IT
+        noLinkRefs: []
+  name: TRUX_SECURITY_PROFILE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
