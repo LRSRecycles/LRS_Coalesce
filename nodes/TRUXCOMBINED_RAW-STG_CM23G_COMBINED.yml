@@ -1,0 +1,127 @@
+fileVersion: 1
+id: 01348aed-cd3b-4621-8233-458ea325335c
+name: STG_CM23G_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b51475cd-2591-40cf-9917-50febed6f2d8
+          stepCounter: 01348aed-cd3b-4621-8233-458ea325335c
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: CM23G_INTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cfed1c3b-bce3-498f-af8c-2cffa7d3ee58
+                stepCounter: ec49eb01-163d-4716-90e4-2d1ac5e1d39b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e59398de-4b99-4e2b-8239-fb4d0df06bc6
+          stepCounter: 01348aed-cd3b-4621-8233-458ea325335c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM23G_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0c157646-13bc-41c0-b0e3-68532cf44781
+                stepCounter: ec49eb01-163d-4716-90e4-2d1ac5e1d39b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9cf48b17-a4cd-42f6-922c-a4e1fdfa421d
+          stepCounter: 01348aed-cd3b-4621-8233-458ea325335c
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: CM23G_GLNU
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 71b782c4-3a8a-4a71-be4d-ed7810ca9f3f
+                stepCounter: ec49eb01-163d-4716-90e4-2d1ac5e1d39b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0dcd99c0-3d8e-4d6c-9775-8996bc73fc4f
+          stepCounter: 01348aed-cd3b-4621-8233-458ea325335c
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72f753ca-6ca0-43eb-99dd-dbf7dfe37af8
+                stepCounter: ec49eb01-163d-4716-90e4-2d1ac5e1d39b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a201191e-1a12-46e2-b346-64f11d7de444
+          stepCounter: 01348aed-cd3b-4621-8233-458ea325335c
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b0a9d2f3-880a-4eeb-a004-bd6b285d911a
+                stepCounter: ec49eb01-163d-4716-90e4-2d1ac5e1d39b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a894ae3a-a2cd-4602-aff4-11f441aba954
+          stepCounter: 01348aed-cd3b-4621-8233-458ea325335c
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3c219ff3-5fb5-41e3-870e-df3cd323ebb9
+                stepCounter: ec49eb01-163d-4716-90e4-2d1ac5e1d39b
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CM23G_COMBINED: ec49eb01-163d-4716-90e4-2d1ac5e1d39b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM23G_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CM23G_COMBINED') }} "CM23G_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
+        name: STG_CM23G_COMBINED
+        noLinkRefs: []
+  name: STG_CM23G_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

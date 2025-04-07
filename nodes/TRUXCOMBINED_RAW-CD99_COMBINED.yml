@@ -1,0 +1,126 @@
+fileVersion: 1
+id: 0eda49a1-8fb4-4687-b27e-828ccef21193
+name: CD99_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 82fb2396-3c9b-4892-98b7-ce9dc2989e66
+          stepCounter: 0eda49a1-8fb4-4687-b27e-828ccef21193
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CD99_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0211797a-ba9d-494f-bb4c-ac1a4406b940
+                stepCounter: 2d671b92-cbd4-4638-8142-68dbd46bcc95
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 055af244-c040-444d-a70a-008bed5de2d5
+          stepCounter: 0eda49a1-8fb4-4687-b27e-828ccef21193
+        config: {}
+        dataType: VARCHAR(90)
+        description: ""
+        name: CD99_DESC
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 788cacda-fbec-4197-a84b-45d9a48e077c
+                stepCounter: 2d671b92-cbd4-4638-8142-68dbd46bcc95
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 51a1c8a7-b9e1-4e98-a19c-dd60c6ab7e78
+          stepCounter: 0eda49a1-8fb4-4687-b27e-828ccef21193
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: CD99_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 265155f9-14af-4d35-8d03-b5978a85a576
+                stepCounter: 2d671b92-cbd4-4638-8142-68dbd46bcc95
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a669a7f8-d856-4985-a2a8-273abef58066
+          stepCounter: 0eda49a1-8fb4-4687-b27e-828ccef21193
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bf93512d-7b1e-457d-99aa-ff5c73691913
+                stepCounter: 2d671b92-cbd4-4638-8142-68dbd46bcc95
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec1275db-984d-4912-800c-e99b9ba1d6a2
+          stepCounter: 0eda49a1-8fb4-4687-b27e-828ccef21193
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 65b006c7-ddd6-4fbf-9175-652c4044a4d2
+                stepCounter: 2d671b92-cbd4-4638-8142-68dbd46bcc95
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d8958e8f-57fc-4745-bea2-f9c2a97a2ce8
+          stepCounter: 0eda49a1-8fb4-4687-b27e-828ccef21193
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: CD99
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD99') }} "CD99"
+        name: CD99_COMBINED
+        noLinkRefs: []
+  name: CD99_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

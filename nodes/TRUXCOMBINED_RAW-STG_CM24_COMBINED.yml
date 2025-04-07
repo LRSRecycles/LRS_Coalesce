@@ -1,0 +1,99 @@
+fileVersion: 1
+id: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+name: STG_CM24_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79a88d5e-e407-4e87-9ea4-67115cb0e091
+          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: CM24_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e27d60c3-f4c2-4b77-9769-0004118aabbc
+                stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3d739aa4-ce1b-4467-8f6b-10244757320a
+          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: CM24_DESC
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23c0bba1-9409-4d9c-a2df-e224f664ee41
+                stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b3876515-1d84-4d31-9b88-cef119f6b175
+          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: CM24_ACTIVE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bfcd022f-4b35-4054-8c50-13ce761be948
+                stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 581233b8-c9ce-4607-b32c-e7825d6cb5d9
+          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23bd0237-d7bc-40ec-ba67-02ffaf1448df
+                stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CM24_COMBINED: 73124694-50d3-4d34-8d80-a62967bf4522
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CM24_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CM24_COMBINED') }} "CM24_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
+        name: STG_CM24_COMBINED
+        noLinkRefs: []
+  name: STG_CM24_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

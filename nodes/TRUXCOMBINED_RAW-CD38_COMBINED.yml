@@ -1,0 +1,140 @@
+fileVersion: 1
+id: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+name: CD38_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 37bd9a13-2801-4522-b57c-204640075bd5
+          stepCounter: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: CD38_NONINV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c73bf742-d326-4383-9b29-52db4a7394b8
+                stepCounter: c24a2aa8-6163-4277-8d0d-f53b4ec316c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8aa2598-bc28-48fb-9919-226a9029e036
+          stepCounter: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        name: CD38_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 40edc1c1-1166-4634-b7b1-5cd9c0482371
+                stepCounter: c24a2aa8-6163-4277-8d0d-f53b4ec316c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 965291df-d512-49e3-9cd5-7f5a03999081
+          stepCounter: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: CD38_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2a141a24-5575-442f-9f56-07fbf214f8ca
+                stepCounter: c24a2aa8-6163-4277-8d0d-f53b4ec316c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3d803de-a4c5-42f5-915f-db4e3e5d2c94
+          stepCounter: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: CD38_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c01ad35b-dbc3-4f31-9ac4-b9c0d5e9f289
+                stepCounter: c24a2aa8-6163-4277-8d0d-f53b4ec316c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e33d1460-cf9b-45c7-b01c-ddcd90d09849
+          stepCounter: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 40f38b7c-ffa5-428e-b0a8-4b9ebc61e2df
+                stepCounter: c24a2aa8-6163-4277-8d0d-f53b4ec316c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79b688a7-9535-4a05-99fd-cfca95362f95
+          stepCounter: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36072d51-1406-419b-8fe2-1d09ab39cfb9
+                stepCounter: c24a2aa8-6163-4277-8d0d-f53b4ec316c3
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 942fb086-bf51-4380-8f6b-99110004d322
+          stepCounter: 87bdd89d-3829-46e8-8a6c-2cf6b918a533
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: CD38
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD38') }} "CD38"
+        name: CD38_COMBINED
+        noLinkRefs: []
+  name: CD38_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

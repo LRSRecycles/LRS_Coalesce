@@ -1,0 +1,127 @@
+fileVersion: 1
+id: 439b04f9-3ac2-4424-a7d1-2bf1f5e48ef8
+name: STG_CD32_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bfaf29f8-87e1-4a37-964e-e8f3e49d758c
+          stepCounter: 439b04f9-3ac2-4424-a7d1-2bf1f5e48ef8
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: CD32_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: df340593-deaa-4ae4-a537-a4611f8bf29c
+                stepCounter: a91b2b6b-0c76-453c-aaef-c30819393c9b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16482266-3aca-46d3-bdcf-654638c6a0cc
+          stepCounter: 439b04f9-3ac2-4424-a7d1-2bf1f5e48ef8
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: CD32_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d3fdbea6-c24f-4872-b7a9-e92d6e28d138
+                stepCounter: a91b2b6b-0c76-453c-aaef-c30819393c9b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c37b526e-e821-419d-b915-6ac09cee5225
+          stepCounter: 439b04f9-3ac2-4424-a7d1-2bf1f5e48ef8
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CD32_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 439a48d9-2271-4bbc-8f89-802cb290fbdc
+                stepCounter: a91b2b6b-0c76-453c-aaef-c30819393c9b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f5630362-f9db-4a61-8029-99d0d5bfb4f5
+          stepCounter: 439b04f9-3ac2-4424-a7d1-2bf1f5e48ef8
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f4b8691b-aee6-4b00-bdc0-7c87d09c1ce2
+                stepCounter: a91b2b6b-0c76-453c-aaef-c30819393c9b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31de8b06-62a7-4a5d-8fb1-c258084415da
+          stepCounter: 439b04f9-3ac2-4424-a7d1-2bf1f5e48ef8
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e83652b5-d2ac-4889-baf9-5259d4c1db83
+                stepCounter: a91b2b6b-0c76-453c-aaef-c30819393c9b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31a14172-f031-403a-8e61-b3764882e4a7
+          stepCounter: 439b04f9-3ac2-4424-a7d1-2bf1f5e48ef8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2113bf7b-c4c0-4105-8a6e-dda6cc3ad235
+                stepCounter: a91b2b6b-0c76-453c-aaef-c30819393c9b
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CD32_COMBINED: a91b2b6b-0c76-453c-aaef-c30819393c9b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CD32_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CD32_COMBINED') }} "CD32_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
+        name: STG_CD32_COMBINED
+        noLinkRefs: []
+  name: STG_CD32_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

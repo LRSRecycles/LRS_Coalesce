@@ -1,0 +1,154 @@
+fileVersion: 1
+id: ed136500-ec16-4818-9053-39c4d41f9e6b
+name: CD48_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39d3a485-5ec5-4e66-9eee-ea79c7a4fa64
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: VARCHAR(4)
+        description: ""
+        name: CD48_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2fea27c4-9649-4a21-83e3-ae0f1b45b495
+                stepCounter: 83fea33a-1e41-4fe0-bc1a-78b28498a96e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 412a638d-5a2e-4968-9711-ad4474a2de51
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: CD48_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90a90d39-fd36-47fb-b36e-282e2edd2b9d
+                stepCounter: 83fea33a-1e41-4fe0-bc1a-78b28498a96e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4dea7b0e-ef81-4b1d-ba9f-d51b0a662f12
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: CD48_ALLOWCLOSE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 825b1906-7b74-4f0e-950f-48de1d2294ee
+                stepCounter: 83fea33a-1e41-4fe0-bc1a-78b28498a96e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 304d2b63-ae84-4f5f-9603-57bc0af2c665
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: CD48_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 87733479-9d33-4bda-b609-bdbb62388703
+                stepCounter: 83fea33a-1e41-4fe0-bc1a-78b28498a96e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 94a65679-4e38-4762-a892-411401524309
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: CD48_CLOSEDT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8c473584-c708-458d-b051-10eb1856f1f4
+                stepCounter: 83fea33a-1e41-4fe0-bc1a-78b28498a96e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 77737bb0-9820-42fb-ae89-a7d4263fe9e7
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1457e9e4-e697-4dbd-8531-fab39366f8fd
+                stepCounter: 83fea33a-1e41-4fe0-bc1a-78b28498a96e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ef812cfc-d8c8-4f83-a8ad-a11f1f95372a
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8ee0439a-dc57-4ce0-8ed5-7f8d7fd884c6
+                stepCounter: 83fea33a-1e41-4fe0-bc1a-78b28498a96e
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f0dc6fa7-60ba-4740-ac41-720921b962a7
+          stepCounter: ed136500-ec16-4818-9053-39c4d41f9e6b
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: CD48
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CD48') }} "CD48"
+        name: CD48_COMBINED
+        noLinkRefs: []
+  name: CD48_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node

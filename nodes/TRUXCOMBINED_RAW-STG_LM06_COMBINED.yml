@@ -1,0 +1,127 @@
+fileVersion: 1
+id: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+name: STG_LM06_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a02a45e3-593b-4f6f-aad0-3c5227dd9bb4
+          stepCounter: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: LM06_UOM1
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bce9e7ff-5d30-4f89-8de0-481037a15141
+                stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1edfb1b3-6b0f-4661-9219-ccdf33105dc6
+          stepCounter: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: LM06_UOM2
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1dd3176a-4950-4f23-b685-75541215e1a6
+                stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1859dc9-d694-4316-9568-374f09754137
+          stepCounter: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+        config: {}
+        dataType: NUMBER(18,8)
+        description: ""
+        name: LM06_FACT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2d401f5d-e7c4-4650-8b9f-ffe8ae67ab2f
+                stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 57242f0b-40e8-4720-a19f-83fe73f32d92
+          stepCounter: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1a728839-1eb9-49b7-96df-c1d9f2f0d2fd
+                stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c33273a-bc47-48f5-b766-0ec2f1cf54a4
+          stepCounter: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 294c60fc-78e2-4f13-a98f-53adf360a4e6
+                stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7831c0c5-9a44-47c5-b62c-0398588e94a3
+          stepCounter: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36a68173-47fe-4030-b7fd-b16200700960
+                stepCounter: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LM06_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "LM06_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
+        name: STG_LM06_COMBINED
+        noLinkRefs: []
+  name: STG_LM06_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
