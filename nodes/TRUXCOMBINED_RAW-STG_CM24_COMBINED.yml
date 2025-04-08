@@ -84,10 +84,8 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM24_COMBINED
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM24_COMBINED') }} "CM24_COMBINED"
-            
-            WHERE "_FIVETRAN_DELETED" = FALSE
         name: STG_CM24_COMBINED
         noLinkRefs: []
   name: STG_CM24_COMBINED

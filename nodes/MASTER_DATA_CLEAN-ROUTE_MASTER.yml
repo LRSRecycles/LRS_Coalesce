@@ -352,8 +352,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 909dd0ca-34ac-428f-80e9-005e7d4805c0
-                stepCounter: 6a58c60a-fd40-458e-b415-7aa216626cb2
+              - columnCounter: c480f7e6-30eb-4b13-a03b-730a2015e80a
+                stepCounter: bbc0cee1-64c3-4606-aa6a-87454305f377
             transform: ""
           - columnReferences:
               - columnCounter: 106e1ee5-dea0-4a73-92cb-fbc3795d6c7d
@@ -697,7 +697,7 @@ operation:
           LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
           RM01_COMBINED: bd25ccfd-afa5-4e34-be04-467c3e0970fd
           RM04_COMBINED: ee847855-7787-4e90-bc2b-f25d4232ef87
-          SL01_COMBINED: 6a58c60a-fd40-458e-b415-7aa216626cb2
+          STG_SL01_COMBINED: bbc0cee1-64c3-4606-aa6a-87454305f377
           TR01_COMBINED: 0957e166-ae04-4009-8d30-9868721628af
         customSQL:
           customSQL: ""
@@ -713,7 +713,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: RM04_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: SL01_COMBINED
+            nodeName: STG_SL01_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: TR01_COMBINED
         join:
@@ -739,9 +739,9 @@ operation:
                ON "RM01_COMBINED"."RM01_MATL" = "LM04_COMBINED"."LM04_CODE" 
               AND "RM01_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
             
-             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
-               ON "RM01_COMBINED"."RM01_SLID" = "SL01_COMBINED"."SL01_ID"
-              AND "RM01_COMBINED"."SOURCE" = "SL01_COMBINED"."SOURCE"
+             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SL01_COMBINED') }} "STG_SL01_COMBINED"
+               ON "RM01_COMBINED"."RM01_SLID" = "STG_SL01_COMBINED"."SL01_ID"
+              AND "RM01_COMBINED"."SOURCE" = "STG_SL01_COMBINED".SOURCE
         name: TRUX Routes
         noLinkRefs: []
       - aliases:

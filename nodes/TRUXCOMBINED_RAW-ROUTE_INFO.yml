@@ -239,8 +239,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 909dd0ca-34ac-428f-80e9-005e7d4805c0
-                stepCounter: 6a58c60a-fd40-458e-b415-7aa216626cb2
+              - columnCounter: c480f7e6-30eb-4b13-a03b-730a2015e80a
+                stepCounter: bbc0cee1-64c3-4606-aa6a-87454305f377
             transform: ""
         systemColumnType: None
       - appliedColumnTests: {}
@@ -380,17 +380,17 @@ operation:
     sourceMapping:
       - aliases:
           CD14_COMBINED: f21fe296-8b27-43b1-978c-64999978c610
-          SL01_COMBINED: 6a58c60a-fd40-458e-b415-7aa216626cb2
           STG_RM01_COMBINED: 32ce6923-348f-4d34-b5fb-0b436b70dd00
+          STG_SL01_COMBINED: bbc0cee1-64c3-4606-aa6a-87454305f377
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CD14_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: SL01_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: STG_RM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_SL01_COMBINED
         join:
           joinCondition: |2
                FROM {{ ref('TRUXCOMBINED_RAW', 'STG_RM01_COMBINED') }} "STG_RM01_COMBINED"
@@ -399,9 +399,9 @@ operation:
                  ON "STG_RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE"
                 AND "STG_RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
             
-              INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
-                 ON "STG_RM01_COMBINED"."RM01_SLID" = "SL01_COMBINED"."SL01_ID"
-                AND "STG_RM01_COMBINED"."SOURCE" = "SL01_COMBINED"."SOURCE"
+              INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SL01_COMBINED') }} "STG_SL01_COMBINED"
+                 ON "STG_RM01_COMBINED"."RM01_SLID" = "STG_SL01_COMBINED"."SL01_ID"
+                AND "STG_RM01_COMBINED"."SOURCE" = "STG_SL01_COMBINED"."SOURCE"
             
               WHERE "CD14_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: ROUTE_INFO
