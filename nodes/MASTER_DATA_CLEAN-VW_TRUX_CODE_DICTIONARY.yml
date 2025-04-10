@@ -21,7 +21,7 @@ operation:
         customSQL:
           customSQL: |
             {{ stage('Override Create SQL') }}
-            	CREATE OR REPLACE VIEW {{ ref('TRUXCOMBINED_RAW', 'VW_TRUX_CODE_DICTIONARY')}} AS 
+            	CREATE OR REPLACE VIEW {{ ref('MASTER_DATA_CLEAN', 'VW_TRUX_CODE_DICTIONARY')}} AS 
             	SELECT 
             'BROKER CODE' AS TYPE
             , SOURCE AS SOURCE
