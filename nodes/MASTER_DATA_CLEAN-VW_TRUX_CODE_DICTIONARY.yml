@@ -17,7 +17,8 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          STG_BK01_COMBINED: b46b78c7-956f-484b-93f4-48110742484a
         customSQL:
           customSQL: |
             {{ stage('Override Create SQL') }}
@@ -25,596 +26,596 @@ operation:
             	SELECT 
             'BROKER CODE' AS TYPE
             , SOURCE AS SOURCE
-            , CAST(BK01_ID AS VARCHAR) AS CODE
+            , CAST(BK01_CLASSNAME AS VARCHAR) AS CODE
             , BK01_NAME AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_BK01_COMBINED
             WHERE BK01_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'BUSINESS CODE' AS TYPE
             , SOURCE AS SOURCE
-            , CD01_CODE AS CODE 
+            , CAST(CD01_CODE AS VARCHAR) AS CODE 
             , CD01_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_CD01_COMBINED
             WHERE CD01_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT 
             'ADJUSTMENT & PAYMENT TYPES CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD02_CODE AS CODE
+            , CAST(CD02_CODE AS VARCHAR) AS CODE
             , CD02_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_CD02_COMBINED
             WHERE CD02_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'STOP\SUSPEND REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD03_CODE AS CODE
+            , CAST(CD03_CODE AS VARCHAR) AS CODE
             , CD03_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_CD03_COMBINED
             WHERE CD03_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'UNIT OF MEASURE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD04_CODE AS CODE
+            , CAST(CD04_CODE AS VARCHAR) AS CODE
             , CD04_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_CD04_COMBINED
             WHERE CD04_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SERVICE TYPES CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD05_CODE AS CODE
+            , CAST(CD05_CODE AS VARCHAR) AS CODE
             , CD05_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_CD05_COMBINED
             WHERE CD05_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SALES REPRESENTATIVE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD07_CODE AS CODE
+            , CAST(CD07_CODE AS VARCHAR) AS CODE
             , CD07_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_CD07_COMBINED
             WHERE CD07_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CURRENCY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD08_CODE AS CODE
+            , CAST(CD08_CODE AS VARCHAR) AS CODE
             , CD08_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_CD08_COMBINED
             WHERE CD08_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'TAX JURISDICTION CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD09_CODE AS CODE
+            , CAST(CD09_CODE AS VARCHAR) AS CODE
             , CD09_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd09_COMBINED
             WHERE CD09_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'MILEAGE JURISDICTION CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD10_CODE AS CODE
+            , CAST(CD10_CODE AS VARCHAR) AS CODE
             , CD10_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd10_COMBINED
             WHERE CD10_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CUSTOMER TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD11_CODE AS CODE
+            , CAST(CD11_CODE AS VARCHAR) AS CODE
             , CD11_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd11_COMBINED
             WHERE CD11_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CHANGE REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD12_CODE AS CODE
+            , CAST(CD12_CODE AS VARCHAR) AS CODE
             , CD12_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd12_COMBINED
             WHERE CD12_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'VEHICLE TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD13_CODE AS CODE
+            , CAST(CD13_CODE AS VARCHAR) AS CODE
             , CD13_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd13_COMBINED
             WHERE CD13_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'ROUTE TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD14_CODE AS CODE
+            , CAST(CD14_CODE AS VARCHAR) AS CODE
             , CD14_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd14_COMBINED
             WHERE CD14_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'UNUSABLE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD15_CODE AS CODE
+            , CAST(CD15_CODE AS VARCHAR) AS CODE
             , CD15_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd15_COMBINED
             WHERE CD15_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CONTAINER TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD16_CODE AS CODE
+            , CAST(CD16_CODE AS VARCHAR) AS CODE
             , CD16_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd16_COMBINED
             WHERE CD16_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'BILLING CYCLE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD17_CODE AS CODE
+            , CAST(CD17_CODE AS VARCHAR) AS CODE
             , CD17_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd17_COMBINED
             WHERE CD17_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CUSTOMER ISSUE TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD18_CODE AS CODE
+            , CAST(CD18_CODE AS VARCHAR) AS CODE
             , CD18_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd18_COMBINED
             WHERE CD18_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CUSTOMER ISSUE URGENCY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD19_CODE AS CODE
+            , CAST(CD19_CODE AS VARCHAR) AS CODE
             , CD19_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd19_COMBINED
             WHERE CD19_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'DOWNTIWN REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD22_CODE AS CODE
+            , CAST(CD22_CODE AS VARCHAR) AS CODE
             , CD22_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd22_COMBINED
             WHERE CD22_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'VOID TICKET CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD23_CODE AS CODE
+            , CAST(CD23_CODE AS VARCHAR) AS CODE
             , CD23_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd23_COMBINED
             WHERE CD23_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'TICKET ORIGIN CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD24_CODE AS CODE
+            , CAST(CD24_CODE AS VARCHAR) AS CODE
             , CD24_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd24_COMBINED
             WHERE CD24_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SPECIAL WASTE APPROVAL CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD26_CODE AS CODE
+            , CAST(CD26_CODE AS VARCHAR) AS CODE
             , CD26_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd26_COMBINED
             WHERE CD26_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'TICKET TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD27_CODE AS CODE
+            , CAST(CD27_CODE AS VARCHAR) AS CODE
             , CD27_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd27_COMBINED
             WHERE CD27_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SCALE ADJUSTMENT REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD28_CODE AS CODE
+            , CAST(CD28_CODE AS VARCHAR) AS CODE
             , CD28_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd28_COMBINED
             WHERE CD28_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'COMPETITOR CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD29_CODE AS CODE
+            , CAST(CD29_CODE AS VARCHAR) AS CODE
             , CD29_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd29_COMBINED
             WHERE CD29_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CONTAINER YARD CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD30_CODE AS CODE
+            , CAST(CD30_CODE AS VARCHAR) AS CODE
             , CD30_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd30_COMBINED
             WHERE CD30_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CONTAINER STYLE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD32_CODE AS CODE
+            , CAST(CD32_CODE AS VARCHAR) AS CODE
             , CD32_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd32_COMBINED
             WHERE CD32_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'INVOICE ACTION CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD35_CODE AS CODE
+            , CAST(CD35_CODE AS VARCHAR) AS CODE
             , CD35_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd35_COMBINED
             WHERE CD35_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'LABOR TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD37_CODE AS CODE
+            , CAST(CD37_CODE AS VARCHAR) AS CODE
             , CD37_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd37_COMBINED
             WHERE CD37_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'PART LOCATION CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD38_CODE AS CODE
+            , CAST(CD38_CODE AS VARCHAR) AS CODE
             , CD38_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd38_COMBINED
             WHERE CD38_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'REPAIR PRIORITY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD39_CODE AS CODE
+            , CAST(CD39_CODE AS VARCHAR) AS CODE
             , CD39_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd39_COMBINED
             WHERE CD39_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'REPAIR REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD40_CODE AS CODE
+            , CAST(CD40_CODE AS VARCHAR) AS CODE
             , CD40_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd40_COMBINED
             WHERE CD40_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'REPAIR SITE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD41_CODE AS CODE
+            , CAST(CD41_CODE AS VARCHAR) AS CODE
             , CD41_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd41_COMBINED
             WHERE CD41_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'PRIORITY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD43_CODE AS CODE
+            , CAST(CD43_CODE AS VARCHAR) AS CODE
             , CD43_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd43_COMBINED
             WHERE CD43_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SUBSYSTEM CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD44_CODE AS CODE
+            , CAST(CD44_CODE AS VARCHAR) AS CODE
             , CD44_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd44_COMBINED
             WHERE CD44_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'FLUID TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD46_CODE AS CODE
+            , CAST(CD46_CODE AS VARCHAR) AS CODE
             , CD46_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd46_COMBINED
             WHERE CD46_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'PARTS INVENTORY ADJUSTMENT REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD47_CODE AS CODE
+            , CAST(CD47_CODE AS VARCHAR) AS CODE
             , CD47_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd47_COMBINED
             WHERE CD47_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'REPAIR ORDER JOB STATUS CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD48_CODE AS CODE
+            , CAST(CD48_CODE AS VARCHAR) AS CODE
             , CD48_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd48_COMBINED
             WHERE CD48_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'REPAIR ORDER VOID REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD49_CODE AS CODE
+            , CAST(CD49_CODE AS VARCHAR) AS CODE
             , CD49_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd49_COMBINED
             WHERE CD49_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SERVICE CATEGORY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD50_CODE AS CODE
+            , CAST(CD50_CODE AS VARCHAR) AS CODE
             , CD50_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd50_COMBINED
             WHERE CD50_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'COST CATEGORY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD51_CODE AS CODE
+            , CAST(CD51_CODE AS VARCHAR) AS CODE
             , CD51_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd51_COMBINED
             WHERE CD51_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'COLLECTION AGENT CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD52_CODE AS CODE
+            , CAST(CD52_CODE AS VARCHAR) AS CODE
             , CD52_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd52_COMBINED
             WHERE CD52_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SCALE MANUAL REASON CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD53_CODE AS CODE
+            , CAST(CD53_CODE AS VARCHAR) AS CODE
             , CD53_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd53_COMBINED
             WHERE CD53_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CONTRACT CATEGORY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD54_CODE AS CODE
+            , CAST(CD54_CODE AS VARCHAR) AS CODE
             , CD54_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd54_COMBINED
             WHERE CD54_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'REPAIR ORDER FAIL CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD55_CODE AS CODE
+            , CAST(CD55_CODE AS VARCHAR) AS CODE
             , CD55_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd55_COMBINED
             WHERE CD55_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'CUSTOMER CUSTOM CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CD99_CODE AS CODE
+            , CAST(CD99_CODE AS VARCHAR) AS CODE
             , CD99_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cd99_COMBINED
             WHERE CD99_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SERVICE ACTIVITY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM12_CODE AS CODE
+            , CAST(CM12_CODE AS VARCHAR) AS CODE
             , CM12_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm12_COMBINED
             WHERE CM12_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'TAX CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM20_CODE AS CODE
+            , CAST(CM20_CODE AS VARCHAR) AS CODE
             , CM20_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm20_COMBINED
             WHERE CM20_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'GENERAL LEDGER INTERFACE ACTIVITY CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM23A_CODE AS CODE
+            , CAST(CM23A_CODE AS VARCHAR) AS CODE
             , CM23A_GLNU AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm23a_COMBINED
-            
+
             UNION ALL
-            
+
             SELECT
             'GENERAL LEDGER INTERFACE MATERIAL CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM23B_CODE AS CODE
+            , CAST(CM23B_CODE AS VARCHAR) AS CODE
             , CM23B_GLNU AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm23b_COMBINED
-            
+
             UNION ALL
-            
+
             SELECT
             'GENERAL LEDGER INTERFACE MISC TRANSACTION CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM23C_CODE AS CODE
+            , CAST(CM23C_CODE AS VARCHAR) AS CODE
             , CM23C_GLNU AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm23c_COMBINED
-            
+
             UNION ALL
-            
+
             SELECT
             'GENERAL LEDGER INTERFACE TAXES CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM23D_CODE AS CODE
+            , CAST(CM23D_CODE AS VARCHAR) AS CODE
             , CM23D_GLNU AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm23d_COMBINED
-            
+
             UNION ALL
-            
+
             SELECT
             'CASH ACCOUNT CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM23E_CODE AS CODE
+            , CAST(CM23E_CODE AS VARCHAR) AS CODE
             , CM23E_GLNU AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm23e_COMBINED
-            
+
             UNION ALL
-            
+
             SELECT
             'ACCOUNT ADJUSTMENTS ACCOUNT CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM23F_CODE AS CODE
+            , cAST(CM23F_CODE AS VARCHAR) AS CODE
             , CM23F_GLNU AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm23f_COMBINED
-            
+
             UNION ALL
-            
+
             SELECT
             'CONTROL ACCOUNT CODES' AS TYPE
             , SOURCE AS SOURCE
             , CAST(CM23G_INTE AS VARCHAR) AS CODE
             , CM23G_GLNU AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm23g_COMBINED
-            
+
             UNION ALL
-            
+
             SELECT
             'GENERAL LEDGER CODES' AS TYPE
             , SOURCE AS SOURCE
-            , CM24_CODE AS CODE
+            , CAST(CM24_CODE AS VARCHAR) AS CODE
             , CM24_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_cm24_COMBINED
             WHERE CM24_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'FUEL TYPE CODES' AS TYPE
             , SOURCE AS SOURCE
-            , FC02_CODE AS CODE
+            , CAST(FC02_CODE AS VARCHAR) AS CODE
             , FC02_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_fc02_COMBINED
             WHERE FC02_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'MATERIAL CODES' AS TYPE
             , SOURCE AS SOURCE
-            , LM04_CODE AS CODE
+            , CAST(LM04_CODE AS VARCHAR) AS CODE
             , LM04_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_lm04_COMBINED
             WHERE LM04_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'MISCELLANEOUS TRANSACTION CODES' AS TYPE
             , SOURCE AS SOURCE
-            , MT00_CODE AS CODE
+            , CAST(MT00_CODE AS VARCHAR) AS CODE
             , MT00_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_mt00_COMBINED
             WHERE MT00_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'SERVICE PRICE CLASS CODES' AS TYPE
             , SOURCE AS SOURCE
@@ -622,27 +623,26 @@ operation:
             , PC01_NAME AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.PC01_COMBINED
             WHERE PC01_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'MAP CODES' AS TYPE
             , SOURCE AS SOURCE
-            , RM06_CODE AS CODE
+            , CAST(RM06_CODE AS VARCHAR) AS CODE
             , RM06_DESC AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_rm06_COMBINED
             WHERE RM06_ACTIVE = TRUE
-            
+
             UNION ALL
-            
+
             SELECT
             'ROUTE START LOCATION CODES' AS TYPE
             , SOURCE AS SOURCE
-            , SL01_ADDS AS CODE
+            , CAST(SL01_ADDS AS VARCHAR) AS CODE
             , SL01_NAME AS DESCRIPTION
             FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_sl01_COMBINED
             WHERE SL01_ACTIVE = TRUE
-            
         dependencies: []
         join:
           joinCondition: ""
