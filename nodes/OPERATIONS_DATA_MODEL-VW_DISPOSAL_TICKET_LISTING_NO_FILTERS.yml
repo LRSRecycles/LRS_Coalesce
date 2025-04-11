@@ -941,17 +941,45 @@ operation:
               - columnCounter: 054171eb-d571-4b19-9c94-0cb3b05830c9
                 stepCounter: 0cd539f6-680f-47a2-8848-984b31f64e8a
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fdc84cdb-5ad3-4eca-9bac-ee5581024dce
+          stepCounter: 41af6fad-4bbd-4437-9ee8-bdc8c3b7bca2
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e965ad54-1824-4ecd-8536-79d0b14d88f2
+                stepCounter: c2e3b305-d522-488b-bbc6-6ade93cd3385
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          STG_DISPOSAL_TICKET_LISTING_NO_FILTERS: 0cd539f6-680f-47a2-8848-984b31f64e8a
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
           customSQL: ""
         dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: TRUX_DATABASE_METADATA
           - locationName: OPERATIONS_DATA_MODEL
             nodeName: STG_DISPOSAL_TICKET_LISTING_NO_FILTERS
         join:
-          joinCondition: FROM {{ ref('OPERATIONS_DATA_MODEL', 'STG_DISPOSAL_TICKET_LISTING_NO_FILTERS') }} "STG_DISPOSAL_TICKET_LISTING_NO_FILTERS"
+          joinCondition: |-
+            FROM {{ ref('OPERATIONS_DATA_MODEL', 'STG_DISPOSAL_TICKET_LISTING_NO_FILTERS') }} "STG_DISPOSAL_TICKET_LISTING_NO_FILTERS"
+            
+            LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
+               ON "STG_DISPOSAL_TICKET_LISTING_NO_FILTERS"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
         name: VW_DISPOSAL_TICKET_LISTING_NO_FILTERS
         noLinkRefs: []
   name: VW_DISPOSAL_TICKET_LISTING_NO_FILTERS
