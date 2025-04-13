@@ -660,7 +660,10 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: LF05D_COMBINED_STREAM
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED_STREAM') }} "LF05D_COMBINED_STREAM"
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED_STREAM') }} "LF05D_COMBINED_STREAM"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
         name: LF05D_COMBINED
         noLinkRefs: []
   name: LF05D_COMBINED

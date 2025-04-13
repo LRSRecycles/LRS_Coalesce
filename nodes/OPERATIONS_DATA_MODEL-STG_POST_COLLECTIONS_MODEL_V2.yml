@@ -43,8 +43,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 85d59bc9-fee1-4442-840d-171f685caf90
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: e799323d-0264-47ee-8fd7-e19675dd0299
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -72,8 +72,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4680c402-4680-49ed-9164-cfdfd85e6661
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 9468f22b-6df1-4d47-9068-174a5c9e4c49
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -93,7 +93,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: CASE WHEN LF05H_COMBINED."LF05H_INBOUND" = 1 THEN "LF05H_COMBINED"."LF05H_DTEI" ELSE "LF05H_COMBINED"."LF05H_DTEO" END
+            transform: CASE WHEN STG_LF05H_COMBINED."LF05H_INBOUND" = 1 THEN "STG_LF05H_COMBINED"."LF05H_DTEI" ELSE "STG_LF05H_COMBINED"."LF05H_DTEO" END
         systemColumnType: None
         transform: ""
       - appliedColumnTests: {}
@@ -107,8 +107,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: bea45991-e658-440f-94c7-d3f02b16da60
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: c949754e-5290-4e40-bf8d-10d0a506250b
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -121,8 +121,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: c6d4c4ac-f95d-4bcb-8ad4-853685b8c950
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: c21e6dd7-8ca1-4e24-86e5-af28d047ea6f
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -143,10 +143,10 @@ operation:
               - columnCounter: "0"
                 stepCounter: "0"
             transform: |
-              LPAD(FLOOR(DATEDIFF(DAY,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO")), 2, '0') || ':' ||
-              LPAD(FLOOR(DATEDIFF(HOUR,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %24), 2, '0') || ':' || 
-              LPAD(FLOOR(DATEDIFF(MINUTE,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') || ':' || 
-              LPAD(FLOOR(DATEDIFF(SECOND,"LF05H_COMBINED"."LF05H_DTEI","LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') 
+              LPAD(FLOOR(DATEDIFF(DAY,"STG_LF05H_COMBINED"."LF05H_DTEI","STG_LF05H_COMBINED"."LF05H_DTEO")), 2, '0') || ':' ||
+              LPAD(FLOOR(DATEDIFF(HOUR,"STG_LF05H_COMBINED"."LF05H_DTEI","STG_LF05H_COMBINED"."LF05H_DTEO") %24), 2, '0') || ':' || 
+              LPAD(FLOOR(DATEDIFF(MINUTE,"STG_LF05H_COMBINED"."LF05H_DTEI","STG_LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') || ':' || 
+              LPAD(FLOOR(DATEDIFF(SECOND,"STG_LF05H_COMBINED"."LF05H_DTEI","STG_LF05H_COMBINED"."LF05H_DTEO") %60), 2, '0') 
         systemColumnType: None
         transform: ""
       - appliedColumnTests: {}
@@ -175,8 +175,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 659847f6-b415-458e-b1e2-93eaad454d75
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 960121e3-c6f9-4e99-86fe-15fe8da5a4c0
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -209,8 +209,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 29e98454-68c4-4414-8685-8bae91617e75
-                stepCounter: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
+              - columnCounter: 5cbf364a-637f-4384-93e2-a0a94e49e67a
+                stepCounter: f444d93a-cf72-4d04-bb6a-d32f667d27c3
             transform: ""
         systemColumnType: None
         transform: ""
@@ -388,8 +388,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 51aba856-85df-4390-9f0f-ce4d52d44abf
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: d4b223c8-8149-443d-a95f-6db24d38e1a7
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -402,8 +402,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 547816e5-96b2-4944-bafd-bfa48712966d
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: d75efa75-e72f-4b2e-950c-48091bb342ab
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -416,8 +416,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 68190d9e-ab9e-4b05-8e55-ba5d5b25f297
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: cf2585c6-5ff3-4909-8989-c550f42e261f
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -475,8 +475,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2995a465-fc96-4cc6-a5fc-6cb88b494cd6
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 0d28ca33-c8af-451a-b838-9cf7dbd2b424
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -489,8 +489,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3c217e0a-d623-4de2-8d0c-c994d31ee777
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 021829ef-693f-41dd-b84a-51ee64bd4122
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -510,7 +510,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: CASE WHEN "LF05H_COMBINED"."LF05H_INBOUND" = TRUE THEN 'Inbound' ELSE 'Outbound' END
+            transform: CASE WHEN "STG_LF05H_COMBINED"."LF05H_INBOUND" = TRUE THEN 'Inbound' ELSE 'Outbound' END
         systemColumnType: None
         transform: ""
       - appliedColumnTests: {}
@@ -524,8 +524,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2ec5c505-693b-4756-990c-f7c015d85514
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 68d9b8f5-c144-4af6-8760-808b5ce446dd
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -583,8 +583,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: e69e6652-6586-46fc-a6be-ae5a0aa27430
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 507ee3cd-0993-4896-8674-56cd5e242156
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -597,8 +597,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: cc65a599-a803-4870-b89f-5137837e97f1
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: d4e667b1-4139-461b-9260-c02b705a60db
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -611,8 +611,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 29ce2d36-4244-4ce5-879c-065d6e338d34
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 2fb6913a-186d-4f0a-86bb-4cd85bf05793
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -625,8 +625,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: def6b14a-91b5-46dc-bc5e-556d11e9fceb
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 5298413a-f9d1-4405-9ca6-adffd688d4b1
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -639,8 +639,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: f3687b8b-bddc-42d5-b82c-c11b27289341
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: ba4d81dc-f819-42d0-b6c4-3cf037982aff
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -653,8 +653,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 78c5ec0d-e9fb-4d45-99d4-7c0da7473200
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: eb645e33-03c4-4987-930e-12d378c82c87
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -667,8 +667,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2194a667-bb57-42d9-acad-3a9f7aa58152
-                stepCounter: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
+              - columnCounter: 4c315261-8e50-4027-aa29-556561fe7204
+                stepCounter: ea50d874-5616-4407-a90a-cedcbdf8653f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -689,45 +689,45 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          BLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
-          DLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+          BLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+          DLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
           LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-          LF05H_COMBINED: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
-          LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
-          TLM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+          STG_LF05H_COMBINED: ea50d874-5616-4407-a90a-cedcbdf8653f
+          STG_LM04_COMBINED: f444d93a-cf72-4d04-bb6a-d32f667d27c3
+          TLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: LF05D_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: LF05H_COMBINED
+            nodeName: STG_LF05H_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: LM04_COMBINED
+            nodeName: STG_LM04_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: LM06_COMBINED
+            nodeName: STG_LM06_COMBINED
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-            FULL OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05H_COMBINED') }} "LF05H_COMBINED"
-            ON "LF05D_COMBINED"."LF05D_LINK" = "LF05H_COMBINED"."LF05H_ID" 
-                AND "LF05D_COMBINED"."SOURCE" = "LF05H_COMBINED"."SOURCE"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED" -- MATERIAL
-            ON "LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE" 
-                AND "LF05D_COMBINED"."SOURCE"= "LM04_COMBINED"."SOURCE"
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "DLM06_COMBINED" -- DISPOSAL UNIT OF MEASURE
+            FULL OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05H_COMBINED') }} "STG_LF05H_COMBINED"
+            ON "LF05D_COMBINED"."LF05D_LINK" = "STG_LF05H_COMBINED"."LF05H_ID" 
+                AND "LF05D_COMBINED"."SOURCE" = "STG_LF05H_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} "STG_LM04_COMBINED" -- MATERIAL
+            ON "LF05D_COMBINED"."LF05D_MATL" = "STG_LM04_COMBINED"."LM04_CODE" 
+                AND "LF05D_COMBINED"."SOURCE"= "STG_LM04_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM06_COMBINED') }} "DLM06_COMBINED" -- DISPOSAL UNIT OF MEASURE
             ON "LF05D_COMBINED"."LF05D_CUOM" = "DLM06_COMBINED"."LM06_UOM1" 
                 AND "LF05D_COMBINED"."SOURCE" = "DLM06_COMBINED"."SOURCE"
                 AND "DLM06_COMBINED"."LM06_UOM2" = 'TN'
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "BLM06_COMBINED" -- BILLING UNIT OF MEASURE
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM06_COMBINED') }} "BLM06_COMBINED" -- BILLING UNIT OF MEASURE
             ON "LF05D_COMBINED"."LF05D_BUOM" = "BLM06_COMBINED"."LM06_UOM1" 
                 AND "LF05D_COMBINED"."SOURCE" = "BLM06_COMBINED"."SOURCE"
                 AND "BLM06_COMBINED"."LM06_UOM2" = 'TN'
-            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "TLM06_COMBINED" -- Tracking UNIT OF MEASURE
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM06_COMBINED') }} "TLM06_COMBINED" -- Tracking UNIT OF MEASURE
             ON "LF05D_COMBINED"."LF05D_TUOM" = "TLM06_COMBINED"."LM06_UOM1" 
                 AND "LF05D_COMBINED"."SOURCE" = "TLM06_COMBINED"."SOURCE"
                 AND "TLM06_COMBINED"."LM06_UOM2" = 'TN'
-            WHERE YEAR("LF05H_COMBINED"."LF05H_DTEI") >= YEAR(CURRENT_DATE())-2
+            WHERE YEAR("STG_LF05H_COMBINED"."LF05H_DTEI") >= YEAR(CURRENT_DATE())-2
             AND "LF05D_COMBINED"."SORT" = 1 AND "LF05D_COMBINED"."METADATA$ACTION" = 'INSERT' AND "LF05D_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: STG_POST_COLLECTIONS_MODEL_V2
         noLinkRefs: []
