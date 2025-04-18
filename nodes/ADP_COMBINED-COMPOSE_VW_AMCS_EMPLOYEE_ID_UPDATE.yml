@@ -1,0 +1,95 @@
+fileVersion: 1
+id: 09918d16-1f81-4625-bacb-9a6721f794e2
+name: COMPOSE_VW_AMCS_EMPLOYEE_ID_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ADP_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30aa6b0d-cb4d-4f37-bed7-c6de79336bda
+          stepCounter: 09918d16-1f81-4625-bacb-9a6721f794e2
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: EMPLOYEE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1b98d850-6f7d-47da-ac3a-3a69f770518c
+                stepCounter: 9425bb4a-b006-4eb4-ac29-d62b89055565
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b6eadda5-e099-4f48-b591-9452c9d29c8d
+          stepCounter: 09918d16-1f81-4625-bacb-9a6721f794e2
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: FIRST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1cf8ea84-c995-41fb-afba-77dcb26c8b98
+                stepCounter: 9425bb4a-b006-4eb4-ac29-d62b89055565
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8e80afcf-522c-4f71-93b4-e0b587da0914
+          stepCounter: 09918d16-1f81-4625-bacb-9a6721f794e2
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: LAST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17df736c-bcc2-4c8e-bb5c-68843a583155
+                stepCounter: 9425bb4a-b006-4eb4-ac29-d62b89055565
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 610a62b7-9d2e-4022-b53e-e2370143b123
+          stepCounter: 09918d16-1f81-4625-bacb-9a6721f794e2
+        config: {}
+        dataType: DATE
+        description: ""
+        name: HIRE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a698d68-a5a7-4b0a-ac3d-5f54e039527f
+                stepCounter: 9425bb4a-b006-4eb4-ac29-d62b89055565
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ADP_LYRIQ
+            nodeName: COMPOSE_VW_AMCS_EMPLOYEE_ID_UPDATE
+        join:
+          joinCondition: FROM {{ ref('ADP_LYRIQ', 'COMPOSE_VW_AMCS_EMPLOYEE_ID_UPDATE') }} "COMPOSE_VW_AMCS_EMPLOYEE_ID_UPDATE"
+        name: COMPOSE_VW_AMCS_EMPLOYEE_ID_UPDATE
+        noLinkRefs: []
+  name: COMPOSE_VW_AMCS_EMPLOYEE_ID_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
