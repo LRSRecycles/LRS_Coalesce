@@ -1,0 +1,139 @@
+fileVersion: 1
+id: 366850a5-8c94-4ebd-846a-bb678b7039e8
+name: DEPARTMENT_METRICS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: The table contains records of worker profiles, each record representing an individual worker. It includes demographic information such as name, gender, ethnicity, and race, as well as contact details like address and postal code.
+  isMultisource: false
+  locationName: ADP_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17d80761-1b4a-470f-a18c-19306a3e74c3
+          stepCounter: 366850a5-8c94-4ebd-846a-bb678b7039e8
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: DEPARTMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d52d0b8d-e0aa-4711-89b5-f335558d630c
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc7c029b-e146-42e6-9cb9-bd717afb7930
+          stepCounter: 366850a5-8c94-4ebd-846a-bb678b7039e8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: dept_headcount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COUNT(*)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b3d61a2b-30d3-4594-93c1-0d7832111958
+          stepCounter: 366850a5-8c94-4ebd-846a-bb678b7039e8
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: avg_tenure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: AVG(DATEDIFF(year, ORIGINAL_HIRE_DATE, CURRENT_DATE))
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c52ae31f-3982-4122-81e0-bb9b450db8af
+          stepCounter: 366850a5-8c94-4ebd-846a-bb678b7039e8
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: female_ratio
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM(CASE WHEN GENDER IN ('Female', 'Woman / Female') THEN 1 ELSE 0 END)::FLOAT / COUNT(*)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2f795bed-d559-4a16-ac93-4d392476bc4a
+          stepCounter: 366850a5-8c94-4ebd-846a-bb678b7039e8
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: diversity_ratio
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM(CASE WHEN ETHNICITY NOT IN ('White') THEN 1 ELSE 0 END)::FLOAT / COUNT(*)
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          WORKER_PROFILES_COMBINED: 908ed017-9148-4fb3-ad80-efeaaddea545
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ADP_COMBINED
+            nodeName: WORKER_PROFILES_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('ADP_COMBINED', 'WORKER_PROFILES_COMBINED') }} "WORKER_PROFILES_COMBINED"
+            
+            WHERE WORKER_STATUS = 'Active'
+            
+            GROUP BY DEPARTMENT_NAME
+        name: DEPARTMENT_METRICS
+        noLinkRefs: []
+  name: DEPARTMENT_METRICS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

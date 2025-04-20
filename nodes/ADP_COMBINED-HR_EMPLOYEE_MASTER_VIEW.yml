@@ -1,0 +1,894 @@
+fileVersion: 1
+id: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+name: HR_EMPLOYEE_MASTER_VIEW
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: The table contains records of worker profiles, each record representing an individual worker. It includes demographic information such as name, gender, ethnicity, and race, as well as contact details like address and postal code.
+  isMultisource: false
+  locationName: ADP_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38d7602a-7e28-4410-8d33-7d79e1054e85
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Employee ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33d1c809-6a28-4fc2-af0f-47251d06ed4f
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.WORKER_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2fbb5138-6b0c-4c8c-8385-e474d2c34c5d
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: First Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59f3dda0-9b72-4dd2-825e-a7c8b2754af9
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.FIRST_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3c89cb3d-2ae9-42fb-9c80-f2dd7bb2f3ce
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Last Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bd53bf05-c95f-4b71-8fb0-22effbc2487f
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.LAST_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9793300d-6ee1-4384-9e41-c5504b95440d
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Email Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5ed067bd-4f44-4902-a086-ae9ae40b977f
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.EMAIL
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 01b45b5f-874f-4e1c-9ee1-2a97f03d1595
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: Gender
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a2adad76-8960-4b1d-9e2a-94d28021dd49
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.GENDER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b4cdb04-0c5b-464d-a88a-2a969c180fea
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Ethnicity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c4b965ee-2f29-4912-946c-09d9d4c7595e
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.ETHNICITY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3ffd3095-2e59-4328-a8f0-f344921c1505
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: Marital Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 592987e7-5676-4a46-94b3-1848772ac966
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.MARITAL_STATUS
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 71aa9dc1-7317-4c13-9e68-61c4720e5a6e
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Age Group
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2-
+               CASE 
+                      WHEN DATEDIFF(year, WR.BIRTH_DATE, CURRENT_DATE) < 25 THEN '18-24'
+                      WHEN DATEDIFF(year, WR.BIRTH_DATE, CURRENT_DATE) < 35 THEN '25-34'
+                      WHEN DATEDIFF(year, WR.BIRTH_DATE, CURRENT_DATE) < 45 THEN '35-44'
+                      WHEN DATEDIFF(year, WR.BIRTH_DATE, CURRENT_DATE) < 55 THEN '45-54'
+                      ELSE '55+'
+                  END
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f804472f-a0e9-40fc-b458-cbd068a7a4ac
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Department
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d52d0b8d-e0aa-4711-89b5-f335558d630c
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.DEPARTMENT_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cafebb69-ff26-4c1a-a6c3-f2b3b0c308d3
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Location
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c7725afa-0746-4c14-bac8-433bd67cbd5c
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.PRIMARY_WORK_LOCATION_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bdd9385b-ab0d-4eeb-97f6-e9a235206eb2
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Location Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0e13e3e4-e4b9-40b5-9ff5-e45ce3879988
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.PRIMARY_WORK_LOCATION_ADDRESS
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3794a798-f363-4299-bb4d-5ae2fcaf7434
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Job Title
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d9691939-00d3-4f83-9ad4-0bc9ce9a31da
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.JOB_TITLE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4de902a6-74d4-49d3-84ed-20a90257402b
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Geographic Area
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47cdab77-c92a-4213-a201-fe0df56302bc
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.AREA_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 436ce010-34fd-4a94-87dd-723d14dc28ba
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: Office State
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 85c7e604-731a-45fd-a227-2c9342f3ce75
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.PRIMARY_WORK_LOCATION_STATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ba410aba-da4e-4a61-9d5b-6e2e2d961af6
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Office City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47f5391c-34ce-43d7-8e41-811a2e3631fe
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.PRIMARY_WORK_LOCATION_CITY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7814e2f5-cde2-4348-82a5-17ac9e89c398
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Business Segment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ae4d973b-01ba-4a48-88d2-dd7453bb3c3b
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.SEGMENT_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad807362-7d60-4f2a-a81c-15b317615e11
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Business Email
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4e27a372-5fa8-442b-97ba-aa32e7f1d7a8
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.BUSINESS_EMAIL
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1334e6d2-9ab5-4858-a7c8-e82e689754f7
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: Business Phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 65784bf0-a488-48b3-b7dd-06c324e7d536
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.BUSINESS_PHONE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9c4e4011-1aff-400f-9350-29d7d82b42d9
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Career Level
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9305aaee-736a-4e78-b08b-7760354cbe3d
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.JOB_LEVEL_NAME
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8097ee3b-f99a-462e-bea5-05a60f64f275
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: Number
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Years of Service
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9c3f1168-9afb-45fa-9ec3-d3aba87d1c71
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Tenure Category
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                      WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 1 THEN 'Less than 1 year'
+                      WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 2 THEN '1-2 years'
+                      WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 5 THEN '2-5 years'
+                      WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 10 THEN '5-10 years'
+                      ELSE '10+ years'
+                  END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c3b6dfa-2f85-46d5-8839-ba8e62d02033
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Career Stage
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                      WHEN WR.JOB_LEVEL_NAME LIKE '%Manager%' THEN 
+                          CASE 
+                              WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 2 THEN 'Early Career Manager'
+                              WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 5 THEN 'Established Manager'
+                              ELSE 'Senior Manager'
+                          END
+                      ELSE 
+                          CASE 
+                              WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 2 THEN 'Early Career'
+                              WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) < 5 THEN 'Experienced'
+                              ELSE 'Senior Individual Contributor'
+                          END
+                  END
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3fd913e-2907-4f76-b7ee-174bc7c96593
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: Work_Mode
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ef3c5cc6-6a80-4052-b82d-4123c9f4bbb8
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.WORK_LOCATION_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cf573630-e387-48e7-8157-2583aac60dc7
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: Work Arrangement
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e33a7e3d-2354-4a31-a074-b1b1e8ed6e13
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.WORK_ARRANGEMENT
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 05da9457-031a-425f-a61e-069e438776aa
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Is People Manager
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2-
+               CASE
+                      WHEN WR.JOB_LEVEL_NAME LIKE '%Manager%' 
+                           OR WR.JOB_LEVEL_NAME LIKE '%Director%' 
+                           OR WR.JOB_LEVEL_NAME LIKE '%Lead%' THEN 1
+                      ELSE 0
+                  END
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bb00f062-1105-494f-b86d-31431d8a5e0e
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Manager Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d181a891-49e9-4f5a-adf5-9697f9b6cc8f
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.MANAGER_NAME
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 010073a7-7cfb-43e0-87d7-38998372a74e
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Retention Risk Category
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2-
+               CASE 
+                      WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) > 20 
+                           AND WR.JOB_LEVEL_NAME NOT LIKE '%Manager%' THEN 'Retirement Risk'
+                      WHEN DATEDIFF(month, WR.HIRE_DATE, CURRENT_DATE) < 6 THEN 'Early Tenure Risk'
+                      WHEN WR.WORKER_STATUS_REASON = 'Reorganization' THEN 'Organizational Change Risk'
+                      ELSE 'Standard'
+                  END 
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6f3ca9d0-7cb2-4dc2-b17d-fee481119a29
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Is Female
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              CASE WHEN WR.GENDER IN ('Female', 'Woman / Female') THEN 1 ELSE 0 END 
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 226a293e-a683-4f50-8ba8-6c4a3e30d7e2
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Is Diverse
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              CASE WHEN WR.ETHNICITY NOT IN ('White') THEN 1 ELSE 0 END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1b62bf3-6df9-47f4-96d5-60158ddba430
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Department Female Ratio
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: dm."female_ratio"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cdf08442-70eb-4ebb-b9ef-c71c2b22b20a
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Department Diversity Ratio
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: dm."diversity_ratio"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 857717d5-8455-40ad-85a5-b2dbdde0f0c6
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Gender Balance Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                      WHEN dm."female_ratio" < 0.3 THEN 'Needs Improvement'
+                      WHEN dm."female_ratio" < 0.4 THEN 'Developing'
+                      ELSE 'Balanced'
+                  END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97e47af0-f3ec-4771-8d46-2ba1b2aa2c63
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Department Size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: dm."dept_headcount"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5335168c-99b2-4c5b-851a-8884532b5c7a
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Department Avg Tenure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: dm."avg_tenure"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 58b19c97-65a2-46ee-95c2-be539706a4dd
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Department Stability
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2-
+               CASE 
+                      WHEN dm."avg_tenure" < 2 THEN 'High Turnover Risk'
+                      WHEN dm."avg_tenure" < 4 THEN 'Moderate Turnover Risk'
+                      ELSE 'Stable'
+                  END
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cad9f823-4674-424f-be6e-cb1f6aea6ab6
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Cost Center
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: df60f0a7-f135-4ea7-a952-f925a2ff0ba3
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.PRIMARY_COST_CENTER_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b49e3b62-f011-4165-beee-08fc89302bca
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: FLOAT
+        description: ""
+        name: Cost Center Allocation
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 84c57aad-0903-4c0a-a9b9-90e54d850ba0
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.PRIMARY_COST_CENTER_PERCENTAGE
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cde3a805-4610-4e83-9f8d-27811697d4a2
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Cost Category
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                      WHEN WR.SEGMENT_NAME = 'Non SG and A' THEN 'Revenue Generating'
+                      ELSE 'Support'
+                  END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0d62d43-216c-4263-a207-76cfcf73bf05
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Performance Potential
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                      WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) > 5 
+                           AND WR.WORKER_STATUS_REASON LIKE '%Promotion%' THEN 'High Potential'
+                      WHEN DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) > 2 
+                           AND WR.WORKER_STATUS_REASON NOT LIKE '%Promotion%' THEN 'Needs Development'
+                      ELSE 'Developing'
+                  END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c063ea81-35da-435f-be62-6076f0679a66
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Hire Month
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: EXTRACT(MONTH FROM WR.HIRE_DATE)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b114a58-b124-4a13-aa47-b409658959fb
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Hire Year
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: EXTRACT(YEAR FROM WR.HIRE_DATE)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cd0657f7-0a3b-450c-b0fb-007726dffd61
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Report Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              CURRENT_DATE()
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6035d7d7-dc9f-4d22-9e6e-6ccb3b9e878b
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Hire Quarter
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              EXTRACT(QUARTER FROM WR.HIRE_DATE)
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bfe6e88d-47ae-4ef8-a4d8-f0788aa9740a
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: DATE
+        description: ""
+        name: HIRE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3b59afcb-d9e6-413d-ab67-848f1786fb87
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.HIRE_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d18eb185-a26d-4e33-bfa1-6fd41aa03c26
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: DATE
+        description: ""
+        name: TERMINATION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e105dd5d-2a90-4596-a40e-bcfee5e54350
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: WR.TERMINATION_DATE
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f672dba0-e51d-4216-820a-7b689bd8167f
+          stepCounter: 2d57f2e2-fedf-49b5-b023-6ba3db5b4ab5
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Succession Planning Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE 
+                      WHEN WR.JOB_LEVEL_NAME LIKE '%Manager%' 
+                           AND DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) > 10 THEN 'Critical Role - Succession Planning Needed'
+                      WHEN WR.JOB_LEVEL_NAME LIKE '%Manager%' 
+                           AND DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) > 5 THEN 'Develop Succession Plan'
+                      WHEN WR.JOB_LEVEL_NAME LIKE '%Senior%' 
+                           AND DATEDIFF(year, WR.ORIGINAL_HIRE_DATE, CURRENT_DATE) > 8 THEN 'Technical Succession Planning Needed'
+                      ELSE 'Standard'
+                  END
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DM: 366850a5-8c94-4ebd-846a-bb678b7039e8
+          WR: 908ed017-9148-4fb3-ad80-efeaaddea545
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ADP_COMBINED
+            nodeName: DEPARTMENT_METRICS
+          - locationName: ADP_COMBINED
+            nodeName: WORKER_PROFILES_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('ADP_COMBINED', 'WORKER_PROFILES_COMBINED') }} WR
+            
+            LEFT JOIN {{ ref('ADP_COMBINED', 'DEPARTMENT_METRICS') }} dm 
+                ON WR.DEPARTMENT_NAME = dm.DEPARTMENT_NAME
+            
+            WHERE EMPLOYEE_ID IS NOT NULL AND EMPLOYEE_ID != ''
+        name: HR_EMPLOYEE_MASTER_VIEW
+        noLinkRefs: []
+  name: HR_EMPLOYEE_MASTER_VIEW
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

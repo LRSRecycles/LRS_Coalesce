@@ -1,0 +1,285 @@
+fileVersion: 1
+id: 3e619733-27ee-4170-9e2e-59b86381f3af
+name: ADP_SYNC_TO_AD_WORKERS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: The table contains records of worker profiles, each record representing an individual worker. It includes demographic information such as name, gender, ethnicity, and race, as well as contact details like address and postal code.
+  isMultisource: false
+  locationName: ADP_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5b07314-0450-43c1-9f2c-1b2d25e6c004
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Office
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47f5391c-34ce-43d7-8e41-811a2e3631fe
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38a8b981-5edb-4854-a914-0de766d52d02
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47f5391c-34ce-43d7-8e41-811a2e3631fe
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae458ac7-50a8-4625-a29d-3d2c07f0d245
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: State
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 85c7e604-731a-45fd-a227-2c9342f3ce75
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: |-
+              CASE 
+                      WHEN primary_work_location_state = 'Minnesota' THEN 'MN'
+                      WHEN primary_work_location_state = 'Illinois' THEN 'IL'
+                      WHEN primary_work_location_state = 'Tennessee' THEN 'TN'
+                      WHEN primary_work_location_state = 'Michigan' THEN 'MI'
+                      WHEN primary_work_location_state = 'Arkansas' THEN 'AR'
+                      WHEN primary_work_location_state = 'Kansas' THEN 'KS'
+                      WHEN primary_work_location_state = 'Indiana' THEN 'IN'
+                      WHEN primary_work_location_state = 'Iowa' THEN 'IA'
+                      WHEN primary_work_location_state = 'Wisconsin' THEN 'WI'
+                      ELSE primary_work_location_state
+                  END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e924a689-d4c1-465c-afcf-0f72f64ee985
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Street
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0e13e3e4-e4b9-40b5-9ff5-e45ce3879988
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e71fcff2-2421-454f-bd25-29735a0bbbf8
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: Varchar
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Company
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'LRS'"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e78fa25e-1805-46d6-b2ba-78a1a28a6c48
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: Varchar
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Country
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'US'"
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 349aeefe-ae2d-4f2a-b282-4f4dbcb8561e
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Department
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d52d0b8d-e0aa-4711-89b5-f335558d630c
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 76fe75e1-41fc-4ef2-bb03-b9bd00abe2ad
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: Varchar
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Display Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CONCAT(FIRST_NAME,' ', LAST_NAME)
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c211149b-101b-4aaf-8645-51489a1fb275
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: First Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59f3dda0-9b72-4dd2-825e-a7c8b2754af9
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bbdf9f58-3257-4705-9853-9ce4fcdc51bd
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Last Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bd53bf05-c95f-4b71-8fb0-22effbc2487f
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eeb93bf5-96e6-48d3-889e-7fed2e733319
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Job Title
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d9691939-00d3-4f83-9ad4-0bc9ce9a31da
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 76976647-7c62-445c-8716-416a4323e638
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Manager
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d181a891-49e9-4f5a-adf5-9697f9b6cc8f
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 584b6e25-15bd-4dfb-9d41-4ca28a01b7ee
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: Employee ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 94f44bd1-54fa-4f54-8644-5587c5e0684b
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 05a3feb8-5fae-4db7-b754-0d283297e034
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: Preferred Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d80d6740-32dd-4e90-8ce8-9aa19c162ec6
+                stepCounter: 908ed017-9148-4fb3-ad80-efeaaddea545
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 95536a15-dde8-4cbf-9e90-4a32a5f71837
+          stepCounter: 3e619733-27ee-4170-9e2e-59b86381f3af
+        config: {}
+        dataType: Varchar
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Manager Login
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: REPLACE(MANAGER_NAME,' ', '.')
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ADP_COMBINED
+            nodeName: WORKER_PROFILES_COMBINED
+        join:
+          joinCondition: FROM {{ ref('ADP_COMBINED', 'WORKER_PROFILES_COMBINED') }} "WORKER_PROFILES_COMBINED"
+        name: ADP_SYNC_TO_AD_WORKERS
+        noLinkRefs: []
+  name: ADP_SYNC_TO_AD_WORKERS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

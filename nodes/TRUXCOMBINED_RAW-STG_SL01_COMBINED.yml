@@ -202,14 +202,18 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SL01_COMBINED: 2160d38e-448d-42f1-b15a-065608d77d18
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: SL01_COMBINED
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
         name: STG_SL01_COMBINED
         noLinkRefs: []
   name: STG_SL01_COMBINED
