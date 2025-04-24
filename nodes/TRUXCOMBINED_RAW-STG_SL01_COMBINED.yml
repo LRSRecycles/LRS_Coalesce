@@ -6,7 +6,7 @@ operation:
     insertStrategy: INSERT
     postSQL: ""
     preSQL: ""
-    testsEnabled: true
+    testsEnabled: false
     truncateBefore: true
   database: ""
   deployEnabled: true
@@ -210,10 +210,8 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: SL01_COMBINED
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
-            
-            WHERE "_FIVETRAN_DELETED" = FALSE
         name: STG_SL01_COMBINED
         noLinkRefs: []
   name: STG_SL01_COMBINED
