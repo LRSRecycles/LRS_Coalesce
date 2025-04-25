@@ -2470,10 +2470,31 @@ operation:
               - columnCounter: 7e439304-c651-46c5-926c-81b4ce0b3492
                 stepCounter: ae5e14fe-80ca-410d-b1bc-a8c958ac8890
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 68dee2af-5540-4550-9abc-e2c2cb1c6fd9
+          stepCounter: 75ca20d7-f699-49ee-b5d8-c7acec262cb9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Email Invoice List
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: LISTAGG(Contact.EMAIL, ', ') WITHIN GROUP (ORDER BY Contact.EMAIL)
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
+          CONTACT: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
           MASTER_CUSTOMER_MASTER: ae5e14fe-80ca-410d-b1bc-a8c958ac8890
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
@@ -2482,6 +2503,8 @@ operation:
           - locationName: MASTER_DATA_CLEAN
             nodeName: TRUX_DATABASE_METADATA
           - locationName: TRUXCOMBINED_RAW
+            nodeName: CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
             nodeName: MASTER_CUSTOMER_MASTER
         join:
           joinCondition: |-
@@ -2489,6 +2512,13 @@ operation:
             
             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "MASTER_CUSTOMER_MASTER"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER') }} Contact
+              ON "MASTER_CUSTOMER_MASTER"."Customer No." = Contact.CM04_CUST
+             AND (
+                   "MASTER_CUSTOMER_MASTER"."Site No." IS NULL
+                OR "MASTER_CUSTOMER_MASTER"."Site No." = Contact.CM04_SITE
+                 )
             
             WHERE 
             ("Customer Contract End Date" >= CURRENT_DATE OR "Customer Contract End Date" IS NULL)
@@ -2500,6 +2530,8 @@ operation:
             AND ("Site Closed Date" >= CURRENT_DATE OR "Site Closed Date" IS NULL)
             AND ("Site Suspend Date" >= CURRENT_DATE OR "Site Suspend Date" IS NULL)
             AND ("Service Stop Date" >= CURRENT_DATE OR "Service Stop Date" IS NULL)
+            
+            GROUP BY ALL
         name: VW_CUSTOMER_MASTER_LIST
         noLinkRefs: []
   name: VW_CUSTOMER_MASTER_LIST
