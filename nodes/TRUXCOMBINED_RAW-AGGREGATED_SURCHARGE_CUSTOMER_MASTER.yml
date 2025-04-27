@@ -1,0 +1,100 @@
+fileVersion: 1
+id: 805f95e6-27fb-49e4-9a97-96f777c44344
+name: AGGREGATED_SURCHARGE_CUSTOMER_MASTER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e314a9ec-44be-46f3-807e-e0b12381a298
+          stepCounter: 805f95e6-27fb-49e4-9a97-96f777c44344
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM03_CUST
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9da15fbc-4e63-4da9-b02e-9e66efd43456
+                stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4909f445-3cd1-44b0-8c5a-b4d98e9128df
+          stepCounter: 805f95e6-27fb-49e4-9a97-96f777c44344
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM04_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b35c67ce-9ebd-4ae3-b1c1-2cff9793e367
+                stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a7d74a18-8722-44e9-90eb-c1b634590074
+          stepCounter: 805f95e6-27fb-49e4-9a97-96f777c44344
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6b43b930-e68d-4a35-8357-5f9eece588c9
+                stepCounter: 86741daa-c181-4eff-9642-61ae22be40ff
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e887c8c8-18fe-452e-966c-93e34a33b4fa
+          stepCounter: 805f95e6-27fb-49e4-9a97-96f777c44344
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Surcharge
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: |-
+              ARRAY_TO_STRING(
+                      ARRAY_AGG(DISTINCT "SURCHARGE_PART_2_CUSTOMER_MASTER"."Surcharge"),
+                      ' - ')
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SURCHARGE_PART_2_CUSTOMER_MASTER: 86741daa-c181-4eff-9642-61ae22be40ff
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SURCHARGE_PART_2_CUSTOMER_MASTER
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_PART_2_CUSTOMER_MASTER') }} "SURCHARGE_PART_2_CUSTOMER_MASTER"
+            
+            GROUP BY ALL
+        name: AGGREGATED_SURCHARGE_CUSTOMER_MASTER
+        noLinkRefs: []
+  name: AGGREGATED_SURCHARGE_CUSTOMER_MASTER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

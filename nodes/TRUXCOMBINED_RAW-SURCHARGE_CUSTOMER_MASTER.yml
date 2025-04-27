@@ -61,20 +61,6 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: f34179a4-b92f-4ffb-b58d-7ae690bb4b16
-          stepCounter: 4355fdfd-916e-4c5b-8d5b-d54914cda979
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: SCHID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1558e538-c939-4de4-89e3-75c2ca1161ec
-                stepCounter: 61c2dfbc-ae08-4d25-a040-0f31af125efb
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: dd1ab5fa-e6b1-4073-999c-ed13913eaa97
           stepCounter: 4355fdfd-916e-4c5b-8d5b-d54914cda979
         config: {}
@@ -142,8 +128,10 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_JOIN_CUSTOMER_MASTER') }} "SURCHARGE_JOIN_CUSTOMER_MASTER"
-
+            
             WHERE "SURCHARGE_JOIN_CUSTOMER_MASTER".INCLUDE = 1 
+            
+            GROUP BY ALL
             ORDER BY CM03_CUST, CM04_SITE, SP01LF_NAME
         name: SURCHARGE_CUSTOMER_MASTER
         noLinkRefs: []

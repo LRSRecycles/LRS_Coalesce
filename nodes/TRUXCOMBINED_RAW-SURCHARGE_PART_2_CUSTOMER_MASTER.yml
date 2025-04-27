@@ -71,12 +71,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: |-
-              LTRIM(
-                      LISTAGG(' - ' || t1.SP01LF_NAME, '') 
-                      WITHIN GROUP (ORDER BY t1.SP01LF_NAME), 
-                      ' - '
-                  )
+            transform: t2.SP01LF_NAME
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
@@ -99,7 +94,7 @@ operation:
             AND t1."SOURCE" = t2."SOURCE"
             
             GROUP BY 
-                t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0), t2.SOURCE
+                t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0), t2.SOURCE, t2.SP01LF_NAME
             
             ORDER BY 
                 t2.CM03_CUST, COALESCE(t2.CM04_SITE, 0)
