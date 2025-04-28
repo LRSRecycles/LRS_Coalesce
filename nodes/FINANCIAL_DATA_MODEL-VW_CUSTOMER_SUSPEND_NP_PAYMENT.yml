@@ -174,7 +174,7 @@ operation:
             FROM {{ ref('MASTER_DATA_CLEAN', 'VW_BILLING_CUSTOMER_MASTER') }} "VW_BILLING_CUSTOMER_MASTER"
                 INNER JOIN  {{ ref('FINANCIAL_DATA_MODEL', 'STG_PAYMENT_DAILY_WITH_RANKING') }} "STG_PAYMENT_DAILY_WITH_RANKING" ON "VW_BILLING_CUSTOMER_MASTER"."Billing_Source_Customer_Site" = "STG_PAYMENT_DAILY_WITH_RANKING"."Source_Customer_Site"
             WHERE
-                "VW_BILLING_CUSTOMER_MASTER"."Suspend Reason Code" IN ('NR', 'NP') 
+                "VW_BILLING_CUSTOMER_MASTER"."Suspend Reason Code" IN ('NR', 'NP', 'CB') 
                 AND "STG_PAYMENT_DAILY_WITH_RANKING"."RECENCY"=1
         name: VW_CUSTOMER_SUSPEND_NP_PAYMENT
         noLinkRefs: []
