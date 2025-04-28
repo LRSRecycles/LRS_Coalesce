@@ -1,0 +1,147 @@
+fileVersion: 1
+id: ae38caa1-818c-43d5-8077-a21725b98086
+name: STG_PAYMENT_DAILY_WITH_RANKING
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b27a6f6c-746c-429d-b58e-96c7c8e58ca5
+          stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Site_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38dfb8fb-8699-49fa-86c9-e2039ff55688
+                stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12f666d5-4039-49aa-b769-a3b9dfbf50ae
+          stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Source_Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f32cdc6d-1a63-47bd-a4dc-1475a37e6fdf
+                stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 57a7c580-5d03-4ed1-8419-c505911410e7
+          stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Source_Customer_Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d90ba380-a202-49b6-85b8-2d5fc7dc5fb5
+                stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 425606ca-87a9-45e8-a1a3-15b6d8c624dc
+          stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Payment_Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e966663d-e60b-476e-8bfc-e297368a5942
+                stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2f68033a-6efb-4adc-b105-ff757474e332
+          stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d9e82ccf-d0a3-410a-915c-e29a7a8c3113
+                stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec7eb588-78e4-4592-9f21-86694368ccb2
+          stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: Payment_Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19dc8250-6e56-4fc2-8f8b-01a55537a9a5
+                stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ed45782b-606e-4a96-8941-79bcb9ed61aa
+          stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: RECENCY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              ROW_NUMBER() OVER(
+              			PARTITION BY "Source_Customer_Site"
+              			ORDER BY "Payment_Date" DESC
+              		)
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: STG_PAYMENT_DAILY
+        join:
+          joinCondition: FROM {{ ref('FINANCIAL_DATA_MODEL', 'STG_PAYMENT_DAILY') }} "STG_PAYMENT_DAILY"
+        name: STG_PAYMENT_DAILY_WITH_RANKING
+        noLinkRefs: []
+  name: STG_PAYMENT_DAILY_WITH_RANKING
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

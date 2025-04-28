@@ -1,0 +1,138 @@
+fileVersion: 1
+id: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+name: STG_PAYMENT_DAILY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38dfb8fb-8699-49fa-86c9-e2039ff55688
+          stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Site_Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3b8e6454-4cfe-4aa1-a3ae-4d8924cc5419
+                stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f32cdc6d-1a63-47bd-a4dc-1475a37e6fdf
+          stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Source_Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d650dedc-5beb-409b-b30a-df367a09ef70
+                stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d90ba380-a202-49b6-85b8-2d5fc7dc5fb5
+          stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Source_Customer_Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2a8fd9c3-6611-4238-a037-b291b771a1b8
+                stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e966663d-e60b-476e-8bfc-e297368a5942
+          stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Payment_Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49489234-9eb7-43af-937d-8e3797e2834a
+                stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d9e82ccf-d0a3-410a-915c-e29a7a8c3113
+          stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 623c452f-54af-417d-b54e-d987ce7a0e63
+                stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19dc8250-6e56-4fc2-8f8b-01a55537a9a5
+          stepCounter: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
+        config: {}
+        dataType: NUMBER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment_Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("Transaction Amount") * -1
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          VW_AR_INVOICE_TRANSACTION_WHALE: 2a079e46-0222-4f53-be62-f75daeda68e1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: VW_AR_INVOICE_TRANSACTION_WHALE
+        join:
+          joinCondition: |-
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_INVOICE_TRANSACTION_WHALE') }} "VW_AR_INVOICE_TRANSACTION_WHALE"
+            WHERE "Transaction Type" = 'Payment'
+            GROUP BY 
+                "Source",
+                "Site_Source",
+                "Source_Customer",
+                "Source_Customer_Site",
+                "Transaction Date"
+        name: STG_PAYMENT_DAILY
+        noLinkRefs: []
+  name: STG_PAYMENT_DAILY
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
