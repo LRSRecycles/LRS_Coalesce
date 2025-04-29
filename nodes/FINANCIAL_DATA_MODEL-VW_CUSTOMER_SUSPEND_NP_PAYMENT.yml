@@ -176,6 +176,7 @@ operation:
             WHERE
                 "VW_BILLING_CUSTOMER_MASTER"."Suspend Reason Code" IN ('NR', 'NP', 'CB') 
                 AND "STG_PAYMENT_DAILY_WITH_RANKING"."RECENCY"=1
+                AND "Payment_Date" > "Suspend Date"
         name: VW_CUSTOMER_SUSPEND_NP_PAYMENT
         noLinkRefs: []
   name: VW_CUSTOMER_SUSPEND_NP_PAYMENT
