@@ -213,7 +213,7 @@ operation:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'SL01_COMBINED') }} "SL01_COMBINED"
             
-            WHERE "_FIVETRAN_DELETED" = FALSE
+            WHERE "SL01_ACTIVE" = 'True'
         name: STG_SL01_COMBINED
         noLinkRefs: []
   name: STG_SL01_COMBINED
