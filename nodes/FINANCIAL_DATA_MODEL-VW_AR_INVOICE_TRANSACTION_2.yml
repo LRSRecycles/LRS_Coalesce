@@ -104,6 +104,26 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
+          columnCounter: 6f58e6e8-6711-4449-a031-dabc4b282a8a
+          stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Method
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
           columnCounter: cd0bc432-2b0c-4711-95e6-83d4f82d0e12
           stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
         config: {}
@@ -358,6 +378,7 @@ operation:
                      WHEN pym."Payment or Adjustment" = 'A' THEN 'Adjustment Payment'
                      ELSE NULL 
                    END AS "Transaction Type"
+                 , pym."Payment Method" AS "Payment Method"
                  , pym."Payment Date" AS "Transaction Date"
                  , inv."Invoice Date" AS "Invoice Date"
                  , inv."Due Date" AS "Due Date"
@@ -398,6 +419,7 @@ operation:
                      ELSE NULL 
                    END AS "Transaction Type"
                  --, "Due Date" AS "Transaction Date"
+                 , NULL AS "Payment Method"
                  , "Invoice Date" AS "Transaction Date"
                  , "Invoice Date" AS "Invoice Date"
                  , "Due Date" AS "Due Date"
@@ -422,6 +444,7 @@ operation:
                  , concat('TOWER_', a.companyid, '-', a.custid, '-', a.siteid) AS "Source_Customer_Site"
                  , b.invoiceid AS "Invoice Number"
                  , 'Open Balance' AS "Transaction Type"
+                 , NULL AS "Payment Method"
                  , b.invoicedate AS "Transaction Date"
                  , b.invoicedate AS "Invoice Date"
                  , coalesce(a.duedate, b.invoicedate) AS "Due Date"

@@ -112,6 +112,26 @@ operation:
               - columnCounter: ccd6945c-e960-4598-8858-d1621af9def5
                 stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5aea8239-d8f7-43a6-8e80-19a6b98e5e5f
+          stepCounter: c67004cb-14a0-40e5-b304-dac51938d1c4
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment Method
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 94aa75d1-c8fd-498d-8be3-5a67e6ff79eb
+                stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+            transform: ""
+        systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 60a80921-82ad-4f24-8479-2d506ac0ce0e
@@ -621,29 +641,10 @@ operation:
           - locationName: FINANCIAL_DATA_MODEL
             nodeName: VW_AR_INVOICE_TRANSACTION_WHALE
         join:
-          joinCondition: |
+          joinCondition: |-
             FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_INVOICE_TRANSACTION_WHALE') }} "VW_AR_INVOICE_TRANSACTION_WHALE"
-
-            GROUP BY
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Payment ID",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Invoice ID",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Site_Source",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Source_Customer",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Source_Customer_Site",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Invoice Number",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Type",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Date",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Invoice Date",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Due Date",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Invoice Amount",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Balance",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Record Date",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."GL Number",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Group ID",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."dso_from_due",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."dso_from_invoice",
-            "VW_AR_INVOICE_TRANSACTION_WHALE"."Source"
+            
+            GROUP BY ALL
         name: VW_AR_INVOICE_TRANSACTION_OUTSTANDING_CALCULATION
         noLinkRefs: []
   name: VW_AR_INVOICE_TRANSACTION_OUTSTANDING_CALCULATION
