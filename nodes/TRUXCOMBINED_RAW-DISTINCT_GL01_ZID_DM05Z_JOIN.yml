@@ -1,0 +1,73 @@
+fileVersion: 1
+id: b713f3af-8194-4cd4-9a63-56fe83bdd059
+name: DISTINCT_GL01_ZID_DM05Z_JOIN
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a60d0bbb-ab44-4129-9abe-9e4ef12366d0
+          stepCounter: b713f3af-8194-4cd4-9a63-56fe83bdd059
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: GL01_ZID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4781de20-85eb-4fcb-95c1-b109ed87a6a3
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3adc5093-1ab7-4154-8371-d74d2c7e58dd
+          stepCounter: b713f3af-8194-4cd4-9a63-56fe83bdd059
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2d2fec32-dcbf-4ba7-ad8a-1c88f68dfa5e
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_GL01_COMBINED: 0fe6a9cb-075f-482c-9a53-434895e62592
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_GL01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_GL01_COMBINED') }} "STG_GL01_COMBINED"
+            
+            WHERE "GL01_ZID" IS NOT NULL
+            
+            GROUP BY ALL
+        name: DISTINCT_GL01_ZID_DM05Z_JOIN
+        noLinkRefs: []
+  name: DISTINCT_GL01_ZID_DM05Z_JOIN
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

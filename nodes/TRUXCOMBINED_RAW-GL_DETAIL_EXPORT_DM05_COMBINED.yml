@@ -1,0 +1,1768 @@
+fileVersion: 1
+id: 0c8868e3-179b-4feb-8b30-af56648747c8
+name: GL_DETAIL_EXPORT_DM05_COMBINED
+operation:
+  config:
+    insertStrategy: UNION ALL
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13a82454-eab2-47f1-a8f8-182b5c559534
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DM05_RECTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'A'"
+          - columnReferences: []
+            transform: "'B'"
+          - columnReferences: []
+            transform: "'L'"
+          - columnReferences: []
+            transform: "'FT'"
+          - columnReferences: []
+            transform: "'Z'"
+          - columnReferences: []
+            transform: "'Z'"
+          - columnReferences: []
+            transform: |-
+              CASE
+                  WHEN "DM01P_COMBINED"."DM01P_TYPE" = 'P' THEN 'PMT'
+                  ELSE 'ADJ'
+              END
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a706ec3f-9c4d-4c15-a57c-a9ffd854df4b
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: DM05_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e40720e2-a119-416b-85f1-44d57e68820e
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 22aa45c5-f4ca-4970-974d-e546ee64aff0
+                stepCounter: a647fe68-6614-45f9-bf4a-d12034aa0ce1
+            transform: ""
+          - columnReferences:
+              - columnCounter: afd890d1-06b3-4b75-b965-f474d71e9f78
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: 70e2b1a9-4397-4ba5-ab5d-cb7a3dce1a9c
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 6dbd7d54-61a9-4e52-810b-817a6b6f02df
+                stepCounter: 22703270-d95a-4d24-9226-a6368a5fe258
+            transform: ""
+          - columnReferences:
+              - columnCounter: d1146aeb-07b7-4819-97f0-febf8d916b96
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 35566dc6-dda3-48ca-a2f6-c1c74b12254a
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: efd847f7-24a6-44e1-ab2d-8eeedabfb3ad
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashDetails: null
+        name: DM05_LINK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b9f793cf-d8b2-4d46-9a6c-7275c84c1959
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 1f486965-c41d-4355-9ec5-b1cb34ee0da8
+                stepCounter: a647fe68-6614-45f9-bf4a-d12034aa0ce1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 51bb4abd-3da9-45e5-84a5-b214b38b4f5f
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: 2da8c7dd-feed-4fc3-8f21-1a1aa7df5139
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: dc8d407c-dc3e-4032-ba2c-57858a1c665f
+                stepCounter: 22703270-d95a-4d24-9226-a6368a5fe258
+            transform: ""
+          - columnReferences:
+              - columnCounter: d48aae56-6abf-4fa8-8db5-9987fb7584e3
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences:
+              - columnCounter: e81b7535-b778-4ec9-a0ac-788fe58b44ce
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9677726c-8eeb-4507-a669-23de878e44b5
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DM05_SSIT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9ebd8c7f-c99d-40f2-b4a7-178011770674
+                stepCounter: ec660b1f-9a79-4287-9c7f-85fa23956621
+            transform: ""
+          - columnReferences:
+              - columnCounter: aca0556f-0640-4aff-bc0c-8a23e6771f4f
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+          - columnReferences:
+              - columnCounter: c8ba61c3-a4a9-460e-a97a-46c797703d03
+                stepCounter: f0381036-1467-4a05-b086-6230161af90d
+            transform: ""
+          - columnReferences:
+              - columnCounter: 9ae02177-5957-4f2a-b3a7-f5b7b6e4e1e7
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4b3ecde4-9cb9-4107-91ac-034803191a37
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4b3ecde4-9cb9-4107-91ac-034803191a37
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 7bc589fd-245d-4a5d-8fa6-8d594ede8f2c
+                stepCounter: bee680d8-22b9-4f6f-a631-372e74bb4d58
+            transform: ""
+        systemColumnType: None
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 752a3941-226d-4e35-8a2b-f32879a8eaf9
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DM05_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 808268da-2b8d-41a2-bc01-feb516542471
+                stepCounter: ec660b1f-9a79-4287-9c7f-85fa23956621
+            transform: ""
+          - columnReferences:
+              - columnCounter: af6ac132-a0aa-4ec3-9c3f-a47f249b3f12
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 1c0a36ce-62db-4835-8683-b79c1a31ebaa
+                stepCounter: f0381036-1467-4a05-b086-6230161af90d
+            transform: ""
+          - columnReferences:
+              - columnCounter: fea25ed7-4ee2-46f2-b643-22bf5ab2b047
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5528ab1e-0899-4ec9-b667-2a88e68a4a78
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5528ab1e-0899-4ec9-b667-2a88e68a4a78
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 090d416c-2a7a-4569-8679-4e56deb8d083
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashDetails: null
+        name: DM05_TDTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1fccd222-8e7a-467e-80a1-1e8b887fc684
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 3a7b6fb9-173f-4220-ab6b-01d28be060f9
+                stepCounter: a647fe68-6614-45f9-bf4a-d12034aa0ce1
+            transform: ""
+          - columnReferences:
+              - columnCounter: c1a7485c-e58b-4e7d-8f21-644742779eb6
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: a4138006-966d-4356-a9df-d0ba564fb24c
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 17816da8-cc5d-45f8-beab-e2bb1896091a
+                stepCounter: 22703270-d95a-4d24-9226-a6368a5fe258
+            transform: ""
+          - columnReferences:
+              - columnCounter: 473ca4fd-1eed-4b69-ae6e-e846bf137f3f
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences:
+              - columnCounter: f5fb53c7-24fe-484a-864d-64e1e1429de7
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74fb0875-0e1d-4ffb-96ff-b7451d66853c
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: DM05_AMNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1acb053b-b7de-4e17-9fd8-5a72617616b4
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 0e4d7ec6-7cbb-4fa4-8922-8faad894933f
+                stepCounter: a647fe68-6614-45f9-bf4a-d12034aa0ce1
+            transform: ""
+          - columnReferences:
+              - columnCounter: e7789e8b-cdf0-4b28-a7bd-011ef21a3895
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: ebed1fcc-240d-4b73-9f25-bf46840aba9a
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 958f3daf-229e-4e31-86ba-8d37bfc70435
+                stepCounter: 22703270-d95a-4d24-9226-a6368a5fe258
+            transform: ""
+          - columnReferences:
+              - columnCounter: fe63494d-b385-41d3-9b6e-6b3046f019b6
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 09d05557-c0eb-42f7-b260-6791224f5c91
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 111b0f55-26f6-4cb1-bde2-a48eb798b3d4
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DM05_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e3c8c3a5-cc7f-445a-8c83-43a629a5a829
+                stepCounter: ec660b1f-9a79-4287-9c7f-85fa23956621
+            transform: ""
+          - columnReferences:
+              - columnCounter: 48d02d3d-aba0-4f18-ba30-7a6912bcd376
+                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 0fefa5ce-e455-44fd-8632-21403578cc33
+                stepCounter: f0381036-1467-4a05-b086-6230161af90d
+            transform: ""
+          - columnReferences:
+              - columnCounter: 40e707a4-f018-46c8-b7df-6cf81264b051
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 42bdbe8d-29d2-4d3c-92a4-a5bff7b874f6
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 42bdbe8d-29d2-4d3c-92a4-a5bff7b874f6
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 7b208371-fa32-453a-a706-c5b5ff2ed6dc
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 433436a1-8042-4e27-b5bb-d5a7e0a2ab5d
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        hashDetails: null
+        name: DM05_RTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7d54b2d0-a8d7-4f33-be45-6d5d077dd721
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5d8a735d-5626-446a-b2a0-992b20a1f9bf
+                stepCounter: a647fe68-6614-45f9-bf4a-d12034aa0ce1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 9a6eeaac-dba1-4048-a70f-a73258469cae
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: 7528af05-6147-4f04-99c5-c877ea001b07
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 54ff591b-ea92-4476-9aba-a2bba552c6b9
+                stepCounter: 22703270-d95a-4d24-9226-a6368a5fe258
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5e03b29b-1c84-43df-8adf-38572b4fbf39
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 268d90bb-cfec-4b47-a09c-17a87addf7fb
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        hashDetails: null
+        name: DM05_QTY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 034ad3ca-e0ba-4662-826a-7dd3bc9f9a37
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4f39ba54-64d6-4ea7-b9b8-5c1b7891e474
+                stepCounter: a647fe68-6614-45f9-bf4a-d12034aa0ce1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 00ee331e-8e06-4117-89bc-aa1a29018ee5
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: fcc0ee03-2586-458a-ba5d-e1d8fb89a572
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: ba90238f-f84b-4d20-81ac-1ec4e5d4ca41
+                stepCounter: 22703270-d95a-4d24-9226-a6368a5fe258
+            transform: ""
+          - columnReferences:
+              - columnCounter: a405db3c-bc70-4888-adf9-30a765aac578
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03cde0cb-9800-49f8-9420-69bd32ed76fb
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        hashDetails: null
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6521251a-18a5-4de4-af53-cf8772e14355
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 2d2fec32-dcbf-4ba7-ad8a-1c88f68dfa5e
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences:
+              - columnCounter: e2ed0334-5b6e-4429-b828-2f24edfc6f5d
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: 3e5d9065-0664-44ee-aab1-edbfadec7571
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences:
+              - columnCounter: 2d2fec32-dcbf-4ba7-ad8a-1c88f68dfa5e
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences:
+              - columnCounter: a60d1535-fae8-4f3c-ae4c-8d33f5936ced
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences:
+              - columnCounter: ad739087-52d8-4163-b6b9-c807e8ed4743
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d294cfa3-9fb2-45ea-a538-c39f3eade224
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM05_CYCL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: a287a350-b747-4850-b63b-c7808a7748dc
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0a9c7163-e3b5-49b2-bfff-54f080c99e33
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM03_CUSTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: 51a1c541-8784-43fb-b869-956630f849a6
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a18aec22-b7bf-4d12-9974-1ff655b07eb1
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DM05_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 50e324fa-3269-4a19-a084-8cc02a36f65e
+                stepCounter: ec660b1f-9a79-4287-9c7f-85fa23956621
+            transform: ""
+          - columnReferences:
+              - columnCounter: 823fb1b7-f1d0-4036-a026-6947a2841098
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences:
+              - columnCounter: 72753369-f428-4cd3-a0cb-bd7be941a92e
+                stepCounter: f0381036-1467-4a05-b086-6230161af90d
+            transform: ""
+          - columnReferences:
+              - columnCounter: 66cb4d41-2d83-4119-8190-c1aed9d93305
+                stepCounter: bee680d8-22b9-4f6f-a631-372e74bb4d58
+            transform: ""
+          - columnReferences:
+              - columnCounter: 0a6222db-5e43-43fb-a73b-f3e90c0b90be
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 0a6222db-5e43-43fb-a73b-f3e90c0b90be
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 66cb4d41-2d83-4119-8190-c1aed9d93305
+                stepCounter: bee680d8-22b9-4f6f-a631-372e74bb4d58
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fa81c060-be9c-4f34-84ad-04135b74ce87
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM03_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: 4321ef61-0528-4ad1-a61a-03e3ac98bbef
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6988f83a-d312-4d3b-9bec-f15e21e9b57d
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM03_CURR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: a742b18a-eba6-4640-8f8f-412ae4d548b7
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 246e815b-ef8b-4222-8df0-3e6bad9afbfb
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM04_CURR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: 86c35e65-7e65-4436-94f3-dd8cd868b419
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 777f89d6-1a9a-49af-8988-cc18d1b36a49
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM03_SREP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: 6147eaa2-3029-4668-95a8-d1ca8809906d
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ed731679-6837-4a00-b698-615e149d30a1
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM04_SREP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: 77680f07-c12d-44b0-b102-6ded9b814d65
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6acecab0-d2d4-48dd-af7e-0361c9fbd0e5
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM03_BILLTO
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: c6009c31-e1d0-490a-954a-edc52acfe97c
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e1e9e74-db07-4e4e-b569-f3c2518b78ca
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM05_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: b43e5b46-e626-4560-bf9b-558167edb03d
+                stepCounter: 5429f5d6-ff70-43a7-b163-0687a347a095
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c6e8598-a8c3-47a4-b379-48ef25b648cd
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CODE_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 698ec17a-9468-43e1-8a1a-a0c7a36f4f42
+                stepCounter: 4d57f46f-ef85-4768-b448-acd77154ee4e
+            transform: ""
+          - columnReferences:
+              - columnCounter: 698ec17a-9468-43e1-8a1a-a0c7a36f4f42
+                stepCounter: 4d57f46f-ef85-4768-b448-acd77154ee4e
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5cbf364a-637f-4384-93e2-a0a94e49e67a
+                stepCounter: f444d93a-cf72-4d04-bb6a-d32f667d27c3
+            transform: ""
+          - columnReferences:
+              - columnCounter: 5423dac2-f872-435d-85f2-ee75b118ec87
+                stepCounter: 67b65067-eb33-422a-bc34-b59735a2781d
+            transform: ""
+          - columnReferences:
+              - columnCounter: e0d28216-e443-4239-a762-88cf91fe3287
+                stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+            transform: ""
+          - columnReferences:
+              - columnCounter: e0d28216-e443-4239-a762-88cf91fe3287
+                stepCounter: e06a2d72-cad6-4af4-8ea2-e7685c358289
+            transform: ""
+          - columnReferences:
+              - columnCounter: 4dde38d2-2fd4-4162-9d14-418d927f3efe
+                stepCounter: 91671ab3-0896-400c-bdfb-f628441d03ee
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 87c94466-7b9d-4991-9aa9-ee3116b28207
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: monthval
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "0"
+          - columnReferences:
+              - columnCounter: d15e3ac0-b6d1-41ff-b9d1-5b2682db33fa
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: IFNULL("STG_GL01_COMBINED"."GL01_MONTH",0)
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: "0"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9cb7b934-e9ac-4c4f-a1a9-c0a288f8f0ba
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: yearval
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "0"
+          - columnReferences:
+              - columnCounter: 216b8f27-1dbb-4494-b9e5-584b384d7aa6
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: IFNULL("STG_GL01_COMBINED"."GL01_YEAR",0)
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: "0"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb73205e-b734-40dc-9b81-21922f4f2776
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: PETT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 62114213-ac8b-4d12-bc7b-c01d8d785c5e
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: 3a368d39-e179-43c7-aca0-a14edeb64f2c
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences:
+              - columnCounter: 95107418-a56a-46a5-9491-492e8cd2ae28
+                stepCounter: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+            transform: ""
+          - columnReferences:
+              - columnCounter: d3342b39-74ee-4af3-a860-b54385915d1d
+                stepCounter: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+            transform: ""
+          - columnReferences: []
+            transform: IFNULL("STG_GL01_COMBINED"."GL01_PETT","DM05Z_COMBINED"."DM05Z_PERIODCLOSEID")
+          - columnReferences:
+              - columnCounter: 51d4a3ac-df1e-4f56-baf5-b7d279a56933
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences:
+              - columnCounter: 58d1e057-9295-4ba8-a7e8-fffa1d78d6fb
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ac28105-d00d-42fc-a63b-d588d211bf7b
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: AMNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "0"
+          - columnReferences:
+              - columnCounter: 01955790-9143-44ac-a42f-09caf31414b4
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: "0"
+          - columnReferences:
+              - columnCounter: 01955790-9143-44ac-a42f-09caf31414b4
+                stepCounter: 0fe6a9cb-075f-482c-9a53-434895e62592
+            transform: ""
+          - columnReferences: []
+            transform: "0"
+          - columnReferences: []
+            transform: "0"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28082e35-0f08-444b-ae8a-5e2d133a76a3
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: RELATED_TO
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2df2d4a-8598-4796-8627-b2f9eb4ca769
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: TRUCK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cf709537-fc50-4cd5-b11b-085b4a8250a1
+                stepCounter: 21ef61dc-1d77-47dc-9b45-381fb4ad32b7
+            transform: ""
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: cf709537-fc50-4cd5-b11b-085b4a8250a1
+                stepCounter: 21ef61dc-1d77-47dc-9b45-381fb4ad32b7
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: cf709537-fc50-4cd5-b11b-085b4a8250a1
+                stepCounter: 21ef61dc-1d77-47dc-9b45-381fb4ad32b7
+            transform: ""
+          - columnReferences:
+              - columnCounter: 082f8507-47df-4417-b332-dea913e34aa1
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d6f46ec0-c0dc-4e5b-80bb-902eb060e243
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: DRIVER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"STG_RM04_COMBINED\".\"RM04_LNAM\" || ',' || \"STG_RM04_COMBINED\".\"RM04_FNAM\""
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_RM04_COMBINED\".\"RM04_LNAM\" || ', ' || \"STG_RM04_COMBINED\".\"RM04_FNAM\""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_RM04_COMBINED\".\"RM04_LNAM\" || '-' || \"STG_RM04_COMBINED\".\"RM04_FNAM\""
+          - columnReferences:
+              - columnCounter: 3d739aa4-ce1b-4467-8f6b-10244757320a
+                stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 86ff1c47-9638-4fec-a980-5f4e4d5d457b
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: ROUTE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: de9c32fc-9536-4a4d-b5c6-06d1ccba8429
+                stepCounter: 6ea8754c-4bb5-489e-b707-faa782746198
+            transform: ""
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: ebb18c36-0a90-4965-896a-b6455f14d784
+                stepCounter: f0381036-1467-4a05-b086-6230161af90d
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: c662cec3-4107-4e2e-b9f8-68aca8a09cd9
+                stepCounter: bb9d5395-c26f-4b78-a862-06d38eb063b3
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6dfb96c5-7513-4ad1-abf7-9ccbf8db51a6
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: FACILITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_A\".\"LM01_NAME\""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_A\".\"LM01_NAME\""
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03dce6f4-391f-4250-a14b-f794a3e5ff31
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: FACILITYCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_A\".\"LM01_DSTE\""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_A\".\"LM01_DSTE\""
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 335d7858-bd3c-4420-8650-d16cc9b9e89e
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: BILLINGFACILITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_B\".\"LM01_NAME\""
+          - columnReferences:
+              - columnCounter: 61551ad1-5e2e-4335-88d2-aad2859ece9e
+                stepCounter: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_B\".\"LM01_NAME\""
+          - columnReferences:
+              - columnCounter: 61551ad1-5e2e-4335-88d2-aad2859ece9e
+                stepCounter: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ff46a41-627f-4e64-adcd-6abda19120e3
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: BILLINGFACILITYCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_B\".\"LM01_DSTE\""
+          - columnReferences:
+              - columnCounter: aeb58275-b59d-48e2-8121-95445d9daf12
+                stepCounter: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+            transform: ""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "\"STG_LM01_COMBINED_B\".\"LM01_DSTE\""
+          - columnReferences:
+              - columnCounter: aeb58275-b59d-48e2-8121-95445d9daf12
+                stepCounter: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73cae83c-3e52-46d9-9709-b407b0112765
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CONTRACT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4587b06a-b4b1-4436-8506-69f8185415e1
+          stepCounter: 0c8868e3-179b-4feb-8b30-af56648747c8
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: REFERENCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"DM05A_COMBINED\".\"DM05A_ROUT\" || ' - ' || \"DM05A_COMBINED\".\"DM05A_SEQU\" || ' - ' || IFNULL(\"STG_SM01_COMBINED_FILTERED\".\"SM01_WONU\",0)"
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"DM05B_COMBINED\".\"DM05B_BILLF\" || '-' || \"DM05B_COMBINED\".\"DM05B_BILLT\""
+          - columnReferences: []
+            transform: "\"STG_LM02_COMBINED_FILTERED\".\"LM02_DSTE\" || '-' || \"STG_LM02_COMBINED_FILTERED\".\"LM02_NUMB\""
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: 61b095a3-b9e6-481a-a235-6cab58255d4e
+                stepCounter: 22703270-d95a-4d24-9226-a6368a5fe258
+            transform: ""
+          - columnReferences:
+              - columnCounter: 1fbc7d00-1064-4b5e-a590-6f8801aae7a7
+                stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+            transform: ""
+          - columnReferences:
+              - columnCounter: d7832ba5-8bda-4e07-ab73-f3e885541973
+                stepCounter: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+            transform: ""
+        systemColumnType: None
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DM05A_COMBINED: 6ea8754c-4bb5-489e-b707-faa782746198
+          STG_CM12_COMBINED: 4d57f46f-ef85-4768-b448-acd77154ee4e
+          STG_RM04_COMBINED: c4bd6358-8cbd-497f-83d0-dffa858471c1
+          STG_RM05_COMBINED: b3bf2fe8-cfa1-4de1-90b9-9d79ce58924a
+          STG_SM01_COMBINED_FILTERED: ec660b1f-9a79-4287-9c7f-85fa23956621
+          STG_TR01_COMBINED: 21ef61dc-1d77-47dc-9b45-381fb4ad32b7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DM05A_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM12_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM05_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_SM01_COMBINED_FILTERED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TR01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'DM05A_COMBINED') }} "DM05A_COMBINED"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SM01_COMBINED_FILTERED') }} "STG_SM01_COMBINED_FILTERED"
+              ON "DM05A_COMBINED"."DM05A_TDTE" = "STG_SM01_COMBINED_FILTERED"."SM01_DATE"
+             AND "DM05A_COMBINED"."DM05A_ROUT" = "STG_SM01_COMBINED_FILTERED"."SM01_ROUT"
+             AND "DM05A_COMBINED"."DM05A_SEQU" = "STG_SM01_COMBINED_FILTERED"."SM01_SEQU"
+             AND "DM05A_COMBINED"."SOURCE" = "STG_SM01_COMBINED_FILTERED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM05_COMBINED') }} "STG_RM05_COMBINED"
+              ON "STG_RM05_COMBINED"."RM05_DATE" = "STG_SM01_COMBINED_FILTERED"."SM01_DATE"
+             AND "STG_RM05_COMBINED"."RM05_ROUT" = "STG_SM01_COMBINED_FILTERED"."SM01_ROUT"
+             AND "STG_SM01_COMBINED_FILTERED"."SM01_SEQU" >= "STG_RM05_COMBINED"."RM05_SEQ1"
+             AND "STG_SM01_COMBINED_FILTERED"."SM01_SEQU" <= "STG_RM05_COMBINED"."RM05_SEQ2"
+             AND "STG_SM01_COMBINED_FILTERED"."SOURCE" = "STG_RM05_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM12_COMBINED') }} "STG_CM12_COMBINED"
+              ON "STG_SM01_COMBINED_FILTERED"."SM01_ACTV" = "STG_CM12_COMBINED"."CM12_CODE"
+             AND "STG_SM01_COMBINED_FILTERED"."SOURCE" = "STG_CM12_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM04_COMBINED') }} "STG_RM04_COMBINED"
+              ON "STG_RM04_COMBINED"."RM04_NUMB" = "STG_RM05_COMBINED"."RM05_DRIV"
+             AND "STG_RM04_COMBINED"."SOURCE" = "STG_RM05_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TR01_COMBINED') }} "STG_TR01_COMBINED"
+              ON "STG_TR01_COMBINED"."TR01_NUMB" = "STG_RM05_COMBINED"."RM05_TRUK"
+             AND "STG_TR01_COMBINED"."SOURCE" = "STG_RM05_COMBINED"."SOURCE"
+        name: DM05A_COMBINED - SERVICE CHARGES
+        noLinkRefs: []
+      - aliases:
+          DM05B_COMBINED: a647fe68-6614-45f9-bf4a-d12034aa0ce1
+          STG_CD05_COMBINED: 781c117a-dfed-4208-b512-6cd45bdcaa7a
+          STG_CD11_COMBINED: 0f5974cd-75ab-4abb-8a78-54d42e549a47
+          STG_CD17_COMBINED: 74c396a1-115d-4a78-95a9-dbaa76ec42da
+          STG_CM03_COMBINED_FILTERED: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+          STG_CM04_COMBINED: 0af6c022-441d-44b9-83d1-a27a9c20205f
+          STG_CM05_COMBINED: 5429f5d6-ff70-43a7-b163-0687a347a095
+          STG_CM12_COMBINED: 4d57f46f-ef85-4768-b448-acd77154ee4e
+          STG_CM19_COMBINED: 629e5313-2385-4ef2-b113-2583d5d40b3c
+          STG_GL01_COMBINED: 0fe6a9cb-075f-482c-9a53-434895e62592
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DM05B_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD05_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD11_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD17_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM03_COMBINED_FILTERED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM05_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM12_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM19_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_GL01_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_GL01_COMBINED') }} "STG_GL01_COMBINED"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'DM05B_COMBINED') }} "DM05B_COMBINED"
+              ON "STG_GL01_COMBINED"."GL01_BID" = "DM05B_COMBINED"."DM05B_ID"
+             AND "STG_GL01_COMBINED"."SOURCE" = "DM05B_COMBINED"."SOURCE"
+             AND "STG_GL01_COMBINED"."GL01_BID" IS NOT NULL
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD17_COMBINED') }} "STG_CD17_COMBINED"
+              ON "STG_GL01_COMBINED"."GL01_CYCL" = "STG_CD17_COMBINED"."CD17_CODE"
+             AND "STG_GL01_COMBINED"."SOURCE" = "STG_CD17_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
+              ON "STG_CM03_COMBINED_FILTERED"."CM03_CUST" = "STG_GL01_COMBINED"."GL01_CUST"
+             AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "STG_GL01_COMBINED"."SOURCE"
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD11_COMBINED') }} "STG_CD11_COMBINED"
+              ON "STG_CM03_COMBINED_FILTERED"."CM03_CUSTTYPE" = "STG_CD11_COMBINED"."CD11_CODE"
+             AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "STG_CD11_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED"
+              ON "STG_GL01_COMBINED"."GL01_CUST" = "STG_CM04_COMBINED"."CM04_CUST"
+             AND "STG_GL01_COMBINED"."GL01_SITE" = "STG_CM04_COMBINED"."CM04_SITE"
+             AND "STG_GL01_COMBINED"."SOURCE" = "STG_CM04_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM19_COMBINED') }} "STG_CM19_COMBINED"
+              ON "DM05B_COMBINED"."DM05B_ARATEID" = "STG_CM19_COMBINED"."CM19_ID"
+             AND "DM05B_COMBINED"."SOURCE" = "STG_CM19_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM05_COMBINED') }} "STG_CM05_COMBINED"
+              ON "STG_CM05_COMBINED"."CM05_CUST" = "STG_CM19_COMBINED"."CM19_CUST"
+             AND "STG_CM05_COMBINED"."CM05_SITE" = "STG_CM19_COMBINED"."CM19_SITE"
+             AND "STG_CM05_COMBINED"."CM05_SERV" = "STG_CM19_COMBINED"."CM19_SERV"
+             AND "STG_CM05_COMBINED"."SOURCE" = "STG_CM19_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM12_COMBINED') }} "STG_CM12_COMBINED"
+              ON "STG_CM12_COMBINED"."CM12_CODE" = "STG_CM19_COMBINED"."CM19_ACTV"
+             AND "STG_CM12_COMBINED"."SOURCE" = "STG_CM19_COMBINED"."SOURCE"
+            
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD05_COMBINED') }} "STG_CD05_COMBINED"
+              ON "STG_CD05_COMBINED"."CD05_CODE" = "STG_CM05_COMBINED"."CM05_TYPE"
+             AND "STG_CD05_COMBINED"."SOURCE" = "STG_CM05_COMBINED"."SOURCE"
+        name: DM05B_COMBINED - PERIOD CHARGES
+        noLinkRefs: []
+      - aliases:
+          DM05L_COMBINED: 3b7db227-f63d-4c36-b02c-9c32e906cbbe
+          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+          STG_DM01_COMBINED: bee680d8-22b9-4f6f-a631-372e74bb4d58
+          STG_LF05H_COMBINED: ea50d874-5616-4407-a90a-cedcbdf8653f
+          STG_LF10D_COMBINED: b9ff62c5-9ed2-4f11-8235-65b9d1c13965
+          STG_LF10H_COMBINED: 49a95486-b0a4-45f7-a1fb-46c8b643c755
+          STG_LM01_COMBINED_A: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+          STG_LM01_COMBINED_B: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+          STG_LM02_COMBINED_FILTERED: f0381036-1467-4a05-b086-6230161af90d
+          STG_LM04_COMBINED: f444d93a-cf72-4d04-bb6a-d32f667d27c3
+          STG_RM04_COMBINED: c4bd6358-8cbd-497f-83d0-dffa858471c1
+          STG_RM05_COMBINED: b3bf2fe8-cfa1-4de1-90b9-9d79ce58924a
+          STG_TR01_COMBINED: 21ef61dc-1d77-47dc-9b45-381fb4ad32b7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DM05L_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LF05D_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_DM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LF05H_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LF10D_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LF10H_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM02_COMBINED_FILTERED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM05_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TR01_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'DM05L_COMBINED') }} "DM05L_COMBINED"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM02_COMBINED_FILTERED') }} "STG_LM02_COMBINED_FILTERED"
+               ON "DM05L_COMBINED"."DM05L_DTID" = "STG_LM02_COMBINED_FILTERED"."LM02_ID"
+              AND "DM05L_COMBINED"."SOURCE" = "STG_LM02_COMBINED_FILTERED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
+               ON "STG_LM02_COMBINED_FILTERED"."LM02_LF05ID" = "LF05D_COMBINED"."LF05D_ID"
+              AND "STG_LM02_COMBINED_FILTERED"."SOURCE" = "LF05D_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05H_COMBINED') }} "STG_LF05H_COMBINED"
+               ON "LF05D_COMBINED"."LF05D_LINK" = "STG_LF05H_COMBINED"."LF05H_ID"
+              AND "LF05D_COMBINED"."SOURCE" = "STG_LF05H_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF10D_COMBINED') }} "STG_LF10D_COMBINED"
+               ON "LF05D_COMBINED"."LF05D_RATEID" = "STG_LF10D_COMBINED"."LF10D_ID"
+              AND "LF05D_COMBINED"."SOURCE" = "STG_LF10D_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF10H_COMBINED') }} "STG_LF10H_COMBINED"
+               ON "STG_LF10D_COMBINED"."LF10D_LINK" = "STG_LF10H_COMBINED"."LF10H_ID"
+              AND "STG_LF10D_COMBINED"."SOURCE" = "STG_LF10H_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} "STG_LM04_COMBINED"
+               ON "STG_LM02_COMBINED_FILTERED"."LM02_MATL" = "STG_LM04_COMBINED"."LM04_CODE"
+              AND "STG_LM02_COMBINED_FILTERED"."SOURCE" = "STG_LM04_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED') }} "STG_DM01_COMBINED"
+               ON "DM05L_COMBINED"."DM05L_LINK" = "STG_DM01_COMBINED"."DM01_ID"
+              AND "DM05L_COMBINED"."SOURCE" = "STG_DM01_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED_A"
+               ON "STG_LM02_COMBINED_FILTERED"."LM02_DSTE" = "STG_LM01_COMBINED_A"."LM01_DSTE"
+              AND "STG_LM02_COMBINED_FILTERED"."SOURCE" = "STG_LM01_COMBINED_A"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED_B"
+               ON "STG_DM01_COMBINED"."DM01_FCTY" = "STG_LM01_COMBINED_B"."LM01_DSTE"
+              AND "STG_DM01_COMBINED"."SOURCE" = "STG_LM01_COMBINED_B"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM05_COMBINED') }} "STG_RM05_COMBINED"
+               ON "STG_LM02_COMBINED_FILTERED"."LM02_RDATE" = "STG_RM05_COMBINED"."RM05_DATE"
+              AND "STG_LM02_COMBINED_FILTERED"."LM02_ROUT" = "STG_RM05_COMBINED"."RM05_ROUT"
+              AND (
+                   ("STG_RM05_COMBINED"."RM05_SEQ1" = "STG_LM02_COMBINED_FILTERED"."LM02_SEQ1"
+                    AND "STG_RM05_COMBINED"."RM05_SEQ2" = "STG_LM02_COMBINED_FILTERED"."LM02_SEQ2")
+                OR ("STG_LM02_COMBINED_FILTERED"."LM02_SEQ1" = "STG_LM02_COMBINED_FILTERED"."LM02_SEQ2"
+                    AND "STG_LM02_COMBINED_FILTERED"."LM02_SEQ1" BETWEEN "STG_RM05_COMBINED"."RM05_SEQ1" AND "STG_RM05_COMBINED"."RM05_SEQ2")
+                  )
+              AND "STG_LM02_COMBINED_FILTERED"."SOURCE" = "STG_RM05_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TR01_COMBINED') }} "STG_TR01_COMBINED"
+               ON "STG_RM05_COMBINED"."RM05_TRUK" = "STG_TR01_COMBINED"."TR01_NUMB"
+              AND "STG_RM05_COMBINED"."SOURCE" = "STG_TR01_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM04_COMBINED') }} "STG_RM04_COMBINED"
+               ON "STG_RM05_COMBINED"."RM05_DRIV" = "STG_RM04_COMBINED"."RM04_NUMB"
+              AND "STG_RM05_COMBINED"."SOURCE" = "STG_RM04_COMBINED"."SOURCE"
+        name: DM05L_COMBINED - DISPOSAL TICKETS
+        noLinkRefs: []
+      - aliases:
+          DM05FT_COMBINED: 63759ead-06b3-486d-a8f0-c6ce11f5402f
+          STG_CM20_COMBINED: 67b65067-eb33-422a-bc34-b59735a2781d
+          STG_DM01_COMBINED: bee680d8-22b9-4f6f-a631-372e74bb4d58
+          STG_LM01_COMBINED: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DM05FT_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM20_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_DM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'DM05FT_COMBINED') }} "DM05FT_COMBINED"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED') }} "STG_DM01_COMBINED"
+               ON "DM05FT_COMBINED"."DM05FT_LINK" = "STG_DM01_COMBINED"."DM01_ID"
+              AND "DM05FT_COMBINED"."SOURCE" = "STG_DM01_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM20_COMBINED') }} "STG_CM20_COMBINED"
+               ON "DM05FT_COMBINED"."DM05FT_CODE" = "STG_CM20_COMBINED"."CM20_CODE"
+              AND "DM05FT_COMBINED"."SOURCE" = "STG_CM20_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED"
+               ON "STG_DM01_COMBINED"."DM01_FCTY" = "STG_LM01_COMBINED"."LM01_DSTE"
+              AND "STG_DM01_COMBINED"."SOURCE" = "STG_LM01_COMBINED"."SOURCE"
+            
+            WHERE "DM05FT_COMBINED"."_FIVETRAN_DELETED" = FALSE
+        name: DM05FT_COMBINED - TAXES
+        noLinkRefs: []
+      - aliases:
+          DM05Z_COMBINED: 22703270-d95a-4d24-9226-a6368a5fe258
+          STG_GL01_COMBINED: 0fe6a9cb-075f-482c-9a53-434895e62592
+          STG_MT00_COMBINED: e06a2d72-cad6-4af4-8ea2-e7685c358289
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DM05Z_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_GL01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_MT00_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_MT02_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_GL01_COMBINED') }} "STG_GL01_COMBINED"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'DM05Z_COMBINED') }} "DM05Z_COMBINED"
+               ON "STG_GL01_COMBINED"."GL01_ZID" = "DM05Z_COMBINED"."DM05Z_ID"
+              AND "STG_GL01_COMBINED"."SOURCE" = "DM05Z_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_MT02_COMBINED') }} "STG_MT02_COMBINED"
+               ON "DM05Z_COMBINED"."DM05Z_REFN" = "STG_MT02_COMBINED"."MT02_REFR"
+              AND "DM05Z_COMBINED"."SOURCE" = "STG_MT02_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_MT00_COMBINED') }} "STG_MT00_COMBINED"
+               ON "STG_MT02_COMBINED"."MT02_CODE" = "STG_MT00_COMBINED"."MT00_CODE"
+              AND "STG_MT02_COMBINED"."SOURCE" = "STG_MT00_COMBINED"."SOURCE"
+        name: DM05Z_COMBINED - MISC TRANSACTIONS GL BLOCK
+        noLinkRefs: []
+      - aliases:
+          DISTINCT_GL01_ZID_DM05Z_JOIN: b713f3af-8194-4cd4-9a63-56fe83bdd059
+          FILTERED_DM05Z_JOIN: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
+          STG_DM01_COMBINED: bee680d8-22b9-4f6f-a631-372e74bb4d58
+          STG_LF05H_COMBINED: ea50d874-5616-4407-a90a-cedcbdf8653f
+          STG_LF10H_COMBINED: 49a95486-b0a4-45f7-a1fb-46c8b643c755
+          STG_LM01_COMBINED_A: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+          STG_LM01_COMBINED_B: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+          STG_MT00_COMBINED: e06a2d72-cad6-4af4-8ea2-e7685c358289
+          STG_MT02_COMBINED: bb9d5395-c26f-4b78-a862-06d38eb063b3
+          STG_RM04_COMBINED: c4bd6358-8cbd-497f-83d0-dffa858471c1
+          STG_RM05_COMBINED: b3bf2fe8-cfa1-4de1-90b9-9d79ce58924a
+          STG_TR01_COMBINED: 21ef61dc-1d77-47dc-9b45-381fb4ad32b7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DISTINCT_GL01_ZID_DM05Z_JOIN
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: FILTERED_DM05Z_JOIN
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_DM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LF05H_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LF10H_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_MT00_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_MT02_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM05_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_TR01_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'FILTERED_DM05Z_JOIN') }} "FILTERED_DM05Z_JOIN"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_MT02_COMBINED') }} "STG_MT02_COMBINED"
+               ON "FILTERED_DM05Z_JOIN"."DM05Z_REFN" = "STG_MT02_COMBINED"."MT02_REFR"
+              AND "FILTERED_DM05Z_JOIN"."SOURCE" = "STG_MT02_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'DISTINCT_GL01_ZID_DM05Z_JOIN') }} "DISTINCT_GL01_ZID_DM05Z_JOIN"
+               ON "DISTINCT_GL01_ZID_DM05Z_JOIN"."GL01_ZID" = "FILTERED_DM05Z_JOIN"."DM05Z_ID"
+              AND "DISTINCT_GL01_ZID_DM05Z_JOIN"."SOURCE" = "FILTERED_DM05Z_JOIN"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_MT00_COMBINED') }} "STG_MT00_COMBINED"
+               ON "STG_MT02_COMBINED"."MT02_CODE" = "STG_MT00_COMBINED"."MT00_CODE"
+              AND "STG_MT02_COMBINED"."SOURCE" = "STG_MT00_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05H_COMBINED') }} "STG_LF05H_COMBINED"
+               ON "STG_MT02_COMBINED"."MT02_LF05ID" = "STG_LF05H_COMBINED"."LF05H_ID"
+              AND "STG_MT02_COMBINED"."SOURCE" = "STG_LF05H_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF10H_COMBINED') }} "STG_LF10H_COMBINED"
+               ON "STG_LF05H_COMBINED"."LF05H_JOB" = "STG_LF10H_COMBINED"."LF10H_ID"
+              AND "STG_LF05H_COMBINED"."SOURCE" = "STG_LF10H_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED') }} "STG_DM01_COMBINED"
+               ON "FILTERED_DM05Z_JOIN"."DM05Z_LINK" = "STG_DM01_COMBINED"."DM01_ID"
+              AND "FILTERED_DM05Z_JOIN"."SOURCE" = "STG_DM01_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED_A"
+               ON "STG_LM01_COMBINED_A"."LM01_DSTE" = COALESCE("STG_LF05H_COMBINED"."LF05H_FCTY", "STG_MT02_COMBINED"."MT02_FCTY")
+              AND "STG_LM01_COMBINED_A"."SOURCE" = "STG_LF05H_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED_B"
+               ON "STG_DM01_COMBINED"."DM01_FCTY" = "STG_LM01_COMBINED_B"."LM01_DSTE"
+              AND "STG_DM01_COMBINED"."SOURCE" = "STG_LM01_COMBINED_B"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM05_COMBINED') }} "STG_RM05_COMBINED"
+               ON "STG_MT02_COMBINED"."MT02_DATE" = "STG_RM05_COMBINED"."RM05_DATE"
+              AND "STG_MT02_COMBINED"."MT02_ROUT" = "STG_RM05_COMBINED"."RM05_ROUT"
+              AND "STG_MT02_COMBINED"."MT02_SEQU" BETWEEN "STG_RM05_COMBINED"."RM05_SEQ1" AND "STG_RM05_COMBINED"."RM05_SEQ2"
+              AND "STG_MT02_COMBINED"."SOURCE" = "STG_RM05_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM04_COMBINED') }} "STG_RM04_COMBINED"
+               ON "STG_RM05_COMBINED"."RM05_DRIV" = "STG_RM04_COMBINED"."RM04_NUMB"
+              AND "STG_RM05_COMBINED"."SOURCE" = "STG_RM04_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_TR01_COMBINED') }} "STG_TR01_COMBINED"
+               ON "STG_RM05_COMBINED"."RM05_TRUK" = "STG_TR01_COMBINED"."TR01_NUMB"
+              AND "STG_RM05_COMBINED"."SOURCE" = "STG_TR01_COMBINED"."SOURCE"
+        name: DM05Z_COMBINED - MISC TRANSACTIONS DM05Z BLOCK
+        noLinkRefs: []
+      - aliases:
+          DM01P_COMBINED: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
+          STG_CD02_COMBINED: 91671ab3-0896-400c-bdfb-f628441d03ee
+          STG_CM24_COMBINED: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+          STG_DM01_COMBINED: bee680d8-22b9-4f6f-a631-372e74bb4d58
+          STG_LF10H_COMBINED: 49a95486-b0a4-45f7-a1fb-46c8b643c755
+          STG_LM01_COMBINED: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: DM01P_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD02_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM24_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_DM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LF10H_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM01_COMBINED
+        join:
+          joinCondition: |
+            FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED') }} "STG_DM01_COMBINED"
+               ON "DM01P_COMBINED"."DM01P_LINK" = "STG_DM01_COMBINED"."DM01_ID"
+              AND "DM01P_COMBINED"."SOURCE" = "STG_DM01_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF10H_COMBINED') }} "STG_LF10H_COMBINED"
+               ON "STG_DM01_COMBINED"."DM01_CONTRACT" = "STG_LF10H_COMBINED"."LF10H_ID"
+              AND "STG_DM01_COMBINED"."SOURCE" = "STG_LF10H_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD02_COMBINED') }} "STG_CD02_COMBINED"
+               ON "DM01P_COMBINED"."DM01P_ADJR" = "STG_CD02_COMBINED"."CD02_CODE"
+              AND "DM01P_COMBINED"."DM01P_TYPE" = "STG_CD02_COMBINED"."CD02_TYPE"
+              AND "DM01P_COMBINED"."SOURCE" = "STG_CD02_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED"
+               ON "STG_DM01_COMBINED"."DM01_FCTY" = "STG_LM01_COMBINED"."LM01_DSTE"
+              AND "STG_DM01_COMBINED"."SOURCE" = "STG_LM01_COMBINED"."SOURCE"
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM24_COMBINED') }} "STG_CM24_COMBINED"
+               ON "DM01P_COMBINED"."DM01P_GLNU" = "STG_CM24_COMBINED"."CM24_CODE"
+              AND "DM01P_COMBINED"."SOURCE" = "STG_CM24_COMBINED"."SOURCE"
+        name: DM01P_COMBINED
+        noLinkRefs: []
+  name: GL_DETAIL_EXPORT_DM05_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
