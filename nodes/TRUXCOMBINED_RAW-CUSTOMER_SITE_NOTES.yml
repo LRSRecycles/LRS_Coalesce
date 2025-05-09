@@ -225,7 +225,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: ""
+            transform: "0"
           - columnReferences:
               - columnCounter: 78a096da-bf29-4d21-b523-2bdc145b6b42
                 stepCounter: ca237ab3-5495-42da-8975-1d92ad0ecd47
@@ -257,6 +257,50 @@ operation:
             transform: ""
         systemColumnType: None
         transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7ee86529-3d0e-404b-85c5-f3173af82b78
+          stepCounter: fe9263c4-f945-4c0a-babc-6f073cabe4ae
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Cust
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"STG_CUSTOMER_NOTES\".\"SOURCE\" || '-' || \"STG_CUSTOMER_NOTES\".\"CUSTOMER\""
+          - columnReferences: []
+            transform: "\"STG_CUSTOMER_SITE_NOTES\".\"SOURCE\" || '-' || \"STG_CUSTOMER_SITE_NOTES\".\"CUSTOMER\""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3197ff8e-6ae2-4275-a805-fbb773e53690
+          stepCounter: fe9263c4-f945-4c0a-babc-6f073cabe4ae
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Source_Cust_Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"STG_CUSTOMER_NOTES\".\"SOURCE\" || '-' || \"STG_CUSTOMER_NOTES\".\"CUSTOMER\" || '-0'"
+          - columnReferences: []
+            transform: "\"STG_CUSTOMER_SITE_NOTES\".\"SOURCE\" || '-' || \"STG_CUSTOMER_SITE_NOTES\".\"CUSTOMER\" || '-' || \"STG_CUSTOMER_SITE_NOTES\".\"SITE\""
+        systemColumnType: None
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
