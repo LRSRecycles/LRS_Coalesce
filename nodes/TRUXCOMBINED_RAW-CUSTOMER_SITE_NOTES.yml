@@ -220,7 +220,7 @@ operation:
         description: ""
         keyColumnType: None
         name: SITE
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: "0"
@@ -299,7 +299,7 @@ operation:
                 stepCounter: "0"
             transform: "\"STG_CUSTOMER_NOTES\".\"SOURCE\" || '-' || \"STG_CUSTOMER_NOTES\".\"CUSTOMER\" || '-0'"
           - columnReferences: []
-            transform: "\"STG_CUSTOMER_SITE_NOTES\".\"SOURCE\" || '-' || \"STG_CUSTOMER_SITE_NOTES\".\"CUSTOMER\" || '-' || \"STG_CUSTOMER_SITE_NOTES\".\"SITE\""
+            transform: "\"STG_CUSTOMER_SITE_NOTES\".\"SOURCE\" || '-' || \"STG_CUSTOMER_SITE_NOTES\".\"CUSTOMER\" || '-' || IFNULL(\"STG_CUSTOMER_SITE_NOTES\".\"SITE\",'0')"
         systemColumnType: None
     enabledColumnTestIDs: []
     sourceMapping:
