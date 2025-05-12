@@ -1,0 +1,113 @@
+fileVersion: 1
+id: c487fc17-929d-49a4-bcdd-cc690bd8e17e
+name: SELECTED_PETT_GL_DETAIL_EXPORT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aa971cdb-467b-47d0-b877-6050d43f73e8
+          stepCounter: c487fc17-929d-49a4-bcdd-cc690bd8e17e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: PETT_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f2e57e8c-229b-42f9-8e20-d10dc66264cf
+                stepCounter: e528c672-ab82-4de5-82fc-cc65651e29a5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1b66b556-ddd5-425e-926d-7d19ded9e99c
+          stepCounter: c487fc17-929d-49a4-bcdd-cc690bd8e17e
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: PETT_EDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b51d4e7f-3d48-4123-9219-220aea7712c1
+                stepCounter: e528c672-ab82-4de5-82fc-cc65651e29a5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 016ba1ac-dd6e-476e-9581-6b8d36e974dc
+          stepCounter: c487fc17-929d-49a4-bcdd-cc690bd8e17e
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: PETT_SDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: af68330d-dcdd-4cae-8f70-ffc2f3e0526d
+                stepCounter: e528c672-ab82-4de5-82fc-cc65651e29a5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4fcf7f51-33d9-45d4-b478-763051cf39d3
+          stepCounter: c487fc17-929d-49a4-bcdd-cc690bd8e17e
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: PETT_CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 60242531-2f64-468f-9296-ac2f6d96e1f0
+                stepCounter: e528c672-ab82-4de5-82fc-cc65651e29a5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e97e7ba-bc25-4155-87d4-1d19058d8e44
+          stepCounter: c487fc17-929d-49a4-bcdd-cc690bd8e17e
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: addc029e-acf0-4aa6-a934-addbdf950b47
+                stepCounter: e528c672-ab82-4de5-82fc-cc65651e29a5
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_PETT_COMBINED: e528c672-ab82-4de5-82fc-cc65651e29a5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_PETT_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_PETT_COMBINED') }} "STG_PETT_COMBINED"
+            
+            WHERE PETT_SDATE >= DATE_TRUNC('MONTH', DATEADD(MONTH, -12, CURRENT_DATE))
+        name: SELECTED_PETT_GL_DETAIL_EXPORT
+        noLinkRefs: []
+  name: SELECTED_PETT_GL_DETAIL_EXPORT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

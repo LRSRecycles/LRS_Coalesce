@@ -246,21 +246,23 @@ operation:
     sourceMapping:
       - aliases:
           DM01P_COMBINED: 72c275e5-48af-4bff-bc7f-5b0bccfbc514
-          STG_PETT_COMBINED: e528c672-ab82-4de5-82fc-cc65651e29a5
+          SELECTED_PETT_GL_DETAIL_EXPORT: c487fc17-929d-49a4-bcdd-cc690bd8e17e
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: DM01P_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: STG_PETT_COMBINED
+            nodeName: SELECTED_PETT_GL_DETAIL_EXPORT
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
             
-            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_PETT_COMBINED') }} "STG_PETT_COMBINED"
-                ON "DM01P_COMBINED"."DM01P_PERIODCLOSEID" = "STG_PETT_COMBINED"."PETT_ID"
-               AND "DM01P_COMBINED"."SOURCE" = "STG_PETT_COMBINED"."SOURCE"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'SELECTED_PETT_GL_DETAIL_EXPORT') }} "SELECTED_PETT_GL_DETAIL_EXPORT"
+                ON "DM01P_COMBINED"."DM01P_PERIODCLOSEID" = "SELECTED_PETT_GL_DETAIL_EXPORT"."PETT_ID"
+               AND "DM01P_COMBINED"."SOURCE" = "SELECTED_PETT_GL_DETAIL_EXPORT"."SOURCE"
+            
+            WHERE PETT_SDATE >= DATE_TRUNC('MONTH', DATEADD(MONTH, -12, CURRENT_DATE))
         name: DM01P_TABLE_GL_DETAIL_EXPORT
         noLinkRefs: []
   name: DM01P_TABLE_GL_DETAIL_EXPORT
