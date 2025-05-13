@@ -405,7 +405,7 @@ operation:
           - columnReferences: []
             transform: "0"
           - columnReferences: []
-            transform: IFNULL("GL01_INNER_JOIN_GL_DETAIL_EXPORT"."DEFERRED",0)
+            transform: IFNULL("GL01_FILTER"."DEFERRED",0)
           - columnReferences: []
             transform: "0"
           - columnReferences: []
@@ -889,7 +889,7 @@ operation:
           - columnReferences: []
             transform: "0"
           - columnReferences: []
-            transform: IFNULL("GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_MONTH",0)
+            transform: IFNULL("GL01_FILTER"."GL01_MONTH",0)
           - columnReferences: []
             transform: "0"
           - columnReferences: []
@@ -921,7 +921,7 @@ operation:
           - columnReferences: []
             transform: "0"
           - columnReferences: []
-            transform: IFNULL("GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_YEAR",0)
+            transform: IFNULL("GL01_FILTER"."GL01_YEAR",0)
           - columnReferences: []
             transform: "0"
           - columnReferences: []
@@ -959,7 +959,7 @@ operation:
                 stepCounter: 620764d7-14f9-4d3c-b649-6dfd1dc71e4f
             transform: ""
           - columnReferences: []
-            transform: IFNULL("GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_PETT","STG_DM05Z_COMBINED"."DM05Z_PERIODCLOSEID")
+            transform: IFNULL("GL01_FILTER"."GL01_PETT","STG_DM05Z_COMBINED"."DM05Z_PERIODCLOSEID")
           - columnReferences:
               - columnCounter: 51d4a3ac-df1e-4f56-baf5-b7d279a56933
                 stepCounter: d0fa7684-d37b-40fc-b534-7c07f7fd5bc1
@@ -1408,7 +1408,7 @@ operation:
         name: DM05A_COMBINED - SERVICE CHARGES
         noLinkRefs: []
       - aliases:
-          GL01_INNER_JOIN_GL_DETAIL_EXPORT: 11d1dc4e-6eb9-4782-8f31-38b5e181ac72
+          GL01_FILTER: 11d1dc4e-6eb9-4782-8f31-38b5e181ac72
           STG_CD05_COMBINED: 781c117a-dfed-4208-b512-6cd45bdcaa7a
           STG_CD11_COMBINED: 0f5974cd-75ab-4abb-8a78-54d42e549a47
           STG_CD17_COMBINED: 74c396a1-115d-4a78-95a9-dbaa76ec42da
@@ -1422,7 +1422,7 @@ operation:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: GL01_INNER_JOIN_GL_DETAIL_EXPORT
+            nodeName: GL01_FILTER
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CD05_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -1443,29 +1443,29 @@ operation:
             nodeName: STG_DM05B_COMBINED
         join:
           joinCondition: |
-            FROM {{ ref('TRUXCOMBINED_RAW', 'GL01_INNER_JOIN_GL_DETAIL_EXPORT') }} "GL01_INNER_JOIN_GL_DETAIL_EXPORT"
+            FROM {{ ref('TRUXCOMBINED_RAW', 'GL01_FILTER') }} "GL01_FILTER"
             
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM05B_COMBINED') }} "STG_DM05B_COMBINED"
-              ON "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_BID" = "STG_DM05B_COMBINED"."DM05B_ID"
-             AND "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."SOURCE" = "STG_DM05B_COMBINED"."SOURCE"
-             AND "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_BID" IS NOT NULL
+              ON "GL01_FILTER"."GL01_BID" = "STG_DM05B_COMBINED"."DM05B_ID"
+             AND "GL01_FILTER"."SOURCE" = "STG_DM05B_COMBINED"."SOURCE"
+             AND "GL01_FILTER"."GL01_BID" IS NOT NULL
             
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD17_COMBINED') }} "STG_CD17_COMBINED"
-              ON "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_CYCL" = "STG_CD17_COMBINED"."CD17_CODE"
-             AND "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."SOURCE" = "STG_CD17_COMBINED"."SOURCE"
+              ON "GL01_FILTER"."GL01_CYCL" = "STG_CD17_COMBINED"."CD17_CODE"
+             AND "GL01_FILTER"."SOURCE" = "STG_CD17_COMBINED"."SOURCE"
             
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
-              ON "STG_CM03_COMBINED_FILTERED"."CM03_CUST" = "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_CUST"
-             AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."SOURCE"
+              ON "STG_CM03_COMBINED_FILTERED"."CM03_CUST" = "GL01_FILTER"."GL01_CUST"
+             AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "GL01_FILTER"."SOURCE"
             
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD11_COMBINED') }} "STG_CD11_COMBINED"
               ON "STG_CM03_COMBINED_FILTERED"."CM03_CUSTTYPE" = "STG_CD11_COMBINED"."CD11_CODE"
              AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "STG_CD11_COMBINED"."SOURCE"
             
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED"
-              ON "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_CUST" = "STG_CM04_COMBINED"."CM04_CUST"
-             AND "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_SITE" = "STG_CM04_COMBINED"."CM04_SITE"
-             AND "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."SOURCE" = "STG_CM04_COMBINED"."SOURCE"
+              ON "GL01_FILTER"."GL01_CUST" = "STG_CM04_COMBINED"."CM04_CUST"
+             AND "GL01_FILTER"."GL01_SITE" = "STG_CM04_COMBINED"."CM04_SITE"
+             AND "GL01_FILTER"."SOURCE" = "STG_CM04_COMBINED"."SOURCE"
             
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM19_COMBINED') }} "STG_CM19_COMBINED"
               ON "STG_DM05B_COMBINED"."DM05B_ARATEID" = "STG_CM19_COMBINED"."CM19_ID"
@@ -1621,7 +1621,7 @@ operation:
         name: DM05L_COMBINED - DISPOSAL TICKETS
         noLinkRefs: []
       - aliases:
-          GL01_INNER_JOIN_GL_DETAIL_EXPORT: 11d1dc4e-6eb9-4782-8f31-38b5e181ac72
+          GL01_FILTER: 11d1dc4e-6eb9-4782-8f31-38b5e181ac72
           STG_DM05Z_COMBINED: d5021d0c-14bb-4472-98a6-cf7e7b939856
           STG_MT00_COMBINED: e06a2d72-cad6-4af4-8ea2-e7685c358289
           STG_MT02_COMBINED: bb9d5395-c26f-4b78-a862-06d38eb063b3
@@ -1629,7 +1629,7 @@ operation:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: GL01_INNER_JOIN_GL_DETAIL_EXPORT
+            nodeName: GL01_FILTER
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_DM05Z_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -1638,11 +1638,11 @@ operation:
             nodeName: STG_MT02_COMBINED
         join:
           joinCondition: |
-            FROM {{ ref('TRUXCOMBINED_RAW', 'GL01_INNER_JOIN_GL_DETAIL_EXPORT') }} "GL01_INNER_JOIN_GL_DETAIL_EXPORT"
+            FROM {{ ref('TRUXCOMBINED_RAW', 'GL01_FILTER') }} "GL01_FILTER"
             
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM05Z_COMBINED') }} "STG_DM05Z_COMBINED"
-               ON "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."GL01_BID" = "STG_DM05Z_COMBINED"."DM05Z_ID"
-              AND "GL01_INNER_JOIN_GL_DETAIL_EXPORT"."SOURCE" = "STG_DM05Z_COMBINED"."SOURCE"
+               ON "GL01_FILTER"."GL01_BID" = "STG_DM05Z_COMBINED"."DM05Z_ID"
+              AND "GL01_FILTER"."SOURCE" = "STG_DM05Z_COMBINED"."SOURCE"
             
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_MT02_COMBINED') }} "STG_MT02_COMBINED"
                ON "STG_DM05Z_COMBINED"."DM05Z_REFN" = "STG_MT02_COMBINED"."MT02_REFR"
