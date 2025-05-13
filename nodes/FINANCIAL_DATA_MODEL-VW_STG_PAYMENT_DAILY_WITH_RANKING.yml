@@ -1,6 +1,6 @@
 fileVersion: 1
 id: ae38caa1-818c-43d5-8077-a21725b98086
-name: STG_PAYMENT_DAILY_WITH_RANKING
+name: VW_STG_PAYMENT_DAILY_WITH_RANKING
 operation:
   config:
     insertStrategy: INSERT
@@ -13,7 +13,7 @@ operation:
   description: ""
   isMultisource: false
   locationName: FINANCIAL_DATA_MODEL
-  materializationType: table
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -128,17 +128,18 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          VW_STG_PAYMENT_DAILY: 9cbf8c03-8456-4ffb-bb2c-ad95e192e74d
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: FINANCIAL_DATA_MODEL
-            nodeName: STG_PAYMENT_DAILY
+            nodeName: VW_STG_PAYMENT_DAILY
         join:
-          joinCondition: FROM {{ ref('FINANCIAL_DATA_MODEL', 'STG_PAYMENT_DAILY') }} "STG_PAYMENT_DAILY"
-        name: STG_PAYMENT_DAILY_WITH_RANKING
+          joinCondition: FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_STG_PAYMENT_DAILY') }} "VW_STG_PAYMENT_DAILY"
+        name: VW_STG_PAYMENT_DAILY_WITH_RANKING
         noLinkRefs: []
-  name: STG_PAYMENT_DAILY_WITH_RANKING
+  name: VW_STG_PAYMENT_DAILY_WITH_RANKING
   overrideSQL: false
   schema: ""
   sqlType: Stage
