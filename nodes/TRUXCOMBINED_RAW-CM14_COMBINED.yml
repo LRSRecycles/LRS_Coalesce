@@ -1,0 +1,179 @@
+fileVersion: 1
+id: 12205e00-9c54-4572-baaa-6cd63ad83a71
+name: CM14_COMBINED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    storageLocationSearchText: TRUX_
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: edd1a447-e2b0-45b7-ba81-cc2602e1312d
+          stepCounter: 12205e00-9c54-4572-baaa-6cd63ad83a71
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        isSystemSource: true
+        name: CM14_ACTV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 73154401-c61f-45f4-acf9-014b2ab5307a
+                stepCounter: 560d8509-a334-40af-a507-cf28499063cd
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4090f319-4645-44a5-af0b-1730ef4161ee
+          stepCounter: 12205e00-9c54-4572-baaa-6cd63ad83a71
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM14_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0e377f74-4832-4218-a54c-cbdc49b45eb4
+                stepCounter: 560d8509-a334-40af-a507-cf28499063cd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 662e1d24-7dca-4437-baeb-6204b82aa056
+          stepCounter: 12205e00-9c54-4572-baaa-6cd63ad83a71
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CM14_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3ce1baca-bdf5-4e39-b7b2-b26e8561eba7
+                stepCounter: 560d8509-a334-40af-a507-cf28499063cd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ebd456db-ff7a-44b2-af8f-d821ef912a8f
+          stepCounter: 12205e00-9c54-4572-baaa-6cd63ad83a71
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5561471b-5b7a-4342-a9ed-e68ae0ae861a
+                stepCounter: 560d8509-a334-40af-a507-cf28499063cd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e034286a-4ec9-4196-9b53-258ced2ef7f2
+          stepCounter: 12205e00-9c54-4572-baaa-6cd63ad83a71
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cbeada17-ca3a-4d26-9e79-24b3d89debc5
+                stepCounter: 560d8509-a334-40af-a507-cf28499063cd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7d02559f-78e5-4b0c-88ae-2eabad6f833a
+          stepCounter: 12205e00-9c54-4572-baaa-6cd63ad83a71
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: _FIVETRAN_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 55879bec-c860-4507-87c4-97c17ebad0ff
+                stepCounter: 560d8509-a334-40af-a507-cf28499063cd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fdfa26f2-943f-4c8c-b349-34c3aeef627b
+          stepCounter: 12205e00-9c54-4572-baaa-6cd63ad83a71
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CM14: 560d8509-a334-40af-a507-cf28499063cd
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_AL_COMP_RAW
+            nodeName: CM14
+        join:
+          joinCondition: FROM {{ ref('TRUX_AL_COMP_RAW', 'CM14') }} "CM14"
+        name: CM14_COMBINED
+        noLinkRefs: []
+  name: CM14_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node
