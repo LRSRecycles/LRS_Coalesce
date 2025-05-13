@@ -241,7 +241,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_DM05A_COMBINED
         join:
-          joinCondition: |
+          joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM05A_COMBINED') }} "STG_DM05A_COMBINED"
             
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'SELECTED_PETT_GL_DETAIL_EXPORT') }} "SELECTED_PETT_GL_DETAIL_EXPORT"
@@ -249,6 +249,7 @@ operation:
                AND "STG_DM05A_COMBINED"."SOURCE" = "SELECTED_PETT_GL_DETAIL_EXPORT"."SOURCE"
             
             WHERE PETT_SDATE >= DATE_TRUNC('MONTH', DATEADD(MONTH, -12, CURRENT_DATE))
+            AND DM05A_AMNT <> 0
         name: DM05A_TABLE_GL_DETAIL_EXPORT
         noLinkRefs: []
   name: DM05A_TABLE_GL_DETAIL_EXPORT
