@@ -1,0 +1,77 @@
+fileVersion: 1
+id: "1"
+macroString: |-
+  {% macro safe_divide(numerator, denominator, default='NULL') %}
+    {#--
+      Macro: safe_divide
+      Purpose:
+        Safely divide two numeric expressions without casting.
+        Returns a fallback if the denominator is zero or NULL.
+  
+      Parameters:
+        - numerator (string): Any numeric expression (e.g., 'SUM(amount)')
+        - denominator (string): Any numeric expression (e.g., 'SUM(quantity)')
+        - default (string, optional): Value to return if denominator is 0 or NULL. Defaults to NULL.
+  
+      Example:
+        {{ safe_divide('SUM(DM05Z_AMNT)', 'SUM(DM05Z_QTY)', 'SUM(DM05Z_AMNT)') }} AS MT02_RATE
+    --#}
+    COALESCE(
+      {{ numerator }} / NULLIF({{ denominator }}, 0),
+      {{ default }}
+    )
+  {% endmacro %}
+  
+  {% macro standard_dm05_fields(
+      source_table,
+      rec_type,
+      sort,
+      link,
+      site,
+      serv,
+      tdte,
+      amnt,
+      qty,
+      desc,
+      code,
+      rout,
+      sequ,
+      billf='NULL',
+      billt='NULL',
+      type='NULL',
+      dste='NULL',
+      ticket='NULL',
+      uom='NULL',
+      refn='NULL',
+      rtype='NULL',
+      adjr='NULL',
+      uprice='0.000',
+      upriceuom="''"
+  ) %}
+      {{ rec_type }} AS DM05_RECTYPE,
+      {{ sort }} AS DM05_SORT,
+      {{ link }} AS DM05_LINK,
+      {{ site }} AS DM05_SSIT,
+      {{ serv }} AS DM05_SERV,
+      {{ tdte }} AS DM05_TDTE,
+      {{ amnt }} AS DM05_AMNT,
+      {{ qty }} AS DM05_QTY,
+      {{ desc }} AS DM05_DESC,
+      {{ code }} AS DM05_CODE,
+      {{ rout }} AS DM05_ROUT,
+      {{ sequ }} AS DM05_SEQU,
+      {{ billf }} AS DM05_BILLF,
+      {{ billt }} AS DM05_BILLT,
+      {{ type }} AS DM05_TYPE,
+      {{ dste }} AS DM05_DSTE,
+      {{ ticket }} AS DM05_TICKET,
+      {{ uom }} AS DM05_UOM,
+      {{ refn }} AS DM05_REFN,
+      {{ rtype }} AS DM05_RTYPE,
+      {{ adjr }} AS DM05_ADJR,
+      {{ uprice }} AS DM05_UPRICE,
+      {{ upriceuom }} AS DM05_UPRICEUOM,
+      {{ source_table }}."SOURCE" AS SOURCE
+  {% endmacro %}
+name: macro
+type: Macro
