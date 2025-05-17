@@ -244,14 +244,18 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          DM05Z_COMBINED: d8716cd3-7c45-4f2e-b964-0a27e1341a0e
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: DM05Z_COMBINED
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'DM05Z_COMBINED') }} "DM05Z_COMBINED"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'DM05Z_COMBINED') }} "DM05Z_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
         name: STG_DM05Z_COMBINED
         noLinkRefs: []
   name: STG_DM05Z_COMBINED
