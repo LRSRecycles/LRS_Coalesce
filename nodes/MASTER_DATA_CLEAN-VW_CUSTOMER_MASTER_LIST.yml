@@ -2520,17 +2520,6 @@ operation:
                 OR "MASTER_CUSTOMER_MASTER"."Site No." = Contact.CM04_SITE
                  )
             
-            WHERE 
-            ("Customer Contract End Date" >= CURRENT_DATE OR "Customer Contract End Date" IS NULL)
-            AND ("Site Agreement End Date" >= CURRENT_DATE OR "Site Agreement End Date" IS NULL)
-            AND ("Current End Date" >= CURRENT_DATE OR "Current End Date" IS NULL)
-            AND ("Next End Date" >= CURRENT_DATE OR "Next End Date" IS NULL)
-            AND ("Customer Closed Date" >= CURRENT_DATE OR "Customer Closed Date" IS NULL)
-            AND ("Customer Suspend Date" >= CURRENT_DATE OR "Customer Suspend Date" IS NULL)
-            AND ("Site Closed Date" >= CURRENT_DATE OR "Site Closed Date" IS NULL)
-            AND ("Site Suspend Date" >= CURRENT_DATE OR "Site Suspend Date" IS NULL)
-            AND ("Service Stop Date" >= CURRENT_DATE OR "Service Stop Date" IS NULL)
-            
             GROUP BY ALL
         name: VW_CUSTOMER_MASTER_LIST
         noLinkRefs: []
