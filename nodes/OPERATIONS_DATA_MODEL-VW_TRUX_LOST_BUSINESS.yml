@@ -583,10 +583,50 @@ operation:
                           ), 2
                       ) + 
                       (IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0))
-              
+
                   ELSE 
                       IFNULL(SUM(REVLIFT), 0) + IFNULL(SUM(REVDISP), 0)
               END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90f220f2-37fd-4b10-8010-e8354cd97699
+          stepCounter: 07c92861-9bc5-4234-bd49-a7277e7f413a
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Start Location
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 95b12f78-41b6-4e6c-b886-a994586cd946
+                stepCounter: c3055e38-9745-451a-8b7f-7f753e196cbf
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8467163-6a51-483e-9413-f470669c0e12
+          stepCounter: 07c92861-9bc5-4234-bd49-a7277e7f413a
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Line of Business
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 80a2ec38-0b9d-46e8-a130-836cd63c658e
+                stepCounter: c3055e38-9745-451a-8b7f-7f753e196cbf
+            transform: ""
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
@@ -599,47 +639,10 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: TRUX_LOST_BUSINESS_COMBINED
         join:
-          joinCondition: |
+          joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'TRUX_LOST_BUSINESS_COMBINED') }} "TRUX_LOST_BUSINESS_COMBINED"
             
-            GROUP BY
-                CM03_LOST,
-                CM05_SERV,
-                CM05_SDTE,
-                CM05_EDTE,
-                CM05_SIZE,
-                CM05_MAXL,
-                CM05_ECOD,
-                CM05_UOM,
-                _FIVETRAN_SYNCED,
-                _FIVETRAN_DELETED,
-                SOURCE,
-                CM03_CUST,
-                CM03_NAME,
-                CM03_ADD1,
-                CM03_CITY,
-                CM03_CUSTTYPE,
-                CM03_CDTE,
-                CM03_SREP,
-                CD07_DESC,
-                CD03_DESC,
-                CM19_ACTV,
-                CM19_UNIT,
-                "Rate",
-                REVLIFT,
-                REVDISP,
-                CD05_DESC,
-                "Service_Type_Included",
-                "Month Active",
-                CD29_DESC,
-                CD11_DESC,
-                CM04_SITE,
-                CM04_NAME,
-                CM04_SREP,
-                CD07_NAME2,
-                "SOURCE-CUST",
-                "SOURCE-CUST-SITE",
-                "SOURCE-CUST-SITE-SERV"
+            GROUP BY ALL
         name: VW_TRUX_LOST_BUSINESS
         noLinkRefs: []
   name: VW_TRUX_LOST_BUSINESS
