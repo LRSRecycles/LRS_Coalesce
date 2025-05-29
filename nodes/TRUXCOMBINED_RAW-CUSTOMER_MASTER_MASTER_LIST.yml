@@ -2954,6 +2954,46 @@ operation:
                 stepCounter: 5429f5d6-ff70-43a7-b163-0687a347a095
             transform: ""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3339029e-4466-4f4e-9f1e-13a3adab030d
+          stepCounter: 4c3b16d4-fb14-4336-bd8a-43460df4e537
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Start Location
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: LISTAGG(DISTINCT "STG_SL01_COMBINED"."SL01_NAME",' ,')
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93feaf63-f82e-4285-84fa-9f84fe328db2
+          stepCounter: 4c3b16d4-fb14-4336-bd8a-43460df4e537
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Route Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: LISTAGG(DISTINCT "STG_RM01_COMBINED"."RM01_NUMB",' ,')
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -2980,6 +3020,9 @@ operation:
           STG_CM04_COMBINED: 0af6c022-441d-44b9-83d1-a27a9c20205f
           STG_CM05_COMBINED: 5429f5d6-ff70-43a7-b163-0687a347a095
           STG_CP01_COMBINED_FILTERED: b527731c-69d1-434c-9076-a2ff49859bf4
+          STG_RM01_COMBINED: 32ce6923-348f-4d34-b5fb-0b436b70dd00
+          STG_RM02_COMBINED: b7d557a0-4321-4a5f-a227-60f96301cf90
+          STG_SL01_COMBINED: bca79830-e8c3-4f38-8874-9ddb49f1204b
         customSQL:
           customSQL: ""
         dependencies:
@@ -3015,8 +3058,14 @@ operation:
             nodeName: STG_CM05_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CP01_COMBINED_FILTERED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM02_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_SL01_COMBINED
         join:
-          joinCondition: |
+          joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
             
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED"
@@ -3027,6 +3076,20 @@ operation:
                 ON "STG_CM04_COMBINED".CM04_CUST = "STG_CM05_COMBINED".CM05_CUST
                AND "STG_CM04_COMBINED".CM04_SITE = "STG_CM05_COMBINED".CM05_SITE
                AND "STG_CM04_COMBINED"."SOURCE" = "STG_CM05_COMBINED"."SOURCE"
+            
+              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM02_COMBINED') }} "STG_RM02_COMBINED" -- Routing Info
+                ON "STG_CM05_COMBINED".CM05_CUST = "STG_RM02_COMBINED".RM02_CUST
+               AND "STG_CM05_COMBINED".CM05_SITE = "STG_RM02_COMBINED".RM02_SITE
+               AND "STG_CM05_COMBINED".CM05_SERV = "STG_RM02_COMBINED".RM02_SERV
+               AND "STG_CM05_COMBINED"."SOURCE" = "STG_RM02_COMBINED"."SOURCE"
+            
+              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM01_COMBINED') }} "STG_RM01_COMBINED" -- Route Master
+                ON "STG_RM02_COMBINED".RM02_NUMB = "STG_RM01_COMBINED".RM01_NUMB
+               AND "STG_RM02_COMBINED"."SOURCE" = "STG_RM01_COMBINED"."SOURCE"
+            
+              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SL01_COMBINED') }} "STG_SL01_COMBINED" -- Route Master
+                ON "STG_RM01_COMBINED".RM01_SLID = "STG_SL01_COMBINED".SL01_ID
+               AND "STG_RM01_COMBINED"."SOURCE" = "STG_SL01_COMBINED"."SOURCE"
             
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD35_COMBINED') }} AS cd35_cust -- Customer Invoice Action Codes
                 ON "STG_CM03_COMBINED_FILTERED".CM03_INVACTION = cd35_cust.CD35_CODE
@@ -3109,6 +3172,8 @@ operation:
              WHERE COALESCE(CM03_CDTE, '2069-12-31') > GETDATE()
                AND COALESCE(CM04_EDTE, '2069-12-31') > GETDATE()
                AND COALESCE(CM05_EDTE, '2069-12-31') > GETDATE()  
+            
+             GROUP BY ALL
         name: CUSTOMER_MASTER_MASTER_LIST
         noLinkRefs: []
   name: CUSTOMER_MASTER_MASTER_LIST
