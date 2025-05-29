@@ -1,0 +1,241 @@
+fileVersion: 1
+id: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+name: DIM_CREDIT_CARD_CODE
+operation:
+  config:
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e9cb9282-de48-4692-85ad-2dec7759b121
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSurrogateKey: true
+        name: DIM_CREDIT_CARD_CODE_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8528e1e8-b725-4af0-854d-7657ca7f7bea
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        isBusinessKey: true
+        name: CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 722dbd3e-d729-4230-ba96-aa0eb5581bb6
+                stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 43171a7a-b119-4ef2-9eb4-ff1f90fe0710
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 02866c85-3d78-4009-a39c-5d0aff798a26
+                stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8769a1b0-42b7-47eb-add6-a98248c5d136
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d6c970a3-8438-4790-af27-2816361f4ff0
+                stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12418ba0-d72c-4f8c-8d0f-e74048246f86
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8c4ada3b-2725-4cab-b6c4-ee1ca12c4267
+                stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f797729e-be6d-400a-b05e-c62b9df68516
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8f4107fc-27a9-422e-bd92-831a00deebe5
+                stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 056966d7-a3bb-46e2-91ad-d2b41664c08c
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 61d2bb24-a5b9-4437-b53b-e6d7ea85d7d2
+                stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f8a3c22-2463-4f53-a43b-c770dc6bd74f
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSystemVersion: true
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28932983-3131-42a3-9254-d802391723b2
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemCurrentFlag: true
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9dc9b39b-581f-485c-8410-d2b8af6f2c96
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemStartDate: true
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3be60d01-6260-400c-8f1f-f7ca37275e0d
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemEndDate: true
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79f186b8-716e-41fb-97f0-43dccb78ca79
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5f7bec8a-74f6-4e12-9a16-4cf44da52fb3
+          stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: STG_CREDIT_CARD_CODE
+        join:
+          joinCondition: FROM {{ ref('MASTER_DATA_CLEAN', 'STG_CREDIT_CARD_CODE') }} "STG_CREDIT_CARD_CODE"
+        name: DIM_CREDIT_CARD_CODE
+        noLinkRefs: []
+  name: DIM_CREDIT_CARD_CODE
+  overrideSQL: false
+  schema: ""
+  sqlType: Dimension
+  type: sql
+  version: 1
+type: Node

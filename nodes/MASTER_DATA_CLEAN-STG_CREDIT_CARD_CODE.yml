@@ -1,0 +1,123 @@
+fileVersion: 1
+id: b2dd808b-f896-4b1a-8263-760ef0189282
+name: STG_CREDIT_CARD_CODE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 722dbd3e-d729-4230-ba96-aa0eb5581bb6
+          stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 02c8d889-fcdd-4cbd-9633-1f51f1d4a87f
+                stepCounter: 67fad913-8897-4c01-9bc5-7f5d50be1fbd
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 02866c85-3d78-4009-a39c-5d0aff798a26
+          stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a717d5ca-4898-421b-86a1-8580eb38c111
+                stepCounter: 67fad913-8897-4c01-9bc5-7f5d50be1fbd
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d6c970a3-8438-4790-af27-2816361f4ff0
+          stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36394039-ca5f-458c-90f3-6200db9c3b0f
+                stepCounter: 67fad913-8897-4c01-9bc5-7f5d50be1fbd
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c4ada3b-2725-4cab-b6c4-ee1ca12c4267
+          stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47904654-8a90-481b-82d1-50d662a566a3
+                stepCounter: 67fad913-8897-4c01-9bc5-7f5d50be1fbd
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f4107fc-27a9-422e-bd92-831a00deebe5
+          stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 929cc23c-b12d-4bc0-beb0-fb199533238c
+                stepCounter: 67fad913-8897-4c01-9bc5-7f5d50be1fbd
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61d2bb24-a5b9-4437-b53b-e6d7ea85d7d2
+          stepCounter: b2dd808b-f896-4b1a-8263-760ef0189282
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a45feb5-865b-441f-b986-8f81d3b21938
+                stepCounter: 67fad913-8897-4c01-9bc5-7f5d50be1fbd
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUX_DATA_RAW
+            nodeName: CCCODES
+        join:
+          joinCondition: FROM {{ ref('TRUX_DATA_RAW', 'CCCODES') }} "CCCODES"
+        name: STG_CREDIT_CARD_CODE
+        noLinkRefs: []
+  name: STG_CREDIT_CARD_CODE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

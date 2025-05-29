@@ -1,0 +1,109 @@
+fileVersion: 1
+id: 742e729d-f233-49c0-8717-e5a43515de51
+name: VW_DIM_CREDIT_CARD_CODE
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6d155806-e7d1-4823-8f51-8f0100362e6c
+          stepCounter: 742e729d-f233-49c0-8717-e5a43515de51
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: DIM_CREDIT_CARD_CODE_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e9cb9282-de48-4692-85ad-2dec7759b121
+                stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8a9dc2da-6a80-4950-9ee2-5920ce49aad7
+          stepCounter: 742e729d-f233-49c0-8717-e5a43515de51
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8528e1e8-b725-4af0-854d-7657ca7f7bea
+                stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5fc719ff-e61c-461e-9f83-2de84c540391
+          stepCounter: 742e729d-f233-49c0-8717-e5a43515de51
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 43171a7a-b119-4ef2-9eb4-ff1f90fe0710
+                stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e3d05f44-7ce5-458a-85ad-9dd4ec4cfa5c
+          stepCounter: 742e729d-f233-49c0-8717-e5a43515de51
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8769a1b0-42b7-47eb-add6-a98248c5d136
+                stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e141c7cd-a2ad-4a43-824d-54462507646e
+          stepCounter: 742e729d-f233-49c0-8717-e5a43515de51
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12418ba0-d72c-4f8c-8d0f-e74048246f86
+                stepCounter: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DIM_CREDIT_CARD_CODE: 43cfbacb-0f48-4f24-95ac-89988d6ae844
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: DIM_CREDIT_CARD_CODE
+        join:
+          joinCondition: |-
+            FROM {{ ref('MASTER_DATA_CLEAN', 'DIM_CREDIT_CARD_CODE') }} "DIM_CREDIT_CARD_CODE"
+            WHERE _FIVETRAN_DELETED = FALSE AND SYSTEM_CURRENT_FLAG = 'Y'
+        name: VW_DIM_CREDIT_CARD_CODE
+        noLinkRefs: []
+  name: VW_DIM_CREDIT_CARD_CODE
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
