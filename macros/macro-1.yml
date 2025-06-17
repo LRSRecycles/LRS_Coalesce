@@ -7,12 +7,12 @@ macroString: |-
       Purpose:
         Safely divide two numeric expressions without casting.
         Returns a fallback if the denominator is zero or NULL.
-  
+
       Parameters:
         - numerator (string): Any numeric expression (e.g., 'SUM(amount)')
         - denominator (string): Any numeric expression (e.g., 'SUM(quantity)')
         - default (string, optional): Value to return if denominator is 0 or NULL. Defaults to NULL.
-  
+
       Example:
         {{ safe_divide('SUM(DM05Z_AMNT)', 'SUM(DM05Z_QTY)', 'SUM(DM05Z_AMNT)') }} AS MT02_RATE
     --#}
@@ -21,7 +21,24 @@ macroString: |-
       {{ default }}
     )
   {% endmacro %}
-  
+
+  {% macro build_trux_source_name(company_col, extras=None, uppercase_company=False) %}
+      {%- if uppercase_company %}
+          {%- set company_expr = 'UPPER(' ~ company_col ~ ')' %}
+      {%- else %}
+          {%- set company_expr = company_col %}
+      {%- endif %}
+      {%- set base = "'TRUX_' || " ~ company_expr ~ " || '_COMP_RAW'" %}
+      {%- if extras and extras | length > 0 %}
+          {# Create the pattern: || '-' || field for each field in extras #}
+          {%- set joined = extras | map('string') | join(" || '-' || ") %}
+          {{ base ~ " || '-' || " ~ joined }}
+      {%- else %}
+          {{ base }}
+      {%- endif %}
+  {% endmacro %}
+
+
   {% macro standard_dm05_fields(
       source_table,
       rec_type,

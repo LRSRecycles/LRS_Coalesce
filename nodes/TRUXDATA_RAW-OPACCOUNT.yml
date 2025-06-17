@@ -1,11 +1,11 @@
 fileVersion: 1
-id: 474ea50b-28de-4105-be44-7d7cfbe249dc
-name: TRUX_DATA_PROFILE
+id: 72401787-3ff9-4409-80c1-127ffb437e0c
+name: OPACCOUNT
 operation:
   database: ""
   deployEnabled: true
   description: ""
-  locationName: MASTER_DATA
+  locationName: TRUXDATA_RAW
   metadata:
     columns:
       - acceptedValues:
@@ -13,15 +13,15 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 812f7df5-a5d7-4592-8bca-7cef8a942b45
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: 45016837-cc37-40c9-805a-e00b6563ea17
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
-        name: PROFILE_ID
+        name: OPACCOUNT_ID
         nullable: false
-        primaryKey: false
+        primaryKey: true
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
@@ -32,14 +32,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fe76c63f-de41-4e2d-b446-98d598caea85
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: adc8dbeb-7cdd-4f43-b215-433695f52b58
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
-        dataType: VARCHAR(50)
+        dataType: VARCHAR(160)
         defaultValue: ""
         description: ""
-        name: PROFILE_NAME
-        nullable: false
+        name: OPACCOUNT_EMAIL
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -51,14 +51,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5cb87fd7-3b7f-4348-bb02-63fef1ea5cd7
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: 9a29c0f1-b9af-4cc3-ba55-88ff7861a039
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
-        name: PROFILE_SYS
-        nullable: false
+        name: OPACCOUNT_REMINDER
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -70,14 +70,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1ac05026-a55d-4be3-b9fe-188f88eb00bc
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: e2ee7584-0a6d-4b3b-a5d1-83e1b6e26484
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
-        dataType: BOOLEAN
+        dataType: VARCHAR(400)
         defaultValue: ""
         description: ""
-        name: PROFILE_CHGTICKDTE
-        nullable: false
+        name: OPACCOUNT_PW
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -89,14 +89,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b8442d3a-defd-462b-a9f9-45440fc99c51
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: 906916d2-ee26-4cec-a80d-157d516cac18
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
-        dataType: BOOLEAN
+        dataType: VARCHAR(400)
         defaultValue: ""
         description: ""
-        name: PROFILE_VOIDCASHTICK
-        nullable: false
+        name: OPACCOUNT_ANSWER
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -108,14 +108,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 90f18289-2674-409e-bc59-b4fb9af3f65b
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: 48a2a0dd-9d7a-435f-97b7-36884308903f
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
-        dataType: BOOLEAN
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
-        name: PROFILE_VOIDINVOTICK
-        nullable: false
+        name: OPACCOUNT_REGISDTE
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -127,14 +127,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 841e3efb-da57-46bc-aa2e-dbdd21193343
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: e239d747-61e9-4cd1-a608-b2a2af41c34a
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
         dataType: BOOLEAN
         defaultValue: ""
         description: ""
-        name: PROFILE_OVERRIDEMINPRICE
-        nullable: false
+        name: _FIVETRAN_DELETED
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -146,59 +146,21 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a0726973-59ce-4d2c-93de-0eda0146cb8e
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
+          columnCounter: f3cbbcc4-8ba0-4202-83ab-68795ccef888
+          stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
         config: {}
-        dataType: BOOLEAN
+        dataType: TIMESTAMP_TZ(9)
         defaultValue: ""
         description: ""
-        name: PROFILE_EXPORT
-        nullable: false
+        name: _FIVETRAN_SYNCED
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
         transform: ""
         uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5935ec79-cd6f-4b4c-9db6-37926d6e7072
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
-        config: {}
-        dataType: BOOLEAN
-        defaultValue: ""
-        description: ""
-        name: PROFILE_LOCKCREDITFIELDS
-        nullable: false
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e2e7b4d5-5bc6-4a0e-98e3-8629e2857cf5
-          stepCounter: 474ea50b-28de-4105-be44-7d7cfbe249dc
-        config: {}
-        dataType: BOOLEAN
-        defaultValue: ""
-        description: ""
-        name: PROFILE_HOBO
-        nullable: false
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-  name: TRUX_DATA_PROFILE
+  name: OPACCOUNT
   schema: ""
   sqlType: Source
   type: sourceInput

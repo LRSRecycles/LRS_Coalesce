@@ -28,8 +28,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 93b18765-7c84-463d-b7f2-081d705963cc
-                stepCounter: 12289e4a-8b02-40a4-a9ae-a9042939b6b2
+              - columnCounter: cccae85b-b192-40bd-bcf4-ddb054283842
+                stepCounter: 6932ecd8-0ba2-4b2b-8330-11b57824a840
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -42,8 +42,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9e112ef0-cc1c-4b49-a6ac-9bb97aed25d6
-                stepCounter: 12289e4a-8b02-40a4-a9ae-a9042939b6b2
+              - columnCounter: d64de08d-939f-4ee5-8741-744e97a2116a
+                stepCounter: 6932ecd8-0ba2-4b2b-8330-11b57824a840
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -63,7 +63,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "'TRUX_'||\"TRUX_DATA_AN_ROUTE\".\"AN_ROUTE_COMPANY\"||'_COMP_RAW'"
+            transform: "{{ build_trux_source_name('\"AN_ROUTE\".\"AN_ROUTE_COMPANY\"', []) }}"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -83,19 +83,22 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "'TRUX_'||\"TRUX_DATA_AN_ROUTE\".\"AN_ROUTE_COMPANY\"||'_COMP_RAW'||'-'||\"TRUX_DATA_AN_ROUTE\".\"AN_ROUTE_ROUTE\""
+            transform: "{{ build_trux_source_name('\"AN_ROUTE\".\"AN_ROUTE_COMPANY\"', ['\"AN_ROUTE\".\"AN_ROUTE_ROUTE\"']) }}"
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          AN_ROUTE: 6932ecd8-0ba2-4b2b-8330-11b57824a840
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: MASTER_DATA
-            nodeName: TRUX_DATA_AN_ROUTE
+          - locationName: TRUXDATA_RAW
+            nodeName: AN_ROUTE
         join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'TRUX_DATA_AN_ROUTE') }} "TRUX_DATA_AN_ROUTE"
+          joinCondition: |-
+            FROM {{ ref('TRUXDATA_RAW', 'AN_ROUTE') }} "AN_ROUTE"
+            WHERE "_FIVETRAN_DELETED"=False
         name: TRUX_ANDROID_ROUTES_COMBINED
         noLinkRefs: []
   name: TRUX_ANDROID_ROUTES_COMBINED

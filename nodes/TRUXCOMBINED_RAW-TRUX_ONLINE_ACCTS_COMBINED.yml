@@ -28,8 +28,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ed6047a4-fc67-482a-84a7-22645a4d23fd
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: 45016837-cc37-40c9-805a-e00b6563ea17
+                stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -42,8 +42,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ce86652f-dec4-4f23-a045-da3b3134c047
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: adc8dbeb-7cdd-4f43-b215-433695f52b58
+                stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -56,8 +56,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ba6973bc-ea9a-4881-910c-be0802773735
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: 48a2a0dd-9d7a-435f-97b7-36884308903f
+                stepCounter: 72401787-3ff9-4409-80c1-127ffb437e0c
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -70,8 +70,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: aa900920-64bd-4550-a540-ec5301dce8bb
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: d29f60e4-29e8-4434-8e93-a5f641e7d9c3
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -84,8 +84,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9869310d-aebe-49cc-9653-e26cfc4678a0
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: 1722e211-7cca-4cdb-8d81-4bc46a0d71c3
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -98,8 +98,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 30f9f063-3bbc-4051-b1fe-566460ca316e
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: cd606c9e-0ec8-4395-9364-97ab14fbc82d
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -112,8 +112,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 40cfd0bd-fd3b-4acd-aa66-17e8a5859905
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: 1cf4c2b6-11fd-4d55-9d7d-be3e5642f6a5
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -126,8 +126,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: c33817fa-36c1-47b5-b887-7e7ac9baa12f
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: 8eb0ad46-1d11-49a9-9e40-9100c657e725
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -140,8 +140,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 70834cfa-b002-4c15-8bb2-b42dee940c1e
-                stepCounter: b9bc7783-a318-4073-8bef-4de290aa6ff8
+              - columnCounter: e6369072-b1a1-45dd-9d52-35a9947f9e3f
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -161,7 +161,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "'TRUX_'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW'"
+            transform: "{{ build_trux_source_name('\"OPACCESS\".\"OPACCESS_COMP\"', []) }}"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -181,7 +181,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "'TRUX_'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW-'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_CUST\""
+            transform: "{{ build_trux_source_name('\"OPACCESS\".\"OPACCESS_COMP\"', ['\"OPACCESS\".\"OPACCESS_CUST\"'])}}"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -201,7 +201,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "'TRUX_'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_COMP\"||'_COMP_RAW-'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_CUST\"||'-'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_SITE\""
+            transform: "{{ build_trux_source_name('\"OPACCESS\".\"OPACCESS_COMP\"', ['\"OPACCESS\".\"OPACCESS_CUST\"', '\"OPACCESS\".\"OPACCESS_SITE\"'])}}"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -219,24 +219,36 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: "'TRUX_'||UPPER(\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_COMP\")||'_COMP_RAW-'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_CUST\"||'-'||\"TRUX_DATA_ONLINE_ACCT\".\"OPACCESS_SITE\"||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
+            transform: "{{ build_trux_source_name('\"OPACCESS\".\"OPACCESS_COMP\"', ['\"OPACCESS\".\"OPACCESS_CUST\"', '\"OPACCESS\".\"OPACCESS_SITE\"', '\"CM03_COMBINED\".\"CM03_BILLTO\"'])}}"
         systemColumnType: None
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+          OPACCESS: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
+          OPACCOUNT: 72401787-3ff9-4409-80c1-127ffb437e0c
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: MASTER_DATA
-            nodeName: TRUX_DATA_ONLINE_ACCT
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_LATEST_OPACCESS
+          - locationName: TRUXDATA_RAW
+            nodeName: OPACCESS
+          - locationName: TRUXDATA_RAW
+            nodeName: OPACCOUNT
         join:
-          joinCondition: |2-
-             FROM {{ ref('MASTER_DATA', 'TRUX_DATA_ONLINE_ACCT') }} "TRUX_DATA_ONLINE_ACCT"
+          joinCondition: |-
+            FROM {{ ref('TRUXDATA_RAW', 'OPACCOUNT') }} "OPACCOUNT"
+            INNER JOIN {{ ref('TRUXDATA_RAW', 'OPACCESS') }} "OPACCESS"
+               ON "OPACCOUNT"."OPACCOUNT_ID" = "OPACCESS"."OPACCESS_LINK"
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
-               ON "TRUX_DATA_ONLINE_ACCT"."OPACCESS_CUST" = "CM03_COMBINED"."CM03_CUST"
-              AND 'TRUX_'||"TRUX_DATA_ONLINE_ACCT"."OPACCESS_COMP"||'_COMP_RAW' = "CM03_COMBINED"."SOURCE"
+               ON "OPACCESS"."OPACCESS_CUST" = "CM03_COMBINED"."CM03_CUST"
+                 AND {{ build_trux_source_name('"OPACCESS"."OPACCESS_COMP"', []) }} = "CM03_COMBINED"."SOURCE"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_LATEST_OPACCESS') }} VW_LATEST_OPACCESS
+               ON "VW_LATEST_OPACCESS"."OPACCESS_ID"="OPACCESS"."OPACCESS_ID"
+            WHERE "OPACCOUNT"."_FIVETRAN_DELETED"=False AND "OPACCESS"."_FIVETRAN_DELETED"=False
         name: TRUX_ONLINE_ACCTS_COMBINED
         noLinkRefs: []
   name: TRUX_ONLINE_ACCTS_COMBINED

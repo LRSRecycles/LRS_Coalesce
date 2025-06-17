@@ -28,23 +28,9 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 0d312011-6b1f-4228-a2fa-bdcd91031bf9
-                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
-            transform: TRIM("TRUX_DATA_USER"."USER_CODE")
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9935785d-2c98-40d9-bc33-69695e6229fc
-          stepCounter: f5c3eeaa-cd6b-437a-a31c-1ea82038ab6b
-        config: {}
-        dataType: VARCHAR(50)
-        description: ""
-        name: USER_FNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: aa66c439-f68e-487f-95f8-802f8c3c3a91
-                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
-            transform: ""
+              - columnCounter: 31017eb5-7e82-4a03-9b41-8b0a2701b296
+                stepCounter: 4301642f-7fe7-43e9-a5c5-154540233c03
+            transform: TRIM("USER"."USER_CODE")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 5fa2f178-c6b5-49c0-bf72-50d7787730f4
@@ -56,8 +42,22 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 81a4495a-142a-42e5-9d66-114298eeaf15
-                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
+              - columnCounter: 3197c314-c757-4209-8e85-1d6856c780b8
+                stepCounter: 4301642f-7fe7-43e9-a5c5-154540233c03
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9935785d-2c98-40d9-bc33-69695e6229fc
+          stepCounter: f5c3eeaa-cd6b-437a-a31c-1ea82038ab6b
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: USER_FNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12a3dac7-fa79-476e-9814-dc1939abc937
+                stepCounter: 4301642f-7fe7-43e9-a5c5-154540233c03
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -70,8 +70,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2bf4fb02-4ee3-40b0-b173-118245fadfab
-                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
+              - columnCounter: bc1f0894-7b18-49dd-b2be-4580f8e9cb60
+                stepCounter: 4301642f-7fe7-43e9-a5c5-154540233c03
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -84,8 +84,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6d52465d-db91-4f7c-9b22-e698aea807a0
-                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
+              - columnCounter: 8b925d0d-2edb-4bc4-8afa-9e0b00c78b21
+                stepCounter: 4301642f-7fe7-43e9-a5c5-154540233c03
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -98,20 +98,22 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: fbafe517-85e8-4b83-b86c-0e0908a11fd6
-                stepCounter: 195bdc52-d09e-44a4-b7df-d3872bd83064
+              - columnCounter: d55ae1d1-ffba-449a-affe-29182457a7a7
+                stepCounter: 4301642f-7fe7-43e9-a5c5-154540233c03
             transform: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          TRUX_DATA_USER: 195bdc52-d09e-44a4-b7df-d3872bd83064
+          USER: 4301642f-7fe7-43e9-a5c5-154540233c03
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: MASTER_DATA
-            nodeName: TRUX_DATA_USER
+          - locationName: TRUXDATA_RAW
+            nodeName: USER
         join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'TRUX_DATA_USER') }} "TRUX_DATA_USER"
+          joinCondition: |-
+            FROM {{ ref('TRUXDATA_RAW', 'USER') }} "USER"
+            WHERE "_FIVETRAN_DELETED"=False
         name: TRUX_USERS_COMBINED
         noLinkRefs: []
   name: TRUX_USERS_COMBINED

@@ -1,0 +1,71 @@
+fileVersion: 1
+id: 4ae33d86-621d-4b15-975c-9fe7e7925b0b
+name: VW_LATEST_OPACCESS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24916faa-ac59-490b-b0ad-3bb7693b73c0
+          stepCounter: 4ae33d86-621d-4b15-975c-9fe7e7925b0b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: OPACCESS_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d29f60e4-29e8-4434-8e93-a5f641e7d9c3
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
+            transform: MAX("OPACCESS"."OPACCESS_ID")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5071010f-6809-47e8-aff6-db76aed12ba2
+          stepCounter: 4ae33d86-621d-4b15-975c-9fe7e7925b0b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: OPACCESS_LINK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9a365e08-f352-4a78-a92a-869bd006611e
+                stepCounter: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          OPACCESS: a055adbe-cc4b-40ff-8dcb-bf80ac4b6140
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXDATA_RAW
+            nodeName: OPACCESS
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXDATA_RAW', 'OPACCESS') }} "OPACCESS"
+            WHERE _FIVETRAN_DELETED=False
+            GROUP BY "OPACCESS_LINK"
+        name: VW_LATEST_OPACCESS
+        noLinkRefs: []
+  name: VW_LATEST_OPACCESS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

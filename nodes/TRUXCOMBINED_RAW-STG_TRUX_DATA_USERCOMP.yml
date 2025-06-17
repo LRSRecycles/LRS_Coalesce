@@ -28,8 +28,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: d3c4ada0-9ef1-4cf7-ae3b-2869356d5383
-                stepCounter: 798a1514-ff64-49da-9b64-fc2a9557cf7c
+              - columnCounter: 8224c25f-16a1-4e4f-8aa3-e939c8c65be8
+                stepCounter: a3efda4b-7906-40b4-a61c-26e25ed2159b
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -42,8 +42,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ae122e8c-3055-45f5-a163-8dcd43e8abda
-                stepCounter: 798a1514-ff64-49da-9b64-fc2a9557cf7c
+              - columnCounter: 94d2e838-63e7-47e9-b812-19b0a37a3e89
+                stepCounter: a3efda4b-7906-40b4-a61c-26e25ed2159b
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -56,8 +56,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: a26c39d1-4eb1-4836-a1e0-2b20a8e7d9fb
-                stepCounter: 798a1514-ff64-49da-9b64-fc2a9557cf7c
+              - columnCounter: f52cb59c-a755-42f6-95df-e91766d778f6
+                stepCounter: a3efda4b-7906-40b4-a61c-26e25ed2159b
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -70,8 +70,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 582b0b9e-122f-4b61-b60e-3b2dea7afbcc
-                stepCounter: 798a1514-ff64-49da-9b64-fc2a9557cf7c
+              - columnCounter: 1894b423-3ec6-48ff-8981-9b5725ac8796
+                stepCounter: a3efda4b-7906-40b4-a61c-26e25ed2159b
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -84,20 +84,23 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: c5f25e5b-3f5d-4caf-9f63-4a586a7749f4
-                stepCounter: 798a1514-ff64-49da-9b64-fc2a9557cf7c
+              - columnCounter: 4d9fc992-7b84-4f69-8841-34b07843f016
+                stepCounter: a3efda4b-7906-40b4-a61c-26e25ed2159b
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          USERCOMP: a3efda4b-7906-40b4-a61c-26e25ed2159b
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: MASTER_DATA
-            nodeName: TRUX_DATA_USERCOMP
+          - locationName: TRUXDATA_RAW
+            nodeName: USERCOMP
         join:
-          joinCondition: FROM {{ ref('MASTER_DATA', 'TRUX_DATA_USERCOMP') }} "TRUX_DATA_USERCOMP"
+          joinCondition: |-
+            FROM {{ ref('TRUXDATA_RAW', 'USERCOMP') }} "USERCOMP"
+            WHERE "_FIVETRAN_DELETED"=False
         name: STG_TRUX_DATA_USERCOMP
         noLinkRefs: []
   name: STG_TRUX_DATA_USERCOMP
