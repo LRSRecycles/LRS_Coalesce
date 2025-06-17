@@ -48,6 +48,33 @@ operation:
               - columnCounter: 1911f982-69f2-4b34-b851-66b630f88930
                 stepCounter: 1cac55f3-17d5-4de8-9981-4296288a10ad
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90470a73-a47c-436b-86b5-5353b4437ca6
+          stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Charge Type Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE
+                  WHEN "STG_DM05_COMBINED"."DM05_RECTYPE" = 'A' THEN 'SERVICE CHARGES'
+                  WHEN "STG_DM05_COMBINED"."DM05_RECTYPE" = 'B' THEN 'PERIOD CHARGES'
+                  WHEN "STG_DM05_COMBINED"."DM05_RECTYPE" = 'L' THEN 'DISPOSAL TICKETS'
+                  WHEN "STG_DM05_COMBINED"."DM05_RECTYPE" = 'Z' THEN 'MISCELLANEOUS CHARGES'
+                  WHEN "STG_DM05_COMBINED"."DM05_RECTYPE" = 'Z' THEN 'TAXES'
+              END
+        systemColumnType: None
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 9b77de08-e91f-4379-8f4c-c2eb8530260e
