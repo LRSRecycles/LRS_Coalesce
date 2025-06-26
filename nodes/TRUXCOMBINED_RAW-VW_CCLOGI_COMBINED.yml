@@ -147,14 +147,17 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CCLOGI_COMBINED: e6081d3d-d07d-47a4-b8f2-2c5b2977dbec
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CCLOGI_COMBINED
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'CCLOGI_COMBINED') }} "CCLOGI_COMBINED"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CCLOGI_COMBINED') }} "CCLOGI_COMBINED"
+            WHERE "_FIVETRAN_DELETED"=False
         name: VW_CCLOGI_COMBINED
         noLinkRefs: []
   name: VW_CCLOGI_COMBINED
