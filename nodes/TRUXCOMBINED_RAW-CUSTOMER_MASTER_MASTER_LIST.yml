@@ -3168,11 +3168,6 @@ operation:
                AND CP01_SITE IS NULL
                AND "STG_CP01_COMBINED_FILTERED"."SOURCE" = "STG_CM03_COMBINED_FILTERED"."SOURCE"
             
-            
-             WHERE COALESCE(CM03_CDTE, '2069-12-31') > GETDATE()
-               AND COALESCE(CM04_EDTE, '2069-12-31') > GETDATE()
-               AND COALESCE(CM05_EDTE, '2069-12-31') > GETDATE()  
-            
              GROUP BY ALL
         name: CUSTOMER_MASTER_MASTER_LIST
         noLinkRefs: []
