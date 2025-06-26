@@ -2681,16 +2681,6 @@ operation:
              ON "CUSTOMER_MASTER_MASTER_LIST"."Customer Number" = SiteSD.CM19_CUST
             AND "CUSTOMER_MASTER_MASTER_LIST"."Site Number" = SiteSD.CM19_SITE
             AND "CUSTOMER_MASTER_MASTER_LIST"."SOURCE" = SiteSD.Source
-            
-            WHERE "Site Number" IS NOT NULL 
-            AND "Service Number" IS NOT NULL 
-            AND (IFNULL("Service Stop Reason", '') LIKE '%VACATION%' 
-                 OR IFNULL("Service Stop Reason", '') LIKE '%NON-PAY%' 
-                 OR IFNULL("Service Stop Reason", '') = '' 
-                 OR IFNULL("Service Stop Reason", '') LIKE '%HOLD%' 
-                 OR IFNULL("Service Stop Reason", '') = 'Temporary Closed') 
-            
-            ORDER BY LTRIM(RTRIM("Customer Name")), "Customer Number", "Site Number", "Service Number", p1."Description"
         name: MASTER_CUSTOMER_MASTER
         noLinkRefs: []
   name: MASTER_CUSTOMER_MASTER
