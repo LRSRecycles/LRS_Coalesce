@@ -1,0 +1,112 @@
+fileVersion: 1
+id: 1ecd3806-21bc-40ec-8a92-7d2a29f2628e
+name: VW_CUSTOM_COUNTY_MAPPING
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ea5c4d23-d84f-4b11-982c-2ea85542151f
+          stepCounter: 1ecd3806-21bc-40ec-8a92-7d2a29f2628e
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: SOURCE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ab1978e9-805a-40b9-aaa1-754075762865
+                stepCounter: 5ee349e7-1d7d-46c9-b30f-6f68dd6ac4c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b7f4e12b-f6b1-4393-8ff0-9d88366f8de6
+          stepCounter: 1ecd3806-21bc-40ec-8a92-7d2a29f2628e
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: STATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7f7c93cb-d180-4994-9330-91b1191c4b62
+                stepCounter: 5ee349e7-1d7d-46c9-b30f-6f68dd6ac4c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 059eaa30-fd10-4af1-a650-9aa0c17dc3f9
+          stepCounter: 1ecd3806-21bc-40ec-8a92-7d2a29f2628e
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 953fd2ab-a143-42e3-b96f-443fb63022b6
+                stepCounter: 5ee349e7-1d7d-46c9-b30f-6f68dd6ac4c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d49ac166-0df0-44e4-8d07-78b73a1792da
+          stepCounter: 1ecd3806-21bc-40ec-8a92-7d2a29f2628e
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: COUNTY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5216ca86-1705-4eba-ab19-831fe0cfeb17
+                stepCounter: 5ee349e7-1d7d-46c9-b30f-6f68dd6ac4c4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 931a7735-46b4-4794-9b43-d4d8f1409a79
+          stepCounter: 1ecd3806-21bc-40ec-8a92-7d2a29f2628e
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "{{ build_trux_source_name('\"CUSTOM_COUNTY_MAPPING\".\"SOURCE_CODE\"', []) }}"
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: COMMON_RAW
+            nodeName: CUSTOM_COUNTY_MAPPING
+        join:
+          joinCondition: FROM {{ ref('COMMON_RAW', 'CUSTOM_COUNTY_MAPPING') }} "CUSTOM_COUNTY_MAPPING"
+        name: VW_CUSTOM_COUNTY_MAPPING
+        noLinkRefs: []
+  name: VW_CUSTOM_COUNTY_MAPPING
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
