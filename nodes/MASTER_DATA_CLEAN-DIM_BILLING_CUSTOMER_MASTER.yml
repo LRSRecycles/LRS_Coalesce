@@ -140,7 +140,9 @@ operation:
               - columnCounter: c31f0658-1de6-4da0-87cc-827ec4bf865b
                 stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
             transform: ""
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: c31f0658-1de6-4da0-87cc-827ec4bf865b
+                stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -169,7 +171,9 @@ operation:
               - columnCounter: c3678862-41f2-4cd1-b4c0-65363e429609
                 stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
             transform: ""
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: c3678862-41f2-4cd1-b4c0-65363e429609
+                stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
             transform: ""
         systemColumnType: None
       - appliedColumnTests: {}
@@ -1491,7 +1495,9 @@ operation:
               - columnCounter: 9301a2c3-3989-4e2a-bf1e-3fe1d37c940b
                 stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
             transform: ""
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 9301a2c3-3989-4e2a-bf1e-3fe1d37c940b
+                stepCounter: af74a786-1641-4201-ad6f-8127eba08c06
             transform: ""
         systemColumnType: None
       - appliedColumnTests: {}
@@ -2250,6 +2256,7 @@ operation:
         noLinkRefs: []
       - aliases:
           ADDRESS_COMBINED: 2e1d71ca-ceec-4a35-8b75-a4aacb13f954
+          CUSTOMER_COMBINED: af74a786-1641-4201-ad6f-8127eba08c06
           SITE_COMBINED: d0ee8791-10a2-4747-967f-b22621b20d21
         customSQL:
           customSQL: ""
@@ -2257,12 +2264,17 @@ operation:
           - locationName: TOWER_COMBINED
             nodeName: ADDRESS_COMBINED
           - locationName: TOWER_COMBINED
+            nodeName: CUSTOMER_COMBINED
+          - locationName: TOWER_COMBINED
             nodeName: SITE_COMBINED
         join:
-          joinCondition: |2-
+          joinCondition: |2
              FROM {{ ref('TOWER_COMBINED', 'SITE_COMBINED') }} "SITE_COMBINED"
             INNER JOIN {{ ref('TOWER_COMBINED', 'ADDRESS_COMBINED') }} "ADDRESS_COMBINED"
                ON "SITE_COMBINED"."SITEADDRESSUID" = "ADDRESS_COMBINED"."ADDRESSUID"
+            
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMER_COMBINED') }} "CUSTOMER_COMBINED"
+               ON SITE_COMBINED.BILLTOCUSTID = CUSTOMER_COMBINED."Customer Number"
         name: TOWER SITES
         noLinkRefs: []
   name: DIM_BILLING_CUSTOMER_MASTER
