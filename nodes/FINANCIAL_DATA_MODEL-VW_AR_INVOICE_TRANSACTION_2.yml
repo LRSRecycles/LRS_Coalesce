@@ -444,9 +444,9 @@ operation:
                       ELSE a.siteid
                   END AS "Site_Source"
                  , concat('TOWER_', a.companyid, '-', a.custid) AS "Source_Customer"
-                 , CONCAT('TOWER_', a.companyid, '-', a.custid, 
+                 , CONCAT('TOWER_', a.companyid, '-', a.custid, '-',
                         CASE 
-                            WHEN a.siteid IS NULL OR a.siteid = 0 THEN '-0'
+                            WHEN a.siteid IS NULL OR a.siteid = 0 THEN '0'
                             ELSE a.siteid
                         END
                   ) AS "Source_Customer_Site"
