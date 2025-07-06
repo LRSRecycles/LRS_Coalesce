@@ -439,9 +439,17 @@ operation:
             SELECT NULL AS "Payment ID"
                  , a.invoiceuid AS "Invoice ID"
                  --, a.custid AS "Customer_Source"
-                 , a.siteid AS "Site_Source"
+                 , CASE 
+                      WHEN a.siteid IS NULL OR a.siteid = 0 THEN '0'
+                      ELSE a.siteid
+                  END AS "Site_Source"
                  , concat('TOWER_', a.companyid, '-', a.custid) AS "Source_Customer"
-                 , concat('TOWER_', a.companyid, '-', a.custid, '-', a.siteid) AS "Source_Customer_Site"
+                 , CONCAT('TOWER_', a.companyid, '-', a.custid, 
+                        CASE 
+                            WHEN a.siteid IS NULL OR a.siteid = 0 THEN '-0'
+                            ELSE a.siteid
+                        END
+                  ) AS "Source_Customer_Site"
                  , b.invoiceid AS "Invoice Number"
                  , 'Open Balance' AS "Transaction Type"
                  , NULL AS "Payment Method"
