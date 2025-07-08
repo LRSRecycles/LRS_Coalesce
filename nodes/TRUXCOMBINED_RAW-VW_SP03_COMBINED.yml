@@ -1,0 +1,151 @@
+fileVersion: 1
+id: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+name: VW_SP03_COMBINED
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12c38623-7374-44c4-899b-22dc8876e78d
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SP03_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2e0934d8-9f0e-43b3-86e8-6b2728940945
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eb79444b-fd3d-4523-b5e6-4e2da59a2dae
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SP03_LINK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c0613adc-2688-40ff-8bc5-18c10699d750
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 48f8f7d0-f115-4319-bcc3-2dfcb22d7961
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SP03_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e6357e79-ca1d-499a-aef7-0402e4fb47ab
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: db5a498a-b89a-41c1-bc5a-b7f91b7e1b3d
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: SP03_REFE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4402393a-f174-4946-b87a-675eb8929d4d
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8ecc4b43-036d-49ff-ad5a-ce2d1d24af12
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SP03_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0423d563-1662-4af1-a788-39efd968a58d
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f128f6d1-b605-4bd0-93a1-9cc178324903
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 64aacecb-fd4f-4ae5-a0a2-cba041259439
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ba506ef-4e11-4091-a09d-d0a2bd5bd798
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21d7fb40-f074-45b9-ac90-5ab37bc8088f
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a7b0be53-2acf-46d7-a795-89fe6c5bcd9f
+          stepCounter: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26abfee2-3ac4-44ca-bd84-b5a1086572df
+                stepCounter: 880b4537-5701-49d2-9087-95782f0eb23b
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SP03_COMBINED: 880b4537-5701-49d2-9087-95782f0eb23b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SP03_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SP03_COMBINED') }} "SP03_COMBINED"
+            WHERE "_FIVETRAN_DELETED"=False
+        name: VW_SP03_COMBINED
+        noLinkRefs: []
+  name: VW_SP03_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

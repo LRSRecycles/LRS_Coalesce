@@ -186,13 +186,11 @@ operation:
           CR: 2bdb5c69-af2a-4bc6-bdff-68db3ef66d03
           DR: 8c3ee68e-1e61-4073-88af-a718ed9b1468
           S1: 168c981f-a7da-4794-a4ed-188c34b07c73
-          S3: 880b4537-5701-49d2-9087-95782f0eb23b
+          S3: 4137d4ff-08f1-4948-bacc-589ec78ed0e4
           SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER: 7295739f-88c5-4348-b73f-5f006ada3215
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: SP03_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER
           - locationName: TRUXCOMBINED_RAW
@@ -201,24 +199,26 @@ operation:
             nodeName: SURCHARGE_DEFAULT_RATE_SECOND_JOIN_CUSTOMER_MASTER
           - locationName: TRUXCOMBINED_RAW
             nodeName: SURCHARGE_PARAMETER_CONFIGURATION_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_SP03_COMBINED
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER') }} "SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER"
-
+            
             CROSS JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_PARAMETER_CONFIGURATION_CUSTOMER_MASTER') }} S1
-
-            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SP03_COMBINED') }} S3
+            
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_SP03_COMBINED') }} S3
             ON S3.SP03_LINK = S1.SP01_ID
             AND S3.SP03_CUST = CM03_CUST
             AND IFNULL(S3.SP03_SITE, 0) = IFNULL(CM04_SITE, 0)
             AND S3.SOURCE = "SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER".SOURCE
-
+            
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_DEFAULT_RATE_CUSTOMER_MASTER') }} CR 
             ON CR.SP04_LINK = S1.SP01_ID
             AND CR.SP04_CUST = CM03_CUST
             AND IFNULL(CR.SP04_SITE, 0) = IFNULL(CM04_SITE, 0)
             AND CR.SOURCE = "SURCHARGE_CM03_INNER_JOIN_CUSTOMER_MASTER".SOURCE
-
+            
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SURCHARGE_DEFAULT_RATE_SECOND_JOIN_CUSTOMER_MASTER') }} DR 
             ON DR.SP04_LINK = S1.SP01_ID
             AND DR.SOURCE = S1.SOURCE

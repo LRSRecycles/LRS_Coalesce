@@ -28,8 +28,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 60c96668-04e3-48f3-8939-217403ae6cd6
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: 533bc8d9-bde9-4e25-a413-edc524c870b2
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -42,9 +42,9 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3cf5e9a1-7839-40cc-9ea3-b66a9c6d6752
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
-            transform: IFNULL("CC02_COMBINED"."CC02_SITE", 0)
+              - columnCounter: 2c1b5eca-81d9-4ffb-998b-f7560462ca49
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
+            transform: IFNULL("VW_CC02_COMBINED"."CC02_SITE", 0)
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4d5cc8a3-ae4c-42f1-a584-d2742a72f096
@@ -56,9 +56,9 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 10e3f34b-9832-4a25-8901-f780b6d44bd1
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
-            transform: MAX("CC02_COMBINED"."CC02_ID")
+              - columnCounter: 69566eb2-8de5-4961-9475-616fac8fcaf2
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
+            transform: MAX("VW_CC02_COMBINED"."CC02_ID")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 6365a4d2-16cb-4dfb-a4aa-36b52a21846d
@@ -70,23 +70,23 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: a7c1858c-eee6-4f3f-9649-19969b91a9bf
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: 06316e0a-553b-4d49-bc40-a848f42f3047
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CC02_COMBINED: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+          VW_CC02_COMBINED: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CC02_COMBINED
+            nodeName: VW_CC02_COMBINED
         join:
           joinCondition: |2
-              FROM {{ ref('TRUXCOMBINED_RAW', 'CC02_COMBINED') }} "CC02_COMBINED"
-             GROUP BY "CC02_COMBINED"."SOURCE", "CC02_COMBINED"."CC02_CUST", "CC02_COMBINED"."CC02_SITE"
+              FROM {{ ref('TRUXCOMBINED_RAW', 'VW_CC02_COMBINED') }} "VW_CC02_COMBINED"
+             GROUP BY "VW_CC02_COMBINED"."SOURCE", "VW_CC02_COMBINED"."CC02_CUST", "VW_CC02_COMBINED"."CC02_SITE"
         name: STG_MAX_CC02_ID_BY_CUST_SITE
         noLinkRefs: []
   name: STG_MAX_CC02_ID_BY_CUST_SITE

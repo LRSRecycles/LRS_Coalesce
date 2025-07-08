@@ -1,0 +1,137 @@
+fileVersion: 1
+id: 7d644518-9cb4-45b2-b542-570cfd9ede78
+name: VW_LF05O_COMBINED
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1728e990-81f1-42b8-986b-a510ead92d75
+          stepCounter: 7d644518-9cb4-45b2-b542-570cfd9ede78
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LF05O_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fb417224-aaad-46e3-a9fd-f98b37089bc6
+                stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ca761ca-3010-4f6e-ac39-5aacf3bd6a11
+          stepCounter: 7d644518-9cb4-45b2-b542-570cfd9ede78
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LF05O_LINK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39041be5-d0a8-4026-b323-c4dbfd3025cb
+                stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 082e1fde-a36f-47d4-9de2-8b96486f8632
+          stepCounter: 7d644518-9cb4-45b2-b542-570cfd9ede78
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: LF05O_ORIG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 94033b92-7a43-4276-878f-0e120bd6c58b
+                stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1cd4fd5-7b8d-4f75-9efe-2798d12e7049
+          stepCounter: 7d644518-9cb4-45b2-b542-570cfd9ede78
+        config: {}
+        dataType: NUMBER(5,2)
+        description: ""
+        name: LF05O_PERC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72342500-854b-4129-a8e4-36c141139544
+                stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5b9e38e0-1a29-42ef-9812-ed68d5f75057
+          stepCounter: 7d644518-9cb4-45b2-b542-570cfd9ede78
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a635e42d-0f79-4131-b824-e3fe7629fa71
+                stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b921517-9018-4ce8-9af4-38892cb3d34e
+          stepCounter: 7d644518-9cb4-45b2-b542-570cfd9ede78
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0e95b249-0503-41c5-a584-803af1385db1
+                stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f5135f20-ed95-4b4d-9c0d-225a38b00f88
+          stepCounter: 7d644518-9cb4-45b2-b542-570cfd9ede78
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 529f54f1-5f9a-49b2-aee5-5a7e5aa5714e
+                stepCounter: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          LF05O_COMBINED: 0b01d79e-7777-40ae-95ce-f5dc7a7934ae
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: LF05O_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'LF05O_COMBINED') }} "LF05O_COMBINED"
+            WHERE "_FIVETRAN_DELETED"=False
+        name: VW_LF05O_COMBINED
+        noLinkRefs: []
+  name: VW_LF05O_COMBINED
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

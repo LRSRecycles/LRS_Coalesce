@@ -260,7 +260,7 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CC02_COMBINED: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+          CC02_COMBINED: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
           DIM_CREDIT_CARD_CODE: 43cfbacb-0f48-4f24-95ac-89988d6ae844
           VW_CCLOGI_COMBINED: 05603f6c-4c23-4ebe-90c1-6e1d1f5b6350
           VW_CCLOG_COMBINED: 6f62da49-2576-4f7e-83f6-182cc66e9eb8
@@ -270,7 +270,7 @@ operation:
           - locationName: MASTER_DATA_CLEAN
             nodeName: DIM_CREDIT_CARD_CODE
           - locationName: TRUXCOMBINED_RAW
-            nodeName: CC02_COMBINED
+            nodeName: VW_CC02_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: VW_CCLOG_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -278,7 +278,7 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'VW_CCLOG_COMBINED') }} "VW_CCLOG_COMBINED"
-            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CC02_COMBINED')}} "CC02_COMBINED"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_CC02_COMBINED')}} "CC02_COMBINED"
                 ON "VW_CCLOG_COMBINED"."Source"="CC02_COMBINED"."SOURCE" AND "VW_CCLOG_COMBINED"."CC02 UID"="CC02_COMBINED"."CC02_ID"
             INNER JOIN {{ ref('MASTER_DATA_CLEAN', 'DIM_CREDIT_CARD_CODE') }} "DIM_CREDIT_CARD_CODE"
                 ON "CC02_COMBINED"."CC02_TYPE"="DIM_CREDIT_CARD_CODE"."CODE"

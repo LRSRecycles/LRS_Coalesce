@@ -28,8 +28,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 10e3f34b-9832-4a25-8901-f780b6d44bd1
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: 69566eb2-8de5-4961-9475-616fac8fcaf2
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -42,8 +42,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 60c96668-04e3-48f3-8939-217403ae6cd6
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: 533bc8d9-bde9-4e25-a413-edc524c870b2
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -56,7 +56,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: IFNULL("CC02_COMBINED"."CC02_SITE", 0)
+            transform: IFNULL("VW_CC02_COMBINED"."CC02_SITE", 0)
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 58c86839-c8e7-4f74-88f9-1aafa226de59
@@ -68,8 +68,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 55c7ab02-f321-41ad-acb1-15e3c7429b3c
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: f927463d-1159-4e34-85ca-e279607d39a7
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -102,8 +102,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2da2ea70-2376-4963-b806-5dc6ac19e89c
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: 089046b1-78a2-4761-b72b-b19c630e5547
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -116,8 +116,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1f6dbcc2-b82b-4d51-a159-086171f307a0
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: 8e925b7a-f6a9-4c54-99a3-ca66cbb2d11d
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -130,8 +130,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: cb896012-7e0e-40b8-ae27-02413793f2fb
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: b60ab275-e21a-4216-8241-11c81acb7e9d
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -144,8 +144,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2794ed5a-d69e-458a-af49-d26f58ea7672
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: cd2ec363-d085-4a90-9e79-afdcd90099b0
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -167,9 +167,9 @@ operation:
                 stepCounter: "0"
             transform: |-
               CASE 
-                WHEN "CC02_COMBINED"."CC02_CHRGTYPE" = 'V' THEN 'Variable Recurring'
-                WHEN "CC02_COMBINED"."CC02_CHRGTYPE" = 'F' THEN 'Fixed Recurring'
-                WHEN "CC02_COMBINED"."CC02_CHRGTYPE" = 'S' THEN 'Single Charge'
+                WHEN "VW_CC02_COMBINED"."CC02_CHRGTYPE" = 'V' THEN 'Variable Recurring'
+                WHEN "VW_CC02_COMBINED"."CC02_CHRGTYPE" = 'F' THEN 'Fixed Recurring'
+                WHEN "VW_CC02_COMBINED"."CC02_CHRGTYPE" = 'S' THEN 'Single Charge'
                 ELSE NULL
               END
         systemColumnType: None
@@ -184,8 +184,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 990acb4d-8e71-4ae2-9e0e-3ec688015889
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: f7eece34-b2a3-488a-959a-a5d84f98bb5b
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -207,8 +207,8 @@ operation:
                 stepCounter: "0"
             transform: |-
               CASE 
-                WHEN "CC02_COMBINED"."CC02_ACCTYPE" = 0 THEN 'Checking'
-                WHEN "CC02_COMBINED"."CC02_ACCTYPE" = 1 THEN 'Saving'
+                WHEN "VW_CC02_COMBINED"."CC02_ACCTYPE" = 0 THEN 'Checking'
+                WHEN "VW_CC02_COMBINED"."CC02_ACCTYPE" = 1 THEN 'Saving'
                 ELSE NULL
               END
         systemColumnType: None
@@ -223,8 +223,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: a7c1858c-eee6-4f3f-9649-19969b91a9bf
-                stepCounter: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
+              - columnCounter: 06316e0a-553b-4d49-bc40-a848f42f3047
+                stepCounter: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -244,7 +244,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"CC02_COMBINED\".\"SOURCE\"||'-'||\"CC02_COMBINED\".\"CC02_CUST\""
+            transform: "\"VW_CC02_COMBINED\".\"SOURCE\"||'-'||\"VW_CC02_COMBINED\".\"CC02_CUST\""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -264,7 +264,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"CC02_COMBINED\".\"SOURCE\"||'-'||\"CC02_COMBINED\".\"CC02_CUST\"||'-'||IFNULL(\"CC02_COMBINED\".\"CC02_SITE\", 0)"
+            transform: "\"VW_CC02_COMBINED\".\"SOURCE\"||'-'||\"VW_CC02_COMBINED\".\"CC02_CUST\"||'-'||IFNULL(\"VW_CC02_COMBINED\".\"CC02_SITE\", 0)"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -284,7 +284,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"CC02_COMBINED\".\"SOURCE\"||'-'||\"CC02_COMBINED\".\"CC02_ID\""
+            transform: "\"VW_CC02_COMBINED\".\"SOURCE\"||'-'||\"VW_CC02_COMBINED\".\"CC02_ID\""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -302,22 +302,20 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: "\"CC02_COMBINED\".\"SOURCE\"||'-'||\"CC02_COMBINED\".\"CC02_CUST\"||'-'||IFNULL(\"CC02_COMBINED\".\"CC02_SITE\", 0)||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
+            transform: "\"VW_CC02_COMBINED\".\"SOURCE\"||'-'||\"VW_CC02_COMBINED\".\"CC02_CUST\"||'-'||IFNULL(\"VW_CC02_COMBINED\".\"CC02_SITE\", 0)||'-'||\"CM03_COMBINED\".\"CM03_BILLTO\""
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CC02_COMBINED: a5913ef5-5c6a-4a57-9965-3a7eacdbea80
           CD02_COMBINED: 02655129-1956-4b02-af2d-78f83f5b43a3
           CD21_COMBINED: 5709592a-65be-4bb7-a4ca-fcc1433870a5
           CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
           STG_MAX_CC02_ID_BY_CUST_SITE: 1b78b294-c580-4445-87df-0f457347a0a9
+          VW_CC02_COMBINED: 1b328823-7a2f-4b5e-88dc-ef17ff409d61
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: CC02_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: CD02_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -326,18 +324,20 @@ operation:
             nodeName: CM03_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_MAX_CC02_ID_BY_CUST_SITE
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_CC02_COMBINED
         join:
           joinCondition: |2-
-              FROM {{ ref('TRUXCOMBINED_RAW', 'CC02_COMBINED') }} "CC02_COMBINED"
+              FROM {{ ref('TRUXCOMBINED_RAW', 'VW_CC02_COMBINED') }} "VW_CC02_COMBINED"
              INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_MAX_CC02_ID_BY_CUST_SITE') }} "STG_MAX_CC02_ID_BY_CUST_SITE"
-                ON "CC02_COMBINED"."CC02_ID" = "STG_MAX_CC02_ID_BY_CUST_SITE"."CC02_ID"
-               AND "CC02_COMBINED"."SOURCE" = "STG_MAX_CC02_ID_BY_CUST_SITE"."SOURCE"
+                ON "VW_CC02_COMBINED"."CC02_ID" = "STG_MAX_CC02_ID_BY_CUST_SITE"."CC02_ID"
+               AND "VW_CC02_COMBINED"."SOURCE" = "STG_MAX_CC02_ID_BY_CUST_SITE"."SOURCE"
              INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
-                ON "CC02_COMBINED"."CC02_CUST" = "CM03_COMBINED"."CM03_CUST"
-               AND "CC02_COMBINED"."SOURCE" = "CM03_COMBINED"."SOURCE"
+                ON "VW_CC02_COMBINED"."CC02_CUST" = "CM03_COMBINED"."CM03_CUST"
+               AND "VW_CC02_COMBINED"."SOURCE" = "CM03_COMBINED"."SOURCE"
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD21_COMBINED') }} "CD21_COMBINED"
-                ON "CC02_COMBINED"."CC02_TYPE" = "CD21_COMBINED"."CD21_CODE"
-               AND "CC02_COMBINED"."SOURCE" = "CD21_COMBINED"."SOURCE"
+                ON "VW_CC02_COMBINED"."CC02_TYPE" = "CD21_COMBINED"."CD21_CODE"
+               AND "VW_CC02_COMBINED"."SOURCE" = "CD21_COMBINED"."SOURCE"
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                 ON "CD21_COMBINED"."CD21_PMT" = "CD02_COMBINED"."CD02_CODE"
                AND "CD02_COMBINED"."CD02_TYPE" = 'P'
