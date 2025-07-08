@@ -2103,9 +2103,125 @@ operation:
                   ELSE 'Suspended'
               END
           - columnReferences: []
+            transform: CASE WHEN "CUSTOMERSTATUSHISTORY_CURRENT"."ACTIVE" = 1 THEN 'Active' ELSE 'Inactive' END
+          - columnReferences: []
+            transform: CASE WHEN "SITESTATUSHISTORY_CURRENT"."Active" = 1 THEN 'Active' ELSE 'Inactive' END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1bf713de-c1ec-4baf-94a2-35e24e22223b
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Service City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cd20db09-c2da-4727-944b-b0c3f2ba7b8a
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 112edb7e-c114-4829-bb58-6e8264e56247
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+          - columnReferences:
+              - columnCounter: 419a2519-0158-434d-bd7b-3b37332fd6c1
+                stepCounter: 2e1d71ca-ceec-4a35-8b75-a4aacb13f954
+            transform: ""
+          - columnReferences:
+              - columnCounter: 419a2519-0158-434d-bd7b-3b37332fd6c1
+                stepCounter: 2e1d71ca-ceec-4a35-8b75-a4aacb13f954
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11c3eb15-0ec3-4d79-988b-e820d916c976
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR(4)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Service State
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c285cc2b-b94b-4a0b-ab07-734f33f1cd10
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: e3f0f6b6-b17d-4f7e-808c-3cdd1c43f3cd
+                stepCounter: f47180be-fdce-4312-84ff-04027f8092c0
+            transform: ""
+          - columnReferences:
+              - columnCounter: cd34fce0-f03f-4a3d-9dce-880a4f0ed337
+                stepCounter: 2e1d71ca-ceec-4a35-8b75-a4aacb13f954
+            transform: ""
+          - columnReferences:
+              - columnCounter: cd34fce0-f03f-4a3d-9dce-880a4f0ed337
+                stepCounter: 2e1d71ca-ceec-4a35-8b75-a4aacb13f954
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 257b4eef-8fe7-498b-95f7-6b1e99a21a17
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Cycle Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: LISTAGG(DISTINCT "Service"."Billing Cycle",', ')
+          - columnReferences: []
+            transform: LISTAGG(DISTINCT "Service"."Billing Cycle",', ')
+          - columnReferences:
+              - columnCounter: 8c1767c1-93cf-40c0-8024-563026551181
+                stepCounter: 759bc5f9-222a-4182-9e9f-e6876459f8f8
             transform: ""
           - columnReferences: []
-            transform: ""
+            transform: LISTAGG(DISTINCT "BILLINGCYCLE_COMBINED"."DESCRIPTION",', ')
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7b23ed38-5cdb-419f-b09c-a852592ddb96
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: System
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'TRUX'"
+          - columnReferences: []
+            transform: "'TRUX'"
+          - columnReferences: []
+            transform: "'TOWER'"
+          - columnReferences: []
+            transform: "'TOWER'"
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
@@ -2119,12 +2235,15 @@ operation:
           STG_CD29_COMBINED: 7dfb3bfd-14e6-4b5a-a787-a42e0b288446
           STG_CD52_COMBINED: 70d95058-6b0e-4d1f-ac2c-9de7e79bfa3b
           STG_CP01_COMBINED_FILTERED: b527731c-69d1-434c-9076-a2ff49859bf4
+          Service: b7fec811-7f53-423e-a7c3-57b1f74ea28d
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: MASTER_DATA_CLEAN
             nodeName: TRUX_DATABASE_METADATA
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_SERVICE_MASTER
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -2142,7 +2261,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CP01_COMBINED_FILTERED
         join:
-          joinCondition: |2
+          joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD11_COMBINED') }} "STG_CD11_COMBINED"
@@ -2176,6 +2295,13 @@ operation:
             
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "CM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+            
+             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_SERVICE_MASTER') }} "Service"
+               ON "CM03_COMBINED"."CM03_CUST" = "Service"."Customer Number"
+              AND "CM03_COMBINED"."SOURCE" = "Service"."Source"
+            
+            GROUP BY ALL
+              
         name: TRUX CONSOLIDATED
         noLinkRefs: []
       - aliases:
@@ -2188,12 +2314,15 @@ operation:
           STG_CD29_COMBINED: 7dfb3bfd-14e6-4b5a-a787-a42e0b288446
           STG_CD52_COMBINED: 70d95058-6b0e-4d1f-ac2c-9de7e79bfa3b
           STG_CP01_COMBINED_FILTERED: b527731c-69d1-434c-9076-a2ff49859bf4
+          Service: b7fec811-7f53-423e-a7c3-57b1f74ea28d
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: MASTER_DATA_CLEAN
             nodeName: TRUX_DATABASE_METADATA
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_SERVICE_MASTER
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -2213,7 +2342,7 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CP01_COMBINED_FILTERED
         join:
-          joinCondition: |2
+          joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'CM04_COMBINED') }} "CM04_COMBINED"
                ON "CM03_COMBINED"."CM03_CUST" = "CM04_COMBINED"."CM04_CUST"
@@ -2250,10 +2379,19 @@ operation:
             
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "CM04_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+              
+             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_SERVICE_MASTER') }} "Service"
+               ON "CM04_COMBINED"."CM04_CUST" = "Service"."Customer Number"
+              AND "CM04_COMBINED"."CM04_SITE" = "Service"."Site Number"
+              AND "CM04_COMBINED"."SOURCE" = "Service"."Source"
+            
+            GROUP BY ALL
         name: TRUX SEPARATE_AR_SITE
         noLinkRefs: []
       - aliases:
           ADDRESS_COMBINED: 2e1d71ca-ceec-4a35-8b75-a4aacb13f954
+          BILLINGCYCLE_COMBINED: 759bc5f9-222a-4182-9e9f-e6876459f8f8
+          CUSTOMERSTATUSHISTORY_CURRENT: 200e229a-164a-436c-968e-af7c41bf95d5
           CUSTOMER_COMBINED: af74a786-1641-4201-ad6f-8127eba08c06
         customSQL:
           customSQL: ""
@@ -2261,17 +2399,32 @@ operation:
           - locationName: TOWER_COMBINED
             nodeName: ADDRESS_COMBINED
           - locationName: TOWER_COMBINED
+            nodeName: BILLINGCYCLE_COMBINED
+          - locationName: TOWER_COMBINED
             nodeName: CUSTOMER_COMBINED
+          - locationName: TOWER_COMBINED
+            nodeName: CUSTOMERSTATUSHISTORY_CURRENT
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TOWER_COMBINED', 'CUSTOMER_COMBINED') }} "CUSTOMER_COMBINED"
+            
             INNER JOIN {{ ref('TOWER_COMBINED', 'ADDRESS_COMBINED') }} "ADDRESS_COMBINED"
-            ON "CUSTOMER_COMBINED"."Address ID" = "ADDRESS_COMBINED"."ADDRESSUID"
+                ON "CUSTOMER_COMBINED"."Address ID" = "ADDRESS_COMBINED"."ADDRESSUID"
+            
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMERSTATUSHISTORY_CURRENT') }} "CUSTOMERSTATUSHISTORY_CURRENT"
+                ON "CUSTOMER_COMBINED"."Customer Number" = "CUSTOMERSTATUSHISTORY_CURRENT"."CUSTID"
+            
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'BILLINGCYCLE_COMBINED') }} "BILLINGCYCLE_COMBINED"
+                ON "CUSTOMER_COMBINED"."Billing Cycle" = "BILLINGCYCLE_COMBINED"."BILLINGCYCLE"
+            
+            GROUP BY ALL
         name: TOWER CUSTOMER
         noLinkRefs: []
       - aliases:
           ADDRESS_COMBINED: 2e1d71ca-ceec-4a35-8b75-a4aacb13f954
+          BILLINGCYCLE_COMBINED: 759bc5f9-222a-4182-9e9f-e6876459f8f8
           CUSTOMER_COMBINED: af74a786-1641-4201-ad6f-8127eba08c06
+          SITESTATUSHISTORY_CURRENT: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
           SITE_COMBINED: d0ee8791-10a2-4747-967f-b22621b20d21
         customSQL:
           customSQL: ""
@@ -2279,17 +2432,29 @@ operation:
           - locationName: TOWER_COMBINED
             nodeName: ADDRESS_COMBINED
           - locationName: TOWER_COMBINED
+            nodeName: BILLINGCYCLE_COMBINED
+          - locationName: TOWER_COMBINED
             nodeName: CUSTOMER_COMBINED
           - locationName: TOWER_COMBINED
             nodeName: SITE_COMBINED
+          - locationName: TOWER_COMBINED
+            nodeName: SITESTATUSHISTORY_CURRENT
         join:
-          joinCondition: |2
+          joinCondition: |2-
              FROM {{ ref('TOWER_COMBINED', 'SITE_COMBINED') }} "SITE_COMBINED"
             INNER JOIN {{ ref('TOWER_COMBINED', 'ADDRESS_COMBINED') }} "ADDRESS_COMBINED"
                ON "SITE_COMBINED"."SITEADDRESSUID" = "ADDRESS_COMBINED"."ADDRESSUID"
             
             LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMER_COMBINED') }} "CUSTOMER_COMBINED"
                ON TRIM(SITE_COMBINED.BILLTOCUSTID) = CUSTOMER_COMBINED."Customer Number"
+            
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'SITESTATUSHISTORY_CURRENT') }} "SITESTATUSHISTORY_CURRENT"
+               ON TRIM("SITE_COMBINED"."Site Number") = "SITESTATUSHISTORY_CURRENT"."Site Number"
+            
+            LEFT JOIN {{ ref('TOWER_COMBINED', 'BILLINGCYCLE_COMBINED') }} "BILLINGCYCLE_COMBINED"
+                ON "CUSTOMER_COMBINED"."Billing Cycle" = "BILLINGCYCLE_COMBINED"."BILLINGCYCLE"
+            
+            GROUP BY ALL
         name: TOWER SITES
         noLinkRefs: []
   name: DIM_BILLING_CUSTOMER_MASTER

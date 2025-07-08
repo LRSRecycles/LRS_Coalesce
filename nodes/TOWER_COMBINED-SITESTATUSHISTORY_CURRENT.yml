@@ -1,0 +1,71 @@
+fileVersion: 1
+id: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
+name: SITESTATUSHISTORY_CURRENT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TOWER_COMBINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18a175ff-7b00-4f19-9607-281df58b5971
+          stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d84f417b-842b-44fc-9801-a74d0215637f
+                stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4fb63cf2-04d1-4953-b035-3eb218174149
+          stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: Active
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2826925a-951b-42c0-ab3a-8ab661e8383d
+                stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SITESTATUSHISTORY_COMBINED: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TOWER_COMBINED
+            nodeName: SITESTATUSHISTORY_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TOWER_COMBINED', 'SITESTATUSHISTORY_COMBINED') }} "SITESTATUSHISTORY_COMBINED"
+            
+            QUALIFY ROW_NUMBER() OVER (PARTITION BY "Site Number" ORDER BY "Request Date Time" DESC) = 1
+        name: SITESTATUSHISTORY_CURRENT
+        noLinkRefs: []
+  name: SITESTATUSHISTORY_CURRENT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
