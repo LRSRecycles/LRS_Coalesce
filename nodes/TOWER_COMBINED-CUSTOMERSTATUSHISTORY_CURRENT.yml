@@ -31,20 +31,75 @@ operation:
               - columnCounter: 9bdb0c59-7b60-4dab-9788-1b1062154930
                 stepCounter: 3d42a4aa-88ae-42ca-a909-df72b87a59dc
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 64e23287-f9eb-4dd5-a0f7-98f3d8f79ba4
+          columnCounter: 8e6ee926-e222-401e-93ee-17ccec5d1414
           stepCounter: 200e229a-164a-436c-968e-af7c41bf95d5
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR
+        defaultValue: ""
         description: ""
-        name: ACTIVE
+        keyColumnType: None
+        name: STATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 87575d79-6936-4300-ab63-937d4b6baf21
+              - columnCounter: bdb54f4e-14e4-4c26-ab60-5fd925bd4376
+                stepCounter: 3d42a4aa-88ae-42ca-a909-df72b87a59dc
+            transform: |
+              CASE "CUSTOMERSTATUSHISTORY_COMBINED"."STATUS"
+                  WHEN -1 THEN 'Prospect'
+                  WHEN 0 THEN 'Inactive'
+                  WHEN 1 THEN 'Active'
+                  WHEN 2 THEN 'Credit Hold'
+                  WHEN 3 THEN 'Collections – Internal'
+                  WHEN 4 THEN 'Collections – External'
+                  ELSE 'Unknown Status'
+              END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 346f3600-4db2-43cb-a18d-f39a573f940d
+          stepCounter: 200e229a-164a-436c-968e-af7c41bf95d5
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: RN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ROW_NUMBER() OVER (PARTITION BY CUSTID ORDER BY EFFECTIVEDATE)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6d45cd75-0dea-41c7-9003-6be25a6e343b
+          stepCounter: 200e229a-164a-436c-968e-af7c41bf95d5
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: EFFECTIVEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7f50dd2d-78a0-455a-930d-402f3dd1eafe
                 stepCounter: 3d42a4aa-88ae-42ca-a909-df72b87a59dc
             transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -59,7 +114,6 @@ operation:
           joinCondition: |-
             FROM {{ ref('TOWER_COMBINED', 'CUSTOMERSTATUSHISTORY_COMBINED') }} "CUSTOMERSTATUSHISTORY_COMBINED"
              
-            QUALIFY ROW_NUMBER() OVER (PARTITION BY CUSTID ORDER BY REQUESTDATETIME DESC) = 1
         name: CUSTOMERSTATUSHISTORY_CURRENT
         noLinkRefs: []
   name: CUSTOMERSTATUSHISTORY_CURRENT

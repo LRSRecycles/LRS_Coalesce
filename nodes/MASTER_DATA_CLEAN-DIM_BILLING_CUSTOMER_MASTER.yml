@@ -2087,25 +2087,47 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: |-
+            transform: |
               CASE 
-                  WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL AND "CM03_COMBINED"."CM03_SUSDATE" IS NULL THEN 'Active'
-                  WHEN "CM03_COMBINED"."CM03_CDTE" IS NOT NULL AND "CM03_COMBINED"."CM03_SUSDATE" IS NOT NULL THEN 'Closed And Suspended'
+                  WHEN "CM03_COMBINED"."CM03_CDTE" IS NULL 
+                       AND "CM03_COMBINED"."CM03_SUSDATE" IS NULL 
+                       AND "CM03_COMBINED"."CM03_SUSREA" IS NULL THEN 'Active'
+              
+                  WHEN "CM03_COMBINED"."CM03_CDTE" IS NOT NULL 
+                       AND "CM03_COMBINED"."CM03_SUSDATE" IS NOT NULL THEN 'Closed And Suspended'
+              
                   WHEN "CM03_COMBINED"."CM03_CDTE" IS NOT NULL THEN 'Closed'
-                  ELSE 'Suspended'
+              
+                  WHEN "CM03_COMBINED"."CM03_SUSDATE" IS NOT NULL 
+                       OR "CM03_COMBINED"."CM03_SUSREA" IS NOT NULL THEN 'Suspended'
+              
+                  ELSE 'Active'
               END
           - columnReferences: []
-            transform: |-
+            transform: |
               CASE 
-                  WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL AND "CM04_COMBINED"."CM04_SUSDATE" IS NULL THEN 'Active'
-                  WHEN "CM04_COMBINED"."CM04_EDTE" IS NOT NULL AND "CM04_COMBINED"."CM04_SUSDATE" IS NOT NULL THEN 'Closed And Suspended'
+                  WHEN "CM04_COMBINED"."CM04_EDTE" IS NULL 
+                       AND "CM04_COMBINED"."CM04_SUSDATE" IS NULL 
+                       AND "CM04_COMBINED"."CM04_SUSREA" IS NULL THEN 'Active'
+              
+                  WHEN "CM04_COMBINED"."CM04_EDTE" IS NOT NULL 
+                       AND "CM04_COMBINED"."CM04_SUSDATE" IS NOT NULL THEN 'Closed And Suspended'
+              
                   WHEN "CM04_COMBINED"."CM04_EDTE" IS NOT NULL THEN 'Closed'
-                  ELSE 'Suspended'
+              
+                  WHEN "CM04_COMBINED"."CM04_SUSDATE" IS NOT NULL 
+                       OR "CM04_COMBINED"."CM04_SUSREA" IS NOT NULL THEN 'Suspended'
+              
+                  ELSE 'Active'
               END
-          - columnReferences: []
-            transform: CASE WHEN "CUSTOMERSTATUSHISTORY_CURRENT"."ACTIVE" = 1 THEN 'Active' ELSE 'Inactive' END
-          - columnReferences: []
-            transform: CASE WHEN "SITESTATUSHISTORY_CURRENT"."Active" = 1 THEN 'Active' ELSE 'Inactive' END
+          - columnReferences:
+              - columnCounter: 8e6ee926-e222-401e-93ee-17ccec5d1414
+                stepCounter: 200e229a-164a-436c-968e-af7c41bf95d5
+            transform: ""
+          - columnReferences:
+              - columnCounter: f1f92f35-e04c-43b6-8488-c188b99c54e0
+                stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
+            transform: ""
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -2222,6 +2244,34 @@ operation:
             transform: "'TOWER'"
           - columnReferences: []
             transform: "'TOWER'"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 51d7e9f7-4264-49d1-93bd-55e86ab761b9
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Tower Status Effective Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences: []
+            transform: "NULL"
+          - columnReferences:
+              - columnCounter: 6d45cd75-0dea-41c7-9003-6be25a6e343b
+                stepCounter: 200e229a-164a-436c-968e-af7c41bf95d5
+            transform: ""
+          - columnReferences:
+              - columnCounter: e5f21367-8f39-4c93-a21f-6424b5e6353a
+                stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
+            transform: ""
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
@@ -2413,6 +2463,7 @@ operation:
             
             LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMERSTATUSHISTORY_CURRENT') }} "CUSTOMERSTATUSHISTORY_CURRENT"
                 ON "CUSTOMER_COMBINED"."Customer Number" = "CUSTOMERSTATUSHISTORY_CURRENT"."CUSTID"
+               AND "CUSTOMERSTATUSHISTORY_CURRENT"."RN" = 1
             
             LEFT JOIN {{ ref('TOWER_COMBINED', 'BILLINGCYCLE_COMBINED') }} "BILLINGCYCLE_COMBINED"
                 ON "CUSTOMER_COMBINED"."Billing Cycle" = "BILLINGCYCLE_COMBINED"."BILLINGCYCLE"
@@ -2450,6 +2501,7 @@ operation:
             
             LEFT JOIN {{ ref('TOWER_COMBINED', 'SITESTATUSHISTORY_CURRENT') }} "SITESTATUSHISTORY_CURRENT"
                ON TRIM("SITE_COMBINED"."Site Number") = "SITESTATUSHISTORY_CURRENT"."Site Number"
+              AND "SITESTATUSHISTORY_CURRENT"."RN" = 1
             
             LEFT JOIN {{ ref('TOWER_COMBINED', 'BILLINGCYCLE_COMBINED') }} "BILLINGCYCLE_COMBINED"
                 ON "CUSTOMER_COMBINED"."Billing Cycle" = "BILLINGCYCLE_COMBINED"."BILLINGCYCLE"

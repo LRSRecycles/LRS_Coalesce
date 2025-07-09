@@ -31,20 +31,66 @@ operation:
               - columnCounter: d84f417b-842b-44fc-9801-a74d0215637f
                 stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 4fb63cf2-04d1-4953-b035-3eb218174149
+          columnCounter: 32d0de4c-e825-437f-9045-01a19458ca24
           stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
         config: {}
-        dataType: BOOLEAN
+        dataType: NUMBER
+        defaultValue: ""
         description: ""
-        name: Active
+        keyColumnType: None
+        name: RN
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2826925a-951b-42c0-ab3a-8ab661e8383d
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ROW_NUMBER() OVER (PARTITION BY "Site Number" ORDER BY "Effective Date")
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5f21367-8f39-4c93-a21f-6424b5e6353a
+          stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: EFFECTIVEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5f6affa5-8123-40ff-b09e-f44f733781b5
                 stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
             transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1f92f35-e04c-43b6-8488-c188b99c54e0
+          stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 998286d9-c956-4edd-aa53-cc640a3c6182
+                stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
