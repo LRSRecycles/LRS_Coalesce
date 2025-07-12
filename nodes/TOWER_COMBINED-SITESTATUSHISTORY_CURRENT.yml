@@ -30,7 +30,7 @@ operation:
           - columnReferences:
               - columnCounter: d84f417b-842b-44fc-9801-a74d0215637f
                 stepCounter: b2f367a9-6698-4b58-b6d8-c49dfce181d6
-            transform: ""
+            transform: TRIM("Site Number")
       - acceptedValues:
           strictMatch: true
           values: []
@@ -49,7 +49,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: ROW_NUMBER() OVER (PARTITION BY "Site Number" ORDER BY "Effective Date")
+            transform: "ROW_NUMBER() OVER (PARTITION BY TRIM(\"Site Number\") ORDER BY \"Effective Date\" DESC) "
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -103,10 +103,7 @@ operation:
           - locationName: TOWER_COMBINED
             nodeName: SITESTATUSHISTORY_COMBINED
         join:
-          joinCondition: |-
-            FROM {{ ref('TOWER_COMBINED', 'SITESTATUSHISTORY_COMBINED') }} "SITESTATUSHISTORY_COMBINED"
-            
-            QUALIFY ROW_NUMBER() OVER (PARTITION BY "Site Number" ORDER BY "Request Date Time" DESC) = 1
+          joinCondition: FROM {{ ref('TOWER_COMBINED', 'SITESTATUSHISTORY_COMBINED') }} "SITESTATUSHISTORY_COMBINED"
         name: SITESTATUSHISTORY_CURRENT
         noLinkRefs: []
   name: SITESTATUSHISTORY_CURRENT

@@ -30,7 +30,7 @@ operation:
           - columnReferences:
               - columnCounter: 9bdb0c59-7b60-4dab-9788-1b1062154930
                 stepCounter: 3d42a4aa-88ae-42ca-a909-df72b87a59dc
-            transform: ""
+            transform: TRIM(CUSTID)
       - acceptedValues:
           strictMatch: true
           values: []
@@ -79,7 +79,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: ROW_NUMBER() OVER (PARTITION BY CUSTID ORDER BY EFFECTIVEDATE)
+            transform: ROW_NUMBER() OVER (PARTITION BY TRIM(CUSTID) ORDER BY EFFECTIVEDATE DESC)
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -112,7 +112,7 @@ operation:
           - locationName: TOWER_COMBINED
             nodeName: CUSTOMERSTATUSHISTORY_COMBINED
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TOWER_COMBINED', 'CUSTOMERSTATUSHISTORY_COMBINED') }} "CUSTOMERSTATUSHISTORY_COMBINED"
              
         name: CUSTOMERSTATUSHISTORY_CURRENT
