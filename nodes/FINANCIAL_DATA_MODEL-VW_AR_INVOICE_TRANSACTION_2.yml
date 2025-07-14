@@ -104,6 +104,26 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
+          columnCounter: abcea1b1-5538-4d1d-acbd-9adc22cca3dc
+          stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment/Adjustment Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
           columnCounter: 6f58e6e8-6711-4449-a031-dabc4b282a8a
           stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
         config: {}
@@ -378,6 +398,7 @@ operation:
                      WHEN pym."Payment or Adjustment" = 'A' THEN 'Adjustment Payment'
                      ELSE NULL 
                    END AS "Transaction Type"
+                 , pym."Adjustment Reason" AS "Payment/Adjustment Description"
                  , pym."Payment Method" AS "Payment Method"
                  , pym."Payment Date" AS "Transaction Date"
                  , inv."Invoice Date" AS "Invoice Date"
@@ -419,6 +440,7 @@ operation:
                      ELSE NULL 
                    END AS "Transaction Type"
                  --, "Due Date" AS "Transaction Date"
+                 , NULL AS "Payment/Adjustment Description"
                  , NULL AS "Payment Method"
                  , "Invoice Date" AS "Transaction Date"
                  , "Invoice Date" AS "Invoice Date"
@@ -452,6 +474,7 @@ operation:
                   ) AS "Source_Customer_Site"
                  , b.invoiceid AS "Invoice Number"
                  , 'Open Balance' AS "Transaction Type"
+                 , NULL AS "Payment/Adjustment Description"
                  , NULL AS "Payment Method"
                  , b.invoicedate AS "Transaction Date"
                  , b.invoicedate AS "Invoice Date"

@@ -340,6 +340,26 @@ operation:
             transform: CASE WHEN "VW_AR_INVOICE_TRANSACTION_2"."Transaction Type" = 'Invoice' THEN SUM("VW_AR_INVOICE_TRANSACTION_2"."Transaction Amount") OVER (PARTITION BY "VW_AR_INVOICE_TRANSACTION_2"."Invoice Number","Source") ELSE 0 END
         systemColumnType: None
         transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c574356-6893-4c15-9b89-e97f195df04a
+          stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Payment/Adjustment Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: abcea1b1-5538-4d1d-acbd-9adc22cca3dc
+                stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
