@@ -2123,7 +2123,7 @@ operation:
           - columnReferences:
               - columnCounter: f1f92f35-e04c-43b6-8488-c188b99c54e0
                 stepCounter: 9cbe812d-2a06-4c05-bc08-dac8e106d1b2
-            transform: |-
+            transform: |
               CASE "SITESTATUSHISTORY_CURRENT"."STATUS"
                   WHEN 'Active Pickup' THEN 'Active'
                   WHEN 'Inactive' THEN 'Closed'
@@ -2131,6 +2131,9 @@ operation:
                   WHEN 'Vacation Hold' THEN 'Suspended'
                   WHEN 'Inactive - Pending Removal' THEN 'Suspended'
                   WHEN 'Vacant' THEN 'Closed'
+                  WHEN 'Exempt from service' THEN 'Closed'
+                  WHEN 'Pending Approval' THEN 'Closed'
+                  WHEN 'Prospect' THEN 'Active'
                   ELSE 'Unknown Status'  -- Fallback for any unknowns
               END
         systemColumnType: None
