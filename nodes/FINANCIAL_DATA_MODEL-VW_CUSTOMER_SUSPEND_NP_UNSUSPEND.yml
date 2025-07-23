@@ -1,0 +1,247 @@
+fileVersion: 1
+id: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+name: VW_CUSTOMER_SUSPEND_NP_UNSUSPEND
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: |-
+    This Node combines TRUX Logs of types:
+
+    12 = Customer Field Changed
+    13 = Site Field Changed
+    14 = Service Field Changed
+
+    16 = Customer Created
+    17 = Site Created
+    18 = Service Created
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0975e0bd-71d8-439d-9ce5-ac5a7e410044
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3f56ecbd-a1b5-4088-abf9-55d7f95fe2ec
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: LOG_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b37614a8-f9b7-4437-887f-6879d2fe1dd7
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: LOG_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15d86361-a98e-486f-a303-f0a47a0b9082
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: UNSUSPEND_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 72d47d62-34ce-4fd5-8d18-ae8a69c0ec16
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: VARCHAR(10)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: UNSUSPENDED_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90c3c93d-5dc5-4e49-bea4-889d92d1655a
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: VARCHAR(10)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SUSPEND_LOG_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24567d5d-07a8-457d-84ae-d98d16394647
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SUSPEND_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8924be4e-e271-487f-9e03-44ae7b991422
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SUSPEND_REASON_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: af80e6c7-d717-4d7e-84be-e9dcf6f6b151
+          stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: LOG_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          S: 52141fcc-4537-48a2-b227-a9d333554488
+          U: 52141fcc-4537-48a2-b227-a9d333554488
+        customSQL:
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('FINANCIAL_DATA_MODEL', 'VW_CUSTOMER_SUSPEND_NP_UNSUSPEND')}} AS (
+            SELECT
+              U.SOURCE,
+              U.LOG_CUST,
+              U.LOG_SITE,
+              U.REASON_LOG_ID AS LOG_ID,
+              CAST(U.LOG_DATE AS DATE) AS UNSUSPEND_DATE,
+              U.LOG_USER AS UNSUSPENDED_USER,
+              U.TIMELINE_ROW,
+              S.LOG_USER AS SUSPEND_LOG_USER,
+              S.DATE_AFTER AS SUSPEND_DATE,
+              S.REASON_AFTER AS SUSPEND_REASON_CODE
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_CUSTOMER_SUSPEND_NP_TIMELINE') }} "U"
+            LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_CUSTOMER_SUSPEND_NP_TIMELINE') }} "S"
+              ON u.LOG_CUST = s.LOG_CUST
+             AND u.LOG_SITE = s.LOG_SITE
+             AND u.SOURCE = s.SOURCE
+             AND s.timeline_row = u.timeline_row + 1
+            WHERE u.action_type = 'UNSUSPEND'
+            	)
+        dependencies:
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: VW_CUSTOMER_SUSPEND_NP_TIMELINE
+        join:
+          joinCondition: |
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_CUSTOMER_SUSPEND_NP_TIMELINE') }} "U"
+            LEFT JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_CUSTOMER_SUSPEND_NP_TIMELINE') }} "S"
+              ON u.LOG_CUST = s.LOG_CUST
+             AND u.LOG_SITE = s.LOG_SITE
+             AND u.SOURCE = s.SOURCE
+             AND s.timeline_row = u.timeline_row + 1
+            WHERE u.action_type = 'UNSUSPEND'
+        name: VW_CUSTOMER_SUSPEND_NP_UNSUSPEND
+        noLinkRefs: []
+  name: VW_CUSTOMER_SUSPEND_NP_UNSUSPEND
+  overrideSQL: true
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

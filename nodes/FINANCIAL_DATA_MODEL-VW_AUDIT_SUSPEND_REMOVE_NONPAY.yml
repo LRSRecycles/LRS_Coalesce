@@ -1,0 +1,524 @@
+fileVersion: 1
+id: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+name: VW_AUDIT_SUSPEND_REMOVE_NONPAY
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: |-
+    This Node combines TRUX Logs of types:
+
+    12 = Customer Field Changed
+    13 = Site Field Changed
+    14 = Service Field Changed
+
+    16 = Customer Created
+    17 = Site Created
+    18 = Service Created
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b51eae08-6dfd-4b6d-93fb-5881d6b28f71
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0975e0bd-71d8-439d-9ce5-ac5a7e410044
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28bc7ca8-a9f9-46c2-9d68-5e98e0b1b2d8
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3f56ecbd-a1b5-4088-abf9-55d7f95fe2ec
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42fe2c07-89bb-4db0-a985-c9f6cfb0687b
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b37614a8-f9b7-4437-887f-6879d2fe1dd7
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b94b5b46-5e0d-4b6c-8085-4304a91abcbb
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: DATE
+        description: ""
+        name: UNSUSPEND_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15d86361-a98e-486f-a303-f0a47a0b9082
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 09215390-80a3-4058-962a-34dc1960447d
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: UNSUSPENDED_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72d47d62-34ce-4fd5-8d18-ae8a69c0ec16
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 826536d5-0b42-4484-a05e-d6cf16d803ad
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: SUSPEND_LOG_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90c3c93d-5dc5-4e49-bea4-889d92d1655a
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1b3a660-defa-4531-9d87-de623a2620f6
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SUSPEND_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24567d5d-07a8-457d-84ae-d98d16394647
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: be5d96f1-1210-4974-914f-0370b7ea4326
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: SUSPEND_REASON_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8924be4e-e271-487f-9e03-44ae7b991422
+                stepCounter: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f9ad0840-bb31-45a7-86df-9abdacd13be7
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: total_outstanding
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "SUM(\"VW_AR_INVOICE_TRANSACTION_WHALE\".\"Transaction Amount\") "
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13c7877f-0018-4890-a275-a49e2e63900b
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: current_balance
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM(CASE WHEN "VW_AR_INVOICE_TRANSACTION_WHALE"."days_since_due_date" < 0 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount" ELSE 0 END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1db50f4-8b0e-41b8-bd09-27d88967e813
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: past_due_0_30
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2
+                  SUM(CASE WHEN "VW_AR_INVOICE_TRANSACTION_WHALE"."days_since_due_date" BETWEEN 0 AND 30 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount" ELSE 0 END )
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: eb24eff5-3547-4bc6-bed5-4112acd0dac7
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: past_due_31_60
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2
+                  SUM(CASE WHEN "VW_AR_INVOICE_TRANSACTION_WHALE"."days_since_due_date" BETWEEN 31 AND 60 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount" ELSE 0 END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16c3d362-ab57-4992-bfb5-c67a049dc66e
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: past_due_61_90
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2
+                  SUM(CASE WHEN "VW_AR_INVOICE_TRANSACTION_WHALE"."days_since_due_date" BETWEEN 61 AND 90 THEN "VW_AR_INVOICE_TRANSACTION_WHALE"."Transaction Amount" ELSE 0 END)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6baeb99c-670f-47d5-b5b1-7a1eda0016cf
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: past_due_91_120
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "    SUM(CASE WHEN \"VW_AR_INVOICE_TRANSACTION_WHALE\".\"days_since_due_date\" BETWEEN 91 AND 120 THEN \"VW_AR_INVOICE_TRANSACTION_WHALE\".\"Transaction Amount\" ELSE 0 END)"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1485b1b-895a-4826-af03-183489becb4a
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: past_due_over_120
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "    SUM(CASE WHEN \"VW_AR_INVOICE_TRANSACTION_WHALE\".\"days_since_due_date\" > 120 THEN \"VW_AR_INVOICE_TRANSACTION_WHALE\".\"Transaction Amount\" ELSE 0 END)"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7830c08e-c42c-4f5e-b702-b463a0856826
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Status
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3ff99523-ed9a-46a3-9660-1636f680d169
+                stepCounter: 52c63641-be68-44cb-826c-9c5d94c3c97c
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ac1d917-f22d-4db4-8069-6ac334e9cc99
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6e0b3ee5-6bab-4bfb-87e3-c5286d5f6245
+                stepCounter: 52c63641-be68-44cb-826c-9c5d94c3c97c
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22c2c191-b854-4db3-aa3e-d09996c84b9e
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Bill To
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8970435b-03c7-4aad-9e97-cb19f0b177f0
+                stepCounter: 52c63641-be68-44cb-826c-9c5d94c3c97c
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6825ce5e-9063-4aa6-81da-6954b566e97c
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Customer Type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b2d3eed3-ca7e-45ba-965a-5dd945bbf422
+                stepCounter: 52c63641-be68-44cb-826c-9c5d94c3c97c
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b92ff544-d92d-4646-b673-af369b2e97f6
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Sales Representative
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 386d3cf8-5849-4f7b-b85f-1c4c9354ad64
+                stepCounter: 52c63641-be68-44cb-826c-9c5d94c3c97c
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1ce2e05-56db-4033-a038-82bf39f7e28a
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Collection Agent
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dab48102-8a19-4b21-b3f6-baebe2b39d54
+                stepCounter: 52c63641-be68-44cb-826c-9c5d94c3c97c
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f312560-7fa7-4606-9c28-e2421bc50ca8
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: days_since_unsuspend
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: DATEDIFF("day", "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"."UNSUSPEND_DATE", CURRENT_DATE)
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5067b274-c4db-4a04-aded-85b2cfcf5b63
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: suspend_reason
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c384684c-ffac-4fe9-85a2-5356e2eed7d0
+                stepCounter: 28e54d5d-66e5-47e8-8b29-d8b276155b2b
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64b169df-a5be-49c9-a46a-ca4f98349144
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: last_payment_date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 425606ca-87a9-45e8-a1a3-15b6d8c624dc
+                stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae62f630-43fa-45ff-8474-e336d80938dc
+          stepCounter: 41a3e2ba-691b-49b6-a62d-73828e3574b7
+        config: {}
+        dataType: NUMBER(38,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: last_payment_amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ec7eb588-78e4-4592-9f21-86694368ccb2
+                stepCounter: ae38caa1-818c-43d5-8077-a21725b98086
+            transform: ""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_CD03_COMBINED: 28e54d5d-66e5-47e8-8b29-d8b276155b2b
+          VW_AR_INVOICE_TRANSACTION_WHALE: 2a079e46-0222-4f53-be62-f75daeda68e1
+          VW_BILLING_CUSTOMER_MASTER: 52c63641-be68-44cb-826c-9c5d94c3c97c
+          VW_CUSTOMER_SUSPEND_NP_UNSUSPEND: 1f2a5ac7-e8d5-4229-a928-a86da3901012
+          VW_STG_PAYMENT_DAILY_WITH_RANKING: ae38caa1-818c-43d5-8077-a21725b98086
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: VW_AR_INVOICE_TRANSACTION_WHALE
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: VW_CUSTOMER_SUSPEND_NP_UNSUSPEND
+          - locationName: FINANCIAL_DATA_MODEL
+            nodeName: VW_STG_PAYMENT_DAILY_WITH_RANKING
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_BILLING_CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CD03_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('FINANCIAL_DATA_MODEL', 'VW_CUSTOMER_SUSPEND_NP_UNSUSPEND') }} "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"
+            INNER JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_BILLING_CUSTOMER_MASTER') }} "VW_BILLING_CUSTOMER_MASTER"
+            ON "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"."SOURCE"="VW_BILLING_CUSTOMER_MASTER"."Source"
+            AND "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"."LOG_CUST"="VW_BILLING_CUSTOMER_MASTER"."Customer Number"
+            AND "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"."LOG_SITE"="VW_BILLING_CUSTOMER_MASTER"."Site Number"
+            INNER JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_AR_INVOICE_TRANSACTION_WHALE') }} "VW_AR_INVOICE_TRANSACTION_WHALE"
+            ON "VW_BILLING_CUSTOMER_MASTER"."Billing_Source_Customer_Site"="VW_AR_INVOICE_TRANSACTION_WHALE"."Source_Customer_Site"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD03_COMBINED') }} "STG_CD03_COMBINED" ON "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"."SUSPEND_REASON_CODE"="STG_CD03_COMBINED"."CD03_CODE" AND "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"."SOURCE"="STG_CD03_COMBINED"."SOURCE"
+            LEFT OUTER JOIN {{ ref('FINANCIAL_DATA_MODEL', 'VW_STG_PAYMENT_DAILY_WITH_RANKING') }} "VW_STG_PAYMENT_DAILY_WITH_RANKING" ON "VW_STG_PAYMENT_DAILY_WITH_RANKING"."Source_Customer_Site"="VW_BILLING_CUSTOMER_MASTER"."Billing_Source_Customer_Site" AND "VW_STG_PAYMENT_DAILY_WITH_RANKING"."RECENCY"=1
+            WHERE DATEDIFF("day", "VW_CUSTOMER_SUSPEND_NP_UNSUSPEND"."UNSUSPEND_DATE", CURRENT_DATE) <= 180
+            GROUP BY ALL
+        name: VW_AUDIT_SUSPEND_REMOVE_NONPAY
+        noLinkRefs: []
+  name: VW_AUDIT_SUSPEND_REMOVE_NONPAY
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

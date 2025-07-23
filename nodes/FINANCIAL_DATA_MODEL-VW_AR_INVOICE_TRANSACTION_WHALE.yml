@@ -360,6 +360,27 @@ operation:
                 stepCounter: 4bd101c9-aecb-4198-8976-b5932e44ae7d
             transform: ""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6b17f4b0-7253-471f-80f0-ffa5220a3481
+          stepCounter: 2a079e46-0222-4f53-be62-f75daeda68e1
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: days_since_due_date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              DATEDIFF("day", "Due Date", CURRENT_DATE)
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

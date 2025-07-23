@@ -1,0 +1,304 @@
+fileVersion: 1
+id: 52141fcc-4537-48a2-b227-a9d333554488
+name: VW_CUSTOMER_SUSPEND_NP_TIMELINE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: |-
+    This Node combines TRUX Logs of types:
+
+    12 = Customer Field Changed
+    13 = Site Field Changed
+    14 = Service Field Changed
+
+    16 = Customer Created
+    17 = Site Created
+    18 = Service Created
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11f82c72-4ab0-4b96-955e-c956b82073f0
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: REASON_LOG_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 56235bd8-a5a7-4f08-bf40-760208d7d353
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: DATE_LOG_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: df0efa89-92a1-4676-b11b-33bc032cbefe
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: LOG_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90467a5f-052d-426b-b8c9-75aa846b1e30
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: LOG_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d2d0ed4a-2ed8-44e8-b93c-3638322bf560
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: LOG_TERMID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 04365542-bd72-40d1-8885-710b39a4bdef
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f978347c-da1f-4b24-baa4-d8e1e69a8f00
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOG_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f8499c19-2c80-4f1b-9fa0-2f0595703787
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: REASON_BEFORE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26115656-2508-4e12-9bb8-d44303959a6a
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: REASON_AFTER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5606fd41-f953-4ee0-8d96-2bc8efb2c74b
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: DATE
+        description: ""
+        name: DATE_BEFORE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 86ed281c-cd64-4618-bb06-f5b765784ebd
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: DATE
+        description: ""
+        name: DATE_AFTER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9c27cb72-1845-4bee-b54f-7194c7c475b6
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: ACTION_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33acb8c5-9102-463a-8e49-ec4764cadb4c
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: TIMELINE_ROW
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8bf72a29-027d-4090-af22-adb15ccdf86c
+          stepCounter: 52141fcc-4537-48a2-b227-a9d333554488
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('FINANCIAL_DATA_MODEL', 'VW_CUSTOMER_SUSPEND_NP_TIMELINE')}} AS (
+            WITH logs_filtered AS (
+            SELECT
+            	LOG_ID,
+            	LOG_DATE,
+            	LOG_USER,
+            	LOG_TERMID,
+            	LOG_CUST,
+            	COALESCE(LOG_SITE, 0) AS LOG_SITE,
+            	LOG_FNUM,
+            	LOG_BVAL,
+            	LOG_AVAL,
+            	SOURCE
+            FROM {{ ref('TRUXCOMBINED_RAW', 'TRUX_LOGS_COMBINED') }}
+            WHERE LOG_FNUM IN (228, 229, 116, 117)
+            ),
+            
+            reason_logs AS (
+            SELECT *
+            FROM logs_filtered
+            WHERE LOG_FNUM IN (229, 117)
+            	AND (LOG_BVAL IN ('NR', 'NP') OR LOG_AVAL IN ('NR', 'NP'))
+            ),
+            
+            date_logs AS (
+            SELECT *,
+            	CASE
+            	WHEN LENGTH(LOG_BVAL) > 10 THEN
+            		CAST(TRY_TO_TIMESTAMP(LOG_BVAL, 'MM/DD/YYYY HH12:MI:SS AM') AS DATE)
+            	ELSE
+            		CAST(TRY_TO_DATE(LOG_BVAL, 'MM/DD/YYYY') AS DATE)
+            	END AS parsed_bval,
+            
+            	CASE
+            	WHEN LENGTH(LOG_AVAL) > 10 THEN
+            		CAST(TRY_TO_TIMESTAMP(LOG_AVAL, 'MM/DD/YYYY HH12:MI:SS AM') AS DATE)
+            	ELSE
+            		CAST(TRY_TO_DATE(LOG_AVAL, 'MM/DD/YYYY') AS DATE)
+            	END AS parsed_aval
+            FROM logs_filtered
+            WHERE LOG_FNUM IN(228, 116)
+            ),
+            
+            paired_logs AS (
+            SELECT
+            	r.LOG_ID AS reason_log_id,
+            	d.LOG_ID AS date_log_id,
+            	r.LOG_DATE AS log_date,
+            	r.LOG_USER,
+            	r.LOG_TERMID,
+            	r.LOG_CUST,
+            	r.LOG_SITE,
+            	r.SOURCE,
+            
+            	r.LOG_BVAL AS reason_before,
+            	r.LOG_AVAL AS reason_after,
+            	d.parsed_bval AS date_before,
+            	d.parsed_aval AS date_after,
+            
+            	CASE 
+            	WHEN r.LOG_BVAL IS NULL AND r.LOG_AVAL IS NOT NULL THEN 'SUSPEND'
+            	WHEN r.LOG_BVAL IS NOT NULL AND r.LOG_AVAL IS NULL THEN 'UNSUSPEND'
+            	ELSE 'OTHER'
+            	END AS action_type
+            FROM reason_logs r
+            LEFT JOIN date_logs d
+            	ON r.LOG_USER = d.LOG_USER
+            AND r.LOG_TERMID = d.LOG_TERMID
+            AND r.LOG_CUST = d.LOG_CUST
+            AND r.LOG_SITE = d.LOG_SITE
+            AND r.SOURCE = d.SOURCE
+            AND ABS(DATEDIFF(SECOND, r.LOG_DATE, d.LOG_DATE)) <= 5
+            ),
+            
+            timeline_with_row AS (
+            SELECT *,
+            	ROW_NUMBER() OVER (
+            	PARTITION BY LOG_CUST, LOG_SITE, SOURCE
+            	ORDER BY log_date DESC
+            	) AS timeline_row
+            FROM paired_logs
+            WHERE action_type IN ('SUSPEND', 'UNSUSPEND')
+            )
+            
+            SELECT * FROM timeline_with_row
+            )
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: TRUX_LOGS_COMBINED
+        join:
+          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'TRUX_LOGS_COMBINED') }} "TRUX_LOGS_COMBINED"
+        name: VW_CUSTOMER_SUSPEND_NP_TIMELINE
+        noLinkRefs: []
+  name: VW_CUSTOMER_SUSPEND_NP_TIMELINE
+  overrideSQL: true
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
