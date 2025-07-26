@@ -1,0 +1,123 @@
+fileVersion: 1
+id: 14aef1a2-74a0-434d-8b87-d31568c85b3e
+name: SERVICE_TYPE_LOB_MAPPING
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: MASTER_DATA_CLEAN
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19dd035b-8461-4241-a957-43bbbbac7e5b
+          stepCounter: 14aef1a2-74a0-434d-8b87-d31568c85b3e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: _LINE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b283c677-6e18-41a4-bee5-cc63eca58008
+                stepCounter: 5610f75e-5ff4-4603-b93f-4b3939325f41
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e693cdc2-1b6e-40fd-9405-eab6e54dff2b
+          stepCounter: 14aef1a2-74a0-434d-8b87-d31568c85b3e
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 57ccd809-672c-4c1e-a03c-22156285bc8e
+                stepCounter: 5610f75e-5ff4-4603-b93f-4b3939325f41
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14f52b34-8bdc-4e74-8ca7-40002d00bb1c
+          stepCounter: 14aef1a2-74a0-434d-8b87-d31568c85b3e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a4ab40f0-4bf7-443e-aad8-116247e2d947
+                stepCounter: 5610f75e-5ff4-4603-b93f-4b3939325f41
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f068e97d-5cc9-4b77-aa60-0334c8dc53b0
+          stepCounter: 14aef1a2-74a0-434d-8b87-d31568c85b3e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SERVICE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12f4079a-b37d-4155-9fd8-2b967f4a5297
+                stepCounter: 5610f75e-5ff4-4603-b93f-4b3939325f41
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b84fcc70-baa5-4e3b-8fbb-1f7ee32c47d6
+          stepCounter: 14aef1a2-74a0-434d-8b87-d31568c85b3e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SERVICE_TYPE_DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e8892e9f-d6a4-46c5-9c6d-c0551742e727
+                stepCounter: 5610f75e-5ff4-4603-b93f-4b3939325f41
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38310dd4-61c9-4f39-a2b1-d822122c56ca
+          stepCounter: 14aef1a2-74a0-434d-8b87-d31568c85b3e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: LINE_OF_BUSINESS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a0b672b8-51fe-434f-8a71-37c7c7918dd6
+                stepCounter: 5610f75e-5ff4-4603-b93f-4b3939325f41
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SHAREPOINT_RAW
+            nodeName: DATA_ESTATE_MAPPING_INPUTS_SERVICE_TYPE_LOB_MAPPING
+        join:
+          joinCondition: FROM {{ ref('SHAREPOINT_RAW', 'DATA_ESTATE_MAPPING_INPUTS_SERVICE_TYPE_LOB_MAPPING') }} "DATA_ESTATE_MAPPING_INPUTS_SERVICE_TYPE_LOB_MAPPING"
+        name: SERVICE_TYPE_LOB_MAPPING
+        noLinkRefs: []
+  name: SERVICE_TYPE_LOB_MAPPING
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
