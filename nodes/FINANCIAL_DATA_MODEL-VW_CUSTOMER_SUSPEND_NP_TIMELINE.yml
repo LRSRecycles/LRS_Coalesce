@@ -262,7 +262,7 @@ operation:
             	d.parsed_aval AS date_after,
             
             	CASE 
-            	WHEN r.LOG_BVAL IS NULL AND r.LOG_AVAL IS NOT NULL THEN 'SUSPEND'
+            	WHEN r.LOG_AVAL IS NOT NULL THEN 'SUSPEND'
             	WHEN r.LOG_BVAL IS NOT NULL AND r.LOG_AVAL IS NULL THEN 'UNSUSPEND'
             	ELSE 'OTHER'
             	END AS action_type
