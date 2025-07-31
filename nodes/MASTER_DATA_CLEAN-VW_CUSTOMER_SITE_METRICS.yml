@@ -272,7 +272,7 @@ operation:
             )
             
             SELECT
-              lp."source_customer_site",
+              aa."source_customer_site",
               lp."latest_payment_id",
               lp."latest_payment_date",
               lp."latest_payment_amount",
@@ -283,8 +283,8 @@ operation:
               aa."past_due_61_90",
               aa."past_due_91_120",
               aa."past_due_over_120"
-            FROM latest_payment lp
-            LEFT JOIN ar_aging aa
+            FROM ar_aging aa
+            LEFT JOIN latest_payment lp
               ON lp."source_customer_site" = aa."source_customer_site"
             )
         dependencies: []
