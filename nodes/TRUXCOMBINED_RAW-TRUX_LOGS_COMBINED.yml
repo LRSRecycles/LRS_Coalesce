@@ -401,7 +401,9 @@ operation:
             transform: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+          TRUX_LOG_COMBINED: 5e0cf1a7-eb4e-4808-ac73-d6ed6c2d73ab
         customSQL:
           customSQL: ""
         dependencies:
@@ -416,7 +418,7 @@ operation:
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "TRUX_LOG_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
-            WHERE "TRUX_LOG_COMBINED"."LOG_DATE" >= '01/01/2023'
+            --WHERE "TRUX_LOG_COMBINED"."LOG_DATE" >= '01/01/2023'
                -- AND "LEGACY_LOG"."LOG_TYPE" IN (12, 13, 14, 16, 17, 18)
         name: TRUX_LOGS_COMBINED
         noLinkRefs: []
