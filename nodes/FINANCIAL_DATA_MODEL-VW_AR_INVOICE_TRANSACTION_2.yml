@@ -478,7 +478,7 @@ operation:
                  , NULL AS "Payment Method"
                  , coalesce(b.invoicedate, a.transactiondate) AS "Transaction Date"
                  , coalesce(b.invoicedate, a.transactiondate) AS "Invoice Date"
-                 , coalesce(a.duedate, b.invoicedate) AS "Due Date"
+                 , COALESCE(a.duedate, b.invoicedate, a.transactiondate) AS "Due Date"
                  , a.balance AS "Transaction Amount"
                  , a.originalamount AS "Invoice Amount"
                  , 0 AS "Balance"
