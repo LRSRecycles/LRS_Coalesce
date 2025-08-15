@@ -2305,11 +2305,68 @@ operation:
           - columnReferences: []
             transform: IFNULL("SITESTATUSHISTORY_CURRENT"."STATUS",'Unknown Status')
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc530141-242a-48fe-a052-c6ab03404c3e
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Broker Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dd82ddfa-4125-4ea6-8029-0b2ffabc2411
+                stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+            transform: ""
+          - columnReferences:
+              - columnCounter: dd82ddfa-4125-4ea6-8029-0b2ffabc2411
+                stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+            transform: ""
+          - columnReferences: []
+            transform: ""
+          - columnReferences: []
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 076ed0b0-2183-480d-b7b9-9ad33303fed5
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Alpha Sort
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 97d6c399-a5d4-43f7-a256-7e3158ace6f5
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences:
+              - columnCounter: 97d6c399-a5d4-43f7-a256-7e3158ace6f5
+                stepCounter: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+            transform: ""
+          - columnReferences: []
+            transform: ""
+          - columnReferences: []
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
+          STG_BK01_COMBINED: b46b78c7-956f-484b-93f4-48110742484a
           STG_CD03_COMBINED: 28e54d5d-66e5-47e8-8b29-d8b276155b2b
           STG_CD07_COMBINED: 14a335e1-493e-4bfc-9b02-2dbb2ca32d51
           STG_CD09_COMBINED: eaa785f1-6571-4cf5-bedd-5d30e8ca7b0c
@@ -2328,6 +2385,8 @@ operation:
             nodeName: VW_SERVICE_MASTER
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_BK01_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CD03_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -2382,6 +2441,10 @@ operation:
                ON "CM03_COMBINED"."CM03_CUST" = "Service"."Customer Number"
               AND "CM03_COMBINED"."SOURCE" = "Service"."Source"
             
+              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_BK01_COMBINED') }} "STG_BK01_COMBINED"
+               ON "CM03_COMBINED"."CM03_BROKE" = "STG_BK01_COMBINED"."BK01_ID"
+              AND "CM03_COMBINED"."SOURCE" = "STG_BK01_COMBINED"."SOURCE"
+            
             GROUP BY ALL
               
         name: TRUX CONSOLIDATED
@@ -2389,6 +2452,7 @@ operation:
       - aliases:
           CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
           CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
+          STG_BK01_COMBINED: b46b78c7-956f-484b-93f4-48110742484a
           STG_CD03_COMBINED: 28e54d5d-66e5-47e8-8b29-d8b276155b2b
           STG_CD07_COMBINED: 14a335e1-493e-4bfc-9b02-2dbb2ca32d51
           STG_CD09_COMBINED: eaa785f1-6571-4cf5-bedd-5d30e8ca7b0c
@@ -2409,6 +2473,8 @@ operation:
             nodeName: CM03_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_BK01_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CD03_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -2467,6 +2533,10 @@ operation:
               AND "CM04_COMBINED"."CM04_SITE" = "Service"."Site Number"
               AND "CM04_COMBINED"."SOURCE" = "Service"."Source"
             
+              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_BK01_COMBINED') }} "STG_BK01_COMBINED"
+               ON "CM03_COMBINED"."CM03_BROKE" = "STG_BK01_COMBINED"."BK01_ID"
+              AND "CM03_COMBINED"."SOURCE" = "STG_BK01_COMBINED"."SOURCE"  
+            
             GROUP BY ALL
         name: TRUX SEPARATE_AR_SITE
         noLinkRefs: []
@@ -2489,17 +2559,17 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('TOWER_COMBINED', 'CUSTOMER_COMBINED') }} "CUSTOMER_COMBINED"
-            
+
             INNER JOIN {{ ref('TOWER_COMBINED', 'ADDRESS_COMBINED') }} "ADDRESS_COMBINED"
                 ON "CUSTOMER_COMBINED"."Address ID" = "ADDRESS_COMBINED"."ADDRESSUID"
-            
+
             LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMERSTATUSHISTORY_CURRENT') }} "CUSTOMERSTATUSHISTORY_CURRENT"
                 ON TRIM("CUSTOMER_COMBINED"."Customer Number") = TRIM("CUSTOMERSTATUSHISTORY_CURRENT"."CUSTID")
                AND "CUSTOMERSTATUSHISTORY_CURRENT"."RN" = 1
-            
+
             LEFT JOIN {{ ref('TOWER_COMBINED', 'BILLINGCYCLE_COMBINED') }} "BILLINGCYCLE_COMBINED"
                 ON "CUSTOMER_COMBINED"."Billing Cycle" = "BILLINGCYCLE_COMBINED"."BILLINGCYCLE"
-            
+
             GROUP BY ALL
         name: TOWER CUSTOMER
         noLinkRefs: []
@@ -2527,17 +2597,17 @@ operation:
              FROM {{ ref('TOWER_COMBINED', 'SITE_COMBINED') }} "SITE_COMBINED"
             INNER JOIN {{ ref('TOWER_COMBINED', 'ADDRESS_COMBINED') }} "ADDRESS_COMBINED"
                ON "SITE_COMBINED"."SITEADDRESSUID" = "ADDRESS_COMBINED"."ADDRESSUID"
-            
+
             LEFT JOIN {{ ref('TOWER_COMBINED', 'CUSTOMER_COMBINED') }} "CUSTOMER_COMBINED"
                ON TRIM(SITE_COMBINED.BILLTOCUSTID) = TRIM(CUSTOMER_COMBINED."Customer Number")
-            
+
             LEFT JOIN {{ ref('TOWER_COMBINED', 'SITESTATUSHISTORY_CURRENT') }} "SITESTATUSHISTORY_CURRENT"
                ON TRIM("SITE_COMBINED"."Site Number") = TRIM("SITESTATUSHISTORY_CURRENT"."Site Number")
               AND "SITESTATUSHISTORY_CURRENT"."RN" = 1
-            
+
             LEFT JOIN {{ ref('TOWER_COMBINED', 'BILLINGCYCLE_COMBINED') }} "BILLINGCYCLE_COMBINED"
                 ON "CUSTOMER_COMBINED"."Billing Cycle" = "BILLINGCYCLE_COMBINED"."BILLINGCYCLE"
-            
+
             GROUP BY ALL
         name: TOWER SITES
         noLinkRefs: []
