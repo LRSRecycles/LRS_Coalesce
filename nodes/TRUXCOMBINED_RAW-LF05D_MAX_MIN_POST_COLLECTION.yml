@@ -46,7 +46,7 @@ operation:
           - columnReferences:
               - columnCounter: 565be7f8-5ce9-420e-aba3-8c94e7f335d3
                 stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-            transform: MAX("LF05D_COMBINED"."LF05D_LEED")
+            transform: MAX("VW_LF05D_COMBINED"."LF05D_LEED")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 20f089cf-51f5-4ffb-a7be-1e2a60b0e9fb
@@ -61,7 +61,7 @@ operation:
           - columnReferences:
               - columnCounter: 565be7f8-5ce9-420e-aba3-8c94e7f335d3
                 stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-            transform: MIN("LF05D_COMBINED"."LF05D_LEED")
+            transform: MIN("VW_LF05D_COMBINED"."LF05D_LEED")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 87d218bb-b033-4c64-ad99-c7e3a9fd9902
@@ -81,19 +81,16 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+          VW_LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: LF05D_COMBINED
+            nodeName: VW_LF05D_COMBINED
         join:
-          joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-            WHERE "SORT" = 1 
-              AND "_FIVETRAN_DELETED" = FALSE 
-              AND "METADATA$ACTION" = 'INSERT'
-            GROUP BY "LF05D_COMBINED"."LF05D_LINK", "LF05D_COMBINED"."SOURCE"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_LF05D_COMBINED') }} "VW_LF05D_COMBINED"
+            GROUP BY "VW_LF05D_COMBINED"."LF05D_LINK", "VW_LF05D_COMBINED"."SOURCE"
         name: LF05D_MAX_MIN_POST_COLLECTION
         noLinkRefs: []
   name: LF05D_MAX_MIN_POST_COLLECTION

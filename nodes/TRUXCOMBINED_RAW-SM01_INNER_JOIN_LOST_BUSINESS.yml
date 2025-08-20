@@ -28,8 +28,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 59e1e977-745c-4414-a49c-87a1dc61300c
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+              - columnCounter: 229a14a1-fedb-4e8b-841a-af278ed00224
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -42,8 +42,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: f5bcad2c-89fc-4793-bb31-4bcadd9adf33
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+              - columnCounter: 96763c51-a64a-45ba-a243-48c423587dad
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -56,8 +56,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 99268ac3-7290-487d-8f0f-48c07e7fd961
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+              - columnCounter: ae3ea914-244b-47b9-bea7-bb4e2c3433e7
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -70,9 +70,9 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 924ec332-edc5-448d-90f6-f72b87c5a1d0
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
-            transform: SUM("SM01_COMBINED"."SM01_AMNT")
+              - columnCounter: 584e5822-3189-4694-9cee-0e89f99b77e8
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: SUM("VW_SM01_COMBINED"."SM01_AMNT")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 45bcf4ee-b09c-4090-8f1d-b6919d691b6a
@@ -84,8 +84,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: a1615b68-b197-45ac-807b-ed79b2be982a
-                stepCounter: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
+              - columnCounter: a4a6723e-d5c8-4597-8e01-e693c94c9c63
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -111,35 +111,32 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SM01_COMBINED: 82475639-b6b5-4ad7-b9c0-98cffc711fcb
           STG_RM01_COMBINED: 32ce6923-348f-4d34-b5fb-0b436b70dd00
           STG_SL01_COMBINED: bca79830-e8c3-4f38-8874-9ddb49f1204b
+          VW_SM01_COMBINED: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: SM01_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: STG_RM01_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_SL01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_SM01_COMBINED
         join:
           joinCondition: |
-            FROM {{ ref('TRUXCOMBINED_RAW', 'SM01_COMBINED') }} "SM01_COMBINED"
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_SM01_COMBINED') }} "VW_SM01_COMBINED"
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM01_COMBINED') }} "STG_RM01_COMBINED"
                 ON SM01_ROUT = RM01_NUMB
-               AND SM01_COMBINED.SOURCE = STG_RM01_COMBINED.SOURCE
+               AND VW_SM01_COMBINED.SOURCE = STG_RM01_COMBINED.SOURCE
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SL01_COMBINED') }} "STG_SL01_COMBINED"
                 ON RM01_SLID = SL01_ID
                AND STG_RM01_COMBINED.SOURCE = STG_SL01_COMBINED.SOURCE
             
-            WHERE "Sort" = 1
-            AND "SM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
-            
             GROUP BY "SM01_CUST"
             , "SM01_SITE"
             , "SM01_SERV"
-            , "SM01_COMBINED"."SOURCE"
+            , "VW_SM01_COMBINED"."SOURCE"
         name: SM01_INNER_JOIN_LOST_BUSINESS
         noLinkRefs: []
   name: SM01_INNER_JOIN_LOST_BUSINESS

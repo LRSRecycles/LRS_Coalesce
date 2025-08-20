@@ -28,8 +28,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ba881bf8-2741-49b7-9012-8e2c5fa5d249
-                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+              - columnCounter: 03eda8eb-16ca-47bb-81c8-53b68eba6105
+                stepCounter: 44e95486-a8f0-4d30-bb85-328c1fbf2cd2
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -42,8 +42,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: d45515c6-5e54-4bc1-8dde-6589a5168487
-                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+              - columnCounter: 66768be4-a4a1-4efd-b2b8-2ad0ced30dca
+                stepCounter: 44e95486-a8f0-4d30-bb85-328c1fbf2cd2
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -56,9 +56,9 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3f0847f0-05b5-465f-8efd-3f1f255c5734
-                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
-            transform: MIN("RM05_COMBINED"."RM05_SEQ1")
+              - columnCounter: bddb7a69-bc52-449c-93d1-9a0646f9eb57
+                stepCounter: 44e95486-a8f0-4d30-bb85-328c1fbf2cd2
+            transform: MIN("VW_RM05_COMBINED"."RM05_SEQ1")
       - acceptedValues:
           strictMatch: true
           values: []
@@ -75,8 +75,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 536e3f9b-b868-4851-8de7-e5933e2d276a
-                stepCounter: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+              - columnCounter: 0d9c3e57-9ca9-419d-8938-5be2bcc5fc1a
+                stepCounter: 44e95486-a8f0-4d30-bb85-328c1fbf2cd2
             transform: ""
         systemColumnType: None
         transform: ""
@@ -84,19 +84,16 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          RM05_COMBINED: c9f0cfc1-14e2-43ce-9e3b-a4ac9f6ac743
+          VW_RM05_COMBINED: 44e95486-a8f0-4d30-bb85-328c1fbf2cd2
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: RM05_COMBINED
+            nodeName: VW_RM05_COMBINED
         join:
           joinCondition: |2-
-              FROM {{ ref('TRUXCOMBINED_RAW', 'RM05_COMBINED') }} "RM05_COMBINED"
-             WHERE "RM05_COMBINED"."SORT" = 1 
-               AND "RM05_COMBINED"."_FIVETRAN_DELETED" = FALSE 
-               AND "RM05_COMBINED"."METADATA$ACTION" = 'INSERT'
-             GROUP BY "RM05_COMBINED"."RM05_DATE", "RM05_COMBINED"."RM05_ROUT", "RM05_COMBINED"."SOURCE"
+              FROM {{ ref('TRUXCOMBINED_RAW', 'VW_RM05_COMBINED') }} "VW_RM05_COMBINED"
+             GROUP BY "VW_RM05_COMBINED"."RM05_DATE", "VW_RM05_COMBINED"."RM05_ROUT", "VW_RM05_COMBINED"."SOURCE"
         name: STG_AGGREGATE_DATE_ROUTE
         noLinkRefs: []
   name: STG_AGGREGATE_DATE_ROUTE

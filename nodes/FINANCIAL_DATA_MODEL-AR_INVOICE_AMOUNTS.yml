@@ -30,8 +30,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: e5423fef-7aee-4bf3-9b57-2e7e806b9a22
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: e1ec19bd-30e7-454c-aed7-6ac0d7afdc37
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -46,8 +46,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 09351083-f732-4f8a-801a-a2bc4f64bda7
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 8568f71c-72a2-4d9d-b72d-77d015cb273d
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -62,8 +62,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7b326805-baf1-47c8-9ed1-58caf894f91d
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 4ac15a5d-fb6a-4586-865c-c78e9e903c2a
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -78,8 +78,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: f78d0f7c-d4e1-474e-bff4-a887072d5695
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: bbcd619a-07d9-4a44-9530-b53fae8630dc
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -93,8 +93,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: d2971ee2-7bad-4ec7-aa04-519131f4de3f
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 943fd2c4-5535-4a80-b77d-da9b53eef6bf
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -108,8 +108,8 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3b7bb00d-8441-4567-bcd9-6aa73adb48dd
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: dab875e4-4530-4229-b1f5-b39a7d866d25
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -138,7 +138,7 @@ operation:
                                       
                                       ELSE "CUSTOMER_SITE_PREFERENCES"."Payment Terms" 
                                     END
-                      ,"DM01_COMBINED"."DM01_DATE")
+                      ,"VW_DM01_COMBINED"."DM01_DATE")
                   WHEN "VW_CUSTOMER_MASTER"."Customer Bill To" IN ('Separate (A/R Customer)','Consolidated') 
                   THEN DATEADD(DAY, CASE 
                                       WHEN "CUSTOMER_PREFERENCES"."Payment Terms 2" IS NULL 
@@ -146,8 +146,8 @@ operation:
                                       
                                       ELSE "CUSTOMER_PREFERENCES"."Payment Terms 2" 
                                     END     
-                      ,"DM01_COMBINED"."DM01_DATE")
-                  ELSE "DM01_COMBINED"."DM01_DATE" 
+                      ,"VW_DM01_COMBINED"."DM01_DATE")
+                  ELSE "VW_DM01_COMBINED"."DM01_DATE" 
               END
         systemColumnType: None
         transform: ""
@@ -165,8 +165,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7ceee4ba-fa87-4c5e-a8c0-fbad648ced91
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: b956ab57-aee3-4ef5-860b-b4cef61f91e6
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -187,7 +187,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\""
+            transform: "\"VW_DM01_COMBINED\".\"SOURCE\"||'-'||\"VW_DM01_COMBINED\".\"DM01_CUST\""
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -208,7 +208,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\"||'-'||\"DM01_COMBINED\".\"DM01_SITE\""
+            transform: "\"VW_DM01_COMBINED\".\"SOURCE\"||'-'||\"VW_DM01_COMBINED\".\"DM01_CUST\"||'-'||\"VW_DM01_COMBINED\".\"DM01_SITE\""
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -230,7 +230,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_ID\""
+            transform: "\"VW_DM01_COMBINED\".\"SOURCE\"||'-'||\"VW_DM01_COMBINED\".\"DM01_ID\""
         systemColumnType: None
         transform: ""
     enabledColumnTestIDs: []
@@ -238,9 +238,9 @@ operation:
       - aliases:
           CUSTOMER_PREFERENCES: 52e3dc99-9f19-4d86-a9b4-89bca60d3eef
           CUSTOMER_SITE_PREFERENCES: 828f44ad-9ea8-4f17-8021-698a7dd934d1
-          DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
           VW_CUSTOMER_MASTER: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+          VW_DM01_COMBINED: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
         customSQL:
           customSQL: ""
         dependencies:
@@ -253,30 +253,26 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CUSTOMER_SITE_PREFERENCES
           - locationName: TRUXCOMBINED_RAW
-            nodeName: DM01_COMBINED
+            nodeName: VW_DM01_COMBINED
         join:
-          joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
+          joinCondition: |2
+             FROM {{ ref('TRUXCOMBINED_RAW', 'VW_DM01_COMBINED') }} "VW_DM01_COMBINED"
             
              INNER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
-               ON "DM01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
+               ON "VW_DM01_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_SITE_PREFERENCES') }} "CUSTOMER_SITE_PREFERENCES"
-               ON "DM01_COMBINED"."DM01_CUST" = "CUSTOMER_SITE_PREFERENCES"."Customer Number"
-              AND "DM01_COMBINED"."DM01_SITE" = "CUSTOMER_SITE_PREFERENCES"."Site Number" 
-              AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_SITE_PREFERENCES"."SOURCE"
+               ON "VW_DM01_COMBINED"."DM01_CUST" = "CUSTOMER_SITE_PREFERENCES"."Customer Number"
+              AND "VW_DM01_COMBINED"."DM01_SITE" = "CUSTOMER_SITE_PREFERENCES"."Site Number" 
+              AND "VW_DM01_COMBINED"."SOURCE" = "CUSTOMER_SITE_PREFERENCES"."SOURCE"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_PREFERENCES') }} "CUSTOMER_PREFERENCES"
-               ON "DM01_COMBINED"."DM01_CUST" = "CUSTOMER_PREFERENCES"."Customer Number"
-              AND "DM01_COMBINED"."SOURCE" = "CUSTOMER_PREFERENCES"."SOURCE"
+               ON "VW_DM01_COMBINED"."DM01_CUST" = "CUSTOMER_PREFERENCES"."Customer Number"
+              AND "VW_DM01_COMBINED"."SOURCE" = "CUSTOMER_PREFERENCES"."SOURCE"
             
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_MASTER') }} "VW_CUSTOMER_MASTER"
-               ON "DM01_COMBINED"."DM01_CUST" = "VW_CUSTOMER_MASTER"."Customer Number"
-              AND "DM01_COMBINED"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
-            
-            WHERE "DM01_COMBINED"."Sort" = 1 
-              AND "DM01_COMBINED"."_FIVETRAN_DELETED" = FALSE 
-              AND "DM01_COMBINED"."METADATA$ACTION" = 'INSERT'
+               ON "VW_DM01_COMBINED"."DM01_CUST" = "VW_CUSTOMER_MASTER"."Customer Number"
+              AND "VW_DM01_COMBINED"."SOURCE" = "VW_CUSTOMER_MASTER"."Source"
         name: AR_INVOICE_AMOUNTS
         noLinkRefs: []
   name: AR_INVOICE_AMOUNTS

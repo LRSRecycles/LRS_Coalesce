@@ -768,20 +768,16 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          LM02_COMBINED: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+          VW_LM02_COMBINED: 68f75e19-cfe1-40f4-874e-fd866350e4c4
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: LM02_COMBINED
+            nodeName: VW_LM02_COMBINED
         join:
           joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'LM02_COMBINED') }} "LM02_COMBINED"
-            WHERE 
-                "LM02_COMBINED"."SORT" = 1
-                AND "LM02_COMBINED"."_FIVETRAN_DELETED" =FALSE 
-                AND "LM02_COMBINED"."LM02_OWN" = 2
-                AND "METADATA$ACTION" = 'INSERT'
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_LM02_COMBINED') }} "VW_LM02_COMBINED"
+            WHERE "VW_LM02_COMBINED"."LM02_OWN" = 2
         name: STG_POST_COLLECTIONS_DISPOSAL_TICKETS
         noLinkRefs: []
   name: STG_POST_COLLECTIONS_DISPOSAL_TICKETS

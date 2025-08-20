@@ -138,8 +138,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 09351083-f732-4f8a-801a-a2bc4f64bda7
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 8568f71c-72a2-4d9d-b72d-77d015cb273d
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
         systemColumnType: None
         transform: ""
@@ -159,8 +159,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: f78d0f7c-d4e1-474e-bff4-a887072d5695
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: bbcd619a-07d9-4a44-9530-b53fae8630dc
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
         systemColumnType: None
         transform: ""
@@ -180,8 +180,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: d2971ee2-7bad-4ec7-aa04-519131f4de3f
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 943fd2c4-5535-4a80-b77d-da9b53eef6bf
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
         systemColumnType: None
         transform: ""
@@ -201,9 +201,9 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3b7bb00d-8441-4567-bcd9-6aa73adb48dd
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
-            transform: MAX("DM01_COMBINED"."DM01_AMOUNT")
+              - columnCounter: dab875e4-4530-4229-b1f5-b39a7d866d25
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
+            transform: MAX("VW_DM01_COMBINED"."DM01_AMOUNT")
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -222,9 +222,9 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3b7bb00d-8441-4567-bcd9-6aa73adb48dd
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
-            transform: MIN("DM01_COMBINED"."DM01_AMOUNT")
+              - columnCounter: dab875e4-4530-4229-b1f5-b39a7d866d25
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
+            transform: MIN("VW_DM01_COMBINED"."DM01_AMOUNT")
         systemColumnType: None
         transform: ""
       - acceptedValues:
@@ -243,8 +243,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7ceee4ba-fa87-4c5e-a8c0-fbad648ced91
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: b956ab57-aee3-4ef5-860b-b4cef61f91e6
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
         systemColumnType: None
         transform: ""
@@ -255,9 +255,9 @@ operation:
           CM03_COMBINED: 2cc42f8b-439d-4d56-8885-e426b4ffc34c
           CM04_COMBINED: f47180be-fdce-4312-84ff-04027f8092c0
           CM19_COMBINED: eff228bf-ae85-4729-b262-adc8e690ab35
-          DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
           STG_CM05_COMBINED_MUNI_BILLING: 5a5e9610-ebc0-47e5-9c3b-15332ff9a39f
           STG_CM05_COMBINED_MUNI_ROUTING: 9ddbbe16-6d4b-44e2-a5dc-3093ed0200f9
+          VW_DM01_COMBINED: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
         customSQL:
           customSQL: ""
         dependencies:
@@ -268,11 +268,11 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM19_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: DM01_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CM05_COMBINED_MUNI_BILLING
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_CM05_COMBINED_MUNI_ROUTING
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_DM01_COMBINED
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM03_COMBINED') }} "CM03_COMBINED"
@@ -297,24 +297,22 @@ operation:
             AND "CM19_COMBINED"."CM19_SERV" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_SERV"
             AND "CM19_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
             
-            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
-            ON "DM01_COMBINED"."DM01_CUST" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
-            AND "DM01_COMBINED"."DM01_DATE" BETWEEN "CM19_COMBINED"."CM19_EFFD" AND "CM19_COMBINED"."CM19_BILL"
-            AND "DM01_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_DM01_COMBINED') }} "VW_DM01_COMBINED"
+            ON "VW_DM01_COMBINED"."DM01_CUST" = "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
+            AND "VW_DM01_COMBINED"."DM01_DATE" BETWEEN "CM19_COMBINED"."CM19_EFFD" AND "CM19_COMBINED"."CM19_BILL"
+            AND "VW_DM01_COMBINED"."SOURCE" = "STG_CM05_COMBINED_MUNI_BILLING"."SOURCE"
             
              WHERE "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_EDTE" IS NULL
-               AND "DM01_COMBINED"."Sort" = 1
-               AND "DM01_COMBINED"._fivetran_deleted = FALSE
             
              GROUP BY "STG_CM05_COMBINED_MUNI_ROUTING"."CM05_CUST"
             	 , "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CUST"
                  , "STG_CM05_COMBINED_MUNI_BILLING"."CM05_CYCL"
             	 , "CM19_COMBINED"."CM19_EFFD"
             	 , "CM19_COMBINED"."CM19_BILL"
-            	 , "DM01_COMBINED"."DM01_CUST"
-            	 , "DM01_COMBINED"."DM01_INVC"
-            	 , "DM01_COMBINED"."DM01_DATE"
-                 , "DM01_COMBINED"."SOURCE"
+            	 , "VW_DM01_COMBINED"."DM01_CUST"
+            	 , "VW_DM01_COMBINED"."DM01_INVC"
+            	 , "VW_DM01_COMBINED"."DM01_DATE"
+                 , "VW_DM01_COMBINED"."SOURCE"
         name: STG_MUNI_REVENUE
         noLinkRefs: []
   name: STG_MUNI_REVENUE

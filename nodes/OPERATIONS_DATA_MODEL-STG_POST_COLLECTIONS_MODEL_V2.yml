@@ -279,8 +279,8 @@ operation:
                 stepCounter: "0"
             transform: |-
               CASE 
-                  when UPPER("LF05D_COMBINED"."LF05D_BUOM") IN ('EA','TN','YD') 
-                  then UPPER("LF05D_COMBINED"."LF05D_BUOM")
+                  when UPPER("VW_LF05D_COMBINED"."LF05D_BUOM") IN ('EA','TN','YD') 
+                  then UPPER("VW_LF05D_COMBINED"."LF05D_BUOM")
                   ELSE "BLM06_COMBINED"."LM06_UOM2"
                END
         systemColumnType: None
@@ -305,9 +305,9 @@ operation:
                 stepCounter: "0"
             transform: |-
               CASE 
-                  when UPPER("LF05D_COMBINED"."LF05D_BUOM") IN ('EA','TN','YD') 
-                  then "LF05D_COMBINED"."LF05D_BQTY"
-                  else round(("BLM06_COMBINED"."LM06_FACT" * "LF05D_COMBINED"."LF05D_BQTY"),6)
+                  when UPPER("VW_LF05D_COMBINED"."LF05D_BUOM") IN ('EA','TN','YD') 
+                  then "VW_LF05D_COMBINED"."LF05D_BQTY"
+                  else round(("BLM06_COMBINED"."LM06_FACT" * "VW_LF05D_COMBINED"."LF05D_BQTY"),6)
                END
         systemColumnType: None
         transform: ""
@@ -374,7 +374,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "( \"LF05D_COMBINED\".\"LF05D_WEIO\" - \"LF05D_COMBINED\".\"LF05D_WEII\") "
+            transform: "( \"VW_LF05D_COMBINED\".\"LF05D_WEIO\" - \"VW_LF05D_COMBINED\".\"LF05D_WEII\") "
         systemColumnType: None
         transform: ""
       - appliedColumnTests: {}
@@ -711,44 +711,43 @@ operation:
       - aliases:
           BLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
           DLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
-          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
           STG_LF05H_COMBINED: ea50d874-5616-4407-a90a-cedcbdf8653f
           STG_LM04_COMBINED: f444d93a-cf72-4d04-bb6a-d32f667d27c3
           TLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+          VW_LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: LF05D_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_LF05H_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_LM04_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_LM06_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_LF05D_COMBINED
         join:
           joinCondition: |-
-            FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-            FULL OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05H_COMBINED') }} "STG_LF05H_COMBINED"
-            ON "LF05D_COMBINED"."LF05D_LINK" = "STG_LF05H_COMBINED"."LF05H_ID" 
-                AND "LF05D_COMBINED"."SOURCE" = "STG_LF05H_COMBINED"."SOURCE"
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_LF05D_COMBINED') }} "VW_LF05D_COMBINED"
+            INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05H_COMBINED') }} "STG_LF05H_COMBINED"
+            ON "VW_LF05D_COMBINED"."LF05D_LINK" = "STG_LF05H_COMBINED"."LF05H_ID" 
+                AND "VW_LF05D_COMBINED"."SOURCE" = "STG_LF05H_COMBINED"."SOURCE"
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} "STG_LM04_COMBINED" -- MATERIAL
-            ON "LF05D_COMBINED"."LF05D_MATL" = "STG_LM04_COMBINED"."LM04_CODE" 
-                AND "LF05D_COMBINED"."SOURCE"= "STG_LM04_COMBINED"."SOURCE"
+            ON "VW_LF05D_COMBINED"."LF05D_MATL" = "STG_LM04_COMBINED"."LM04_CODE" 
+                AND "VW_LF05D_COMBINED"."SOURCE"= "STG_LM04_COMBINED"."SOURCE"
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM06_COMBINED') }} "DLM06_COMBINED" -- DISPOSAL UNIT OF MEASURE
-            ON "LF05D_COMBINED"."LF05D_CUOM" = "DLM06_COMBINED"."LM06_UOM1" 
-                AND "LF05D_COMBINED"."SOURCE" = "DLM06_COMBINED"."SOURCE"
+            ON "VW_LF05D_COMBINED"."LF05D_CUOM" = "DLM06_COMBINED"."LM06_UOM1" 
+                AND "VW_LF05D_COMBINED"."SOURCE" = "DLM06_COMBINED"."SOURCE"
                 AND "DLM06_COMBINED"."LM06_UOM2" = 'TN'
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM06_COMBINED') }} "BLM06_COMBINED" -- BILLING UNIT OF MEASURE
-            ON "LF05D_COMBINED"."LF05D_BUOM" = "BLM06_COMBINED"."LM06_UOM1" 
-                AND "LF05D_COMBINED"."SOURCE" = "BLM06_COMBINED"."SOURCE"
+            ON "VW_LF05D_COMBINED"."LF05D_BUOM" = "BLM06_COMBINED"."LM06_UOM1" 
+                AND "VW_LF05D_COMBINED"."SOURCE" = "BLM06_COMBINED"."SOURCE"
                 AND "BLM06_COMBINED"."LM06_UOM2" = 'TN'
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM06_COMBINED') }} "TLM06_COMBINED" -- Tracking UNIT OF MEASURE
-            ON "LF05D_COMBINED"."LF05D_TUOM" = "TLM06_COMBINED"."LM06_UOM1" 
-                AND "LF05D_COMBINED"."SOURCE" = "TLM06_COMBINED"."SOURCE"
+            ON "VW_LF05D_COMBINED"."LF05D_TUOM" = "TLM06_COMBINED"."LM06_UOM1" 
+                AND "VW_LF05D_COMBINED"."SOURCE" = "TLM06_COMBINED"."SOURCE"
                 AND "TLM06_COMBINED"."LM06_UOM2" = 'TN'
             WHERE YEAR("STG_LF05H_COMBINED"."LF05H_DTEI") >= YEAR(CURRENT_DATE())-2
-            AND "LF05D_COMBINED"."SORT" = 1 AND "LF05D_COMBINED"."METADATA$ACTION" = 'INSERT' AND "LF05D_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: STG_POST_COLLECTIONS_MODEL_V2
         noLinkRefs: []
   name: STG_POST_COLLECTIONS_MODEL_V2

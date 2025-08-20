@@ -47,7 +47,7 @@ operation:
           - columnReferences:
               - columnCounter: 07aa1e81-e244-476c-8de7-d68df3460317
                 stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-            transform: MIN("LF05D_COMBINED"."LF05D_ID")
+            transform: MIN("VW_LF05D_COMBINED"."LF05D_ID")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3e6905c9-9e60-43b5-aac4-ae482f584997
@@ -66,19 +66,16 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
+          VW_LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
-            nodeName: LF05D_COMBINED
+            nodeName: VW_LF05D_COMBINED
         join:
-          joinCondition: |2-
-             FROM {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-            WHERE "SORT" = 1 
-              AND "_FIVETRAN_DELETED" = FALSE 
-              AND "METADATA$ACTION" = 'INSERT'
-            GROUP BY "LF05D_COMBINED"."SOURCE", "LF05D_COMBINED"."LF05D_LINK"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_LF05D_COMBINED') }} "VW_LF05D_COMBINED"
+            GROUP BY "VW_LF05D_COMBINED"."SOURCE", "VW_LF05D_COMBINED"."LF05D_LINK"
         name: STG_DISPOSAL_TICKET_FIRST_DETAIL
         noLinkRefs: []
   name: STG_DISPOSAL_TICKET_FIRST_DETAIL

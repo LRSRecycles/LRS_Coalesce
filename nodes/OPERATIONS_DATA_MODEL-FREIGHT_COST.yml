@@ -464,8 +464,8 @@ operation:
                 stepCounter: "0"
             transform: |-
               CASE 
-                WHEN "LF05H_COMBINED"."LF05H_INBOUND" = 1 THEN "LF05D_COMBINED"."LF05D_WEII" - "LF05D_COMBINED"."LF05D_WEIO"
-                ELSE "LF05D_COMBINED"."LF05D_WEIO" - "LF05D_COMBINED"."LF05D_WEII" 
+                WHEN "LF05H_COMBINED"."LF05H_INBOUND" = 1 THEN "VW_LF05D_COMBINED"."LF05D_WEII" - "VW_LF05D_COMBINED"."LF05D_WEIO"
+                ELSE "VW_LF05D_COMBINED"."LF05D_WEIO" - "VW_LF05D_COMBINED"."LF05D_WEII" 
               END
         systemColumnType: None
         transform: ""
@@ -510,7 +510,6 @@ operation:
     sourceMapping:
       - aliases:
           CR01_COMBINED: cda7522c-0429-40ef-8a6c-67b5bcd0d948
-          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
           LF05H_COMBINED: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
           LM01_COMBINED: 75646501-ee23-441a-91c1-fced667296c2
           LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
@@ -518,6 +517,7 @@ operation:
           STG_CARRIER_RATES: 2802e6e9-4687-469b-a0cb-92e40f7ae790
           STG_DISPOSAL_TICKET_FIRST_DETAIL: 9c379054-98cb-4227-836f-451c03176c12
           VW_CUSTOMER_MASTER: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+          VW_LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
         customSQL:
           customSQL: ""
         dependencies:
@@ -525,8 +525,6 @@ operation:
             nodeName: VW_CUSTOMER_MASTER
           - locationName: TRUXCOMBINED_RAW
             nodeName: CR01_COMBINED
-          - locationName: TRUXCOMBINED_RAW
-            nodeName: LF05D_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: LF05H_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -539,6 +537,8 @@ operation:
             nodeName: STG_CARRIER_RATES
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_DISPOSAL_TICKET_FIRST_DETAIL
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_LF05D_COMBINED
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'MP13_COMBINED') }} "MP13_COMBINED"
@@ -554,13 +554,13 @@ operation:
                ON "LF05H_COMBINED"."LF05H_ID" = "STG_DISPOSAL_TICKET_FIRST_DETAIL"."LF05D_LINK"
               AND "LF05H_COMBINED"."SOURCE" = "STG_DISPOSAL_TICKET_FIRST_DETAIL"."SOURCE"
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-               ON "STG_DISPOSAL_TICKET_FIRST_DETAIL"."LF05D_ID" = "LF05D_COMBINED"."LF05D_ID"
-              AND "STG_DISPOSAL_TICKET_FIRST_DETAIL"."SOURCE" = "LF05D_COMBINED"."SOURCE"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_LF05D_COMBINED') }} "VW_LF05D_COMBINED"
+               ON "STG_DISPOSAL_TICKET_FIRST_DETAIL"."LF05D_ID" = "VW_LF05D_COMBINED"."LF05D_ID"
+              AND "STG_DISPOSAL_TICKET_FIRST_DETAIL"."SOURCE" = "VW_LF05D_COMBINED"."SOURCE"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
-               ON "LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE"
-              AND "LF05D_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CARRIER_RATES') }} "STG_CARRIER_RATES"
                ON "MP13_COMBINED"."MP13_CARR" = "STG_CARRIER_RATES"."Carrier Rate UID"
@@ -578,10 +578,6 @@ operation:
               AND "LF05H_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "LM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CR01_COMBINED"."_FIVETRAN_DELETED" = FALSE
-            
-              AND "LF05D_COMBINED"."SORT" = 1 
-              AND "LF05D_COMBINED"."_FIVETRAN_DELETED" = FALSE 
-              AND "LF05D_COMBINED"."METADATA$ACTION" = 'INSERT'
         name: FREIGHT_COST
         noLinkRefs: []
   name: FREIGHT_COST

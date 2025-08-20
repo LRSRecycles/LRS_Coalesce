@@ -193,8 +193,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 09351083-f732-4f8a-801a-a2bc4f64bda7
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 8568f71c-72a2-4d9d-b72d-77d015cb273d
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
           - columnReferences:
               - columnCounter: 2995a465-fc96-4cc6-a5fc-6cb88b494cd6
@@ -219,8 +219,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7b326805-baf1-47c8-9ed1-58caf894f91d
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 4ac15a5d-fb6a-4586-865c-c78e9e903c2a
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
           - columnReferences: []
             transform: "0"
@@ -243,8 +243,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: f78d0f7c-d4e1-474e-bff4-a887072d5695
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: bbcd619a-07d9-4a44-9530-b53fae8630dc
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
           - columnReferences: []
             transform: ""
@@ -269,8 +269,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: d2971ee2-7bad-4ec7-aa04-519131f4de3f
-                stepCounter: 8e473efe-2de8-4255-bf7b-195f76a0318b
+              - columnCounter: 943fd2c4-5535-4a80-b77d-da9b53eef6bf
+                stepCounter: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
             transform: ""
           - columnReferences: []
             transform: ""
@@ -373,7 +373,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\""
+            transform: "\"VW_DM01_COMBINED\".\"SOURCE\"||'-'||\"VW_DM01_COMBINED\".\"DM01_CUST\""
           - columnReferences: []
             transform: "\"LF05H_COMBINED\".\"SOURCE\"||'-'||\"LF05H_COMBINED\".\"LF05H_CUST\""
           - columnReferences: []
@@ -397,7 +397,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: "\"DM01_COMBINED\".\"SOURCE\"||'-'||\"DM01_COMBINED\".\"DM01_CUST\"||'-'||\"DM01_COMBINED\".\"DM01_SITE\""
+            transform: "\"VW_DM01_COMBINED\".\"SOURCE\"||'-'||\"VW_DM01_COMBINED\".\"DM01_CUST\"||'-'||\"VW_DM01_COMBINED\".\"DM01_SITE\""
           - columnReferences: []
             transform: "\"LF05H_COMBINED\".\"SOURCE\"||'-'||\"LF05H_COMBINED\".\"LF05H_CUST\"||'-0'"
           - columnReferences: []
@@ -408,9 +408,9 @@ operation:
     sourceMapping:
       - aliases:
           CD02_COMBINED: 02655129-1956-4b02-af2d-78f83f5b43a3
-          DM01_COMBINED: 8e473efe-2de8-4255-bf7b-195f76a0318b
           STG_DM01P_PAYMENTS: 7d23db81-0212-4403-9535-94e1ccc07d62
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
+          VW_DM01_COMBINED: 3328e98e-fc5e-478a-a196-5f73ca83cb0f
         customSQL:
           customSQL: ""
         dependencies:
@@ -419,16 +419,16 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CD02_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: DM01_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: STG_DM01P_PAYMENTS
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_DM01_COMBINED
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM01P_PAYMENTS') }} "STG_DM01P_PAYMENTS" -- Invoice Payments and Adjustments
             
-             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'DM01_COMBINED') }} "DM01_COMBINED"
-               ON "STG_DM01P_PAYMENTS"."DM01P_LINK" = "DM01_COMBINED"."DM01_ID"
-              AND "STG_DM01P_PAYMENTS"."SOURCE" = "DM01_COMBINED"."SOURCE"
+             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_DM01_COMBINED') }} "VW_DM01_COMBINED"
+               ON "STG_DM01P_PAYMENTS"."DM01P_LINK" = "VW_DM01_COMBINED"."DM01_ID"
+              AND "STG_DM01P_PAYMENTS"."SOURCE" = "VW_DM01_COMBINED"."SOURCE"
             
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                ON "STG_DM01P_PAYMENTS"."DM01P_ADJR" = "CD02_COMBINED"."CD02_CODE"
@@ -438,10 +438,7 @@ operation:
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "STG_DM01P_PAYMENTS"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
             
-            WHERE "DM01_COMBINED"."_FIVETRAN_DELETED" = FALSE
-              AND "DM01_COMBINED"."Sort" = 1
-              AND "DM01_COMBINED"."METADATA$ACTION" = 'INSERT'
-              AND "CD02_COMBINED"."_FIVETRAN_DELETED" = FALSE
+            WHERE "CD02_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: MAIN_PART_1
         noLinkRefs: []
       - aliases:
@@ -468,15 +465,15 @@ operation:
                ON "STG_DM03_WITH_FILTER"."LF05H_FCTY" = "LF05H_COMBINED"."LF05H_FCTY"
               AND "STG_DM03_WITH_FILTER"."LF05H_NUMB" = "LF05H_COMBINED"."LF05H_NUMB"
               AND "STG_DM03_WITH_FILTER"."SOURCE" = "LF05H_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                ON "STG_DM03_WITH_FILTER"."DM03_TYPE" = "CD02_COMBINED"."CD02_CODE"
               AND "CD02_COMBINED"."CD02_TYPE" = 'P'
               AND "STG_DM03_WITH_FILTER"."SOURCE" = "CD02_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "STG_DM03_WITH_FILTER"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-            
+
             WHERE "LF05H_COMBINED"."_FIVETRAN_DELETED" = FALSE
               AND "CD02_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: MAIN_PART_2
@@ -497,12 +494,12 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'DM03_COMBINED') }} "DM03_COMBINED" -- Cash Receipts
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CD02_COMBINED') }} "CD02_COMBINED"
                ON "DM03_COMBINED"."DM03_TYPE" = "CD02_COMBINED"."CD02_CODE"
               AND "CD02_COMBINED"."CD02_TYPE" = 'P'
               AND "DM03_COMBINED"."SOURCE" = "CD02_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "DM03_COMBINED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
               

@@ -1171,36 +1171,6 @@ operation:
               - columnCounter: 1197c322-9921-4c9b-acaa-1402514b3d62
                 stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
             transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5301e4f0-26fd-4bac-827d-8414e9876438
-          stepCounter: 9b1bfc4b-d1df-4db7-8f29-cb7683f5b66e
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashDetails: null
-        name: SORT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: a6e05d0a-40fa-48e8-90a3-482fb3c17aeb
-                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: d3309199-529a-4f6b-9f08-90d734723c9a
-          stepCounter: 9b1bfc4b-d1df-4db7-8f29-cb7683f5b66e
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        hashDetails: null
-        name: METADATA$ACTION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: d1237bca-9efe-42b1-83bf-4e8bacae76b2
-                stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
-            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -1209,7 +1179,6 @@ operation:
           CD24_COMBINED: a2fd293d-0207-4b75-9de3-afe1d7f20e33
           CP01_COMBINED: 83f237e0-2bb1-4230-bef1-d6b54576823f
           C_CD04_COMBINED: e4e972fe-2b99-486d-9cdd-cbdab2810c96
-          LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
           LF05H_COMBINED: 598f6c67-8f48-4c37-85b4-ae7c7d47d5f5
           LF10D_COMBINED: 76898719-a3d7-4238-887e-6ad60ea26f04
           LF10H_COMBINED: 55a2bab6-637c-4144-aae0-877156879056
@@ -1217,6 +1186,7 @@ operation:
           LM04_COMBINED: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
           VC_CD04_COMBINED: e4e972fe-2b99-486d-9cdd-cbdab2810c96
           VV_LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+          VW_LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
           VW_LF05O_COMBINED: 7d644518-9cb4-45b2-b542-570cfd9ede78
           V_CD04_COMBINED: e4e972fe-2b99-486d-9cdd-cbdab2810c96
           WW_LM06_COMBINED: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
@@ -1231,8 +1201,6 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CP01_COMBINED
           - locationName: TRUXCOMBINED_RAW
-            nodeName: LF05D_COMBINED
-          - locationName: TRUXCOMBINED_RAW
             nodeName: LF05H_COMBINED
           - locationName: TRUXCOMBINED_RAW
             nodeName: LF10D_COMBINED
@@ -1245,30 +1213,32 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: LM06_COMBINED
           - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_LF05D_COMBINED
+          - locationName: TRUXCOMBINED_RAW
             nodeName: VW_LF05O_COMBINED
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'LF05H_COMBINED') }} "LF05H_COMBINED"
             
-             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LF05D_COMBINED') }} "LF05D_COMBINED"
-               ON "LF05H_COMBINED"."LF05H_ID" = "LF05D_COMBINED"."LF05D_LINK"
-              AND "LF05H_COMBINED"."SOURCE" = "LF05D_COMBINED"."SOURCE"
+             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_LF05D_COMBINED') }} "VW_LF05D_COMBINED"
+               ON "LF05H_COMBINED"."LF05H_ID" = "VW_LF05D_COMBINED"."LF05D_LINK"
+              AND "LF05H_COMBINED"."SOURCE" = "VW_LF05D_COMBINED"."SOURCE"
             
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LF10D_COMBINED') }} "LF10D_COMBINED"
-               ON "LF05D_COMBINED"."LF05D_RATEID" = "LF10D_COMBINED"."LF10D_ID"
-              AND "LF05D_COMBINED"."SOURCE" = "LF10D_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_RATEID" = "LF10D_COMBINED"."LF10D_ID"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "LF10D_COMBINED"."SOURCE"
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LF10H_COMBINED') }} "LF10H_COMBINED"
                ON "LF10D_COMBINED"."LF10D_LINK" = "LF10H_COMBINED"."LF10H_ID"
               AND "LF10D_COMBINED"."SOURCE" = "LF10H_COMBINED"."SOURCE"
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_LF05O_COMBINED') }} "VW_LF05O_COMBINED" 
-               ON "LF05D_COMBINED"."LF05D_ID" = "VW_LF05O_COMBINED"."LF05O_LINK"
-              AND "LF05D_COMBINED"."SOURCE" = "VW_LF05O_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_ID" = "VW_LF05O_COMBINED"."LF05O_LINK"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "VW_LF05O_COMBINED"."SOURCE"
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
-               ON "LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE"
-              AND "LF05D_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_MATL" = "LM04_COMBINED"."LM04_CODE"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD24_COMBINED') }} "CD24_COMBINED"
                ON "VW_LF05O_COMBINED"."LF05O_ORIG" = "CD24_COMBINED"."CD24_CODE"
@@ -1284,23 +1254,23 @@ operation:
               AND "CP01_COMBINED"."CP01_SITE" IS NULL
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "V_CD04_COMBINED" -- Tracking Unit of Measure -> VOLUME
-               ON "LF05D_COMBINED"."LF05D_TUOM" = "V_CD04_COMBINED"."CD04_CODE"
-              AND "LF05D_COMBINED"."SOURCE" = "V_CD04_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_TUOM" = "V_CD04_COMBINED"."CD04_CODE"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "V_CD04_COMBINED"."SOURCE"
               AND "V_CD04_COMBINED"."CD04_TYPE" = 2
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "C_CD04_COMBINED" -- Tracking Unit of Measure -> COUNT
-               ON "LF05D_COMBINED"."LF05D_TUOM" = "C_CD04_COMBINED"."CD04_CODE"
-              AND "LF05D_COMBINED"."SOURCE" = "C_CD04_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_TUOM" = "C_CD04_COMBINED"."CD04_CODE"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "C_CD04_COMBINED"."SOURCE"
               AND "C_CD04_COMBINED"."CD04_TYPE" = 3
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "VC_CD04_COMBINED" -- Confirmed Unit of Measure -> VOLUME
-               ON "LF05D_COMBINED"."LF05D_CUOM" = "VC_CD04_COMBINED"."CD04_CODE"
-              AND "LF05D_COMBINED"."SOURCE" = "VC_CD04_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_CUOM" = "VC_CD04_COMBINED"."CD04_CODE"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "VC_CD04_COMBINED"."SOURCE"
               AND "VC_CD04_COMBINED"."CD04_TYPE" = 2
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "CC_CD04_COMBINED" -- Confirmed Unit of Measure -> COUNT
-               ON "LF05D_COMBINED"."LF05D_CUOM" = "CC_CD04_COMBINED"."CD04_CODE"
-              AND "LF05D_COMBINED"."SOURCE" = "CC_CD04_COMBINED"."SOURCE"
+               ON "VW_LF05D_COMBINED"."LF05D_CUOM" = "CC_CD04_COMBINED"."CD04_CODE"
+              AND "VW_LF05D_COMBINED"."SOURCE" = "CC_CD04_COMBINED"."SOURCE"
               AND "CC_CD04_COMBINED"."CD04_TYPE" = 3
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD04_COMBINED') }} "W_CD04_COMBINED" -- 	Scale Unit of Measure
@@ -1313,17 +1283,14 @@ operation:
               AND "WW_LM06_COMBINED"."LM06_UOM2" = 'TN'
             
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "VV_LM06_COMBINED"
-               ON "VV_LM06_COMBINED"."SOURCE" = "LF05D_COMBINED"."SOURCE"
+               ON "VV_LM06_COMBINED"."SOURCE" = "VW_LF05D_COMBINED"."SOURCE"
               AND "VV_LM06_COMBINED"."LM06_UOM2" = 'YD' 
               AND "VV_LM06_COMBINED"."LM06_UOM1" = CASE 
                                                      WHEN "VC_CD04_COMBINED"."CD04_TYPE" = 2 
-                                                     THEN "LF05D_COMBINED"."LF05D_CUOM"
-                                                     ELSE "LF05D_COMBINED"."LF05D_TUOM"
+                                                     THEN "VW_LF05D_COMBINED"."LF05D_CUOM"
+                                                     ELSE "VW_LF05D_COMBINED"."LF05D_TUOM"
                                                    END
             
-            WHERE "LF05D_COMBINED"."SORT" = 1 
-              AND "LF05D_COMBINED"."_FIVETRAN_DELETED" = FALSE 
-              AND "LF05D_COMBINED"."METADATA$ACTION" = 'INSERT'
                                                    
         name: STG_ACTIVITY_REPORTING_CALCULATIONS
         noLinkRefs: []
