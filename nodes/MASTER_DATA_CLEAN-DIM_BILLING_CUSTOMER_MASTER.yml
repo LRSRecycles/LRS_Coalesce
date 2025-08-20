@@ -2361,6 +2361,34 @@ operation:
           - columnReferences: []
             transform: ""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c66fd1fd-ee93-4aee-9bfd-b7331fa7fe4c
+          stepCounter: 2fe3e393-d617-478b-9c49-48eb62265315
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Cycle Code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: LISTAGG(DISTINCT "Service"."Billing Cycle Code",', ')
+          - columnReferences: []
+            transform: LISTAGG(DISTINCT "Service"."Billing Cycle Code",', ')
+          - columnReferences:
+              - columnCounter: be64a143-b0b1-44d5-b738-374083f65087
+                stepCounter: 759bc5f9-222a-4182-9e9f-e6876459f8f8
+            transform: ""
+          - columnReferences: []
+            transform: LISTAGG(DISTINCT "BILLINGCYCLE_COMBINED"."BILLINGCYCLE",', ')
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
