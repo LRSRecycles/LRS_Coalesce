@@ -105,7 +105,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: LISTAGG(DISTINCT "STG_SL01_COMBINED"."SL01_NAME",' ,')
+            transform: LISTAGG(DISTINCT "STG_SL01_COMBINED"."SL01_NAME",' ,') WITHIN GROUP (ORDER BY "STG_SL01_COMBINED"."SL01_NAME")
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
