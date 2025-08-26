@@ -1,0 +1,99 @@
+fileVersion: 1
+id: b1edc2c5-222f-48ed-a9c7-71bb2316bad4
+name: CONTACT_EMAILS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab0aca40-e903-483a-a644-efb215890b62
+          stepCounter: b1edc2c5-222f-48ed-a9c7-71bb2316bad4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CC01_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6ca84e4e-903d-4536-b570-30e755c6616a
+                stepCounter: ce2c934c-baf6-409b-aed7-c187380a5dcc
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b894fef3-9ddf-490b-91fb-0c09c569c110
+          stepCounter: b1edc2c5-222f-48ed-a9c7-71bb2316bad4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CC01_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7c085c54-8d72-4b69-9cdf-7927cee487d3
+                stepCounter: ce2c934c-baf6-409b-aed7-c187380a5dcc
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 95819874-7e74-484a-b911-1031b3ff30f7
+          stepCounter: b1edc2c5-222f-48ed-a9c7-71bb2316bad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CC01_EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7547a7e7-fd1a-4174-96f3-294abfb0d1e6
+                stepCounter: ce2c934c-baf6-409b-aed7-c187380a5dcc
+            transform: LISTAGG(DISTINCT "STG_CC01_COMBINED"."CC01_EMAIL", ', ')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b7ede173-e97f-4f18-adbd-5b0b6a7928b4
+          stepCounter: b1edc2c5-222f-48ed-a9c7-71bb2316bad4
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d87509ad-cb50-473d-81a8-e74151c14bea
+                stepCounter: ce2c934c-baf6-409b-aed7-c187380a5dcc
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_CC01_COMBINED: ce2c934c-baf6-409b-aed7-c187380a5dcc
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CC01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CC01_COMBINED') }} "STG_CC01_COMBINED"
+            
+            GROUP BY ALL
+        name: CONTACT_EMAILS
+        noLinkRefs: []
+  name: CONTACT_EMAILS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

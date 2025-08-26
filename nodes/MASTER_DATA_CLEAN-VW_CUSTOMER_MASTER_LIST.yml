@@ -2530,11 +2530,32 @@ operation:
                 stepCounter: ae5e14fe-80ca-410d-b1bc-a8c958ac8890
             transform: ""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4cd17448-0c3e-4441-9021-a48c49f28d34
+          stepCounter: 75ca20d7-f699-49ee-b5d8-c7acec262cb9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Contact Emails
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "\"EMAIL\".\"CC01_EMAIL\""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           CONTACT: 9dc037f9-d537-4c69-9d32-cde0e2ed2295
+          EMAIL: b1edc2c5-222f-48ed-a9c7-71bb2316bad4
           MASTER_CUSTOMER_MASTER: ae5e14fe-80ca-410d-b1bc-a8c958ac8890
           TRUX_DATABASE_METADATA: c2e3b305-d522-488b-bbc6-6ade93cd3385
         customSQL:
@@ -2542,6 +2563,8 @@ operation:
         dependencies:
           - locationName: MASTER_DATA_CLEAN
             nodeName: TRUX_DATABASE_METADATA
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: CONTACT_EMAILS
           - locationName: TRUXCOMBINED_RAW
             nodeName: CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER
           - locationName: TRUXCOMBINED_RAW
@@ -2560,6 +2583,14 @@ operation:
                 OR "MASTER_CUSTOMER_MASTER"."Site No." = Contact.CM04_SITE
                  )
              AND "MASTER_CUSTOMER_MASTER"."SOURCE" = "CONTACT"."SOURCE"
+            
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CONTACT_EMAILS') }} Email
+              ON "MASTER_CUSTOMER_MASTER"."Customer No." = Email."CC01_CUST"
+             AND (
+                   "MASTER_CUSTOMER_MASTER"."Site No." IS NULL
+                OR "MASTER_CUSTOMER_MASTER"."Site No." = Email."CC01_SITE"
+                 )
+             AND "MASTER_CUSTOMER_MASTER"."SOURCE" = Email."SOURCE"
             
             GROUP BY ALL
         name: VW_CUSTOMER_MASTER_LIST
