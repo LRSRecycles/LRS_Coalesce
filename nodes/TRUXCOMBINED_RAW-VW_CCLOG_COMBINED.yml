@@ -229,20 +229,6 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: fcf03405-fddf-41e6-9cae-c7d4611c7b2e
-          stepCounter: 6f62da49-2576-4f7e-83f6-182cc66e9eb8
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        name: ADF_TIMESTAMP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5d3d8a96-a408-45b4-a5f7-6898473af878
-                stepCounter: bda0baa0-818d-4f5a-ae17-9ba271ecd780
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: 41f0b4ec-b4ad-41a6-9168-d7d60e657edc
           stepCounter: 6f62da49-2576-4f7e-83f6-182cc66e9eb8
         config: {}
@@ -318,14 +304,17 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CCLOG_COMBINED: bda0baa0-818d-4f5a-ae17-9ba271ecd780
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CCLOG_COMBINED
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'CCLOG_COMBINED') }} "CCLOG_COMBINED"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'CCLOG_COMBINED') }} "CCLOG_COMBINED"
+            WHERE "_FIVETRAN_DELETED" = FALSE
         name: VW_CCLOG_COMBINED
         noLinkRefs: []
   name: VW_CCLOG_COMBINED

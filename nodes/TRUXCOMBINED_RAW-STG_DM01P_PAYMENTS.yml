@@ -274,7 +274,7 @@ operation:
         join:
           joinCondition: |2-
               FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
-             WHERE "DM01P_COMBINED"."DM01P_TYPE" = 'P'
+             WHERE "DM01P_COMBINED"."DM01P_TYPE" = 'P' AND "DM01P_COMBINED"."_FIVETRAN_DELETED"=False
         name: STG_DM01P_PAYMENTS
         noLinkRefs: []
   name: STG_DM01P_PAYMENTS

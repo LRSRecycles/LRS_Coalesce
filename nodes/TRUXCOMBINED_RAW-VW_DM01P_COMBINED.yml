@@ -272,7 +272,9 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: DM01P_COMBINED
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'DM01P_COMBINED') }} "DM01P_COMBINED"
+            WHERE "_FIVETRAN_DELETED"=False
         name: VW_DM01P_COMBINED
         noLinkRefs: []
   name: VW_DM01P_COMBINED

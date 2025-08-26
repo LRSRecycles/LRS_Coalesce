@@ -75,20 +75,6 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: cd73fe10-730e-4b0f-aac7-3d5848f44efe
-          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        name: Sent Date
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 26b96996-596a-4334-a571-219bcfa0488e
-                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: 197a8394-7550-4919-9274-e33a87277b96
           stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
         config: {}
@@ -149,34 +135,20 @@ operation:
                 stepCounter: "0"
             transform: "\"EA01_COMBINED\".\"SOURCE\"|| '-' ||\"EA01_COMBINED\".\"EA01_DM01ID\""
         systemColumnType: None
-      - acceptedValues:
-          strictMatch: false
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f898c26f-f206-4b35-b87b-8df49ca148a8
-          stepCounter: d47d15cb-67f5-4735-8228-bf76ea5bc3f5
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        name: ADF_TIMESTAMP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: e1571e34-2d26-4ae5-b161-ddcde68b683f
-                stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
-            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          EA01_COMBINED: a82f2361-3c08-4c64-a7b7-2443b28e63de
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: EA01_COMBINED
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'EA01_COMBINED') }} "EA01_COMBINED"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'EA01_COMBINED') }} "EA01_COMBINED"
+            WHERE "_FIVETRAN_DELETED"=False
         name: VW_EA01_COMBINED
         noLinkRefs: []
   name: VW_EA01_COMBINED

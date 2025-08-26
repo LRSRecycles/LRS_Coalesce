@@ -75,20 +75,6 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 26b96996-596a-4334-a571-219bcfa0488e
-          stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        name: EA01_SDTE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 886c9245-04cd-4171-8843-f3bd987b1cfd
-                stepCounter: e2fa18ad-dc90-4da2-a0a0-1b7e4ac2e18f
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: 5112dab3-0f67-43b7-836b-c649411ccda6
           stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
         config: {}
@@ -133,22 +119,45 @@ operation:
           - columnReferences: []
             transform: ""
       - acceptedValues:
-          strictMatch: false
+          strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e1571e34-2d26-4ae5-b161-ddcde68b683f
+          columnCounter: c5d177e7-ea0f-4b81-8434-cde2f0ce1e27
           stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: BOOLEAN
+        defaultValue: ""
         description: ""
-        name: ADF_TIMESTAMP
+        keyColumnType: None
+        name: _FIVETRAN_DELETED
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2e6cea3a-3665-4a95-b512-60691db8ea42
+              - columnCounter: cbbb790e-c237-4eea-a6a7-da55b8e5fc81
                 stepCounter: e2fa18ad-dc90-4da2-a0a0-1b7e4ac2e18f
             transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dfccf311-cdfb-4f2a-8951-68626af6e35f
+          stepCounter: a82f2361-3c08-4c64-a7b7-2443b28e63de
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 58e5ef60-aedd-46e5-8a5e-cd0a7596bae4
+                stepCounter: e2fa18ad-dc90-4da2-a0a0-1b7e4ac2e18f
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
