@@ -1213,19 +1213,67 @@ operation:
                 stepCounter: becf5d54-6c39-4fc7-9462-7c72760dddd6
             transform: ""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a17fa95d-2035-41a5-ac8e-abc752713847
+          stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Cash On Demand Flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12fd140e-248a-4882-955b-3f9c1c21ba6c
+                stepCounter: becf5d54-6c39-4fc7-9462-7c72760dddd6
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8cb32fa0-0f34-413b-996b-299c4436deb3
+          stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Broker Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dd82ddfa-4125-4ea6-8029-0b2ffabc2411
+                stepCounter: b46b78c7-956f-484b-93f4-48110742484a
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           CUSTOMER_MASTER: becf5d54-6c39-4fc7-9462-7c72760dddd6
+          STG_BK01_COMBINED: b46b78c7-956f-484b-93f4-48110742484a
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: MASTER_DATA_CLEAN
             nodeName: CUSTOMER_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_BK01_COMBINED
         join:
           joinCondition: |2-
              FROM {{ ref('MASTER_DATA_CLEAN', 'CUSTOMER_MASTER') }} "CUSTOMER_MASTER"
+            
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_BK01_COMBINED') }} "STG_BK01_COMBINED"
+               ON "CUSTOMER_MASTER"."Broker" = "STG_BK01_COMBINED"."BK01_ID"
+              AND "CUSTOMER_MASTER"."Source" = "STG_BK01_COMBINED"."SOURCE"
+            
             WHERE "CUSTOMER_MASTER"."SYSTEM_CURRENT_FLAG" = 'Y'
         name: VW_CUSTOMER_MASTER
         noLinkRefs: []
