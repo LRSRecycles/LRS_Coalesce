@@ -245,7 +245,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: ROW_NUMBER() OVER (PARTITION BY CM09_CUST, CM09_SITE, IFNULL(CM09_SERV,0), CM09_MATL, IFNULL(CM09_UOM,''), IFNULL(CM09_DSTE,'') ORDER BY CM09_CUST, CM09_SITE, IFNULL(CM09_SERV,0), CM09_MATL, IFNULL(CM09_UOM,''), IFNULL(CM09_DSTE,''), IFNULL(CM09_EFFD,'2069-12-31') DESC)
+            transform: ROW_NUMBER() OVER (PARTITION BY SOURCE, CM09_CUST, CM09_SITE, IFNULL(CM09_SERV,0), CM09_MATL, IFNULL(CM09_UOM,''), IFNULL(CM09_DSTE,'') ORDER BY SOURCE, CM09_CUST, CM09_SITE, IFNULL(CM09_SERV,0), CM09_MATL, IFNULL(CM09_UOM,''), IFNULL(CM09_DSTE,''), IFNULL(CM09_EFFD,'2069-12-31') DESC)
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
@@ -260,7 +260,7 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CURRENT_MATERIAL_PRICING_INNER_JOIN') }} "CURRENT_MATERIAL_PRICING_INNER_JOIN"
-            
+
             WHERE CM09_EFFD <= GETDATE()
         name: GET_CURRENT_RATE_MATERIAL_PRICING
         noLinkRefs: []

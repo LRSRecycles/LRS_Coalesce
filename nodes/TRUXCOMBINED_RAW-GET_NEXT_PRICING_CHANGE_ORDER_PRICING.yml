@@ -203,7 +203,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: ROW_NUMBER() OVER (PARTITION BY CM19_CUST, CM19_SITE, CM19_SERV, CM19_ACTV ORDER BY CM19_CUST, CM19_SITE, CM19_SERV, CM19_ACTV, IFNULL(CM19_EFFD,'2069-12-31') ASC)
+            transform: ROW_NUMBER() OVER (PARTITION BY SOURCE, CM19_CUST, CM19_SITE, CM19_SERV, CM19_ACTV ORDER BY SOURCE, CM19_CUST, CM19_SITE, CM19_SERV, CM19_ACTV, IFNULL(CM19_EFFD,'2069-12-31') ASC)
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
