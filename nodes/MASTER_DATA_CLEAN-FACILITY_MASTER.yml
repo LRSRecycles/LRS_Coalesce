@@ -647,6 +647,26 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c17ca3d9-5518-45cf-92b5-dbd92ac4b85f
+          stepCounter: b8f592a9-e06f-42a7-955c-8eb8c33d25b0
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: IsLRSOwned
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CASE WHEN UPPER("LM01_COMBINED".LM01_NAME) LIKE '%LRS%' THEN TRUE ELSE FALSE END
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
