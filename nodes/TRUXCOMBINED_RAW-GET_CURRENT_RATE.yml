@@ -28,7 +28,7 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 841d5957-06ed-4237-ba09-d2bdac8ff508
+              - columnCounter: bb91c8c3-234f-4333-8579-c73dd7a9a2f5
                 stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
             transform: ""
       - appliedColumnTests: {}
@@ -42,7 +42,7 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: cb730e94-a297-4ee2-b7bd-0c885e3d89eb
+              - columnCounter: 2cfc6443-3f7f-4501-9c69-4d2e9a08dfcb
                 stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
             transform: ""
       - appliedColumnTests: {}
@@ -56,7 +56,7 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9880f325-a697-4e88-b083-3c0cf651964e
+              - columnCounter: f2115715-6c3e-41ab-916e-ba4502a5f384
                 stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
             transform: ""
       - appliedColumnTests: {}
@@ -70,7 +70,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 897b0e93-3aba-4436-8365-d42aa0b304a5
+              - columnCounter: a46750b0-5bf9-4cdc-b380-7803bbc890ab
                 stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
             transform: CASE WHEN "CM19_COMBINED"."CM19_RATE" IS NULL THEN "CM12_COMBINED"."CM12_RATE" ELSE "CM19_COMBINED"."CM19_RATE" END
       - appliedColumnTests: {}
@@ -84,7 +84,7 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: be0f0805-1d15-4e3a-a802-fc5081206ece
+              - columnCounter: a20be9c7-2cc7-4b83-90da-515a82e1d3b2
                 stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
             transform: ""
       - appliedColumnTests: {}
@@ -98,7 +98,7 @@ operation:
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 956daedf-a94a-47da-99b5-54f4a41adf95
+              - columnCounter: 7fff4bac-2295-421f-9bc0-89e1652da68a
                 stepCounter: eff228bf-ae85-4729-b262-adc8e690ab35
             transform: ""
       - appliedColumnTests: {}
@@ -140,7 +140,7 @@ operation:
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CM12_COMBINED') }} "CM12_COMBINED"
                 ON "CM19_COMBINED"."CM19_ACTV" = "CM12_COMBINED"."CM12_CODE"
                AND "CM19_COMBINED"."SOURCE" = "CM12_COMBINED"."SOURCE"
-            
+
             WHERE "CM19_COMBINED"."_FIVETRAN_DELETED" = FALSE
         name: GET_CURRENT_RATE
         noLinkRefs: []

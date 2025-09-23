@@ -19,35 +19,7 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 5a707f49-631d-40dc-820b-9d4c2a142c01
-          stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: CM23E_ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: d26a7a50-abfe-4288-b48e-1231fb47f603
-                stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: d0f313ee-4ddb-436e-82fd-914d3a515b4d
-          stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
-        config: {}
-        dataType: VARCHAR(2)
-        description: ""
-        name: CM23E_CODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5e5b77d0-22f2-4152-8b02-ff7f707711fa
-                stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 251067a6-362d-4456-a486-3c81d3f3898d
+          columnCounter: 686528cc-3eb4-49e6-b04f-5c06fbf23b63
           stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
         config: {}
         dataType: VARCHAR(80)
@@ -56,12 +28,40 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 125189d3-8dc5-420f-9507-640ab597cef4
+              - columnCounter: 89c64102-45f4-415d-81bc-9ea312e8f808
                 stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 356d44b4-4749-462d-8d9f-6ed2d499ca3d
+          columnCounter: 3e07554a-84e8-4595-9e66-b4043cfdf880
+          stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM23E_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4ee9630a-25d7-4719-8f07-f08c3a965750
+                stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad5bcb20-3522-403c-a683-391450666ee3
+          stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM23E_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4568ef0c-99be-4789-bf8c-d56fdeabdfd6
+                stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c07acfaa-b442-4a00-b3a2-ec744bf1513d
           stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
         config: {}
         dataType: BOOLEAN
@@ -70,12 +70,12 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 94d14462-eb4d-4eee-91b6-87cf1d904675
+              - columnCounter: 0141f8e7-31a6-4632-9b17-41229ad38032
                 stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 5adfafdc-bbc3-4fa1-b745-0bc7046364a2
+          columnCounter: d25428ee-9137-4d35-bb57-b0f38d3c9870
           stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
         config: {}
         dataType: TIMESTAMP_TZ(9)
@@ -84,12 +84,12 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 89990653-5bad-4ebe-9b2f-8624716ce2bb
+              - columnCounter: 972227ef-eb23-48aa-b418-0305ce0c8eed
                 stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: e9245afd-d63d-4312-b441-534e6c268808
+          columnCounter: ca7ba59e-ffdf-4500-9a0c-ece59db222d7
           stepCounter: 9234f298-fab9-4a67-a90a-2f1aa2683690
         config: {}
         dataType: VARCHAR
@@ -114,7 +114,7 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM23E_COMBINED') }} "CM23E_COMBINED"
-            
+
             WHERE "_FIVETRAN_DELETED" = FALSE
         name: STG_CM23E_COMBINED
         noLinkRefs: []

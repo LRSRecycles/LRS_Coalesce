@@ -705,19 +705,49 @@ operation:
                 stepCounter: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
             transform: ""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73a543f4-3c5d-4c70-9fe6-89d877728d15
+          stepCounter: 56ab6887-1fa1-4b96-905e-454bf2221168
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: IsIntercompany
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2-
+                CASE
+                  WHEN (
+                      "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Post Collection Tickets" IS NOT NULL
+                  )THEN TRUE
+                  ELSE FALSE
+                END
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           BLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
           DLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
+          STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY: 058045ec-90ae-4213-a442-28db01552d42
           STG_LF05H_COMBINED: ea50d874-5616-4407-a90a-cedcbdf8653f
           STG_LM04_COMBINED: f444d93a-cf72-4d04-bb6a-d32f667d27c3
+          STG_POST_COLLECTIONS_DISPOSAL_TICKETS: 335a729b-b952-45d9-a3d3-8b968a81e190
           TLM06_COMBINED: 38e1cb5e-70c3-4f2f-8276-682a588e995b
           VW_LF05D_COMBINED: 15542181-ab9e-4ad7-a5ec-c0d5fdb18a51
         customSQL:
           customSQL: ""
         dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_LF05H_COMBINED
           - locationName: TRUXCOMBINED_RAW
@@ -725,9 +755,11 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: STG_LM06_COMBINED
           - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_POST_COLLECTIONS_DISPOSAL_TICKETS
+          - locationName: TRUXCOMBINED_RAW
             nodeName: VW_LF05D_COMBINED
         join:
-          joinCondition: |-
+          joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'VW_LF05D_COMBINED') }} "VW_LF05D_COMBINED"
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LF05H_COMBINED') }} "STG_LF05H_COMBINED"
             ON "VW_LF05D_COMBINED"."LF05D_LINK" = "STG_LF05H_COMBINED"."LF05H_ID" 
@@ -747,7 +779,13 @@ operation:
             ON "VW_LF05D_COMBINED"."LF05D_TUOM" = "TLM06_COMBINED"."LM06_UOM1" 
                 AND "VW_LF05D_COMBINED"."SOURCE" = "TLM06_COMBINED"."SOURCE"
                 AND "TLM06_COMBINED"."LM06_UOM2" = 'TN'
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_POST_COLLECTIONS_DISPOSAL_TICKETS') }} "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"
+                ON "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_LF05ID"="STG_LF05H_COMBINED"."LF05H_ID" AND "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."SOURCE"= "STG_LF05H_COMBINED"."SOURCE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY') }} "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY" -- Intercompany tickets
+                ON "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Collections Tickets" = "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_NUMB"
+                AND ABS(DATEDIFF(DAY, "STG_COLLECTIONS_DISPOSAL_TICKETS_INTERCOMPANY"."Collections Date", "STG_POST_COLLECTIONS_DISPOSAL_TICKETS"."LM02_DATE")) <=7    
             WHERE YEAR("STG_LF05H_COMBINED"."LF05H_DTEI") >= YEAR(CURRENT_DATE())-2
+            GROUP BY ALL -- dedup caused by STG_POST_COLLECTIONS_DISPOSAL_TICKETS join
         name: STG_POST_COLLECTIONS_MODEL_V2
         noLinkRefs: []
   name: STG_POST_COLLECTIONS_MODEL_V2

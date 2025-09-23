@@ -1,5 +1,5 @@
 fileVersion: 1
-id: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+id: a49a1034-cd54-4a32-bb54-4328f5866008
 name: STG_CM24_COMBINED
 operation:
   config:
@@ -19,50 +19,78 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 79a88d5e-e407-4e87-9ea4-67115cb0e091
-          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+          columnCounter: d070c238-07e7-4243-851f-99a639764e78
+          stepCounter: a49a1034-cd54-4a32-bb54-4328f5866008
         config: {}
-        dataType: VARCHAR(40)
+        dataType: VARCHAR(80)
         description: ""
         name: CM24_CODE
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: e27d60c3-f4c2-4b77-9769-0004118aabbc
+              - columnCounter: 20fb24b6-54cd-4ab5-959e-dd3bf7d06b06
                 stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3d739aa4-ce1b-4467-8f6b-10244757320a
-          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+          columnCounter: 16ba7b85-83ec-4bf5-a5cd-a354fbce206b
+          stepCounter: a49a1034-cd54-4a32-bb54-4328f5866008
         config: {}
-        dataType: VARCHAR(40)
+        dataType: VARCHAR(80)
         description: ""
         name: CM24_DESC
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 23c0bba1-9409-4d9c-a2df-e224f664ee41
+              - columnCounter: d25d4fee-905d-4630-a6df-4c580bc8fef7
                 stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: b3876515-1d84-4d31-9b88-cef119f6b175
-          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+          columnCounter: 2823baf7-f454-4db6-b08e-159ecf0f319e
+          stepCounter: a49a1034-cd54-4a32-bb54-4328f5866008
         config: {}
-        dataType: VARCHAR(5)
+        dataType: BOOLEAN
         description: ""
         name: CM24_ACTIVE
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: bfcd022f-4b35-4054-8c50-13ce761be948
+              - columnCounter: 661ae796-3dd3-4355-8b18-27eb40a30b9a
                 stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 581233b8-c9ce-4607-b32c-e7825d6cb5d9
-          stepCounter: 1d3d3cf9-9146-46e9-ad45-c2d0c05b7237
+          columnCounter: c54633b2-c980-44f3-82c2-f3d6f4d937f8
+          stepCounter: a49a1034-cd54-4a32-bb54-4328f5866008
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ea533a86-4f21-4c69-8ab3-97a7f61a9cc0
+                stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 599f4cb0-134f-4e49-ab71-cde1bc8e9386
+          stepCounter: a49a1034-cd54-4a32-bb54-4328f5866008
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: de0229b3-b36e-4d24-8264-1da657517d86
+                stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a3c56121-6716-496b-b737-aa300d2cea6c
+          stepCounter: a49a1034-cd54-4a32-bb54-4328f5866008
         config: {}
         dataType: VARCHAR
         description: ""
@@ -84,8 +112,10 @@ operation:
           - locationName: TRUXCOMBINED_RAW
             nodeName: CM24_COMBINED
         join:
-          joinCondition: |
+          joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM24_COMBINED') }} "CM24_COMBINED"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
         name: STG_CM24_COMBINED
         noLinkRefs: []
   name: STG_CM24_COMBINED

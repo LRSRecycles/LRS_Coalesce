@@ -556,7 +556,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 46d7be6b-68f8-4a64-9ed7-6c65a76a9936
+              - columnCounter: ded44618-b47f-4b49-9bac-dd4b600b3f81
                 stepCounter: 74c396a1-115d-4a78-95a9-dbaa76ec42da
             transform: ""
         systemColumnType: None
@@ -576,7 +576,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3d986424-1cc6-40ce-a1fe-3e45c0f77ba1
+              - columnCounter: 7382ba0c-f44a-4410-b818-f871ab1f36cf
                 stepCounter: 8c284d79-9e66-4d8e-9537-cafcae4423fc
             transform: ""
         systemColumnType: None
@@ -3067,78 +3067,78 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED"
                 ON "STG_CM03_COMBINED_FILTERED"."CM03_CUST" = "STG_CM04_COMBINED"."CM04_CUST"
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "STG_CM04_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM05_COMBINED') }} "STG_CM05_COMBINED" -- Service Master
                 ON "STG_CM04_COMBINED".CM04_CUST = "STG_CM05_COMBINED".CM05_CUST
                AND "STG_CM04_COMBINED".CM04_SITE = "STG_CM05_COMBINED".CM05_SITE
                AND "STG_CM04_COMBINED"."SOURCE" = "STG_CM05_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM02_COMBINED') }} "STG_RM02_COMBINED" -- Routing Info
                 ON "STG_CM05_COMBINED".CM05_CUST = "STG_RM02_COMBINED".RM02_CUST
                AND "STG_CM05_COMBINED".CM05_SITE = "STG_RM02_COMBINED".RM02_SITE
                AND "STG_CM05_COMBINED".CM05_SERV = "STG_RM02_COMBINED".RM02_SERV
                AND "STG_CM05_COMBINED"."SOURCE" = "STG_RM02_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_RM01_COMBINED') }} "STG_RM01_COMBINED" -- Route Master
                 ON "STG_RM02_COMBINED".RM02_NUMB = "STG_RM01_COMBINED".RM01_NUMB
                AND "STG_RM02_COMBINED"."SOURCE" = "STG_RM01_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SL01_COMBINED') }} "STG_SL01_COMBINED" -- Route Master
                 ON "STG_RM01_COMBINED".RM01_SLID = "STG_SL01_COMBINED".SL01_ID
                AND "STG_RM01_COMBINED"."SOURCE" = "STG_SL01_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD35_COMBINED') }} AS cd35_cust -- Customer Invoice Action Codes
                 ON "STG_CM03_COMBINED_FILTERED".CM03_INVACTION = cd35_cust.CD35_CODE
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = cd35_cust."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD35_COMBINED') }} AS cd35_site -- Site Invoice Action Codes
                 ON "STG_CM04_COMBINED".CM04_INVACTION = cd35_site.CD35_CODE
                AND "STG_CM04_COMBINED"."SOURCE" = cd35_site."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD52_COMBINED') }} AS cd52_code -- Collection Agent Codes
                 ON "STG_CM03_COMBINED_FILTERED".CM03_COLLAGNT = cd52_code.CD52_CODE
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = cd52_code."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_BK01_COMBINED') }} "STG_BK01_COMBINED" -- Broker Codes
                 ON CM03_BROKE = BK01_ID
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "STG_BK01_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD09_COMBINED') }} AS cd09_cust -- Customer Tax Jurisdiction Codes
                 ON CM03_TXJU = cd09_cust.CD09_CODE
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = cd09_cust."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD09_COMBINED') }} AS cd09_site -- Site Tax Jurisdiction Codes
                 ON CM04_TXJU = cd09_site.CD09_CODE
                AND "STG_CM04_COMBINED"."SOURCE" = cd09_site."SOURCE" 
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD11_COMBINED') }} "STG_CD11_COMBINED"  -- Customer Type Codes
                 ON CM03_CUSTTYPE = CD11_CODE
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = "STG_CD11_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD03_COMBINED') }}  AS cd03_cust -- Customer Stop\Suspend Reason Codes
                 ON CM03_SUSREA = cd03_cust.CD03_CODE
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = cd03_cust."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD03_COMBINED') }} AS cd03_site -- Site Stop\Suspend Reason Codes
                 ON CM04_SUSREA = cd03_site.CD03_CODE
                AND "STG_CM04_COMBINED"."SOURCE" = cd03_site."SOURCE" 
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD07_COMBINED') }} AS cd07_cust -- Customer Sales Representative Codes
                 ON CM03_SREP = cd07_cust.CD07_CODE
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = cd07_cust."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD07_COMBINED') }} AS cd07_site -- Site Sales Representative Codes
                 ON CM04_SREP = cd07_site.CD07_CODE
               AND "STG_CM04_COMBINED"."SOURCE" = cd07_site."SOURCE"  
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CC01_COMBINED') }}  AS cc01_cust -- Customer Contacts
                 ON CM03_CONT = cc01_cust.CC01_NUM
                AND "STG_CM03_COMBINED_FILTERED"."SOURCE" = cc01_cust."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CC01_COMBINED') }}  AS cc01_site -- Site Contacts
                 ON CM04_CONT = cc01_site.CC01_NUM
               AND "STG_CM04_COMBINED"."SOURCE" = cc01_site."SOURCE"  
@@ -3158,7 +3158,7 @@ operation:
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD50_COMBINED') }} "STG_CD50_COMBINED" -- Service Category Codes
                 ON CD50_CODE = CM05_CTG
                AND "STG_CD50_COMBINED"."SOURCE" = "STG_CM05_COMBINED"."SOURCE"
-            
+
               LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD03_COMBINED') }} AS cd03_serv -- Stop\Suspend Reason Codes
                 ON CM05_ECOD = cd03_serv.CD03_CODE
                AND "STG_CM05_COMBINED"."SOURCE" = cd03_serv."SOURCE"
@@ -3167,7 +3167,7 @@ operation:
                 ON CP01_CUST = CM03_CUST
                AND CP01_SITE IS NULL
                AND "STG_CP01_COMBINED_FILTERED"."SOURCE" = "STG_CM03_COMBINED_FILTERED"."SOURCE"
-            
+
              GROUP BY ALL
         name: CUSTOMER_MASTER_MASTER_LIST
         noLinkRefs: []

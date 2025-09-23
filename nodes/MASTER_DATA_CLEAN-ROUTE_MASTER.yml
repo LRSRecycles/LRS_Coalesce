@@ -487,7 +487,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 29e98454-68c4-4414-8685-8bae91617e75
+              - columnCounter: e660d153-0ba3-4a68-93b4-d13d13caca17
                 stepCounter: d1220fe5-c7b7-4bb4-9a94-fc3d3c6e1c27
             transform: ""
           - columnReferences:
@@ -722,23 +722,23 @@ operation:
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CD14_COMBINED') }} "CD14_COMBINED"
                ON "RM01_COMBINED"."RM01_TYPE" = "CD14_COMBINED"."CD14_CODE" 
               AND "RM01_COMBINED"."SOURCE" = "CD14_COMBINED"."SOURCE"
-            
+
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'RM04_COMBINED') }} "RM04_COMBINED"
                ON "RM01_COMBINED"."RM01_DRIV" = "RM04_COMBINED"."RM04_NUMB" 
               AND "RM01_COMBINED"."SOURCE" = "RM04_COMBINED"."SOURCE"
-            
+
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'TR01_COMBINED') }} "TR01_COMBINED"
                ON "RM01_COMBINED"."RM01_TRUK" = "TR01_COMBINED"."TR01_NUMB" 
               AND "RM01_COMBINED"."SOURCE" = "TR01_COMBINED"."SOURCE"
-            
+
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
                ON "RM01_COMBINED"."RM01_FAC" = "LM01_COMBINED"."LM01_DSTE" 
               AND "RM01_COMBINED"."SOURCE" = "LM01_COMBINED"."SOURCE"
-            
+
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'LM04_COMBINED') }} "LM04_COMBINED"
                ON "RM01_COMBINED"."RM01_MATL" = "LM04_COMBINED"."LM04_CODE" 
               AND "RM01_COMBINED"."SOURCE" = "LM04_COMBINED"."SOURCE"
-            
+
              LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_SL01_COMBINED') }} "STG_SL01_COMBINED"
                ON "RM01_COMBINED"."RM01_SLID" = "STG_SL01_COMBINED"."SL01_ID"
               AND "RM01_COMBINED"."SOURCE" = "STG_SL01_COMBINED".SOURCE

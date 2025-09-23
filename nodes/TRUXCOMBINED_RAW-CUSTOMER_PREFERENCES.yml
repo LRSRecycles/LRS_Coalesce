@@ -29,7 +29,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 46e0f011-dd1c-4797-a27a-fb31ff398208
+              - columnCounter: 00eeefd4-4f3b-4692-a97b-21e0619cabe1
                 stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
       - acceptedValues:
@@ -48,7 +48,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1ce67849-b0c4-4c59-8d6d-ffebb21fa276
+              - columnCounter: 9f3f4164-142a-421a-8fc5-23cac3e6b4d7
                 stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
         systemColumnType: None
@@ -68,9 +68,7 @@ operation:
         name: Payment Terms 2
         nullable: true
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: e9cabe8f-b8d0-4cfc-a326-be6f5d6da0c3
-                stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
+          - columnReferences: []
             transform: |-
               CASE 
                 WHEN "STG_CP01_COMBINED_FILTERED"."CP01_PAYTERMS" IS NULL 
@@ -93,7 +91,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 40cbe3dd-6aec-484e-9f1e-a33d928e4f62
+              - columnCounter: 57c25ad2-cf7b-4bff-a37e-40f3876fd5ba
                 stepCounter: b527731c-69d1-434c-9076-a2ff49859bf4
             transform: ""
     cteString: ""
@@ -114,7 +112,7 @@ operation:
              FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CP01_COMBINED_FILTERED') }} "STG_CP01_COMBINED_FILTERED"
              LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "STG_CP01_COMBINED_FILTERED"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-            
+
             WHERE "STG_CP01_COMBINED_FILTERED"."CP01_SITE" IS NULL 
         name: CUSTOMER_PREFERENCES
         noLinkRefs: []

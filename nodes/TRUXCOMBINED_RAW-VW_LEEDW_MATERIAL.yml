@@ -1,0 +1,124 @@
+fileVersion: 1
+id: 05269f9d-1953-4dc1-8448-30c17ebafb3b
+name: VW_LEEDW_MATERIAL
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6695c2eb-04c9-4274-a205-d4b1c789785f
+          stepCounter: 05269f9d-1953-4dc1-8448-30c17ebafb3b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LEEDW_MATLID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 500cf918-2365-46f3-b0c8-b94eefe0b431
+                stepCounter: 6ad52fa5-3ee2-42a6-9728-f9cd5511eaef
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22025114-be07-48fb-af60-b729a35be6d6
+          stepCounter: 05269f9d-1953-4dc1-8448-30c17ebafb3b
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: LEEDW_MATL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c87af75e-cfe3-425e-af5e-0d04dc475659
+                stepCounter: 6ad52fa5-3ee2-42a6-9728-f9cd5511eaef
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b30eb378-b9e2-47da-b022-a5812e79df0b
+          stepCounter: 05269f9d-1953-4dc1-8448-30c17ebafb3b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: LEEDW_ACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 89b8c0b4-5fb9-419f-ae2f-c0882549cdb6
+                stepCounter: 6ad52fa5-3ee2-42a6-9728-f9cd5511eaef
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1c7e2f7-5e79-4c75-9dee-9397e7dcc7d2
+          stepCounter: 05269f9d-1953-4dc1-8448-30c17ebafb3b
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: LEEDW_DENSITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 839824d3-8aae-4345-b8bc-816859e5cd1f
+                stepCounter: 6ad52fa5-3ee2-42a6-9728-f9cd5511eaef
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ae267d59-ed7f-4fd8-8d09-65ff37e8be94
+          stepCounter: 05269f9d-1953-4dc1-8448-30c17ebafb3b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e7a3e871-c7b9-43aa-9474-1f2b6a87b166
+                stepCounter: 6ad52fa5-3ee2-42a6-9728-f9cd5511eaef
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0eeb2a0e-b3a7-4ddc-93b2-759f57ca0070
+          stepCounter: 05269f9d-1953-4dc1-8448-30c17ebafb3b
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72dd6864-ee79-4121-987e-7652329d61e7
+                stepCounter: 6ad52fa5-3ee2-42a6-9728-f9cd5511eaef
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          LEEDW_MATERIAL: 6ad52fa5-3ee2-42a6-9728-f9cd5511eaef
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXDATA_RAW
+            nodeName: LEEDW_MATERIAL
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXDATA_RAW', 'LEEDW_MATERIAL') }} "LEEDW_MATERIAL"
+            
+            WHERE "_FIVETRAN_DELETED" = FALSE
+        name: VW_LEEDW_MATERIAL
+        noLinkRefs: []
+  name: VW_LEEDW_MATERIAL
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

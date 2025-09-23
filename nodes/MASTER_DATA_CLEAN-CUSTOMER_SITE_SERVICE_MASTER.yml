@@ -380,7 +380,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 46d7be6b-68f8-4a64-9ed7-6c65a76a9936
+              - columnCounter: ded44618-b47f-4b49-9bac-dd4b600b3f81
                 stepCounter: 74c396a1-115d-4a78-95a9-dbaa76ec42da
             transform: ""
         systemColumnType: None
@@ -768,7 +768,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3d986424-1cc6-40ce-a1fe-3e45c0f77ba1
+              - columnCounter: 7382ba0c-f44a-4410-b818-f871ab1f36cf
                 stepCounter: 8c284d79-9e66-4d8e-9537-cafcae4423fc
             transform: ""
         systemColumnType: None
@@ -921,7 +921,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 698ec17a-9468-43e1-8a1a-a0c7a36f4f42
+              - columnCounter: 26b228d1-971f-4fa0-9830-fbf54dd0e87c
                 stepCounter: 4d57f46f-ef85-4768-b448-acd77154ee4e
             transform: ""
         systemColumnType: None
@@ -1179,35 +1179,35 @@ operation:
         join:
           joinCondition: |2
              FROM {{ ref('TRUXCOMBINED_RAW', 'CM05_COMBINED') }} "CM05_COMBINED"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD05_COMBINED') }} "STG_CD05_COMBINED"
                ON "CM05_COMBINED"."CM05_TYPE" = "STG_CD05_COMBINED"."CD05_CODE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_CD05_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD03_COMBINED') }} "STG_CD03_COMBINED"
                ON "CM05_COMBINED"."CM05_ECOD" = "STG_CD03_COMBINED"."CD03_CODE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_CD03_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD17_COMBINED') }} "STG_CD17_COMBINED"
                ON "CM05_COMBINED"."CM05_CYCL" = "STG_CD17_COMBINED"."CD17_CODE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_CD17_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD29_COMBINED') }} "STG_CD29_COMBINED"
                ON "CM05_COMBINED"."CM05_LOST" = "STG_CD29_COMBINED"."CD29_CODE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_CD29_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD50_COMBINED') }} "STG_CD50_COMBINED"
                ON "CM05_COMBINED"."CM05_CTG" = "STG_CD50_COMBINED"."CD50_CODE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_CD50_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED"
                ON "CM05_COMBINED"."CM05_FAC" = "STG_LM01_COMBINED"."LM01_DSTE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_LM01_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} "STG_LM04_COMBINED"
                ON "CM05_COMBINED"."CM05_MATL" = "STG_LM04_COMBINED"."LM04_CODE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_LM04_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM12_COMBINED') }} "STG_CM12_COMBINED"
                ON "CM05_COMBINED"."CM05_WDACTV" = "STG_CM12_COMBINED"."CM12_CODE" 
               AND "CM05_COMBINED"."SOURCE" = "STG_CM12_COMBINED"."SOURCE"

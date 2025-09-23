@@ -19,35 +19,7 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d26a7a50-abfe-4288-b48e-1231fb47f603
-          stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: CM23E_ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: b9ee5f35-a94d-400b-918a-2defc315d17a
-                stepCounter: cd08071a-f1d6-4f39-8468-002b3c5d1cda
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5e5b77d0-22f2-4152-8b02-ff7f707711fa
-          stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
-        config: {}
-        dataType: VARCHAR(2)
-        description: ""
-        name: CM23E_CODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8cd43037-7fe3-42b4-9de7-405db81ef629
-                stepCounter: cd08071a-f1d6-4f39-8468-002b3c5d1cda
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 125189d3-8dc5-420f-9507-640ab597cef4
+          columnCounter: 89c64102-45f4-415d-81bc-9ea312e8f808
           stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
         config: {}
         dataType: VARCHAR(80)
@@ -56,12 +28,40 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4d6265bc-5cff-4158-bc08-94636eb21c4d
-                stepCounter: cd08071a-f1d6-4f39-8468-002b3c5d1cda
+              - columnCounter: 2f70edc9-ba97-46e9-8bf3-1f1ce370f76d
+                stepCounter: 9866c950-8ddf-4a0d-9b2f-1ae5c9105c63
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 94d14462-eb4d-4eee-91b6-87cf1d904675
+          columnCounter: 4ee9630a-25d7-4719-8f07-f08c3a965750
+          stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: CM23E_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d8ed7a41-66ec-4058-8143-8de387fd1bc1
+                stepCounter: 9866c950-8ddf-4a0d-9b2f-1ae5c9105c63
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4568ef0c-99be-4789-bf8c-d56fdeabdfd6
+          stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: CM23E_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35f31c0d-7616-48e8-84ab-4dec522bc6c6
+                stepCounter: 9866c950-8ddf-4a0d-9b2f-1ae5c9105c63
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0141f8e7-31a6-4632-9b17-41229ad38032
           stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
         config: {}
         dataType: BOOLEAN
@@ -70,12 +70,12 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4188ca22-7f83-423e-85e8-a8827d614261
-                stepCounter: cd08071a-f1d6-4f39-8468-002b3c5d1cda
+              - columnCounter: 5d1cffa5-d6e0-4133-a262-b366c44e450c
+                stepCounter: 9866c950-8ddf-4a0d-9b2f-1ae5c9105c63
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 89990653-5bad-4ebe-9b2f-8624716ce2bb
+          columnCounter: 972227ef-eb23-48aa-b418-0305ce0c8eed
           stepCounter: 982db3e5-672e-463d-8a02-d0966b9c2423
         config: {}
         dataType: TIMESTAMP_TZ(9)
@@ -84,8 +84,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ca615896-e529-4a2c-8a43-05cc12cb3d00
-                stepCounter: cd08071a-f1d6-4f39-8468-002b3c5d1cda
+              - columnCounter: c8d5103f-5c6b-473f-b166-24a61d9ac70f
+                stepCounter: 9866c950-8ddf-4a0d-9b2f-1ae5c9105c63
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -107,14 +107,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CM23E: 9866c950-8ddf-4a0d-9b2f-1ae5c9105c63
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TRUX_RW_COMP_RAW
+          - locationName: TRUX_LR_COMP_RAW
             nodeName: CM23E
         join:
-          joinCondition: FROM {{ ref('TRUX_RW_COMP_RAW', 'CM23E') }} "CM23E"
+          joinCondition: FROM {{ ref('TRUX_LR_COMP_RAW', 'CM23E') }} "CM23E"
         name: CM23E_COMBINED
         noLinkRefs: []
   name: CM23E_COMBINED

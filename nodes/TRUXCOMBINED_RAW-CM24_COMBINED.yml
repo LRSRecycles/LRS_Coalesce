@@ -19,48 +19,73 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: e27d60c3-f4c2-4b77-9769-0004118aabbc
+          columnCounter: 20fb24b6-54cd-4ab5-959e-dd3bf7d06b06
           stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
         config: {}
-        dataType: VARCHAR(40)
+        dataType: VARCHAR(80)
         description: ""
-        hashDetails: null
         name: CM24_CODE
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: a641b793-9e03-4512-b907-4c0d7349b48e
-                stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
+              - columnCounter: ccc8690b-1f78-4889-bbc6-177704f75c6e
+                stepCounter: 8e7f3016-58e3-4fb0-9f6d-d5bb2341f3d3
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 23c0bba1-9409-4d9c-a2df-e224f664ee41
+          columnCounter: d25d4fee-905d-4630-a6df-4c580bc8fef7
           stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
         config: {}
-        dataType: VARCHAR(40)
+        dataType: VARCHAR(80)
         description: ""
-        hashDetails: null
         name: CM24_DESC
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: fcad17cc-e115-438f-986d-93c4af1a0d3d
-                stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
+              - columnCounter: 213833ec-1453-4248-83db-728d1d288d23
+                stepCounter: 8e7f3016-58e3-4fb0-9f6d-d5bb2341f3d3
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: bfcd022f-4b35-4054-8c50-13ce761be948
+          columnCounter: 661ae796-3dd3-4355-8b18-27eb40a30b9a
           stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
         config: {}
-        dataType: VARCHAR(5)
+        dataType: BOOLEAN
         description: ""
-        hashDetails: null
         name: CM24_ACTIVE
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 76abefa0-62e6-4065-9a6d-ba35e0cf3613
-                stepCounter: 0d31dd11-e365-433e-a215-0cf727e9ac3c
+              - columnCounter: 8b0b0cbd-fb22-4e24-a2fd-c130cb0f12fc
+                stepCounter: 8e7f3016-58e3-4fb0-9f6d-d5bb2341f3d3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ea533a86-4f21-4c69-8ab3-97a7f61a9cc0
+          stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e0edce2e-ce3d-42f8-a66a-11c153103cdd
+                stepCounter: 8e7f3016-58e3-4fb0-9f6d-d5bb2341f3d3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: de0229b3-b36e-4d24-8264-1da657517d86
+          stepCounter: 73124694-50d3-4d34-8d80-a62967bf4522
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1de15acb-f2f0-4a7d-9ad5-ddd5e00f208d
+                stepCounter: 8e7f3016-58e3-4fb0-9f6d-d5bb2341f3d3
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -82,14 +107,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CM24: 8e7f3016-58e3-4fb0-9f6d-d5bb2341f3d3
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TRUX_SH_COMP_RAW
+          - locationName: TRUX_LR_COMP_RAW
             nodeName: CM24
         join:
-          joinCondition: FROM {{ ref('TRUX_SH_COMP_RAW', 'CM24') }} "CM24"
+          joinCondition: FROM {{ ref('TRUX_LR_COMP_RAW', 'CM24') }} "CM24"
         name: CM24_COMBINED
         noLinkRefs: []
   name: CM24_COMBINED
