@@ -1,0 +1,326 @@
+fileVersion: 1
+id: 3b92a928-86df-42fb-b43a-8f43b190bf69
+name: VW_REPORT_LEED_CUSTOMER_ACTIVITIES
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 419f0c95-5bf4-43cd-8420-95bf13988a5c
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Cust Site
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2
+                TO_VARCHAR("STG_CM04_COMBINED"."CM04_CUST") || '.' || TO_VARCHAR(IFNULL("STG_CM04_COMBINED"."CM04_SITE"::NUMBER(38,0), 0))
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ded17b22-c18b-486a-92cb-b27f6b2142d4
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Cust Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4321ef61-0528-4ad1-a61a-03e3ac98bbef
+                stepCounter: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cc5fa8cf-deee-4140-ad6d-749f440634eb
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9e14b0aa-25cb-4bcf-bafb-b2458191b106
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c2584e4-515a-4f00-80cb-630b14035b69
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(512)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e71a396b-d885-4b2b-9fa5-ea4180f439a3
+                stepCounter: 0af6c022-441d-44b9-83d1-a27a9c20205f
+            transform: |2
+                UPPER(TRIM("STG_CM04_COMBINED"."CM04_ADD2")) || ', ' || UPPER(TRIM("STG_CM04_COMBINED"."CM04_CITY")) || '  ' || UPPER(TRIM("STG_CM04_COMBINED"."CM04_STAT"))
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9a328420-f32b-4bbc-b10b-15eff4a6a4a8
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Facility Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 61551ad1-5e2e-4335-88d2-aad2859ece9e
+                stepCounter: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8562b3f4-81c6-4605-9979-8e45534c09e9
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(512)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Facility Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2
+                UPPER(TRIM("STG_LM01_COMBINED"."LM01_STRT")) || ', ' || UPPER(TRIM("STG_LM01_COMBINED"."LM01_CITY")) || '  ' || UPPER(TRIM("STG_LM01_COMBINED"."LM01_STAT"))
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 07c97d82-e005-48d6-9471-26077f800ed9
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Ticket Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c15a4ae8-263e-45aa-8884-09e842b5e0c1
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c07fdf9d-3120-4993-abdc-823877a491b1
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(12)
+        description: ""
+        name: Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 827c7c65-ce0f-4cf5-be8f-bd6756ee532e
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f3543d9e-3fb4-4982-8975-4cc200c37158
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Material Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5cbf364a-637f-4384-93e2-a0a94e49e67a
+                stepCounter: f444d93a-cf72-4d04-bb6a-d32f667d27c3
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b2e2a15-1f49-4576-8b3f-42e1ef430248
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: NUMER(18,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Disposal Qty
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b23c5983-bbee-4c61-83c5-1c141d2cda3b
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 804d6f80-2baa-4552-b347-d2c6e9b0312a
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: Disposal UoM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d69223b6-1b86-48f4-a46b-1b00e5c9751d
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7806d1fd-a1dc-484a-8fd8-dd9743756bd4
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(120)
+        description: ""
+        name: BoL Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5187d1fc-f1a1-4350-89a6-13991d40f067
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a521252-fba5-4992-9ae2-434027bf7cb8
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(82)
+        description: ""
+        name: Carrier Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 57c73fa9-82b6-4b8b-940f-c3b67eaec281
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0882c6d1-744e-4ba6-be87-589a55bf5b88
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Notes
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7db5eae8-3c0b-4077-b166-2235c8fe4465
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+        systemColumnType: None
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9de8a990-3b03-4f57-8abe-68ea6f0712c3
+          stepCounter: 3b92a928-86df-42fb-b43a-8f43b190bf69
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 680c00e7-3392-4fb4-a12f-1880827e6ac6
+                stepCounter: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_CM03_COMBINED_FILTERED: f57f9f2a-dc66-4d45-931c-6bbaf73b3911
+          STG_CM04_COMBINED: 0af6c022-441d-44b9-83d1-a27a9c20205f
+          STG_LM01_COMBINED: b65904a9-d8e7-46c7-aad0-bed8d176dc3d
+          STG_LM04_COMBINED: f444d93a-cf72-4d04-bb6a-d32f667d27c3
+          VW_LM02_COMBINED: 68f75e19-cfe1-40f4-874e-fd866350e4c4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM03_COMBINED_FILTERED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_CM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_LM04_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_LM02_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_LM02_COMBINED') }} "VW_LM02_COMBINED"
+                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} "STG_LM01_COMBINED"
+                    ON "STG_LM01_COMBINED"."SOURCE"="VW_LM02_COMBINED"."SOURCE" AND "STG_LM01_COMBINED"."LM01_DSTE"="VW_LM02_COMBINED"."LM02_DSTE"
+                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM04_COMBINED') }} "STG_CM04_COMBINED"
+                    ON "STG_CM04_COMBINED"."SOURCE"="VW_LM02_COMBINED"."SOURCE" AND "STG_CM04_COMBINED"."CM04_CUST"="VW_LM02_COMBINED"."LM02_CUST" AND "STG_CM04_COMBINED"."CM04_SITE"="VW_LM02_COMBINED"."LM02_SITE"
+                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM03_COMBINED_FILTERED') }} "STG_CM03_COMBINED_FILTERED"
+                    ON "STG_CM03_COMBINED_FILTERED"."SOURCE"="STG_CM04_COMBINED"."SOURCE" AND "STG_CM03_COMBINED_FILTERED"."CM03_CUST"="STG_CM04_COMBINED"."CM04_CUST"
+                INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} "STG_LM04_COMBINED"
+                    ON "STG_LM04_COMBINED"."SOURCE"="VW_LM02_COMBINED"."SOURCE" AND "STG_LM04_COMBINED"."LM04_CODE"="VW_LM02_COMBINED"."LM02_MATL"
+            WHERE "STG_CM04_COMBINED"."CM04_LEED"=TRUE
+        name: VW_REPORT_LEED_CUSTOMER_ACTIVITIES
+        noLinkRefs: []
+  name: VW_REPORT_LEED_CUSTOMER_ACTIVITIES
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
