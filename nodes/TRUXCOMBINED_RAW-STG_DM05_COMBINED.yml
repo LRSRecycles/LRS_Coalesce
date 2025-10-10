@@ -293,8 +293,8 @@ operation:
                 stepCounter: 4d57f46f-ef85-4768-b448-acd77154ee4e
             transform: ""
           - columnReferences:
-              - columnCounter: ad69a1b7-710e-4308-9d3d-f884300ced9b
-                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+              - columnCounter: 26b228d1-971f-4fa0-9830-fbf54dd0e87c
+                stepCounter: 4d57f46f-ef85-4768-b448-acd77154ee4e
             transform: ""
           - columnReferences:
               - columnCounter: 5cbf364a-637f-4384-93e2-a0a94e49e67a
@@ -330,8 +330,8 @@ operation:
                 stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
             transform: ""
           - columnReferences:
-              - columnCounter: d3c1bc22-2443-4146-b630-466956556467
-                stepCounter: 629e5313-2385-4ef2-b113-2583d5d40b3c
+              - columnCounter: acf53449-45ac-4143-865d-af555ddc1d67
+                stepCounter: 2ccd9ba6-b55c-4cd1-9bd8-ac23aa5e4867
             transform: ""
           - columnReferences:
               - columnCounter: 687e4f22-0d7b-4057-abd6-978920938052
@@ -1161,21 +1161,21 @@ operation:
         join:
           joinCondition: |2
              FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM05A_COMBINED') }} "STG_DM05A_COMBINED"
-            
+
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
                ON "STG_DM05A_COMBINED"."DM05A_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "STG_DM05A_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_SM01_COMBINED') }} "VW_SM01_COMBINED"
                ON "STG_DM05A_COMBINED"."DM05A_TDTE" = "VW_SM01_COMBINED"."SM01_DATE"
               AND "STG_DM05A_COMBINED"."DM05A_ROUT" = "VW_SM01_COMBINED"."SM01_ROUT"
               AND "STG_DM05A_COMBINED"."DM05A_SEQU" = "VW_SM01_COMBINED"."SM01_SEQU"
               AND "STG_DM05A_COMBINED"."SOURCE" = "VW_SM01_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM12_COMBINED') }} "STG_CM12_COMBINED"
                ON "STG_DM05A_COMBINED"."DM05A_CODE" = "STG_CM12_COMBINED"."CM12_CODE"
               AND "STG_DM05A_COMBINED"."SOURCE" = "STG_CM12_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD02_COMBINED') }} "STG_CD02_COMBINED"
                ON "STG_DM05A_COMBINED"."DM05A_ADJR" = "STG_CD02_COMBINED"."CD02_CODE"
               AND "STG_CD02_COMBINED"."CD02_TYPE" = 'A'
@@ -1245,21 +1245,21 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('TRUXCOMBINED_RAW', 'STG_DM05L_COMBINED') }} "STG_DM05L_COMBINED"
-            
+
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_DM01_COMBINED_FILTERED') }} "STG_DM01_COMBINED_FILTERED"
                ON "STG_DM05L_COMBINED"."DM05L_LINK" = "STG_DM01_COMBINED_FILTERED"."Invoice UID"
               AND "STG_DM05L_COMBINED"."SOURCE" = "STG_DM01_COMBINED_FILTERED"."Source"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_LM02_COMBINED') }} "VW_LM02_COMBINED"
                ON "STG_DM05L_COMBINED"."DM05L_DSTE" = "VW_LM02_COMBINED"."LM02_DSTE"
               AND "STG_DM05L_COMBINED"."DM05L_TICK" = "VW_LM02_COMBINED"."LM02_NUMB"
               AND "STG_DM05L_COMBINED"."DM05L_DTID" = "VW_LM02_COMBINED"."LM02_ID"
               AND "STG_DM05L_COMBINED"."SOURCE" = "VW_LM02_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} "STG_LM04_COMBINED"
                ON "STG_DM05L_COMBINED"."DM05L_CODE" = "STG_LM04_COMBINED"."LM04_CODE"
               AND "STG_DM05L_COMBINED"."SOURCE" = "STG_LM04_COMBINED"."SOURCE"
-            
+
              LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CD02_COMBINED') }} "STG_CD02_COMBINED"
                ON "STG_DM05L_COMBINED"."DM05L_ADJR" = "STG_CD02_COMBINED"."CD02_CODE"
               AND "STG_CD02_COMBINED"."CD02_TYPE" = 'A'
