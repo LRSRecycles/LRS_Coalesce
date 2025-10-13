@@ -627,7 +627,7 @@ operation:
           columnCounter: de2df31c-bcd3-4ae7-9584-a863737728f9
           stepCounter: 75ca20d7-f699-49ee-b5d8-c7acec262cb9
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         description: ""
         name: Current Rate
         nullable: true
@@ -711,7 +711,7 @@ operation:
           columnCounter: d57321d4-7b83-4b1e-849f-e7ffae6c39b6
           stepCounter: 75ca20d7-f699-49ee-b5d8-c7acec262cb9
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         description: ""
         name: Prior Rate
         nullable: true
@@ -781,7 +781,7 @@ operation:
           columnCounter: 04060ea6-92e1-4235-bfbc-d07cca7f3efb
           stepCounter: 75ca20d7-f699-49ee-b5d8-c7acec262cb9
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         description: ""
         name: Next Rate
         nullable: true
@@ -2572,10 +2572,10 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'MASTER_CUSTOMER_MASTER') }} "MASTER_CUSTOMER_MASTER"
-            
+
             LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'TRUX_DATABASE_METADATA') }} "TRUX_DATABASE_METADATA"
                ON "MASTER_CUSTOMER_MASTER"."SOURCE" = "TRUX_DATABASE_METADATA"."SNOWFLAKE_NAME"
-            
+
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_CONTACT_LIST_CUSTOMER_MASTER') }} Contact
               ON "MASTER_CUSTOMER_MASTER"."Customer No." = Contact.CM04_CUST
              AND (
@@ -2583,7 +2583,7 @@ operation:
                 OR "MASTER_CUSTOMER_MASTER"."Site No." = Contact.CM04_SITE
                  )
              AND "MASTER_CUSTOMER_MASTER"."SOURCE" = "CONTACT"."SOURCE"
-            
+
             LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'CONTACT_EMAILS') }} Email
               ON "MASTER_CUSTOMER_MASTER"."Customer No." = Email."CC01_CUST"
              AND (
@@ -2591,7 +2591,7 @@ operation:
                 OR "MASTER_CUSTOMER_MASTER"."Site No." = Email."CC01_SITE"
                  )
              AND "MASTER_CUSTOMER_MASTER"."SOURCE" = Email."SOURCE"
-            
+
             GROUP BY ALL
         name: VW_CUSTOMER_MASTER_LIST
         noLinkRefs: []

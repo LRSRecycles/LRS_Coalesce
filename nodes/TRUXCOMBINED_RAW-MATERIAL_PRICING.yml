@@ -210,7 +210,7 @@ operation:
           columnCounter: cbb94d38-5b5d-44aa-87c9-a2328427b407
           stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,3)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -337,7 +337,7 @@ operation:
           columnCounter: 28d94cc9-66df-4c1d-a341-aa9b7d9bcd8f
           stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,3)
         description: ""
         name: Prior Rate
         nullable: true
@@ -431,7 +431,7 @@ operation:
           columnCounter: 29f01787-b9c6-469d-b15e-5d805a00d13b
           stepCounter: 84cb0fcd-a3aa-4683-a844-cfa512c3227f
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,3)
         description: ""
         name: Next Rate
         nullable: true
@@ -548,15 +548,15 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM09_MATERIAL_PRICING') }} t1
-            
+
             INNER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM04_COMBINED') }} LM04
             ON t1.CM09_MATL = LM04_CODE
             AND t1."SOURCE" = LM04."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_LM01_COMBINED') }} LM01
             ON IFNULL(t1.CM09_DSTE,'zzz') = LM01_DSTE
             AND t1."SOURCE" = LM01."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'CURRENT_MATERIAL_PRICING') }} CM09curr 
             ON  CM09curr.CM09_CUST = t1.CM09_CUST 
             AND CM09curr.CM09_SITE = t1.CM09_SITE
@@ -567,7 +567,7 @@ operation:
             AND IFNULL(CM09curr.CM09_UOM ,'') = IFNULL(t1.CM09_UOM,'')
             AND IFNULL(CM09curr.CM09_DSTE,'') = IFNULL(t1.CM09_DSTE,'') 
             AND "CM09CURR"."SOURCE" = t1."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'PRIOR_MATERIAL_PRICING') }} CM09prior 
             ON  CM09prior.CM09_CUST = t1.CM09_CUST 
             AND CM09prior.CM09_SITE = t1.CM09_SITE
@@ -577,7 +577,7 @@ operation:
             AND IFNULL(CM09prior.CM09_UOM ,'') = IFNULL(t1.CM09_UOM,'')
             AND IFNULL(CM09prior.CM09_DSTE,'') = IFNULL(t1.CM09_DSTE,'') 
             AND CM09prior."SOURCE" = t1."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'FUTURE_MATERIAL_PRICING') }} CM09next 
             ON  CM09next.CM09_CUST = t1.CM09_CUST 
             AND CM09next.CM09_SITE = t1.CM09_SITE
@@ -587,7 +587,7 @@ operation:
             AND IFNULL(CM09next.CM09_UOM ,'') = IFNULL(t1.CM09_UOM,'')
             AND IFNULL(CM09next.CM09_DSTE,'') = IFNULL(t1.CM09_DSTE,'') 
             AND CM09next."SOURCE" = t1."SOURCE"
-            
+
             ORDER BY t1.CM09_CUST, t1.CM09_SITE, t1.CM09_SERV, t1.CM09_MATL, t1.CM09_UOM, t1.CM09_DSTE
         name: MATERIAL_PRICING
         noLinkRefs: []

@@ -165,7 +165,7 @@ operation:
           columnCounter: 7ba70b81-3168-4d87-be2a-6e08ef08dc06
           stepCounter: a4edc779-b13a-40bc-9192-7e4031c63373
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -185,7 +185,7 @@ operation:
           columnCounter: 5e08e9a4-0ee7-4e16-8dda-d85dff7e1078
           stepCounter: a4edc779-b13a-40bc-9192-7e4031c63373
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -276,7 +276,7 @@ operation:
           columnCounter: c3e03974-5da0-4379-901b-5782ca9d0ac3
           stepCounter: a4edc779-b13a-40bc-9192-7e4031c63373
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         description: ""
         name: Prior Monthly Rate
         nullable: true
@@ -290,7 +290,7 @@ operation:
           columnCounter: 5972e67d-3401-414c-8a78-3c09b8b2b90b
           stepCounter: a4edc779-b13a-40bc-9192-7e4031c63373
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         description: ""
         name: Prior Rate
         nullable: true
@@ -360,7 +360,7 @@ operation:
           columnCounter: ac83f82e-4f76-4260-a404-2704ccc3fc15
           stepCounter: a4edc779-b13a-40bc-9192-7e4031c63373
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         description: ""
         name: Next Monthly Rate
         nullable: true
@@ -374,7 +374,7 @@ operation:
           columnCounter: 17b70e11-1a3b-4f86-b1a6-ca8115f9c7ab
           stepCounter: a4edc779-b13a-40bc-9192-7e4031c63373
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         description: ""
         name: Next Rate
         nullable: true
@@ -450,32 +450,32 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'CM19_ACTIVITY_PRICING') }} CM19
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM12_COMBINED') }} CM12
             ON CM19_ACTV = CM12_CODE
             AND CM19."SOURCE" = CM12."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'GET_CURRENT_PRICING') }} CM19curr 
             ON  CM19curr.CM19_ACTV = CM19.CM19_ACTV 
             AND CM19curr.CM19_CUST = CM19.CM19_CUST 
             AND CM19curr.CM19_SITE = CM19.CM19_SITE
             AND CM19curr.CM19_SERV = CM19.CM19_SERV
             AND CM19curr.SOURCE = CM19.SOURCE
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'GET_PRIOR_PRICING') }} CM19prior 
             ON  CM19prior.CM19_ACTV = CM19.CM19_ACTV 
             AND CM19prior.CM19_CUST = CM19.CM19_CUST 
             AND CM19prior.CM19_SITE = CM19.CM19_SITE
             AND CM19prior.CM19_SERV = CM19.CM19_SERV
             AND CM19prior.SOURCE = CM19.SOURCE
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'GET_NEXT_PRICING_CHANGE') }} CM19next 
             ON  CM19next.CM19_ACTV = CM19.CM19_ACTV 
             AND CM19next.CM19_CUST = CM19.CM19_CUST 
             AND CM19next.CM19_SITE = CM19.CM19_SITE
             AND CM19next.CM19_SERV = CM19.CM19_SERV
             AND CM19next.SOURCE = CM19.SOURCE
-            
+
             ORDER BY CM19.CM19_CUST, CM19.CM19_SITE, CM19.CM19_SERV, CM19.CM19_ACTV
         name: ACTIVITY_PRICING
         noLinkRefs: []

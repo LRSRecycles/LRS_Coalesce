@@ -655,7 +655,7 @@ operation:
           columnCounter: e09f15b5-b4b7-4b9d-b71c-47d46d437f9a
           stepCounter: ae5e14fe-80ca-410d-b1bc-a8c958ac8890
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -775,7 +775,7 @@ operation:
           columnCounter: 03721f53-7497-4a23-9213-72b0a4a93226
           stepCounter: ae5e14fe-80ca-410d-b1bc-a8c958ac8890
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -875,7 +875,7 @@ operation:
           columnCounter: ae29884c-7796-4389-bde6-0d8231593bc3
           stepCounter: ae5e14fe-80ca-410d-b1bc-a8c958ac8890
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(18,2)
         defaultValue: ""
         description: ""
         keyColumnType: None
@@ -2660,23 +2660,23 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('TRUXCOMBINED_RAW', 'CUSTOMER_MASTER_MASTER_LIST') }} "CUSTOMER_MASTER_MASTER_LIST"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'ACTIVITY_AND_MATERIAL_PRICING') }} p1 
              ON p1.RATE_CUST = "CUSTOMER_MASTER_MASTER_LIST"."Customer Number"
             AND p1.RATE_SITE = "CUSTOMER_MASTER_MASTER_LIST"."Site Number" 
             AND p1.RATE_SERV = "CUSTOMER_MASTER_MASTER_LIST"."Service Number"
             AND p1."SOURCE" = "CUSTOMER_MASTER_MASTER_LIST"."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'AGGREGATED_SURCHARGE_CUSTOMER_MASTER') }} SurCust 
              ON SurCust.CM03_CUST = "CUSTOMER_MASTER_MASTER_LIST"."Customer Number"
             AND IFNULL(SurCust.CM04_SITE,0) = 0
             AND SurCust."SOURCE" = "CUSTOMER_MASTER_MASTER_LIST"."SOURCE"
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'AGGREGATED_SURCHARGE_CUSTOMER_MASTER') }} SurSite 
              ON SurSite.CM03_CUST = "CUSTOMER_MASTER_MASTER_LIST"."Customer Number"
             AND SurSite.CM04_SITE = "CUSTOMER_MASTER_MASTER_LIST"."Site Number"
             AND SurSite.Source = "CUSTOMER_MASTER_MASTER_LIST".Source
-            
+
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'SITE_START_DATE') }} SiteSD 
              ON "CUSTOMER_MASTER_MASTER_LIST"."Customer Number" = SiteSD.CM19_CUST
             AND "CUSTOMER_MASTER_MASTER_LIST"."Site Number" = SiteSD.CM19_SITE
