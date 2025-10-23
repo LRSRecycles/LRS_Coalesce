@@ -665,19 +665,26 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: CASE WHEN UPPER("LM01_COMBINED".LM01_NAME) LIKE '%LRS%' THEN TRUE ELSE FALSE END
+            transform: NVL("VW_LRS_FACILITY"."IS_LRS", FALSE) OR "LM01_COMBINED"."LM01_NAME" ILIKE '%LRS%'
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          LM01_COMBINED: 75646501-ee23-441a-91c1-fced667296c2
+          VW_LRS_FACILITY: 261821a9-1a9a-4383-9471-e23c7716747d
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: LM01_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_LRS_FACILITY
         join:
-          joinCondition: FROM {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'LM01_COMBINED') }} "LM01_COMBINED"
+            LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_LRS_FACILITY') }} "VW_LRS_FACILITY"
+            ON UPPER("LM01_COMBINED"."LM01_DSTE")="VW_LRS_FACILITY"."FACILITY_CODE" AND UPPER("LM01_COMBINED"."LM01_NAME")="VW_LRS_FACILITY"."FACILITY_NAME"
         name: FACILITY_MASTER
         noLinkRefs: []
   name: FACILITY_MASTER
