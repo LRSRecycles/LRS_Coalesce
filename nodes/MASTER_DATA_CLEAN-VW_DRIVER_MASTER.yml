@@ -31,7 +31,11 @@ operation:
           - columnReferences:
               - columnCounter: d51e955b-9eca-4a57-9e93-a970a6734b6a
                 stepCounter: 940b0208-f219-48a1-b5d2-0731c88fefa9
-            transform: ""
+            transform: |-
+              COALESCE(
+                      CAST(TRY_CAST("Employee Number" AS NUMBER) AS VARCHAR),
+                      CAST("Employee Number" AS VARCHAR)
+                  )
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 8340e302-2692-4543-80ce-8ea92f5efa99
@@ -336,7 +340,8 @@ operation:
              FROM {{ ref('MASTER_DATA_CLEAN', 'DRIVER_MASTER') }} "DRIVER_MASTER"
             WHERE "SYSTEM_VERSION" = 1
               AND "SYSTEM_CURRENT_FLAG" = 'Y'
-              
+              AND "Active Flag" = TRUE
+              AND "SOURCE" IS NOT NULL
         name: VW_DRIVER_MASTER
         noLinkRefs: []
   name: VW_DRIVER_MASTER
