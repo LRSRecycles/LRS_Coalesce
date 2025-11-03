@@ -737,24 +737,62 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bbfec173-9f8c-45c5-94e8-d71b57da058c
+          stepCounter: d9c755dc-20c2-45ec-b70b-64791fab5ba4
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: WORKORDER_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CASE WHEN "STG_RM03_COMBINED"."RM03_WONU" IS NULL THEN "VW_SM01_COMBINED"."SM01_WONU" ELSE "STG_RM03_COMBINED"."RM03_WONU" END
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           BUOM_FACTORS: 1dd6a90f-e18e-4982-b14b-842b8ea5e4f4
+          STG_RM03_COMBINED: 93869c38-31b7-4ded-be60-8c56914cd618
           VW_DISPOSAL_TICKET_BILLING_NORMALIZED: b02458c7-720f-4fa9-9b43-341c3e099146
+          VW_SM01_COMBINED: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRUXCOMBINED_RAW
             nodeName: LM06_COMBINED
           - locationName: TRUXCOMBINED_RAW
+            nodeName: STG_RM03_COMBINED
+          - locationName: TRUXCOMBINED_RAW
             nodeName: VW_DISPOSAL_TICKET_BILLING_NORMALIZED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_SM01_COMBINED
         join:
           joinCondition: |-
             FROM {{ ref('TRUXCOMBINED_RAW', 'VW_DISPOSAL_TICKET_BILLING_NORMALIZED') }} "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"
             LEFT OUTER JOIN {{ref('TRUXCOMBINED_RAW', 'LM06_COMBINED') }} "BUOM_FACTORS"
                 ON "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."SOURCE" = "BUOM_FACTORS"."SOURCE" AND "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."BILLING_UOM"="BUOM_FACTORS"."LM06_UOM1" and "BUOM_FACTORS"."LM06_UOM2"='TN'
+            LEFT OUTER JOIN  {{ref('TRUXCOMBINED_RAW', 'VW_SM01_COMBINED') }} "VW_SM01_COMBINED" 
+                ON "VW_SM01_COMBINED"."SOURCE"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."SOURCE" 
+                    AND "VW_SM01_COMBINED"."SM01_DATE"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."TICKET_DATE" 
+                    AND "VW_SM01_COMBINED"."SM01_ROUT"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_NUMBER" 
+                    AND "VW_SM01_COMBINED"."SM01_SEQU"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1" 
+                    AND ("VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_2" IS NULL OR "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_2" ="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1")
+            LEFT OUTER JOIN  {{ref('TRUXCOMBINED_RAW', 'STG_RM03_COMBINED') }} "STG_RM03_COMBINED" 
+                ON "STG_RM03_COMBINED"."SOURCE"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."SOURCE"
+                    AND "STG_RM03_COMBINED"."RM03_DATE"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."TICKET_DATE" 
+                    AND "STG_RM03_COMBINED"."RM03_ROUT"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_NUMBER" 
+                    AND "STG_RM03_COMBINED"."RM03_SEQU"="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1" 
+                    AND ("VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_2" IS NULL OR "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_2" ="VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1")
         name: FCT_DISPOSAL_TICKET_BILLING
         noLinkRefs: []
   name: FCT_DISPOSAL_TICKET_BILLING
