@@ -398,6 +398,89 @@ operation:
             transform: ""
         systemColumnType: None
         transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3ef32db-8f1e-454e-a26c-77ba88524de9
+          stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+        config: {}
+        dataType: VARCHAR(200)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: workorder_key
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              {{ create_composite_key(
+                cols=[
+                  '"VW_SM01_COMBINED"."SOURCE"',
+                  '"VW_SM01_COMBINED"."SM01_WONU"',
+                  '"VW_SM01_COMBINED"."SM01_DATE"',
+                  '"VW_SM01_COMBINED"."SM01_ROUT"',
+                  '"VW_SM01_COMBINED"."SM01_SEQU"'
+                ],
+                fmts=[null, null, 'YYYYMMDD', null, null]
+              ) }}
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8ad0856d-3370-4045-ad91-1952878f9ecb
+          stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: customer_site_key
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: |
+              {{ create_composite_key(
+                cols=[
+                  '"VW_SM01_COMBINED"."SOURCE"',
+                  '"VW_SM01_COMBINED"."SM01_CUST"',
+                  '"VW_SM01_COMBINED"."SM01_SITE"'
+                ],
+                fmts=[null, null, null]
+              ) }}
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a547cc9b-34b0-4939-8ad4-4f342ad091cc
+          stepCounter: 1ceb9520-3ebf-41f0-9f15-6e9aa674243c
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: customer_key
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              {{ create_composite_key(
+                cols=[
+                  '"VW_SM01_COMBINED"."SOURCE"',
+                  '"VW_SM01_COMBINED"."SM01_CUST"'
+                ],
+                fmts=[null, null]
+              ) }}
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

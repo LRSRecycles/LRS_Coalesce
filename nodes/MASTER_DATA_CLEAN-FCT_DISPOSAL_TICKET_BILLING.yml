@@ -757,6 +757,37 @@ operation:
                 stepCounter: "0"
             transform: CASE WHEN "STG_RM03_COMBINED"."RM03_WONU" IS NULL THEN "VW_SM01_COMBINED"."SM01_WONU" ELSE "STG_RM03_COMBINED"."RM03_WONU" END
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc16dd63-f94e-42cc-8f89-e4a1e145bc4a
+          stepCounter: d9c755dc-20c2-45ec-b70b-64791fab5ba4
+        config: {}
+        dataType: VARCHAR(200)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: WORKORDER_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              {{ create_composite_key(
+                cols=[
+                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."SOURCE"','CASE WHEN "STG_RM03_COMBINED"."RM03_WONU" IS NULL
+                        THEN "VW_SM01_COMBINED"."SM01_WONU"
+                        ELSE "STG_RM03_COMBINED"."RM03_WONU" END',
+                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."TICKET_DATE"',
+                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_NUMBER"',
+                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1"'
+                ],
+                fmts=[null, null, 'YYYYMMDD', null, null]
+              ) }}
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

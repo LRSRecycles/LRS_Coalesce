@@ -1,6 +1,6 @@
 fileVersion: 1
 id: "1"
-macroString: |-
+macroString: |
   {% macro safe_divide(numerator, denominator, default='NULL') %}
     {#--
       Macro: safe_divide
@@ -89,6 +89,56 @@ macroString: |-
       {{ uprice }} AS DM05_UPRICE,
       {{ upriceuom }} AS DM05_UPRICEUOM,
       {{ source_table }}."SOURCE" AS SOURCE
+  {% endmacro %}
+
+  {#--
+    Macro: create_composite_key
+    Purpose:
+      Generate a standardized composite key by concatenating multiple columns or expressions
+      with a configurable separator. Supports optional per-column date or text formatting
+      through Snowflake’s TO_VARCHAR function.
+
+    Parameters:
+      - cols (list): List of column names or SQL expressions to combine.
+                     Each element should be passed as a Jinja string, e.g.
+                     '"TABLE"."COLUMN"' or 'CASE WHEN ... END'.
+      - fmts (list, optional): Optional list of Snowflake date/time format strings
+                               matching the order of `cols`. Set to 'YYYYMMDD' for dates,
+                               or NULL for columns that don’t need formatting.
+      - sep (string, optional): Separator used between concatenated values. Default is '-'.
+
+    Notes:
+      - Each value is wrapped with COALESCE(TO_VARCHAR(...), '') for safety.
+      - NULLs become empty strings; the final key has no trailing separator.
+      - Works with both quoted identifiers and complex SQL expressions.
+
+    Example:
+      {{ create_composite_key(
+          cols=[
+            '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."SOURCE"',
+            'CASE WHEN "STG_RM03_COMBINED"."RM03_WONU" IS NULL
+                  THEN "VW_SM01_COMBINED"."SM01_WONU"
+                  ELSE "STG_RM03_COMBINED"."RM03_WONU" END',
+            '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."TICKET_DATE"',
+            '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_NUMBER"',
+            '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1"'
+          ],
+          fmts=[null, null, 'YYYYMMDD', null, null]
+      ) }}
+  --#}
+
+  {% macro create_composite_key(cols=[], fmts=[], sep='-') %}
+  (
+    {%- for c in cols %}
+      {%- set fmt = (fmts[loop.index0] if fmts and fmts|length > loop.index0 else none) -%}
+      {%- if fmt %}
+        COALESCE(TO_VARCHAR({{ c }}, '{{ fmt }}'), '')
+      {%- else %}
+        COALESCE(TO_VARCHAR({{ c }}), '')
+      {%- endif %}
+      {%- if not loop.last %} || '{{ sep }}' || {% endif %}
+    {%- endfor %}
+  )
   {% endmacro %}
 name: macro
 type: Macro
