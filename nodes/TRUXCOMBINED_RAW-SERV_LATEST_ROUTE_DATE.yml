@@ -1,0 +1,113 @@
+fileVersion: 1
+id: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+name: SERV_LATEST_ROUTE_DATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 72a845ef-b9dd-46e1-8112-dde54ae4dec9
+          stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 229a14a1-fedb-4e8b-841a-af278ed00224
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5359e1fc-d155-4e5d-a852-fc47670f90dd
+          stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 96763c51-a64a-45ba-a243-48c423587dad
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb74e42c-c47b-4cee-9d81-44ed012c0674
+          stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ae3ea914-244b-47b9-bea7-bb4e2c3433e7
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: df352ed4-9905-462e-b8c0-8b9d8390873a
+          stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: SM01_DATE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7006c38d-a4e4-44a2-adcf-9c6dfd73eadd
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: MAX(SM01_DATE)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23c705b8-c3e5-439f-98b7-e4914cef7dc5
+          stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a4a6723e-d5c8-4597-8e01-e693c94c9c63
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          VW_SM01_COMBINED: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_SM01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_SM01_COMBINED') }} "VW_SM01_COMBINED"
+
+            GROUP BY ALL
+        name: SERV_LATEST_ROUTE_DATE
+        noLinkRefs: []
+  name: SERV_LATEST_ROUTE_DATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,126 @@
+fileVersion: 1
+id: 643d7e31-50d0-479a-9a21-aa3cf04d4ddd
+name: SERV_LATEST_ROUTE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61705422-7f03-4f79-88b7-cd3c6dea2811
+          stepCounter: 643d7e31-50d0-479a-9a21-aa3cf04d4ddd
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_CUST
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72a845ef-b9dd-46e1-8112-dde54ae4dec9
+                stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 55e4c515-c8ca-4812-bc2f-a83794911eeb
+          stepCounter: 643d7e31-50d0-479a-9a21-aa3cf04d4ddd
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_SITE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5359e1fc-d155-4e5d-a852-fc47670f90dd
+                stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e35dfa86-65ad-4f5a-b664-aa1d1d2d6029
+          stepCounter: 643d7e31-50d0-479a-9a21-aa3cf04d4ddd
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SM01_SERV
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cb74e42c-c47b-4cee-9d81-44ed012c0674
+                stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3982df8d-c5c8-47a4-88f4-303a06c6963d
+          stepCounter: 643d7e31-50d0-479a-9a21-aa3cf04d4ddd
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23c705b8-c3e5-439f-98b7-e4914cef7dc5
+                stepCounter: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5b6b341f-6751-48f3-ad1f-35a744fbd74e
+          stepCounter: 643d7e31-50d0-479a-9a21-aa3cf04d4ddd
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: SM01_ROUT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a9817756-8c88-4916-a127-d217ac764ff3
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: "\"SM01\".\"SM01_ROUT\""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SERV_LATEST_ROUTE_DATE: 8a8b8c12-baa9-4644-aa08-f2963cdd292d
+          SM01: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: SERV_LATEST_ROUTE_DATE
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_SM01_COMBINED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXCOMBINED_RAW', 'SERV_LATEST_ROUTE_DATE') }} "SERV_LATEST_ROUTE_DATE"
+            LEFT JOIN {{ ref('TRUXCOMBINED_RAW', 'VW_SM01_COMBINED') }} "SM01"
+                ON "SERV_LATEST_ROUTE_DATE"."SOURCE" = "SM01"."SOURCE"
+               AND "SERV_LATEST_ROUTE_DATE"."SM01_CUST" = "SM01"."SM01_CUST"
+               AND "SERV_LATEST_ROUTE_DATE"."SM01_SITE" = "SM01"."SM01_SITE"
+               AND "SERV_LATEST_ROUTE_DATE"."SM01_SERV" = "SM01"."SM01_SERV"
+               AND "SERV_LATEST_ROUTE_DATE"."SM01_DATE" = "SM01"."SM01_DATE"
+        name: SERV_LATEST_ROUTE
+        noLinkRefs: []
+  name: SERV_LATEST_ROUTE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
