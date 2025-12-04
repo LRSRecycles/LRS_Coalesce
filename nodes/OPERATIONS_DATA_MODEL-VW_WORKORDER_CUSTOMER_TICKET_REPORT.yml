@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 3511abfe-9e7f-460d-a113-559d7bda818c
-name: VW_WASTE_HARMONIC_CUSTOMER_REPORT
+name: VW_WORKORDER_CUSTOMER_TICKET_REPORT
 operation:
   config:
     insertStrategy: UNION
@@ -473,9 +473,9 @@ operation:
             WHERE "STG_CUSTOMER_SERVICE_STATISTICS"."Completed Date" IS NOT NULL
               AND "STG_CUSTOMER_SERVICE_STATISTICS"."Completed Date" >= DATEADD(month, -12, CURRENT_DATE)
               AND "STG_CUSTOMER_SERVICE_STATISTICS"."Work Order Number" > 0
-        name: VW_WASTE_HARMONIC_CUSTOMER_REPORT
+        name: VW_WORKORDER_CUSTOMER_TICKET_REPORT
         noLinkRefs: []
-  name: VW_WASTE_HARMONIC_CUSTOMER_REPORT
+  name: VW_WORKORDER_CUSTOMER_TICKET_REPORT
   overrideSQL: false
   schema: ""
   sqlType: View
