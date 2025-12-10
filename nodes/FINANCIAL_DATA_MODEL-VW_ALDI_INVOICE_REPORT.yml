@@ -39,6 +39,26 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
+          columnCounter: e03aca59-055c-4a1a-bafe-309c39f7e9ac
+          stepCounter: b5e251bf-27e9-4da1-a352-46f6fafa67af
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: INVOICE_MONTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
           columnCounter: 03008fb2-ea8a-4d2d-ba60-8b5e94c53d36
           stepCounter: b5e251bf-27e9-4da1-a352-46f6fafa67af
         config: {}
@@ -492,6 +512,7 @@ operation:
             )
             SELECT
             	id."Source" as SOURCE,
+            	id.invoice_month as INVOICE_MONTH,
                 site."Site Name" AS ALDI_ID,
                 transaction_date as TRANSACTION_DATE,
                 COALESCE(site."Address 3", site."Address 2") AS ADDRESS,
@@ -548,7 +569,7 @@ operation:
                 AND id."Service Number" = rd.RM02_SERV
                 AND id."Source" = rd.SOURCE
             WHERE
-                CHARGES > 0
+                CHARGES <> 0
             )
         dependencies: []
         join:
