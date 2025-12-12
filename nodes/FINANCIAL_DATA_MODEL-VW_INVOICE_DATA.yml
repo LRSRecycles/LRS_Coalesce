@@ -1,0 +1,724 @@
+fileVersion: 1
+id: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+name: VW_INVOICE_DATA
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: FINANCIAL_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a0b234b1-257e-44c1-a92c-67016a45d818
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Source
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fbe7a35f-ab6c-46be-b099-415819702cd1
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4eb98a5c-661e-4dc6-9b53-aa918b813732
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: Source_Customer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 066b7c07-2198-4d95-bfe7-86cb0bb5a48f
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5cb1c08d-cb70-4f8e-b15d-b0c1fb54ff42
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Record UID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c0859d9e-d5e1-4003-a011-e0aa46472276
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b6d03318-bb6c-4661-aec3-fa70090c0cf3
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(26)
+        description: ""
+        name: Invoice Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 695f2fda-4444-474d-ab8a-bf22dd5876c3
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 60569ecf-de65-4dcf-8d18-db0375cc4a6b
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Charge Type Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90470a73-a47c-436b-86b5-5353b4437ca6
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3d33223f-b3c8-477d-892a-f31193571a35
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Invoice Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 195b62b1-1eda-4dd3-a020-0ad6fec4468c
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb837662-c427-4270-88be-72a7f0f1d10b
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Billing Customer Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8e11b44-976e-424d-80c8-03850f00f3f3
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc01d382-3414-4bd5-88a3-fdb0b38c2263
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: Billing Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 465bb492-380f-4993-8ce3-05bf2a886bac
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b115d16-7d4c-471b-a9d3-2bb06abca5fc
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Service Site Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 76483a01-bf01-4aff-bf89-7593e8673df4
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec32dbee-e449-4e33-a99c-26be6890329d
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Service Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 82ff2db9-383a-4828-87bc-f0eafe43eff1
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e84b19b2-e9e7-4060-b496-2320cd720172
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: Transaction Date
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e8f938b7-0082-4eda-9307-a350325ef890
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f742acc4-291b-4822-9c75-7c1d24f0cb77
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: Amount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 95b069ad-b8ae-4755-998d-edf41a63ed75
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b05194f5-35a5-4870-bda2-07ee0b575503
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER(18,2)
+        description: ""
+        name: Quantity
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0cb02ad9-f8cb-4744-8726-a9d0227ff6a0
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d26c207e-7f5e-4b49-aced-ecc4e175530e
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Activity Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e75ac2fd-8ce4-4cf7-86c0-accbb64ee087
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3acbb0b3-7eeb-496c-b811-32f6ad8a9e3b
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Ticket Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f32f51ff-81e9-40cf-a393-c166ac0f504a
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d0a6bdb-a1ec-45b4-8baa-cad480fb83ea
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Disposal Unique Identifier
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fcea4e3b-8761-4cbb-811d-3b7d0098f687
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0cfc99b0-1b4e-452e-8660-95706ccd612d
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: Billing Unit of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6d763616-9b02-4b61-ac62-c8623edc3aee
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f32e7bf5-6ab8-46a4-b50c-051f10dae6ae
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: Link to Disposal Ticket
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20132a45-875d-417e-80ca-bae19f50c413
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 259edd64-886e-42b5-88f4-a18b58476365
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NVARCHAR
+        description: ""
+        name: Reference
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 03a8736c-ceff-43b8-a18c-afe8331355cf
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b9a70d4-b8a4-4f67-af56-8804dfffb91f
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(80)
+        description: ""
+        name: Adjustment Reason
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f930c615-5b6c-474a-8366-bedd4b9e89ed
+                stepCounter: d3ad60e4-7918-4136-9751-531e378c67c3
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d80bde82-3e63-4939-9cb3-fca44d3397e3
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Work Order Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 86443db8-127e-480c-b5d8-a6f7e89f625a
+                stepCounter: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 79ffc247-c24d-42ae-bcab-472539daf901
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b79e1911-a5e7-4627-8cae-ef165a732411
+                stepCounter: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c648bcdb-9b01-4806-973a-6329edfaf107
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Address 1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d54be54e-d0c8-405f-bb88-d8cb76d91539
+                stepCounter: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6d910dde-5b04-4809-b591-003adbdbc29c
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Address 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9622ad3c-6934-4f9f-ab6e-0d9f6814715d
+                stepCounter: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d8840c19-d69f-471a-9045-d8e59591bc76
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15622558-7a73-43ff-abe5-a59ea81232af
+                stepCounter: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30fd154b-5c40-492b-86f6-c88df6228a91
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site State
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ecb8c18b-1fa0-4787-a0b4-cb07923eab66
+                stepCounter: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a31e09b-0ea5-4aeb-9881-cf20b9551b07
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(80)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Site Zip
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8ea06ae4-6f39-4d44-b83e-7bfd1363f8ed
+                stepCounter: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bb2ada41-a4fe-4668-b8dd-2a1286f1dcde
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Customer Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38ca0c81-201f-48b6-a9b8-63b9710c1a63
+                stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fbb2f8a5-5f4f-4824-829d-34c00874a597
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Address 1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4e78fc11-9ce8-4cd5-811f-571c96dd0c34
+                stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a08c6f2b-1866-43f1-a2ed-ea7a475980cf
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Address 2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16d790a3-721d-4176-92f6-1ccb05d03523
+                stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ddff5de3-735c-4a10-9b0e-9346fc7cc5da
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 86ec8100-b35d-4a34-a1ab-20e56088caca
+                stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17ea00d3-22b4-4a50-acf8-5d9dc81fd16a
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing State
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9342dbc1-b875-4a2e-8930-b62a2b9dd1d1
+                stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7987be6a-79e8-426a-823e-8d101ca32e30
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Billing Zip
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1d7d634f-8e78-4284-8370-6d0b29755e4c
+                stepCounter: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f2948aef-c026-41ba-99d0-b0b220dfc518
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: Date
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Start Service Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6248a9f-a120-4e98-a4e7-c6b3ab197eb0
+                stepCounter: 1d7a202a-3cb5-45d7-8ad4-59e48f175d2d
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 567be44c-f77a-46fd-baf1-6f5844099643
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: Date
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: End Service Date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4f84d184-c3ed-46fb-8282-052a28ba9338
+                stepCounter: 1d7a202a-3cb5-45d7-8ad4-59e48f175d2d
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34410c17-d357-44ff-834f-af8636a619a7
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Unit Of Measure
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: VW_CUSTOMER_SITE_SERVICE_MASTER."Container Size" || ' ' || VW_CUSTOMER_SITE_SERVICE_MASTER."Container UOM"
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 52056234-57c0-4881-b668-184de56e897f
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Frequency
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: VW_CUSTOMER_SITE_SERVICE_MASTER."Maximum Lifts Per Week" || '/week'
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 96c0037f-80a9-495d-9aae-32ededae3f3d
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Quantity Equipment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e7ef6982-8af4-457e-b3b3-31b2c5e4eb17
+                stepCounter: 1d7a202a-3cb5-45d7-8ad4-59e48f175d2d
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7da6f27a-a6d3-4a54-9f40-9b21b740ba4a
+          stepCounter: 63346837-ac5b-40be-a3c4-9fb95e5b2e00
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Bill Description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              'Monthly Invoices ' || VW_CUSTOMER_SITE_MASTER."Site Name" || ' ' || MONTHNAME(VW_DM05_COMBINED."Invoice Date") || ' ' || YEAR(VW_DM05_COMBINED."Invoice Date")
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          VW_CUSTOMER_MASTER: 343a2abd-4687-4718-be4c-21a2e7cfdfec
+          VW_CUSTOMER_SITE_MASTER: 8d64677b-58ad-4200-8781-ce77a8c7b4dd
+          VW_CUSTOMER_SITE_SERVICE_MASTER: 1d7a202a-3cb5-45d7-8ad4-59e48f175d2d
+          VW_DM05_COMBINED: d3ad60e4-7918-4136-9751-531e378c67c3
+          VW_SM01_COMBINED: 3f0872d0-8bcb-4448-95e6-5de3a1fd1e04
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_CUSTOMER_MASTER
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_CUSTOMER_SITE_MASTER
+          - locationName: MASTER_DATA_CLEAN
+            nodeName: VW_CUSTOMER_SITE_SERVICE_MASTER
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_DM05_COMBINED
+          - locationName: TRUXCOMBINED_RAW
+            nodeName: VW_SM01_COMBINED
+        join:
+          joinCondition: |+
+            FROM {{ ref('TRUXCOMBINED_RAW', 'VW_DM05_COMBINED') }} "VW_DM05_COMBINED"
+            LEFT JOIN {{ref('TRUXCOMBINED_RAW', 'VW_SM01_COMBINED') }} "VW_SM01_COMBINED"
+                ON "VW_DM05_COMBINED"."Source"="VW_SM01_COMBINED"."SOURCE"
+                    AND "VW_DM05_COMBINED"."Transaction Date" = VW_SM01_COMBINED.SM01_DATE
+                    AND "VW_DM05_COMBINED"."Route Number" = VW_SM01_COMBINED.SM01_ROUT
+                    AND "VW_DM05_COMBINED"."Sequence Number" = VW_SM01_COMBINED.SM01_SEQU
+            LEFT JOIN {{ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_SITE_MASTER') }} "VW_CUSTOMER_SITE_MASTER"
+                ON "VW_DM05_COMBINED"."Service_Source_Customer_Site"="VW_CUSTOMER_SITE_MASTER"."Source_Customer_Site"
+            LEFT JOIN {{ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_MASTER') }} "VW_CUSTOMER_MASTER"
+                ON "VW_DM05_COMBINED"."Source_Customer"="VW_CUSTOMER_MASTER"."Source_Customer"
+            LEFT JOIN {{ref('MASTER_DATA_CLEAN', 'VW_CUSTOMER_SITE_SERVICE_MASTER') }} "VW_CUSTOMER_SITE_SERVICE_MASTER"
+                ON "VW_DM05_COMBINED"."Source_Customer_Site_Service"="VW_CUSTOMER_SITE_SERVICE_MASTER"."Source_Customer_Site_Service"
+            GROUP BY ALL
+
+        name: VW_INVOICE_DATA
+        noLinkRefs: []
+  name: VW_INVOICE_DATA
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
