@@ -520,10 +520,12 @@ operation:
                 site."State" as STATE,
                 site."Zip" AS ZIP_CODE,
                 sm."Service Type" as SERVICE_TYPE,
+                'TRASH' AS MATERIAL,
                 sm."Service Week" || CASE
                     WHEN rd.DAYS_OF_WEEK IS NOT NULL THEN ' - ' || rd.DAYS_OF_WEEK
                     ELSE ''
                 END AS SCHEDULE,
+                sm."Maximum Lifts Per Week" || '/week' AS FREQUENCY,
                 sm."Container Quantity" as "QUANTITY_EQUIPMENT",
                 sm."Container Size" || ' ' || sm."Container UOM" AS SIZE_UNIT_OF_MEASURE,
                 id."Charge Type Description" AS CHARGE_TYPE,
