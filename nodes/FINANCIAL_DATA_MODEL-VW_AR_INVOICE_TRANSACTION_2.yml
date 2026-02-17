@@ -422,7 +422,8 @@ operation:
                      ELSE NULL 
                    END AS "dso_from_invoice"
                  , pym."Source" AS "Source"
-              FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL.AR_PAYMENT_DETAILS pym
+                 , pym."Payment User"
+              FROM {{ ref('FINANCIAL_DATA_MODEL', 'AR_PAYMENT_DETAILS') }} pym
               LEFT JOIN LRS_PRODUCTION.FINANCIAL_DATA_MODEL.AR_INVOICE_AMOUNTS inv
                 ON pym."Source_Invoice_ID" = inv."Source_Invoice_ID"
              --WHERE pym."Source" NOT LIKE '%TOWER%' -- delete later
@@ -454,6 +455,7 @@ operation:
                  , NULL AS "dso_from_due"
                  , NULL AS "dso_from_invoice"
                  , "Source" AS "Source"
+                 , NULL AS "Payment User"
               FROM LRS_PRODUCTION.FINANCIAL_DATA_MODEL.AR_INVOICE_AMOUNTS
              --WHERE "Source" NOT LIKE '%TOWER%' -- delete later
             ),
@@ -488,6 +490,7 @@ operation:
                  , NULL AS "dso_from_due"
                  , NULL AS "dso_from_invoice"
                  , CONCAT('TOWER_', a.companyid) AS "Source"
+                 , NULL AS "Payment User"
               FROM LRS_PRODUCTION.TOWER_COMBINED_RAW.ARDETAIL_COMBINED a
               LEFT JOIN LRS_PRODUCTION.TOWER_COMBINED_RAW.INVOICE_COMBINED b
                 ON a.invoiceuid = b.invoiceuid

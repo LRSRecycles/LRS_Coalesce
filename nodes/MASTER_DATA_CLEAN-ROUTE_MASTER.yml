@@ -711,6 +711,72 @@ operation:
           - columnReferences: []
             transform: ""
         systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b3f510d5-c6de-49cc-8673-5a87420b51e2
+          stepCounter: bcc56605-9b2f-4640-99de-4dcb0b7d1dce
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Area
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COALESCE(dga.AREA, lal.AREA)
+          - columnReferences: []
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18633a5f-b7f7-4d0b-bcd4-d9f114aed4c8
+          stepCounter: bcc56605-9b2f-4640-99de-4dcb0b7d1dce
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Division
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COALESCE(dga.DIVISION, lal.DIVISION)
+          - columnReferences: []
+            transform: ""
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d7a4cf48-0ef9-411c-b975-98bfc5d15a06
+          stepCounter: bcc56605-9b2f-4640-99de-4dcb0b7d1dce
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Start Location Number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: dga.LOC_NUM
+          - columnReferences: []
+            transform: ""
+        systemColumnType: None
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
@@ -771,6 +837,11 @@ operation:
               LEFT JOIN {{ ref('MASTER_DATA_CLEAN', 'LOB_COLLECTIONS_MAPPING') }} LOB_COLLECTIONS_MAPPING
                 ON RM01_COMBINED."SOURCE" = "LOB_COLLECTIONS_MAPPING"."SOURCE" 
                 AND "RM01_COMBINED"."RM01_TYPE"="LOB_COLLECTIONS_MAPPING"."ROUTE_TYPE_NUMBER"
+            LEFT JOIN LRS_DATA_WAREHOUSE.MASTER_DATA.DIM_GARAGE_AREA dga
+                ON "STG_SL01_COMBINED"."SOURCE" = dga.SOURCE 
+                AND STG_SL01_COMBINED."SL01_NAME" = dga.GARAGE
+            LEFT JOIN LRS_DATA_WAREHOUSE.MASTER_DATA.VW_LOC_AREA_LOOKUP lal
+                ON dga.LOC_NUM = lal.LOC_NUM    
         name: TRUX Routes
         noLinkRefs: []
       - aliases:
