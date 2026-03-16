@@ -124,7 +124,7 @@ operation:
                                         , sm01."SM01_DATE" AS "RTEDATE"
                                         , sm01."SM01_SEQU" AS "SEQU"
                                         , sm01.SOURCE
-                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_SM01_COMBINED_FILTERED sm01
+                                     FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.VW_SM01_COMBINED sm01
                                     INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_4 
                                        ON sm01."SM01_LOGID" = sc01_4."Call Scheduled" 
                                       AND sc01_4."Original Call" IS NOT NULL 
@@ -198,7 +198,7 @@ operation:
                                       , sm01_1."SM01_DATE" AS "RTEDATE"
                                       , sm01_1."SM01_SEQU" AS "SEQU"
                                       , sm01_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_SM01_COMBINED_FILTERED AS sm01_1 
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.VW_SM01_COMBINED AS sm01_1 
                                   INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_1 
                                      ON sm01_1."SM01_LOGID" = sc01_1."Original Call"
                                     AND sm01_1.SOURCE = sc01_1."Source" 
@@ -210,7 +210,7 @@ operation:
                                       , sm01_1."SM01_DATE" AS "RTEDATE"
                                       , sm01_1."SM01_SEQU" AS "SEQU"
                                       , sm01_1.SOURCE
-                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.STG_SM01_COMBINED_FILTERED AS sm01_1 
+                                   FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.VW_SM01_COMBINED AS sm01_1 
                                   INNER JOIN LRS_PRODUCTION.CUSTOMER_SERVICE_DATA_MODEL.STG_SC01_COMBINED AS sc01_1 
                                      ON (sc01_1."Original Call" IS NULL 
                                     AND sm01_1."SM01_LOGID" = sc01_1."Call Scheduled")
