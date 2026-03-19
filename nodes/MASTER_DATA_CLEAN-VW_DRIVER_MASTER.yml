@@ -338,8 +338,7 @@ operation:
         join:
           joinCondition: |2-
              FROM {{ ref('MASTER_DATA_CLEAN', 'DRIVER_MASTER') }} "DRIVER_MASTER"
-            WHERE "SYSTEM_VERSION" = 1
-              AND "SYSTEM_CURRENT_FLAG" = 'Y'
+            WHERE "SYSTEM_CURRENT_FLAG" = 'Y'
               AND "Active Flag" = TRUE
               AND "SOURCE" IS NOT NULL
         name: VW_DRIVER_MASTER
