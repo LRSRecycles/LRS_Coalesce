@@ -185,7 +185,8 @@ operation:
             FROM {{ ref('TRUXCOMBINED_RAW', 'STG_CM19_COMBINED') }} c1
 
             LEFT OUTER JOIN {{ ref('TRUXCOMBINED_RAW', 'STG_CM19_COMBINED') }} p1 
-            ON p1.CM19_CUST = c1.CM19_CUST
+            ON p1."SOURCE" = c1."SOURCE"
+            AND p1.CM19_CUST = c1.CM19_CUST
             AND p1.CM19_SITE = c1.CM19_SITE
             AND p1.CM19_SERV = c1.CM19_SERV
             AND p1.CM19_ACTV = c1.CM19_ACTV
