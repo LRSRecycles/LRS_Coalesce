@@ -1,0 +1,47 @@
+name: Refresh Sage (Development)
+
+# Triggered manually or by Orchestra via workflow_dispatch API.
+# No cron schedule — Orchestra owns the scheduling for the Sage pipeline.
+# DEV_REFRESH secret points at Development environment (id: 1).
+
+on:
+  workflow_dispatch:
+
+env:
+  COA_VERSION: 7.29.6 # Pinned to match existing DEV REFRESH.yml
+  SAGE_JOB_ID: "10"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 24
+
+    # Fetch dev coa config secret from GitHub Actions secret repository, then write coa config to a temporary file
+    - name: Write COA Config (Dev)
+      run: |
+        set -euo pipefail
+        echo '${{ secrets.DEV_REFRESH }}' > COA_CONFIG
+
+    # Rehydrate Snowflake private key from base64 encoded secret
+    - name: Create Snowflake private key file (Dev)
+      run: |
+        set -euo pipefail
+        echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64_DEV }}" | base64 -d > snowflake_rsa_key.p8
+        chmod 600 snowflake_rsa_key.p8
+
+    # Install Coalesce CLI tool, if not installed already
+    - name: Install Coalesce CLI
+      run: |
+        set -euo pipefail
+        npm list | grep "@coalescesoftware/coa@${{ env.COA_VERSION }}" || npm install @coalescesoftware/coa@${{ env.COA_VERSION }}
+
+    # Execute coa CLI, refreshing only the Sage Nodes Refresh Job (id: 10) in Dev environment
+    - name: Coalesce refresh — Sage only (Development, key pair)
+      run: |
+        set -euo pipefail
+        npx coa refresh --config COA_CONFIG --jobID ${{ env.SAGE_JOB_ID }} --snowflakeKeyPairKey "$PWD/snowflake_rsa_key.p8"
