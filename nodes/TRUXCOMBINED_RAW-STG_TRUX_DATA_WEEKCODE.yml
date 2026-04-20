@@ -1,0 +1,98 @@
+fileVersion: 1
+id: 9a1c0f9b-a727-44eb-9a5d-e34e9e530198
+name: STG_TRUX_DATA_WEEKCODE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TRUXCOMBINED_RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ac70540d-dc75-4c76-b190-6c4e2bc46631
+          stepCounter: 9a1c0f9b-a727-44eb-9a5d-e34e9e530198
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: WEEKCODE_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fef8e408-e36f-4e5e-a857-6c30a810c15e
+                stepCounter: 3b7eff60-feb1-40bc-82e6-cc48eb358a69
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 116aca7b-6c4f-495b-ac20-2cc3658e8d3c
+          stepCounter: 9a1c0f9b-a727-44eb-9a5d-e34e9e530198
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: WEEKCODE_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a381cd96-17a0-4313-b27f-a140a905a493
+                stepCounter: 3b7eff60-feb1-40bc-82e6-cc48eb358a69
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b786548d-d7ea-46d2-a8c5-62a816ec10bb
+          stepCounter: 9a1c0f9b-a727-44eb-9a5d-e34e9e530198
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a0c2b659-7547-4328-ba2b-a2b94b6cf163
+                stepCounter: 3b7eff60-feb1-40bc-82e6-cc48eb358a69
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e0869ff-e7b4-4b2f-bd58-4f5070aef7be
+          stepCounter: 9a1c0f9b-a727-44eb-9a5d-e34e9e530198
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0aecec8a-596a-4810-8d57-29f74f20a524
+                stepCounter: 3b7eff60-feb1-40bc-82e6-cc48eb358a69
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          WEEKCODE: 3b7eff60-feb1-40bc-82e6-cc48eb358a69
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRUXDATA_RAW
+            nodeName: WEEKCODE
+        join:
+          joinCondition: |-
+            FROM {{ ref('TRUXDATA_RAW', 'WEEKCODE') }} "WEEKCODE"
+            WHERE "_FIVETRAN_DELETED"=False
+        name: STG_TRUX_DATA_WEEKCODE
+        noLinkRefs: []
+  name: STG_TRUX_DATA_WEEKCODE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
