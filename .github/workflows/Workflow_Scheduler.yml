@@ -1,5 +1,4 @@
 name: Refresh Data
-
 on:
   # Set a schedule using cron
   schedule:
@@ -33,15 +32,16 @@ jobs:
         set -euo pipefail
         echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64_PROD}}" | base64 -d > snowflake_rsa_key.p8
         chmod 600 snowflake_rsa_key.p8
-
     # Install Coalesce CLI tool, if not installed already
     - name: Install Coalesce CLI
       run: |
         set -euo pipefail
         npm list | grep "@coalescesoftware/coa@${{ env.COA_VERSION }}" || npm install @coalescesoftware/coa@${{ env.COA_VERSION }}
-
-    # Execute coa CLI, starting coa refresh
-    - name: Coalesce refresh (Development, key pair)
+    # Execute coa CLI, starting coa refresh with Sage nodes excluded (handled by Orchestra)
+    - name: Coalesce refresh (Production, key pair, excluding Sage nodes)
       run: |
         set -euo pipefail
-        npx coa refresh --config COA_CONFIG --snowflakeKeyPairKey "$PWD/snowflake_rsa_key.p8"
+        npx coa refresh \
+          --config COA_CONFIG \
+          --snowflakeKeyPairKey "$PWD/snowflake_rsa_key.p8" \
+          --exclude "{ location: SAGE_CDC_ACTDAT } OR { location: SAGE_CDC_BLDDAT } OR { location: SAGE_CDC_ECODAT } OR { location: SAGE_CDC_EXCDAT } OR { location: SAGE_CDC_HOVDAT } OR { location: SAGE_CDC_HRTDAT } OR { location: SAGE_CDC_LAKDAT } OR { location: SAGE_CDC_LAKDIS } OR { location: SAGE_CDC_LAKPDA } OR { location: SAGE_CDC_LAKSDA } OR { location: SAGE_CDC_LECDAT } OR { location: SAGE_CDC_LIADAT } OR { location: SAGE_CDC_LINDAT } OR { location: SAGE_CDC_LRSDCT } OR { location: SAGE_CDC_MANDAT } OR { location: SAGE_CDC_RAMDAT } OR { location: SAGE_CDC_RECDAT } OR { location: SAGE_COMBINED } OR { location: FINANCIAL_DATA_MODEL name: AP_Invoice_Detail } OR { location: FINANCIAL_DATA_MODEL name: AP_Invoice_Header } OR { location: FINANCIAL_DATA_MODEL name: AP_Payment_Detail } OR { location: FINANCIAL_DATA_MODEL name: GL_Transactions } OR { location: FINANCIAL_DATA_MODEL name: VW_BALANCE_SHEET_OPENBALANCE_PVT } OR { location: FINANCIAL_DATA_MODEL name: Fct_Income_Statement } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_INVOICE_DETAIL } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_INVOICE_HEADER } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_PAYMENT_DETAIL } OR { location: FINANCIAL_DATA_MODEL name: VW_FCT_BALANCE_SHEET_TRANSACTIONS } OR { location: FINANCIAL_DATA_MODEL name: VW_STG_FCT_BALANCE_SHEET } OR { location: MASTER_DATA_CLEAN name: Vendor_Master }"
