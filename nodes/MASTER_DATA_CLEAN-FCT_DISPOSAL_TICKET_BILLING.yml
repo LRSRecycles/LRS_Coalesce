@@ -775,18 +775,23 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: |
-              {{ create_composite_key(
-                cols=[
-                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."SOURCE"','CASE WHEN "STG_RM03_COMBINED"."RM03_WONU" IS NULL
-                        THEN "VW_SM01_COMBINED"."SM01_WONU"
-                        ELSE "STG_RM03_COMBINED"."RM03_WONU" END',
-                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."TICKET_DATE"',
-                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_NUMBER"',
-                  '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1"'
-                ],
-                fmts=[null, null, 'YYYYMMDD', null, null]
-              ) }}
+            transform: |-
+              CASE
+                WHEN "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_2" IS NULL
+                  OR "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_2"
+                     = "VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1"
+                THEN {{ create_composite_key(
+                  cols=[
+                    '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."SOURCE"',
+                    'CASE WHEN "STG_RM03_COMBINED"."RM03_WONU" IS NULL THEN "VW_SM01_COMBINED"."SM01_WONU" ELSE "STG_RM03_COMBINED"."RM03_WONU" END',
+                    '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."TICKET_DATE"',
+                    '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_NUMBER"',
+                    '"VW_DISPOSAL_TICKET_BILLING_NORMALIZED"."ROUTE_SEQUENCE_1"'
+                  ],
+                  fmts=[null, null, 'YYYYMMDD', null, null]
+                ) }}
+                ELSE NULL
+              END
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
