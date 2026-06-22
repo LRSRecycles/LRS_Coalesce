@@ -1,0 +1,162 @@
+fileVersion: 1
+id: 7b3e9a42-5c81-4f6d-9e23-1a8c4d6f0b95
+name: VW_ROUTE_CARRYOVER
+operation:
+  config:
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Route Carryover / Pushed Work (SR-37659) — MPU-analog for on-demand (Roll-Off) service. One row per carried-over/failed service request (last 90 days) across the three lifecycle arms (SM01 COMPLETED, RM03 DISPATCHED, RM03U UNASSIGNED), classified UNASSIGNED/PUSHED/DRY RUN/COMPLETED LATE. All LOBs modeled; scope to Roll-Off via service_type_description at the dashboard. dbt parity: lrs_dbt opr_route_carryover."
+  isMultisource: false
+  locationName: OPERATIONS_DATA_MODEL
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('OPERATIONS_DATA_MODEL', 'VW_ROUTE_CARRYOVER')}} AS (
+
+            WITH base AS (
+                -- COMPLETED (SM01 + SM02 original call date)
+                SELECT s.source AS tenant,
+                    s.source||'-'||s.sm01_cust::int||'-'||s.sm01_site::int||'-'||s.sm01_serv::int AS scss,
+                    s.source||'-'||s.sm01_cust::int||'-'||s.sm01_site::int AS scs,
+                    s.source||'-'||s.sm01_cust::int AS sc,
+                    s.source||'-'||s.sm01_actv AS sact,
+                    s.sm01_cust::int AS customer_number, s.sm01_site::int AS site_number, s.sm01_serv::int AS service_number,
+                    s.sm01_actv AS activity_code, s.sm01_qty AS lifts, s.sm01_wonu AS work_order_number,
+                    LEFT(s.sm01_data, 250) AS non_completion_reason, s.sm01_user AS entered_by_user,
+                    'COMPLETED' AS lifecycle_state,
+                    CAST(d.sm02_orig_date AS date) AS requested_date,
+                    CAST(s.sm01_date AS date) AS service_date,
+                    CAST(s.sm01_date AS date) AS route_date, s.sm01_rout AS route_number, s.sm01_sequ AS route_sequence,
+                    'SM01' AS source_table,
+                    s.source||'-C-'||s.sm01_rout::int||'-'||TO_CHAR(CAST(s.sm01_date AS date),'YYYYMMDD')||'-'||s.sm01_sequ AS source_row_key
+                FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.SM01_COMBINED s
+                LEFT JOIN LRS_PRODUCTION.TRUX_COMBINED_RAW.SM02_COMBINED d
+                    ON d.source=s.source AND d.sm02_date=s.sm01_date AND d.sm02_rout=s.sm01_rout
+                   AND d.sm02_sequ=s.sm01_sequ AND COALESCE(d._fivetran_deleted,FALSE)=FALSE
+                WHERE COALESCE(s._fivetran_deleted,FALSE)=FALSE
+                  AND CAST(COALESCE(d.sm02_orig_date, s.sm01_date) AS date) >= DATEADD(day,-90,CURRENT_DATE())
+                UNION ALL
+                -- DISPATCHED (RM03 active dispatch)
+                SELECT r.source, r.source||'-'||r.rm03_cust::int||'-'||r.rm03_site::int||'-'||r.rm03_serv::int,
+                    r.source||'-'||r.rm03_cust::int||'-'||r.rm03_site::int, r.source||'-'||r.rm03_cust::int,
+                    r.source||'-'||r.rm03_actv,
+                    r.rm03_cust::int, r.rm03_site::int, r.rm03_serv::int,
+                    r.rm03_actv, r.rm03_qty, r.rm03_wonu, LEFT(r.rm03_data,250), r.rm03_utkn,
+                    'DISPATCHED', CAST(r.rm03_orig_date AS date), CAST(r.rm03_date AS date),
+                    CAST(r.rm03_date AS date), r.rm03_rout, r.rm03_sequ, 'RM03',
+                    r.source||'-D-'||r.rm03_rout::int||'-'||TO_CHAR(CAST(r.rm03_date AS date),'YYYYMMDD')||'-'||r.rm03_sequ
+                FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03_COMBINED r
+                WHERE COALESCE(r._fivetran_deleted,FALSE)=FALSE
+                  AND CAST(r.rm03_orig_date AS date) >= DATEADD(day,-90,CURRENT_DATE())
+                UNION ALL
+                -- UNASSIGNED (RM03U board)
+                SELECT u.source, u.source||'-'||u.rm03u_cust::int||'-'||u.rm03u_site::int||'-'||u.rm03u_serv::int,
+                    u.source||'-'||u.rm03u_cust::int||'-'||u.rm03u_site::int, u.source||'-'||u.rm03u_cust::int,
+                    u.source||'-'||u.rm03u_actv,
+                    u.rm03u_cust::int, u.rm03u_site::int, u.rm03u_serv::int,
+                    u.rm03u_actv, u.rm03u_qty, u.rm03u_wonu, LEFT(u.rm03u_data,250), u.rm03u_utkn,
+                    'UNASSIGNED', CAST(u.rm03u_date AS date), CAST(NULL AS date),
+                    CAST(NULL AS date), CAST(NULL AS number), CAST(NULL AS number), 'RM03U',
+                    u.source||'-U-'||u.rm03u_id::int
+                FROM LRS_PRODUCTION.TRUX_COMBINED_RAW.RM03U_COMBINED u
+                WHERE COALESCE(u._fivetran_deleted,FALSE)=FALSE
+                  AND CAST(u.rm03u_date AS date) >= DATEADD(day,-90,CURRENT_DATE())
+            ),
+            enriched AS (
+                SELECT b.*,
+                    a.activity_description, a.inventory_action_description,
+                    svc.service_type_description, svc.service_type_code,
+                    COALESCE(lob.line_of_business, 'Unmapped') AS line_of_business,
+                    DATEDIFF('day', b.requested_date, COALESCE(b.service_date, CURRENT_DATE())) AS days_carried_over,
+                    (a.activity_description ILIKE '%DRY RUN%' OR a.activity_description ILIKE '%UNABLE TO SERVICE%') AS is_dry_run,
+                    (b.route_sequence IS NOT NULL AND b.route_sequence <> TRUNC(b.route_sequence)) AS is_off_schedule_insert,
+                    cust.customer_name, cust.sales_representative AS customer_rep,
+                    st.site_name, st.address_2 AS service_address, st.city, st.state, st.zip,
+                    st.billing_sales_representative AS site_rep
+                FROM base b
+                LEFT JOIN LRS_DATA_WAREHOUSE.TRUX_COMMON_DATA_MODEL.DIM_ACTIVITY a ON a.source_activity = b.sact
+                LEFT JOIN LRS_DATA_WAREHOUSE.TRUX_COMMON_DATA_MODEL.DIM_SERVICE svc ON svc.source_customer_site_service = b.scss
+                LEFT JOIN LRS_DATA_WAREHOUSE.TRUX_COMMON_DATA_MODEL.DIM_SITE st ON st.source_customer_site = b.scs
+                LEFT JOIN LRS_DATA_WAREHOUSE.TRUX_COMMON_DATA_MODEL.DIM_CUSTOMER cust ON cust.source_customer = b.sc
+                -- Canonical UDM LOB resolution (same as FCT_SERVICE_TICKET / FCT_MISSED_PICKUP)
+                LEFT JOIN LRS_DATA_WAREHOUSE.MASTER_DATA.DIM_SERVICE_TYPE_LOB lob
+                    ON lob.source = b.tenant AND lob.service_type_code = svc.service_type_code
+            )
+            SELECT
+                CASE WHEN is_dry_run THEN 'DRY RUN'
+                     WHEN lifecycle_state='UNASSIGNED' AND days_carried_over>0 THEN 'UNASSIGNED'
+                     WHEN lifecycle_state='DISPATCHED' AND days_carried_over>0 THEN 'PUSHED'
+                     WHEN lifecycle_state='COMPLETED'  AND days_carried_over>0 THEN 'COMPLETED LATE'
+                END AS "Carryover Type",
+                lifecycle_state AS "Lifecycle State",
+                is_dry_run AS "Is Dry Run",
+                is_off_schedule_insert AS "Is Off Schedule Insert",
+                days_carried_over AS "Days Carried Over",
+                (days_carried_over=0) AS "Is Same Day",
+                tenant AS "From Database",
+                line_of_business AS "Line of Business",
+                service_type_description AS "Service Type",
+                customer_number AS "Customer Number",
+                customer_name AS "Customer Name",
+                site_number AS "Site Number",
+                site_name AS "Site Name",
+                service_address AS "Service Address",
+                city AS "City",
+                state AS "State",
+                zip AS "Zip",
+                COALESCE(site_rep, customer_rep) AS "Sales Rep",
+                service_number AS "Service Number",
+                activity_code AS "Activity Code",
+                activity_description AS "Activity",
+                CASE WHEN is_dry_run THEN 'Dry Run'
+                     WHEN inventory_action_description='Assign'   OR activity_description ILIKE '%DELIV%' THEN 'Delivery'
+                     WHEN inventory_action_description='Unassign' OR activity_description ILIKE '%FINAL%'
+                                                                  OR activity_description ILIKE '%PULL%'  THEN 'Pull / Final'
+                     WHEN inventory_action_description='Exchange' OR activity_description ILIKE '%SWAP%'
+                                                                  OR activity_description ILIKE '%SWITCH%'
+                                                                  OR activity_description ILIKE '%DUMP%RETURN%'
+                                                                  OR activity_description ILIKE '%EXCHANGE%' THEN 'Swap'
+                     ELSE 'Other' END AS "Ticket Type",
+                lifts AS "Lifts",
+                work_order_number AS "Work Order Number",
+                entered_by_user AS "Entered By User",
+                non_completion_reason AS "Non Completion Reason",
+                requested_date AS "Requested Date",
+                service_date AS "Service Date",
+                COALESCE(service_date, CURRENT_DATE()) AS "Effective Service Date",
+                route_date AS "Route Date",
+                route_number AS "Route Number",
+                route_sequence AS "Route Sequence",
+                source_table AS "Source Table",
+                source_row_key AS "Source Row Key"
+            FROM enriched
+            WHERE requested_date >= DATEADD(day,-90,CURRENT_DATE())
+              AND CASE WHEN is_dry_run THEN 'DRY RUN'
+                     WHEN lifecycle_state='UNASSIGNED' AND days_carried_over>0 THEN 'UNASSIGNED'
+                     WHEN lifecycle_state='DISPATCHED' AND days_carried_over>0 THEN 'PUSHED'
+                     WHEN lifecycle_state='COMPLETED'  AND days_carried_over>0 THEN 'COMPLETED LATE'
+                  END IS NOT NULL
+
+            	)
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: VW_ROUTE_CARRYOVER
+        noLinkRefs: []
+  name: VW_ROUTE_CARRYOVER
+  overrideSQL: true
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
