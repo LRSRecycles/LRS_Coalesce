@@ -3,45 +3,51 @@ on:
   # Set a schedule using cron
   schedule:
   - cron: "0 4-22/3 * * *"
-  
+ 
   # This option allows the workflow to be triggered manually
   workflow_dispatch:
-  
+ 
 env:
   COA_VERSION: 7.29.6 # Versions released on NPM here: https://www.npmjs.com/package/@coalescesoftware/coa
-  
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+ 
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: 24
-    
+ 
     # Fetch coa config secret from GitHub Actions secret repository, then write coa config to a temporary file
     - name: Write COA Config
       run: |
         set -euo pipefail
         echo '${{ secrets.COA_CONFIG }}' > COA_CONFIG
-    
+ 
     # Rehydrate Snowflake private key from base64 encoded secret
     - name: Create Snowflake private key file
       run: |
         set -euo pipefail
         echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64_PROD}}" | base64 -d > snowflake_rsa_key.p8
         chmod 600 snowflake_rsa_key.p8
+ 
     # Install Coalesce CLI tool, if not installed already
     - name: Install Coalesce CLI
       run: |
         set -euo pipefail
         npm list | grep "@coalescesoftware/coa@${{ env.COA_VERSION }}" || npm install @coalescesoftware/coa@${{ env.COA_VERSION }}
-    # Execute coa CLI, starting coa refresh with Sage nodes excluded (handled by Orchestra)
-    - name: Coalesce refresh (Production, key pair, excluding Sage nodes)
+ 
+    # Execute coa CLI, starting coa refresh with Sage + TRUX + ADP + Softpak nodes excluded
+    # (Sage handled by Orchestra sage_production; TRUX by trux_production Job 11; ADP by adp_production Job 12;
+    #  Softpak excluded as source data dead since 2024-02-02 pending Phase 3 decom).
+    # The exclude selector uses Coalesce `location:` aliases (Coalesce internal naming), which differ from
+    # Snowflake schema names — e.g. `location: TRUXCOMBINED_RAW` maps to Snowflake schema `TRUX_COMBINED_RAW`.
+    - name: Coalesce refresh (Production, key pair, excluding Sage + TRUX + ADP + Softpak nodes)
       run: |
         set -euo pipefail
         npx coa refresh \
           --config COA_CONFIG \
           --snowflakeKeyPairKey "$PWD/snowflake_rsa_key.p8" \
-          --exclude "{ location: SAGE_CDC_ACTDAT } OR { location: SAGE_CDC_BLDDAT } OR { location: SAGE_CDC_ECODAT } OR { location: SAGE_CDC_EXCDAT } OR { location: SAGE_CDC_HOVDAT } OR { location: SAGE_CDC_HRTDAT } OR { location: SAGE_CDC_LAKDAT } OR { location: SAGE_CDC_LAKDIS } OR { location: SAGE_CDC_LAKPDA } OR { location: SAGE_CDC_LAKSDA } OR { location: SAGE_CDC_LECDAT } OR { location: SAGE_CDC_LIADAT } OR { location: SAGE_CDC_LINDAT } OR { location: SAGE_CDC_LRSDCT } OR { location: SAGE_CDC_MANDAT } OR { location: SAGE_CDC_RAMDAT } OR { location: SAGE_CDC_RECDAT } OR { location: SAGE_COMBINED } OR { location: FINANCIAL_DATA_MODEL name: AP_Invoice_Detail } OR { location: FINANCIAL_DATA_MODEL name: AP_Invoice_Header } OR { location: FINANCIAL_DATA_MODEL name: AP_Payment_Detail } OR { location: FINANCIAL_DATA_MODEL name: GL_Transactions } OR { location: FINANCIAL_DATA_MODEL name: VW_BALANCE_SHEET_OPENBALANCE_PVT } OR { location: FINANCIAL_DATA_MODEL name: Fct_Income_Statement } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_INVOICE_DETAIL } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_INVOICE_HEADER } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_PAYMENT_DETAIL } OR { location: FINANCIAL_DATA_MODEL name: VW_FCT_BALANCE_SHEET_TRANSACTIONS } OR { location: FINANCIAL_DATA_MODEL name: VW_STG_FCT_BALANCE_SHEET } OR { location: MASTER_DATA_CLEAN name: Vendor_Master }"
+          --exclude "{ location: SAGE_CDC_ACTDAT } OR { location: SAGE_CDC_BLDDAT } OR { location: SAGE_CDC_ECODAT } OR { location: SAGE_CDC_EXCDAT } OR { location: SAGE_CDC_HOVDAT } OR { location: SAGE_CDC_HRTDAT } OR { location: SAGE_CDC_LAKDAT } OR { location: SAGE_CDC_LAKDIS } OR { location: SAGE_CDC_LAKPDA } OR { location: SAGE_CDC_LAKSDA } OR { location: SAGE_CDC_LECDAT } OR { location: SAGE_CDC_LIADAT } OR { location: SAGE_CDC_LINDAT } OR { location: SAGE_CDC_LRSDCT } OR { location: SAGE_CDC_MANDAT } OR { location: SAGE_CDC_RAMDAT } OR { location: SAGE_CDC_RECDAT } OR { location: SAGE_COMBINED } OR { location: FINANCIAL_DATA_MODEL name: AP_Invoice_Detail } OR { location: FINANCIAL_DATA_MODEL name: AP_Invoice_Header } OR { location: FINANCIAL_DATA_MODEL name: AP_Payment_Detail } OR { location: FINANCIAL_DATA_MODEL name: GL_Transactions } OR { location: FINANCIAL_DATA_MODEL name: VW_BALANCE_SHEET_OPENBALANCE_PVT } OR { location: FINANCIAL_DATA_MODEL name: Fct_Income_Statement } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_INVOICE_DETAIL } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_INVOICE_HEADER } OR { location: FINANCIAL_DATA_MODEL name: VW_AP_PAYMENT_DETAIL } OR { location: FINANCIAL_DATA_MODEL name: VW_FCT_BALANCE_SHEET_TRANSACTIONS } OR { location: FINANCIAL_DATA_MODEL name: VW_STG_FCT_BALANCE_SHEET } OR { location: MASTER_DATA_CLEAN name: Vendor_Master } OR { location: ADAPTIVE } OR { location: ADP_COMBINED } OR { location: ADP_LYRIQ } OR { location: CUSTOMER_SERVICE_DATA_MODEL } OR { location: OPERATIONS_DATA_MODEL } OR { location: SOFTPAK_CLEAN } OR { location: SOFTPAK_RAW } OR { location: TOWER_COMBINED } OR { location: TRUXCOMBINED_RAW } OR { location: FINANCIAL_DATA_MODEL name: AR_INVOICE_AMOUNTS } OR { location: FINANCIAL_DATA_MODEL name: AR_PAYMENT_DETAILS } OR { location: FINANCIAL_DATA_MODEL name: PROF_CUSTOMER_SERVICE_STATISTICS } OR { location: FINANCIAL_DATA_MODEL name: TRUX_AR_TRANSACTIONS } OR { location: FINANCIAL_DATA_MODEL name: VW_ALDI_INVOICE_REPORT } OR { location: FINANCIAL_DATA_MODEL name: VW_AR_INVOICE_TRANSACTION_2 } OR { location: FINANCIAL_DATA_MODEL name: VW_AR_INVOICE_TRANSACTION_OUTSTANDING_CALCULATION } OR { location: FINANCIAL_DATA_MODEL name: VW_AR_INVOICE_TRANSACTION_WHALE } OR { location: FINANCIAL_DATA_MODEL name: VW_AUDIT_SUSPEND_REMOVE_NONPAY } OR { location: FINANCIAL_DATA_MODEL name: VW_CASH_DRAWER_BALANCE_WEIGHT_IT } OR { location: FINANCIAL_DATA_MODEL name: VW_CUSTOMER_SITE_REVENUE } OR { location: FINANCIAL_DATA_MODEL name: VW_CUSTOMER_SUSPEND_NP_PAYMENT } OR { location: FINANCIAL_DATA_MODEL name: VW_CUSTOMER_SUSPEND_NP_TIMELINE } OR { location: FINANCIAL_DATA_MODEL name: VW_CUSTOMER_SUSPEND_NP_UNSUSPEND } OR { location: FINANCIAL_DATA_MODEL name: VW_DECLINED_CREDIT_CARD_ACTIVITY_DETAIL } OR { location: FINANCIAL_DATA_MODEL name: VW_INVOICE_DATA } OR { location: FINANCIAL_DATA_MODEL name: VW_STG_PAYMENT_DAILY } OR { location: FINANCIAL_DATA_MODEL name: VW_STG_PAYMENT_DAILY_WITH_RANKING } OR { location: FINANCIAL_DATA_MODEL name: VW_STG_VENA_FINANCE_MODEL } OR { location: FINANCIAL_DATA_MODEL name: VW_TRUX_AR_TRANSACTIONS } OR { location: FINANCIAL_DATA_MODEL name: VW_TRUX_CHARGES } OR { location: MASTER_DATA_CLEAN name: ACTIVITY_MASTER } OR { location: MASTER_DATA_CLEAN name: CARRIER_MASTER } OR { location: MASTER_DATA_CLEAN name: CUSTOMER_MASTER } OR { location: MASTER_DATA_CLEAN name: CUSTOMER_SITE_MASTER } OR { location: MASTER_DATA_CLEAN name: CUSTOMER_SITE_SERVICE_MASTER } OR { location: MASTER_DATA_CLEAN name: DIM_BILLING_CUSTOMER_MASTER } OR { location: MASTER_DATA_CLEAN name: DIM_CREDIT_CARD_CODE } OR { location: MASTER_DATA_CLEAN name: DIM_SERVICE_CUSTOMER_MASTER } OR { location: MASTER_DATA_CLEAN name: DIM_SERVICE_MASTER } OR { location: MASTER_DATA_CLEAN name: DISPOSAL_SITE_MATERIAL_RATES_MASTER } OR { location: MASTER_DATA_CLEAN name: DRIVER_MASTER } OR { location: MASTER_DATA_CLEAN name: FACILITY_MASTER } OR { location: MASTER_DATA_CLEAN name: FCT_DISPOSAL_TICKET_BILLING } OR { location: MASTER_DATA_CLEAN name: HELPER_MASTER } OR { location: MASTER_DATA_CLEAN name: LOB_AR_MAPPING } OR { location: MASTER_DATA_CLEAN name: LOB_COLLECTIONS_MAPPING } OR { location: MASTER_DATA_CLEAN name: MATERIAL_CATEGORY_MAPPING } OR { location: MASTER_DATA_CLEAN name: MATERIAL_MASTER } OR { location: MASTER_DATA_CLEAN name: ROUTE_MASTER } OR { location: MASTER_DATA_CLEAN name: ROUTE_START_LOCATION_MASTER } OR { location: MASTER_DATA_CLEAN name: ROUTE_STOP_MASTER } OR { location: MASTER_DATA_CLEAN name: SERVICE_TYPE_LOB_MAPPING } OR { location: MASTER_DATA_CLEAN name: STG_CREDIT_CARD_CODE } OR { location: MASTER_DATA_CLEAN name: TOWER_SERVICE_MASTER } OR { location: MASTER_DATA_CLEAN name: TRUCK_MASTER } OR { location: MASTER_DATA_CLEAN name: TRUX_DATABASE_METADATA } OR { location: MASTER_DATA_CLEAN name: TRUX_SECURITY_PROFILE } OR { location: MASTER_DATA_CLEAN name: VW_BILLING_CUSTOMER_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_CUSTOMER_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_CUSTOMER_MASTER_LIST } OR { location: MASTER_DATA_CLEAN name: VW_CUSTOMER_SITE_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_CUSTOMER_SITE_METRICS } OR { location: MASTER_DATA_CLEAN name: VW_CUSTOMER_SITE_SERVICE_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_DIM_CREDIT_CARD_CODE } OR { location: MASTER_DATA_CLEAN name: VW_DRIVER_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_IEPA_SPECIAL_WASTE_REPORT } OR { location: MASTER_DATA_CLEAN name: VW_MISSED_PICK_UP } OR { location: MASTER_DATA_CLEAN name: VW_ROUTE_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_ROUTE_START_LOCATION_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_ROUTE_STOP_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_SERVICE_CUSTOMER_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_SERVICE_MASTER } OR { location: MASTER_DATA_CLEAN name: VW_TRUX_CODE_DICTIONARY }"
